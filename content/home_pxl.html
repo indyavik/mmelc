@@ -210,18 +210,26 @@
 
         }
 
-        function modify_qty(val, divid) {
+        function modify_qty(val, divid, ifenter) {
 
-            var qty = document.getElementById(divid).value;
-            //alert(qty);
-            var new_qty = parseInt(qty, 10) + val;
+            if (ifenter) {
+                var new_qty = val;
+                document.getElementById(divid).value = new_qty;
 
-            if (new_qty < 0) {
-                new_qty = 0;
+
+            } else {
+
+                var qty = document.getElementById(divid).value;
+                //alert(qty);
+                var new_qty = parseInt(qty, 10) + val;
+
+                if (new_qty < 0) {
+                    new_qty = 0;
+                }
+
+                document.getElementById(divid).value = new_qty;
+
             }
-
-            document.getElementById(divid).value = new_qty;
-
             //to-do get the title of the page 
 
             var page_id = localStorage.getItem('current_location');
@@ -235,7 +243,7 @@
         //click the button (+) on enter key 
 
         $(document).keypress(function(e) {
-            alert(e.which);
+            //alert(e.which);
             if (e.which == 101) {
                 $("#up").click();
             }
@@ -243,6 +251,34 @@
             if (e.which == 114) {
                 $("#up2").click();
             }
+
+
+            if (e.which == 13) {
+                //if values are manually manipulated.
+
+                var qty = document.getElementById("qty").value;
+                var qty2 = document.getElementById("qty2").value;
+
+                modify_qty(qty, "qty", "yes");
+                modify_qty(qty2, "qty2", "yes");
+
+            }
+
+            /*
+
+            if (e.which == 13) {
+                //$("#up2").click();
+                var qty = document.getElementById("qty").value;
+                var qty2 = document.getElementById("qty2").value;
+
+                modify_qty(qty, "qty");
+                modify_qty(qty2, "qty2");
+
+            }
+
+            */
+
+
 
 
         });
@@ -420,6 +456,7 @@
                     <input id="qty" value="0" />
                     <button id="down" onclick="modify_qty(-1, 'qty')">-1</button>
                     <button id="up" onclick="modify_qty(1, 'qty')">+1</button>
+
                 </div>
 
                 <div class="box" id="box2">
