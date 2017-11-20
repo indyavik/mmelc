@@ -1,0 +1,879 @@
+﻿/* 
+* the scaled desktop position
+*/
+body #viewerMenu.desktop > .nonscrollingmenusection > div, 
+body #viewerMenu.desktop > .scrollablemenusection > div {
+    height: 50px;
+    margin-bottom: 5px;
+    padding-left: 5px;
+    width: 64px;
+}
+
+body #viewerMenu.desktop > .nonscrollingmenusection > div > .backgroundholder,
+body #viewerMenu.desktop > .scrollablemenusection > div > .backgroundholder,
+body #viewerMenu.desktop > .nonscrollingmenusection > #menuMagnificationDrawerContainer > .backgroundholder {
+    background-color: #eee;
+    border-radius: 15px;
+    height: 200%;
+    left: 0;
+    position: absolute;
+    top: 0;
+    -webkit-transform: scale(0.5);/*Saf3.1+, Chrome*/
+    -moz-transform: scale(0.5); /* FF3.5+ */
+    -ms-transform: scale(0.5); /* IE9 */
+    -o-transform: scale(0.5); /* Opera 10.5+ */
+    transform: scale(0.5);
+    transform-origin: 0 0 0;
+    width: 200%;
+} 
+
+body.browserclass_ie #viewerMenu.desktop > .nonscrollingmenusection > div > .backgroundholder,
+body.browserclass_ie #viewerMenu.desktop > .scrollablemenusection > div > .backgroundholder,
+body.browserclass_chrome #viewerMenu.desktop > .nonscrollingmenusection > div > .backgroundholder,
+body.browserclass_chrome #viewerMenu.desktop > .scrollablemenusection > div > .backgroundholder,
+body.browserclass_safari #viewerMenu.desktop > .nonscrollingmenusection > div > .backgroundholder,
+body.browserclass_safari #viewerMenu.desktop > .scrollablemenusection > div > .backgroundholder {
+    -webkit-transform: scale(0.5);/*Saf3.1+, Chrome*/
+    -moz-transform: scale(0.5); /* FF3.5+ */
+    -ms-transform: scale(0.5); /* IE9 */
+    -o-transform: scale(0.5); /* Opera 10.5+ */
+    transform: scale(0.5);
+    width: 200%;
+    height: 200%;
+}
+#container.desktop #menuFullScreen > .backgroundholder {
+    background-position:11px -20px;
+}
+#container.desktop #menuFullScreen > .backgroundholder:hover {
+    background-position:-88px -20px;
+}
+
+#container.desktop #menuFullScreen.menubadgeActive > .backgroundholder {
+    background-position:-289px -20px;
+}
+#container.desktop #menuFullScreen.isFullScreen >.backgroundholder {
+    background-position:-106px -111px;
+    width: 85px;
+    height: 81px;
+    background-color: rgba(204, 204, 204, 0.45);
+}
+#container.desktop #magnificationDrawer > div#mag1, #container.desktop #menuMagnification.mag1 {
+    height: 50px;
+    width: 64px;
+    left: -2px;
+    top: 0;
+}
+#container.desktop #menuMagnificationDrawerContainer > .backgroundholder {
+    background-position:13px -921px; 
+}
+#container.desktop #menuMagnificationDrawerContainer > .backgroundholder:hover {
+    background-position:-86px -921px; 
+}
+#container.desktop #menuMagnificationDrawerContainer.menubadgeActive > .backgroundholder {
+    background-position:-287px -921px; 
+}
+#container.desktop #menuAnnotation > .backgroundholder {
+    background-position:10px -220px;
+}
+#container.desktop #menuAnnotation > .backgroundholder:hover {
+    background-position:-90px -220px;
+}
+#container.desktop #menuAnnotation.menubadgeActive > .backgroundholder {
+    background-position:-290px -220px;
+}
+#container.desktop #menuSlides > .backgroundholder {
+    background-position:12px -1920px;
+}
+#container.desktop #menuSlides > .backgroundholder:hover {
+    background-position:-87px -1920px;
+}
+#container.desktop #menuSlides.menubadgeActive > .backgroundholder {
+    background-position:-288px -1920px;
+}
+#container.desktop #menuInfo > .backgroundholder {
+    background-position:11px -1720px;
+}
+#container.desktop #menuInfo > .backgroundholder:hover {
+    background-position:-89px -1720px;
+}
+#container.desktop #menuInfo.menubadgeActive > .backgroundholder {
+    background-position:-289px -1720px;
+}
+#container.desktop #menuScalebar > .backgroundholder {
+    background-position: 11px -820px;
+}
+#container.desktop #menuScalebar > .backgroundholder:hover {
+    background-position: -88px -820px;
+}
+#container.desktop #menuScalebar.menubadgeActive > .backgroundholder {
+    background-position: -289px -820px;
+}
+#container.desktop #menuRegions > .backgroundholder {
+    background-position: 11px -2120px;
+}
+#container.desktop #menuRegions > .backgroundholder:hover {
+    background-position: -88px -2120px;
+}
+#container.desktop #menuRegions.menubadgeActive > .backgroundholder {
+    background-position: -289px -2120px;
+}
+#container.desktop #menuMeasurements > .backgroundholder {
+    background-position: 14px -2220px;
+}
+#container.desktop #menuMeasurements > .backgroundholder:hover {
+    background-position: -86px -2220px;
+}
+#container.desktop #menuMeasurements.menubadgeActive > .backgroundholder {
+    background-position: -286px -2220px;
+}
+#container.desktop #menuThumbnail > .backgroundholder {
+    background-position: 11px -2020px;
+}
+#container.desktop #menuThumbnail > .backgroundholder:hover {
+    background-position: -89px -2020px;
+}
+#container.desktop #menuThumbnail.menubadgeActive > .backgroundholder {
+    background-position: -289px -2020px;
+}
+#container.desktop #menuLabel > .backgroundholder {
+    background-position: 11px -2320px;
+}
+#container.desktop #menuLabel > .backgroundholder:hover {
+    background-position: -89px -2320px;
+}
+#container.desktop #menuLabel.menubadgeActive > .backgroundholder {
+    background-position: -289px -2320px;
+}
+
+#container.desktop #menuZStacks > .backgroundholder {
+    background-position: 11px -2920px;
+}
+#container.desktop #menuZStacks > .backgroundholder:hover {
+    background-position: -88px -2920px;
+}
+#container.desktop #menuZStacks.menubadgeActive > .backgroundholder {
+    background-position: -289px -2920px;
+}
+
+#container.desktop #menuClose > .backgroundholder {
+    background-position: 12px -3220px;
+}
+#container.desktop #menuClose > .backgroundholder:hover {
+    background-position: -88px -3220px;
+}
+#container.desktop #menuClose.menubadgeActive > .backgroundholder {
+    background-position: -288px -3220px;
+}
+#container.desktop #menuAdjustments > .backgroundholder {
+    background-position: 12px -4120px;
+}
+#container.desktop #menuAdjustments > .backgroundholder:hover {
+    background-position: -88px -4120px;
+}
+#container.desktop #menuAdjustments.menubadgeActive > .backgroundholder {
+    background-position: -288px -4120px;
+}
+#container.desktop #rotateDrawer > .backgroundholder {
+    background-position: 11px -3616px
+}
+#container.desktop #rotateDrawer > .backgroundholder:hover {
+    background-position: -88px -3616px;
+}
+#container.desktop #rotateDrawer.menubadgeActive > .backgroundholder {
+    background-position: -289px -3616px;
+}
+#container.desktop #menuScreenshotDrawer {
+    z-index: 99;
+}
+#container.desktop #menuScreenshotDrawerContainer > .backgroundholder {
+    background-position: 8px -3420px;
+}
+#container.desktop #menuScreenshotDrawerContainer > .backgroundholder:hover {
+    background-position: -92px -3420px;
+}
+#container.desktop #menuScreenshotDrawerContainer.menubadgeActive > .backgroundholder {
+    background-position: -289px -3420px;
+}
+#container.desktop #menuScreenshotDrawer > div.takeScreenshot > .backgroundholder {
+    background-position: -321px -3427px;
+}
+#container.desktop #menuScreenshotDrawer > div.drawScreenshot > .backgroundholder {
+    background-position: -321px -3528px;
+}
+#viewerMenu.desktop #pathXLMenuHomeLink {
+    left: 8px;
+}
+
+#viewerMenu.desktop .buttonNameHolder {
+    font-size: 9px;
+    bottom: 3px;
+}
+
+#container.desktop .drawer
+{
+    height: 51px;
+    margin-top: -15px;
+}
+#container.desktop .drawer > div {
+    box-shadow: none;
+    height: 40px;
+    width: 40px;
+}
+#container.desktop .drawer:before {
+    border-width: 10px;
+    margin-top: -10px;
+}
+
+#container.desktop .drawer:after {
+    border-width: 8px;
+    margin-top: -8px;
+}
+
+#container.desktop .setMag > span, #container.desktop #menuMagnification > span,
+#container.desktop .takeScreenshot > span, #container.desktop .drawScreenshot > span
+{
+    font-family: Nunito,Ubuntu,Arial,sans-serif;
+    margin-top: 26px;
+    width: 40px;
+}
+
+body #container.desktop #menuMagnificationDrawer > div > .backgroundholder,
+body #container.desktop #menuScreenshotDrawer > div > .backgroundholder {
+    height: 47px;
+    left: 4px;
+    top: 3px;
+    -webkit-transform: scale(0.5);/*Saf3.1+, Chrome*/
+    -moz-transform: scale(0.5); /* FF3.5+ */
+    -ms-transform: scale(0.5); /* IE9 */
+    -o-transform: scale(0.5); /* Opera 10.5+ */
+    transform: scale(0.5);
+    transform-origin: 0 0 0;
+    width: 56px;
+}
+body.browserclass_safari #container.desktop #menuMagnificationDrawer > div > .backgroundholder,
+body.browserclass_safari #container.desktop #menuScreenshotDrawer > div > .backgroundholder {
+    left: -10px;
+    top: -10px;
+}
+#container.desktop #menuMagnificationDrawer > div#mag1 > .backgroundholder
+{
+    background-position:-18px -930px;
+
+}
+#container.desktop #menuMagnificationDrawer > div#mag1 > .backgroundholder:active
+{
+    background-position:-118px -930px;
+
+}
+#viewerMenu.desktop #menuMagnificationDrawer > div#mag1 > .backgroundholder:hover
+{
+    background-position:-218px -930px;
+}
+
+#container.desktop #menuMagnificationDrawer > div#mag2_5 > .backgroundholder
+{
+    background-position:-18px -1030px;
+}
+#container.desktop #menuMagnificationDrawer > div#mag2_5 > .backgroundholder:active
+{
+    background-position:-218px -1030px;
+}
+#container.desktop #menuMagnificationDrawer > div#mag2_5 > .backgroundholder:hover
+{
+    background-position:-118px -1030px;
+}
+
+#container.desktop #menuMagnificationDrawer > div#mag5 > .backgroundholder
+{
+    background-position:-18px -1130px;
+}
+#container.desktop #menuMagnificationDrawer > div#mag5 > .backgroundholder:active
+{
+    background-position:-218px -1130px;
+}
+#container.desktop #menuMagnificationDrawer > div#mag5 > .backgroundholder:hover
+{
+    background-position:-118px -1130px;
+}
+
+#container.desktop #menuMagnificationDrawer > div#mag10 > .backgroundholder
+{
+    background-position:-18px -1230px ;
+}
+#container.desktop #menuMagnificationDrawer > div#mag10 > .backgroundholder:active
+{
+    background-position:-218px -1230px ;
+}
+#container.desktop #menuMagnificationDrawer > div#mag10 > .backgroundholder:hover
+{
+    background-position:-118px -1230px ;
+}
+
+#container.desktop #menuMagnificationDrawer > div#mag20 > .backgroundholder
+{
+    background-position:-18px -1330px ;
+}
+#container.desktop #menuMagnificationDrawer > div#mag20 > .backgroundholder:active
+{
+    background-position:-218px -1330px ;
+}
+#container.desktop #menuMagnificationDrawer > div#mag20 > .backgroundholder:hover
+{
+    background-position:-118px -1330px ;
+}
+
+#container.desktop #menuMagnificationDrawer > div#mag40 > .backgroundholder
+{
+    background-position:-18px -1430px ;
+}
+#container.desktop #menuMagnificationDrawer > div#mag40 > .backgroundholder:active
+{
+    background-position:-218px -1430px ;
+}
+#container.desktop #menuMagnificationDrawer > div#mag40 > .backgroundholder:hover
+{
+    background-position:-118px -1430px ;
+}
+
+#container.desktop #menuMagnificationDrawer > div#mag60 > .backgroundholder
+{
+    background-position:-18px -3329px;
+}
+#container.desktop #menuMagnificationDrawer > div#mag60 > .backgroundholder:active
+{
+    background-position:-218px -3329px;
+}
+#container.desktop #menuMagnificationDrawer > div#mag60 > .backgroundholder:hover
+{
+    background-position:-118px -3329px;
+}
+
+#container.desktop #menuMagnificationDrawer > div#mag83 > .backgroundholder
+{
+    background-position:-18px -1530px;
+}
+#container.desktop #menuMagnificationDrawer > div#mag83 > .backgroundholder:active
+{
+    background-position:-218px -1530px;
+}
+#container.desktop #menuMagnificationDrawer > div#mag83 > .backgroundholder:hover
+{
+    background-position:-118px -1530px;
+}
+
+/* viewer mag button */
+#viewerMenu.desktop #menuMagnificationDrawerContainer.mag1 > .backgroundholder
+{
+    background-position:11px -922px;
+}
+#viewerMenu.desktop #menuMagnificationDrawerContainer.mag2_5 > .backgroundholder
+{
+    background-position:11px -1022px;
+}
+#viewerMenu.desktop #menuMagnificationDrawerContainer.mag5 > .backgroundholder
+{
+    background-position:11px -1122px;
+}
+#viewerMenu.desktop #menuMagnificationDrawerContainer.mag10 > .backgroundholder
+{
+    background-position:11px -1222px ;
+}
+#viewerMenu.desktop #menuMagnificationDrawerContainer.mag20 > .backgroundholder
+{
+    background-position:11px -1322px ;
+}
+#viewerMenu.desktop #menuMagnificationDrawerContainer.mag40 > .backgroundholder
+{
+    background-position:11px -1422px ;
+}
+#viewerMenu.desktop #menuMagnificationDrawerContainer.mag60 > .backgroundholder
+{
+    background-position:11px -3321px;
+}
+#viewerMenu.desktop #menuMagnificationDrawerContainer.mag83 > .backgroundholder {
+    background-position: 11px -1522px;
+}
+#viewerMenu.desktop #viewerDebug > .backgroundholder {
+    background-position: 11px -1522px;
+}
+#container.desktop #viewerDebug > .backgroundholder  {
+    background-position:11px -1720px;
+}
+#container.desktop #viewerDebug > .backgroundholder :hover {
+    background-position:-89px -1720px;
+}
+#container.desktop #viewerDebug.menubadgeActive > .backgroundholder {
+    background-position:-289px -1720px;
+}
+#container.desktop #viewertoppanel .nameholder {
+    font-size: 11px;
+}
+#container.desktop .panelHeader {
+    font: 13px Nunito,Ubuntu,Arial;
+    height: 36px;
+    padding: 10px 10px 10px 16px;
+    width: 247px;
+}
+#container.desktop .infoControl {
+    margin-top: 40px;
+}
+#viewerMenu.desktop .counterbadge {
+ 
+}
+#viewerMenu.desktop .menubadge {
+    border: 1px solid #aaa;
+    box-shadow: none;
+}
+#viewerMenu.desktop .scrollablemenusection div {
+    cursor: pointer;
+}
+#viewerMenu.desktop div.menuSectionOverflowTopSection {
+    width: 69px !important;
+    cursor:default;
+    top: 140px;
+    display: none;
+    
+}
+#container.desktop #viewerBelowNavigatorPanel .ViewerSlideLabelNameHolder {
+    font-size: 11px;
+}
+#container.desktop #leftPanel,
+#container.desktop .detailsDiv div,
+#container.desktop .detailsDiv span,
+#container.desktop .detailsDiv label {
+    font-size: 11px;
+}
+
+#container.desktop #leftPanel,
+#container.desktop .measureDetailsDiv div,
+#container.desktop .measureDetailsDiv span,
+#container.desktop .measureDetailsDiv .innercontrols label 
+{
+    font-size: 11px;
+}
+
+#container.desktop .innerDetailsDiv {
+     padding-bottom: 36px;
+}
+
+#container.desktop .annoName, #container.desktop .measureName{
+    font-size: 11px;
+    width: 150px;
+}
+
+body.browserclass_chrome #container.desktop .measureEditableTextArea.annoDes.annoDetails,
+body.browserclass_safari #container.desktop .measureEditableTextArea.annoDes.annoDetails
+{
+    top: -5px;
+}
+
+body.browserclass_chrome #container.desktop .measureType
+{
+    right: -5px;
+    top: 5px;
+}
+
+body.browserclass_safari #container.desktop .measureType 
+{
+    top: -5px;
+}
+
+#container.desktop .annoEditableTextArea {
+    font-size: 11px;
+}
+#container.desktop .annoActionsBtn {
+     left: -33px;
+}
+#container.desktop .annoActionsBtn:hover {
+   background: #dddddd;
+   border-color: #666666;
+   cursor: pointer;
+}
+#container.desktop .activeAnnotation {
+     padding-bottom: 0;
+}
+#container.desktop .anHeaderControl div {
+    -webkit-transform: scale(0.7);/*Saf3.1+, Chrome*/
+    -moz-transform: scale(0.7); /* FF3.5+ */
+    -ms-transform: scale(0.7); /* IE9 */
+    -o-transform: scale(0.7); /* Opera 10.5+ */
+    transform: scale(0.7);
+    transform-origin: 0 0 0;
+    margin-left: auto;
+    top: 10px;
+    position: relative;
+    left: 8px;
+}
+#container.desktop .measurementsHeaderControl div {
+    -webkit-transform: scale(0.7);/*Saf3.1+, Chrome*/
+    -moz-transform: scale(0.7); /* FF3.5+ */
+    -ms-transform: scale(0.7); /* IE9 */
+    -o-transform: scale(0.7); /* Opera 10.5+ */
+    transform: scale(0.7);
+    transform-origin: 0 0 0;
+    margin-left: auto;
+    position: relative;
+    top: 10px;
+    left: 8px;
+}
+#container.desktop .panelHeaderControl {
+    height: 30px;
+}
+
+body #container.desktop .anHeaderControl {
+    height: 50px;    
+    padding-left: 0;
+    position: relative;
+    width: 260px;
+}
+
+body #container.desktop .measurementsHeaderControl {
+    height: 50px;    
+    padding-left: 0;
+    position: relative;
+    width: 260px;
+}
+
+#container.desktop .anHeaderControl div {   
+    -webkit-transform: scale(0.7);/*Saf3.1+, Chrome*/
+    -moz-transform: scale(0.7); /* FF3.5+ */
+    -ms-transform: scale(0.7); /* IE9 */
+    -o-transform: scale(0.7); /* Opera 10.5+ */
+    transform: scale(0.7);
+    transform-origin: 0 0 0;
+}
+
+#container.desktop .measurementsHeaderControl div {   
+    -webkit-transform: scale(0.7);/*Saf3.1+, Chrome*/
+    -moz-transform: scale(0.7); /* FF3.5+ */
+    -ms-transform: scale(0.7); /* IE9 */
+    -o-transform: scale(0.7); /* Opera 10.5+ */
+    transform: scale(0.7);
+    transform-origin: 0 0 0;
+}
+
+body.browserclass_safari #container.desktop .anHeaderControl {
+    height: 60px;
+}
+
+
+body.browserclass_safari #container.desktop .anHeaderControl {
+    top: 0px;
+}
+
+body.browserclass_safari #container.desktop .measurementsHeaderControl 
+{
+    top: -10px;
+}
+
+
+.yui3-skin-sam .yui3-dial-value-string,
+.yui3-skin-sam .yui3-dial-value-string2{
+    bottom: 40px;
+    color: #000;
+    margin-left: auto;
+    position: absolute;
+    right: 35px;
+    text-align: center;
+    z-index: 1;display: block;
+    font-size: 90%!important;
+    text-align: center;
+    width: 31px;
+
+}
+.yui3-skin-sam .yui3-dial-value-string2 {
+    color: #000;
+    font-size: 130%;
+    margin-left: 0.5em;
+}
+
+.yui3-dial-reset-string,
+.yui3-dial-label-string {
+    display: none;
+}
+#container.desktop div.menuSectionOverflowBottomSection {
+   bottom: 52px; 
+}
+/*
+    * Annotations Details section
+*/
+#container.desktop .annoHeader {
+    min-height: 30px;
+}
+#container.desktop .annoDes {
+     font-weight: normal;
+}
+body.browserclass_chrome #container.desktop .annoHeader {
+    width: 215px;
+}
+#container.desktop .annoType {
+    float: none;
+    height: 48px !important;
+    position: absolute;
+    right: 10px;
+    width: 45px !important;
+}
+#container.desktop .measureType {
+    float: none;
+    height: 48px !important;
+    position: absolute;
+    right: 10px;
+    width: 45px !important;
+}
+body.browserclass_chrome #container.desktop .annoType {
+    right: -20px;
+}
+body.browserclass_firefox #container.desktop .annoType {
+    right: 10px;
+}
+body.browserclass_chrome #container.desktop .measuretype {
+    right: -20px;
+}
+body.browserclass_firefox #container.desktop .measuretype {
+    right: 10px;
+}
+#container.desktop .innerDetailsContainer {
+   width: calc(100% + 14px);
+}
+
+#container.desktop .measureinnerDetailsContainer {
+   width: calc(100% + 14px);
+}
+
+
+#container.desktop .detailsDiv {
+
+    width: 230px;
+}
+
+#container.desktop .edit {
+    background: url("../../images/icons-master-sprite2.png") no-repeat scroll -229px -2735px rgba(0, 0, 0, 0);
+    width: 36px !important;
+}
+#container.desktop .delete {
+    background: url("../../images/icons-master-sprite2.png") no-repeat scroll -234px -2633px rgba(0, 0, 0, 0);
+}
+
+#container.desktop .info {
+    background: url("../../images/icons-master-sprite2.png") no-repeat scroll -218px -4231px rgba(0, 0, 0, 0);
+    margin-left: 13%;
+    -webkit-transform: scale(0.5);/*Saf3.1+, Chrome*/
+    -moz-transform: scale(0.5); /* FF3.5+ */
+    -ms-transform: scale(0.5); /* IE9 */
+    -o-transform: scale(0.5); /* Opera 10.5+ */
+    transform: scale(0.5);
+    transform-origin: 0 0 0;
+    width: 50px !important;
+}
+body.browserclass_chrome #container.desktop .edit,
+body.browserclass_chrome #container.desktop .delete,
+body.browserclass_chrome #container.desktop .info,
+body.browserclass_ie #container.desktop .edit,
+body.browserclass_ie #container.desktop .delete,
+body.browserclass_ie #container.desktop .info,
+body.browserclass_safari #container.desktop .edit,
+body.browserclass_safari #container.desktop .delete,
+body.browserclass_safari #container.desktop .info {
+    height: 54px !important;
+    zoom: 1;
+}
+body.browserclass_chrome #container.desktop .info,
+body.browserclass_ie #container.desktop .info {
+    -webkit-transform: scale(0.6);/*Saf3.1+, Chrome*/
+    -moz-transform: scale(0.6); /* FF3.5+ */
+    -ms-transform: scale(0.6); /* IE9 */
+    -o-transform: scale(0.6); /* Opera 10.5+ */
+    transform: scale(0.6);
+    transform-origin: 0 0 0;
+}
+body.browserclass_safari #container.desktop .edit,
+body.browserclass_safari #container.desktop .delete,
+body.browserclass_safari #container.desktop .info {
+    left: -5px;
+    top: -10px;
+    position: relative;
+}
+body.browserclass_safari #container.desktop .info {
+    left: -10px;
+}
+#container.desktop .onoffswitch {
+    /*margin-right: 5px;
+    left: 1px;
+    top: 1px;*/
+}
+#container.desktop .onoffswitch-switch {
+    background: none repeat scroll 0 0 #ffffff;
+    border: 2px solid #666;
+    border-radius: 15px;
+    bottom: 1px;
+    display: block;
+    margin: -1px;
+    top: 1px;
+    /*transition: all 0.3s ease-in 0s;*/
+    width: 17px;
+    height: 17px;
+}
+#container.desktop .onoffswitch-inner:before, #container.desktop .onoffswitch-inner:after {
+    height: 14px;
+}
+#container.desktop #annoPanel .onoffswitch-switch,
+#container.desktop #annoPanel .onoffswitch  {
+    font-size: 14px;
+}
+/*
+    * z-stacks
+*/
+#container.desktop .rangeHolder {
+    background: none repeat scroll 0 0 rgba(204, 204, 204, 0.9);
+    border: thin solid rgba(204, 204, 204, 0.9);
+    border-radius: 10px;
+    height: 255px;
+    left: 4px;
+    position: absolute;
+    top: 2px;
+    width: 45px;
+    z-index: 19;
+}
+body #container.desktop #up {
+    background: url("/iscope/images/icons-master-sprite2.png") repeat scroll;
+    background-position: -113px -3030px;
+    background-color: rgba(0, 0, 0, 0);
+    height: 45px;
+    left: 0px;
+    top: 5px;
+    position: relative;
+    -webkit-transform: scale(0.6);/*Saf3.1+, Chrome*/
+    -moz-transform: scale(0.6); /* FF3.5+ */
+    -ms-transform: scale(0.6); /* IE9 */
+    -o-transform: scale(0.6); /* Opera 10.5+ */
+    transform: scale(0.6);
+    transform-origin: 0 0 0;
+    width: 75px;
+}
+body #container.desktop #up:hover {
+    background-position: -313px -3030px;
+}
+
+body #container.desktop #down {
+    background: url("/iscope/images/icons-master-sprite2.png") repeat scroll -113px -3130px rgba(0, 0, 0, 0);
+    height: 35px;
+    left: 0px;
+    top: 5px;
+    position: relative;
+    -webkit-transform: scale(0.6);/*Saf3.1+, Chrome*/
+    -moz-transform: scale(0.6); /* FF3.5+ */
+    -ms-transform: scale(0.6); /* IE9 */
+    -o-transform: scale(0.6); /* Opera 10.5+ */
+    transform: scale(0.6);
+    transform-origin: 0 0 0;
+    width: 75px;
+}
+body #container.desktop #down:hover {
+    background-position: -313px -3130px;
+}
+body.browserclass_safari #container.desktop #up,
+body.browserclass_safari #container.desktop #up:hover,
+body.browserclass_safari #container.desktop #down,
+body.browserclass_safari #container.desktop #down:hover {
+    left: -15px;
+}
+#container.desktop #range {
+    height: 145px;
+    left: 12px;
+    margin-bottom: 25px;
+    position: relative;
+    top: 10px;
+}
+#container.desktop .sp-replacer {
+    border-radius: 5px;
+    border-width: 1px 1px 2px;
+    padding: 4px 4px 3px;
+}
+/*
+    * Regions   
+ */
+#container.desktop .regionItem {
+    border-width: 1px 1px 2px;
+    font: bold 11px/12px Helvetica,Verdana,Tahoma;
+    overflow: hidden;
+    padding: 4px 3px 0;
+    width: 225px;
+}
+/*
+    * Carousel
+*/
+#container.desktop .carouselControl {
+    margin-top: 30px;
+}
+#container.desktop .carouselItem {
+    font: bold 11px/12px Helvetica,Verdana,Tahoma;
+    margin: 8px 0 8px 5px;
+    padding: 0 3px;
+    width: 225px;
+}
+#container.desktop .regionItem {
+    border-width: 1px 1px 2px;
+    font: bold 11px/12px Helvetica,Verdana,Tahoma;
+    margin-left: 5px;
+    overflow: hidden;
+    padding: 4px 3px 0;
+    width: 225px;
+}
+/*
+    * Image Adjustments
+ */
+#container.desktop #innerPanel_ColourBalance {
+    width: 175px;
+}
+
+#container.desktop .squarecss.annoOption {
+    margin-left: 5px;
+}
+
+#container.desktop .anDataControl {
+    /*padding-left: 10px;
+    padding-top: 10px;*/
+    width: 235px;
+}
+#container.desktop #innerPanel_Filters {
+    clear: right;
+}
+#container.desktop #adjustments_ApplyAllBtn {
+    clear: both;
+}
+#container.desktop .adjustmentsBtn {
+    margin-bottom: 10px;
+    margin-top: 10px;
+}
+body.desktop .screenshot_holder > .shareSS, #screenshot_beginDrawMessage {
+    height: 100px;
+    width: 290px;
+}
+body.desktop .screenshot_holder > .shareSS .screenshotButtons {
+    top: 0;
+}
+
+body.browserclass_safari #container.desktop .hyperlinkIcon {
+    top: -8px;
+}
+
+body.browserclass_safari #container.desktop .contrastIcon {
+    -webkit-transform: scale(0.7);/*Saf3.1+, Chrome*/
+    -moz-transform: scale(0.7); /* FF3.5+ */
+    -ms-transform: scale(0.7); /* IE9 */
+    -o-transform: scale(0.7); /* Opera 10.5+ */
+    transform: scale(0.7);
+    position: relative;
+    top: -5px;
+    background-position: -235px -3836px;
+}
+body.browserclass_safari #container.desktop .SliderIcon {
+    left: -5px;
+    top: -8px;
+}
+body.browserclass_safari #container.desktop .gammaIcon {
+    left: 0px;
+}
+body.browserclass_safari #container.desktop .contrastIcon {
+    top: -4px;
+}

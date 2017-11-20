@@ -1,0 +1,10 @@
+<?xml version="1.0" ?>
+<PathXL>
+  <Config>
+    <ServerPort>85</ServerPort>
+    <ServerIP>localhost</ServerIP>
+    <IServeLocation>iserve</IServeLocation>
+    <Default_ImagePath>D:\</Default_ImagePath>
+    <Scan_ImagePath>images.location</Scan_ImagePath>
+  </Config>
+</PathXL>
