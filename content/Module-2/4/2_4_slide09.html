@@ -1,0 +1,75 @@
+<div id="m2_stainingOfBF_p09" class="page-content">
+
+    <slide id="2_4_slide09"></slide>
+
+    <h2 class="heading-text"><a href="#preamble" name="preamble"></a>Mounting, Storing and Archiving Stained Blood Films (2 of 6)</h2>
+
+    <h3 class="medium-text"><a href="#preamble" name="preamble"></a>Mounting Procedure</h3>
+
+    <p class="content-text">
+        Allow DPX mountant to settle for eight hours prior to use to remove any micro-bubbles formed during transport. Next carry out the following steps:
+    </p>
+    <div id="slide4-buttons" class="p-t-10">
+
+        <button class="green-btn" onclick="javascript:slide4show(1)">Step 1</button>
+
+        <button class="red-btn" onclick="javascript:slide4show(2)">Step 2</button>
+
+        <button class="blue-btn" onclick="javascript:slide4show(3)">Step 3</button>
+
+        <button class="violet-btn" onclick="javascript:slide4show(4)">Step 4</button>
+
+    </div>
+    <div id="outcome" class="outcome-text"  style="display: block">
+
+        <div id="outcomex" class="outcomex-text" style="margin-top:15px;padding-top:5px;padding-bottom:7px;margin-left:30px;">
+
+            <p id="outcome-1" class="outcome-num none-display">
+                Remove any oil from the stained slide by dipping in a clearing agent, such as xylene and allow to dry.</p>
+
+            <p id="outcome-2" class="outcome-num none-display">
+                Lay a special mounting coverslip (24 x 50 mm) on an absorbent surface, such as tissue or gauze. Using a glass pipette, make a 10―15 mm elongated drop with approximately 0.5 mL (one drop) of DPX starting from the edge of one end of the coverslip.</p>
+
+            <p id="outcome-3" class="outcome-num none-display">
+                Invert the stained slide and with the blood film facing down, lower the stained slide onto the coverslip. Starting at one long edge, gently press the stained slide until the DPX spreads over the surface area of the coverslip. Turn over the stained slide and gently press out any noticeable air bubbles from under the coverslip with a pair of forceps. Remove any excess DPX using absorbent tissue or gauze.</p>
+
+            <div id="outcome-4" class="outcome-num none-display" style="overflow-y:scroll;max-height:160px;margin-bottom:0px;padding-bottom:0px;">
+                    <p class="outcome-num">
+                
+                    Allow the stained slide and coverslip assembly to dry in the horizontal position for one hour prior to moving or viewing under a microscope, to avoid movement of the coverslip.
+					</p>
+                <p class="content-text">
+                    <img src="images/Take Note.png" class="noteImgStyle">
+                    <b class="noteText">The use of artificial heat to dry the slides is not recommended.</b>
+                </p>
+
+                <p class="outcome-num">
+                    Allow the mounted slides to dry for 48 hours prior to filing. This ensures that slides are thoroughly dry and prevents slides sticking together. Stained slides should be stored in a dark environment, away from sources of bright light, and checked periodically to confirm the DPX remains clear, with no sign of the DPX drying back or peeling off the slide. The coverslip and DPX can be removed by soaking the mounted slide in a clearing agent, such as xylene, until the coverslip and mounting medium can be removed.
+                </p>
+
+            </div>
+        </div>
+    </div>
+    <!---outcome 1 -->
+
+
+</div>
+
+<script>
+    /* any js that applies to a slide should be included within the slide html page itself */
+
+    function slide4show(count) {
+
+        $("#outcome").css('display', 'block');
+
+        for (var i = 1; i <= 4; i++) {
+            if (i == count)
+                document.getElementById("outcome-" + i).style.display = 'block';
+            else
+                document.getElementById("outcome-" + i).style.display = 'none';
+        }
+
+    }
+
+
+</script>

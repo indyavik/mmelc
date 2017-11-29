@@ -1,0 +1,149 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>PathXL Standalone</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0" />
+    <!--js defaults-->
+    <!-- Begin Defaults -->
+    <link href="css/jquery.reject.css" rel="stylesheet" type="text/css" />
+    <script type="text/javascript" language="javascript" src="Core/PRES/js/console.js"></script>
+    <!--<script type="text/javascript" src="/Variables.ashx"></script>-->
+    <link href="Core/PRES/fa/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
+    <link href="Core/PRES/js/jquery/jquery-ui.css" rel="stylesheet" type="text/css" />
+    <script type="text/javascript" language="javascript" src="core/PRES/js/jquery/jquery.min.js"></script>
+    <script type="text/javascript">jQuery.curCSS = jQuery.css; (function ($) { if (!$.curCSS) { $.curCSS = $.css; } });</script>
+    <script type="text/javascript" language="javascript" src="core/PRES/js/bootstrap/bootstrap.min.js"></script>
+    <script type="text/javascript" language="javascript" src="Core/PRES/js/jquery/jquery-ui.min.js"></script>
+    <script type="text/javascript" language="javascript" src="jquery/GoogleAnalytics.js"></script>
+    <script type="text/javascript" language="javascript" src="jquery/jquery.reject.js"></script>
+    <script type="text/javascript" language="javascript" src="Core/PRES/js/util.js"></script>
+    <link type="text/css" href="Core/PRES/js/jquery/jqueryOverrides.css" rel="Stylesheet" />
+    <script type="text/javascript">if (/firefox/i.test(navigator.userAgent)) { window.oldGetComputedStyle = window.getComputedStyle; window.getComputedStyle = function (element, pseudoElt) { var t = window.oldGetComputedStyle(element, pseudoElt); if (t === null) { return {}; } else { return t; } }; }</script>
+    <!-- End Defaults -->
+    
+    <script type="text/javascript" src="javascript/mustache.js"></script>
+    <script src="javascript/yui-min.js"></script>
+    <script src="javascript/fabric.js"></script>
+    
+    <link type="text/css" href="css/onOffSwitch.css" rel="Stylesheet" />
+    <script src="javascript/spectrum.js"></script>
+    <link href="css/spectrum.css" rel="stylesheet" />
+
+    <!--js viewer setup-->
+    <!-- Begin Viewer Defaults -->
+    <script type="text/javascript" src="javascript/generalUI.js"></script>
+    <script type="text/javascript" src="javascript/openseadragon.js"></script>
+    <script type="text/javascript" src="javascript/PxlViewer.js"></script>
+    <script type="text/javascript" src="javascript/PxlViewerImageAdjustments.js"></script>
+    <script type="text/javascript" src="javascript/PxlViewerMeasurements.js"></script>
+    <script type="text/javascript" src="javascript/PxlViewerMenu.js"></script>
+    <script type="text/javascript" src="javascript/PxlViewerAnnotations.js"></script>
+    <script type="text/javascript" src="javascript/PxlViewerSlideName.js"></script>
+    <script type="text/javascript" src="javascript/PxlViewerAuthorName.js"></script>
+
+    <script type="text/javascript" src="javascript/PxlViewerCarousel.js"></script>
+    <script type="text/javascript" src="javascript/PxlViewerSlideLabel.js"></script>
+    <script type="text/javascript" src="javascript/PxlViewerSlideInfo.js"></script>
+    <script type="text/javascript" src="javascript/openseadragon-scalebar.js"></script>
+    <script type="text/javascript" src="javascript/PxlViewerRegions.js"></script>
+    <script type="text/javascript" src="javascript/PxlViewerZStacks.js"></script>
+    <script type="text/javascript" src="javascript/PxlViewerScreenshot.js"></script>
+    <script type="text/javascript" src="javascript/PxlViewerHeatmap.js"></script>
+
+    <script type="text/javascript" src="javascript/plugin/noUiSlider/jquery.nouislider.all.min.js"></script>
+    <script type="text/javascript" src="javascript/plugin/noUiSlider/jquery.nouislider.min.js"></script>
+    <link rel="stylesheet" href="javascript/plugin/noUiSlider/css/jquery.nouislider.min.css" />
+    <link rel="stylesheet" href="javascript/plugin/noUiSlider/css/jquery.nouislider.pips.min.css" />
+    <script type="text/javascript" src="jquery/elastic.js"></script>
+    <script type="text/javascript">
+
+      alert("this is me");
+
+
+	
+	 function getQueryStringValue(key) {
+            return unescape(window.location.search.replace(new RegExp("^(?:.*[&\\?]" + escape(key).replace(/[\.\+\*]/g, "\\$&") + "(?:\\=([^&]*))?)?.*$", "i"), "$1"));
+        }
+
+    </script>
+    <link href="Core/PRES/js/bootstrap/css/bootstrap.min.css" rel="stylesheet" />
+    <!-- End Viewer Defaults -->
+    
+    <link type="text/css" href="css/viewer2.css" rel="Stylesheet" />
+    <link type="text/css" href="css/viewerdesktop.css" rel="Stylesheet" /> 
+    
+
+</head>
+<body class="yui3-skin-sam">
+    <form id="form1" runat="server">
+    
+        
+        <div id="preLoadImages" style="display: none">
+            <img src="../images/icons-master-sprite2.png" />
+            <img src="static/square.jpg" />
+            <img src="static/circle.jpg" />
+            <img src="static/line.jpg" />
+            <img src="static/arrow.jpg" />
+        </div>
+
+        
+        
+        <div id="container">
+            <div id="leftMenuHolder">
+                <div id="leftPanel"></div>
+            </div>
+
+            <div id="viewerHolder" oncontextmenu="return false">
+                <canvas id="adjustmentsCanvasStore"> </canvas>
+                <canvas id="uncorrectedImage"> </canvas>
+                <canvas id="backgroundCanvas"> </canvas>
+                <div id="view1" class="viewerControl">  </div>
+                <div id="annoCanvas1"></div>
+                <div id="viewertoppanel" class="viewertoppanel"></div>
+            </div>
+        </div>
+
+        
+       <script type="text/javascript">
+	   var url = getQueryStringValue("url");
+           var pxl = new PxlViewer({
+               id: "view1", startImage: 10823,
+               images: [
+                   <!-- { id: 10823, url: "http://localhost:8080/cgi-bin/cgi.py?c:/test/zheatmaps/breast/case01.svs", authorname: "", slidename: "dave test" } -->
+                   //{id: 10823, url: "http://research.pathxl.com:8080/g:/validation/Colorectal/Validation/QUB/Batch3/P13 82032.svs", authorName: "", slideName: "P13 82032"}
+                   { id: 10824, url: url, authorName: "", slideName: "" },
+                   //{ id: 10825, url: "http://research.pathxl.com:8080/g:/validation/Colorectal/Validation/QUB/Batch3/P13 82332.svs", authorName: "", slideName: "P13 82332" },
+                   //{ id: 10826, url: "http://research.pathxl.com:8080/g:/validation/Colorectal/Validation/QUB/Batch3/P13 82336.svs", authorName: "", slideName: "P13 82336" },
+                   //{ id: 10827, url: "http://research.pathxl.com:8080/g:/validation/Colorectal/Validation/QUB/Batch3/P13 82340.svs", authorName: "", slideName: "P13 82340" },
+                   //{ id: 10828, url: "http://research.pathxl.com:8080/g:/validation/Colorectal/Validation/QUB/Batch3/P13 82342.svs", authorName: "", slideName: "P13 82342" },
+                   //{ id: 10829, url: "http://research.pathxl.com:8080/g:/validation/Colorectal/Validation/QUB/Batch3/P13 82344.svs", authorName: "", slideName: "P13 82344" },
+                   //{ id: 10830, url: "http://research.pathxl.com:8080/g:/validation/Colorectal/Validation/QUB/Batch3/P13 82348.svs", authorName: "", slideName: "P13 82348" },
+                   //{ id: 10831, url: "http://research.pathxl.com:8080/g:/validation/Colorectal/Validation/QUB/Batch3/P13 82350.jpg", authorName: "", slideName: "P13 82350" },
+                   //{ id: 10832, url: "http://research.pathxl.com:8080/g:/validation/Colorectal/Validation/QUB/Batch3/P13 82350.svs", authorName: "", slideName: "P13 82350" },
+                   //{ id: 10833, url: "http://research.pathxl.com:8080/g:/validation/Colorectal/Validation/QUB/Batch3/P13 82352.svs", authorName: "", slideName: "P13 82352" },
+                   //{ id: 10834, url: "http://research.pathxl.com:8080/g:/validation/Colorectal/Validation/QUB/Batch3/P13 82354.svs", authorName: "", slideName: "P13 82354" },
+                   //{ id: 10835, url: "http://research.pathxl.com:8080/g:/validation/Colorectal/Validation/QUB/Batch3/P13 82356.svs", authorName: "", slideName: "P13 82356" },
+                   //{ id: 10836, url: "http://research.pathxl.com:8080/g:/validation/Colorectal/Validation/QUB/Batch3/P13 82359.svs", authorName: "", slideName: "P13 82359" },
+                   //{ id: 10837, url: "http://research.pathxl.com:8080/g:/validation/Colorectal/Validation/QUB/Batch3/P13 82361.svs", authorName: "", slideName: "P13 82361" },
+                   //{ id: 10838, url: "http://research.pathxl.com:8080/g:/validation/Colorectal/Validation/QUB/Batch3/P13 82363.svs", authorName: "", slideName: "P13 82363" },
+                   //{ id: 10839, url: "http://research.pathxl.com:8080/g:/validation/Colorectal/Validation/QUB/Batch3/P13 82381.svs", authorName: "", slideName: "P13 82381" },
+                   //{ id: 10840, url: "http://research.pathxl.com:8080/g:/validation/Colorectal/Validation/QUB/Batch3/P13 82385.svs", authorName: "", slideName: "P13 82385" },
+                   //{ id: 10841, url: "http://research.pathxl.com:8080/g:/validation/Colorectal/Validation/QUB/Batch3/P13 82389.svs", authorName: "", slideName: "P13 82389" },
+                   //{ id: 10842, url: "http://research.pathxl.com:8080/g:/validation/Colorectal/Validation/QUB/Batch3/P13 82397.svs", authorName: "", slideName: "P13 82397" },
+                   //{ id: 10843, url: "http://research.pathxl.com:8080/g:/validation/Colorectal/Validation/QUB/Batch3/P13 82399.svs", authorName: "", slideName: "P13 82399" }
+               ],
+               menu: {
+                   showZoomControl: true, showFullScreen: true, showImageInfo: true, showBrowse: false, showSplitScreen: false, showRotationDrawer: false, showAnnotationDrawer: false,
+                   showPublishAnnotations: false, showScreenshotControl: false, showRotationControl: true, showCarousel: true, showDebugLink: false, showLabelLink: true, showMeasurementsLink: false, showScalebarLink: true, showThumbnailLink: true, showViewLink: false, showRegionsLink: false, showLayers: false, showAdjustmentsLink: false, menuScale: "desktop"
+               },
+               
+               userName: "manager", isTablet: false
+           })
+        </script>
+        
+
+    
+    
+    </form>
+</body>
+</html>

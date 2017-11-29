@@ -1,0 +1,47 @@
+<div id="m2_preparationOfBF_p02" class="page-content">
+
+    <slide id="2_2_slide02"></slide>
+
+
+    <span><img src="images/objective.png" class="objectiveImgStyle"><h2 class="outcome-heading">Learning Outcomes</h2></span>
+                </span>
+
+    <h3 class="learningOutcomeText">By the end of the unit, you will be able to: </h3>
+    <script>
+//        / any js that applies to a slide should be included within the slide html page itself /
+        function slide4show(count) {
+            $(".outcome-text").css('display', 'block');
+            for (var i = 1; i <= 5; i++) {
+                if (i <= count)
+                    document.getElementById("outcome-" + i).style.display = 'block';
+                else
+                    document.getElementById("outcome-" + i).style.display = 'none';
+            }
+        }
+    </script>
+
+
+    <div id="slide4-buttons button-alignment">
+        <button class="yellow-btn" onclick="javascript:slide4show(1)"> 1</button>
+        <button class="red-btn" onclick="javascript:slide4show(2)"> 2</button>
+        <button class="green-btn" onclick="javascript:slide4show(3)"> 3</button>
+        <button class="blue-btn" onclick="javascript:slide4show(4)"> 4</button>
+        <button class="violet-btn" onclick="javascript:slide4show(5)">5</button>
+    </div>
+
+    <div id="outcome" class="outcome-text">
+        <div id="outcomex" class="outcomex-text">
+            <p id="outcome-1" class="outcome-num none-display">
+
+                1. Describe how to transfer a blood sample onto glass slides from finger pricks and from blood tubes.</p>
+            <p id="outcome-2" class="outcome-num none-display">
+                2. Describe how to spread blood to make thick and thin blood films.</p>
+            <p id="outcome-3" class="outcome-num none-display">
+                3. Describe how to air dry blood films while protecting them from dust, direct sunlight and insects.</p>
+            <p id="outcome-4" class="outcome-num none-display">
+                4. Describe how to differentiate thick and thin blood films of acceptable quality from poor quality.</p>
+            <p id="outcome-5" class="outcome-num none-display">
+                5. Describe common mistakes and faults in preparing thick and thin blood films.</p>
+        </div>
+    </div>
+</div>

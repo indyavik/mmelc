@@ -1,0 +1,7 @@
+﻿
+.ui-dialog .ui-dialog-buttonpane {
+    border-width: 0px;
+}
+.ui-widget-overlay {
+    position: fixed;
+}

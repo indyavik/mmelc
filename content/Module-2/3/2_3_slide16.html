@@ -1,0 +1,165 @@
+<link rel="stylesheet" type="text/css" href="css/easy-responsive-tabs.css " />
+
+<!--<script src="js/easyResponsiveTabs.js"></script>-->
+<script src="js/jquery.easyResponsiveTabs.js"></script>
+
+<style>
+
+    .resp-vtabs .resp-tabs-container {
+        padding: 0px;
+        background-color: #fff;
+        border: 1px solid #c1c1c1;
+        float: left;
+        width: 68%;
+        min-height: 375px;
+        border-radius: 4px;
+        clear: none;
+    }
+</style>
+
+<div id="m2_preparationOfD_p16" class="page-content">
+
+    <slide id="2_3_slide16"></slide>
+
+
+    <h2 class="heading-text"><a href="#preamble" name="preamble"></a>Preparation of Buffered Solution pH 7.2 (6 of 10)</h2>
+
+    <h3 class="medium-text">Preparation of Buffered Distilled Water of pH 7.2</h3>
+
+    <p class="content-text">
+        The procedure for preparation of buffered distilled water is described as follows:
+    </p>
+
+    <br>
+
+
+    <br/>
+
+
+
+    <div id="container">
+        <div class="topSection">
+            <div class="inner">
+
+            </div>
+        </div>
+        <div class="inner">
+            <section id="main_content">
+
+
+
+
+                <br/>
+
+                <!--Horizontal Tab-->
+
+                <div class="resp-tabs-container hor_1">
+                    <div>
+                        <p>
+                            <!--vertical Tabs-->
+
+                        <div id="ChildVerticalTab_1">
+                            <ul class="resp-tabs-list ver_1">
+                                <li class="a">Step One</li>
+                                <li class="b">Step Two</li>
+                                <li class="c">Step Three</li>
+                                <li class="d">Step Four</li>
+                                <li class="e">Step Five</li>
+                                <li class="f">Step Six</li>
+                                <li class="g">Step Seven</li>
+
+                            </ul>
+
+                            <div class="resp-tabs-container ver_1">
+                                <div>
+                                    <p class="content-text">
+                                        Weigh 0.7 g potassium dihydrogen phosphate (KH<sub>2</sub>PO<sub>4</sub>).  </p>
+                                </div>
+
+                                <div>
+                                    <p  class="content-text">Transfer the weighed KH<sub>2</sub>PO<sub>4</sub> to the glass beaker, add about 150 mL distilled water and stir with a clean spatula until the salt dissolves.</p>
+                                </div>
+                                <div>
+                                    <p class="content-text">Weigh 1 g disodium hydrogen phosphate (Na<sub>2</sub>HPO<sub>4</sub>) onto clean filter paper.</p>
+                                </div>
+                                <div>
+                                    <p class="content-text">Add the Na<sub>2</sub>HPO<sub>4</sub> to the solution in the beaker and stir as in Step Two.</p>
+                                </div>
+                                <div>
+                                    <p class="content-text">When the salts have dissolved, add the solution to the conical flask and top up to the 1 L mark with distilled water.
+                                    </p>
+                                </div>
+                                <div>
+                                    <p class="content-text">
+                                        Pour the buffered water into a glass bottle. Label clearly and document the procedure in the quality control logbook including the date of preparation, date of expiry, and name of the person who prepared the buffer as shown below.</p>
+                                    <br>
+
+                                    <p  class="content-text">
+                                        <img src="images/38a6d99c_cad3_4ff0_bd84_bd1990ac89df.png" height="120px" style="width:75%;display:inline-block;"/>
+                                    </p>
+                                    <p class="content-text">
+                                        Figure 16: Sample label for buffered distilled water
+                                    </p>
+                                </div>
+                                <div>
+                                    <p class="content-text">
+									Check the pH of the buffered water routinely before use. To adjust the pH, add small quantities of the correcting fluids to the buffer: 2% Na<SUB>2</SUB>HPO<SUB>4</SUB> if the pH is below 7.2 (too acid) or 2% KH<SUB>2</SUB>PO<SUB>4</SUB> if the pH is above 7.2 (too alkaline). Adjustments can be made by adding 2―3 drops of the relevant correcting fluid and stirring with a clean spatula. Continue until the correct pH of 7.2 is reached.
+                                    </p>
+                                </div>
+
+
+
+                            </div>
+                        </div>
+
+                        </p>
+                        <p style="visibility: hidden">Container</p>
+                    </div>
+
+                </div>
+        </div>
+
+
+        </p>
+
+
+
+    </div>
+	<br><br><br>
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+
+            $('#parentHorizontalTab').easyResponsiveTabs({
+                type: 'default', //Types: default, vertical, accordion
+                width: 'auto', //auto or any width like 600px
+                fit: true, // 100% fit in a container
+                closed: 'accordion', // Start closed if in accordion view
+                tabidentify: 'hor_1', // The tab groups identifier
+                activate: function (event) { // Callback function if tab is switched
+                    var $tab = $(this);
+                    var $info = $('#nested-tabInfo');
+                    var $name = $('span', $info);
+
+                    $name.text($tab.text());
+
+                    $info.show();
+                }
+            });
+
+            $('#ChildVerticalTab_1').easyResponsiveTabs({
+                type: 'vertical',
+                width: 'auto',
+                fit: true,
+                tabidentify: 'ver_1', // The tab groups identifier
+                activetab_bg: '#fff', // background color for active tabs in this group
+                inactive_bg: '#F5F5F5', // background color for inactive tabs in this group
+                active_border_color: '#c1c1c1', // border color for active tabs heads in this group
+                active_content_border_color: '#5AB1D0' // border color for active tabs contect in this group so that it matches the tab head border
+            });
+
+        });
+		
+		$(document).ready(function(){$(".a").trigger('click');});
+    </script>
+</div>

@@ -1,0 +1,51 @@
+<div id="m5_i_p04" class="page-content">
+
+    <slide id="5_0_slide04"></slide>
+
+    <h2 class="heading-text"><a href="#preamble" name="preamble"></a> Module Introduction</h2>
+
+    <h3 class="medium-text">Module Content</h3>
+
+    <p class="content-text">
+        This module is composed of three units:
+    </p><br>
+
+
+
+    <!--1st -->
+
+    <div class="office-row">
+        <h3 class="office-title"> Unit One: Elements of a Laboratory Quality Management System</h3>
+
+        <div class="office">The first unit covers coordinated activities that direct and control laboratory procedures and activities to achieve quality; and essential elements of a laboratory quality management system (QMS) critical to improving malaria microscopy services.</div>
+    </div>
+    <br>
+
+
+    <!--2nd  -->
+    <div class="office-row">
+        <h3 class="office-title" id="two">Unit Two: Monitoring of Quality Indicators for Malaria Diagnosis</h3>
+        <div class="office" id="offTwo">The second unit covers points in the diagnostic cycle that are used to monitor performance of malaria microscopy services and identify areas that need further improvement, from the time the patient is seen by the clinician to when microscopy test results are used for patient management.</div>
+    </div><br>
+
+    <!--3rd  -->
+
+    <div class="office-row">
+        <h3 class="office-title" id="three">Unit Three: Errors in Malaria Microscopy</h3>
+        <div class="office" id="offThree">The third unit covers possible errors that can occur when providing
+            malaria microscopy services, and emphasises that mistakes often occur in the pre-analytical and post-analytical phases of the diagnostic cycle.</div>
+    </div>
+
+</div>
+
+<script>
+    $(function () {
+        $('.office-title').click(function () {
+            $(this).next('div').slideToggle();
+
+            $(this).parent().siblings().children().next().slideUp();
+            return false;
+        });
+    });
+</script>
+

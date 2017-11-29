@@ -1,0 +1,450 @@
+﻿html {
+    overflow: hidden;
+}
+body {
+    margin: 0;
+    padding: 0;
+}
+
+.openseadragon-canvas, .navigator
+{
+    background-color: white !important;
+
+}
+
+div#view {
+    position: absolute;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: white;
+    color: white;
+}
+#viewerMenu
+{
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 40px;
+    height: 100%;
+    z-index: 1;
+    background-color: #CCC;
+
+}
+#viewerMenu > div, #viewerMenu > div.drawerContainer > div:first-child,
+#viewerMenu > div.menuContainer > div:first-child, #viewerMenu > div.panelContainer > div:first-child
+{
+    background-color: #fafafa;
+    height: 40px;
+    width: 40px;
+    border-bottom: 1px solid #d1d1d1;
+    background-repeat: no-repeat;
+    background-position: center center;
+}
+
+#viewerMenu > div.space
+{
+    background-color: transparent;
+    height: 5px;
+}
+
+#viewerMenu > div:first-child {
+    -webkit-border-top-left-radius: 3px;
+    -moz-border-radius-topleft: 3px;
+    border-top-left-radius: 3px;
+}
+
+#viewerMenu > div:last-child {
+    -webkit-border-bottom-left-radius: 3px;
+    -moz-border-radius-bottomleft: 3px;
+    border-bottom-left-radius: 3px;
+}
+
+/* Drawer */
+.drawer
+{
+    overflow: hidden;
+    height: 50px;
+    background-color: #fafafa;
+    margin-top: -5px;
+
+    -webkit-box-shadow: 0px 0px 4px 0px rgba(0,0,0,0.75);
+    -moz-box-shadow: 0px 0px 4px 0px rgba(0,0,0,0.75);
+    box-shadow: 0px 0px 4px 0px rgba(0,0,0,0.75);
+
+    padding-left: 2.5px;
+    padding-right: 2.5px;
+
+    position: absolute;
+    width: 900px;
+
+    z-index: 1;
+}
+
+.drawer > div
+{
+    height: 40px;
+    width: 45px;
+            
+    display: inline-block;
+    border: 1px solid #d1d1d1;
+
+    background-position: center center;
+    background-repeat: no-repeat;
+
+    margin-top: 4.5px;
+    margin-left: 2.5px;
+    margin-right: 2.5px;
+}
+
+/*  Magnification drawer */
+.setMag
+{
+    background-color: rgb(242, 242, 242);
+}
+
+.setMag > span, #menuMagnification > span
+{
+    font-family: 'Nunito', sans-serif;
+    color: #7d7d7d;
+    font-size: 9pt;
+    float: left;
+    width: 45px;
+    height: 20px;
+    margin-top: 26px;
+    text-align: center;
+
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+#menuMagnification > span
+{
+    width: 40px;
+}
+
+#magnificationDrawer > div#mag1, #menuMagnification.mag1
+{
+    background: url('/iscope/openSeaDragon/static/mag1-up.jpg') center -3px;
+}
+#magnificationDrawer > div#mag1:active, #menuMagnification.mag1:active
+{
+    background: url('/iscope/openSeaDragon/static/mag1-down.jpg') center -3px !important;
+}
+#magnificationDrawer > div#mag1:hover, #menuMagnification.mag1:hover
+{
+    background: url('/iscope/openSeaDragon/static/mag1-hover.jpg') center -3px;
+}
+
+#magnificationDrawer > div#mag2_5, #menuMagnification.mag2_5
+{
+    background: url('/iscope/openSeaDragon/static/mag2_5-up.jpg') center -3px;
+}
+#magnificationDrawer > div#mag2_5:active, #menuMagnification.mag2_5:active
+{
+    background: url('/iscope/openSeaDragon/static/mag2_5-down.jpg') center -3px !important;
+}
+#magnificationDrawer > div#mag2_5:hover, #menuMagnification.mag2_5:hover
+{
+    background: url('/iscope/openSeaDragon/static/mag2_5-hover.jpg') center -3px;
+}
+
+#magnificationDrawer > div#mag5, #menuMagnification.mag5
+{
+    background: url('/iscope/openSeaDragon/static/mag5-up.jpg') center -3px;
+}
+#magnificationDrawer > div#mag5:active, #menuMagnification.mag5:active
+{
+    background: url('/iscope/openSeaDragon/static/mag5-down.jpg') center -3px !important;
+}
+#magnificationDrawer > div#mag5:hover, #menuMagnification.mag5:hover
+{
+    background: url('/iscope/openSeaDragon/static/mag5-hover.jpg') center -3px;
+}
+
+#magnificationDrawer > div#mag10, #menuMagnification.mag10
+{
+    background: url('/iscope/openSeaDragon/static/mag10-up.jpg') center -3px;
+}
+#magnificationDrawer > div#mag10:active, #menuMagnification.mag10:active
+{
+    background: url('/iscope/openSeaDragon/static/mag10-down.jpg') center -3px !important;
+}
+#magnificationDrawer > div#mag10:hover, #menuMagnification.mag10:hover
+{
+    background: url('/iscope/openSeaDragon/static/mag10-hover.jpg') center -3px;
+}
+
+#magnificationDrawer > div#mag20, #menuMagnification.mag20
+{
+    background: url('/iscope/openSeaDragon/static/mag20-up.jpg') center -3px;
+}
+#magnificationDrawer > div#mag20:active, #menuMagnification.mag20:active
+{
+    background: url('/iscope/openSeaDragon/static/mag20-down.jpg') center -3px !important;
+}
+#magnificationDrawer > div#mag20:hover, #menuMagnification.mag20:hover
+{
+    background: url('/iscope/openSeaDragon/static/mag20-hover.jpg') center -3px;
+}
+
+#magnificationDrawer > div#mag40, #menuMagnification.mag40
+{
+    background: url('/iscope/openSeaDragon/static/mag40-up.jpg') center -3px;
+}
+#magnificationDrawer > div#mag40:active, #menuMagnification.mag40:active
+{
+    background: url('/iscope/openSeaDragon/static/mag40-down.jpg') center -3px !important;
+}
+#magnificationDrawer > div#mag40:hover, #menuMagnification.mag40:hover
+{
+    background: url('/iscope/openSeaDragon/static/mag40-hover.jpg') center -3px;
+}
+
+#magnificationDrawer > div#mag83, #menuMagnification.mag83
+{
+    background: url('/iscope/openSeaDragon/static/mag83-up.jpg') center -3px;
+}
+#magnificationDrawer > div#mag83:active, #menuMagnification.mag83:active
+{
+    background: url('/iscope/openSeaDragon/static/mag83-down.jpg') center -3px !important;
+}
+#magnificationDrawer > div#mag83:hover, #menuMagnification.mag83:hover
+{
+    background: url('/iscope/openSeaDragon/static/mag83-hover.jpg') center -3px;
+}
+
+/* Rotate Drawer */
+
+#rotateDrawer > div#rotate0, #menuRotate.rotate0
+{
+    background-image: url('/iscope/openSeaDragon/static/rotate0.jpg');
+}
+
+#rotateDrawer > div#rotate90, #menuRotate.rotate90
+{
+    background-image: url('/iscope/openSeaDragon/static/rotate90.jpg');
+}
+
+#rotateDrawer > div#rotate180, #menuRotate.rotate180
+{
+    background-image: url('/iscope/openSeaDragon/static/rotate180.jpg');
+}
+
+#rotateDrawer > div#rotate270, #menuRotate.rotate270
+{
+    background-image: url('/iscope/openSeaDragon/static/rotate270.jpg');
+}
+
+/* Menu (Big Drawer) - View menu */
+.menu
+{
+    padding: 15px;
+    background-color: #fafafa;
+    position: absolute;
+
+    left: -999em;
+
+    -webkit-box-shadow: 0px 0px 4px 0px rgba(0,0,0,0.75);
+    -moz-box-shadow: 0px 0px 4px 0px rgba(0,0,0,0.75);
+    box-shadow: 0px 0px 4px 0px rgba(0,0,0,0.75);
+
+    font-family: 'Nunito', sans-serif;
+}
+
+.menuBtn.active
+{
+    -webkit-box-shadow: -2px 0px 3px 0px rgba(0,0,0,0.75);
+    -moz-box-shadow: -2px 0px 3px 0px rgba(0,0,0,0.75);
+    box-shadow: -2px 0px 3px 0px rgba(0,0,0,0.75);
+    z-index: 1;
+}
+
+.viewRow .viewIcon
+{
+    width: 30px;
+    height: 30px;
+    display: inline-block;
+    margin-right: 5px;
+    background-repeat: no-repeat;
+    background-size: 100%;
+}
+
+.viewRow > .favIcon
+{
+    background-image: url('/iscope/openSeaDragon/static/favourite-hover.jpg');
+    width: 30px;
+    height: 30px;
+    display: inline-block;
+    background-repeat: no-repeat;
+    background-size: 100%;
+}
+
+.viewRow > #imageInfoIcon
+{
+    background-image: url('/iscope/openSeaDragon/static/info-hover.jpg');
+}
+
+.viewRow > #labelIcon
+{
+    background-image: url('/iscope/openSeaDragon/static/label-hover.jpg');
+}
+
+/* Checkboxes */
+        
+input.viewCheckbox[type="checkbox"]:checked + label.checkboxLabel {
+    background-position: 0 -20px;
+}
+
+input.viewCheckbox[type="checkbox"] + label.checkboxLabel {
+    background-position: 0 0;
+    background-repeat: no-repeat;
+    cursor: pointer;
+    display: inline-block;
+    font-size: 15px;
+    height: 20px;
+    line-height: 20px;
+    padding-left: 22px;
+    vertical-align: middle;
+    margin-top: -20px;
+    margin-left: 10px;
+}
+        
+label.checkboxImage
+{
+    background-image: url("/iscope/openSeaDragon/static/checkbox.png");
+}
+
+input.viewCheckbox[type="checkbox"]
+{
+    border: 0 none;
+    clip: rect(0px, 0px, 0px, 0px);
+    height: 1px;
+    margin: -1px;
+    overflow: hidden;
+    padding: 0;
+    position: absolute;
+    width: 1px;
+}
+
+.viewRow > span:last-child {
+    margin-right: 20px;
+}
+
+/* Panel */
+
+.panel
+{
+    height: 100%;
+    width: 20%;
+    padding: 15px;
+    background-color: #fafafa;
+    position: fixed;
+    right: -999em;
+    top: 0;
+
+    -webkit-box-shadow: 0px 0px 4px 0px rgba(0,0,0,0.75);
+    -moz-box-shadow: 0px 0px 4px 0px rgba(0,0,0,0.75);
+    box-shadow: 0px 0px 4px 0px rgba(0,0,0,0.75);
+
+    font-family: 'Nunito', sans-serif;
+
+    z-index: 2;
+}
+
+/* TODO: Icons. */
+#menuFullScreen
+{
+    background-image: url('/iscope/openSeaDragon/static/expand-full.jpg');
+}
+#menuFullScreen:hover
+{
+    background-image: url('/iscope/openSeaDragon/static/expand-full-hover.jpg');
+}
+#menuFullScreen:active
+{
+    background-image: url('/iscope/openSeaDragon/static/expand-full-down.jpg');
+}
+
+#menuFullScreen.isFullScreen
+{
+    background-image: url('/iscope/openSeaDragon/static/collapse-full.jpg');
+}
+#menuFullScreen.isFullScreen:hover
+{
+    background-image: url('/iscope/openSeaDragon/static/collapse-full-hover.jpg');
+}
+#menuFullScreen.isFullScreen:active
+{
+    background-image: url('/iscope/openSeaDragon/static/collapse-full-down.jpg');
+}
+
+#menuMagnification
+{
+    background-position: center -3px !important;
+}
+
+#menuRotate
+{
+     background-image: url('/iscope/openSeaDragon/static/rotate0.jpg');
+
+}
+
+
+#menuView
+{
+    background-image: url('/iscope/openSeaDragon/static/view-up.jpg');
+}
+#menuView:hover
+{
+    background-image: url('/iscope/openSeaDragon/static/view-over.jpg');
+}
+#menuView:active
+{
+    background-image: url('/iscope/openSeaDragon/static/view-down.jpg');
+}
+#menuTools
+{
+    background-image: url('/iscope/openSeaDragon/static/pencil-up.jpg');
+}
+#menuTools:hover
+{
+    background-image: url('/iscope/openSeaDragon/static/pencil-hover.jpg');
+}
+#menuTools:active
+{
+    background-image: url('/iscope/openSeaDragon/static/pencil-down.jpg');
+}
+#menuLayers
+{
+    background-image: url('/iscope/openSeaDragon/static/layer-up.jpg');
+}
+#menuLayers:hover
+{
+    background-image: url('/iscope/openSeaDragon/static/layer-hover.jpg');
+}
+#menuLayers:active
+{
+    background-image: url('/iscope/openSeaDragon/static/layer-down.jpg');
+}
+
+/* YUI - Dial */
+.rotateDial {
+    bottom: 40px;
+    right: 40px;
+    position: absolute;
+}
+
+
+.annoPanel {
+    background-color: blue;
+    height: auto;
+    left: 0;
+    position: absolute;
+    top: 0;
+    width: 100%;
+}
