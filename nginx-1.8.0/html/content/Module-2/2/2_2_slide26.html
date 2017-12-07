@@ -1,0 +1,71 @@
+<div id="m2_preparationOfBF_p26" class="page-content">
+
+    <slide id="2_2_slide26"></slide>
+    <h2 class="heading-text"><a href="#preamble" name="preamble"></a>
+        Demonstration on Preparation of Blood Films for Malaria Microscopy
+
+    </h2>
+    <p class="content-text">
+        The final section of this unit is designed to enable you to gain practical skills in blood film preparation through video demonstration.
+
+
+    </p>
+	<p> Note to Pilot Participants: These videos are being produced and are not available in the pilot course.</p>
+    <p class="content-text">
+        There are two demonstrations in this section:
+    </p>
+    <ul class="u-list">
+        <li class="list-timeout2">
+            <img src="images/rightImage.png" height="15px"/>
+            Blood film preparation from finger prick capillary blood
+        </li>
+
+    </ul>
+
+
+    <ul class="u-list">
+
+        <li id="box1" class="list-timeout">
+            <img src="images/rightImage.png" height="15px"/>
+            Blood film preparation from venous blood    </li></ul>
+    <input id="toggleButton" type="button" value="Next" class="nextbtn" onclick="counter++; toggle4('box');"><br>
+	<span id = "afterbox1" style="display:none;">
+    <p class="content-text">
+        Both demonstrations cover the preparation of thick and thin blood films.
+    </p>
+<p  class="content-text full_width">
+        <img src="images/Take Note.png" class="noteImgStyle"/>
+        <b class="noteText">
+            Note to Pilot participants: The videos for this unit are not yet available.
+        </b>
+</p>
+</span>
+</div>
+
+<script type="text/javascript">
+    var counter = 0;
+
+    var numBoxes = 1;
+
+    function toggle4(showHideDiv) {
+
+        var ele = document.getElementById(showHideDiv + counter);
+
+        if (ele.style.display == "block") {
+
+            ele.style.display = "none";
+
+        }
+
+        else {
+            ele.style.display = "block";
+        }
+
+        if (counter == numBoxes) {
+
+            document.getElementById("toggleButton").style.display = "none";
+			document.getElementById("afterbox1").style.display="block";
+        }
+
+    }
+</script>

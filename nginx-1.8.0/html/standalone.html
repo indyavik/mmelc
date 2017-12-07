@@ -1,0 +1,207 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>PathXL Standalone</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0" />
+    <!--js defaults-->
+    <!-- Begin Defaults -->
+    <link href="css/jquery.reject.css" rel="stylesheet" type="text/css" />
+    <script type="text/javascript" language="javascript" src="Core/PRES/js/console.js"></script>
+    <!--<script type="text/javascript" src="/Variables.ashx"></script>-->
+    <link href="Core/PRES/fa/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
+    <link href="Core/PRES/js/jquery/jquery-ui.css" rel="stylesheet" type="text/css" />
+    <script type="text/javascript" language="javascript" src="core/PRES/js/jquery/jquery.min.js"></script>
+    <script type="text/javascript">jQuery.curCSS = jQuery.css; (function ($) { if (!$.curCSS) { $.curCSS = $.css; } });</script>
+    <script type="text/javascript" language="javascript" src="core/PRES/js/bootstrap/bootstrap.min.js"></script>
+    <script type="text/javascript" language="javascript" src="Core/PRES/js/jquery/jquery-ui.min.js"></script>
+    <script type="text/javascript" language="javascript" src="jquery/GoogleAnalytics.js"></script>
+    <script type="text/javascript" language="javascript" src="jquery/jquery.reject.js"></script>
+    <script type="text/javascript" language="javascript" src="Core/PRES/js/util.js"></script>
+    <link type="text/css" href="Core/PRES/js/jquery/jqueryOverrides.css" rel="Stylesheet" />
+    <script type="text/javascript">if (/firefox/i.test(navigator.userAgent)) { window.oldGetComputedStyle = window.getComputedStyle; window.getComputedStyle = function (element, pseudoElt) { var t = window.oldGetComputedStyle(element, pseudoElt); if (t === null) { return {}; } else { return t; } }; }</script>
+    <!-- End Defaults -->
+    
+    <script type="text/javascript" src="javascript/mustache.js"></script>
+    <script src="javascript/yui-min.js"></script>
+    <script src="javascript/fabric.js"></script>
+    
+    <link type="text/css" href="css/onOffSwitch.css" rel="Stylesheet" />
+    <script src="javascript/spectrum.js"></script>
+    <link href="css/spectrum.css" rel="stylesheet" />
+
+    <!--js viewer setup-->
+    <!-- Begin Viewer Defaults -->
+    <script type="text/javascript" src="javascript/generalUI.js"></script>
+    <script type="text/javascript" src="javascript/openseadragon.js"></script>
+    <script type="text/javascript" src="javascript/PxlViewer.js"></script>
+    <script type="text/javascript" src="javascript/PxlViewerImageAdjustments.js"></script>
+    <script type="text/javascript" src="javascript/PxlViewerMeasurements.js"></script>
+    <script type="text/javascript" src="javascript/PxlViewerMenu.js"></script>
+    <script type="text/javascript" src="javascript/PxlViewerAnnotations.js"></script>
+    <script type="text/javascript" src="javascript/PxlViewerSlideName.js"></script>
+    <script type="text/javascript" src="javascript/PxlViewerAuthorName.js"></script>
+
+    <script type="text/javascript" src="javascript/PxlViewerCarousel.js"></script>
+    <script type="text/javascript" src="javascript/PxlViewerSlideLabel.js"></script>
+    <script type="text/javascript" src="javascript/PxlViewerSlideInfo.js"></script>
+    <script type="text/javascript" src="javascript/openseadragon-scalebar.js"></script>
+    <script type="text/javascript" src="javascript/PxlViewerRegions.js"></script>
+    <script type="text/javascript" src="javascript/PxlViewerZStacks.js"></script>
+    <script type="text/javascript" src="javascript/PxlViewerScreenshot.js"></script>
+    <script type="text/javascript" src="javascript/PxlViewerHeatmap.js"></script>
+
+    <script type="text/javascript" src="javascript/plugin/noUiSlider/jquery.nouislider.all.min.js"></script>
+    <script type="text/javascript" src="javascript/plugin/noUiSlider/jquery.nouislider.min.js"></script>
+    <link rel="stylesheet" href="javascript/plugin/noUiSlider/css/jquery.nouislider.min.css" />
+    <link rel="stylesheet" href="javascript/plugin/noUiSlider/css/jquery.nouislider.pips.min.css" />
+    <script type="text/javascript" src="jquery/elastic.js"></script>
+    <script type="text/javascript">
+	
+	 function getQueryStringValue(key) {
+            return unescape(window.location.search.replace(new RegExp("^(?:.*[&\\?]" + escape(key).replace(/[\.\+\*]/g, "\\$&") + "(?:\\=([^&]*))?)?.*$", "i"), "$1"));
+        }
+
+    </script>
+	
+	<script type="text/javascript">
+	
+		function getConfigValue(id,xml){
+			try{
+				return xml.getElementsByTagName(id)[0].childNodes[0].nodeValue;
+			}catch (e){
+				return "";
+			}
+		}
+		
+		function loadXMLDoc(file){
+							
+			var rawFile = new XMLHttpRequest();
+			var data = "";
+			
+			rawFile.open("GET", file, false);
+			rawFile.setRequestHeader('Content-Type', 'text/xml');
+			
+			rawFile.onreadystatechange = function ()
+			{
+				if(rawFile.readyState === 4){
+					if(rawFile.status === 200 || rawFile.status == 0){
+						data = rawFile.responseXML;
+					}
+				}
+			}
+				
+			rawFile.send(null);
+				
+			if(data != null){
+				return data;
+			}
+			
+		}
+		
+		function buildServerURL(){
+			var configXML = loadXMLDoc("/data/config.xml");
+
+			var ip = getConfigValue("ServerIP",configXML);
+			var port = getConfigValue("ServerPort",configXML);
+			var imgname = getConfigValue("IServeName",configXML);
+
+			// Default SETTINGS
+			if(ip == "")
+				ip = "localhost";
+				
+			if(port == "")
+				port = "8080";
+				
+			if(imgname == "")
+				imgname = "iserve";
+
+			return "http://" + ip + ":" + port + "/"+ imgname + "/?";
+		}
+		
+		function readFile(file) {
+		    var rawFile = new XMLHttpRequest();
+			var data = "";
+			
+			rawFile.open("GET", file, false);
+			rawFile.onreadystatechange = function ()
+			{
+				if(rawFile.readyState === 4){
+					if(rawFile.status === 200 || rawFile.status == 0){
+						data = rawFile.responseText;
+					}
+				}
+			}
+				
+			rawFile.send(null);
+				
+			if(data != null){
+				return data;
+			}
+		}
+			
+    </script>
+		
+    <link href="Core/PRES/js/bootstrap/css/bootstrap.min.css" rel="stylesheet" />
+    <!-- End Viewer Defaults -->
+    
+    <link type="text/css" href="css/viewer2.css" rel="Stylesheet" />
+    <link type="text/css" href="css/viewerdesktop.css" rel="Stylesheet" /> 
+    
+
+</head>
+<body class="yui3-skin-sam">
+    <form id="form1" runat="server">
+    
+        
+        <div id="preLoadImages" style="display: none">
+            <img src="../images/icons-master-sprite2.png" />
+            <img src="static/square.jpg" />
+            <img src="static/circle.jpg" />
+            <img src="static/line.jpg" />
+            <img src="static/arrow.jpg" />
+        </div>
+
+        <div id="container">
+            <div id="leftMenuHolder">
+                <div id="leftPanel"></div>
+            </div>
+
+            <div id="viewerHolder" oncontextmenu="return false">
+                <canvas id="adjustmentsCanvasStore"> </canvas>
+                <canvas id="uncorrectedImage"> </canvas>
+                <canvas id="backgroundCanvas"> </canvas>
+                <div id="view1" class="viewerControl">  </div>
+                <div id="annoCanvas1"></div>
+                <div id="viewertoppanel" class="viewertoppanel"></div>
+            </div>
+        </div>
+
+        
+       <script type="text/javascript">
+	   
+			var loc = readFile("/data/drive.temp");
+			if(!loc){loc = "G:\\";}
+			var url = getQueryStringValue("slide");
+			
+		    var path = buildServerURL();
+		    url = path + loc + url;
+
+			var pxl = new PxlViewer({
+				   id: "view1", startImage: 10823,
+				   images: [
+					   { id: 10824, url: url, authorName: "", slideName: "" }
+				   ],
+				   menu: {
+					   showZoomControl: true, showFullScreen: false, showImageInfo: false, showBrowse: false, showSplitScreen: false, showRotationDrawer: false, showAnnotationDrawer: false,
+					   showPublishAnnotations: false, showScreenshotControl: false, showRotationControl: false, showCarousel: true, showDebugLink: false, showLabelLink: false, showMeasurementsLink: false, showScalebarLink: true, showThumbnailLink: true, showViewLink: false, showRegionsLink: false, showLayers: false, showAdjustmentsLink: false, menuScale: "desktop"
+				   },
+				   
+				   userName: "manager", isTablet: false
+			})
+		  
+        </script>
+       
+    </form>
+</body>
+</html>
+

@@ -1,0 +1,45 @@
+        <div id="m1_i_p05" class="page-content">
+
+        <slide id="1_0_slide05"></slide>
+
+
+            <span><img src="images/objective.png" class="objectiveImgStyle"><h2 class="outcome-heading">Module Learning Outcomes</h2></span>
+                </span>
+            <p></p>
+
+            <h3 class="learningOutcomeText">By the end of the module, you will be able to: </h3>
+
+    <script>
+//        / any js that applies to a slide should be included within the slide html page itself /
+        function slide4show(count) {
+            $(".outcome-text").css('display', 'block');
+            for (var i = 1; i <= 2; i++) {
+                if (i <= count)
+                    document.getElementById("outcome-" + i).style.display = 'block';
+                else
+                    document.getElementById("outcome-" + i).style.display = 'none';
+            }
+        }
+    </script>
+    <div id="slide4-buttons button-alignment">
+
+        <button class="yellow-btn" onclick="javascript:slide4show(1)"> 1</button>
+        <button class="red-btn" onclick="javascript:slide4show(2)"> 2</button>              
+                
+    </div>
+            <div id="outcome" class="outcome-text">
+
+            <div id="outcomex" class="outcomex-text">
+
+                <p id="outcome-1" class="outcome-num none-display">1. Apply knowledge of malaria as a global health issue in relation to the control and management of malaria cases.</p>
+
+                <p id="outcome-2" class="outcome-num none-display">2. Relate the life cycle of malaria to clinical presentation, laboratory diagnosis and drug action.</p>
+
+            </div>
+
+            </div> <!---outcome 1 -->
+
+
+
+
+        </div> <!--actual page content here --> 
