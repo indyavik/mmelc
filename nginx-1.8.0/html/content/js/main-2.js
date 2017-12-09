@@ -350,6 +350,11 @@ function checkProtected(go_to_loc) {
     } //check protected 
 }
 
+function load_admin_page()
+{
+	window.location.replace('admin_actions.html')
+}
+
 function load_page(page, template) {
     //load config file. 
     //get the right module...unit, and path

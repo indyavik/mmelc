@@ -583,6 +583,12 @@ class JavascriptExternal:
 	
      ##other custom functions. pungi ###
 
+    def send_error_reports():
+        pass
+
+    def get_updates():
+        pass
+
    
     def saveFile(self, file_name, json_object):
         save_path = 'nginx-1.8.0/html/data/'

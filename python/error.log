@@ -1,0 +1,24 @@
+
+[2017-12-08 16:39:53] Traceback (most recent call last):
+
+  File "javascript_dialog_handler.pyx", line 109, in cefpython_py27.JavascriptDialogHandler_OnResetJavascriptDialogState (cefpython.cpp:75136)
+
+  File "C:\MMELC_pilot\python\wxpython_viewer.py", line 1075, in OnResetJavascriptDialogState
+    print("[wxpython_viewer.py] OnResetDialogState()")
+
+IOError: [Errno 9] Bad file descriptor
+
+
+[2017-12-08 17:05:05] Traceback (most recent call last):
+
+  File "v8function_handler_cef3.pyx", line 39, in cefpython_py27.V8FunctionHandler_Execute (cefpython.cpp:38833)
+
+TypeError: send_error_reports() takes no arguments (1 given)
+
+
+[2017-12-08 17:05:22] Traceback (most recent call last):
+
+  File "v8function_handler_cef3.pyx", line 39, in cefpython_py27.V8FunctionHandler_Execute (cefpython.cpp:38833)
+
+TypeError: get_updates() takes no arguments (1 given)
+

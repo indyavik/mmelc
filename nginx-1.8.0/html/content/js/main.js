@@ -95,6 +95,22 @@ function GetObject(obj_identifier, file_on_disk) {
 
 }
 
+function send_error_reports()
+{
+	external.send_error_reports();
+	var response = 'Error reports sent.';
+	alert(response);
+}
+
+function get_updates()
+{
+	external.get_updates();
+	var response = 'No updates available.';
+	alert(response);
+}
+
+
+
 function update_on_disk(file_name, json_obj) {
 
         var file_name = file_name; 
