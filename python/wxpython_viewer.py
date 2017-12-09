@@ -583,11 +583,47 @@ class JavascriptExternal:
 	
      ##other custom functions. pungi ###
 
-    def send_error_reports():
-        pass
+    def send_error_reports(self, jsCallBack):
+        response = 'Error reports sent.'
 
-    def get_updates():
-        pass
+        now = datetime.now().strftime('%Y-%m-%d-%H-%M-%S')
+        log_file = 'nginx-1.8.0/html/data/pybackend.log'
+        #file_name = 'nginx-1.8.0/html/datashare' 
+        #dir_name ='nginx-1.8.0/html/data'
+
+        loc = os.path.dirname(__file__)
+        error_log_file = os.path.join(loc, 'error.log')
+        debug_log_file = os.path.join(loc, 'debug.log')
+        temp_loc = os.path.join(loc, 'temp_error_reports_loc')
+        if not os.path.exists(temp_loc):
+            os.makedirs(temp_loc)
+        shutil.copy2(error_log_file, temp_loc)
+        shutil.copy2(debug_log_file, temp_loc)
+
+        zip_name = 'error_reports_zip'
+        file_name = os.path.join(loc, zip_name)
+        shutil.make_archive(file_name, 'zip', temp_loc)
+        
+        files = {'zipFile' : open(file_name+'.zip') }
+
+        params = {'zipTimeStamp' : now}
+
+        url =  'http://ec2-54-196-239-128.compute-1.amazonaws.com/api/v1.0/upload/'+zip_name #'http://mmelc.vestigesystems.com/putZip'
+
+        try:
+            res = requests.post(url, files=files, data=params)
+            response = res.text
+            with open(log_file, 'a') as f:
+                f.write('source:python,' + now + ',' + response)
+        except Exception,e:
+            response = str(e)
+
+        #shutil.rmtree(temp_loc)
+        jsCallBack.Call(response)
+
+    def get_updates(self, jsCallBack):
+        response = 'No updates available.'
+        jsCallBack.Call(response)
 
    
     def saveFile(self, file_name, json_object):

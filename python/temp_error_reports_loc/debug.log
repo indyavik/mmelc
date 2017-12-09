@@ -3877,4 +3877,3 @@
 [1208/202509:INFO:CONSOLE(122)] "1-of-21", source: http://localhost:85/content/js/main-2.js (122)
 [1208/202509:INFO:CONSOLE(204)] "user has logged in", source: http://localhost:85/content/home.html?user=guest_user (204)
 [1208/202511:INFO:CONSOLE(320)] "Uncaught TypeError: Object #<Object> has no method 'TestJSCallback'", source: http://localhost:85/content/js/login.js (320)
-[1208/202520:ERROR_REPORT:browser_main.cc(126)] Check failed: browser_contexts_.empty(). 
