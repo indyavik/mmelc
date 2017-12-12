@@ -540,3 +540,994 @@ source:python,2017-12-08-20-25-16,{
     "message": "Bad Request", 
     "status": 400
 }
+source:python,2017-12-08-20-33-00,{
+    "message": "Bad Request", 
+    "status": 400
+}
+source:python,2017-12-08-20-33-03,{
+    "message": "Bad Request", 
+    "status": 400
+}
+source:python,2017-12-08-20-33-21,{
+    "message": "Bad Request", 
+    "status": 400
+}
+source:python,2017-12-08-20-33-28,{
+    "message": "Bad Request", 
+    "status": 400
+}
+source:python,2017-12-08-20-34-02,{
+    "message": "Bad Request", 
+    "status": 400
+}
+source:python,2017-12-09-15-19-09,{
+    "message": "Bad Request", 
+    "status": 400
+}
+source:python,2017-12-09-15-19-14,{
+    "message": "Bad Request", 
+    "status": 400
+}
+source:python,2017-12-09-15-55-40,{
+    "message": "Bad Request", 
+    "status": 400
+}
+source:python,2017-12-09-15-55-44,{
+    "message": "Bad Request", 
+    "status": 400
+}
+source:python,2017-12-09-16-02-08,{
+    "message": "Bad Request", 
+    "status": 400
+}
+source:python,2017-12-09-17-30-44,{
+    "message": "Bad Request", 
+    "status": 400
+}
+source:python,2017-12-09-17-30-49,{
+    "message": "Bad Request", 
+    "status": 400
+}
+source:python,2017-12-09-17-31-05,{
+    "message": "Bad Request", 
+    "status": 400
+}
+source:python,2017-12-09-17-33-18,<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+  "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+  <head>
+    <title>IOError: [Errno 2] No such file or directory: '/recv/error_reports_zip.zip' // Werkzeug Debugger</title>
+    <link rel="stylesheet" href="?__debugger__=yes&amp;cmd=resource&amp;f=style.css" type="text/css">
+    <!-- We need to make sure this has a favicon so that the debugger does not by
+         accident trigger a request to /favicon.ico which might change the application
+         state. -->
+    <link rel="shortcut icon" href="?__debugger__=yes&amp;cmd=resource&amp;f=console.png">
+    <script type="text/javascript" src="?__debugger__=yes&amp;cmd=resource&amp;f=jquery.js"></script>
+    <script type="text/javascript" src="?__debugger__=yes&amp;cmd=resource&amp;f=debugger.js"></script>
+    <script type="text/javascript">
+      var TRACEBACK = 140307685499536,
+          CONSOLE_MODE = false,
+          EVALEX = true,
+          SECRET = "Pxrv3PbnWWY9sxj9SKQ7";
+    </script>
+  </head>
+  <body>
+    <div class="debugger">
+<h1>IOError</h1>
+<div class="detail">
+  <p class="errormsg">IOError: [Errno 2] No such file or directory: '/recv/error_reports_zip.zip'</p>
+</div>
+<h2 class="traceback">Traceback <em>(most recent call last)</em></h2>
+<div class="traceback">
+  
+  <ul><li><div class="frame" id="frame-140307685499472">
+  <h4>File <cite class="filename">"/home/ec2-user/flask-service/flask-service-virtual/lib/python2.7/site-packages/flask/app.py"</cite>,
+      line <em class="line">1836</em>,
+      in <code class="function">__call__</code></h4>
+  <pre>return self.wsgi_app(environ, start_response)</pre>
+</div>
+
+<li><div class="frame" id="frame-140307685499664">
+  <h4>File <cite class="filename">"/home/ec2-user/flask-service/flask-service-virtual/lib/python2.7/site-packages/flask/app.py"</cite>,
+      line <em class="line">1820</em>,
+      in <code class="function">wsgi_app</code></h4>
+  <pre>response = self.make_response(self.handle_exception(e))</pre>
+</div>
+
+<li><div class="frame" id="frame-140307685499728">
+  <h4>File <cite class="filename">"/home/ec2-user/flask-service/flask-service-virtual/lib/python2.7/site-packages/flask_restful/__init__.py"</cite>,
+      line <em class="line">263</em>,
+      in <code class="function">error_router</code></h4>
+  <pre>return original_handler(e)</pre>
+</div>
+
+<li><div class="frame" id="frame-140307685499792">
+  <h4>File <cite class="filename">"/home/ec2-user/flask-service/flask-service-virtual/lib/python2.7/site-packages/flask/app.py"</cite>,
+      line <em class="line">1403</em>,
+      in <code class="function">handle_exception</code></h4>
+  <pre>reraise(exc_type, exc_value, tb)</pre>
+</div>
+
+<li><div class="frame" id="frame-140307685499856">
+  <h4>File <cite class="filename">"/home/ec2-user/flask-service/flask-service-virtual/lib/python2.7/site-packages/flask_restful/__init__.py"</cite>,
+      line <em class="line">260</em>,
+      in <code class="function">error_router</code></h4>
+  <pre>return self.handle_error(e)</pre>
+</div>
+
+<li><div class="frame" id="frame-140307685499920">
+  <h4>File <cite class="filename">"/home/ec2-user/flask-service/flask-service-virtual/lib/python2.7/site-packages/flask/app.py"</cite>,
+      line <em class="line">1817</em>,
+      in <code class="function">wsgi_app</code></h4>
+  <pre>response = self.full_dispatch_request()</pre>
+</div>
+
+<li><div class="frame" id="frame-140307685499984">
+  <h4>File <cite class="filename">"/home/ec2-user/flask-service/flask-service-virtual/lib/python2.7/site-packages/flask/app.py"</cite>,
+      line <em class="line">1477</em>,
+      in <code class="function">full_dispatch_request</code></h4>
+  <pre>rv = self.handle_user_exception(e)</pre>
+</div>
+
+<li><div class="frame" id="frame-140307685500048">
+  <h4>File <cite class="filename">"/home/ec2-user/flask-service/flask-service-virtual/lib/python2.7/site-packages/flask_restful/__init__.py"</cite>,
+      line <em class="line">263</em>,
+      in <code class="function">error_router</code></h4>
+  <pre>return original_handler(e)</pre>
+</div>
+
+<li><div class="frame" id="frame-140307685500112">
+  <h4>File <cite class="filename">"/home/ec2-user/flask-service/flask-service-virtual/lib/python2.7/site-packages/flask/app.py"</cite>,
+      line <em class="line">1381</em>,
+      in <code class="function">handle_user_exception</code></h4>
+  <pre>reraise(exc_type, exc_value, tb)</pre>
+</div>
+
+<li><div class="frame" id="frame-140307685500176">
+  <h4>File <cite class="filename">"/home/ec2-user/flask-service/flask-service-virtual/lib/python2.7/site-packages/flask_restful/__init__.py"</cite>,
+      line <em class="line">260</em>,
+      in <code class="function">error_router</code></h4>
+  <pre>return self.handle_error(e)</pre>
+</div>
+
+<li><div class="frame" id="frame-140307685500240">
+  <h4>File <cite class="filename">"/home/ec2-user/flask-service/flask-service-virtual/lib/python2.7/site-packages/flask/app.py"</cite>,
+      line <em class="line">1475</em>,
+      in <code class="function">full_dispatch_request</code></h4>
+  <pre>rv = self.dispatch_request()</pre>
+</div>
+
+<li><div class="frame" id="frame-140307685500304">
+  <h4>File <cite class="filename">"/home/ec2-user/flask-service/flask-service-virtual/lib/python2.7/site-packages/flask/app.py"</cite>,
+      line <em class="line">1461</em>,
+      in <code class="function">dispatch_request</code></h4>
+  <pre>return self.view_functions[rule.endpoint](**req.view_args)</pre>
+</div>
+
+<li><div class="frame" id="frame-140307685500368">
+  <h4>File <cite class="filename">"/home/ec2-user/flask-service/flask-service-virtual/lib/python2.7/site-packages/flask_restful/__init__.py"</cite>,
+      line <em class="line">431</em>,
+      in <code class="function">wrapper</code></h4>
+  <pre>resp = resource(*args, **kwargs)</pre>
+</div>
+
+<li><div class="frame" id="frame-140307685500432">
+  <h4>File <cite class="filename">"/home/ec2-user/flask-service/flask-service-virtual/lib/python2.7/site-packages/flask/views.py"</cite>,
+      line <em class="line">84</em>,
+      in <code class="function">view</code></h4>
+  <pre>return self.dispatch_request(*args, **kwargs)</pre>
+</div>
+
+<li><div class="frame" id="frame-140307685500496">
+  <h4>File <cite class="filename">"/home/ec2-user/flask-service/flask-service-virtual/lib/python2.7/site-packages/flask_restful/__init__.py"</cite>,
+      line <em class="line">521</em>,
+      in <code class="function">dispatch_request</code></h4>
+  <pre>resp = meth(*args, **kwargs)</pre>
+</div>
+
+<li><div class="frame" id="frame-140307685500560">
+  <h4>File <cite class="filename">"/home/ec2-user/flask-service/flask-service.py"</cite>,
+      line <em class="line">92</em>,
+      in <code class="function">post</code></h4>
+  <pre>zip_file.save(loc+'/recv/'+filename)</pre>
+</div>
+
+<li><div class="frame" id="frame-140307685499600">
+  <h4>File <cite class="filename">"/home/ec2-user/flask-service/flask-service-virtual/lib/python2.7/site-packages/werkzeug/datastructures.py"</cite>,
+      line <em class="line">2585</em>,
+      in <code class="function">save</code></h4>
+  <pre>dst = open(dst, 'wb')</pre>
+</div>
+</ul>
+  <blockquote>IOError: [Errno 2] No such file or directory: '/recv/error_reports_zip.zip'</blockquote>
+</div>
+
+<div class="plain">
+  <form action="/?__debugger__=yes&amp;cmd=paste" method="post">
+    <p>
+      <input type="hidden" name="language" value="pytb">
+      This is the Copy/Paste friendly version of the traceback.  <span
+      class="pastemessage">You can also paste this traceback into
+      a <a href="https://gist.github.com/">gist</a>:
+      <input type="submit" value="create paste"></span>
+    </p>
+    <textarea cols="50" rows="10" name="code" readonly>Traceback (most recent call last):
+  File "/home/ec2-user/flask-service/flask-service-virtual/lib/python2.7/site-packages/flask/app.py", line 1836, in __call__
+    return self.wsgi_app(environ, start_response)
+  File "/home/ec2-user/flask-service/flask-service-virtual/lib/python2.7/site-packages/flask/app.py", line 1820, in wsgi_app
+    response = self.make_response(self.handle_exception(e))
+  File "/home/ec2-user/flask-service/flask-service-virtual/lib/python2.7/site-packages/flask_restful/__init__.py", line 263, in error_router
+    return original_handler(e)
+  File "/home/ec2-user/flask-service/flask-service-virtual/lib/python2.7/site-packages/flask/app.py", line 1403, in handle_exception
+    reraise(exc_type, exc_value, tb)
+  File "/home/ec2-user/flask-service/flask-service-virtual/lib/python2.7/site-packages/flask_restful/__init__.py", line 260, in error_router
+    return self.handle_error(e)
+  File "/home/ec2-user/flask-service/flask-service-virtual/lib/python2.7/site-packages/flask/app.py", line 1817, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/home/ec2-user/flask-service/flask-service-virtual/lib/python2.7/site-packages/flask/app.py", line 1477, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/home/ec2-user/flask-service/flask-service-virtual/lib/python2.7/site-packages/flask_restful/__init__.py", line 263, in error_router
+    return original_handler(e)
+  File "/home/ec2-user/flask-service/flask-service-virtual/lib/python2.7/site-packages/flask/app.py", line 1381, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/home/ec2-user/flask-service/flask-service-virtual/lib/python2.7/site-packages/flask_restful/__init__.py", line 260, in error_router
+    return self.handle_error(e)
+  File "/home/ec2-user/flask-service/flask-service-virtual/lib/python2.7/site-packages/flask/app.py", line 1475, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/home/ec2-user/flask-service/flask-service-virtual/lib/python2.7/site-packages/flask/app.py", line 1461, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/home/ec2-user/flask-service/flask-service-virtual/lib/python2.7/site-packages/flask_restful/__init__.py", line 431, in wrapper
+    resp = resource(*args, **kwargs)
+  File "/home/ec2-user/flask-service/flask-service-virtual/lib/python2.7/site-packages/flask/views.py", line 84, in view
+    return self.dispatch_request(*args, **kwargs)
+  File "/home/ec2-user/flask-service/flask-service-virtual/lib/python2.7/site-packages/flask_restful/__init__.py", line 521, in dispatch_request
+    resp = meth(*args, **kwargs)
+  File "/home/ec2-user/flask-service/flask-service.py", line 92, in post
+    zip_file.save(loc+'/recv/'+filename)
+  File "/home/ec2-user/flask-service/flask-service-virtual/lib/python2.7/site-packages/werkzeug/datastructures.py", line 2585, in save
+    dst = open(dst, 'wb')
+IOError: [Errno 2] No such file or directory: '/recv/error_reports_zip.zip'</textarea>
+  </form>
+</div>
+<div class="explanation">
+  The debugger caught an exception in your WSGI application.  You can now
+  look at the traceback which led to the error.  <span class="nojavascript">
+  If you enable JavaScript you can also use additional features such as code
+  execution (if the evalex feature is enabled), automatic pasting of the
+  exceptions and much more.</span>
+</div>
+      <div class="footer">
+        Brought to you by <strong class="arthur">DON'T PANIC</strong>, your
+        friendly Werkzeug powered traceback interpreter.
+      </div>
+    </div>
+  </body>
+</html>
+
+<!--
+
+Traceback (most recent call last):
+  File "/home/ec2-user/flask-service/flask-service-virtual/lib/python2.7/site-packages/flask/app.py", line 1836, in __call__
+    return self.wsgi_app(environ, start_response)
+  File "/home/ec2-user/flask-service/flask-service-virtual/lib/python2.7/site-packages/flask/app.py", line 1820, in wsgi_app
+    response = self.make_response(self.handle_exception(e))
+  File "/home/ec2-user/flask-service/flask-service-virtual/lib/python2.7/site-packages/flask_restful/__init__.py", line 263, in error_router
+    return original_handler(e)
+  File "/home/ec2-user/flask-service/flask-service-virtual/lib/python2.7/site-packages/flask/app.py", line 1403, in handle_exception
+    reraise(exc_type, exc_value, tb)
+  File "/home/ec2-user/flask-service/flask-service-virtual/lib/python2.7/site-packages/flask_restful/__init__.py", line 260, in error_router
+    return self.handle_error(e)
+  File "/home/ec2-user/flask-service/flask-service-virtual/lib/python2.7/site-packages/flask/app.py", line 1817, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/home/ec2-user/flask-service/flask-service-virtual/lib/python2.7/site-packages/flask/app.py", line 1477, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/home/ec2-user/flask-service/flask-service-virtual/lib/python2.7/site-packages/flask_restful/__init__.py", line 263, in error_router
+    return original_handler(e)
+  File "/home/ec2-user/flask-service/flask-service-virtual/lib/python2.7/site-packages/flask/app.py", line 1381, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/home/ec2-user/flask-service/flask-service-virtual/lib/python2.7/site-packages/flask_restful/__init__.py", line 260, in error_router
+    return self.handle_error(e)
+  File "/home/ec2-user/flask-service/flask-service-virtual/lib/python2.7/site-packages/flask/app.py", line 1475, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/home/ec2-user/flask-service/flask-service-virtual/lib/python2.7/site-packages/flask/app.py", line 1461, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/home/ec2-user/flask-service/flask-service-virtual/lib/python2.7/site-packages/flask_restful/__init__.py", line 431, in wrapper
+    resp = resource(*args, **kwargs)
+  File "/home/ec2-user/flask-service/flask-service-virtual/lib/python2.7/site-packages/flask/views.py", line 84, in view
+    return self.dispatch_request(*args, **kwargs)
+  File "/home/ec2-user/flask-service/flask-service-virtual/lib/python2.7/site-packages/flask_restful/__init__.py", line 521, in dispatch_request
+    resp = meth(*args, **kwargs)
+  File "/home/ec2-user/flask-service/flask-service.py", line 92, in post
+    zip_file.save(loc+'/recv/'+filename)
+  File "/home/ec2-user/flask-service/flask-service-virtual/lib/python2.7/site-packages/werkzeug/datastructures.py", line 2585, in save
+    dst = open(dst, 'wb')
+IOError: [Errno 2] No such file or directory: '/recv/error_reports_zip.zip'
+
+-->
+source:python,2017-12-09-17-33-36,<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+  "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+  <head>
+    <title>IOError: [Errno 2] No such file or directory: '/recv/error_reports_zip.zip' // Werkzeug Debugger</title>
+    <link rel="stylesheet" href="?__debugger__=yes&amp;cmd=resource&amp;f=style.css" type="text/css">
+    <!-- We need to make sure this has a favicon so that the debugger does not by
+         accident trigger a request to /favicon.ico which might change the application
+         state. -->
+    <link rel="shortcut icon" href="?__debugger__=yes&amp;cmd=resource&amp;f=console.png">
+    <script type="text/javascript" src="?__debugger__=yes&amp;cmd=resource&amp;f=jquery.js"></script>
+    <script type="text/javascript" src="?__debugger__=yes&amp;cmd=resource&amp;f=debugger.js"></script>
+    <script type="text/javascript">
+      var TRACEBACK = 140307677674960,
+          CONSOLE_MODE = false,
+          EVALEX = true,
+          SECRET = "Pxrv3PbnWWY9sxj9SKQ7";
+    </script>
+  </head>
+  <body>
+    <div class="debugger">
+<h1>IOError</h1>
+<div class="detail">
+  <p class="errormsg">IOError: [Errno 2] No such file or directory: '/recv/error_reports_zip.zip'</p>
+</div>
+<h2 class="traceback">Traceback <em>(most recent call last)</em></h2>
+<div class="traceback">
+  
+  <ul><li><div class="frame" id="frame-140307677674896">
+  <h4>File <cite class="filename">"/home/ec2-user/flask-service/flask-service-virtual/lib/python2.7/site-packages/flask/app.py"</cite>,
+      line <em class="line">1836</em>,
+      in <code class="function">__call__</code></h4>
+  <pre>return self.wsgi_app(environ, start_response)</pre>
+</div>
+
+<li><div class="frame" id="frame-140307677674832">
+  <h4>File <cite class="filename">"/home/ec2-user/flask-service/flask-service-virtual/lib/python2.7/site-packages/flask/app.py"</cite>,
+      line <em class="line">1820</em>,
+      in <code class="function">wsgi_app</code></h4>
+  <pre>response = self.make_response(self.handle_exception(e))</pre>
+</div>
+
+<li><div class="frame" id="frame-140307676115024">
+  <h4>File <cite class="filename">"/home/ec2-user/flask-service/flask-service-virtual/lib/python2.7/site-packages/flask_restful/__init__.py"</cite>,
+      line <em class="line">263</em>,
+      in <code class="function">error_router</code></h4>
+  <pre>return original_handler(e)</pre>
+</div>
+
+<li><div class="frame" id="frame-140307676115152">
+  <h4>File <cite class="filename">"/home/ec2-user/flask-service/flask-service-virtual/lib/python2.7/site-packages/flask/app.py"</cite>,
+      line <em class="line">1403</em>,
+      in <code class="function">handle_exception</code></h4>
+  <pre>reraise(exc_type, exc_value, tb)</pre>
+</div>
+
+<li><div class="frame" id="frame-140307676115344">
+  <h4>File <cite class="filename">"/home/ec2-user/flask-service/flask-service-virtual/lib/python2.7/site-packages/flask_restful/__init__.py"</cite>,
+      line <em class="line">260</em>,
+      in <code class="function">error_router</code></h4>
+  <pre>return self.handle_error(e)</pre>
+</div>
+
+<li><div class="frame" id="frame-140307676115280">
+  <h4>File <cite class="filename">"/home/ec2-user/flask-service/flask-service-virtual/lib/python2.7/site-packages/flask/app.py"</cite>,
+      line <em class="line">1817</em>,
+      in <code class="function">wsgi_app</code></h4>
+  <pre>response = self.full_dispatch_request()</pre>
+</div>
+
+<li><div class="frame" id="frame-140307676115216">
+  <h4>File <cite class="filename">"/home/ec2-user/flask-service/flask-service-virtual/lib/python2.7/site-packages/flask/app.py"</cite>,
+      line <em class="line">1477</em>,
+      in <code class="function">full_dispatch_request</code></h4>
+  <pre>rv = self.handle_user_exception(e)</pre>
+</div>
+
+<li><div class="frame" id="frame-140307676115408">
+  <h4>File <cite class="filename">"/home/ec2-user/flask-service/flask-service-virtual/lib/python2.7/site-packages/flask_restful/__init__.py"</cite>,
+      line <em class="line">263</em>,
+      in <code class="function">error_router</code></h4>
+  <pre>return original_handler(e)</pre>
+</div>
+
+<li><div class="frame" id="frame-140307676115728">
+  <h4>File <cite class="filename">"/home/ec2-user/flask-service/flask-service-virtual/lib/python2.7/site-packages/flask/app.py"</cite>,
+      line <em class="line">1381</em>,
+      in <code class="function">handle_user_exception</code></h4>
+  <pre>reraise(exc_type, exc_value, tb)</pre>
+</div>
+
+<li><div class="frame" id="frame-140307676115856">
+  <h4>File <cite class="filename">"/home/ec2-user/flask-service/flask-service-virtual/lib/python2.7/site-packages/flask_restful/__init__.py"</cite>,
+      line <em class="line">260</em>,
+      in <code class="function">error_router</code></h4>
+  <pre>return self.handle_error(e)</pre>
+</div>
+
+<li><div class="frame" id="frame-140307676116048">
+  <h4>File <cite class="filename">"/home/ec2-user/flask-service/flask-service-virtual/lib/python2.7/site-packages/flask/app.py"</cite>,
+      line <em class="line">1475</em>,
+      in <code class="function">full_dispatch_request</code></h4>
+  <pre>rv = self.dispatch_request()</pre>
+</div>
+
+<li><div class="frame" id="frame-140307676116112">
+  <h4>File <cite class="filename">"/home/ec2-user/flask-service/flask-service-virtual/lib/python2.7/site-packages/flask/app.py"</cite>,
+      line <em class="line">1461</em>,
+      in <code class="function">dispatch_request</code></h4>
+  <pre>return self.view_functions[rule.endpoint](**req.view_args)</pre>
+</div>
+
+<li><div class="frame" id="frame-140307676116176">
+  <h4>File <cite class="filename">"/home/ec2-user/flask-service/flask-service-virtual/lib/python2.7/site-packages/flask_restful/__init__.py"</cite>,
+      line <em class="line">431</em>,
+      in <code class="function">wrapper</code></h4>
+  <pre>resp = resource(*args, **kwargs)</pre>
+</div>
+
+<li><div class="frame" id="frame-140307676116240">
+  <h4>File <cite class="filename">"/home/ec2-user/flask-service/flask-service-virtual/lib/python2.7/site-packages/flask/views.py"</cite>,
+      line <em class="line">84</em>,
+      in <code class="function">view</code></h4>
+  <pre>return self.dispatch_request(*args, **kwargs)</pre>
+</div>
+
+<li><div class="frame" id="frame-140307676116304">
+  <h4>File <cite class="filename">"/home/ec2-user/flask-service/flask-service-virtual/lib/python2.7/site-packages/flask_restful/__init__.py"</cite>,
+      line <em class="line">521</em>,
+      in <code class="function">dispatch_request</code></h4>
+  <pre>resp = meth(*args, **kwargs)</pre>
+</div>
+
+<li><div class="frame" id="frame-140307676116368">
+  <h4>File <cite class="filename">"/home/ec2-user/flask-service/flask-service.py"</cite>,
+      line <em class="line">92</em>,
+      in <code class="function">post</code></h4>
+  <pre>zip_file.save(loc+'/recv/'+filename)</pre>
+</div>
+
+<li><div class="frame" id="frame-140307676115792">
+  <h4>File <cite class="filename">"/home/ec2-user/flask-service/flask-service-virtual/lib/python2.7/site-packages/werkzeug/datastructures.py"</cite>,
+      line <em class="line">2585</em>,
+      in <code class="function">save</code></h4>
+  <pre>dst = open(dst, 'wb')</pre>
+</div>
+</ul>
+  <blockquote>IOError: [Errno 2] No such file or directory: '/recv/error_reports_zip.zip'</blockquote>
+</div>
+
+<div class="plain">
+  <form action="/?__debugger__=yes&amp;cmd=paste" method="post">
+    <p>
+      <input type="hidden" name="language" value="pytb">
+      This is the Copy/Paste friendly version of the traceback.  <span
+      class="pastemessage">You can also paste this traceback into
+      a <a href="https://gist.github.com/">gist</a>:
+      <input type="submit" value="create paste"></span>
+    </p>
+    <textarea cols="50" rows="10" name="code" readonly>Traceback (most recent call last):
+  File "/home/ec2-user/flask-service/flask-service-virtual/lib/python2.7/site-packages/flask/app.py", line 1836, in __call__
+    return self.wsgi_app(environ, start_response)
+  File "/home/ec2-user/flask-service/flask-service-virtual/lib/python2.7/site-packages/flask/app.py", line 1820, in wsgi_app
+    response = self.make_response(self.handle_exception(e))
+  File "/home/ec2-user/flask-service/flask-service-virtual/lib/python2.7/site-packages/flask_restful/__init__.py", line 263, in error_router
+    return original_handler(e)
+  File "/home/ec2-user/flask-service/flask-service-virtual/lib/python2.7/site-packages/flask/app.py", line 1403, in handle_exception
+    reraise(exc_type, exc_value, tb)
+  File "/home/ec2-user/flask-service/flask-service-virtual/lib/python2.7/site-packages/flask_restful/__init__.py", line 260, in error_router
+    return self.handle_error(e)
+  File "/home/ec2-user/flask-service/flask-service-virtual/lib/python2.7/site-packages/flask/app.py", line 1817, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/home/ec2-user/flask-service/flask-service-virtual/lib/python2.7/site-packages/flask/app.py", line 1477, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/home/ec2-user/flask-service/flask-service-virtual/lib/python2.7/site-packages/flask_restful/__init__.py", line 263, in error_router
+    return original_handler(e)
+  File "/home/ec2-user/flask-service/flask-service-virtual/lib/python2.7/site-packages/flask/app.py", line 1381, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/home/ec2-user/flask-service/flask-service-virtual/lib/python2.7/site-packages/flask_restful/__init__.py", line 260, in error_router
+    return self.handle_error(e)
+  File "/home/ec2-user/flask-service/flask-service-virtual/lib/python2.7/site-packages/flask/app.py", line 1475, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/home/ec2-user/flask-service/flask-service-virtual/lib/python2.7/site-packages/flask/app.py", line 1461, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/home/ec2-user/flask-service/flask-service-virtual/lib/python2.7/site-packages/flask_restful/__init__.py", line 431, in wrapper
+    resp = resource(*args, **kwargs)
+  File "/home/ec2-user/flask-service/flask-service-virtual/lib/python2.7/site-packages/flask/views.py", line 84, in view
+    return self.dispatch_request(*args, **kwargs)
+  File "/home/ec2-user/flask-service/flask-service-virtual/lib/python2.7/site-packages/flask_restful/__init__.py", line 521, in dispatch_request
+    resp = meth(*args, **kwargs)
+  File "/home/ec2-user/flask-service/flask-service.py", line 92, in post
+    zip_file.save(loc+'/recv/'+filename)
+  File "/home/ec2-user/flask-service/flask-service-virtual/lib/python2.7/site-packages/werkzeug/datastructures.py", line 2585, in save
+    dst = open(dst, 'wb')
+IOError: [Errno 2] No such file or directory: '/recv/error_reports_zip.zip'</textarea>
+  </form>
+</div>
+<div class="explanation">
+  The debugger caught an exception in your WSGI application.  You can now
+  look at the traceback which led to the error.  <span class="nojavascript">
+  If you enable JavaScript you can also use additional features such as code
+  execution (if the evalex feature is enabled), automatic pasting of the
+  exceptions and much more.</span>
+</div>
+      <div class="footer">
+        Brought to you by <strong class="arthur">DON'T PANIC</strong>, your
+        friendly Werkzeug powered traceback interpreter.
+      </div>
+    </div>
+  </body>
+</html>
+
+<!--
+
+Traceback (most recent call last):
+  File "/home/ec2-user/flask-service/flask-service-virtual/lib/python2.7/site-packages/flask/app.py", line 1836, in __call__
+    return self.wsgi_app(environ, start_response)
+  File "/home/ec2-user/flask-service/flask-service-virtual/lib/python2.7/site-packages/flask/app.py", line 1820, in wsgi_app
+    response = self.make_response(self.handle_exception(e))
+  File "/home/ec2-user/flask-service/flask-service-virtual/lib/python2.7/site-packages/flask_restful/__init__.py", line 263, in error_router
+    return original_handler(e)
+  File "/home/ec2-user/flask-service/flask-service-virtual/lib/python2.7/site-packages/flask/app.py", line 1403, in handle_exception
+    reraise(exc_type, exc_value, tb)
+  File "/home/ec2-user/flask-service/flask-service-virtual/lib/python2.7/site-packages/flask_restful/__init__.py", line 260, in error_router
+    return self.handle_error(e)
+  File "/home/ec2-user/flask-service/flask-service-virtual/lib/python2.7/site-packages/flask/app.py", line 1817, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/home/ec2-user/flask-service/flask-service-virtual/lib/python2.7/site-packages/flask/app.py", line 1477, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/home/ec2-user/flask-service/flask-service-virtual/lib/python2.7/site-packages/flask_restful/__init__.py", line 263, in error_router
+    return original_handler(e)
+  File "/home/ec2-user/flask-service/flask-service-virtual/lib/python2.7/site-packages/flask/app.py", line 1381, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/home/ec2-user/flask-service/flask-service-virtual/lib/python2.7/site-packages/flask_restful/__init__.py", line 260, in error_router
+    return self.handle_error(e)
+  File "/home/ec2-user/flask-service/flask-service-virtual/lib/python2.7/site-packages/flask/app.py", line 1475, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/home/ec2-user/flask-service/flask-service-virtual/lib/python2.7/site-packages/flask/app.py", line 1461, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/home/ec2-user/flask-service/flask-service-virtual/lib/python2.7/site-packages/flask_restful/__init__.py", line 431, in wrapper
+    resp = resource(*args, **kwargs)
+  File "/home/ec2-user/flask-service/flask-service-virtual/lib/python2.7/site-packages/flask/views.py", line 84, in view
+    return self.dispatch_request(*args, **kwargs)
+  File "/home/ec2-user/flask-service/flask-service-virtual/lib/python2.7/site-packages/flask_restful/__init__.py", line 521, in dispatch_request
+    resp = meth(*args, **kwargs)
+  File "/home/ec2-user/flask-service/flask-service.py", line 92, in post
+    zip_file.save(loc+'/recv/'+filename)
+  File "/home/ec2-user/flask-service/flask-service-virtual/lib/python2.7/site-packages/werkzeug/datastructures.py", line 2585, in save
+    dst = open(dst, 'wb')
+IOError: [Errno 2] No such file or directory: '/recv/error_reports_zip.zip'
+
+-->
+source:python,2017-12-09-17-34-42,<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+  "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+  <head>
+    <title>IOError: [Errno 2] No such file or directory: '/recv/error_reports_zip.zip' // Werkzeug Debugger</title>
+    <link rel="stylesheet" href="?__debugger__=yes&amp;cmd=resource&amp;f=style.css" type="text/css">
+    <!-- We need to make sure this has a favicon so that the debugger does not by
+         accident trigger a request to /favicon.ico which might change the application
+         state. -->
+    <link rel="shortcut icon" href="?__debugger__=yes&amp;cmd=resource&amp;f=console.png">
+    <script type="text/javascript" src="?__debugger__=yes&amp;cmd=resource&amp;f=jquery.js"></script>
+    <script type="text/javascript" src="?__debugger__=yes&amp;cmd=resource&amp;f=debugger.js"></script>
+    <script type="text/javascript">
+      var TRACEBACK = 140307672543184,
+          CONSOLE_MODE = false,
+          EVALEX = true,
+          SECRET = "Pxrv3PbnWWY9sxj9SKQ7";
+    </script>
+  </head>
+  <body>
+    <div class="debugger">
+<h1>IOError</h1>
+<div class="detail">
+  <p class="errormsg">IOError: [Errno 2] No such file or directory: '/recv/error_reports_zip.zip'</p>
+</div>
+<h2 class="traceback">Traceback <em>(most recent call last)</em></h2>
+<div class="traceback">
+  
+  <ul><li><div class="frame" id="frame-140307672543056">
+  <h4>File <cite class="filename">"/home/ec2-user/flask-service/flask-service-virtual/lib/python2.7/site-packages/flask/app.py"</cite>,
+      line <em class="line">1836</em>,
+      in <code class="function">__call__</code></h4>
+  <pre>return self.wsgi_app(environ, start_response)</pre>
+</div>
+
+<li><div class="frame" id="frame-140307672541840">
+  <h4>File <cite class="filename">"/home/ec2-user/flask-service/flask-service-virtual/lib/python2.7/site-packages/flask/app.py"</cite>,
+      line <em class="line">1820</em>,
+      in <code class="function">wsgi_app</code></h4>
+  <pre>response = self.make_response(self.handle_exception(e))</pre>
+</div>
+
+<li><div class="frame" id="frame-140307672542736">
+  <h4>File <cite class="filename">"/home/ec2-user/flask-service/flask-service-virtual/lib/python2.7/site-packages/flask_restful/__init__.py"</cite>,
+      line <em class="line">263</em>,
+      in <code class="function">error_router</code></h4>
+  <pre>return original_handler(e)</pre>
+</div>
+
+<li><div class="frame" id="frame-140307672541648">
+  <h4>File <cite class="filename">"/home/ec2-user/flask-service/flask-service-virtual/lib/python2.7/site-packages/flask/app.py"</cite>,
+      line <em class="line">1403</em>,
+      in <code class="function">handle_exception</code></h4>
+  <pre>reraise(exc_type, exc_value, tb)</pre>
+</div>
+
+<li><div class="frame" id="frame-140307672542032">
+  <h4>File <cite class="filename">"/home/ec2-user/flask-service/flask-service-virtual/lib/python2.7/site-packages/flask_restful/__init__.py"</cite>,
+      line <em class="line">260</em>,
+      in <code class="function">error_router</code></h4>
+  <pre>return self.handle_error(e)</pre>
+</div>
+
+<li><div class="frame" id="frame-140307672541904">
+  <h4>File <cite class="filename">"/home/ec2-user/flask-service/flask-service-virtual/lib/python2.7/site-packages/flask/app.py"</cite>,
+      line <em class="line">1817</em>,
+      in <code class="function">wsgi_app</code></h4>
+  <pre>response = self.full_dispatch_request()</pre>
+</div>
+
+<li><div class="frame" id="frame-140307672542096">
+  <h4>File <cite class="filename">"/home/ec2-user/flask-service/flask-service-virtual/lib/python2.7/site-packages/flask/app.py"</cite>,
+      line <em class="line">1477</em>,
+      in <code class="function">full_dispatch_request</code></h4>
+  <pre>rv = self.handle_user_exception(e)</pre>
+</div>
+
+<li><div class="frame" id="frame-140307672543120">
+  <h4>File <cite class="filename">"/home/ec2-user/flask-service/flask-service-virtual/lib/python2.7/site-packages/flask_restful/__init__.py"</cite>,
+      line <em class="line">263</em>,
+      in <code class="function">error_router</code></h4>
+  <pre>return original_handler(e)</pre>
+</div>
+
+<li><div class="frame" id="frame-140307671245008">
+  <h4>File <cite class="filename">"/home/ec2-user/flask-service/flask-service-virtual/lib/python2.7/site-packages/flask/app.py"</cite>,
+      line <em class="line">1381</em>,
+      in <code class="function">handle_user_exception</code></h4>
+  <pre>reraise(exc_type, exc_value, tb)</pre>
+</div>
+
+<li><div class="frame" id="frame-140307671245136">
+  <h4>File <cite class="filename">"/home/ec2-user/flask-service/flask-service-virtual/lib/python2.7/site-packages/flask_restful/__init__.py"</cite>,
+      line <em class="line">260</em>,
+      in <code class="function">error_router</code></h4>
+  <pre>return self.handle_error(e)</pre>
+</div>
+
+<li><div class="frame" id="frame-140307671245200">
+  <h4>File <cite class="filename">"/home/ec2-user/flask-service/flask-service-virtual/lib/python2.7/site-packages/flask/app.py"</cite>,
+      line <em class="line">1475</em>,
+      in <code class="function">full_dispatch_request</code></h4>
+  <pre>rv = self.dispatch_request()</pre>
+</div>
+
+<li><div class="frame" id="frame-140307671245264">
+  <h4>File <cite class="filename">"/home/ec2-user/flask-service/flask-service-virtual/lib/python2.7/site-packages/flask/app.py"</cite>,
+      line <em class="line">1461</em>,
+      in <code class="function">dispatch_request</code></h4>
+  <pre>return self.view_functions[rule.endpoint](**req.view_args)</pre>
+</div>
+
+<li><div class="frame" id="frame-140307671245328">
+  <h4>File <cite class="filename">"/home/ec2-user/flask-service/flask-service-virtual/lib/python2.7/site-packages/flask_restful/__init__.py"</cite>,
+      line <em class="line">431</em>,
+      in <code class="function">wrapper</code></h4>
+  <pre>resp = resource(*args, **kwargs)</pre>
+</div>
+
+<li><div class="frame" id="frame-140307671245392">
+  <h4>File <cite class="filename">"/home/ec2-user/flask-service/flask-service-virtual/lib/python2.7/site-packages/flask/views.py"</cite>,
+      line <em class="line">84</em>,
+      in <code class="function">view</code></h4>
+  <pre>return self.dispatch_request(*args, **kwargs)</pre>
+</div>
+
+<li><div class="frame" id="frame-140307671245456">
+  <h4>File <cite class="filename">"/home/ec2-user/flask-service/flask-service-virtual/lib/python2.7/site-packages/flask_restful/__init__.py"</cite>,
+      line <em class="line">521</em>,
+      in <code class="function">dispatch_request</code></h4>
+  <pre>resp = meth(*args, **kwargs)</pre>
+</div>
+
+<li><div class="frame" id="frame-140307671245520">
+  <h4>File <cite class="filename">"/home/ec2-user/flask-service/flask-service.py"</cite>,
+      line <em class="line">92</em>,
+      in <code class="function">post</code></h4>
+  <pre>zip_file.save(loc+'/recv/'+filename)</pre>
+</div>
+
+<li><div class="frame" id="frame-140307671245072">
+  <h4>File <cite class="filename">"/home/ec2-user/flask-service/flask-service-virtual/lib/python2.7/site-packages/werkzeug/datastructures.py"</cite>,
+      line <em class="line">2585</em>,
+      in <code class="function">save</code></h4>
+  <pre>dst = open(dst, 'wb')</pre>
+</div>
+</ul>
+  <blockquote>IOError: [Errno 2] No such file or directory: '/recv/error_reports_zip.zip'</blockquote>
+</div>
+
+<div class="plain">
+  <form action="/?__debugger__=yes&amp;cmd=paste" method="post">
+    <p>
+      <input type="hidden" name="language" value="pytb">
+      This is the Copy/Paste friendly version of the traceback.  <span
+      class="pastemessage">You can also paste this traceback into
+      a <a href="https://gist.github.com/">gist</a>:
+      <input type="submit" value="create paste"></span>
+    </p>
+    <textarea cols="50" rows="10" name="code" readonly>Traceback (most recent call last):
+  File "/home/ec2-user/flask-service/flask-service-virtual/lib/python2.7/site-packages/flask/app.py", line 1836, in __call__
+    return self.wsgi_app(environ, start_response)
+  File "/home/ec2-user/flask-service/flask-service-virtual/lib/python2.7/site-packages/flask/app.py", line 1820, in wsgi_app
+    response = self.make_response(self.handle_exception(e))
+  File "/home/ec2-user/flask-service/flask-service-virtual/lib/python2.7/site-packages/flask_restful/__init__.py", line 263, in error_router
+    return original_handler(e)
+  File "/home/ec2-user/flask-service/flask-service-virtual/lib/python2.7/site-packages/flask/app.py", line 1403, in handle_exception
+    reraise(exc_type, exc_value, tb)
+  File "/home/ec2-user/flask-service/flask-service-virtual/lib/python2.7/site-packages/flask_restful/__init__.py", line 260, in error_router
+    return self.handle_error(e)
+  File "/home/ec2-user/flask-service/flask-service-virtual/lib/python2.7/site-packages/flask/app.py", line 1817, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/home/ec2-user/flask-service/flask-service-virtual/lib/python2.7/site-packages/flask/app.py", line 1477, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/home/ec2-user/flask-service/flask-service-virtual/lib/python2.7/site-packages/flask_restful/__init__.py", line 263, in error_router
+    return original_handler(e)
+  File "/home/ec2-user/flask-service/flask-service-virtual/lib/python2.7/site-packages/flask/app.py", line 1381, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/home/ec2-user/flask-service/flask-service-virtual/lib/python2.7/site-packages/flask_restful/__init__.py", line 260, in error_router
+    return self.handle_error(e)
+  File "/home/ec2-user/flask-service/flask-service-virtual/lib/python2.7/site-packages/flask/app.py", line 1475, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/home/ec2-user/flask-service/flask-service-virtual/lib/python2.7/site-packages/flask/app.py", line 1461, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/home/ec2-user/flask-service/flask-service-virtual/lib/python2.7/site-packages/flask_restful/__init__.py", line 431, in wrapper
+    resp = resource(*args, **kwargs)
+  File "/home/ec2-user/flask-service/flask-service-virtual/lib/python2.7/site-packages/flask/views.py", line 84, in view
+    return self.dispatch_request(*args, **kwargs)
+  File "/home/ec2-user/flask-service/flask-service-virtual/lib/python2.7/site-packages/flask_restful/__init__.py", line 521, in dispatch_request
+    resp = meth(*args, **kwargs)
+  File "/home/ec2-user/flask-service/flask-service.py", line 92, in post
+    zip_file.save(loc+'/recv/'+filename)
+  File "/home/ec2-user/flask-service/flask-service-virtual/lib/python2.7/site-packages/werkzeug/datastructures.py", line 2585, in save
+    dst = open(dst, 'wb')
+IOError: [Errno 2] No such file or directory: '/recv/error_reports_zip.zip'</textarea>
+  </form>
+</div>
+<div class="explanation">
+  The debugger caught an exception in your WSGI application.  You can now
+  look at the traceback which led to the error.  <span class="nojavascript">
+  If you enable JavaScript you can also use additional features such as code
+  execution (if the evalex feature is enabled), automatic pasting of the
+  exceptions and much more.</span>
+</div>
+      <div class="footer">
+        Brought to you by <strong class="arthur">DON'T PANIC</strong>, your
+        friendly Werkzeug powered traceback interpreter.
+      </div>
+    </div>
+  </body>
+</html>
+
+<!--
+
+Traceback (most recent call last):
+  File "/home/ec2-user/flask-service/flask-service-virtual/lib/python2.7/site-packages/flask/app.py", line 1836, in __call__
+    return self.wsgi_app(environ, start_response)
+  File "/home/ec2-user/flask-service/flask-service-virtual/lib/python2.7/site-packages/flask/app.py", line 1820, in wsgi_app
+    response = self.make_response(self.handle_exception(e))
+  File "/home/ec2-user/flask-service/flask-service-virtual/lib/python2.7/site-packages/flask_restful/__init__.py", line 263, in error_router
+    return original_handler(e)
+  File "/home/ec2-user/flask-service/flask-service-virtual/lib/python2.7/site-packages/flask/app.py", line 1403, in handle_exception
+    reraise(exc_type, exc_value, tb)
+  File "/home/ec2-user/flask-service/flask-service-virtual/lib/python2.7/site-packages/flask_restful/__init__.py", line 260, in error_router
+    return self.handle_error(e)
+  File "/home/ec2-user/flask-service/flask-service-virtual/lib/python2.7/site-packages/flask/app.py", line 1817, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/home/ec2-user/flask-service/flask-service-virtual/lib/python2.7/site-packages/flask/app.py", line 1477, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/home/ec2-user/flask-service/flask-service-virtual/lib/python2.7/site-packages/flask_restful/__init__.py", line 263, in error_router
+    return original_handler(e)
+  File "/home/ec2-user/flask-service/flask-service-virtual/lib/python2.7/site-packages/flask/app.py", line 1381, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/home/ec2-user/flask-service/flask-service-virtual/lib/python2.7/site-packages/flask_restful/__init__.py", line 260, in error_router
+    return self.handle_error(e)
+  File "/home/ec2-user/flask-service/flask-service-virtual/lib/python2.7/site-packages/flask/app.py", line 1475, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/home/ec2-user/flask-service/flask-service-virtual/lib/python2.7/site-packages/flask/app.py", line 1461, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/home/ec2-user/flask-service/flask-service-virtual/lib/python2.7/site-packages/flask_restful/__init__.py", line 431, in wrapper
+    resp = resource(*args, **kwargs)
+  File "/home/ec2-user/flask-service/flask-service-virtual/lib/python2.7/site-packages/flask/views.py", line 84, in view
+    return self.dispatch_request(*args, **kwargs)
+  File "/home/ec2-user/flask-service/flask-service-virtual/lib/python2.7/site-packages/flask_restful/__init__.py", line 521, in dispatch_request
+    resp = meth(*args, **kwargs)
+  File "/home/ec2-user/flask-service/flask-service.py", line 92, in post
+    zip_file.save(loc+'/recv/'+filename)
+  File "/home/ec2-user/flask-service/flask-service-virtual/lib/python2.7/site-packages/werkzeug/datastructures.py", line 2585, in save
+    dst = open(dst, 'wb')
+IOError: [Errno 2] No such file or directory: '/recv/error_reports_zip.zip'
+
+-->
+source:python,2017-12-09-17-49-33,<html>
+<head><title>502 Bad Gateway</title></head>
+<body bgcolor="white">
+<center><h1>502 Bad Gateway</h1></center>
+<hr><center>nginx/1.12.1</center>
+</body>
+</html>
+source:python,2017-12-09-17-49-42,<html>
+<head><title>502 Bad Gateway</title></head>
+<body bgcolor="white">
+<center><h1>502 Bad Gateway</h1></center>
+<hr><center>nginx/1.12.1</center>
+</body>
+</html>
+source:python,2017-12-09-17-49-50,<html>
+<head><title>502 Bad Gateway</title></head>
+<body bgcolor="white">
+<center><h1>502 Bad Gateway</h1></center>
+<hr><center>nginx/1.12.1</center>
+</body>
+</html>
+source:python,2017-12-09-17-54-17,<html>
+<head><title>502 Bad Gateway</title></head>
+<body bgcolor="white">
+<center><h1>502 Bad Gateway</h1></center>
+<hr><center>nginx/1.12.1</center>
+</body>
+</html>
+source:python,2017-12-09-18-05-39,<html>
+<head><title>502 Bad Gateway</title></head>
+<body bgcolor="white">
+<center><h1>502 Bad Gateway</h1></center>
+<hr><center>nginx/1.12.1</center>
+</body>
+</html>
+source:python,2017-12-09-18-06-07,<html>
+<head><title>502 Bad Gateway</title></head>
+<body bgcolor="white">
+<center><h1>502 Bad Gateway</h1></center>
+<hr><center>nginx/1.12.1</center>
+</body>
+</html>
+source:python,2017-12-09-18-07-56,<html>
+<head><title>502 Bad Gateway</title></head>
+<body bgcolor="white">
+<center><h1>502 Bad Gateway</h1></center>
+<hr><center>nginx/1.12.1</center>
+</body>
+</html>
+source:python,2017-12-09-18-10-32,{
+    "status": "Start"
+}
+source:python,2017-12-09-18-11-35,<html>
+<head><title>502 Bad Gateway</title></head>
+<body bgcolor="white">
+<center><h1>502 Bad Gateway</h1></center>
+<hr><center>nginx/1.12.1</center>
+</body>
+</html>
+source:python,2017-12-09-18-12-14,{
+    "status": "[Errno 2] No such file or directory: '/recv/error_reports_zip.zip'"
+}
+source:python,2017-12-09-18-21-34,{
+    "status": "[Errno 2] No such file or directory: '/recv/error_reports_zip.zip'"
+}
+source:python,2017-12-09-18-22-05,{
+    "status": "[Errno 2] No such file or directory: '/recv/error_reports_zip.zip'"
+}
+source:python,2017-12-09-18-22-39,{
+    "status": "[Errno 2] No such file or directory: '/recv/error_reports_zip.zip'"
+}
+source:python,2017-12-09-18-31-39,{
+    "status": "[Errno 2] No such file or directory: '/recv/error_reports_zip.zip'"
+}
+source:python,2017-12-09-18-32-39,{
+    "status": "PPP[Errno 2] No such file or directory: '/recv/error_reports_zip.zip'"
+}
+source:python,2017-12-09-18-32-46,{
+    "status": "PPP[Errno 2] No such file or directory: '/recv/error_reports_zip.zip'"
+}
+source:python,2017-12-09-18-34-41,{
+    "status": "PPP[Errno 2] No such file or directory: '/recv/error_reports_zip.zip'"
+}
+source:python,2017-12-09-18-35-47,{
+    "status": "PPP[Errno 2] No such file or directory: '/recv/error_reports_zip.zip'"
+}
+source:python,2017-12-09-18-36-21,{
+    "status=flask-service.py": "PPP[Errno 2] No such file or directory: '/recv/error_reports_zip.zip'"
+}
+source:python,2017-12-09-18-36-36,{
+    "status=flask-service.py": "PPP[Errno 2] No such file or directory: '/recv/error_reports_zip.zip'"
+}
+source:python,2017-12-09-18-36-56,{
+    "status=": "PPP[Errno 2] No such file or directory: '/recv/error_reports_zip.zip'"
+}
+source:python,2017-12-09-18-42-11,<html>
+<head><title>502 Bad Gateway</title></head>
+<body bgcolor="white">
+<center><h1>502 Bad Gateway</h1></center>
+<hr><center>nginx/1.12.1</center>
+</body>
+</html>
+source:python,2017-12-09-18-42-41,{
+    "status": "OK"
+}
+source:python,2017-12-09-18-42-48,{
+    "status": "OK"
+}
+source:python,2017-12-09-18-48-46,<html>
+<head><title>502 Bad Gateway</title></head>
+<body bgcolor="white">
+<center><h1>502 Bad Gateway</h1></center>
+<hr><center>nginx/1.12.1</center>
+</body>
+</html>
+source:python,2017-12-09-19-25-08,<html>
+<head><title>502 Bad Gateway</title></head>
+<body bgcolor="white">
+<center><h1>502 Bad Gateway</h1></center>
+<hr><center>nginx/1.12.1</center>
+</body>
+</html>
+source:python,2017-12-09-19-27-57,{
+    "status": "OK"
+}
+source:python,2017-12-09-19-28-01,{
+    "status": "OK"
+}
+source:python,2017-12-09-19-28-05,{
+    "status": "OK"
+}
+source:python,2017-12-09-19-30-36,{
+    "status": "OK"
+}
+source:python,2017-12-11-16-08-58,<html>
+<head><title>502 Bad Gateway</title></head>
+<body bgcolor="white">
+<center><h1>502 Bad Gateway</h1></center>
+<hr><center>nginx/1.12.1</center>
+</body>
+</html>
+source:python,2017-12-11-16-09-18,<html>
+<head><title>502 Bad Gateway</title></head>
+<body bgcolor="white">
+<center><h1>502 Bad Gateway</h1></center>
+<hr><center>nginx/1.12.1</center>
+</body>
+</html>
+source:python,2017-12-11-16-10-28,{
+    "status": "OK"
+}
+source:python,2017-12-11-16-10-43,{
+    "status": "OK"
+}
+source:python,2017-12-11-16-15-15,<html>
+<head><title>502 Bad Gateway</title></head>
+<body bgcolor="white">
+<center><h1>502 Bad Gateway</h1></center>
+<hr><center>nginx/1.12.1</center>
+</body>
+</html>
+source:python,2017-12-11-16-15-18,<html>
+<head><title>502 Bad Gateway</title></head>
+<body bgcolor="white">
+<center><h1>502 Bad Gateway</h1></center>
+<hr><center>nginx/1.12.1</center>
+</body>
+</html>
+source:python,2017-12-11-16-16-21,{
+    "status": "OK"
+}
+source:python,2017-12-11-16-16-23,{
+    "status": "OK"
+}
+source:python,2017-12-11-16-16-26,{
+    "status": "OK"
+}
+source:python,2017-12-11-16-16-30,{
+    "status": "OK"
+}
+source:python,2017-12-11-16-23-28,{
+    "status": "OK"
+}

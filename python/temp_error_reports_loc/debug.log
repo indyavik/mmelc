@@ -3877,3 +3877,292 @@
 [1208/202509:INFO:CONSOLE(122)] "1-of-21", source: http://localhost:85/content/js/main-2.js (122)
 [1208/202509:INFO:CONSOLE(204)] "user has logged in", source: http://localhost:85/content/home.html?user=guest_user (204)
 [1208/202511:INFO:CONSOLE(320)] "Uncaught TypeError: Object #<Object> has no method 'TestJSCallback'", source: http://localhost:85/content/js/login.js (320)
+[1208/202520:ERROR_REPORT:browser_main.cc(126)] Check failed: browser_contexts_.empty(). 
+[1208/203251:ERROR:backend_impl.cc(2014)] Corrupt Index file
+[1208/203251:ERROR:cache_util_win.cc(20)] Unable to move the cache: 5
+[1208/203251:ERROR:cache_util.cc(104)] Unable to move cache folder C:\MMELC_pilot\python\CEFStorage to C:\MMELC_pilot\python\old_CEFStorage_000
+[1208/203251:ERROR:cache_creator.cc(115)] Unable to create cache
+[1208/203251:INFO:CONSOLE(320)] "Uncaught TypeError: Object #<Object> has no method 'TestJSCallback'", source: http://localhost:85/content/js/login.js (320)
+[1208/203251:INFO:CONSOLE(320)] "Uncaught TypeError: Object #<Object> has no method 'TestJSCallback'", source: http://localhost:85/content/js/login.js (320)
+[1208/203252:INFO:CONSOLE(320)] "Uncaught TypeError: Object #<Object> has no method 'TestJSCallback'", source: http://localhost:85/content/js/login.js (320)
+[1208/203252:INFO:CONSOLE(117)] "Course introduction, Software Setup and Tutorial, and Pre-Test : Introduction to the Malaria Microscopy Course ", source: http://localhost:85/content/js/main-2.js (117)
+[1208/203252:INFO:CONSOLE(122)] "1-of-21", source: http://localhost:85/content/js/main-2.js (122)
+[1208/203253:INFO:CONSOLE(204)] "user has logged in", source: http://localhost:85/content/home.html?user=guest_user (204)
+[1208/203254:INFO:CONSOLE(320)] "Uncaught TypeError: Object #<Object> has no method 'TestJSCallback'", source: http://localhost:85/content/js/login.js (320)
+[1208/203308:ERROR_REPORT:browser_main.cc(126)] Check failed: browser_contexts_.empty(). 
+[1208/203311:ERROR:backend_impl.cc(2014)] Corrupt Index file
+[1208/203311:ERROR:cache_util_win.cc(20)] Unable to move the cache: 5
+[1208/203311:ERROR:cache_util.cc(104)] Unable to move cache folder C:\MMELC_pilot\python\CEFStorage to C:\MMELC_pilot\python\old_CEFStorage_000
+[1208/203311:ERROR:cache_creator.cc(115)] Unable to create cache
+[1208/203311:INFO:CONSOLE(320)] "Uncaught TypeError: Object #<Object> has no method 'TestJSCallback'", source: http://localhost:85/content/js/login.js (320)
+[1208/203311:INFO:CONSOLE(320)] "Uncaught TypeError: Object #<Object> has no method 'TestJSCallback'", source: http://localhost:85/content/js/login.js (320)
+[1208/203313:INFO:CONSOLE(320)] "Uncaught TypeError: Object #<Object> has no method 'TestJSCallback'", source: http://localhost:85/content/js/login.js (320)
+[1208/203313:INFO:CONSOLE(117)] "Course introduction, Software Setup and Tutorial, and Pre-Test : Introduction to the Malaria Microscopy Course ", source: http://localhost:85/content/js/main-2.js (117)
+[1208/203313:INFO:CONSOLE(122)] "1-of-21", source: http://localhost:85/content/js/main-2.js (122)
+[1208/203313:INFO:CONSOLE(204)] "user has logged in", source: http://localhost:85/content/home.html?user=guest_user (204)
+[1208/203314:INFO:CONSOLE(320)] "Uncaught TypeError: Object #<Object> has no method 'TestJSCallback'", source: http://localhost:85/content/js/login.js (320)
+[1208/203340:INFO:CONSOLE(320)] "Uncaught TypeError: Object #<Object> has no method 'TestJSCallback'", source: http://localhost:85/content/js/login.js (320)
+[1208/203340:INFO:CONSOLE(117)] "Course introduction, Software Setup and Tutorial, and Pre-Test : Introduction to the Malaria Microscopy Course ", source: http://localhost:85/content/js/main-2.js (117)
+[1208/203340:INFO:CONSOLE(122)] "1-of-21", source: http://localhost:85/content/js/main-2.js (122)
+[1208/203349:INFO:CONSOLE(320)] "Uncaught TypeError: Object #<Object> has no method 'TestJSCallback'", source: http://localhost:85/content/js/login.js (320)
+[1208/203349:INFO:CONSOLE(320)] "Uncaught TypeError: Object #<Object> has no method 'TestJSCallback'", source: http://localhost:85/content/js/login.js (320)
+[1208/203353:INFO:CONSOLE(320)] "Uncaught TypeError: Object #<Object> has no method 'TestJSCallback'", source: http://localhost:85/content/js/login.js (320)
+[1208/203353:INFO:CONSOLE(117)] "Course introduction, Software Setup and Tutorial, and Pre-Test : Introduction to the Malaria Microscopy Course ", source: http://localhost:85/content/js/main-2.js (117)
+[1208/203353:INFO:CONSOLE(122)] "1-of-21", source: http://localhost:85/content/js/main-2.js (122)
+[1208/203353:INFO:CONSOLE(204)] "user has logged in", source: http://localhost:85/content/home.html?user=guest_user (204)
+[1208/203359:INFO:CONSOLE(320)] "Uncaught TypeError: Object #<Object> has no method 'TestJSCallback'", source: http://localhost:85/content/js/login.js (320)
+[1208/203411:INFO:CONSOLE(320)] "Uncaught TypeError: Object #<Object> has no method 'TestJSCallback'", source: http://localhost:85/content/js/login.js (320)
+[1208/203412:INFO:CONSOLE(117)] "Course introduction, Software Setup and Tutorial, and Pre-Test : Introduction to the Malaria Microscopy Course ", source: http://localhost:85/content/js/main-2.js (117)
+[1208/203412:INFO:CONSOLE(122)] "1-of-21", source: http://localhost:85/content/js/main-2.js (122)
+[1208/203417:INFO:CONSOLE(320)] "Uncaught TypeError: Object #<Object> has no method 'TestJSCallback'", source: http://localhost:85/content/js/login.js (320)
+[1208/203417:INFO:CONSOLE(320)] "Uncaught TypeError: Object #<Object> has no method 'TestJSCallback'", source: http://localhost:85/content/js/login.js (320)
+[1208/203422:INFO:CONSOLE(320)] "Uncaught TypeError: Object #<Object> has no method 'TestJSCallback'", source: http://localhost:85/content/js/login.js (320)
+[1208/203422:INFO:CONSOLE(117)] "Course introduction, Software Setup and Tutorial, and Pre-Test : Introduction to the Malaria Microscopy Course ", source: http://localhost:85/content/js/main-2.js (117)
+[1208/203422:INFO:CONSOLE(122)] "1-of-21", source: http://localhost:85/content/js/main-2.js (122)
+[1208/203422:INFO:CONSOLE(204)] "user has logged in", source: http://localhost:85/content/home.html?user=guest_user (204)
+[1208/203426:INFO:CONSOLE(320)] "Uncaught TypeError: Object #<Object> has no method 'TestJSCallback'", source: http://localhost:85/content/js/login.js (320)
+[1208/203432:INFO:CONSOLE(320)] "Uncaught TypeError: Object #<Object> has no method 'TestJSCallback'", source: http://localhost:85/content/js/login.js (320)
+[1208/203432:INFO:CONSOLE(320)] "Uncaught TypeError: Object #<Object> has no method 'TestJSCallback'", source: http://localhost:85/content/js/login.js (320)
+[1208/203438:ERROR_REPORT:browser_main.cc(126)] Check failed: browser_contexts_.empty(). 
+[1209/151901:ERROR:backend_impl.cc(2014)] Corrupt Index file
+[1209/151901:ERROR:cache_util_win.cc(20)] Unable to move the cache: 5
+[1209/151901:ERROR:cache_util.cc(104)] Unable to move cache folder C:\MMELC_pilot\python\CEFStorage to C:\MMELC_pilot\python\old_CEFStorage_000
+[1209/151901:ERROR:cache_creator.cc(115)] Unable to create cache
+[1209/151902:INFO:CONSOLE(320)] "Uncaught TypeError: Object #<Object> has no method 'TestJSCallback'", source: http://localhost:85/content/js/login.js (320)
+[1209/151902:INFO:CONSOLE(320)] "Uncaught TypeError: Object #<Object> has no method 'TestJSCallback'", source: http://localhost:85/content/js/login.js (320)
+[1209/151904:INFO:CONSOLE(320)] "Uncaught TypeError: Object #<Object> has no method 'TestJSCallback'", source: http://localhost:85/content/js/login.js (320)
+[1209/151904:INFO:CONSOLE(117)] "Course introduction, Software Setup and Tutorial, and Pre-Test : Introduction to the Malaria Microscopy Course ", source: http://localhost:85/content/js/main-2.js (117)
+[1209/151904:INFO:CONSOLE(122)] "1-of-21", source: http://localhost:85/content/js/main-2.js (122)
+[1209/151904:INFO:CONSOLE(204)] "user has logged in", source: http://localhost:85/content/home.html?user=guest_user (204)
+[1209/151905:INFO:CONSOLE(320)] "Uncaught TypeError: Object #<Object> has no method 'TestJSCallback'", source: http://localhost:85/content/js/login.js (320)
+[1209/160200:INFO:CONSOLE(320)] "Uncaught TypeError: Object #<Object> has no method 'TestJSCallback'", source: http://localhost:85/content/js/login.js (320)
+[1209/160200:INFO:CONSOLE(117)] "Course introduction, Software Setup and Tutorial, and Pre-Test : Introduction to the Malaria Microscopy Course ", source: http://localhost:85/content/js/main-2.js (117)
+[1209/160200:INFO:CONSOLE(122)] "1-of-21", source: http://localhost:85/content/js/main-2.js (122)
+[1209/160202:INFO:CONSOLE(320)] "Uncaught TypeError: Object #<Object> has no method 'TestJSCallback'", source: http://localhost:85/content/js/login.js (320)
+[1209/173055:INFO:CONSOLE(320)] "Uncaught TypeError: Object #<Object> has no method 'TestJSCallback'", source: http://localhost:85/content/js/login.js (320)
+[1209/173100:INFO:CONSOLE(320)] "Uncaught TypeError: Object #<Object> has no method 'TestJSCallback'", source: http://localhost:85/content/js/login.js (320)
+[1209/173100:INFO:CONSOLE(117)] "Course introduction, Software Setup and Tutorial, and Pre-Test : Introduction to the Malaria Microscopy Course ", source: http://localhost:85/content/js/main-2.js (117)
+[1209/173100:INFO:CONSOLE(122)] "1-of-21", source: http://localhost:85/content/js/main-2.js (122)
+[1209/173103:INFO:CONSOLE(320)] "Uncaught TypeError: Object #<Object> has no method 'TestJSCallback'", source: http://localhost:85/content/js/login.js (320)
+[1209/193425:ERROR_REPORT:browser_main.cc(126)] Check failed: browser_contexts_.empty(). 
+[1211/160648:WARNING:dns_config_service_win.cc(653)] Failed to read DnsConfig.
+[1211/160649:ERROR:backend_impl.cc(2014)] Corrupt Index file
+[1211/160649:ERROR:cache_util_win.cc(20)] Unable to move the cache: 5
+[1211/160649:ERROR:cache_util.cc(104)] Unable to move cache folder C:\MMELC_pilot\python\CEFStorage to C:\MMELC_pilot\python\old_CEFStorage_000
+[1211/160649:ERROR:cache_creator.cc(115)] Unable to create cache
+[1211/160649:INFO:dhcp_proxy_script_adapter_fetcher_win.cc(263)] Error fetching PAC URL from DHCP: 2
+[1211/160649:INFO:dhcp_proxy_script_adapter_fetcher_win.cc(263)] Error fetching PAC URL from DHCP: 2
+[1211/160649:INFO:dhcp_proxy_script_adapter_fetcher_win.cc(263)] Error fetching PAC URL from DHCP: 2
+[1211/160649:INFO:CONSOLE(320)] "Uncaught TypeError: Object #<Object> has no method 'TestJSCallback'", source: http://localhost:85/content/js/login.js (320)
+[1211/160649:INFO:CONSOLE(320)] "Uncaught TypeError: Object #<Object> has no method 'TestJSCallback'", source: http://localhost:85/content/js/login.js (320)
+[1211/160653:ERROR_REPORT:browser_main.cc(126)] Check failed: browser_contexts_.empty(). 
+[1211/160735:WARNING:dns_config_service_win.cc(653)] Failed to read DnsConfig.
+[1211/160735:ERROR:backend_impl.cc(2014)] Corrupt Index file
+[1211/160735:ERROR:cache_util_win.cc(20)] Unable to move the cache: 5
+[1211/160735:ERROR:cache_util.cc(104)] Unable to move cache folder C:\MMELC_pilot\python\CEFStorage to C:\MMELC_pilot\python\old_CEFStorage_000
+[1211/160735:ERROR:cache_creator.cc(115)] Unable to create cache
+[1211/160735:INFO:dhcp_proxy_script_adapter_fetcher_win.cc(263)] Error fetching PAC URL from DHCP: 2
+[1211/160735:INFO:dhcp_proxy_script_adapter_fetcher_win.cc(263)] Error fetching PAC URL from DHCP: 2
+[1211/160735:INFO:dhcp_proxy_script_adapter_fetcher_win.cc(263)] Error fetching PAC URL from DHCP: 2
+[1211/160736:INFO:CONSOLE(320)] "Uncaught TypeError: Object #<Object> has no method 'TestJSCallback'", source: http://localhost:85/content/js/login.js (320)
+[1211/160736:INFO:CONSOLE(320)] "Uncaught TypeError: Object #<Object> has no method 'TestJSCallback'", source: http://localhost:85/content/js/login.js (320)
+[1211/160738:INFO:CONSOLE(320)] "Uncaught TypeError: Object #<Object> has no method 'TestJSCallback'", source: http://localhost:85/content/js/login.js (320)
+[1211/160738:INFO:CONSOLE(117)] "Course introduction, Software Setup and Tutorial, and Pre-Test : Introduction to the Malaria Microscopy Course ", source: http://localhost:85/content/js/main-2.js (117)
+[1211/160738:INFO:CONSOLE(122)] "1-of-21", source: http://localhost:85/content/js/main-2.js (122)
+[1211/160738:INFO:CONSOLE(204)] "user has logged in", source: http://localhost:85/content/home.html?user=guest_user (204)
+[1211/160740:WARNING:dns_config_service_win.cc(653)] Failed to read DnsConfig.
+[1211/160740:INFO:CONSOLE(320)] "Uncaught TypeError: Object #<Object> has no method 'TestJSCallback'", source: http://localhost:85/content/js/login.js (320)
+[1211/160743:INFO:dhcp_proxy_script_adapter_fetcher_win.cc(263)] Error fetching PAC URL from DHCP: 2
+[1211/160743:INFO:dhcp_proxy_script_adapter_fetcher_win.cc(263)] Error fetching PAC URL from DHCP: 2
+[1211/160743:INFO:dhcp_proxy_script_adapter_fetcher_win.cc(263)] Error fetching PAC URL from DHCP: 2
+[1211/160745:WARNING:dns_config_service_win.cc(653)] Failed to read DnsConfig.
+[1211/160750:WARNING:dns_config_service_win.cc(653)] Failed to read DnsConfig.
+[1211/160755:WARNING:dns_config_service_win.cc(653)] Failed to read DnsConfig.
+[1211/160800:WARNING:dns_config_service_win.cc(653)] Failed to read DnsConfig.
+[1211/160805:WARNING:dns_config_service_win.cc(653)] Failed to read DnsConfig.
+[1211/160810:WARNING:dns_config_service_win.cc(653)] Failed to read DnsConfig.
+[1211/160815:WARNING:dns_config_service_win.cc(653)] Failed to read DnsConfig.
+[1211/160820:WARNING:dns_config_service_win.cc(653)] Failed to read DnsConfig.
+[1211/160825:WARNING:dns_config_service_win.cc(653)] Failed to read DnsConfig.
+[1211/160825:WARNING:dns_config_service_win.cc(653)] Failed to read DnsConfig.
+[1211/160832:INFO:dhcp_proxy_script_adapter_fetcher_win.cc(263)] Error fetching PAC URL from DHCP: 2
+[1211/160832:INFO:dhcp_proxy_script_adapter_fetcher_win.cc(263)] Error fetching PAC URL from DHCP: 2
+[1211/160835:INFO:dhcp_proxy_script_adapter_fetcher_win.cc(263)] Error fetching PAC URL from DHCP: 2
+[1211/160835:INFO:dhcp_proxy_script_adapter_fetcher_win.cc(263)] Error fetching PAC URL from DHCP: 2
+[1211/160846:INFO:dhcp_proxy_script_adapter_fetcher_win.cc(263)] Error fetching PAC URL from DHCP: 2
+[1211/160846:INFO:dhcp_proxy_script_adapter_fetcher_win.cc(263)] Error fetching PAC URL from DHCP: 2
+[1211/160902:ERROR_REPORT:browser_main.cc(126)] Check failed: browser_contexts_.empty(). 
+[1211/160912:ERROR:backend_impl.cc(2014)] Corrupt Index file
+[1211/160912:ERROR:cache_util_win.cc(20)] Unable to move the cache: 5
+[1211/160912:ERROR:cache_util.cc(104)] Unable to move cache folder C:\MMELC_pilot\python\CEFStorage to C:\MMELC_pilot\python\old_CEFStorage_000
+[1211/160912:ERROR:cache_creator.cc(115)] Unable to create cache
+[1211/160913:INFO:CONSOLE(320)] "Uncaught TypeError: Object #<Object> has no method 'TestJSCallback'", source: http://localhost:85/content/js/login.js (320)
+[1211/160913:INFO:CONSOLE(320)] "Uncaught TypeError: Object #<Object> has no method 'TestJSCallback'", source: http://localhost:85/content/js/login.js (320)
+[1211/160915:INFO:CONSOLE(320)] "Uncaught TypeError: Object #<Object> has no method 'TestJSCallback'", source: http://localhost:85/content/js/login.js (320)
+[1211/160915:INFO:CONSOLE(117)] "Course introduction, Software Setup and Tutorial, and Pre-Test : Introduction to the Malaria Microscopy Course ", source: http://localhost:85/content/js/main-2.js (117)
+[1211/160915:INFO:CONSOLE(122)] "1-of-21", source: http://localhost:85/content/js/main-2.js (122)
+[1211/160915:INFO:CONSOLE(204)] "user has logged in", source: http://localhost:85/content/home.html?user=guest_user (204)
+[1211/160916:INFO:CONSOLE(320)] "Uncaught TypeError: Object #<Object> has no method 'TestJSCallback'", source: http://localhost:85/content/js/login.js (320)
+[1211/161031:ERROR_REPORT:browser_main.cc(126)] Check failed: browser_contexts_.empty(). 
+[1211/161038:ERROR:backend_impl.cc(2014)] Corrupt Index file
+[1211/161038:ERROR:cache_util_win.cc(20)] Unable to move the cache: 5
+[1211/161038:ERROR:cache_util.cc(104)] Unable to move cache folder C:\MMELC_pilot\python\CEFStorage to C:\MMELC_pilot\python\old_CEFStorage_000
+[1211/161038:ERROR:cache_creator.cc(115)] Unable to create cache
+[1211/161038:INFO:CONSOLE(320)] "Uncaught TypeError: Object #<Object> has no method 'TestJSCallback'", source: http://localhost:85/content/js/login.js (320)
+[1211/161038:INFO:CONSOLE(320)] "Uncaught TypeError: Object #<Object> has no method 'TestJSCallback'", source: http://localhost:85/content/js/login.js (320)
+[1211/161040:INFO:CONSOLE(320)] "Uncaught TypeError: Object #<Object> has no method 'TestJSCallback'", source: http://localhost:85/content/js/login.js (320)
+[1211/161040:INFO:CONSOLE(117)] "Course introduction, Software Setup and Tutorial, and Pre-Test : Introduction to the Malaria Microscopy Course ", source: http://localhost:85/content/js/main-2.js (117)
+[1211/161040:INFO:CONSOLE(122)] "1-of-21", source: http://localhost:85/content/js/main-2.js (122)
+[1211/161040:INFO:CONSOLE(204)] "user has logged in", source: http://localhost:85/content/home.html?user=guest_user (204)
+[1211/161041:INFO:CONSOLE(320)] "Uncaught TypeError: Object #<Object> has no method 'TestJSCallback'", source: http://localhost:85/content/js/login.js (320)
+[1211/161046:ERROR_REPORT:browser_main.cc(126)] Check failed: browser_contexts_.empty(). 
+[1211/161301:ERROR:backend_impl.cc(2014)] Corrupt Index file
+[1211/161301:ERROR:cache_util_win.cc(20)] Unable to move the cache: 5
+[1211/161301:ERROR:cache_util.cc(104)] Unable to move cache folder C:\MMELC_pilot\python\CEFStorage to C:\MMELC_pilot\python\old_CEFStorage_000
+[1211/161301:ERROR:cache_creator.cc(115)] Unable to create cache
+[1211/161301:INFO:CONSOLE(320)] "Uncaught TypeError: Object #<Object> has no method 'TestJSCallback'", source: http://localhost:85/content/js/login.js (320)
+[1211/161301:INFO:CONSOLE(320)] "Uncaught TypeError: Object #<Object> has no method 'TestJSCallback'", source: http://localhost:85/content/js/login.js (320)
+[1211/161303:INFO:CONSOLE(320)] "Uncaught TypeError: Object #<Object> has no method 'TestJSCallback'", source: http://localhost:85/content/js/login.js (320)
+[1211/161303:INFO:CONSOLE(117)] "Course introduction, Software Setup and Tutorial, and Pre-Test : Introduction to the Malaria Microscopy Course ", source: http://localhost:85/content/js/main-2.js (117)
+[1211/161303:INFO:CONSOLE(122)] "1-of-21", source: http://localhost:85/content/js/main-2.js (122)
+[1211/161303:INFO:CONSOLE(204)] "user has logged in", source: http://localhost:85/content/home.html?user=guest_user (204)
+[1211/161304:INFO:CONSOLE(320)] "Uncaught TypeError: Object #<Object> has no method 'TestJSCallback'", source: http://localhost:85/content/js/login.js (320)
+[1211/161305:ERROR_REPORT:browser_main.cc(126)] Check failed: browser_contexts_.empty(). 
+[1211/161350:ERROR:backend_impl.cc(2014)] Corrupt Index file
+[1211/161350:ERROR:cache_util_win.cc(20)] Unable to move the cache: 5
+[1211/161350:ERROR:cache_util.cc(104)] Unable to move cache folder C:\MMELC_pilot\python\CEFStorage to C:\MMELC_pilot\python\old_CEFStorage_000
+[1211/161350:ERROR:cache_creator.cc(115)] Unable to create cache
+[1211/161351:INFO:CONSOLE(320)] "Uncaught TypeError: Object #<Object> has no method 'TestJSCallback'", source: http://localhost:85/content/js/login.js (320)
+[1211/161351:INFO:CONSOLE(320)] "Uncaught TypeError: Object #<Object> has no method 'TestJSCallback'", source: http://localhost:85/content/js/login.js (320)
+[1211/161353:INFO:CONSOLE(320)] "Uncaught TypeError: Object #<Object> has no method 'TestJSCallback'", source: http://localhost:85/content/js/login.js (320)
+[1211/161353:INFO:CONSOLE(117)] "Course introduction, Software Setup and Tutorial, and Pre-Test : Introduction to the Malaria Microscopy Course ", source: http://localhost:85/content/js/main-2.js (117)
+[1211/161353:INFO:CONSOLE(122)] "1-of-21", source: http://localhost:85/content/js/main-2.js (122)
+[1211/161353:INFO:CONSOLE(204)] "user has logged in", source: http://localhost:85/content/home.html?user=guest_user (204)
+[1211/161354:INFO:CONSOLE(320)] "Uncaught TypeError: Object #<Object> has no method 'TestJSCallback'", source: http://localhost:85/content/js/login.js (320)
+[1211/161355:ERROR_REPORT:browser_main.cc(126)] Check failed: browser_contexts_.empty(). 
+[1211/161434:ERROR:backend_impl.cc(2014)] Corrupt Index file
+[1211/161434:ERROR:cache_util_win.cc(20)] Unable to move the cache: 5
+[1211/161434:ERROR:cache_util.cc(104)] Unable to move cache folder C:\MMELC_pilot\python\CEFStorage to C:\MMELC_pilot\python\old_CEFStorage_000
+[1211/161434:ERROR:cache_creator.cc(115)] Unable to create cache
+[1211/161434:INFO:CONSOLE(320)] "Uncaught TypeError: Object #<Object> has no method 'TestJSCallback'", source: http://localhost:85/content/js/login.js (320)
+[1211/161434:INFO:CONSOLE(320)] "Uncaught TypeError: Object #<Object> has no method 'TestJSCallback'", source: http://localhost:85/content/js/login.js (320)
+[1211/161438:INFO:CONSOLE(320)] "Uncaught TypeError: Object #<Object> has no method 'TestJSCallback'", source: http://localhost:85/content/js/login.js (320)
+[1211/161438:INFO:CONSOLE(117)] "Course introduction, Software Setup and Tutorial, and Pre-Test : Introduction to the Malaria Microscopy Course ", source: http://localhost:85/content/js/main-2.js (117)
+[1211/161438:INFO:CONSOLE(122)] "1-of-21", source: http://localhost:85/content/js/main-2.js (122)
+[1211/161438:INFO:CONSOLE(204)] "user has logged in", source: http://localhost:85/content/home.html?user=guest_user (204)
+[1211/161439:INFO:CONSOLE(320)] "Uncaught TypeError: Object #<Object> has no method 'TestJSCallback'", source: http://localhost:85/content/js/login.js (320)
+[1211/161440:ERROR_REPORT:browser_main.cc(126)] Check failed: browser_contexts_.empty(). 
+[1211/161502:ERROR:backend_impl.cc(2014)] Corrupt Index file
+[1211/161502:ERROR:cache_util_win.cc(20)] Unable to move the cache: 5
+[1211/161502:ERROR:cache_util.cc(104)] Unable to move cache folder C:\MMELC_pilot\python\CEFStorage to C:\MMELC_pilot\python\old_CEFStorage_000
+[1211/161502:ERROR:cache_creator.cc(115)] Unable to create cache
+[1211/161502:INFO:CONSOLE(320)] "Uncaught TypeError: Object #<Object> has no method 'TestJSCallback'", source: http://localhost:85/content/js/login.js (320)
+[1211/161502:INFO:CONSOLE(320)] "Uncaught TypeError: Object #<Object> has no method 'TestJSCallback'", source: http://localhost:85/content/js/login.js (320)
+[1211/161503:INFO:CONSOLE(320)] "Uncaught TypeError: Object #<Object> has no method 'TestJSCallback'", source: http://localhost:85/content/js/login.js (320)
+[1211/161504:INFO:CONSOLE(117)] "Course introduction, Software Setup and Tutorial, and Pre-Test : Introduction to the Malaria Microscopy Course ", source: http://localhost:85/content/js/main-2.js (117)
+[1211/161504:INFO:CONSOLE(122)] "1-of-21", source: http://localhost:85/content/js/main-2.js (122)
+[1211/161504:INFO:CONSOLE(204)] "user has logged in", source: http://localhost:85/content/home.html?user=guest_user (204)
+[1211/161505:INFO:CONSOLE(320)] "Uncaught TypeError: Object #<Object> has no method 'TestJSCallback'", source: http://localhost:85/content/js/login.js (320)
+[1211/161644:ERROR_REPORT:browser_main.cc(126)] Check failed: browser_contexts_.empty(). 
+[1211/161720:ERROR:backend_impl.cc(2014)] Corrupt Index file
+[1211/161720:ERROR:cache_util_win.cc(20)] Unable to move the cache: 5
+[1211/161720:ERROR:cache_util.cc(104)] Unable to move cache folder C:\MMELC_pilot\python\CEFStorage to C:\MMELC_pilot\python\old_CEFStorage_000
+[1211/161720:ERROR:cache_creator.cc(115)] Unable to create cache
+[1211/161720:INFO:CONSOLE(320)] "Uncaught TypeError: Object #<Object> has no method 'TestJSCallback'", source: http://localhost:85/content/js/login.js (320)
+[1211/161720:INFO:CONSOLE(320)] "Uncaught TypeError: Object #<Object> has no method 'TestJSCallback'", source: http://localhost:85/content/js/login.js (320)
+[1211/161722:INFO:CONSOLE(320)] "Uncaught TypeError: Object #<Object> has no method 'TestJSCallback'", source: http://localhost:85/content/js/login.js (320)
+[1211/161722:INFO:CONSOLE(117)] "Course introduction, Software Setup and Tutorial, and Pre-Test : Introduction to the Malaria Microscopy Course ", source: http://localhost:85/content/js/main-2.js (117)
+[1211/161722:INFO:CONSOLE(122)] "1-of-21", source: http://localhost:85/content/js/main-2.js (122)
+[1211/161722:INFO:CONSOLE(204)] "user has logged in", source: http://localhost:85/content/home.html?user=guest_user (204)
+[1211/161723:INFO:CONSOLE(320)] "Uncaught TypeError: Object #<Object> has no method 'TestJSCallback'", source: http://localhost:85/content/js/login.js (320)
+[1211/161724:ERROR_REPORT:browser_main.cc(126)] Check failed: browser_contexts_.empty(). 
+[1211/161813:ERROR:backend_impl.cc(2014)] Corrupt Index file
+[1211/161813:ERROR:cache_util_win.cc(20)] Unable to move the cache: 5
+[1211/161813:ERROR:cache_util.cc(104)] Unable to move cache folder C:\MMELC_pilot\python\CEFStorage to C:\MMELC_pilot\python\old_CEFStorage_000
+[1211/161813:ERROR:cache_creator.cc(115)] Unable to create cache
+[1211/161814:INFO:CONSOLE(320)] "Uncaught TypeError: Object #<Object> has no method 'TestJSCallback'", source: http://localhost:85/content/js/login.js (320)
+[1211/161814:INFO:CONSOLE(320)] "Uncaught TypeError: Object #<Object> has no method 'TestJSCallback'", source: http://localhost:85/content/js/login.js (320)
+[1211/161816:INFO:CONSOLE(320)] "Uncaught TypeError: Object #<Object> has no method 'TestJSCallback'", source: http://localhost:85/content/js/login.js (320)
+[1211/161816:INFO:CONSOLE(117)] "Course introduction, Software Setup and Tutorial, and Pre-Test : Introduction to the Malaria Microscopy Course ", source: http://localhost:85/content/js/main-2.js (117)
+[1211/161816:INFO:CONSOLE(122)] "1-of-21", source: http://localhost:85/content/js/main-2.js (122)
+[1211/161816:INFO:CONSOLE(204)] "user has logged in", source: http://localhost:85/content/home.html?user=guest_user (204)
+[1211/161817:INFO:CONSOLE(320)] "Uncaught TypeError: Object #<Object> has no method 'TestJSCallback'", source: http://localhost:85/content/js/login.js (320)
+[1211/161818:ERROR_REPORT:browser_main.cc(126)] Check failed: browser_contexts_.empty(). 
+[1211/161848:ERROR:backend_impl.cc(2014)] Corrupt Index file
+[1211/161848:ERROR:cache_util_win.cc(20)] Unable to move the cache: 5
+[1211/161848:ERROR:cache_util.cc(104)] Unable to move cache folder C:\MMELC_pilot\python\CEFStorage to C:\MMELC_pilot\python\old_CEFStorage_000
+[1211/161848:ERROR:cache_creator.cc(115)] Unable to create cache
+[1211/161848:INFO:CONSOLE(320)] "Uncaught TypeError: Object #<Object> has no method 'TestJSCallback'", source: http://localhost:85/content/js/login.js (320)
+[1211/161848:INFO:CONSOLE(320)] "Uncaught TypeError: Object #<Object> has no method 'TestJSCallback'", source: http://localhost:85/content/js/login.js (320)
+[1211/161850:INFO:CONSOLE(320)] "Uncaught TypeError: Object #<Object> has no method 'TestJSCallback'", source: http://localhost:85/content/js/login.js (320)
+[1211/161850:INFO:CONSOLE(117)] "Course introduction, Software Setup and Tutorial, and Pre-Test : Introduction to the Malaria Microscopy Course ", source: http://localhost:85/content/js/main-2.js (117)
+[1211/161850:INFO:CONSOLE(122)] "1-of-21", source: http://localhost:85/content/js/main-2.js (122)
+[1211/161850:INFO:CONSOLE(204)] "user has logged in", source: http://localhost:85/content/home.html?user=guest_user (204)
+[1211/161851:INFO:CONSOLE(320)] "Uncaught TypeError: Object #<Object> has no method 'TestJSCallback'", source: http://localhost:85/content/js/login.js (320)
+[1211/161902:ERROR_REPORT:browser_main.cc(126)] Check failed: browser_contexts_.empty(). 
+[1211/161955:ERROR:backend_impl.cc(2014)] Corrupt Index file
+[1211/161955:ERROR:cache_util_win.cc(20)] Unable to move the cache: 5
+[1211/161955:ERROR:cache_util.cc(104)] Unable to move cache folder C:\MMELC_pilot\python\CEFStorage to C:\MMELC_pilot\python\old_CEFStorage_000
+[1211/161955:ERROR:cache_creator.cc(115)] Unable to create cache
+[1211/161955:INFO:CONSOLE(320)] "Uncaught TypeError: Object #<Object> has no method 'TestJSCallback'", source: http://localhost:85/content/js/login.js (320)
+[1211/161955:INFO:CONSOLE(320)] "Uncaught TypeError: Object #<Object> has no method 'TestJSCallback'", source: http://localhost:85/content/js/login.js (320)
+[1211/161957:INFO:CONSOLE(320)] "Uncaught TypeError: Object #<Object> has no method 'TestJSCallback'", source: http://localhost:85/content/js/login.js (320)
+[1211/161957:INFO:CONSOLE(117)] "Course introduction, Software Setup and Tutorial, and Pre-Test : Introduction to the Malaria Microscopy Course ", source: http://localhost:85/content/js/main-2.js (117)
+[1211/161957:INFO:CONSOLE(122)] "1-of-21", source: http://localhost:85/content/js/main-2.js (122)
+[1211/161957:INFO:CONSOLE(204)] "user has logged in", source: http://localhost:85/content/home.html?user=guest_user (204)
+[1211/161958:INFO:CONSOLE(320)] "Uncaught TypeError: Object #<Object> has no method 'TestJSCallback'", source: http://localhost:85/content/js/login.js (320)
+[1211/162002:ERROR_REPORT:browser_main.cc(126)] Check failed: browser_contexts_.empty(). 
+[1211/162022:ERROR:backend_impl.cc(2014)] Corrupt Index file
+[1211/162022:ERROR:cache_util_win.cc(20)] Unable to move the cache: 5
+[1211/162022:ERROR:cache_util.cc(104)] Unable to move cache folder C:\MMELC_pilot\python\CEFStorage to C:\MMELC_pilot\python\old_CEFStorage_000
+[1211/162022:ERROR:cache_creator.cc(115)] Unable to create cache
+[1211/162023:INFO:CONSOLE(320)] "Uncaught TypeError: Object #<Object> has no method 'TestJSCallback'", source: http://localhost:85/content/js/login.js (320)
+[1211/162023:INFO:CONSOLE(320)] "Uncaught TypeError: Object #<Object> has no method 'TestJSCallback'", source: http://localhost:85/content/js/login.js (320)
+[1211/162029:ERROR_REPORT:browser_main.cc(126)] Check failed: browser_contexts_.empty(). 
+[1211/162112:ERROR:backend_impl.cc(2014)] Corrupt Index file
+[1211/162112:ERROR:cache_util_win.cc(20)] Unable to move the cache: 5
+[1211/162112:ERROR:cache_util.cc(104)] Unable to move cache folder C:\MMELC_pilot\python\CEFStorage to C:\MMELC_pilot\python\old_CEFStorage_000
+[1211/162112:ERROR:cache_creator.cc(115)] Unable to create cache
+[1211/162112:INFO:CONSOLE(320)] "Uncaught TypeError: Object #<Object> has no method 'TestJSCallback'", source: http://localhost:85/content/js/login.js (320)
+[1211/162112:INFO:CONSOLE(320)] "Uncaught TypeError: Object #<Object> has no method 'TestJSCallback'", source: http://localhost:85/content/js/login.js (320)
+[1211/162114:INFO:CONSOLE(320)] "Uncaught TypeError: Object #<Object> has no method 'TestJSCallback'", source: http://localhost:85/content/js/login.js (320)
+[1211/162114:INFO:CONSOLE(117)] "Course introduction, Software Setup and Tutorial, and Pre-Test : Introduction to the Malaria Microscopy Course ", source: http://localhost:85/content/js/main-2.js (117)
+[1211/162114:INFO:CONSOLE(122)] "1-of-21", source: http://localhost:85/content/js/main-2.js (122)
+[1211/162114:INFO:CONSOLE(204)] "user has logged in", source: http://localhost:85/content/home.html?user=guest_user (204)
+[1211/162115:INFO:CONSOLE(320)] "Uncaught TypeError: Object #<Object> has no method 'TestJSCallback'", source: http://localhost:85/content/js/login.js (320)
+[1211/162126:ERROR_REPORT:browser_main.cc(126)] Check failed: browser_contexts_.empty(). 
+[1211/162155:ERROR:backend_impl.cc(2014)] Corrupt Index file
+[1211/162155:ERROR:cache_util_win.cc(20)] Unable to move the cache: 5
+[1211/162155:ERROR:cache_util.cc(104)] Unable to move cache folder C:\MMELC_pilot\python\CEFStorage to C:\MMELC_pilot\python\old_CEFStorage_000
+[1211/162155:ERROR:cache_creator.cc(115)] Unable to create cache
+[1211/162155:INFO:CONSOLE(320)] "Uncaught TypeError: Object #<Object> has no method 'TestJSCallback'", source: http://localhost:85/content/js/login.js (320)
+[1211/162155:INFO:CONSOLE(320)] "Uncaught TypeError: Object #<Object> has no method 'TestJSCallback'", source: http://localhost:85/content/js/login.js (320)
+[1211/162157:INFO:CONSOLE(320)] "Uncaught TypeError: Object #<Object> has no method 'TestJSCallback'", source: http://localhost:85/content/js/login.js (320)
+[1211/162157:INFO:CONSOLE(117)] "Course introduction, Software Setup and Tutorial, and Pre-Test : Introduction to the Malaria Microscopy Course ", source: http://localhost:85/content/js/main-2.js (117)
+[1211/162157:INFO:CONSOLE(122)] "1-of-21", source: http://localhost:85/content/js/main-2.js (122)
+[1211/162157:INFO:CONSOLE(204)] "user has logged in", source: http://localhost:85/content/home.html?user=guest_user (204)
+[1211/162158:INFO:CONSOLE(320)] "Uncaught TypeError: Object #<Object> has no method 'TestJSCallback'", source: http://localhost:85/content/js/login.js (320)
+[1211/162203:ERROR_REPORT:browser_main.cc(126)] Check failed: browser_contexts_.empty(). 
+[1211/162219:ERROR:backend_impl.cc(2014)] Corrupt Index file
+[1211/162219:ERROR:cache_util_win.cc(20)] Unable to move the cache: 5
+[1211/162219:ERROR:cache_util.cc(104)] Unable to move cache folder C:\MMELC_pilot\python\CEFStorage to C:\MMELC_pilot\python\old_CEFStorage_000
+[1211/162219:ERROR:cache_creator.cc(115)] Unable to create cache
+[1211/162219:INFO:CONSOLE(320)] "Uncaught TypeError: Object #<Object> has no method 'TestJSCallback'", source: http://localhost:85/content/js/login.js (320)
+[1211/162219:INFO:CONSOLE(320)] "Uncaught TypeError: Object #<Object> has no method 'TestJSCallback'", source: http://localhost:85/content/js/login.js (320)
+[1211/162221:INFO:CONSOLE(320)] "Uncaught TypeError: Object #<Object> has no method 'TestJSCallback'", source: http://localhost:85/content/js/login.js (320)
+[1211/162221:INFO:CONSOLE(117)] "Course introduction, Software Setup and Tutorial, and Pre-Test : Introduction to the Malaria Microscopy Course ", source: http://localhost:85/content/js/main-2.js (117)
+[1211/162221:INFO:CONSOLE(122)] "1-of-21", source: http://localhost:85/content/js/main-2.js (122)
+[1211/162221:INFO:CONSOLE(204)] "user has logged in", source: http://localhost:85/content/home.html?user=guest_user (204)
+[1211/162223:INFO:CONSOLE(320)] "Uncaught TypeError: Object #<Object> has no method 'TestJSCallback'", source: http://localhost:85/content/js/login.js (320)
+[1211/162255:ERROR_REPORT:browser_main.cc(126)] Check failed: browser_contexts_.empty(). 
+[1211/162322:ERROR:backend_impl.cc(2014)] Corrupt Index file
+[1211/162322:ERROR:cache_util_win.cc(20)] Unable to move the cache: 5
+[1211/162322:ERROR:cache_util.cc(104)] Unable to move cache folder C:\MMELC_pilot\python\CEFStorage to C:\MMELC_pilot\python\old_CEFStorage_000
+[1211/162322:ERROR:cache_creator.cc(115)] Unable to create cache
+[1211/162323:INFO:CONSOLE(320)] "Uncaught TypeError: Object #<Object> has no method 'TestJSCallback'", source: http://localhost:85/content/js/login.js (320)
+[1211/162323:INFO:CONSOLE(320)] "Uncaught TypeError: Object #<Object> has no method 'TestJSCallback'", source: http://localhost:85/content/js/login.js (320)
+[1211/162324:INFO:CONSOLE(320)] "Uncaught TypeError: Object #<Object> has no method 'TestJSCallback'", source: http://localhost:85/content/js/login.js (320)
+[1211/162324:INFO:CONSOLE(117)] "Course introduction, Software Setup and Tutorial, and Pre-Test : Introduction to the Malaria Microscopy Course ", source: http://localhost:85/content/js/main-2.js (117)
+[1211/162324:INFO:CONSOLE(122)] "1-of-21", source: http://localhost:85/content/js/main-2.js (122)
+[1211/162324:INFO:CONSOLE(204)] "user has logged in", source: http://localhost:85/content/home.html?user=guest_user (204)
+[1211/162326:INFO:CONSOLE(320)] "Uncaught TypeError: Object #<Object> has no method 'TestJSCallback'", source: http://localhost:85/content/js/login.js (320)

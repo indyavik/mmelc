@@ -33,7 +33,7 @@ from datetime import datetime
 import requests 
 import socket
 import glob
-
+import urllib2
 
 import settingsPanel
 import xml_util
@@ -623,6 +623,24 @@ class JavascriptExternal:
 
     def get_updates(self, jsCallBack):
         response = 'No updates available.'
+        now = datetime.now().strftime('%Y-%m-%d-%H-%M-%S')
+        loc = os.path.dirname(os.path.abspath(__file__))
+        downloaded_zip_name_path = loc + '/updates-' + str(now) + '.zip' 
+        url = 'http://ec2-54-196-239-128.compute-1.amazonaws.com/api/v1.0/getUpdates'
+        try:
+            req = urllib2.Request(url)
+            res = urllib2.urlopen(req, None, 15)
+            if (res.getcode() == '204'):
+                response = 'No updates available.'
+            else:
+                with open(downloaded_zip_name_path, 'wb') as f:
+                    f.write(res.read())
+                response = 'Updates downloaded to ' + downloaded_zip_name_path
+        except urllib2.HTTPError,e:
+            response = str(e.code()) + '::' + str(e)
+        except Exception,e:
+            response = str(e)
+
         jsCallBack.Call(response)
 
    
