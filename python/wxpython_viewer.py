@@ -35,6 +35,7 @@ import socket
 import glob
 import urllib2
 import ConfigParser
+import cgi
 
 import settingsPanel
 import xml_util
@@ -643,16 +644,24 @@ class JavascriptExternal:
         response = 'No updates Available.'
         now = datetime.now().strftime('%Y-%m-%d-%H-%M-%S')
         loc = os.path.dirname(os.path.abspath(__file__))
-        downloaded_zip_name_path = loc + '/updates-' + str(now) + '.zip' 
+        #downloaded_zip_name_path = loc + '/updates-' + str(now) + '.zip' 
         url = get_endpoint()+'/api/v1.0/getUpdates?version='+get_version()
         try:
             req = urllib2.Request(url)
             res = urllib2.urlopen(req, None, 15)
+            
             if (res.getcode() == 204):
                 response = 'No updates available.'
             else:
+                _, params = cgi.parse_header(res.headers.get('Content-Disposition', ''))
+                filename = params['filename']
+                downloaded_zip_name_path = os.path.join(loc,filename)
                 with open(downloaded_zip_name_path, 'wb') as f:
-                    f.write(res.read())
+                    while True:
+                        chunk = res.read(16*1024)
+                        if not chunk:
+                            break
+                        f.write(chunk)
                 response = 'Updates downloaded to ' + downloaded_zip_name_path
         #except (urllib2.HTTPError, urllib2.URLError) as e:
         #    response = str(e.code()) + '::' + str(e)
