@@ -540,3 +540,143 @@ NameError: global name '__self__' is not defined
 
 TypeError: get_endpoint() takes exactly 1 argument (0 given)
 
+
+[2017-12-18 18:13:20] Traceback (most recent call last):
+
+  File "v8function_handler_cef3.pyx", line 39, in cefpython_py27.V8FunctionHandler_Execute (cefpython.cpp:38833)
+
+  File "C:\MMELC_pilot\python\wxpython_viewer.py", line 658, in get_updates
+    response = str(e.code()) + '::' + str(e)
+
+TypeError: 'int' object is not callable
+
+
+[2017-12-18 18:13:31] Traceback (most recent call last):
+
+  File "v8function_handler_cef3.pyx", line 39, in cefpython_py27.V8FunctionHandler_Execute (cefpython.cpp:38833)
+
+  File "C:\MMELC_pilot\python\wxpython_viewer.py", line 658, in get_updates
+    response = str(e.code()) + '::' + str(e)
+
+TypeError: 'int' object is not callable
+
+
+[2017-12-18 18:14:18] Traceback (most recent call last):
+
+  File "v8function_handler_cef3.pyx", line 39, in cefpython_py27.V8FunctionHandler_Execute (cefpython.cpp:38833)
+
+  File "C:\MMELC_pilot\python\wxpython_viewer.py", line 658, in get_updates
+    response = str(e.code()) + '::' + str(e)
+
+TypeError: 'int' object is not callable
+
+
+[2017-12-18 18:24:32] Traceback (most recent call last):
+
+  File "v8function_handler_cef3.pyx", line 39, in cefpython_py27.V8FunctionHandler_Execute (cefpython.cpp:38833)
+
+  File "C:\MMELC_pilot\python\wxpython_viewer.py", line 630, in send_error_reports
+    with open(file_name+'.zip', 'b') as f:
+
+ValueError: mode string must begin with one of 'r', 'w', 'a' or 'U', not 'b'
+
+
+[2017-12-18 18:24:53] Traceback (most recent call last):
+
+  File "v8function_handler_cef3.pyx", line 39, in cefpython_py27.V8FunctionHandler_Execute (cefpython.cpp:38833)
+
+  File "C:\MMELC_pilot\python\wxpython_viewer.py", line 630, in send_error_reports
+    with open(file_name+'.zip', 'b') as f:
+
+ValueError: mode string must begin with one of 'r', 'w', 'a' or 'U', not 'b'
+
+
+[2017-12-18 19:11:43] Traceback (most recent call last):
+
+  File "v8function_handler_cef3.pyx", line 39, in cefpython_py27.V8FunctionHandler_Execute (cefpython.cpp:38833)
+
+  File "C:\MMELC_pilot\python\wxpython_viewer.py", line 658, in get_updates
+    response = str(e.code()) + '::' + str(e)
+
+TypeError: 'int' object is not callable
+
+
+[2017-12-18 19:12:01] Traceback (most recent call last):
+
+  File "v8function_handler_cef3.pyx", line 39, in cefpython_py27.V8FunctionHandler_Execute (cefpython.cpp:38833)
+
+  File "C:\MMELC_pilot\python\wxpython_viewer.py", line 658, in get_updates
+    response = str(e.code()) + '::' + str(e)
+
+TypeError: 'int' object is not callable
+
+
+[2017-12-18 19:12:48] Traceback (most recent call last):
+
+  File "v8function_handler_cef3.pyx", line 39, in cefpython_py27.V8FunctionHandler_Execute (cefpython.cpp:38833)
+
+  File "C:\MMELC_pilot\python\wxpython_viewer.py", line 658, in get_updates
+    response = str(e.code()) + '::' + str(e)
+
+TypeError: 'int' object is not callable
+
+
+[2017-12-18 19:14:47] Traceback (most recent call last):
+
+  File "v8function_handler_cef3.pyx", line 39, in cefpython_py27.V8FunctionHandler_Execute (cefpython.cpp:38833)
+
+  File "C:\MMELC_pilot\python\wxpython_viewer.py", line 658, in get_updates
+    response = str(e.code()) + '::' + str(e)
+
+TypeError: 'int' object is not callable
+
+
+[2017-12-18 19:14:54] Traceback (most recent call last):
+
+  File "v8function_handler_cef3.pyx", line 39, in cefpython_py27.V8FunctionHandler_Execute (cefpython.cpp:38833)
+
+  File "C:\MMELC_pilot\python\wxpython_viewer.py", line 658, in get_updates
+    response = str(e.code()) + '::' + str(e)
+
+TypeError: 'int' object is not callable
+
+
+[2017-12-18 19:16:39] Traceback (most recent call last):
+
+  File "v8function_handler_cef3.pyx", line 39, in cefpython_py27.V8FunctionHandler_Execute (cefpython.cpp:38833)
+
+  File "C:\MMELC_pilot\python\wxpython_viewer.py", line 658, in get_updates
+    response = str(e.code()) + '::' + str(e)
+
+TypeError: 'int' object is not callable
+
+
+[2017-12-18 19:18:36] Traceback (most recent call last):
+
+  File "v8function_handler_cef3.pyx", line 39, in cefpython_py27.V8FunctionHandler_Execute (cefpython.cpp:38833)
+
+  File "C:\MMELC_pilot\python\wxpython_viewer.py", line 658, in get_updates
+    response = str(e.code()) + '::' + str(e)
+
+TypeError: 'int' object is not callable
+
+
+[2017-12-18 19:21:47] Traceback (most recent call last):
+
+  File "v8function_handler_cef3.pyx", line 39, in cefpython_py27.V8FunctionHandler_Execute (cefpython.cpp:38833)
+
+  File "C:\MMELC_pilot\python\wxpython_viewer.py", line 661, in get_updates
+    response = str(e.code()) + '::' + str(e)
+
+TypeError: 'int' object is not callable
+
+
+[2017-12-18 19:21:55] Traceback (most recent call last):
+
+  File "v8function_handler_cef3.pyx", line 39, in cefpython_py27.V8FunctionHandler_Execute (cefpython.cpp:38833)
+
+  File "C:\MMELC_pilot\python\wxpython_viewer.py", line 661, in get_updates
+    response = str(e.code()) + '::' + str(e)
+
+TypeError: 'int' object is not callable
+

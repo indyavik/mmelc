@@ -5226,3 +5226,351 @@
 [1218/172511:INFO:CONSOLE(204)] "user has logged in", source: http://localhost:85/content/home.html?user=guest_user (204)
 [1218/172512:INFO:CONSOLE(320)] "Uncaught TypeError: Object #<Object> has no method 'TestJSCallback'", source: http://localhost:85/content/js/login.js (320)
 [1218/172525:ERROR_REPORT:browser_main.cc(126)] Check failed: browser_contexts_.empty(). 
+[1218/172704:ERROR:backend_impl.cc(2014)] Corrupt Index file
+[1218/172704:ERROR:cache_util_win.cc(20)] Unable to move the cache: 5
+[1218/172704:ERROR:cache_util.cc(104)] Unable to move cache folder C:\MMELC_pilot\python\CEFStorage to C:\MMELC_pilot\python\old_CEFStorage_000
+[1218/172704:ERROR:cache_creator.cc(115)] Unable to create cache
+[1218/172705:INFO:CONSOLE(320)] "Uncaught TypeError: Object #<Object> has no method 'TestJSCallback'", source: http://localhost:85/content/js/login.js (320)
+[1218/172705:INFO:CONSOLE(320)] "Uncaught TypeError: Object #<Object> has no method 'TestJSCallback'", source: http://localhost:85/content/js/login.js (320)
+[1218/172707:INFO:CONSOLE(320)] "Uncaught TypeError: Object #<Object> has no method 'TestJSCallback'", source: http://localhost:85/content/js/login.js (320)
+[1218/172707:INFO:CONSOLE(117)] "Pilot Evaluation Survey : Feedback Survey", source: http://localhost:85/content/js/main-2.js (117)
+[1218/172707:INFO:CONSOLE(122)] "2-of-16", source: http://localhost:85/content/js/main-2.js (122)
+[1218/172707:INFO:CONSOLE(204)] "user has logged in", source: http://localhost:85/content/home.html?user=guest_user (204)
+[1218/172708:INFO:CONSOLE(320)] "Uncaught TypeError: Object #<Object> has no method 'TestJSCallback'", source: http://localhost:85/content/js/login.js (320)
+[1218/172737:ERROR_REPORT:browser_main.cc(126)] Check failed: browser_contexts_.empty(). 
+[1218/175500:ERROR:backend_impl.cc(2014)] Corrupt Index file
+[1218/175500:ERROR:cache_util_win.cc(20)] Unable to move the cache: 5
+[1218/175500:ERROR:cache_util.cc(104)] Unable to move cache folder C:\MMELC_pilot\python\CEFStorage to C:\MMELC_pilot\python\old_CEFStorage_000
+[1218/175500:ERROR:cache_creator.cc(115)] Unable to create cache
+[1218/175501:INFO:CONSOLE(320)] "Uncaught TypeError: Object #<Object> has no method 'TestJSCallback'", source: http://localhost:85/content/js/login.js (320)
+[1218/175501:INFO:CONSOLE(320)] "Uncaught TypeError: Object #<Object> has no method 'TestJSCallback'", source: http://localhost:85/content/js/login.js (320)
+[1218/175502:INFO:CONSOLE(320)] "Uncaught TypeError: Object #<Object> has no method 'TestJSCallback'", source: http://localhost:85/content/js/login.js (320)
+[1218/175502:INFO:CONSOLE(117)] "Pilot Evaluation Survey : Feedback Survey", source: http://localhost:85/content/js/main-2.js (117)
+[1218/175502:INFO:CONSOLE(122)] "2-of-16", source: http://localhost:85/content/js/main-2.js (122)
+[1218/175502:INFO:CONSOLE(204)] "user has logged in", source: http://localhost:85/content/home.html?user=guest_user (204)
+[1218/175503:INFO:CONSOLE(320)] "Uncaught TypeError: Object #<Object> has no method 'TestJSCallback'", source: http://localhost:85/content/js/login.js (320)
+[1218/180619:ERROR_REPORT:browser_main.cc(126)] Check failed: browser_contexts_.empty(). 
+[1218/180637:ERROR:backend_impl.cc(2014)] Corrupt Index file
+[1218/180637:ERROR:cache_util_win.cc(20)] Unable to move the cache: 5
+[1218/180637:ERROR:cache_util.cc(104)] Unable to move cache folder C:\MMELC_pilot\python\CEFStorage to C:\MMELC_pilot\python\old_CEFStorage_000
+[1218/180637:ERROR:cache_creator.cc(115)] Unable to create cache
+[1218/180637:INFO:CONSOLE(320)] "Uncaught TypeError: Object #<Object> has no method 'TestJSCallback'", source: http://localhost:85/content/js/login.js (320)
+[1218/180637:INFO:CONSOLE(320)] "Uncaught TypeError: Object #<Object> has no method 'TestJSCallback'", source: http://localhost:85/content/js/login.js (320)
+[1218/180638:INFO:CONSOLE(320)] "Uncaught TypeError: Object #<Object> has no method 'TestJSCallback'", source: http://localhost:85/content/js/login.js (320)
+[1218/180638:INFO:CONSOLE(117)] "Pilot Evaluation Survey : Feedback Survey", source: http://localhost:85/content/js/main-2.js (117)
+[1218/180638:INFO:CONSOLE(122)] "2-of-16", source: http://localhost:85/content/js/main-2.js (122)
+[1218/180639:INFO:CONSOLE(204)] "user has logged in", source: http://localhost:85/content/home.html?user=guest_user (204)
+[1218/180640:INFO:CONSOLE(320)] "Uncaught TypeError: Object #<Object> has no method 'TestJSCallback'", source: http://localhost:85/content/js/login.js (320)
+[1218/180904:ERROR_REPORT:browser_main.cc(126)] Check failed: browser_contexts_.empty(). 
+[1218/180913:ERROR:backend_impl.cc(2014)] Corrupt Index file
+[1218/180913:ERROR:cache_util_win.cc(20)] Unable to move the cache: 5
+[1218/180913:ERROR:cache_util.cc(104)] Unable to move cache folder C:\MMELC_pilot\python\CEFStorage to C:\MMELC_pilot\python\old_CEFStorage_000
+[1218/180913:ERROR:cache_creator.cc(115)] Unable to create cache
+[1218/180914:INFO:CONSOLE(320)] "Uncaught TypeError: Object #<Object> has no method 'TestJSCallback'", source: http://localhost:85/content/js/login.js (320)
+[1218/180914:INFO:CONSOLE(320)] "Uncaught TypeError: Object #<Object> has no method 'TestJSCallback'", source: http://localhost:85/content/js/login.js (320)
+[1218/180918:INFO:CONSOLE(320)] "Uncaught TypeError: Object #<Object> has no method 'TestJSCallback'", source: http://localhost:85/content/js/login.js (320)
+[1218/180919:INFO:CONSOLE(117)] "Pilot Evaluation Survey : Feedback Survey", source: http://localhost:85/content/js/main-2.js (117)
+[1218/180919:INFO:CONSOLE(122)] "2-of-16", source: http://localhost:85/content/js/main-2.js (122)
+[1218/180919:INFO:CONSOLE(204)] "user has logged in", source: http://localhost:85/content/home.html?user=guest_user (204)
+[1218/180920:INFO:CONSOLE(320)] "Uncaught TypeError: Object #<Object> has no method 'TestJSCallback'", source: http://localhost:85/content/js/login.js (320)
+[1218/181020:ERROR_REPORT:browser_main.cc(126)] Check failed: browser_contexts_.empty(). 
+[1218/181047:ERROR:backend_impl.cc(2014)] Corrupt Index file
+[1218/181047:ERROR:cache_util_win.cc(20)] Unable to move the cache: 5
+[1218/181047:ERROR:cache_util.cc(104)] Unable to move cache folder C:\MMELC_pilot\python\CEFStorage to C:\MMELC_pilot\python\old_CEFStorage_000
+[1218/181047:ERROR:cache_creator.cc(115)] Unable to create cache
+[1218/181047:INFO:CONSOLE(320)] "Uncaught TypeError: Object #<Object> has no method 'TestJSCallback'", source: http://localhost:85/content/js/login.js (320)
+[1218/181047:INFO:CONSOLE(320)] "Uncaught TypeError: Object #<Object> has no method 'TestJSCallback'", source: http://localhost:85/content/js/login.js (320)
+[1218/181049:INFO:CONSOLE(320)] "Uncaught TypeError: Object #<Object> has no method 'TestJSCallback'", source: http://localhost:85/content/js/login.js (320)
+[1218/181049:INFO:CONSOLE(117)] "Pilot Evaluation Survey : Feedback Survey", source: http://localhost:85/content/js/main-2.js (117)
+[1218/181049:INFO:CONSOLE(122)] "2-of-16", source: http://localhost:85/content/js/main-2.js (122)
+[1218/181049:INFO:CONSOLE(204)] "user has logged in", source: http://localhost:85/content/home.html?user=guest_user (204)
+[1218/181050:INFO:CONSOLE(320)] "Uncaught TypeError: Object #<Object> has no method 'TestJSCallback'", source: http://localhost:85/content/js/login.js (320)
+[1218/181201:ERROR_REPORT:browser_main.cc(126)] Check failed: browser_contexts_.empty(). 
+[1218/181213:ERROR:backend_impl.cc(2014)] Corrupt Index file
+[1218/181213:ERROR:cache_util_win.cc(20)] Unable to move the cache: 5
+[1218/181213:ERROR:cache_util.cc(104)] Unable to move cache folder C:\MMELC_pilot\python\CEFStorage to C:\MMELC_pilot\python\old_CEFStorage_000
+[1218/181213:ERROR:cache_creator.cc(115)] Unable to create cache
+[1218/181214:INFO:CONSOLE(320)] "Uncaught TypeError: Object #<Object> has no method 'TestJSCallback'", source: http://localhost:85/content/js/login.js (320)
+[1218/181214:INFO:CONSOLE(320)] "Uncaught TypeError: Object #<Object> has no method 'TestJSCallback'", source: http://localhost:85/content/js/login.js (320)
+[1218/181215:INFO:CONSOLE(320)] "Uncaught TypeError: Object #<Object> has no method 'TestJSCallback'", source: http://localhost:85/content/js/login.js (320)
+[1218/181215:INFO:CONSOLE(117)] "Pilot Evaluation Survey : Feedback Survey", source: http://localhost:85/content/js/main-2.js (117)
+[1218/181215:INFO:CONSOLE(122)] "2-of-16", source: http://localhost:85/content/js/main-2.js (122)
+[1218/181215:INFO:CONSOLE(204)] "user has logged in", source: http://localhost:85/content/home.html?user=guest_user (204)
+[1218/181216:INFO:CONSOLE(320)] "Uncaught TypeError: Object #<Object> has no method 'TestJSCallback'", source: http://localhost:85/content/js/login.js (320)
+[1218/181320:ERROR_REPORT:browser_main.cc(126)] Check failed: browser_contexts_.empty(). 
+[1218/181323:ERROR:backend_impl.cc(2014)] Corrupt Index file
+[1218/181323:ERROR:cache_util_win.cc(20)] Unable to move the cache: 5
+[1218/181323:ERROR:cache_util.cc(104)] Unable to move cache folder C:\MMELC_pilot\python\CEFStorage to C:\MMELC_pilot\python\old_CEFStorage_000
+[1218/181323:ERROR:cache_creator.cc(115)] Unable to create cache
+[1218/181324:INFO:CONSOLE(320)] "Uncaught TypeError: Object #<Object> has no method 'TestJSCallback'", source: http://localhost:85/content/js/login.js (320)
+[1218/181324:INFO:CONSOLE(320)] "Uncaught TypeError: Object #<Object> has no method 'TestJSCallback'", source: http://localhost:85/content/js/login.js (320)
+[1218/181325:INFO:CONSOLE(320)] "Uncaught TypeError: Object #<Object> has no method 'TestJSCallback'", source: http://localhost:85/content/js/login.js (320)
+[1218/181325:INFO:CONSOLE(117)] "Pilot Evaluation Survey : Feedback Survey", source: http://localhost:85/content/js/main-2.js (117)
+[1218/181325:INFO:CONSOLE(122)] "2-of-16", source: http://localhost:85/content/js/main-2.js (122)
+[1218/181325:INFO:CONSOLE(204)] "user has logged in", source: http://localhost:85/content/home.html?user=guest_user (204)
+[1218/181326:INFO:CONSOLE(320)] "Uncaught TypeError: Object #<Object> has no method 'TestJSCallback'", source: http://localhost:85/content/js/login.js (320)
+[1218/181331:ERROR_REPORT:browser_main.cc(126)] Check failed: browser_contexts_.empty(). 
+[1218/181410:ERROR:backend_impl.cc(2014)] Corrupt Index file
+[1218/181410:ERROR:cache_util_win.cc(20)] Unable to move the cache: 5
+[1218/181410:ERROR:cache_util.cc(104)] Unable to move cache folder C:\MMELC_pilot\python\CEFStorage to C:\MMELC_pilot\python\old_CEFStorage_000
+[1218/181410:ERROR:cache_creator.cc(115)] Unable to create cache
+[1218/181411:INFO:CONSOLE(320)] "Uncaught TypeError: Object #<Object> has no method 'TestJSCallback'", source: http://localhost:85/content/js/login.js (320)
+[1218/181411:INFO:CONSOLE(320)] "Uncaught TypeError: Object #<Object> has no method 'TestJSCallback'", source: http://localhost:85/content/js/login.js (320)
+[1218/181412:INFO:CONSOLE(320)] "Uncaught TypeError: Object #<Object> has no method 'TestJSCallback'", source: http://localhost:85/content/js/login.js (320)
+[1218/181412:INFO:CONSOLE(117)] "Pilot Evaluation Survey : Feedback Survey", source: http://localhost:85/content/js/main-2.js (117)
+[1218/181412:INFO:CONSOLE(122)] "2-of-16", source: http://localhost:85/content/js/main-2.js (122)
+[1218/181412:INFO:CONSOLE(204)] "user has logged in", source: http://localhost:85/content/home.html?user=guest_user (204)
+[1218/181414:INFO:CONSOLE(320)] "Uncaught TypeError: Object #<Object> has no method 'TestJSCallback'", source: http://localhost:85/content/js/login.js (320)
+[1218/181418:ERROR_REPORT:browser_main.cc(126)] Check failed: browser_contexts_.empty(). 
+[1218/181551:ERROR:backend_impl.cc(2014)] Corrupt Index file
+[1218/181551:ERROR:cache_util_win.cc(20)] Unable to move the cache: 5
+[1218/181551:ERROR:cache_util.cc(104)] Unable to move cache folder C:\MMELC_pilot\python\CEFStorage to C:\MMELC_pilot\python\old_CEFStorage_000
+[1218/181551:ERROR:cache_creator.cc(115)] Unable to create cache
+[1218/181552:INFO:CONSOLE(320)] "Uncaught TypeError: Object #<Object> has no method 'TestJSCallback'", source: http://localhost:85/content/js/login.js (320)
+[1218/181552:INFO:CONSOLE(320)] "Uncaught TypeError: Object #<Object> has no method 'TestJSCallback'", source: http://localhost:85/content/js/login.js (320)
+[1218/181553:INFO:CONSOLE(320)] "Uncaught TypeError: Object #<Object> has no method 'TestJSCallback'", source: http://localhost:85/content/js/login.js (320)
+[1218/181553:INFO:CONSOLE(117)] "Pilot Evaluation Survey : Feedback Survey", source: http://localhost:85/content/js/main-2.js (117)
+[1218/181553:INFO:CONSOLE(122)] "2-of-16", source: http://localhost:85/content/js/main-2.js (122)
+[1218/181553:INFO:CONSOLE(204)] "user has logged in", source: http://localhost:85/content/home.html?user=guest_user (204)
+[1218/181554:INFO:CONSOLE(320)] "Uncaught TypeError: Object #<Object> has no method 'TestJSCallback'", source: http://localhost:85/content/js/login.js (320)
+[1218/181723:ERROR_REPORT:browser_main.cc(126)] Check failed: browser_contexts_.empty(). 
+[1218/181744:ERROR:backend_impl.cc(2014)] Corrupt Index file
+[1218/181744:ERROR:cache_util_win.cc(20)] Unable to move the cache: 5
+[1218/181744:ERROR:cache_util.cc(104)] Unable to move cache folder C:\MMELC_pilot\python\CEFStorage to C:\MMELC_pilot\python\old_CEFStorage_000
+[1218/181744:ERROR:cache_creator.cc(115)] Unable to create cache
+[1218/181744:INFO:CONSOLE(320)] "Uncaught TypeError: Object #<Object> has no method 'TestJSCallback'", source: http://localhost:85/content/js/login.js (320)
+[1218/181744:INFO:CONSOLE(320)] "Uncaught TypeError: Object #<Object> has no method 'TestJSCallback'", source: http://localhost:85/content/js/login.js (320)
+[1218/181745:INFO:CONSOLE(320)] "Uncaught TypeError: Object #<Object> has no method 'TestJSCallback'", source: http://localhost:85/content/js/login.js (320)
+[1218/181746:INFO:CONSOLE(117)] "Pilot Evaluation Survey : Feedback Survey", source: http://localhost:85/content/js/main-2.js (117)
+[1218/181746:INFO:CONSOLE(122)] "2-of-16", source: http://localhost:85/content/js/main-2.js (122)
+[1218/181746:INFO:CONSOLE(204)] "user has logged in", source: http://localhost:85/content/home.html?user=guest_user (204)
+[1218/181747:INFO:CONSOLE(320)] "Uncaught TypeError: Object #<Object> has no method 'TestJSCallback'", source: http://localhost:85/content/js/login.js (320)
+[1218/182418:ERROR_REPORT:browser_main.cc(126)] Check failed: browser_contexts_.empty(). 
+[1218/182428:ERROR:backend_impl.cc(2014)] Corrupt Index file
+[1218/182428:ERROR:cache_util_win.cc(20)] Unable to move the cache: 5
+[1218/182428:ERROR:cache_util.cc(104)] Unable to move cache folder C:\MMELC_pilot\python\CEFStorage to C:\MMELC_pilot\python\old_CEFStorage_000
+[1218/182428:ERROR:cache_creator.cc(115)] Unable to create cache
+[1218/182428:INFO:CONSOLE(320)] "Uncaught TypeError: Object #<Object> has no method 'TestJSCallback'", source: http://localhost:85/content/js/login.js (320)
+[1218/182428:INFO:CONSOLE(320)] "Uncaught TypeError: Object #<Object> has no method 'TestJSCallback'", source: http://localhost:85/content/js/login.js (320)
+[1218/182430:INFO:CONSOLE(320)] "Uncaught TypeError: Object #<Object> has no method 'TestJSCallback'", source: http://localhost:85/content/js/login.js (320)
+[1218/182430:INFO:CONSOLE(117)] "Pilot Evaluation Survey : Feedback Survey", source: http://localhost:85/content/js/main-2.js (117)
+[1218/182430:INFO:CONSOLE(122)] "2-of-16", source: http://localhost:85/content/js/main-2.js (122)
+[1218/182430:INFO:CONSOLE(204)] "user has logged in", source: http://localhost:85/content/home.html?user=guest_user (204)
+[1218/182431:INFO:CONSOLE(320)] "Uncaught TypeError: Object #<Object> has no method 'TestJSCallback'", source: http://localhost:85/content/js/login.js (320)
+[1218/182432:ERROR_REPORT:browser_main.cc(126)] Check failed: browser_contexts_.empty(). 
+[1218/182443:ERROR:backend_impl.cc(2014)] Corrupt Index file
+[1218/182443:ERROR:cache_util_win.cc(20)] Unable to move the cache: 5
+[1218/182443:ERROR:cache_util.cc(104)] Unable to move cache folder C:\MMELC_pilot\python\CEFStorage to C:\MMELC_pilot\python\old_CEFStorage_000
+[1218/182443:ERROR:cache_creator.cc(115)] Unable to create cache
+[1218/182443:INFO:CONSOLE(320)] "Uncaught TypeError: Object #<Object> has no method 'TestJSCallback'", source: http://localhost:85/content/js/login.js (320)
+[1218/182443:INFO:CONSOLE(320)] "Uncaught TypeError: Object #<Object> has no method 'TestJSCallback'", source: http://localhost:85/content/js/login.js (320)
+[1218/182446:INFO:CONSOLE(320)] "Uncaught TypeError: Object #<Object> has no method 'TestJSCallback'", source: http://localhost:85/content/js/login.js (320)
+[1218/182446:INFO:CONSOLE(117)] "Pilot Evaluation Survey : Feedback Survey", source: http://localhost:85/content/js/main-2.js (117)
+[1218/182446:INFO:CONSOLE(122)] "2-of-16", source: http://localhost:85/content/js/main-2.js (122)
+[1218/182446:INFO:CONSOLE(204)] "user has logged in", source: http://localhost:85/content/home.html?user=guest_user (204)
+[1218/182447:INFO:CONSOLE(320)] "Uncaught TypeError: Object #<Object> has no method 'TestJSCallback'", source: http://localhost:85/content/js/login.js (320)
+[1218/182453:ERROR_REPORT:browser_main.cc(126)] Check failed: browser_contexts_.empty(). 
+[1218/182508:ERROR:backend_impl.cc(2014)] Corrupt Index file
+[1218/182508:ERROR:cache_util_win.cc(20)] Unable to move the cache: 5
+[1218/182508:ERROR:cache_util.cc(104)] Unable to move cache folder C:\MMELC_pilot\python\CEFStorage to C:\MMELC_pilot\python\old_CEFStorage_000
+[1218/182508:ERROR:cache_creator.cc(115)] Unable to create cache
+[1218/182508:INFO:CONSOLE(320)] "Uncaught TypeError: Object #<Object> has no method 'TestJSCallback'", source: http://localhost:85/content/js/login.js (320)
+[1218/182508:INFO:CONSOLE(320)] "Uncaught TypeError: Object #<Object> has no method 'TestJSCallback'", source: http://localhost:85/content/js/login.js (320)
+[1218/182510:INFO:CONSOLE(320)] "Uncaught TypeError: Object #<Object> has no method 'TestJSCallback'", source: http://localhost:85/content/js/login.js (320)
+[1218/182510:INFO:CONSOLE(117)] "Pilot Evaluation Survey : Feedback Survey", source: http://localhost:85/content/js/main-2.js (117)
+[1218/182510:INFO:CONSOLE(122)] "2-of-16", source: http://localhost:85/content/js/main-2.js (122)
+[1218/182510:INFO:CONSOLE(204)] "user has logged in", source: http://localhost:85/content/home.html?user=guest_user (204)
+[1218/182511:INFO:CONSOLE(320)] "Uncaught TypeError: Object #<Object> has no method 'TestJSCallback'", source: http://localhost:85/content/js/login.js (320)
+[1218/182550:ERROR_REPORT:browser_main.cc(126)] Check failed: browser_contexts_.empty(). 
+[1218/182600:ERROR:backend_impl.cc(2014)] Corrupt Index file
+[1218/182600:ERROR:cache_util_win.cc(20)] Unable to move the cache: 5
+[1218/182600:ERROR:cache_util.cc(104)] Unable to move cache folder C:\MMELC_pilot\python\CEFStorage to C:\MMELC_pilot\python\old_CEFStorage_000
+[1218/182600:ERROR:cache_creator.cc(115)] Unable to create cache
+[1218/182601:INFO:CONSOLE(320)] "Uncaught TypeError: Object #<Object> has no method 'TestJSCallback'", source: http://localhost:85/content/js/login.js (320)
+[1218/182601:INFO:CONSOLE(320)] "Uncaught TypeError: Object #<Object> has no method 'TestJSCallback'", source: http://localhost:85/content/js/login.js (320)
+[1218/182602:INFO:CONSOLE(320)] "Uncaught TypeError: Object #<Object> has no method 'TestJSCallback'", source: http://localhost:85/content/js/login.js (320)
+[1218/182602:INFO:CONSOLE(117)] "Pilot Evaluation Survey : Feedback Survey", source: http://localhost:85/content/js/main-2.js (117)
+[1218/182602:INFO:CONSOLE(122)] "2-of-16", source: http://localhost:85/content/js/main-2.js (122)
+[1218/182602:INFO:CONSOLE(204)] "user has logged in", source: http://localhost:85/content/home.html?user=guest_user (204)
+[1218/182603:INFO:CONSOLE(320)] "Uncaught TypeError: Object #<Object> has no method 'TestJSCallback'", source: http://localhost:85/content/js/login.js (320)
+[1218/182611:ERROR_REPORT:browser_main.cc(126)] Check failed: browser_contexts_.empty(). 
+[1218/182637:ERROR:backend_impl.cc(2014)] Corrupt Index file
+[1218/182637:ERROR:cache_util_win.cc(20)] Unable to move the cache: 5
+[1218/182637:ERROR:cache_util.cc(104)] Unable to move cache folder C:\MMELC_pilot\python\CEFStorage to C:\MMELC_pilot\python\old_CEFStorage_000
+[1218/182637:ERROR:cache_creator.cc(115)] Unable to create cache
+[1218/182637:INFO:CONSOLE(320)] "Uncaught TypeError: Object #<Object> has no method 'TestJSCallback'", source: http://localhost:85/content/js/login.js (320)
+[1218/182637:INFO:CONSOLE(320)] "Uncaught TypeError: Object #<Object> has no method 'TestJSCallback'", source: http://localhost:85/content/js/login.js (320)
+[1218/182638:INFO:CONSOLE(320)] "Uncaught TypeError: Object #<Object> has no method 'TestJSCallback'", source: http://localhost:85/content/js/login.js (320)
+[1218/182639:INFO:CONSOLE(117)] "Pilot Evaluation Survey : Feedback Survey", source: http://localhost:85/content/js/main-2.js (117)
+[1218/182639:INFO:CONSOLE(122)] "2-of-16", source: http://localhost:85/content/js/main-2.js (122)
+[1218/182639:INFO:CONSOLE(204)] "user has logged in", source: http://localhost:85/content/home.html?user=guest_user (204)
+[1218/182639:INFO:CONSOLE(320)] "Uncaught TypeError: Object #<Object> has no method 'TestJSCallback'", source: http://localhost:85/content/js/login.js (320)
+[1218/191143:ERROR_REPORT:browser_main.cc(126)] Check failed: browser_contexts_.empty(). 
+[1218/191153:ERROR:backend_impl.cc(2014)] Corrupt Index file
+[1218/191153:ERROR:cache_util_win.cc(20)] Unable to move the cache: 5
+[1218/191153:ERROR:cache_util.cc(104)] Unable to move cache folder C:\MMELC_pilot\python\CEFStorage to C:\MMELC_pilot\python\old_CEFStorage_000
+[1218/191153:ERROR:cache_creator.cc(115)] Unable to create cache
+[1218/191154:INFO:CONSOLE(320)] "Uncaught TypeError: Object #<Object> has no method 'TestJSCallback'", source: http://localhost:85/content/js/login.js (320)
+[1218/191154:INFO:CONSOLE(320)] "Uncaught TypeError: Object #<Object> has no method 'TestJSCallback'", source: http://localhost:85/content/js/login.js (320)
+[1218/191155:INFO:CONSOLE(320)] "Uncaught TypeError: Object #<Object> has no method 'TestJSCallback'", source: http://localhost:85/content/js/login.js (320)
+[1218/191156:INFO:CONSOLE(117)] "Pilot Evaluation Survey : Feedback Survey", source: http://localhost:85/content/js/main-2.js (117)
+[1218/191156:INFO:CONSOLE(122)] "2-of-16", source: http://localhost:85/content/js/main-2.js (122)
+[1218/191156:INFO:CONSOLE(204)] "user has logged in", source: http://localhost:85/content/home.html?user=guest_user (204)
+[1218/191157:INFO:CONSOLE(320)] "Uncaught TypeError: Object #<Object> has no method 'TestJSCallback'", source: http://localhost:85/content/js/login.js (320)
+[1218/191201:ERROR_REPORT:browser_main.cc(126)] Check failed: browser_contexts_.empty(). 
+[1218/191237:ERROR:backend_impl.cc(2014)] Corrupt Index file
+[1218/191237:ERROR:cache_util_win.cc(20)] Unable to move the cache: 5
+[1218/191237:ERROR:cache_util.cc(104)] Unable to move cache folder C:\MMELC_pilot\python\CEFStorage to C:\MMELC_pilot\python\old_CEFStorage_000
+[1218/191237:ERROR:cache_creator.cc(115)] Unable to create cache
+[1218/191237:INFO:CONSOLE(320)] "Uncaught TypeError: Object #<Object> has no method 'TestJSCallback'", source: http://localhost:85/content/js/login.js (320)
+[1218/191237:INFO:CONSOLE(320)] "Uncaught TypeError: Object #<Object> has no method 'TestJSCallback'", source: http://localhost:85/content/js/login.js (320)
+[1218/191238:INFO:CONSOLE(320)] "Uncaught TypeError: Object #<Object> has no method 'TestJSCallback'", source: http://localhost:85/content/js/login.js (320)
+[1218/191238:INFO:CONSOLE(117)] "Pilot Evaluation Survey : Feedback Survey", source: http://localhost:85/content/js/main-2.js (117)
+[1218/191238:INFO:CONSOLE(122)] "2-of-16", source: http://localhost:85/content/js/main-2.js (122)
+[1218/191238:INFO:CONSOLE(204)] "user has logged in", source: http://localhost:85/content/home.html?user=guest_user (204)
+[1218/191240:INFO:CONSOLE(320)] "Uncaught TypeError: Object #<Object> has no method 'TestJSCallback'", source: http://localhost:85/content/js/login.js (320)
+[1218/191248:ERROR_REPORT:browser_main.cc(126)] Check failed: browser_contexts_.empty(). 
+[1218/191323:ERROR:backend_impl.cc(2014)] Corrupt Index file
+[1218/191323:ERROR:cache_util_win.cc(20)] Unable to move the cache: 5
+[1218/191323:ERROR:cache_util.cc(104)] Unable to move cache folder C:\MMELC_pilot\python\CEFStorage to C:\MMELC_pilot\python\old_CEFStorage_000
+[1218/191323:ERROR:cache_creator.cc(115)] Unable to create cache
+[1218/191324:INFO:CONSOLE(320)] "Uncaught TypeError: Object #<Object> has no method 'TestJSCallback'", source: http://localhost:85/content/js/login.js (320)
+[1218/191324:INFO:CONSOLE(320)] "Uncaught TypeError: Object #<Object> has no method 'TestJSCallback'", source: http://localhost:85/content/js/login.js (320)
+[1218/191325:INFO:CONSOLE(320)] "Uncaught TypeError: Object #<Object> has no method 'TestJSCallback'", source: http://localhost:85/content/js/login.js (320)
+[1218/191325:INFO:CONSOLE(117)] "Pilot Evaluation Survey : Feedback Survey", source: http://localhost:85/content/js/main-2.js (117)
+[1218/191325:INFO:CONSOLE(122)] "2-of-16", source: http://localhost:85/content/js/main-2.js (122)
+[1218/191325:INFO:CONSOLE(204)] "user has logged in", source: http://localhost:85/content/home.html?user=guest_user (204)
+[1218/191326:INFO:CONSOLE(320)] "Uncaught TypeError: Object #<Object> has no method 'TestJSCallback'", source: http://localhost:85/content/js/login.js (320)
+[1218/191333:ERROR_REPORT:browser_main.cc(126)] Check failed: browser_contexts_.empty(). 
+[1218/191443:ERROR:backend_impl.cc(2014)] Corrupt Index file
+[1218/191443:ERROR:cache_util_win.cc(20)] Unable to move the cache: 5
+[1218/191443:ERROR:cache_util.cc(104)] Unable to move cache folder C:\MMELC_pilot\python\CEFStorage to C:\MMELC_pilot\python\old_CEFStorage_000
+[1218/191443:ERROR:cache_creator.cc(115)] Unable to create cache
+[1218/191444:INFO:CONSOLE(320)] "Uncaught TypeError: Object #<Object> has no method 'TestJSCallback'", source: http://localhost:85/content/js/login.js (320)
+[1218/191444:INFO:CONSOLE(320)] "Uncaught TypeError: Object #<Object> has no method 'TestJSCallback'", source: http://localhost:85/content/js/login.js (320)
+[1218/191445:INFO:CONSOLE(320)] "Uncaught TypeError: Object #<Object> has no method 'TestJSCallback'", source: http://localhost:85/content/js/login.js (320)
+[1218/191445:INFO:CONSOLE(117)] "Pilot Evaluation Survey : Feedback Survey", source: http://localhost:85/content/js/main-2.js (117)
+[1218/191445:INFO:CONSOLE(122)] "2-of-16", source: http://localhost:85/content/js/main-2.js (122)
+[1218/191445:INFO:CONSOLE(204)] "user has logged in", source: http://localhost:85/content/home.html?user=guest_user (204)
+[1218/191446:INFO:CONSOLE(320)] "Uncaught TypeError: Object #<Object> has no method 'TestJSCallback'", source: http://localhost:85/content/js/login.js (320)
+[1218/191447:ERROR_REPORT:browser_main.cc(126)] Check failed: browser_contexts_.empty(). 
+[1218/191450:ERROR:backend_impl.cc(2014)] Corrupt Index file
+[1218/191450:ERROR:cache_util_win.cc(20)] Unable to move the cache: 5
+[1218/191450:ERROR:cache_util.cc(104)] Unable to move cache folder C:\MMELC_pilot\python\CEFStorage to C:\MMELC_pilot\python\old_CEFStorage_000
+[1218/191450:ERROR:cache_creator.cc(115)] Unable to create cache
+[1218/191451:INFO:CONSOLE(320)] "Uncaught TypeError: Object #<Object> has no method 'TestJSCallback'", source: http://localhost:85/content/js/login.js (320)
+[1218/191451:INFO:CONSOLE(320)] "Uncaught TypeError: Object #<Object> has no method 'TestJSCallback'", source: http://localhost:85/content/js/login.js (320)
+[1218/191452:INFO:CONSOLE(320)] "Uncaught TypeError: Object #<Object> has no method 'TestJSCallback'", source: http://localhost:85/content/js/login.js (320)
+[1218/191452:INFO:CONSOLE(117)] "Pilot Evaluation Survey : Feedback Survey", source: http://localhost:85/content/js/main-2.js (117)
+[1218/191452:INFO:CONSOLE(122)] "2-of-16", source: http://localhost:85/content/js/main-2.js (122)
+[1218/191452:INFO:CONSOLE(204)] "user has logged in", source: http://localhost:85/content/home.html?user=guest_user (204)
+[1218/191453:INFO:CONSOLE(320)] "Uncaught TypeError: Object #<Object> has no method 'TestJSCallback'", source: http://localhost:85/content/js/login.js (320)
+[1218/191454:ERROR_REPORT:browser_main.cc(126)] Check failed: browser_contexts_.empty(). 
+[1218/191635:ERROR:backend_impl.cc(2014)] Corrupt Index file
+[1218/191635:ERROR:cache_util_win.cc(20)] Unable to move the cache: 5
+[1218/191635:ERROR:cache_util.cc(104)] Unable to move cache folder C:\MMELC_pilot\python\CEFStorage to C:\MMELC_pilot\python\old_CEFStorage_000
+[1218/191635:ERROR:cache_creator.cc(115)] Unable to create cache
+[1218/191635:INFO:CONSOLE(320)] "Uncaught TypeError: Object #<Object> has no method 'TestJSCallback'", source: http://localhost:85/content/js/login.js (320)
+[1218/191635:INFO:CONSOLE(320)] "Uncaught TypeError: Object #<Object> has no method 'TestJSCallback'", source: http://localhost:85/content/js/login.js (320)
+[1218/191637:INFO:CONSOLE(320)] "Uncaught TypeError: Object #<Object> has no method 'TestJSCallback'", source: http://localhost:85/content/js/login.js (320)
+[1218/191637:INFO:CONSOLE(117)] "Pilot Evaluation Survey : Feedback Survey", source: http://localhost:85/content/js/main-2.js (117)
+[1218/191637:INFO:CONSOLE(122)] "2-of-16", source: http://localhost:85/content/js/main-2.js (122)
+[1218/191637:INFO:CONSOLE(204)] "user has logged in", source: http://localhost:85/content/home.html?user=guest_user (204)
+[1218/191638:INFO:CONSOLE(320)] "Uncaught TypeError: Object #<Object> has no method 'TestJSCallback'", source: http://localhost:85/content/js/login.js (320)
+[1218/191639:ERROR_REPORT:browser_main.cc(126)] Check failed: browser_contexts_.empty(). 
+[1218/191832:ERROR:backend_impl.cc(2014)] Corrupt Index file
+[1218/191832:ERROR:cache_util_win.cc(20)] Unable to move the cache: 5
+[1218/191832:ERROR:cache_util.cc(104)] Unable to move cache folder C:\MMELC_pilot\python\CEFStorage to C:\MMELC_pilot\python\old_CEFStorage_000
+[1218/191832:ERROR:cache_creator.cc(115)] Unable to create cache
+[1218/191832:INFO:CONSOLE(320)] "Uncaught TypeError: Object #<Object> has no method 'TestJSCallback'", source: http://localhost:85/content/js/login.js (320)
+[1218/191832:INFO:CONSOLE(320)] "Uncaught TypeError: Object #<Object> has no method 'TestJSCallback'", source: http://localhost:85/content/js/login.js (320)
+[1218/191834:INFO:CONSOLE(320)] "Uncaught TypeError: Object #<Object> has no method 'TestJSCallback'", source: http://localhost:85/content/js/login.js (320)
+[1218/191834:INFO:CONSOLE(117)] "Pilot Evaluation Survey : Feedback Survey", source: http://localhost:85/content/js/main-2.js (117)
+[1218/191834:INFO:CONSOLE(122)] "2-of-16", source: http://localhost:85/content/js/main-2.js (122)
+[1218/191834:INFO:CONSOLE(204)] "user has logged in", source: http://localhost:85/content/home.html?user=guest_user (204)
+[1218/191835:INFO:CONSOLE(320)] "Uncaught TypeError: Object #<Object> has no method 'TestJSCallback'", source: http://localhost:85/content/js/login.js (320)
+[1218/191836:ERROR_REPORT:browser_main.cc(126)] Check failed: browser_contexts_.empty(). 
+[1218/191923:ERROR:backend_impl.cc(2014)] Corrupt Index file
+[1218/191923:ERROR:cache_util_win.cc(20)] Unable to move the cache: 5
+[1218/191923:ERROR:cache_util.cc(104)] Unable to move cache folder C:\MMELC_pilot\python\CEFStorage to C:\MMELC_pilot\python\old_CEFStorage_000
+[1218/191923:ERROR:cache_creator.cc(115)] Unable to create cache
+[1218/191924:INFO:CONSOLE(320)] "Uncaught TypeError: Object #<Object> has no method 'TestJSCallback'", source: http://localhost:85/content/js/login.js (320)
+[1218/191924:INFO:CONSOLE(320)] "Uncaught TypeError: Object #<Object> has no method 'TestJSCallback'", source: http://localhost:85/content/js/login.js (320)
+[1218/191925:INFO:CONSOLE(320)] "Uncaught TypeError: Object #<Object> has no method 'TestJSCallback'", source: http://localhost:85/content/js/login.js (320)
+[1218/191925:INFO:CONSOLE(117)] "Pilot Evaluation Survey : Feedback Survey", source: http://localhost:85/content/js/main-2.js (117)
+[1218/191925:INFO:CONSOLE(122)] "2-of-16", source: http://localhost:85/content/js/main-2.js (122)
+[1218/191925:INFO:CONSOLE(204)] "user has logged in", source: http://localhost:85/content/home.html?user=guest_user (204)
+[1218/191926:INFO:CONSOLE(320)] "Uncaught TypeError: Object #<Object> has no method 'TestJSCallback'", source: http://localhost:85/content/js/login.js (320)
+[1218/191940:ERROR_REPORT:browser_main.cc(126)] Check failed: browser_contexts_.empty(). 
+[1218/192053:ERROR:backend_impl.cc(2014)] Corrupt Index file
+[1218/192053:ERROR:cache_util_win.cc(20)] Unable to move the cache: 5
+[1218/192053:ERROR:cache_util.cc(104)] Unable to move cache folder C:\MMELC_pilot\python\CEFStorage to C:\MMELC_pilot\python\old_CEFStorage_000
+[1218/192053:ERROR:cache_creator.cc(115)] Unable to create cache
+[1218/192053:INFO:CONSOLE(320)] "Uncaught TypeError: Object #<Object> has no method 'TestJSCallback'", source: http://localhost:85/content/js/login.js (320)
+[1218/192053:INFO:CONSOLE(320)] "Uncaught TypeError: Object #<Object> has no method 'TestJSCallback'", source: http://localhost:85/content/js/login.js (320)
+[1218/192055:INFO:CONSOLE(320)] "Uncaught TypeError: Object #<Object> has no method 'TestJSCallback'", source: http://localhost:85/content/js/login.js (320)
+[1218/192055:INFO:CONSOLE(117)] "Pilot Evaluation Survey : Feedback Survey", source: http://localhost:85/content/js/main-2.js (117)
+[1218/192055:INFO:CONSOLE(122)] "2-of-16", source: http://localhost:85/content/js/main-2.js (122)
+[1218/192055:INFO:CONSOLE(204)] "user has logged in", source: http://localhost:85/content/home.html?user=guest_user (204)
+[1218/192056:INFO:CONSOLE(320)] "Uncaught TypeError: Object #<Object> has no method 'TestJSCallback'", source: http://localhost:85/content/js/login.js (320)
+[1218/192108:ERROR_REPORT:browser_main.cc(126)] Check failed: browser_contexts_.empty(). 
+[1218/192143:ERROR:backend_impl.cc(2014)] Corrupt Index file
+[1218/192143:ERROR:cache_util_win.cc(20)] Unable to move the cache: 5
+[1218/192143:ERROR:cache_util.cc(104)] Unable to move cache folder C:\MMELC_pilot\python\CEFStorage to C:\MMELC_pilot\python\old_CEFStorage_000
+[1218/192143:ERROR:cache_creator.cc(115)] Unable to create cache
+[1218/192143:INFO:CONSOLE(320)] "Uncaught TypeError: Object #<Object> has no method 'TestJSCallback'", source: http://localhost:85/content/js/login.js (320)
+[1218/192143:INFO:CONSOLE(320)] "Uncaught TypeError: Object #<Object> has no method 'TestJSCallback'", source: http://localhost:85/content/js/login.js (320)
+[1218/192145:INFO:CONSOLE(320)] "Uncaught TypeError: Object #<Object> has no method 'TestJSCallback'", source: http://localhost:85/content/js/login.js (320)
+[1218/192145:INFO:CONSOLE(117)] "Pilot Evaluation Survey : Feedback Survey", source: http://localhost:85/content/js/main-2.js (117)
+[1218/192145:INFO:CONSOLE(122)] "2-of-16", source: http://localhost:85/content/js/main-2.js (122)
+[1218/192145:INFO:CONSOLE(204)] "user has logged in", source: http://localhost:85/content/home.html?user=guest_user (204)
+[1218/192146:INFO:CONSOLE(320)] "Uncaught TypeError: Object #<Object> has no method 'TestJSCallback'", source: http://localhost:85/content/js/login.js (320)
+[1218/192147:ERROR_REPORT:browser_main.cc(126)] Check failed: browser_contexts_.empty(). 
+[1218/192151:ERROR:backend_impl.cc(2014)] Corrupt Index file
+[1218/192151:ERROR:cache_util_win.cc(20)] Unable to move the cache: 5
+[1218/192151:ERROR:cache_util.cc(104)] Unable to move cache folder C:\MMELC_pilot\python\CEFStorage to C:\MMELC_pilot\python\old_CEFStorage_000
+[1218/192151:ERROR:cache_creator.cc(115)] Unable to create cache
+[1218/192151:INFO:CONSOLE(320)] "Uncaught TypeError: Object #<Object> has no method 'TestJSCallback'", source: http://localhost:85/content/js/login.js (320)
+[1218/192151:INFO:CONSOLE(320)] "Uncaught TypeError: Object #<Object> has no method 'TestJSCallback'", source: http://localhost:85/content/js/login.js (320)
+[1218/192153:INFO:CONSOLE(320)] "Uncaught TypeError: Object #<Object> has no method 'TestJSCallback'", source: http://localhost:85/content/js/login.js (320)
+[1218/192153:INFO:CONSOLE(117)] "Pilot Evaluation Survey : Feedback Survey", source: http://localhost:85/content/js/main-2.js (117)
+[1218/192153:INFO:CONSOLE(122)] "2-of-16", source: http://localhost:85/content/js/main-2.js (122)
+[1218/192153:INFO:CONSOLE(204)] "user has logged in", source: http://localhost:85/content/home.html?user=guest_user (204)
+[1218/192154:INFO:CONSOLE(320)] "Uncaught TypeError: Object #<Object> has no method 'TestJSCallback'", source: http://localhost:85/content/js/login.js (320)
+[1218/192155:ERROR_REPORT:browser_main.cc(126)] Check failed: browser_contexts_.empty(). 
+[1218/192225:ERROR:backend_impl.cc(2014)] Corrupt Index file
+[1218/192225:ERROR:cache_util_win.cc(20)] Unable to move the cache: 5
+[1218/192225:ERROR:cache_util.cc(104)] Unable to move cache folder C:\MMELC_pilot\python\CEFStorage to C:\MMELC_pilot\python\old_CEFStorage_000
+[1218/192225:ERROR:cache_creator.cc(115)] Unable to create cache
+[1218/192225:INFO:CONSOLE(320)] "Uncaught TypeError: Object #<Object> has no method 'TestJSCallback'", source: http://localhost:85/content/js/login.js (320)
+[1218/192225:INFO:CONSOLE(320)] "Uncaught TypeError: Object #<Object> has no method 'TestJSCallback'", source: http://localhost:85/content/js/login.js (320)
+[1218/192227:INFO:CONSOLE(320)] "Uncaught TypeError: Object #<Object> has no method 'TestJSCallback'", source: http://localhost:85/content/js/login.js (320)
+[1218/192227:INFO:CONSOLE(117)] "Pilot Evaluation Survey : Feedback Survey", source: http://localhost:85/content/js/main-2.js (117)
+[1218/192227:INFO:CONSOLE(122)] "2-of-16", source: http://localhost:85/content/js/main-2.js (122)
+[1218/192227:INFO:CONSOLE(204)] "user has logged in", source: http://localhost:85/content/home.html?user=guest_user (204)
+[1218/192228:INFO:CONSOLE(320)] "Uncaught TypeError: Object #<Object> has no method 'TestJSCallback'", source: http://localhost:85/content/js/login.js (320)
+[1218/192238:ERROR_REPORT:browser_main.cc(126)] Check failed: browser_contexts_.empty(). 
+[1218/192356:ERROR:backend_impl.cc(2014)] Corrupt Index file
+[1218/192356:ERROR:cache_util_win.cc(20)] Unable to move the cache: 5
+[1218/192356:ERROR:cache_util.cc(104)] Unable to move cache folder C:\MMELC_pilot\python\CEFStorage to C:\MMELC_pilot\python\old_CEFStorage_000
+[1218/192356:ERROR:cache_creator.cc(115)] Unable to create cache
+[1218/192357:INFO:CONSOLE(320)] "Uncaught TypeError: Object #<Object> has no method 'TestJSCallback'", source: http://localhost:85/content/js/login.js (320)
+[1218/192357:INFO:CONSOLE(320)] "Uncaught TypeError: Object #<Object> has no method 'TestJSCallback'", source: http://localhost:85/content/js/login.js (320)
+[1218/192358:INFO:CONSOLE(320)] "Uncaught TypeError: Object #<Object> has no method 'TestJSCallback'", source: http://localhost:85/content/js/login.js (320)
+[1218/192358:INFO:CONSOLE(117)] "Pilot Evaluation Survey : Feedback Survey", source: http://localhost:85/content/js/main-2.js (117)
+[1218/192358:INFO:CONSOLE(122)] "2-of-16", source: http://localhost:85/content/js/main-2.js (122)
+[1218/192358:INFO:CONSOLE(204)] "user has logged in", source: http://localhost:85/content/home.html?user=guest_user (204)
+[1218/192359:INFO:CONSOLE(320)] "Uncaught TypeError: Object #<Object> has no method 'TestJSCallback'", source: http://localhost:85/content/js/login.js (320)
+[1218/193206:ERROR_REPORT:browser_main.cc(126)] Check failed: browser_contexts_.empty(). 
+[1218/193221:ERROR:backend_impl.cc(2014)] Corrupt Index file
+[1218/193221:ERROR:cache_util_win.cc(20)] Unable to move the cache: 5
+[1218/193221:ERROR:cache_util.cc(104)] Unable to move cache folder C:\MMELC_pilot\python\CEFStorage to C:\MMELC_pilot\python\old_CEFStorage_000
+[1218/193221:ERROR:cache_creator.cc(115)] Unable to create cache
+[1218/193222:INFO:CONSOLE(320)] "Uncaught TypeError: Object #<Object> has no method 'TestJSCallback'", source: http://localhost:85/content/js/login.js (320)
+[1218/193222:INFO:CONSOLE(320)] "Uncaught TypeError: Object #<Object> has no method 'TestJSCallback'", source: http://localhost:85/content/js/login.js (320)
+[1218/193223:INFO:CONSOLE(320)] "Uncaught TypeError: Object #<Object> has no method 'TestJSCallback'", source: http://localhost:85/content/js/login.js (320)
+[1218/193223:INFO:CONSOLE(117)] "Pilot Evaluation Survey : Feedback Survey", source: http://localhost:85/content/js/main-2.js (117)
+[1218/193223:INFO:CONSOLE(122)] "2-of-16", source: http://localhost:85/content/js/main-2.js (122)
+[1218/193223:INFO:CONSOLE(204)] "user has logged in", source: http://localhost:85/content/home.html?user=guest_user (204)
+[1218/193224:INFO:CONSOLE(320)] "Uncaught TypeError: Object #<Object> has no method 'TestJSCallback'", source: http://localhost:85/content/js/login.js (320)
+[1218/193250:ERROR_REPORT:browser_main.cc(126)] Check failed: browser_contexts_.empty(). 

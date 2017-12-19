@@ -621,21 +621,22 @@ class JavascriptExternal:
         file_name = os.path.join(loc, zip_name)
         shutil.make_archive(file_name, 'zip', temp_loc)
         
-        files = {'zipFile' : open(file_name+'.zip') }
+        #files = {'zipFile' : open(file_name+'.zip') }
 
-        params = {'zipTimeStamp' : now, 'description' : description}
+        params = {'zipTimeStamp' : now, 'version' : get_version(), 'description' : description}
 
         url =  get_endpoint()+'/api/v1.0/upload/'+zip_name #'http://mmelc.vestigesystems.com/putZip'
 
-        try:
-            res = requests.post(url, files=files, data=params)
-            response = res.text
-            with open(log_file, 'a') as f:
-                f.write('source:python,' + now + ',' + response)
-        except Exception,e:
-            response = str(e)
+        with open(file_name+'.zip') as f:
+            try:
+                res = requests.post(url, files={'zipFile' : f}, data=params)
+                response = res.text
+                with open(log_file, 'a') as f1:
+                    f1.write('source:python,' + now + ',' + response)
+            except Exception,e:
+                response = str(e)
 
-        #shutil.rmtree(temp_loc)
+        shutil.rmtree(temp_loc)
         jsCallBack.Call(response)
 
     def get_updates(self, jsCallBack):
@@ -643,7 +644,7 @@ class JavascriptExternal:
         now = datetime.now().strftime('%Y-%m-%d-%H-%M-%S')
         loc = os.path.dirname(os.path.abspath(__file__))
         downloaded_zip_name_path = loc + '/updates-' + str(now) + '.zip' 
-        url = get_endpoint() + '/api/v1.0/getUpdates'
+        url = get_endpoint()+'/api/v1.0/getUpdates?version='+get_version()
         try:
             req = urllib2.Request(url)
             res = urllib2.urlopen(req, None, 15)
@@ -653,9 +654,9 @@ class JavascriptExternal:
                 with open(downloaded_zip_name_path, 'wb') as f:
                     f.write(res.read())
                 response = 'Updates downloaded to ' + downloaded_zip_name_path
-        except urllib2.HTTPError,e:
-            response = str(e.code()) + '::' + str(e)
-        except Exception,e:
+        #except (urllib2.HTTPError, urllib2.URLError) as e:
+        #    response = str(e.code()) + '::' + str(e)
+        except Exception as e:
             response = str(e)
 
         jsCallBack.Call(response)
