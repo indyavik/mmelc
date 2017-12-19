@@ -95,9 +95,9 @@ function GetObject(obj_identifier, file_on_disk) {
 
 }
 
-function send_error_reports()
+function send_error_reports(description)
 {
-	external.send_error_reports(send_error_reports_callback);
+	external.send_error_reports(description, send_error_reports_callback);
 }
 
 function get_updates()

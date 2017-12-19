@@ -340,3 +340,203 @@ NameError: global name 'urllib2' is not defined
 
 NameError: global name 'urllib2' is not defined
 
+
+[2017-12-18 16:51:08] Traceback (most recent call last):
+
+  File "v8function_handler_cef3.pyx", line 39, in cefpython_py27.V8FunctionHandler_Execute (cefpython.cpp:38833)
+
+  File "C:\MMELC_pilot\python\wxpython_viewer.py", line 645, in get_updates
+    url = get_endpoint()+'/api/v1.0/getUpdates'
+
+NameError: global name 'get_endpoint' is not defined
+
+
+[2017-12-18 16:52:49] Traceback (most recent call last):
+
+  File "v8function_handler_cef3.pyx", line 39, in cefpython_py27.V8FunctionHandler_Execute (cefpython.cpp:38833)
+
+  File "C:\MMELC_pilot\python\wxpython_viewer.py", line 627, in send_error_reports
+    url =  get_endpoint()+'/api/v1.0/upload/'+zip_name #'http://mmelc.vestigesystems.com/putZip'
+
+NameError: global name 'get_endpoint' is not defined
+
+
+[2017-12-18 16:57:29] Traceback (most recent call last):
+
+  File "v8function_handler_cef3.pyx", line 39, in cefpython_py27.V8FunctionHandler_Execute (cefpython.cpp:38833)
+
+  File "C:\MMELC_pilot\python\wxpython_viewer.py", line 645, in get_updates
+    url = get_endpoint()+'/api/v1.0/getUpdates'
+
+NameError: global name 'get_endpoint' is not defined
+
+
+[2017-12-18 16:58:32] Traceback (most recent call last):
+
+  File "v8function_handler_cef3.pyx", line 39, in cefpython_py27.V8FunctionHandler_Execute (cefpython.cpp:38833)
+
+  File "C:\MMELC_pilot\python\wxpython_viewer.py", line 645, in get_updates
+    url = get_endpoint()+'/api/v1.0/getUpdates'
+
+NameError: global name 'get_endpoint' is not defined
+
+
+[2017-12-18 17:04:09] Traceback (most recent call last):
+
+  File "v8function_handler_cef3.pyx", line 39, in cefpython_py27.V8FunctionHandler_Execute (cefpython.cpp:38833)
+
+  File "C:\MMELC_pilot\python\wxpython_viewer.py", line 645, in get_updates
+    url = get_endpoint()+'/api/v1.0/getUpdates'
+
+NameError: global name 'get_endpoint' is not defined
+
+
+[2017-12-18 17:07:04] Traceback (most recent call last):
+
+  File "v8function_handler_cef3.pyx", line 39, in cefpython_py27.V8FunctionHandler_Execute (cefpython.cpp:38833)
+
+  File "C:\MMELC_pilot\python\wxpython_viewer.py", line 645, in get_updates
+    url = get_endpoint()+'/api/v1.0/getUpdates'
+
+NameError: global name 'get_endpoint' is not defined
+
+
+[2017-12-18 17:07:28] Traceback (most recent call last):
+
+  File "v8function_handler_cef3.pyx", line 39, in cefpython_py27.V8FunctionHandler_Execute (cefpython.cpp:38833)
+
+  File "C:\MMELC_pilot\python\wxpython_viewer.py", line 645, in get_updates
+    url = get_endpoint()+'/api/v1.0/getUpdates'
+
+NameError: global name 'get_endpoint' is not defined
+
+
+[2017-12-18 17:08:03] Traceback (most recent call last):
+
+  File "v8function_handler_cef3.pyx", line 39, in cefpython_py27.V8FunctionHandler_Execute (cefpython.cpp:38833)
+
+  File "C:\MMELC_pilot\python\wxpython_viewer.py", line 645, in get_updates
+    url = get_endpoint()+'/api/v1.0/getUpdates'
+
+NameError: global name 'get_endpoint' is not defined
+
+
+[2017-12-18 17:08:21] Traceback (most recent call last):
+
+  File "v8function_handler_cef3.pyx", line 39, in cefpython_py27.V8FunctionHandler_Execute (cefpython.cpp:38833)
+
+  File "C:\MMELC_pilot\python\wxpython_viewer.py", line 645, in get_updates
+    url = get_endpoint()+'/api/v1.0/getUpdates'
+
+NameError: global name 'get_endpoint' is not defined
+
+
+[2017-12-18 17:09:07] Traceback (most recent call last):
+
+  File "v8function_handler_cef3.pyx", line 39, in cefpython_py27.V8FunctionHandler_Execute (cefpython.cpp:38833)
+
+  File "C:\MMELC_pilot\python\wxpython_viewer.py", line 645, in get_updates
+    url = get_endpoint() + '/api/v1.0/getUpdates'
+
+NameError: global name 'get_endpoint' is not defined
+
+
+[2017-12-18 17:09:59] Traceback (most recent call last):
+
+  File "v8function_handler_cef3.pyx", line 39, in cefpython_py27.V8FunctionHandler_Execute (cefpython.cpp:38833)
+
+  File "C:\MMELC_pilot\python\wxpython_viewer.py", line 645, in get_updates
+    url = get_endpoint() #+ '/api/v1.0/getUpdates'
+
+NameError: global name 'get_endpoint' is not defined
+
+
+[2017-12-18 17:11:42] Traceback (most recent call last):
+
+  File "v8function_handler_cef3.pyx", line 39, in cefpython_py27.V8FunctionHandler_Execute (cefpython.cpp:38833)
+
+  File "C:\MMELC_pilot\python\wxpython_viewer.py", line 645, in get_updates
+    url = str(get_endpoint()) + '/api/v1.0/getUpdates'
+
+NameError: global name 'get_endpoint' is not defined
+
+
+[2017-12-18 17:11:55] Traceback (most recent call last):
+
+  File "v8function_handler_cef3.pyx", line 39, in cefpython_py27.V8FunctionHandler_Execute (cefpython.cpp:38833)
+
+  File "C:\MMELC_pilot\python\wxpython_viewer.py", line 645, in get_updates
+    url = str(get_endpoint()) + '/api/v1.0/getUpdates'
+
+NameError: global name 'get_endpoint' is not defined
+
+
+[2017-12-18 17:12:59] Traceback (most recent call last):
+
+  File "v8function_handler_cef3.pyx", line 39, in cefpython_py27.V8FunctionHandler_Execute (cefpython.cpp:38833)
+
+  File "C:\MMELC_pilot\python\wxpython_viewer.py", line 645, in get_updates
+    ep = get_endpoint()
+
+NameError: global name 'get_endpoint' is not defined
+
+
+[2017-12-18 17:13:34] Traceback (most recent call last):
+
+  File "v8function_handler_cef3.pyx", line 39, in cefpython_py27.V8FunctionHandler_Execute (cefpython.cpp:38833)
+
+  File "C:\MMELC_pilot\python\wxpython_viewer.py", line 645, in get_updates
+    ep = get_endpoint()
+
+NameError: global name 'get_endpoint' is not defined
+
+
+[2017-12-18 17:14:55] Traceback (most recent call last):
+
+  File "v8function_handler_cef3.pyx", line 39, in cefpython_py27.V8FunctionHandler_Execute (cefpython.cpp:38833)
+
+  File "C:\MMELC_pilot\python\wxpython_viewer.py", line 648, in get_updates
+    ep = g_ep()
+
+NameError: global name 'g_ep' is not defined
+
+
+[2017-12-18 17:16:15] Traceback (most recent call last):
+
+  File "v8function_handler_cef3.pyx", line 39, in cefpython_py27.V8FunctionHandler_Execute (cefpython.cpp:38833)
+
+  File "C:\MMELC_pilot\python\wxpython_viewer.py", line 648, in get_updates
+    ep = g_ep()
+
+NameError: global name 'g_ep' is not defined
+
+
+[2017-12-18 17:18:35] Traceback (most recent call last):
+
+  File "v8function_handler_cef3.pyx", line 39, in cefpython_py27.V8FunctionHandler_Execute (cefpython.cpp:38833)
+
+  File "C:\MMELC_pilot\python\wxpython_viewer.py", line 645, in get_updates
+    url = get_endpoint() + '/api/v1.0/getUpdates'
+
+NameError: global name 'get_endpoint' is not defined
+
+
+[2017-12-18 17:19:55] Traceback (most recent call last):
+
+  File "v8function_handler_cef3.pyx", line 39, in cefpython_py27.V8FunctionHandler_Execute (cefpython.cpp:38833)
+
+  File "C:\MMELC_pilot\python\wxpython_viewer.py", line 645, in get_updates
+    url = __self__.get_endpoint() + '/api/v1.0/getUpdates'
+
+NameError: global name '__self__' is not defined
+
+
+[2017-12-18 17:22:44] Traceback (most recent call last):
+
+  File "v8function_handler_cef3.pyx", line 39, in cefpython_py27.V8FunctionHandler_Execute (cefpython.cpp:38833)
+
+  File "C:\MMELC_pilot\python\wxpython_viewer.py", line 646, in get_updates
+    url = get_endpoint() + '/api/v1.0/getUpdates'
+
+TypeError: get_endpoint() takes exactly 1 argument (0 given)
+

@@ -34,6 +34,7 @@ import requests
 import socket
 import glob
 import urllib2
+import ConfigParser
 
 import settingsPanel
 import xml_util
@@ -533,6 +534,21 @@ class MainFrame(wx.Frame):
 def PyPrint(message):
     print("[wxpython_viewer.py] PyPrint: "+message)
 
+def get_endpoint():
+    loc = os.path.dirname(os.path.abspath(__file__))
+    config_file = os.path.join(loc, 'mmelc.properties')
+    config = ConfigParser.RawConfigParser()
+    config.read(config_file)
+    return str(config.get('SETTINGS', 'endpoint'))
+
+def get_version():
+    loc = os.path.dirname(os.path.abspath(__file__))
+    config_file = os.path.join(loc, 'mmelc.properties')
+    config = ConfigParser.RawConfigParser()
+    config.read(config_file)
+    return str(config.get('SETTINGS', 'version'))
+
+
 class JavascriptExternal:
     mainBrowser = None
     stringVisitor = None
@@ -583,7 +599,8 @@ class JavascriptExternal:
 	
      ##other custom functions. pungi ###
 
-    def send_error_reports(self, jsCallBack):
+
+    def send_error_reports(self, description, jsCallBack):
         response = 'Error reports sent.'
 
         now = datetime.now().strftime('%Y-%m-%d-%H-%M-%S')
@@ -591,7 +608,7 @@ class JavascriptExternal:
         #file_name = 'nginx-1.8.0/html/datashare' 
         #dir_name ='nginx-1.8.0/html/data'
 
-        loc = os.path.dirname(__file__)
+        loc = os.path.dirname(os.path.abspath(__file__))
         error_log_file = os.path.join(loc, 'error.log')
         debug_log_file = os.path.join(loc, 'debug.log')
         temp_loc = os.path.join(loc, 'temp_error_reports_loc')
@@ -606,9 +623,9 @@ class JavascriptExternal:
         
         files = {'zipFile' : open(file_name+'.zip') }
 
-        params = {'zipTimeStamp' : now}
+        params = {'zipTimeStamp' : now, 'description' : description}
 
-        url =  'http://ec2-54-196-239-128.compute-1.amazonaws.com/api/v1.0/upload/'+zip_name #'http://mmelc.vestigesystems.com/putZip'
+        url =  get_endpoint()+'/api/v1.0/upload/'+zip_name #'http://mmelc.vestigesystems.com/putZip'
 
         try:
             res = requests.post(url, files=files, data=params)
@@ -622,15 +639,15 @@ class JavascriptExternal:
         jsCallBack.Call(response)
 
     def get_updates(self, jsCallBack):
-        response = 'No updates available.'
+        response = 'No updates Available.'
         now = datetime.now().strftime('%Y-%m-%d-%H-%M-%S')
         loc = os.path.dirname(os.path.abspath(__file__))
         downloaded_zip_name_path = loc + '/updates-' + str(now) + '.zip' 
-        url = 'http://ec2-54-196-239-128.compute-1.amazonaws.com/api/v1.0/getUpdates'
+        url = get_endpoint() + '/api/v1.0/getUpdates'
         try:
             req = urllib2.Request(url)
             res = urllib2.urlopen(req, None, 15)
-            if (res.getcode() == '204'):
+            if (res.getcode() == 204):
                 response = 'No updates available.'
             else:
                 with open(downloaded_zip_name_path, 'wb') as f:
