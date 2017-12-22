@@ -1,0 +1,91 @@
+<div id="m5_elementQM_p03" class="page-content">
+
+    <slide id="5_1_slide03"></slide>
+
+    <span><img src="images/objective.png" class="objectiveImgStyle"><h2 class="outcome-heading">Learning Outcomes</h2></span>
+                </span>
+
+    <h3 class="learningOutcomeText">By the end of the unit, you will be able to: </h3>
+
+    <div id="slide4-buttons button-alignment">
+
+        <button class="green-btn" onclick="javascript:slide4show(1)"> 1</button>
+
+        <button class="violet-btn" onclick="javascript:slide4show(2)"> 2</button>
+
+        <button class="red-btn" onclick="javascript:slide4show(3)"> 3</button>
+
+        <button class="green-btn" onclick="javascript:slide4show(4)"> 4</button>
+
+        <button class="dark-green-btn" onclick="javascript:slide4show(5)"> 5</button>
+
+        <button class="pink-btn" onclick="javascript:slide4show(6)"> 6</button>
+
+        <button class="white-btn" onclick="javascript:slide4show(7)"> 7</button>
+
+        <button class="g-blue-btn" onclick="javascript:slide4show(8)"> 8</button>
+
+        <button class="lite-green-btn" onclick="javascript:slide4show(9)"> 9</button>
+
+
+        <script>
+            /* any js that applies to a slide should be included within the slide html page itself */
+
+            function slide4show(count) {
+
+                $(".outcome-text").css('display', 'block');
+
+                for (var i = 1; i <= 9; i++) {
+                    if (i <= count)
+                        document.getElementById("outcome-" + i).style.display = 'block';
+                    else
+                        document.getElementById("outcome-" + i).style.display = 'none';
+                }
+
+            }
+
+
+        </script>
+
+
+    </div>
+
+    <div id="outcome" class="outcome-text">
+
+        <div id="outcomex" class="outcomex-text">
+
+            <p id="outcome-1" class="outcome-num none-display">
+                1. Define the terms laboratory quality and quality management system.
+            </p>
+
+            <p id="outcome-2" class="outcome-num none-display">
+                2. Describe laboratory organisation.</p>
+
+            <p id="outcome-3" class="outcome-num none-display">
+                3. Manage laboratory personnel.</p>
+
+            <p id="outcome-4" class="outcome-num none-display">
+                4. Manage laboratory equipment.</p>
+
+            <p id="outcome-5" class="outcome-num none-display">
+                5. Develop a purchasing and inventory management programme.</p>
+
+            <p id="outcome-6" class="outcome-num none-display">
+                6. Develop a laboratory process control handbook that provides information on correct specimen management.</p>
+
+            <p id="outcome-7" class="outcome-num none-display">
+                7. Manage laboratory information.</p>
+
+            <p id="outcome-8" class="outcome-num none-display">
+                8. Keep laboratory documents and records.</p>
+
+            <p id="outcome-9" class="outcome-num none-display">
+                9. Participate in occurrence management.</p>
+
+        </div>
+
+
+    </div>
+    <!---outcome 1 -->
+
+</div> <!--actual page content here -->

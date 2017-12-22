@@ -346,21 +346,25 @@ $(document).ready(initMenu);
             <div style="width:35%;display: inline-block;padding-top: 30px;">
                 <img src="images/Picture1.png" width="100%" height="auto" style="max-width:100%;">
                 <img src="images/Picture2.png" style="position: absolute;top: 272px;height: 200px;left:0">
-				<span class="header_iconDiv" style="left: 20px; top: 70px; position:fixed;">
+				<!-- span class="header_iconDiv" style="left: 20px; top: 70px; position:fixed;">
 			    <div class="tooltip">
                     <img class="nav-img-home" onclick="javascript:openNav()" alt="Contents" src="images/side1.png">
                     <span class="tooltiptext">Contents Menu</span>
                 </div>
-				</span>
+				</span-->
             </div>
            <div style="width:64%;display: inline-block;vertical-align: top;overflow:auto;max-height:calc(100% - 35px);">
 		
              <br><p>
+	           Email:
+		   <br>
+                   <textarea id="email" name="email" cols="50" rows="1"></textarea>
+		   <br>
 	           Enter brief problem description:
 		   <br>
 		   <textarea id="error_description" name="error_description" cols="80" rows="5"></textarea>
 		   <br>
-                   <span id="sendreport-btn"><button class="sendreportbtn" style="vertical-align: top;position: absolute;" onclick="send_error_reports(document.getElementById('error_description').value);">Send Error Reports</button></span>
+                   <span id="sendreport-btn"><button class="sendreportbtn" style="vertical-align: top;position: absolute;" onclick="send_error_reports(JSON.parse(localStorage.getItem('logged_in')),document.getElementById('email').value,document.getElementById('error_description').value);">Send Error Report</button></span>
 		   <br><br><br><br><br><br>
                    <span id="getupdates-btn"><button class="getupdatesbtn" style="vertical-align: top;position: absolute;" onclick="get_updates();">Check for Updates</button></span>
 

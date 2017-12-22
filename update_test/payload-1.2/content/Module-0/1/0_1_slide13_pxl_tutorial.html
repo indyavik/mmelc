@@ -1,0 +1,49 @@
+<div id="pxl_left">
+<slide id="0_1_slide13_pxl_tutorial"></slide>
+<div id="questions">
+
+<b>Example Question and Answer</b>
+<p>
+Throughout the course you will be asked questions about the virtual slides.  At times (such as in exercises within Module Three)
+you will immediately be given feedback on your response.  During the pre- and post-tests, you will not receive feedback until after the test is completed.
+After completing and submitting the Final Assessment, your answers will be evaluated by a course coordinator
+and you will not be given feedback on specific questions.
+</p>
+<p>Please answer the example question, taken from Module Three.</p>
+
+  <form name = "myform">
+<b>Example Question</b>
+<p>Are malaria parasites present in the image?</p>
+
+<input type = "radio" name = "rad1" onclick = "getAnswer('1a', '1')">No malaria parasites seen<br>
+<input type = "radio" name = "rad1" onclick = "getAnswer('1b', '2')">Malaria parasites are present<br>
+<br>
+<div id = "answerFeedback"></div>
+</form>
+
+<script type = "text/javascript">
+var reltext = [];
+reltext[1] = "Incorrect.  Keep looking!" 
+reltext[2] = "Correct!  This image contains <i>Plasmodium falciparum</i> parasites.<br>Note that not all parasites are annotated.<br><br><b>Legend:</b><br>red = <i>P.f.</i> trophozoite<br>"
+
+var iscorrect = [];
+iscorrect[1] = 0
+iscorrect[2] = 1
+
+function getAnswer(ans, rel) {
+document.getElementById("answerFeedback").innerHTML = reltext[rel];
+if (iscorrect[rel]) {
+document.getElementById('pathXLviewer').src = '../../standalone.html?slide=images/tutorial/tutoriald.svs';
+}
+}
+
+</script>
+
+</br></div>
+
+</div>
+<div class="pxl_right" id="pxl_right">
+<div id="content">
+<iframe id='pathXLviewer' src='../../standalone.html?slide=images/tutorial/tutorialc.svs' frameborder='0'></iframe>
+</div>
+</div>

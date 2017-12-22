@@ -601,7 +601,7 @@ class JavascriptExternal:
      ##other custom functions. pungi ###
 
 
-    def send_error_reports(self, description, jsCallBack):
+    def send_error_reports(self, userid, email, description, jsCallBack):
         response = 'Error reports sent.'
 
         now = datetime.now().strftime('%Y-%m-%d-%H-%M-%S')
@@ -624,7 +624,7 @@ class JavascriptExternal:
         
         #files = {'zipFile' : open(file_name+'.zip') }
 
-        params = {'zipTimeStamp' : now, 'version' : get_version(), 'description' : description}
+        params = {'zipTimeStamp' : now, 'version' : get_version(), 'userid' : userid, 'email' : email, 'description' : description}
 
         url =  get_endpoint()+'/api/v1.0/upload/'+zip_name #'http://mmelc.vestigesystems.com/putZip'
 

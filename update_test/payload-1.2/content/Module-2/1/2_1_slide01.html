@@ -1,0 +1,76 @@
+<div id="m2_collectionOfBS_p01" class="page-content">
+    <slide id="2_1_slide01"></slide>
+
+    <h2 class="heading-text"><a href="#preamble" name="preamble"></a>Unit 1: Collection of Blood Specimens for Malaria Diagnosis
+        </h2>
+	<h3>Introduction to the Unit</h3>
+    <p class="content-text">
+        Welcome to Unit One of Module Two. In this unit, you will learn about the correct blood collection procedures for malaria diagnosis. You will also learn the safety precautions required during blood collection and safe disposal of bio-hazardous wastes.</p>
+
+    <p class="content-text">Following proper protocols during blood collection and handling is essential for safety. While this course provides information on performing these tasks safely, it is not meant to replace formal traditional training in safe blood handling.</p>
+
+    <p class="content-text">You will cover the following six topics in this unit:</p>
+
+        <ul class="u-list">
+            <li class="list-timeout2">
+                <img src="images/rightImage.png" height="15px"/>
+                Materials for blood collection
+            </li>
+        </ul>
+
+
+        <ul class="u-list">
+
+            <li id="box1" class="list-timeout">
+                <img src="images/rightImage.png" height="15px"/>
+                Safety precautions and infection control</li>
+            <li id="box2" class="list-timeout">
+                <img src="images/rightImage.png" height="15px"/>
+                Patient preparation for blood sample collection</li>
+            <li id="box3" class="list-timeout">
+                <img src="images/rightImage.png" height="15px"/>
+                Collection of blood samples</li>
+            <li id="box4" class="list-timeout">
+                <img src="images/rightImage.png" height="15px"/>
+                Transport and storage of blood samples</li>
+            <li id="box5" class="list-timeout">
+                <img src="images/rightImage.png" height="15px"/>
+                Demonstration videos on blood sample collection</li>
+
+
+        </ul>
+        <input id="toggleButton" type="button" value="Next" class="nextbtn" onclick="counter++; toggle4('box');"><br><br><br>
+		
+</div> <!--actual page content here -->
+
+
+
+
+<script type="text/javascript">
+    var counter = 0;
+
+    var numBoxes = 5;
+
+    function toggle4(showHideDiv) {
+
+        var ele = document.getElementById(showHideDiv + counter);
+
+       // if(ele.style.display == "block") {
+
+       //     ele.style.display = "none";
+
+       // }
+
+        //else {
+            ele.style.display = "block";
+        //}
+
+        if(counter == numBoxes) {
+
+            document.getElementById("toggleButton").style.display = "none";
+
+        }
+
+    }
+
+</script>

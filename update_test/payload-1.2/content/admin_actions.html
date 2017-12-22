@@ -1,0 +1,690 @@
+﻿<html>
+<head>
+    <meta http-equiv="cache-control" content="no-cache" />
+    <link rel="stylesheet" type="text/css" href="css/main.css">
+    <link rel="stylesheet" type="text/css" href="css/slide.css">
+    <script src="js/jquery-3.0.0.min.js"></script>
+	<script src="js/login.js"></script>
+    <script src="js/main.js"></script>
+    <script src="js/main-2.js"></script>
+	<script src="js/pxl-fullslide.js"></script>
+
+    <style>
+    .helpModal {
+        display: none; /* Hidden by default */
+        position: fixed; /* Stay in place */
+        z-index: 1; /* Sit on top */
+        padding-top: 50px; /* Location of the box */
+        left: 0;
+        top: 0;
+        width: 100%; /* Full width */
+        height: 100%; /* Full height */
+        /*overflow: none;  Enable scroll if needed */
+        background-color: rgb(0,0,0); /* Fallback color */
+        background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+    }
+
+    /* Modal Content */
+    .help-modal-content {
+        background-color: #fefefe;
+        margin: auto;
+        padding: 20px;
+        border: 1px solid #888;
+        width: 60%;
+		height:calc(100% - 150px);
+		overflow: auto;
+		font-family: sans-serif;
+    }
+    .mc-width{
+        width: 50%;
+    }
+
+    /* The Close Button */
+    .help-close {
+        color: #aaaaaa;
+        float: right;
+        font-size: 28px;
+        font-weight: bold;
+    }
+
+    .help-close:hover,
+    .help-close:focus {
+        color: #000;
+        text-decoration: none;
+        cursor: pointer;
+    }
+	
+	    .ack-close {
+        color: #aaaaaa;
+        float: right;
+        font-size: 28px;
+        font-weight: bold;
+    }
+
+    .ack-close:hover,
+    .ack-close:focus {
+        color: #000;
+        text-decoration: none;
+        cursor: pointer;
+    }
+	.sendreportbtn {
+		    font-size: 18px;
+    margin-right: 5px;
+    background: #AAAAAA;
+    color: white;
+    border-radius: 5px;
+    padding: 5px 5px;
+    border: 1px solid #EE6088;
+	}
+
+	.getupdatesbtn {
+		    font-size: 18px;
+    margin-right: 5px;
+    background: #AAAAAA;
+    color: white;
+    border-radius: 5px;
+    padding: 5px 5px;
+    border: 1px solid #EE6088;
+	}
+
+		    .home-close {
+        color: #aaaaaa;
+        float: right;
+        font-size: 28px;
+        font-weight: bold;
+    }
+
+    .home-close:hover,
+    .home-close:focus {
+        color: #000;
+        text-decoration: none;
+        cursor: pointer;
+    }
+	
+	.logout-close {
+        color: #aaaaaa;
+        float: right;
+        font-size: 28px;
+        font-weight: bold;
+    }
+
+    .logout-close:hover,
+    .logout-close:focus {
+        color: #000;
+        text-decoration: none;
+        cursor: pointer;
+    }
+	
+</style>
+
+
+<script>
+ $(function() {
+    //run on load. ensure the config is loaded. 
+   // $("#header1").hide();
+
+       var mod_config = JSON.parse(localStorage.getItem('module_config'));
+            //load from file. 
+
+        if(!mod_config) {
+
+            jQuery.ajaxSetup({async:false}); //required to avoind async status code check issues 
+                      
+            var jq = $.get('js/module_conf.json'); //alert(jq.status);
+                      
+              if ( jq.status == 200) {
+                
+                var mod_config = jq.responseText; 
+                localStorage.setItem('module_config', mod_config);
+
+              }
+
+              else {
+                alert("configuration file not found. please contact the administrator") ; 
+                return;
+
+              }
+      
+            }
+
+    //alert('dom is loaded');
+
+       //grab the url and load the appropriate slide. 
+
+
+    var loc = window.location.href.split("?")[1] // pxl_home.html?loadPage=xyz.html --> returns LoadPage=xyz.html
+
+  
+
+    //if (!loc) document.getElementById("right").style.display = 'none';
+
+
+    if (loc && loc.split('=')[0] == 'loadPage') {
+
+      var go_to_loc = loc.split('=')[1]
+      //set current location to this 'xyz_pxl_z.html'  and call load_page(page, template) 
+      //localStorage.setItem('current_location', loc)
+      //load_page(go_to_loc)
+	  
+	  checkProtected(go_to_loc)
+
+      var go_to_page = create_page_path(go_to_loc)
+
+      jQuery.ajaxSetup({async:false}); //required to avoind async status code check issues 
+                      
+      var jq = $.get(go_to_page); //alert(jq.status);
+                      
+      if ( jq.status == 200) {
+                var page_data = jq.responseText; 
+              }
+
+                $("#header1").show();
+                $("#content-inner").html(page_data);
+                localStorage.setItem('current_location', go_to_loc);
+                loadFooterNav(go_to_loc);
+                //close the side nav if open. 
+               document.getElementById("display_current").textContent  =  create_page_path(go_to_loc);
+			                  var info = get_titles()
+               var module_title = info['module_title']
+               var unit_title = info['unit_title']
+               var currentSlidex = info['currentSlidex']
+			   var numberSlidesy = info['numberSlidesy']
+
+              document.getElementById("display_current").textContent  =   currentSlidex + ' of ' + numberSlidesy;
+              document.getElementById("moduleTitle").textContent = module_title;
+			  document.getElementById("unitTitle").textContent = unit_title;
+			  document.getElementById("navBar").style.display = "inline-block";
+			  document.getElementById("onSlide").style.display = "inline-block";
+
+
+    } //if loc and loc == loadPage 
+
+    if (loc && loc.split('=')[0] == 'user') {
+      //log user in and display username. 
+      console.log('user has logged in') ;
+
+
+    }; 
+
+  });
+
+
+
+ function initMenu() {
+    $('#menu ul').hide(); 
+    $('#menu > li > a').on('click', function() {
+        $('#menu ul').slideUp();
+        $(this).next().slideDown();
+    });
+}
+$(document).ready(initMenu);
+
+ </script>
+
+
+
+</head>
+
+
+
+<body>
+
+<div id="super-wrapper">
+
+	<div id="aside"><!-- wrapper div for all menu stuff-->
+
+		<!-- wrap all the menus inside this div. once finalized this section remains same for each module.  -->
+
+        <div id="mySidenav" class="sidenav">
+            <!-- sliding menu from left. will overlay the content page. -->
+
+            <!--<a href="javascript:void(0)" class="closebtn" onclick="closeNav()">×</a>-->
+            <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">
+                <!--<img src="../SampleScreen_changes/images/close-img.png" width="20px"/>-->
+                <img src="images/close-white.svg.png" width="25px"/>
+            </a>
+
+            <div class="header_sideMenu2">
+                <span id="user_data" class="user_welcome">Malaria Microscopy e-Learning Course Menu</span>
+            </div>
+
+           
+		   <br><br><br><br>
+		</div> <!-- mysidenav -->
+
+	
+		<div id="header1" style="background-color: none;">
+
+            <div id="heading_text" style="height:54px; width:100%; background-color: #afbd77;">
+
+			<div id="amref" style="display: inline-block; width:24%; height:100%; float:left;">
+
+
+                <img src="images/logo.png" style="max-width: 100% ;max-height:100%;">
+              
+              </div>
+                
+<div id="middleTopTitle" style="width: calc(76% - 150px);float: left;overflow: hidden;">
+  <div id="moduleTitle" style="height: 70%;overflow: hidden; font-size:19px; vertical-align:middle;"> </div>
+  <div id = "unitTitle" style="height: 30%;overflow: hidden; font-size:15px;"> </div></div>
+<div id="right" style="display: inline-block; width:150px; height:100%;">
+ <span class="header_iconDiv" style="float: left; padding-top: 6px;">
+				<div class="tooltip">
+                    <img class="nav-img-home" alt="Home" src="images/home1.png" style="max-width:30px;margin-bottom: 10px; " id="home-btn">
+                    <span class="tooltiptext">Home</span>
+                </div>
+				</span>
+				<span class="header_iconDiv" style="float: left; padding-top: 6px;">
+				<div class="tooltip">
+                    <img class="nav-img-home" alt="Help" src="images/help1.png" style="max-width:30px;margin-bottom: 10px; " id="help-btn" border="0"> 
+                    <span class="tooltiptext">Help</span>
+                </div>
+				</span>
+                
+				<span class="header_iconDiv" style="float: left; padding-top: 6px;">
+				<div class="tooltip">
+                    <img class="nav-img-home" alt="Log Out" src="images/logout.png" style="max-width:30px;margin-bottom: 10px; " id="logout-btn">
+                    <span class="tooltiptext">Log Out</span>
+                </div>
+				</span>
+
+              </div>
+
+            </div>
+
+            <div style="height:8px;width:100%;background-color: #00AFEF">
+
+            </div>
+
+            <div style="width: calc(50% - 100px); height: 1px; display:inline-block; float: left;">
+			
+			</div>
+			
+			<div id="nav_2" style="height:50%; width:200px; text-align: center; margin-top: 4px; float:left">
+             
+            <!-- <div style="margin: 0 auto; display: inline-block;"> -->
+			<div id="navBar" style="margin: 0 auto; display: none;">
+
+                <span id="previousPageButton" class="header_iconDiv">
+				<div class="tooltip">
+                    <img  class="nav-img-home" onclick="javascript:nav_to('prev')" border="0" alt="Previous slide" src="images/backward.png">
+                    <span class="tooltiptext">Previous Page</span>
+                </div>
+				</span>
+
+
+                 <span id="contentsMenuButton" class="header_iconDiv" style="margin-right: 20px; margin-left: 20px;">
+                 <div class="tooltip">
+                    <img class="nav-img-home" onclick="javascript:openNav()" alt="Contents" src="images/side1.png">
+                    <span class="tooltiptext">Contents Menu</span>
+                </div>
+               </span>
+
+                <span id="nextPageButton" class="header_iconDiv">
+				<div class="tooltip">
+                    <img class="nav-img-home" onclick="javascript:nav_to('next')" border="0" src="images/forward.png" alt="Next slide">
+				<span class="tooltiptext">Next Page</span>
+                </div>
+                </span>
+
+                </div>
+                     
+            </div> <!-- div nav_2 -->
+
+		</div> <!-- div header 1 --> 
+
+	<div id="content"><!-- wrapper div for main content area -->
+
+ <div></div>
+
+	<div id="content-inner">
+
+   <div id="m1_i_p05" class="" style="padding: 0;width:100%;height:100%;margin-top: 42px;max-height:calc(100% - 75px)">
+    <slide id="Module-1"></slide>
+    <div style="background-image: url('images/Picture18.png');width:100%;height:100%">
+        <div style="padding-top:32px;color:white;height:100%;">
+            <div style="width:35%;display: inline-block;padding-top: 30px;">
+                <img src="images/Picture1.png" width="100%" height="auto" style="max-width:100%;">
+                <img src="images/Picture2.png" style="position: absolute;top: 272px;height: 200px;left:0">
+				<span class="header_iconDiv" style="left: 20px; top: 70px; position:fixed;">
+			    <div class="tooltip">
+                    <img class="nav-img-home" onclick="javascript:openNav()" alt="Contents" src="images/side1.png">
+                    <span class="tooltiptext">Contents Menu</span>
+                </div>
+				</span>
+            </div>
+           <div style="width:64%;display: inline-block;vertical-align: top;overflow:auto;max-height:calc(100% - 35px);">
+		
+             <br><p>
+	           Enter brief problem description:
+		   <br>
+		   <textarea id="error_description" name="error_description" cols="80" rows="5"></textarea>
+		   <br>
+                   <span id="sendreport-btn"><button class="sendreportbtn" style="vertical-align: top;position: absolute;" onclick="send_error_reports(document.getElementById('error_description').value);">Send Error Reports</button></span>
+		   <br><br><br><br><br><br>
+                   <span id="getupdates-btn"><button class="getupdatesbtn" style="vertical-align: top;position: absolute;" onclick="get_updates();">Check for Updates</button></span>
+
+           </div>
+        </div>
+
+    </div>
+
+
+</div> <!--actual page content here -->
+
+
+
+<style>
+    #content-inner{
+        padding:0;
+        margin:0;
+        width:100%
+    }
+    body{
+        margin:0;
+    }
+
+
+</style>
+
+
+<script>
+/*
+    $( document ).ready(function() {
+        $("#header2").hide();
+        $("#m1_i_p05").removeClass("page-content");
+
+    });
+*/
+</script>
+
+
+		</div><!-- div conent inner-->
+		
+	</div><!-- div content -->
+
+    <div id="footer" style="min-height: 50px;"> 
+        <div style="height:10px;width:100%;background-color: #00AFEF">
+
+            </div>
+
+    <div style="width: 100%; display: table;">
+
+    <div style="display: table-row">
+        <div class="footer_menu" style="width: 60% ; display: table-cell;"> 
+
+      <div id="wrap-footer-menu" style="float:right; margin-top: 5px; margin-right:10px;margin-left:5px"> 
+
+         </div> <!--wrap footer menu. -->
+
+          
+
+        </div><!-- footer_menu --> 
+
+        <div style="display: table-cell;"> <span id="onSlide" style="float:left;margin-left:10px;max-height: 20px;overflow: hidden;font-style:italic;display:none;vertical-align:top">On slide</span><span id="display_current" style="float:left; font-style: italic; margin-right: 10px; margin-left: 8px;overflow:hidden;max-height:20px"> </span></div>
+    </div>
+    </div>
+
+
+
+    </div><!-- div footer -->
+
+</div>
+
+</body>
+
+<!-- The help Modal -->
+<div id="myModalContent" class="helpModal">
+
+    <!-- Modal content -->
+    <div class="help-modal-content">
+        <span class="help-close">&times;</span>
+        <div class="help-modal-div">
+            <div id="help-content-home">
+                <h2 class="heading-text">Navigating the Malaria Microscopy Course</h2>
+                <p class="content-text"> The following buttons are used to Navigate through the course content: </p>
+				<p>
+				<img class="nav-img-home" alt="Contents" src="images/side1.png" style="vertical-align:middle">
+                    The Menu button calls the Course Menu, from which you can navigate to each module and unit. The menu also shows which modules and units have been completed.</p>
+
+                <p><img class="nav-img-home" alt="Next Slide" src="images/forward.png" style="vertical-align:middle"> The Next button moves you to the next page within a Unit.</p>
+                    <p> <img class="nav-img-home" alt="Previous Slide" src="images/backward.png" style="vertical-align:middle"> The Previous button moves you back one slide.</p>  
+					
+				<p>	<img class="nav-img-home" alt="Contents" src="images/home1.png" style="vertical-align:middle"> The Home button allows you to return to the welcome screen of the course or the first page of the current unit.
+                </p>
+				
+				<p> <img class="nav-img-home" alt="Contents" src="images/help1.png" style="vertical-align:middle"> The Help button will display this screen.
+				</p>
+				
+				<p> <img class="nav-img-home" alt="Contents" src="images/logout.png" style="vertical-align:middle"> The Logout button will log you out and take you to the login screen.
+				</p>
+				
+                <p>You can also use the navigation menu at the bottom of the screen to skip to different slides within a unit.</p>
+
+                <h2>Other Software Help</h2>
+                <p>To visit the more detailed help section,
+                    including help with colour settings and using the virtual microscope, 
+					<span class="goto-help-unit"><a href="#" id="0_1_slide01.html" onClick="load_page(this.id)" >click here</a></span>.</p>
+
+                <h2>Contact Information</h2>
+                <p>For issues with using this software, you can contact the focal person who distributed the pilot course for the fastest response.
+                    You may also email MalariaMicroscopyCourse@gmail.com with any questions or feedback.</p>
+
+<br><br>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+<script>
+
+</script>
+
+<!-- The acknowledgements Modal -->
+<div id="acknowledgementsModal" class="helpModal">
+
+    <!-- Modal content -->
+    <div class="help-modal-content">
+        <span class="ack-close">&times;</span>
+        <div class="help-modal-div">
+            <div id="acknowledgements-content-home">
+                <h2>Malaria Microscopy e-Learning Course</h2>
+				                <h3>Contact Information</h3>
+                <p>For issues with using this software, you can contact the focal person who distributed the pilot course for the fastest response.
+                    You may also email MalariaMicroscopyCourse@gmail.com with any questions or feedback.</p>
+<p>The Malaria Microscopy e-Learning Course is currently in development by Global Good/Intellectual Ventures Lab and Amref Health Africa. The contents of the course are fully protected by copyright. However, the publishers will gladly consider any request for permission to reproduce part or whole of the course materials with the intention of increasing its availability to those who need it, and welcome enquiries from individuals or organisations wishing to use any material from the course for non-commercial purposes. The publishers also welcome feedback on the course, and invite constructive comments and suggestions.</p>
+
+<h3>Authors and Reviewers (in alphabetical order)</h3>
+
+<ul class="nobullet">
+
+<li>Christine Bachman&mdash;Global Good, Bellevue, USA </li>
+<li>David Bell&mdash;Global Good, Bellevue, USA </li>
+<li>Jane Carter&mdash;Amref Health Africa Headquarters, Nairobi, Kenya</li>
+<li>Anderson Chinorumba&mdash;WHO AFRO, Harare, Zimbabwe </li>
+<li>Matthew Horning&mdash;Global Good/Intellectual Ventures Laboratory, Bellevue, USA </li>
+<li>David Isaboke&mdash;Amref Health Africa Headquarters, Nairobi, Kenya  </li>
+<li>Ken Lilley&mdash;Australian Army Malaria Institute, Brisbane, Australia  </li>
+<li>Earl Long&mdash;Consultant Parasitologist, Atlanta, USA </li>
+<li>David Ocheng&mdash;Amref Health Africa Tanzania, Dar es Salaam, Tanzania</li>
+</ul>
+
+<h3>Acknowledgements</h3>
+<p> The authors would like to thank Global Good for their financial support to realise this project.  
+Our extended appreciation goes to Amref Health Africa, the Shoklo Malaria Research Unit (SMRU), University of Peru Cayetano Heredia (UPCH), 
+and the Hospital of Tropical Diseases (HTD) for providing microscope slides and sharing relevant images to enhance learning for students. 
+Special thanks to David Bell and Jane Carter for their strategic stewardship and the following individuals who participated in determining the course 
+curricula: Cornel Arima, Rachel Achilla, Earl Long, Christine Bachman, David Ocheng, Peter Mwatha, Matthew Horning, Ken Lilley, Cary Champlin, Slla Thiam, Jane Carter, 
+Julius Tome, Ephantus Murigi, Josephine Namboze, David Bell, David Isaboke, Stephen Munene, Zipporah Katiku, and Anastasiah Kimeu. 
+The virtual microscope and slide viewing software was developed by PathXL, and the course was designed and created by Bernard Kikechi and Diana Mukami at Amref Health Africa, and Vikas Agrawal and Matthew Horning at Intellectual Ventures Laboratory.</p>
+
+
+<br><br>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+<!-- The home Modal -->
+<div id="homeModal" class="helpModal">
+
+    <!-- Modal content -->
+    <div class="help-modal-content">
+        <span class="home-close">&times;</span>
+        <div class="help-modal-div">
+            <div id="home-content-home">
+
+<h2>You have clicked the "Home" button.</h2>
+<p>Note: You may not be able to resume a test from your current location if you navigate away from the test.</p>
+				                <h3>Where would you like to go?</h3>
+<p><span class="goto-course-home"><a href="home.html">The Malaria Microscopy e-Learning Course home page</a></span>.</p>
+
+<p><span class="goto-unit-home"><a href="#" onClick="goHome('unit')" >The first page of this unit</a></span>.</p>
+
+            </div>
+        </div>
+    </div>
+
+</div>
+
+<!-- The logout Modal -->
+<div id="logoutModal" class="helpModal">
+
+    <!-- Modal content -->
+    <div class="help-modal-content">
+        <span class="logout-close">&times;</span>
+        <div class="logout-modal-div">
+            <div id="logout-content-home">
+<center>
+<h2>Are you sure you would like to log out?</h2>
+<button class="red-btn" onclick="javascript:logUserOut('logout')" ><img alt="Log Out" src="images/logout.png" style="max-width:60px;margin-bottom: 0px; "> <br>Yes, log me out!</button>							   
+<br><br>
+
+<p>Note: You will not be able to resume a test from your current location if you log out.</p>
+				               
+<p>
+To cancel and stay logged in, click on the small x above.</p>
+</center>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+<script>
+// Modal for acknowledgements and contact pages
+    // Get the modal
+    var help_Modal = document.getElementById('myModalContent');
+
+    // Get the button that opens the modal
+    var btn = document.getElementById("help-btn");
+
+    // Get the <span> element that closes the modal
+    var helpspan = document.getElementsByClassName("help-close")[0];
+
+	// Get the <span> element that links out to the help unit
+	var helpspan2 = document.getElementsByClassName("goto-help-unit")[0];
+	
+    // When the user clicks the button, open the modal
+    btn.onclick = function() {
+        help_Modal.style.display = "block";
+    }
+
+    // When the user clicks on <span> (x), close the modal
+    helpspan.onclick = function() {
+        help_Modal.style.display = "none";
+    }
+
+    // When the user clicks anywhere outside of the modal, close it
+    window.onclick = function(event) {
+        //if (event.target != help_Modal) {
+            help_Modal.style.display = "none";
+        //}
+    }
+	
+	// When the user clicks to help page, also close modal
+	helpspan2.onclick = function() {
+		help_Modal.style.display = "none";
+	}
+		
+
+    // Get the home modal
+    var homeModal = document.getElementById('homeModal');
+
+    // Get the button that opens the modal
+    var homebtn = document.getElementById("home-btn");
+
+    // Get the <span> element that closes the modal
+    var homespan = document.getElementsByClassName("home-close")[0];
+
+	// Get the <span> element that links out to the help unit
+	//var span2 = document.getElementsByClassName("goto-help-unit")[0];
+	
+    // When the user clicks the button, open the modal
+    homebtn.onclick = function() {
+        homeModal.style.display = "block";
+    }
+
+    // When the user clicks on <span> (x), close the modal
+    homespan.onclick = function() {
+        homeModal.style.display = "none";
+    }
+
+	// Get the logout modal
+    var logoutModal = document.getElementById('logoutModal');
+
+    // Get the button that opens the modal
+    var logoutbtn = document.getElementById("logout-btn");
+
+    // Get the <span> element that closes the modal
+    var logoutspan = document.getElementsByClassName("logout-close")[0];
+
+	// Get the <span> element that links out to the help unit
+	//var span2 = document.getElementsByClassName("goto-help-unit")[0];
+	
+    // When the user clicks the button, open the modal
+    logoutbtn.onclick = function() {
+        logoutModal.style.display = "block";
+    }
+
+    // When the user clicks on <span> (x), close the modal
+    logoutspan.onclick = function() {
+        logoutModal.style.display = "none";
+    }
+	
+    // When the user clicks anywhere outside of the modal, close all modals
+    window.onclick = function(event) {
+		if (event.target == help_Modal) {
+			help_Modal.style.display = "none";
+		}
+		if (event.target == homeModal) {
+			homeModal.style.display = "none";
+		}
+		if (event.target == logoutModal) {
+			logoutModal.style.display = "none";
+		}
+    }
+	
+		// Get the <span> element that links out to the help unit
+	var homespan2 = document.getElementsByClassName("goto-course-home")[0];
+	//var homespan3 = document.getElementsByClassName("goto-module-home")[0];
+	var homespan4 = document.getElementsByClassName("goto-unit-home")[0];
+	
+	// When the user clicks to any home page, also close modal
+	homespan2.onclick = function() {
+		homeModal.style.display = "none";
+	}
+	//homespan3.onclick = function() {
+	//	homeModal.style.display = "none";
+	//}
+	homespan4.onclick = function() {
+		homeModal.style.display = "none";
+	}
+		
+		
+	
+</script>
+	
+</html>

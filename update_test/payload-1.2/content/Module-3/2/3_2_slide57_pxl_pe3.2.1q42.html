@@ -1,0 +1,38 @@
+<div id="pxl_left"><slide id="3_2_slide57_pxl_pe3.2.1q42"></slide><form name = "myform">
+<b>Question 42 of 48 </b><p>Are malaria parasites present in the image?</p><br>
+
+<input type = "radio" name = "rad1" onclick = "getAnswer('1a', '1')">No malaria parasites seen<br>
+<input type = "radio" name = "rad1" onclick = "getAnswer('1b', '2')">Malaria parasites are present<br>
+<br>
+<div id = "answerFeedback"></div>
+
+</form>
+
+<br><br>
+<font size="-1"><br>
+</font>
+
+<script type = "text/javascript">
+var reltext = [];
+reltext[1] = "Correct!  This image does not contain malaria parasites.<br><br><b>Notes:</b><br>Some platelets and artefacts may be mistaken for parasites.<br><br><b>Legend:</b><br>black = not a parasite<br><br>" 
+reltext[2] = "Incorrect! Select NMPS to continue"
+
+var iscorrect = [];
+iscorrect[1] = 1
+iscorrect[2] = 0
+
+function getAnswer(ans, rel) {
+document.getElementById("answerFeedback").innerHTML = reltext[rel];
+if (iscorrect[rel]) {
+document.getElementById('pathXLviewer').src = '../../standalone.html?slide=images/module3/m3u2pe1a42.svs';
+}
+}
+
+</script>
+</div></div>
+  
+	  <div class="pxl_right" id="pxl_right"><div id="content">
+      <iframe id='pathXLviewer' src='../../standalone.html?slide=images/module3/m3u2pe1q42.svs' frameborder='0'></iframe>
+	  </div>
+
+</div>
