@@ -680,3 +680,51 @@ TypeError: 'int' object is not callable
 
 TypeError: 'int' object is not callable
 
+
+[2017-12-21 17:06:24] Traceback (most recent call last):
+
+  File "v8function_handler_cef3.pyx", line 39, in cefpython_py27.V8FunctionHandler_Execute (cefpython.cpp:38833)
+
+  File "C:\MMELC_pilot\python\wxpython_viewer.py", line 622, in send_error_reports
+    shutil.copytree(nginx_logs_dir, temp_loc)
+
+  File "C:\MMELC_pilot\python\Python27\lib\shutil.py", line 177, in copytree
+    os.makedirs(dst)
+
+  File "C:\MMELC_pilot\python\Python27\lib\os.py", line 157, in makedirs
+    mkdir(name, mode)
+
+WindowsError: [Error 183] Cannot create a file when that file already exists: 'C:\\MMELC_pilot\\python\\temp_error_reports_loc'
+
+
+[2017-12-21 17:10:35] Traceback (most recent call last):
+
+  File "v8function_handler_cef3.pyx", line 39, in cefpython_py27.V8FunctionHandler_Execute (cefpython.cpp:38833)
+
+  File "C:\MMELC_pilot\python\wxpython_viewer.py", line 623, in send_error_reports
+    shutil.copytree(nginx_html_data_dir, temp_loc)
+
+  File "C:\MMELC_pilot\python\Python27\lib\shutil.py", line 177, in copytree
+    os.makedirs(dst)
+
+  File "C:\MMELC_pilot\python\Python27\lib\os.py", line 157, in makedirs
+    mkdir(name, mode)
+
+WindowsError: [Error 183] Cannot create a file when that file already exists: 'C:\\MMELC_pilot\\python\\temp_error_reports_loc'
+
+
+[2017-12-21 17:11:02] Traceback (most recent call last):
+
+  File "v8function_handler_cef3.pyx", line 39, in cefpython_py27.V8FunctionHandler_Execute (cefpython.cpp:38833)
+
+  File "C:\MMELC_pilot\python\wxpython_viewer.py", line 622, in send_error_reports
+    shutil.copytree(nginx_logs_dir, temp_loc)
+
+  File "C:\MMELC_pilot\python\Python27\lib\shutil.py", line 177, in copytree
+    os.makedirs(dst)
+
+  File "C:\MMELC_pilot\python\Python27\lib\os.py", line 157, in makedirs
+    mkdir(name, mode)
+
+WindowsError: [Error 183] Cannot create a file when that file already exists: 'C:\\MMELC_pilot\\python\\temp_error_reports_loc'
+

@@ -612,11 +612,15 @@ class JavascriptExternal:
         loc = os.path.dirname(os.path.abspath(__file__))
         error_log_file = os.path.join(loc, 'error.log')
         debug_log_file = os.path.join(loc, 'debug.log')
+        nginx_logs_dir = os.path.join(os.path.dirname(loc), 'nginx-1.8.0/logs')
+        nginx_html_data_dir = os.path.join(os.path.dirname(loc), 'nginx-1.8.0/html/data')
         temp_loc = os.path.join(loc, 'temp_error_reports_loc')
         if not os.path.exists(temp_loc):
             os.makedirs(temp_loc)
         shutil.copy2(error_log_file, temp_loc)
         shutil.copy2(debug_log_file, temp_loc)
+        shutil.copytree(nginx_logs_dir, os.path.join(temp_loc,'nginx-1.8.0/logs'))
+        shutil.copytree(nginx_html_data_dir, os.path.join(temp_loc,'nginx-1.8.0/html/data'))
 
         zip_name = 'error_reports_zip'
         file_name = os.path.join(loc, zip_name)
