@@ -632,7 +632,7 @@ class JavascriptExternal:
 
         url =  get_endpoint()+'/api/v1.0/upload/'+zip_name #'http://mmelc.vestigesystems.com/putZip'
 
-        with open(file_name+'.zip') as f:
+        with open(file_name+'.zip', 'rb') as f:
             try:
                 res = requests.post(url, files={'zipFile' : f}, data=params)
                 response = res.text

@@ -6973,3 +6973,27 @@
 [1221/173145:INFO:CONSOLE(204)] "user has logged in", source: http://localhost:85/content/home.html?user=guest_user (204)
 [1221/173145:INFO:CONSOLE(320)] "Uncaught TypeError: Object #<Object> has no method 'TestJSCallback'", source: http://localhost:85/content/js/login.js (320)
 [1221/174232:ERROR_REPORT:browser_main.cc(126)] Check failed: browser_contexts_.empty(). 
+[1221/174721:ERROR:backend_impl.cc(2014)] Corrupt Index file
+[1221/174721:ERROR:cache_util_win.cc(20)] Unable to move the cache: 5
+[1221/174721:ERROR:cache_util.cc(104)] Unable to move cache folder C:\MMELC_pilot\python\CEFStorage to C:\MMELC_pilot\python\old_CEFStorage_000
+[1221/174721:ERROR:cache_creator.cc(115)] Unable to create cache
+[1221/174721:INFO:CONSOLE(320)] "Uncaught TypeError: Object #<Object> has no method 'TestJSCallback'", source: http://localhost:85/content/js/login.js (320)
+[1221/174721:INFO:CONSOLE(320)] "Uncaught TypeError: Object #<Object> has no method 'TestJSCallback'", source: http://localhost:85/content/js/login.js (320)
+[1221/174722:INFO:CONSOLE(320)] "Uncaught TypeError: Object #<Object> has no method 'TestJSCallback'", source: http://localhost:85/content/js/login.js (320)
+[1221/174722:INFO:CONSOLE(117)] "Post-Test : Post Test", source: http://localhost:85/content/js/main-2.js (117)
+[1221/174722:INFO:CONSOLE(122)] "18-of-19", source: http://localhost:85/content/js/main-2.js (122)
+[1221/174722:INFO:CONSOLE(204)] "user has logged in", source: http://localhost:85/content/home.html?user=guest_user (204)
+[1221/174724:INFO:CONSOLE(320)] "Uncaught TypeError: Object #<Object> has no method 'TestJSCallback'", source: http://localhost:85/content/js/login.js (320)
+[1221/175240:ERROR_REPORT:browser_main.cc(126)] Check failed: browser_contexts_.empty(). 
+[1221/175403:ERROR:backend_impl.cc(2014)] Corrupt Index file
+[1221/175403:ERROR:cache_util_win.cc(20)] Unable to move the cache: 5
+[1221/175403:ERROR:cache_util.cc(104)] Unable to move cache folder C:\MMELC_pilot\python\CEFStorage to C:\MMELC_pilot\python\old_CEFStorage_000
+[1221/175403:ERROR:cache_creator.cc(115)] Unable to create cache
+[1221/175404:INFO:CONSOLE(320)] "Uncaught TypeError: Object #<Object> has no method 'TestJSCallback'", source: http://localhost:85/content/js/login.js (320)
+[1221/175404:INFO:CONSOLE(320)] "Uncaught TypeError: Object #<Object> has no method 'TestJSCallback'", source: http://localhost:85/content/js/login.js (320)
+[1221/175405:INFO:CONSOLE(320)] "Uncaught TypeError: Object #<Object> has no method 'TestJSCallback'", source: http://localhost:85/content/js/login.js (320)
+[1221/175405:INFO:CONSOLE(117)] "Post-Test : Post Test", source: http://localhost:85/content/js/main-2.js (117)
+[1221/175405:INFO:CONSOLE(122)] "18-of-19", source: http://localhost:85/content/js/main-2.js (122)
+[1221/175405:INFO:CONSOLE(204)] "user has logged in", source: http://localhost:85/content/home.html?user=guest_user (204)
+[1221/175406:INFO:CONSOLE(320)] "Uncaught TypeError: Object #<Object> has no method 'TestJSCallback'", source: http://localhost:85/content/js/login.js (320)
+[1221/175504:ERROR_REPORT:browser_main.cc(126)] Check failed: browser_contexts_.empty(). 
