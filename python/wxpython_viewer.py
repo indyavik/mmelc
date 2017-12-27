@@ -34,9 +34,11 @@ import requests
 import socket
 import glob
 import urllib2
+import zipfile
 import ConfigParser
 import cgi
-
+from distutils.version import LooseVersion, StrictVersion
+from distutils.dir_util import copy_tree
 import settingsPanel
 import xml_util
 
@@ -549,6 +551,78 @@ def get_version():
     config.read(config_file)
     return str(config.get('SETTINGS', 'version'))
 
+def set_version(version):
+    loc = os.path.dirname(os.path.abspath(__file__))
+    config_file = os.path.join(loc, 'mmelc.properties')
+    config = ConfigParser.RawConfigParser()
+    config.read(config_file)
+    config.set('SETTINGS', 'version', version)
+    with open(config_file, 'wb') as f:
+        config.write(f)
+
+def upgrade(downloaded_zip_name_path):
+    response = ''
+    # Return if zip does not exist
+    if not os.path.exists(downloaded_zip_name_path):
+        return 'Zip file ' + downloaded_zip_name_path + ' does not exist.'
+
+    old_version = get_version()
+    # Find version from zip
+    new_version = downloaded_zip_name_path.rsplit('.',1)[0].rsplit('-',1)[1]
+
+    try:
+        if (StrictVersion(old_version) >= StrictVersion(new_version)):
+            return 'Downloaded version is older than existing version.'
+    except Exception as e:
+        return 'Invalid version string(s)'
+
+    loc = os.path.dirname(os.path.abspath(__file__))
+    upgrade_stage_loc = os.path.abspath(os.path.join(os.path.dirname(__file__), '..', 'upgrade_stage'))
+
+    # Clean slate
+    shutil.rmtree(upgrade_stage_loc, ignore_errors=True)
+    if not os.path.exists(upgrade_stage_loc):
+        os.makedirs(upgrade_stage_loc)
+
+    # Create backup of existing version of content and code
+    upgrade_backup_loc = os.path.join(upgrade_stage_loc, 'upgrade_backup_loc')
+    content_dir = os.path.abspath(os.path.join(os.path.dirname(__file__), '..', 'nginx-1.8.0/html/content')
+    shutil.copytree(content_dir, upgrade_backup_loc)
+    code_backup_dir = os.path.join(upgrade_backup_loc, 'code')
+    os.makedirs(code_backup_dir)
+    code = os.path.abspath(__file__)
+    shutil.copy2(code, code_backup_dir)
+
+    # Unzip downloaded zip
+    upgrade_unzip_loc = os.path.join(upgrade_stage_loc, 'upgrade_unzip_loc')
+    os.makedirs(upgrade_unzip_loc)
+    with zipfile.ZipFile(downloaded_zip_name_path, 'r') as z:
+        z.extractall(upgrade_unzip_loc)
+
+    #TODO Optional: Do filecmp.cmp,cmpfiles,dircmp
+
+    try:
+        # Content upgrade
+        copy_tree(os.path.join(upgrade_unzip_loc, 'content'), content_dir)
+
+        # Code upgrade
+        new_code = os.path.join(upgrade_unzip_loc, 'code', os.path.basename(__file__))
+        if os.path.exists(new_code):
+            shutil.copyfile(new_code, code)
+
+        # Bump up version
+        set_version(new_version)
+        return 'Upgrade from ' + old_version + ' to ' + new_version + ' successful. Please restart.'
+    except Exception as e:
+        # Rollback
+        shutil.rmtree(content_dir)
+        shutil.copytree(os.path.join(upgrade_backup_loc, 'content'), content_dir)
+        shutil.copyfile(os.path.join(code_backup_dir, os.path.basename(code)), code)
+        # Rollback to old version
+        set_version(old_version)
+        return 'Upgrade failed. Rolling back.'
+    
+
 
 class JavascriptExternal:
     mainBrowser = None
@@ -672,6 +746,8 @@ class JavascriptExternal:
         except Exception as e:
             response = str(e)
 
+        if (response.startswith('Updates downloaded')):
+                response = upgrade(downloaded_zip_name_path)
         jsCallBack.Call(response)
 
    
