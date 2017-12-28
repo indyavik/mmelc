@@ -7090,3 +7090,15 @@
 [1227/163422:INFO:CONSOLE(202)] "user has logged in", source: http://localhost:85/content/home.html?user=guest_user (202)
 [1227/163423:INFO:CONSOLE(320)] "Uncaught TypeError: Object #<Object> has no method 'TestJSCallback'", source: http://localhost:85/content/js/login.js (320)
 [1227/165004:ERROR_REPORT:browser_main.cc(126)] Check failed: browser_contexts_.empty(). 
+[1227/165627:ERROR:backend_impl.cc(2014)] Corrupt Index file
+[1227/165627:ERROR:cache_util_win.cc(20)] Unable to move the cache: 5
+[1227/165627:ERROR:cache_util.cc(104)] Unable to move cache folder C:\MMELC_pilot\python\CEFStorage to C:\MMELC_pilot\python\old_CEFStorage_000
+[1227/165627:ERROR:cache_creator.cc(115)] Unable to create cache
+[1227/165628:INFO:CONSOLE(320)] "Uncaught TypeError: Object #<Object> has no method 'TestJSCallback'", source: http://localhost:85/content/js/login.js (320)
+[1227/165628:INFO:CONSOLE(320)] "Uncaught TypeError: Object #<Object> has no method 'TestJSCallback'", source: http://localhost:85/content/js/login.js (320)
+[1227/165631:INFO:CONSOLE(320)] "Uncaught TypeError: Object #<Object> has no method 'TestJSCallback'", source: http://localhost:85/content/js/login.js (320)
+[1227/165631:INFO:CONSOLE(117)] "Post-Test : Post Test", source: http://localhost:85/content/js/main-2.js (117)
+[1227/165631:INFO:CONSOLE(122)] "18-of-19", source: http://localhost:85/content/js/main-2.js (122)
+[1227/165631:INFO:CONSOLE(202)] "user has logged in", source: http://localhost:85/content/home.html?user=guest_user (202)
+[1227/165633:INFO:CONSOLE(320)] "Uncaught TypeError: Object #<Object> has no method 'TestJSCallback'", source: http://localhost:85/content/js/login.js (320)
+[1227/170215:ERROR_REPORT:browser_main.cc(126)] Check failed: browser_contexts_.empty(). 
