@@ -600,9 +600,8 @@ def upgrade(downloaded_zip_name_path):
         z.extractall(upgrade_unzip_loc)
 
     #TODO Optional: Do filecmp.cmp,cmpfiles,dircmp
-    
+    return 'PPP1'
     try:
-        zipname_no_extn = os.path.basename(downloaded_zip_name_path).rsplit('.',1)[0]
         # Content upgrade
         copy_tree(os.path.join(upgrade_unzip_loc, 'content'), content_dir)
 
@@ -724,28 +723,30 @@ class JavascriptExternal:
         now = datetime.now().strftime('%Y-%m-%d-%H-%M-%S')
         loc = os.path.dirname(os.path.abspath(__file__))
         #downloaded_zip_name_path = loc + '/updates-' + str(now) + '.zip' 
-        downloaded_zip_name_path = os.path.abspath(os.path.join(loc,'payload-1.2.zip'))
         url = get_endpoint()+'/api/v1.0/getUpdates?version='+get_version()
-        try:
-            req = urllib2.Request(url)
-            res = urllib2.urlopen(req, None, 15)
-            
-            if (res.getcode() == 204):
-                response = 'No updates available.'
-            else:
-                _, params = cgi.parse_header(res.headers.get('Content-Disposition', ''))
-                filename = params['filename']
-                downloaded_zip_name_path = os.path.join(loc,filename)
-                with open(downloaded_zip_name_path, 'wb') as f:
-                    while True:
-                        chunk = res.read(16*1024)
-                        if not chunk:
-                            break
-                        f.write(chunk)
-                response = 'Updates downloaded to ' + downloaded_zip_name_path
-        except Exception as e:
-            response = str(e)
-        if (response.startswith('Updates downloaded')):
+        #try:
+        #    req = urllib2.Request(url)
+        #    res = urllib2.urlopen(req, None, 15)
+        #    
+        #    if (res.getcode() == 204):
+        #        response = 'No updates available.'
+        #    else:
+        #        _, params = cgi.parse_header(res.headers.get('Content-Disposition', ''))
+        #        filename = params['filename']
+        #        downloaded_zip_name_path = os.path.join(loc,filename)
+        #        with open(downloaded_zip_name_path, 'wb') as f:
+        #            while True:
+        #                chunk = res.read(16*1024)
+        #                if not chunk:
+        #                    break
+        #                f.write(chunk)
+        #        response = 'Updates downloaded to ' + downloaded_zip_name_path
+        #except (urllib2.HTTPError, urllib2.URLError) as e:
+        #    response = str(e.code()) + '::' + str(e)
+        #except Exception as e:
+        #    response = str(e)
+        downloaded_zip_name_path = os.path.abspath(os.path.join(loc,'payload-1.2.zip'))
+        if (response.startswith('No updates')):
                 response = upgrade(downloaded_zip_name_path)
         jsCallBack.Call(response)
 
