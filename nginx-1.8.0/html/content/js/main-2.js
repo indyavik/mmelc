@@ -1,3 +1,35 @@
+function toggle5(counter, max) {
+
+     //alert(counter)
+
+
+     var x = document.getElementById('nav_2'); 
+     x.style.display = "none";
+
+
+     var ele = document.getElementById('box' + counter);
+
+     if(ele.style.display == "block") {
+
+         ele.style.display = "none";
+
+     }
+
+     else {
+         ele.style.display = "block";
+     }
+
+     if(counter == max) {
+
+         document.getElementById("toggleButton").style.display = "none";
+         var x = document.getElementById('nav_2'); 
+         x.style.display = "block";
+
+     }
+
+}
+
+
 function calculate_completion() {
     //get current user 
 
