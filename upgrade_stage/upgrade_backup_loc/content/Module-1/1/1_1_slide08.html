@@ -1,0 +1,135 @@
+
+
+<div id="m1_overview_p08" class="page-content">
+    <slide id="1_1_slide08"></slide>
+
+                <h2 class="heading-text"><a href="#preamble" name="preamble"></a>Global Epidemiology of Malaria (5 of 8)</h2>
+                <h3>Local Endemicity </h3>
+
+    <table bgcolor="#FFDBE7" style="width:100%;" border="1" cellspacing="0" cellpadding="0">
+
+        <tbody>
+        <thead>
+        <tr>
+            <th align="left" style="width:500px;font-size:13pt;;border: 2px solid #FBA6E1;padding: 10px;">
+
+
+                <p style="font-weight: normal;" align="left">
+                    The level of endemicity, according to local conditions and defined based on the prevalence of malaria, may be holoendemic, hyperendemic, mesoendemic or
+                    hypoendemic. The definitions of these terms as they relate to malaria, and some of their characteristics, are as follows:
+
+                    <br>
+                    <i style="color:#8B0000;">Click on each of the tabs for more details.</i></p>
+            </th>
+        </tr>
+        </thead>
+
+        </tbody>
+    </table>
+
+
+
+
+
+
+    <table bgcolor="#FFDBE7" style="width:100%;" border="3"cellspacing="2" cellpadding="2">
+
+        <tbody>
+        <tr>
+            <td>
+                <button type="button" class='btn' onclick='show(1);' value="Holoendemic" style="padding:5px; width: 236px; height: 48px; font-weight: bold;font-size: 12px; border-radius: 5px;background-color: #AABCF0;border: 1px solid #f762c9;box-shadow: 2px 2px 2px #f762c9;">Holoendemic</button>
+                <br />
+                <input type="button" class='btn' onclick='show(2);' value="Hyperendemic" style="padding:5px; width: 236px; height: 48px; font-weight: bold;font-size: 12px; border-radius: 5px;background-color: #AABCF0;border: 1px solid #f762c9;box-shadow: 2px 2px 2px #f762c9;"/>
+                <br />
+                <input type="button" class='btn' onclick='show(3);' value="Mesoendemic" style="padding:5px; width: 236px; height: 48px; font-weight: bold;font-size: 12px; border-radius: 5px;background-color: #AABCF0;border: 1px solid #f762c9;box-shadow: 2px 2px 2px #f762c9;"/>
+                <br />
+                <input type="button" class='btn' onclick='show(4);' value="Hypoendemic" style="padding:5px; width: 236px; height: 48px; font-weight: bold;font-size: 12px; border-radius: 5px;background-color: #AABCF0;border: 1px solid #f762c9;box-shadow: 2px 2px 2px #f762c9;"/>
+            </td>
+
+
+            <td>
+                <div id="table1" style="padding: 15px"> <b>Holoendemic</b> <br><br>
+                    Holoendemic means that high-level transmission occurs throughout the year.  It is defined as having a prevalence constantly over 75% in children, but prevalence may be low in adults. </div>
+                <div id="table2" style="padding: 15px"> <b>Hyperendemic</b>
+                    <br><br>Hyperendemic means that transmission is most intense in the rainy season.  It is defined as having a prevalence constantly over 50% in children, and also high prevalence in adults.</div>
+                <div id="table3" style="padding: 15px"> <b>Mesoendemic</b><br><br>
+                    Mesoendemic means that transmission is more intense during the warmer months. Prevalence is between 11% and 50% in children. </div>
+                <div id="table4" style="padding: 15px"> <b>Hypoendemic</b><br><br>
+                    Hypoendemic means that low-level transmission is intermittent throughout the year. Prevalence is at or below 10% in children. </div>
+            </td>
+        </tr>
+
+        </tbody>
+    </table>
+
+</div>
+
+
+
+
+<style type="text/css">
+    td {
+        vertical-align: top;
+    }
+    #table1, #table2, #table3, #table4 {
+        display: none;
+
+    }
+
+    .btn {
+        display: inline-block;
+        border: #2e6da4;
+        border-style: solid;
+        border-width: 2px;
+        width: 190px;
+        height: 54px;
+        border-radius: 6px;
+        font-weight: bold;
+        color: black;
+        margin-top: 5px;
+        margin-bottom: 5px;
+        margin-right: 5px;
+        margin-left: 5px;
+        vertical-align: middle;
+    }
+    .btn:hover {
+        background: linear-gradient(#abb941, #abb941);
+        color: white
+    }
+    .btn:focus {
+        background: linear-gradient(#abb941, #abb941);
+        color: white
+    }
+    .button-selected {
+        border: 4px solid red;
+    }
+</style>
+
+<script type="text/javascript">
+    function show(button) {
+        var elem = document.getElementsByClassName("button-selected")[0];
+        // if element having class `"button-selected"` defined, do stuff
+        if (elem) {
+            elem.className = "";
+        }
+        button.className = "button-selected";
+    }
+</script>
+
+
+
+
+
+<script type="text/javascript">
+
+    function show(nr) {
+        document.getElementById("table1").style.display="none";
+        document.getElementById("table2").style.display="none";
+        document.getElementById("table3").style.display="none";
+        document.getElementById("table4").style.display="none";
+        document.getElementById("table"+nr).style.display="block";
+    }
+
+</script>
+
+
