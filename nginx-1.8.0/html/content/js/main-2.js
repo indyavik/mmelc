@@ -363,7 +363,7 @@ function load_page(page, template) {
     //gothere
     //set the variables in session storage.
 
-    alert(page)
+    //alert(page)
 
     console.log('load_page : page is: ' + page)
 
