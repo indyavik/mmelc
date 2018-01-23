@@ -365,8 +365,11 @@ $(document).ready(initMenu);
 		   <textarea id="error_description" name="error_description" cols="80" rows="5"></textarea>
 		   <br>
                    <span id="sendreport-btn"><button class="sendreportbtn" style="vertical-align: top;position: absolute;" onclick="send_error_reports(JSON.parse(localStorage.getItem('logged_in')),document.getElementById('email').value,document.getElementById('error_description').value);">Send Error Report</button></span>
-		   <br><br><br><br><br><br>
+		   <br><br><br><br>
                    <span id="getupdates-btn"><button class="getupdatesbtn" style="vertical-align: top;position: absolute;" onclick="get_updates();">Check for Updates</button></span>
+
+                   <br><br><br><br>
+                   <span id="copyusb-btn"><button class="copyusbbtn" style="vertical-align: top;position: absolute;" onclick="copy_updates_to_usb();">Copy Updates to MMELC USB Drive</button></span>
 
            </div>
         </div>

@@ -100,15 +100,15 @@ function send_error_reports(userid, email, description)
 	external.send_error_reports(userid, email, description, send_error_reports_callback);
 }
 
-function get_updates()
-{
-	external.get_updates(get_updates_callback);
-}
-
 function send_error_reports_callback(arg)
 {
 	var response = arg;
 	alert(response);
+}
+
+function get_updates()
+{
+	external.get_updates(get_updates_callback);
 }
 
 function get_updates_callback(arg)
@@ -117,6 +117,16 @@ function get_updates_callback(arg)
 	alert(response);
 }
 
+function copy_updates_to_usb()
+{
+	external.copy_updates_to_usb(copy_updates_to_usb_callback);
+}
+
+function copy_updates_to_usb_callback(arg)
+{
+	var response = arg;
+	alert(response);
+}
 
 function update_on_disk(file_name, json_obj) {
 

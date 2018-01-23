@@ -153,6 +153,31 @@
 
        //grab the url and load the appropriate slide. 
 
+      // alert(window.location.href.indexOf('?loadPage=') )
+
+      if (window.location.href.indexOf('?loadPage=') < 0 ) {
+
+       // alert('here')
+
+          document.getElementById('navBar').style.display = "none";
+          document.getElementById('calc-unit').style.display = "none";
+          document.getElementById('right').style.display = "none";
+          document.getElementById('contentsMenuButton').style.display = "none";
+          document.getElementById('nav-img-home').style.display = "none";
+          
+          
+          
+
+      }
+
+      else {
+
+          document.getElementById('navBar').style.display = "inline-block";
+
+
+      }
+
+
 
     var loc = window.location.href.split("?")[1] // pxl_home.html?loadPage=xyz.html --> returns LoadPage=xyz.html
 
@@ -305,11 +330,11 @@ $(document).ready(initMenu);
 
             </div>
 
-            <div style="width: calc(50% - 100px); height: 1px; display:inline-block; float: left;">
+            <div  style="width: calc(50% - 100px); height: 1px; display:inline-block; float: left;">
             
             </div>
 
-            <div style="width: 100%; min-height: 40px; background-color: white; position:relative;">
+            <div id="calc-unit" style="width: 100%; min-height: 40px; background-color: white; position:relative;">
                 
                 <div id="unitTitle" style="overflow: hidden; font-size:15px; position:absolute; bottom:0px; margin-left: 100px; font-style: italic;"> </div>
             </div>
@@ -338,7 +363,7 @@ $(document).ready(initMenu);
                 <img src="images/Picture2.png" style="position: absolute;top: 272px;height: 200px;left:0">
                 <span class="header_iconDiv" style="left: 20px; top: 70px; position:fixed;">
                 <div class="tooltip">
-                    <img class="nav-img-home" onclick="javascript:openNav()" alt="Contents" src="images/side1.png">
+                    <!-- <img id="nav-img-home-2" class="nav-img-home" onclick="javascript:openNav()" alt="Contents" src="images/side1.png"> -->
                     <span class="tooltiptext">Contents Menu</span>
                 </div>
                 </span>
@@ -886,18 +911,8 @@ To cancel and stay logged in, click on the small x above.</p>
 
    //hide nav2 if on home page and no other slide is being loaded.
 
-    if (window.location.href.indexOf('?') < 0 ) {
-
-        document.getElementById('navBar').style.display = "none";
-
-    }
-
-    else {
-
-        document.getElementById('navBar').style.display = "inline-block";
 
 
-    }
 
    
 

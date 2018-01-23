@@ -7199,3 +7199,31 @@
 [0119/142317:INFO:CONSOLE(203)] "user has logged in", source: http://localhost:85/content/home.html?user=guest_user (203)
 [0119/142319:INFO:CONSOLE(320)] "Uncaught TypeError: Object #<Object> has no method 'TestJSCallback'", source: http://localhost:85/content/js/login.js (320)
 [0119/142354:ERROR_REPORT:browser_main.cc(126)] Check failed: browser_contexts_.empty(). 
+[0123/110320:ERROR:backend_impl.cc(2014)] Corrupt Index file
+[0123/110320:ERROR:cache_util_win.cc(20)] Unable to move the cache: 5
+[0123/110320:ERROR:cache_util.cc(104)] Unable to move cache folder C:\MMELC_pilot\python\CEFStorage to C:\MMELC_pilot\python\old_CEFStorage_000
+[0123/110320:ERROR:cache_creator.cc(115)] Unable to create cache
+[0123/110321:INFO:CONSOLE(320)] "Uncaught TypeError: Object #<Object> has no method 'TestJSCallback'", source: http://localhost:85/content/js/login.js (320)
+[0123/110321:INFO:CONSOLE(320)] "Uncaught TypeError: Object #<Object> has no method 'TestJSCallback'", source: http://localhost:85/content/js/login.js (320)
+[0123/110323:INFO:CONSOLE(320)] "Uncaught TypeError: Object #<Object> has no method 'TestJSCallback'", source: http://localhost:85/content/js/login.js (320)
+[0123/110323:INFO:CONSOLE(117)] "Post-Test : Post Test", source: http://localhost:85/content/js/main-2.js (117)
+[0123/110323:INFO:CONSOLE(122)] "18-of-19", source: http://localhost:85/content/js/main-2.js (122)
+[0123/110323:INFO:CONSOLE(2)] "jQuery.Deferred exception: Cannot read property 'style' of null", source: http://localhost:85/content/js/jquery-3.0.0.min.js (2)
+[0123/110327:INFO:CONSOLE(320)] "Uncaught TypeError: Object #<Object> has no method 'TestJSCallback'", source: http://localhost:85/content/js/login.js (320)
+[0123/110331:INFO:CONSOLE(320)] "Uncaught TypeError: Object #<Object> has no method 'TestJSCallback'", source: http://localhost:85/content/js/login.js (320)
+[0123/110331:INFO:CONSOLE(117)] "Post-Test : Post Test", source: http://localhost:85/content/js/main-2.js (117)
+[0123/110331:INFO:CONSOLE(122)] "18-of-19", source: http://localhost:85/content/js/main-2.js (122)
+[0123/110331:INFO:CONSOLE(2)] "jQuery.Deferred exception: Cannot read property 'style' of null", source: http://localhost:85/content/js/jquery-3.0.0.min.js (2)
+[0123/110333:INFO:CONSOLE(320)] "Uncaught TypeError: Object #<Object> has no method 'TestJSCallback'", source: http://localhost:85/content/js/login.js (320)
+[0123/124918:INFO:CONSOLE(320)] "Uncaught TypeError: Object #<Object> has no method 'TestJSCallback'", source: http://localhost:85/content/js/login.js (320)
+[0123/124918:INFO:CONSOLE(117)] "Post-Test : Post Test", source: http://localhost:85/content/js/main-2.js (117)
+[0123/124918:INFO:CONSOLE(122)] "18-of-19", source: http://localhost:85/content/js/main-2.js (122)
+[0123/124918:INFO:CONSOLE(2)] "jQuery.Deferred exception: Cannot read property 'style' of null", source: http://localhost:85/content/js/jquery-3.0.0.min.js (2)
+[0123/124919:INFO:CONSOLE(320)] "Uncaught TypeError: Object #<Object> has no method 'TestJSCallback'", source: http://localhost:85/content/js/login.js (320)
+[0123/124927:INFO:CONSOLE(372)] "Uncaught ReferenceError: copy_updates_to_usb is not defined", source: http://localhost:85/content/admin_actions.html (372)
+[0123/125358:INFO:CONSOLE(372)] "Uncaught ReferenceError: copy_updates_to_usb is not defined", source: http://localhost:85/content/admin_actions.html (372)
+[0123/125406:INFO:CONSOLE(320)] "Uncaught TypeError: Object #<Object> has no method 'TestJSCallback'", source: http://localhost:85/content/js/login.js (320)
+[0123/125406:INFO:CONSOLE(117)] "Post-Test : Post Test", source: http://localhost:85/content/js/main-2.js (117)
+[0123/125406:INFO:CONSOLE(122)] "18-of-19", source: http://localhost:85/content/js/main-2.js (122)
+[0123/125406:INFO:CONSOLE(2)] "jQuery.Deferred exception: Cannot read property 'style' of null", source: http://localhost:85/content/js/jquery-3.0.0.min.js (2)
+[0123/125408:INFO:CONSOLE(320)] "Uncaught TypeError: Object #<Object> has no method 'TestJSCallback'", source: http://localhost:85/content/js/login.js (320)
