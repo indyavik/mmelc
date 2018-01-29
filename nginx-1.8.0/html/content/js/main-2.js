@@ -408,12 +408,22 @@ function load_page(page, template) {
   */
 
   else {
+
+    if(page == '8_0_slide19.html') {
+        //do nothing.
+    }
+
+    else {
+
+
         
         document.getElementById('back-button').onclick = function (){ nav_to('prev'); } ;
         document.getElementById('back-button').src = "images/backward.png";
 
         document.getElementById('forward-button').onclick = function (){ nav_to('next'); } ;
         document.getElementById('forward-button').src = "images/forward.png";
+        }
+
     }
 
 /*
