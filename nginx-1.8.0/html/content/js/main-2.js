@@ -1550,6 +1550,44 @@ return [qs, ans];
   
 } // create_cert_ans
 
+function create_cert_ans_key_to_submit_2() {
+
+range1 =10;
+range2= 5;
+
+var range01 = [1,2,3,4,5,6,7,8,9,10]
+var range02 = [1,2,3,4,5]
+
+var qs= [];
+var ans =[];
+
+
+
+for (var i = 0; i < range01.length; i++) {
+      
+        //console.log('postMCQ' + range01[i]);
+        qs.push('certMCQ' + range01[i])
+        
+}
+
+for (var i = 0; i < range02.length; i++) {
+        qs.push('certq' + range02[i])
+        //console.log('postq' + range02[i]);
+        
+}
+
+//console.log(qs);
+console.log(qs.length )
+
+for (a = 0; a < qs.length; a++) {
+  var an = localStorage.getItem(qs[a]);
+  ans.push(an);
+}
+
+return [qs, ans];
+  
+} // create_cert_ans
+
 function submit_cert_ans_to_server(anskey) {
 
 
