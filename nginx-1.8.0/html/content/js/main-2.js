@@ -1,3 +1,50 @@
+function update_user_object(objectName, updatedvalue) {
+
+
+  
+      var current_user = localStorage.getItem('logged_in');
+      var user_data = JSON.parse(localStorage.getItem(JSON.parse(current_user))) ;
+
+      user_data[objectName] = updatedvalue; 
+
+      localStorage.setItem(JSON.parse(current_user), JSON.stringify(user_data))
+
+      //update_on_disk(JSON.parse(current_user) + '.txt' , user_data)
+}
+
+function return_to_last(){
+
+  
+
+      var current_user = localStorage.getItem('logged_in');
+      var user_data = JSON.parse(localStorage.getItem(JSON.parse(current_user))) ;
+      var last_visited_page = user_data['last_visited_page']
+
+      alert('last_visited_page' + last_visited_page)
+
+      
+
+      if(last_visited_page.indexOf("_pxl_") > -1 ) {
+
+        var to_go_page = window.location.origin + "/content/home_pxl.html?loadPage=" + last_visited_page ; 
+
+        window.location.href = to_go_page;
+
+        return;
+
+      }
+
+        var to_go_page = window.location.origin + "/content/home.html?loadPage=" + last_visited_page ; 
+
+        window.location.href = to_go_page;
+
+
+
+
+
+}
+
+
 function calculate_completion() {
     //get current user 
 
@@ -480,6 +527,7 @@ function load_page(page, template) {
                 $("#content-right").html(check_page);
                 $("#pxl_left").appendTo("#content-left")
                 localStorage.setItem('current_location', page);
+                update_user_object('last_visited_page', page);
                 loadFooterNav(page);
 alert(unit_title + 'pxl to pxl line 424');
               }
@@ -489,6 +537,7 @@ alert(unit_title + 'pxl to pxl line 424');
                 $("#footer").show();
                 $("#content-inner").html(check_page);
 				localStorage.setItem('current_location', page);
+                 update_user_object('last_visited_page', page);
 				loadFooterNav(page); 
 			//var info = get_titles();
                //var module_title = info['module_title'];
@@ -516,6 +565,7 @@ alert(unit_title + 'pxl to pxl line 424');
                 $("#footer").show();
                 $("#content-inner").html(check_page);
                 localStorage.setItem('current_location', page);
+                update_user_object('last_visited_page', page);
                 loadFooterNav(page);
                 //close the side nav if open.
                 
@@ -541,6 +591,7 @@ alert(unit_title + 'pxl to pxl line 424');
               else {
                 window.location = 'home_pxl.html?loadPage=' + page 
 				localStorage.setItem('current_location', page);
+                update_user_object('last_visited_page', page);
 			//	               var info = get_titles()
             //   var module_title = info['module_title']
             //   var unit_title = info['unit_title']
@@ -1624,28 +1675,7 @@ function submit_cert_ans_to_server(anskey) {
 }//  submit_cert to server
 
 
-function return_to_last(){
-	
-var current_user = JSON.parse(localStorage.getItem('logged_in'))
-        
-var user_data = JSON.parse(localStorage.getItem(current_user))
 
-var last_page = user_data.last_visited_page
-
-if(last_page){
-
-load_page(last_page)
-
-
-}
-
-else {
-
-alert('nothing to do');
-
-}
-
-}// return_to_last
 
 function grey_back_button(){
 
