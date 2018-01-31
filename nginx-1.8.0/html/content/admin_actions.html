@@ -353,7 +353,71 @@ $(document).ready(initMenu);
                 </div>
 				</span-->
             </div>
+            <script type="text/javascript">
+
+                function adminoptions(divid){
+
+                    if (divid == 'sendreport'){
+                        //alert(divid)
+                        document.getElementById('getupdates-div').style.display = 'none';
+                        document.getElementById('copyusb-div').style.display = 'none';
+                        document.getElementById('sendreport-div').style.display = 'inline-block';
+                    }
+
+                    if (divid == 'getupdates'){
+                        document.getElementById('getupdates-div').style.display = 'inline-block';
+                        document.getElementById('copyusb-div').style.display = 'none';
+                        document.getElementById('sendreport-div').style.display = 'none';
+
+
+                        /*
+
+                        document.getElementById('getupdates-btn').style.background = 'green';
+
+
+                        document.getElementById('copyusb-btn').style.backgroundColor = 'grey';
+                        document.getElementById('sendreport-btn').style.backgroundColor = 'grey';
+
+                        $("sendreport-btn").css("background-color","red");
+
+                        */
+
+                    }
+
+
+
+                    if (divid == 'copyusb') {
+
+                        document.getElementById('getupdates-div').style.display = 'none';
+                        document.getElementById('copyusb-div').style.display = 'inline-block';
+                        document.getElementById('sendreport-div').style.display = 'none';
+
+                    }
+
+
+                }
+
+            </script>
            <div style="width:64%;display: inline-block;vertical-align: top;overflow:auto;max-height:calc(100% - 35px);">
+
+            <div id="admin-options" style="margin-top: 50px;">
+
+            <span id="sendreport-btn"><button class="getupdatesbtn" style="background-color: green;" onclick="adminoptions('sendreport');">Send Error Report</button></span>
+
+            <span id="getupdates-btn"><button class="getupdatesbtn" onclick="adminoptions('getupdates');">Check for Updates</button></span>
+
+            <span id="copyusb-btn"><button class="getupdatesbtn" onclick="adminoptions('copyusb');">Copy updates to USB</button></span>
+
+            <p></p>
+            <p></p>
+
+                
+            </div><!-- admin options -->
+
+            <p></p>
+            <hr>
+
+            <div id="sendreport-div" style="display: none;">
 		
              <br><p>
 	           Email:
@@ -363,15 +427,53 @@ $(document).ready(initMenu);
 	           Enter brief problem description:
 		   <br>
 		   <textarea id="error_description" name="error_description" cols="80" rows="5"></textarea>
-		   <br>
+		   <br><br><br>
                    <span id="sendreport-btn"><button class="sendreportbtn" style="vertical-align: top;position: absolute;" onclick="send_error_reports(JSON.parse(localStorage.getItem('logged_in')),document.getElementById('email').value,document.getElementById('error_description').value);">Send Error Report</button></span>
 		   <br><br><br><br>
-                   <span id="getupdates-btn"><button class="getupdatesbtn" style="vertical-align: top;position: absolute;" onclick="get_updates();">Check for Updates</button></span>
+                 
 
-                   <br><br><br><br>
-                   <span id="copyusb-btn"><button class="copyusbbtn" style="vertical-align: top;position: absolute;" onclick="copy_updates_to_usb();">Copy Updates to MMELC USB Drive</button></span>
+                   </div> <!-- error report -->
+
+                   <div id="getupdates-div" style="display:none;">
+
+                    <p></p>
+
+                    <div id="getupdates-txt" style="margin-left: 20px;">
+                        <p>
+                        Clicking button below will check the new course updates on the server. </p>
+                        <p>
+                        Any new updates found are installed automatically. Click button below to proceed. ..
+                        </p>
+                    </div>
+
+                    <p></p>
+                    <p></p>
+
+                      <span id="getupdates-btn"><button class="getupdatesbtn" style="vertical-align: top;position: absolute; margin-left: 20px;" onclick="get_updates();">Ok - Check for Updates</button></span>
+                       
+
+                   </div><!-- get updates -->
+
+                   <div id="copyusb-div" style="display:none;">
+
+                    <p></p>
+
+                                        <div id="copyusb-txt" style="margin-left: 20px;">
+                        <p>
+                        Clicking button below will check the new course updates on the server. </p>
+                        <p>
+                        Any new updates found are copied to the USB drive attached to the computer. 
+                        </p>
+                    </div>
+
+                    <p></p>
+                       
+                         <span id="copyusb-btn"><button class="getupdatesbtn" style="margin-left: 20px;" onclick="copy_updates_to_usb();">Ok -Copy Updates to MMELC USB Drive</button></span>
+
+                   </div><!-- cppy2 usb -->
 
            </div>
+
         </div>
 
     </div>
