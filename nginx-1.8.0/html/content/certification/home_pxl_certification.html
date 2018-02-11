@@ -1,0 +1,1083 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+
+<head>
+    <meta http-equiv="cache-control" content="no-cache" />
+    <link rel="stylesheet" type="text/css" href="../css/mmelt-pe.css">
+    <link rel="stylesheet" type="text/css" href="../css/mmelt-pe.css">
+    <link rel="stylesheet" type="text/css" href="../css/main.css">
+    <link rel="stylesheet" type="text/css" href="../css/slide.css">
+
+    <script src="../js/jquery-3.0.0.min.js"></script>
+
+    <style>
+
+
+        
+        .counterbox {
+            /* forces children to same row */
+            height: 80px;
+            width: 100%;
+            z-index: 1000000;
+            top:150px;
+            left:15px;
+       
+            /*
+            padding-left: 15px;
+            padding-right: 15px;
+          
+            */
+        }
+
+        #counterbox  input {
+            font-size: 0.8em;
+            background-color: transparent;
+            text-align: center;
+            border-width: 0;
+            width: 100%;
+            margin: 0 0 .1em 0;
+            color: blue;
+        }
+
+
+        
+        .box {
+            /* basics */
+            float: left;
+            background-color: rgb(2, 2, 2);
+            color: #C4BE92;
+            text-align: center;
+            vertical-align:center
+            /* rounded corners */
+            -webkit-border-radius: 5px;
+            border-radius: 5px;
+            font-size: 12px;
+            -moz-background-clip: padding;
+            -webkit-background-clip: padding-box;
+            background-clip: padding-box;
+            padding: .4em .4em 1em;
+            /*width: 8em;*/
+            width: 80px;
+            height: 50px;
+            margin: 5px 5px 5px 30px;
+            -webkit-box-shadow: 0px 0px 12px 0px #000;
+            box-shadow: 0px 0px 12px 0px #000;
+        }
+
+        #counterbox button {
+
+            align-items: flex-start;
+            text-align: center;
+            cursor: default;
+            color: buttontext;
+            background-color: buttonface;
+            box-sizing: border-box;
+            padding: 2px 2px 3px;
+            border-width: 2px;
+            border-style: outset;
+            border-color: buttonface;
+            border-image: initial;
+
+        }
+
+
+
+
+    </style>
+
+    <script src="../js/main-2.js"></script>
+    <script src="../pxl-fullslide.js"></script>
+
+
+
+    <script>
+        $(function() {
+
+            alert('here')
+
+            jQuery.ajaxSetup({async:false}); 
+
+            var certpage =  $.get('Module-8/0/8_0_slide14_pxl_posttestq1.html');
+
+              if (certpage.status != 404) {
+
+                alert(certpage.status)
+
+               // $("#content-inner").html(certpage.responseText);
+
+             $("#content-right").html(certpage.responseText);
+
+                //append counter box to the content right. 
+                //alert("adding box");
+                //$("#box").appendTo("#content-right");
+
+
+                $("#pxl_left").appendTo("#content-left")
+
+
+              }
+
+              return;
+
+
+            //hide the next/previous button. and show after some  delay IF not a test/assessment:
+            var info = get_titles()
+            var module_title = info['module_title']
+            var unit_title = info['unit_title']
+            var currentSlidex = info['currentSlidex']
+            var numberSlidesy = info['numberSlidesy']
+                //if(page.indexOf("_pxl_") > -1 ) next_template = 'home_pxl.html'
+            if (unit_title.indexOf("Test") > -1 || unit_title.indexOf("Assessment") > -1) {
+                if (currentSlidex > 1 && currentSlidex != 12) {
+                    document.getElementById('nextPageButton').style.display = 'none';
+                } else {
+                    $('#nextPageButton').hide().delay(1050).show(0);
+                }
+                document.getElementById('previousPageButton').style.display = 'none';
+                document.getElementById('wrap-footer-menu').style.display = 'none';
+            } else { //unhide
+                $('#nextPageButton').hide().delay(1050).show(0);
+                $('#previousPageButton').hide().delay(1000).show(0);
+                document.getElementById('wrap-footer-menu').style.display = 'initial';
+                //alert('should be delay hide then show');
+            }
+
+
+
+
+            //run on load. ensure the config is loaded. 
+
+            var mod_config = JSON.parse(localStorage.getItem('module_config'));
+            //load from file. 
+
+            if (!mod_config) {
+
+                jQuery.ajaxSetup({
+                    async: false
+                }); //required to avoind async status code check issues 
+
+                var jq = $.get('js/module_conf.json'); //alert(jq.status);
+
+                if (jq.status == 200) {
+
+                    var mod_config = jq.responseText;
+                    localStorage.setItem('module_config', mod_config);
+
+                } else {
+                    alert("configuration file not found. please contact the administrator");
+                    return;
+
+                }
+
+            }
+
+            //alert('home_pxl: dom is loaded');
+
+            //grab the url and load the appropriate slide. 
+
+            var loc = window.location.href.split("?")[1] // pxl_home.html?loadPage=xyz_pxl_z.html --> returns LoadPage=xyz_pxl_z.html
+            if (loc) {
+
+                var go_to_loc = loc.split('=')[1]
+                    //set current location to this 'xyz_pxl_z.html'  and call load_page(page, template) 
+                    //localStorage.setItem('current_location', loc)
+                    //load_page(go_to_loc)
+
+                var go_to_page = create_page_path(go_to_loc)
+
+                jQuery.ajaxSetup({
+                    async: false
+                }); //required to avoind async status code check issues 
+
+                var jq = $.get(go_to_page); //alert(jq.status);
+
+                if (jq.status == 200) {
+                    var page_data = jq.responseText;
+                }
+
+                //$("#content-left").html(page_data);
+                //$("#pxl_right").appendTo("#content-right")
+
+                //console.log(page_data);
+
+                $("#content-right").html(page_data);
+
+                //append counter box to the content right. 
+                //alert("adding box");
+                //$("#box").appendTo("#content-right");
+
+
+                $("#pxl_left").appendTo("#content-left")
+
+
+                localStorage.setItem('current_location', go_to_loc);
+                update_user_object('last_visited_page', go_to_loc)
+
+                var footer_page = go_to_loc.split('_pxl')[0] + '.html'
+
+                loadFooterNav(go_to_loc);
+
+                document.getElementById('footer_selector').style.maxWidth = 'calc(100% - 5px)';
+                document.getElementById('footer_selector').style.overflow = 'hidden';
+                document.getElementById('footer_selector').style.maxHeight = '1.5em';
+
+                //alert(go_to_loc)
+
+                //var change = '3_2_slide27_pxl_m3u2pe1q13.html' ;
+
+                $('select option[ value= go_to_loc ]').attr('selected', 'selected');
+                //$("select option[value= '3_2_slide27_pxl_m3u2pe1q13.html' ]").attr("selected","selected");
+
+            }
+
+
+        });
+
+        function initMenu() {
+            $('#menu ul').hide();
+            $('#menu > li > a').on('click', function() {
+                $('#menu ul').slideUp();
+                $(this).next().slideDown();
+            });
+        }
+        $(document).ready(initMenu);
+    </script>
+
+    <script>
+
+        function update_counter_object(requesttype, counterarray) {
+    
+            //get the counter. 
+
+              var current_user = localStorage.getItem('logged_in');
+              var user_data = JSON.parse(localStorage.getItem(JSON.parse(current_user))) ;
+              var current_location = localStorage.getItem('current_location');
+
+              var x = user_data['counter']
+
+              if(x ==undefined) {
+
+                user_data['counter'] = {}
+
+                x = {}
+                x[current_location] = [0,0]
+
+                user_data['counter'] = x 
+
+                localStorage.setItem(JSON.parse(current_user), JSON.stringify(user_data))
+
+                return [0,0]
+
+                
+              }
+
+              if(x[current_location] == undefined ){
+
+                x[current_location] = [0,0]
+
+                user_data['counter'] = x 
+
+                localStorage.setItem(JSON.parse(current_user), JSON.stringify(user_data))
+
+                return [0,0]
+
+                
+
+              }
+
+              if (requesttype == 'get') {
+
+                return x[current_location] ;
+
+
+              }
+
+
+              else {
+
+              //update.
+              var x = user_data['counter']
+
+              x[current_location] = counterarray; 
+
+               user_data['counter'] = x;
+
+              localStorage.setItem(JSON.parse(current_user), JSON.stringify(user_data))
+
+              initial_qty_load(counterarray);
+
+              
+              }
+
+              //user['counter'] = {'page' : [counter1, counter2] }
+
+
+        }//update counter
+
+        function initial_qty_load(counterarray) {
+
+            if (!counterarray) {
+                var qtys = update_counter_object('get'); 
+            }
+            else {
+                var qtys = counterarray;
+            }
+
+
+            var qtydivs = ['qty', 'qty2']
+
+            for (var i = 0, len = qtydivs.length; i < len; i++) {
+                var divid = qtydivs[i];
+                var val = qtys[i]; 
+
+                /*
+
+                var page_id = localStorage.getItem('current_location');
+                var counter_id = 'counter_' + page_id + '_' + divid;
+                var val = localStorage.getItem(counter_id);
+
+                */
+
+                if (!val) {
+                    val = 0;
+                };
+
+                document.getElementById(divid).value = val;
+
+
+            }
+
+
+
+        }
+
+        function modify_qty(val, divid, ifenter) {
+
+            var counterarray = update_counter_object('get'); 
+            var qty = counterarray[0]
+            var qty2 = counterarray[1]
+
+            //counter1 = parseInt(qty, 10) + val;
+            //counter2 = parseInt(qty2, 10) + val;
+
+            //var counter1 = document.getElementById("qty").value;
+            //var counter2 = document.getElementById("qty2").value;
+
+            if (divid == 'qty') {
+
+                if(val == 0) {
+                    update_counter_object('update', [0, qty2]);
+
+                    return; 
+
+                    }
+
+                if(ifenter){
+
+                    update_counter_object('update', [val, qty2]);
+                    return; 
+
+                }
+
+                else{
+                   update_counter_object('update', [parseInt(qty, 10) + val, qty2]);
+                    return; 
+                }
+
+            } // if qty
+
+            if (divid == 'qty2') {
+
+                if(val == 0) {
+                    update_counter_object('update', [qty, 0]);
+
+                    return; 
+
+                    }
+
+                if(ifenter){
+
+                    update_counter_object('update', [qty, val]);
+                    return; 
+
+                }
+
+                else{
+                   update_counter_object('update', [qty, parseInt(qty2, 10) + val]);
+                    return; 
+                }
+
+            } // if qty
+
+
+
+        }// function modify 
+
+        //click the button (+) on enter key 
+
+
+    function changeCounter(e){
+
+            if (e.which == 101 || e.which == 69) {
+                $("#up").click();
+            }
+
+            if (e.which == 114 || e.which == 82) {
+                $("#up2").click();
+            }
+
+
+            if (e.which == 13) {
+                //if values are manually manipulated.
+
+                var qty = document.getElementById("qty").value;
+                var qty2 = document.getElementById("qty2").value;
+
+
+
+                modify_qty(qty, "qty", "yes");
+                modify_qty(qty2, "qty2", "yes");
+
+                
+            
+
+            }
+
+
+
+    }; //change value of th ecounter.
+
+        
+
+        $(document).keypress(function(e) {
+
+            changeCounter(e);
+            //alert(e.which);
+    
+
+            /*
+
+            if (e.which == 13) {
+                //$("#up2").click();
+                var qty = document.getElementById("qty").value;
+                var qty2 = document.getElementById("qty2").value;
+
+                modify_qty(qty, "qty");
+                modify_qty(qty2, "qty2");
+
+            }
+
+            */
+
+
+
+
+        });
+
+
+
+    </script>
+
+
+    <style>
+        .helpModal {
+            display: none;
+            /* Hidden by default */
+            position: fixed;
+            /* Stay in place */
+            z-index: 100;
+            /* Sit on top */
+            padding-top: 150px;
+            /* Location of the box */
+            left: 0;
+            top: 0;
+            width: 100%;
+            /* Full width */
+            height: 100%;
+            /* Full height */
+            /*overflow: none;  Enable scroll if needed */
+            background-color: rgb(0, 0, 0);
+            /* Fallback color */
+            background-color: rgba(0, 0, 0, 0.4);
+            /* Black w/ opacity */
+        }
+        /* Modal Content */
+        
+        .help-modal-content {
+            background-color: #fefefe;
+            margin: auto;
+            padding: 20px;
+            margin-right: 50%;
+            border: 1px solid #888;
+            width: 40%;
+            height: 60%;
+            overflow: auto;
+            max-width: 500px;
+            font-family: sans-serif;
+        }
+        
+        .mc-width {
+            width: 50%;
+            align: left;
+        }
+        /* The Close Button */
+        
+        .help-close {
+            color: #aaaaaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+        }
+        
+        .help-close:hover,
+        .help-close:focus {
+            color: #000;
+            text-decoration: none;
+            cursor: pointer;
+        }
+        
+        .modal2343 {
+            display: none;
+            /* Hidden by default */
+            position: fixed;
+            /* Stay in place */
+            z-index: 101;
+            /* Sit on top */
+            padding-top: 5%;
+            /* Location of the box */
+            left: 0;
+            top: 0;
+            width: 100%;
+            /* Full width */
+            height: 100%;
+            /* Full height */
+            /*overflow: none;  Enable scroll if needed */
+            background-color: rgb(0, 0, 0);
+            /* Fallback color */
+            background-color: rgba(0, 0, 0, 0.4);
+            /* Black w/ opacity */
+        }
+        /* Modal Content */
+        
+        .modal-2343-content {
+            background-color: #fefefe;
+            margin: auto;
+            padding: 20px;
+            /*margin-right: 50%;*/
+            border: 1px solid #888;
+            width: 80%;
+            height: 80%;
+            overflow: auto;
+            max-width: 800px;
+            font-family: sans-serif;
+        }
+        
+        .mc-width {
+            width: 50%;
+            align: left;
+        }
+        /* The Close Button */
+        
+        .modal2343-close {
+            color: #aaaaaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+        }
+        
+        .modal2343-close:hover,
+        .modal2343-close:focus {
+            color: #000;
+            text-decoration: none;
+            cursor: pointer;
+        }
+    </style>
+
+</head>
+
+<body>
+
+
+    <div id="wrapper">
+
+
+        <div id="aside" valign="top">
+
+
+            <div id="header-pxl">
+
+                <div id="header-a" style="height:46px; background-color: black; text-align:center; display:table;width:100%;margin:auto;">
+
+
+
+                    <p id="page-title" style="color: white;vertical-align:middle;height:46px;display:table-cell;text-align:center;"><b>Malaria Microscopy e-Learning Course</b></p>
+
+
+
+                </div>
+                <!--- header a -->
+
+
+                <div id="header-b" style="height:50px; background-color: #FFDBE7;">
+
+                    <div style="margin-top:2px; display: inline-block; width:100%;">
+
+                        <div id="wrap-footer-menu" style="margin-top: 5px; margin-left: 5px;">
+
+
+
+
+                        </div>
+                        <!--wrap footer menu. -->
+
+
+                    </div>
+
+
+
+                </div>
+                <!--- header a -->
+
+
+
+            </div>
+            <!--header -->
+
+                                   <!--header -->
+            <div id="counterbox" style="display:none; background: tomato;">
+
+                <div class="box" id="box">
+
+                    <label for="qty"><abbr title="Quantity">Count</abbr></label>
+                    <input id="qty" value="0" />
+                    <button id="down" onclick="modify_qty(-1, 'qty')">-1</button>
+                    <button id="clear" onclick="modify_qty(0,'qty')">c</button>
+                    <button id="up" onclick="modify_qty(1, 'qty')">+1</button>
+
+                </div>
+
+                <div class="box" id="box2">
+
+                    <label for="qty2"><abbr title="Quantity2">Count-2</abbr></label>
+                    <input id="qty2" value="0" />
+                    
+                    <button id="down2" onclick="modify_qty(-1, 'qty2')">-1</button>
+                    <button id="clear2" onclick="modify_qty(0, 'qty2')">c</button>
+                    <button id="up2" onclick="modify_qty(1, 'qty2')">+1</button>
+                </div>
+
+
+            </div>
+            <!-- counter box -->
+
+            <!-- counter box -->
+
+            <div id="headerx" style="width:100%; background-color: azure;">
+
+                <div style="margin-top:10px; margin-left: 15px; display: inline-block; margin-bottom:5px;">
+
+
+                    <span id="contentsMenuButton" class="header_iconDiv">
+                 <div class="tooltip">
+                    <img class="nav-img-pxl" onclick="javascript:openNav()" alt="Contents" src="../images/side1.png">
+                    <span class="tooltiptext">Contents Menu</span>
+                </div>
+                </span>
+
+                <span class="header_iconDiv">
+				<div class="tooltip">
+                    <img class="nav-img-pxl" border="0" alt="Help" src="../images/help_pxl.png" id = "help-btn">
+					<span class="tooltiptext" style="width:50px">Help</span>
+            </div>
+            </span>
+
+            <span id="previousPageButton" class="header_iconDiv" id="nav_prev">
+
+                    <img class="nav-img-pxl" onclick="javascript:nav_to_pxl('prev')" border="0" alt="Previous slide" src="../images/left_pxl.png">
+
+                </span>
+
+
+
+            <span id="nextPageButton" class="header_iconDiv" id="nav_next">
+
+                    <img class="nav-img-pxl" onclick="javascript:nav_to_pxl('next')" border="0" src="../images/right_pxl.png" alt="Next slide">
+
+                </span>
+
+            <span id="counter" class="header_iconDiv">
+
+                    <img id="counter_img" class="nav-img-pxl" onclick="" border="0" src="../images/counter.png" alt="Next slide">
+
+
+        </span>
+
+
+        </div>
+
+
+    </div>
+
+
+
+    <!-- div headerx-->
+
+    <div id="mySidenav" class="sidenav">
+        <!-- sliding menu from left. will overlay the content page. -->
+
+        <!--<a href="javascript:void(0)" class="closebtn" onclick="closeNav()">×</a>-->
+        <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">
+            <!--<img src="../SampleScreen_changes../../images/close-img.png" width="20px"/>-->
+            <img src="../images/close-white.svg.png" width="25px" />
+        </a>
+
+        <div class="header_sideMenu2">
+            <span id="user_data" class="user_welcome">Malaria Microscopy e-Learning Course Menu</span>
+        </div>
+
+        <ul id="menu">
+            <li><a href="home.html">Welcome</a></li>
+            <li><a href="#" id="Module-0"><span id="Module-0-side" class="side-bullet"></span>Course Introduction, Software Setup and Tutorial, and Pre-Test</a> +
+                <ul id="submenu">
+                    <li><a href="home.html?loadPage=Module-0.html">Module Home</a></li>
+                    <li><a href="#" id="0_0_slide01.html" onClick="load_page_menu(this.id)"><span id="0_0" side-bullet" style="margin-right:5px;">&#9634;</span> Introduction to the Malaria Microscopy Course </a></li>
+                    <li><a href="#" id="0_1_slide01.html" onClick="load_page_menu(this.id)"><span id="0_1" side-bullet" style="margin-right:5px;">&#9634;</span> Software Setup and  Tutorial</a></li>
+                    <li><a href="#" id="0_2_slide02.html" onClick="load_page_menu(this.id)"><span id="0_2" side-bullet" style="margin-right:5px;">&#9634;</span> Pre Test</a></li>
+                </ul>
+            </li>
+            <li><a href="#" id="Module-1"><span id="Module-1-side" class="side-bullet"></span>Module 1: Introduction to Malaria</a> +
+                <ul id="submenu">
+                    <li><a href="home.html?loadPage=Module-1.html">Module Home</a></li>
+                    <li><a href="#" id="1_0_slide02.html" onClick="load_page_menu(this.id)"><span id="1_0" side-bullet" style="margin-right:5px;">&#9634;</span> Introduction to the Module</a></li>
+                    <li><a href="#" id="1_1_slide02.html" onClick="load_page_menu(this.id)"><span id="1_1" side-bullet" style="margin-right:5px;">&#9634;</span> Unit 1: Overview of the Global Malaria Situation</a></li>
+                    <li><a href="#" id="1_2_slide02.html" onClick="load_page_menu(this.id)"><span id="1_2" side-bullet" style="margin-right:5px;">&#9634;</span> Unit 2: Life Cycle of the Malaria Parasite</a></li>
+                    <li><a href="#" id="1_3_slide02.html" onClick="load_page_menu(this.id)"><span id="1_3" side-bullet" style="margin-right:5px;">&#9634;</span> End of Module One Assessment</a></li>
+                </ul>
+            </li>
+            <li><a href="#" id="Module-2"><span id="Module-2-side" class="side-bullet"></span>Module 2: Blood Collection and Preparation and Staining of Blood Films</a> +
+                <ul id="submenu">
+                    <li><a href="home.html?loadPage=Module-2.html">Module Home</a></li>
+                    <li><a href="#" id="2_0_slide01.html" onClick="load_page_menu(this.id)"><span id="2_0" side-bullet" style="margin-right:5px;">&#9634;</span> Introduction to the Module</a></li>
+                    <li><a href="#" id="2_1_slide01.html" onClick="load_page_menu(this.id)"><span id="2_1" side-bullet" style="margin-right:5px;">&#9634;</span> Unit 1: Collection of Blood Specimens for Malaria Diagnosis</a></li>
+                    <li><a href="#" id="2_2_slide01.html" onClick="load_page_menu(this.id)"><span id="2_2" side-bullet" style="margin-right:5px;">&#9634;</span> Unit 2: Preparation of Blood Films for Malaria Microscopy</a></li>
+                    <li><a href="#" id="2_3_slide01.html" onClick="load_page_menu(this.id)"><span id="2_3" side-bullet" style="margin-right:5px;">&#9634;</span> Unit 3: Preparation and Dilution of Giemsa Stain</a></li>
+                    <li><a href="#" id="2_4_slide01.html" onClick="load_page_menu(this.id)"><span id="2_4" side-bullet" style="margin-right:5px;">&#9634;</span> Unit 4: Staining of Blood Films for Malaria Microscopy</a></li>
+                    <li><a href="#" id="2_5_slide01.html" onClick="load_page_menu(this.id)"><span id="2_5" side-bullet" style="margin-right:5px;">&#9634;</span> End of Module Two Assessment</a></li>
+                </ul>
+            </li>
+            <li><a href="#" id="Module-3"><span id="Module-3-side" class="side-bullet"></span>Module 3: Blood Film Examination</a> +
+                <ul id="submenu">
+                    <li><a href="home.html?loadPage=Module-3.html">Module Home</a></li>
+                    <li><a href="#" id="3_0_slide01.html" onClick="load_page_menu(this.id)"><span id="3_0" side-bullet" style="margin-right:5px;">&#9634;</span> Introduction to the Module</a></li>
+                    <li><a href="#" id="3_1_slide01.html" onClick="load_page_menu(this.id)"><span id="3_1" side-bullet" style="margin-right:5px;">&#9634;</span> Unit 1: Blood Components</a></li>
+                    <li><a href="#" id="3_2_slide01.html" onClick="load_page_menu(this.id)"><span id="3_2" side-bullet" style="margin-right:5px;">&#9634;</span> Unit 2: Malaria Parasite Detection</a></li>
+                    <li><a href="#" id="3_3_slide01.html" onClick="load_page_menu(this.id)"><span id="3_3" side-bullet" style="margin-right:5px;">&#9634;</span> Unit 3: Malaria Parasite Species Identification</a></li>
+                    <li><a href="#" id="3_4_slide01.html" onClick="load_page_menu(this.id)"><span id="3_4" side-bullet" style="margin-right:5px;">&#9634;</span> Unit 4: Malaria Parasite Quantitation</a></li>
+                    <li><a href="#" id="3_5_slide01.html" onClick="load_page_menu(this.id)"><span id="3_5" side-bullet" style="margin-right:5px;">&#9634;</span> Unit 5: Non-Malaria Pathogens in Blood Films</a></li>
+                    <li><a href="#" id="3_6_slide01.html" onClick="load_page_menu(this.id)"><span id="3_6" side-bullet" style="margin-right:5px;">&#9634;</span> Unit 6: Commonly Found Artefacts in Blood Films</a></li>
+                    <li><a href="#" id="3_7_slide01.html" onClick="load_page_menu(this.id)"><span id="3_7" side-bullet" style="margin-right:5px;">&#9634;</span> Unit 7: Reporting Blood Film Examination Results</a></li>
+                    <li><a href="#" id="3_8_slide01.html" onClick="load_page_menu(this.id)"><span id="3_8" side-bullet" style="margin-right:5px;">&#9634;</span> End of Module Three Assessment</a></li>
+                </ul>
+            </li>
+            <li><a href="#" id="Module-4"><span id="Module-4-side" class="side-bullet"></span>Module 4: Non-Microscopic Methods for the Detection of Malaria Parasites and Diagnosis of Malaria</a> +
+                <ul id="submenu">
+                    <li><a href="home.html?loadPage=Module-4.html">Module Home</a></li>
+                    <li><a href="#" id="4_0_slide01.html" onClick="load_page_menu(this.id)"><span id="4_0" side-bullet" style="margin-right:5px;">&#9634;</span> Introduction to the Module</a></li>
+                    <li><a href="#" id="4_1_slide01.html" onClick="load_page_menu(this.id)"><span id="4_1" side-bullet" style="margin-right:5px;">&#9634;</span> Unit 1: Role of Diagnosis and Screening Methods for Malaria Case Management and Elimination</a></li>
+                    <li><a href="#" id="4_2_slide01.html" onClick="load_page_menu(this.id)"><span id="4_2" side-bullet" style="margin-right:5px;">&#9634;</span> Unit 2: Other Methods used for Diagnosing and Screening for Malaria</a></li>
+                    <li><a href="#" id="4_3_slide01.html" onClick="load_page_menu(this.id)"><span id="4_3" side-bullet" style="margin-right:5px;">&#9634;</span> End of Module Four Assessment</a></li>
+                </ul>
+            </li>
+            <li><a href="#" id="Module-5"><span id="Module-5-side" class="side-bullet"></span>Module 5: Laboratory Quality Management Systems</a> +
+                <ul id="submenu">
+                    <li><a href="home.html?loadPage=Module-5.html">Module Home</a></li>
+                    <li><a href="#" id="5_0_slide03.html" onClick="load_page_menu(this.id)"><span id="5_0" side-bullet" style="margin-right:5px;">&#9634;</span> Introduction to the Module</a></li>
+                    <li><a href="#" id="5_1_slide02.html" onClick="load_page_menu(this.id)"><span id="5_1" side-bullet" style="margin-right:5px;">&#9634;</span> Unit 1: Elements of a Laboratory Quality Management System</a></li>
+                    <li><a href="#" id="5_2_slide02.html" onClick="load_page_menu(this.id)"><span id="5_2" side-bullet" style="margin-right:5px;">&#9634;</span> Unit 2: Monitoring Quality Indicators in Malaria Diagnosis</a></li>
+                    <li><a href="#" id="5_3_slide02.html" onClick="load_page_menu(this.id)"><span id="5_3" side-bullet" style="margin-right:5px;">&#9634;</span> Unit 3: Errors in Malaria Microscopy</a></li>
+                    <li><a href="#" id="5_4_slide02.html" onClick="load_page_menu(this.id)"><span id="5_4" side-bullet" style="margin-right:5px;">&#9634;</span> End of Module Five Assessment</a></li>
+                </ul>
+            </li>
+            <li><a href="#" id="Module-7"><span id="Module-7-side" class="side-bullet"></span>Post-Test</a> +
+                <ul id="submenu">
+                    <li><a href="home.html?loadPage=Module-7.html">Module Home</a></li>
+                    <li><a href="#" id="7_0_slide02.html" onClick="load_page_menu(this.id)"><span id="7_0" side-bullet" style="margin-right:5px;">&#9634;</span> Post Test</a></li>
+                </ul>
+            </li>
+            <li><a href="#" id="Module-100"><span id="Module-100-side" class="side-bullet"></span>Pilot Evaluation Survey</a> +
+                <ul id="submenu">
+                    <li><a href="home.html?loadPage=Module-100.html">Module Home</a></li>
+                    <li><a href="#" id="100_0_slide00.html" onClick="load_page_menu(this.id)"><span id="100_0" side-bullet" style="margin-right:5px;">&#9634;</span> Feedback Survey</a></li>
+                </ul>
+            </li>
+        </ul>
+
+        <br><br><br><br>
+    </div>
+    <!-- mysidenav -->
+
+
+    <div id="content-left" style="margin-left: 10px; overflow: scroll;">
+
+
+
+
+        <slide id="home_pxl"> </slide>
+
+
+
+
+    </div>
+    <!--div id content-left  -->
+
+
+
+    </div>
+    <!--div aside -->
+
+    <div id="content-right">
+
+        <!--dynamic content here -->
+
+
+    </div>
+
+    <script type="text/javascript">
+    </script>
+
+    <div class="box-top" id="box-top" style="margin-top:200px;display: none; ">
+
+        <label for="qty"><abbr title="Quantity">Count</abbr></label>
+        <input id="qty" value="0" />
+        <button id="down" onclick="modify_qty(-1)">-1</button>
+        <button id="up" onclick="modify_qty(1)">+1</button>
+    </div>
+
+    </div>
+    <!-- wrapper -->
+
+</body>
+
+<!-- The Modal -->
+<div id="myModalContent" class="helpModal">
+
+    <!-- Modal content -->
+    <div class="help-modal-content">
+        <span class="help-close">&times;</span>
+        <div class="help-modal-div">
+            <div id="help-content-home">
+                <br>
+                <b>Summary of virtual microscope controls</b>
+
+                <ul>
+                    <li><strong>Changing Magnification: </strong></li>
+                    <ul>
+                        <li>Keyboard: '+' and '-' keys</li>
+                        <li>Mouse/Trackpad: scroll wheel or two-finger swipe up and down</li>
+                        <li>On-screen objective button</li>
+                    </ul>
+                    <li><strong>Scanning: </strong></li>
+                    <ul>
+                        <li>Keyboard: arrow keys</li>
+                        <li>Mouse/Trackpad: "drag and drop" or click thumbnail</li>
+                    </ul>
+                    <li><strong>Focusing: </strong></li>
+                    <ul>
+                        <li>Keyboard: 'Page Up' and 'Page Down' or 'A' and 'Q'</li>
+                        <li>Mouse/Trackpad: Drag slider or click arrows</li>
+                    </ul>
+
+                </ul>
+
+                <br><br>
+                <b>Help with PathXL error message</b><br> If you receive error message 2343 when trying to view the Virtual Slides, <a onclick="javascript:helpWithError2343()" class="outTo2343help" href="#">click here for our help page on this error</a>.
+                <br>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+<!-- The 2343 Modal -->
+<div id="modal2343" class="modal2343">
+
+    <!-- Modal content -->
+    <div class="modal-2343-content">
+        <span class="modal2343-close">&times;</span>
+        <div class="modal2343-div">
+            <div id="modal2343-home">
+                <b>Error message 2343</b>
+                <p> This error message appears when the Virtual Microscope software cannot locate the Virtual Slides that are on the course USB drive. One of the following two solutions will likely solve the problem for you. If you still get this error, or
+                    other errors when trying to view Virtual Slides, please contact us using the contact information on the course Welcome page.</p>
+                <ol>
+                    <li>The USB drive must be in the computer when taking the course - it also has to be attached when opening the software. So if it isn't attached, please close the software, connect the USB drive, then re-open the software. The software
+                        should then be able to find the slides automatically.</li>
+                    <br>
+                    <li>If step 1 doesn't work, you can manually set the drive letter that the images are on. From within the software, open the "Settings" menu, then "Server Settings". A warning will pop up, and you can click "OK." The window shown in the
+                        first image below should appear. Under "Default Images Drive" enter the letter for the MMELC drive, followed by ":\". In the second image below, you can see that the MMELC drive is drive J, so we enter "J:\". Then click Apply,
+                        and then close and reopen the software.</li>
+                </ol>
+                <img src="../images/systemSettingsimage.jpg" />
+                <img src="../images/driveJimage.jpg" />
+            </div>
+        </div>
+    </div>
+
+</div>
+
+<script>
+    // Get the modal
+    var helpModal = document.getElementById('myModalContent');
+
+    // Get the button that opens the modal
+    var btn = document.getElementById("help-btn");
+
+    // Get the <span> element that closes the modal
+    var span = document.getElementsByClassName("help-close")[0];
+
+    // Get the <span> element that links out to the help unit
+    var span2 = document.getElementsByClassName("outTo2343help")[0];
+
+    // When the user clicks the button, open the modal
+    btn.onclick = function() {
+        helpModal.style.display = "block";
+    }
+
+    // When the user clicks on <span> (x), close the modal
+    span.onclick = function() {
+        helpModal.style.display = "none";
+    }
+
+    // When the user clicks anywhere outside of the modal, close it
+    window.onclick = function(event) {
+        if (event.target == helpModal) {
+            helpModal.style.display = "none";
+        }
+    }
+
+    // When the user clicks to help page, also close modal
+    span2.onclick = function() {
+        helpModal.style.display = "none";
+        helpWithError2343();
+    }
+</script>
+<script>
+    // Get the modal 2343
+    var modal2343var = document.getElementById('modal2343');
+
+    // Get the button that opens the modal
+    var btn = document.getElementById("helpWithError2343button");
+
+    // Get the <span> element that closes the modal
+    var span2343 = document.getElementsByClassName("modal2343-close")[0];
+
+    // Get the <span> element that links out to the help unit
+    //var span2 = document.getElementsByClassName("goto-help-unit")[0];
+
+    // When the user clicks the button, open the modal
+    function helpWithError2343() {
+        modal2343var.style.display = "block";
+        //alert('display!');
+    }
+
+    // When the user clicks on <span> (x), close the modal
+    span2343.onclick = function() {
+        modal2343var.style.display = "none";
+    }
+
+    // When the user clicks anywhere outside of the modal, close it
+    window.onclick = function(event) {
+        if (event.target == modal2343) {
+            modal2343var.style.display = "none";
+        }
+    }
+
+    // When the user clicks to help page, also close modal
+    //span2.onclick = function() {
+    //	helpModal.style.display = "none";
+    //}
+</script>
+
+<script>
+    //counter 1. 
+
+    window.onload = addListeners();
+    window.onload = initial_qty_load();
+
+
+
+    function addListeners() {
+        document.getElementById('box').addEventListener('mousedown', mouseDown, false);
+        window.addEventListener('mouseup', mouseUp, false);
+
+    }
+
+    function mouseUp() {
+        window.removeEventListener('mousemove', divMove, true);
+    }
+
+    function mouseDown(e) {
+        window.addEventListener('mousemove', divMove, true);
+    }
+
+    function divMove(e) {
+        var div = document.getElementById('box');
+        div.style.position = 'absolute';
+        div.style.top = e.clientY + 'px';
+        div.style.left = e.clientX + 'px';
+    }
+
+    //show hide counter  box 
+
+   jQuery(function() {
+        jQuery("#counter").click(function() {
+            initial_qty_load();
+            //jQuery("#counterbox").toggle("slow");
+            jQuery("#counterbox").toggle();
+            jQuery("#counterbox").css("background-color", "tomato");
+            jQuery("#counterbox").css("position", "fixed");
+            jQuery("#counterbox").css("width", "100%");
+            jQuery("#counterbox").css("top", "0px");
+            //jQuery("#box").toggle("slow");
+            //jQuery("#box2").toggle("slow");
+        });
+    });
+
+
+    function waitForElementToDisplay(selector, time) {
+        var ele = document.getElementById(selector)
+        if(ele !=null) {
+
+      
+            $(document.getElementById(selector).contentWindow.document).keydown(function(e){
+
+                //alert("KEY:" + e.which);
+                changeCounter(e);
+
+       
+            });
+
+            $(document.getElementById(selector)).contents().find("body").on('click', function(event)
+
+
+             { 
+
+                //alert('test'); 
+                jQuery("#counterbox").show();
+
+            });
+
+            return;
+        }
+        else {
+            setTimeout(function() {
+                waitForElementToDisplay(selector, time);
+            }, time);
+        }
+    };
+
+    waitForElementToDisplay('pathXLviewer', 1000);
+
+</script>
+
+</html>

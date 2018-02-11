@@ -1,0 +1,80 @@
+<div id="pxl_left">
+<slide id="8_0_slide18_pxl_posttestq4"></slide>
+
+
+<b>Post-Test Slide 4</b>
+
+
+  <form name = "myform">
+
+<button type="button" name="gthk" onclick = "showthick()">Thick blood film</button>
+<button type="button" name="gthn" onclick = "showthin()">Thin blood film</button>
+<br>
+<p>Enter your report below.  Make sure to include all necessary information!</p> 
+Are malaria parasites present?<br>
+<input type="radio" name="PS" id="PS">Malaria Parasites seen<br>
+<input type="radio" name="PS" id="NMPS">No Malaria Parasites Seen<br><br>
+If parasites are present, what species and stages are observed? <br>
+<i>P. falciparum</i>:<br> 
+<input type = "checkbox" id = "Pft">Trophozoites <br>
+<input type = "checkbox" id = "Pfs">Schizonts <br>
+<input type = "checkbox" id = "Pfg">Gametocytes <br>
+
+<br>
+
+<i>P. vivax</i>:<br> 
+<input type = "checkbox" id = "Pvt">Trophozoites <br>
+<input type = "checkbox" id = "Pvs">Schizonts <br>
+<input type = "checkbox" id = "Pvg">Gametocytes <br>
+
+<br>
+
+<i>P. malariae</i>:<br> 
+<input type = "checkbox" id = "Pmt">Trophozoites <br>
+<input type = "checkbox" id = "Pms">Schizonts <br>
+<input type = "checkbox" id = "Pmg">Gametocytes <br>
+
+<br>
+
+<i>P. ovale</i>:<br> 
+<input type = "checkbox" id = "Pot">Trophozoites  <br>
+<input type = "checkbox" id = "Pos">Schizonts <br>
+<input type = "checkbox" id = "Pog">Gametocytes <br>
+
+<br>
+
+Enter quantitation <br>
+<input type="number" id="quantitation" min="0" max="999999"> parasites/uL<br><br>
+<button type = "button" name = "button" onclick = "submitReport()">Submit Report and <br>Continue to Next Sample</button><br>
+
+<br>
+<div id = "answerFeedback"></div>
+</form>
+
+<br><br>
+
+
+</form>
+
+<br><br>
+
+<script type = "text/javascript">
+var questionnum = 4;
+var nextquestion = questionnum+1;
+var slidenum = 17;
+var nextslide = slidenum+1
+var nextslide = '8_0_slide'+nextslide+'_pxl_posttestq'+nextquestion+'.html';
+var virtualslidePrefix = 'certq';
+var virtualslideDirectory = 'posttest';
+
+</script>
+
+</div></div>
+  
+<div class="pxl_right" id="pxl_right">
+
+	  <div id="content">
+      <iframe id='pathXLviewer' src='../../standalone.html?slide=images/posttest/postq4thick.svs' frameborder='0'></iframe>
+	  </div>
+
+</div>
