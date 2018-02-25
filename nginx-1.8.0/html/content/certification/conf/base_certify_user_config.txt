@@ -1,5 +1,5 @@
 {
-    "last_completed_question_url": "", // url of the question. 
+    "last_completed_question_url": "", 
     "last_shuffled_sequence": [],
     "last_certify_module" : "",
     "cert_tests_completed": [],

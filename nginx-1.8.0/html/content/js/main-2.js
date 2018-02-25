@@ -1,42 +1,42 @@
 function update_user_object(objectName, updatedvalue) {
 
 
-  
-      var current_user = localStorage.getItem('logged_in');
-      var user_data = JSON.parse(localStorage.getItem(JSON.parse(current_user))) ;
 
-      user_data[objectName] = updatedvalue; 
+    var current_user = localStorage.getItem('logged_in');
+    var user_data = JSON.parse(localStorage.getItem(JSON.parse(current_user)));
 
-      localStorage.setItem(JSON.parse(current_user), JSON.stringify(user_data))
+    user_data[objectName] = updatedvalue;
 
-      //update_on_disk(JSON.parse(current_user) + '.txt' , user_data)
+    localStorage.setItem(JSON.parse(current_user), JSON.stringify(user_data))
+
+    //update_on_disk(JSON.parse(current_user) + '.txt' , user_data)
 }
 
-function return_to_last(){
+function return_to_last() {
 
-  
 
-      var current_user = localStorage.getItem('logged_in');
-      var user_data = JSON.parse(localStorage.getItem(JSON.parse(current_user))) ;
-      var last_visited_page = user_data['last_visited_page']
 
-      alert('last_visited_page' + last_visited_page)
+    var current_user = localStorage.getItem('logged_in');
+    var user_data = JSON.parse(localStorage.getItem(JSON.parse(current_user)));
+    var last_visited_page = user_data['last_visited_page']
 
-      
+    alert('last_visited_page' + last_visited_page)
 
-      if(last_visited_page.indexOf("_pxl_") > -1 ) {
 
-        var to_go_page = window.location.origin + "/content/home_pxl.html?loadPage=" + last_visited_page ; 
+
+    if (last_visited_page.indexOf("_pxl_") > -1) {
+
+        var to_go_page = window.location.origin + "/content/home_pxl.html?loadPage=" + last_visited_page;
 
         window.location.href = to_go_page;
 
         return;
 
-      }
+    }
 
-        var to_go_page = window.location.origin + "/content/home.html?loadPage=" + last_visited_page ; 
+    var to_go_page = window.location.origin + "/content/home.html?loadPage=" + last_visited_page;
 
-        window.location.href = to_go_page;
+    window.location.href = to_go_page;
 
 
 
@@ -54,8 +54,8 @@ function calculate_completion() {
         //console.log(user_data)
 
     var current_location = localStorage.getItem('current_location').split('_') //["4", "2", "slide06.html"]
-  var slide_pointer = current_location[0]  +'_'+ current_location[1] 
-  
+    var slide_pointer = current_location[0] + '_' + current_location[1]
+
 
     for (var key in user_data) {
 
@@ -89,7 +89,7 @@ function calculate_completion() {
                     document.getElementById(to_change).innerHTML = "&#10003;";
                 }
 
-                 document.getElementById(slide_pointer).innerHTML = "&#187;" 
+                document.getElementById(slide_pointer).innerHTML = "&#187;"
 
 
 
@@ -168,7 +168,7 @@ function get_titles() {
 
     console.log(x + '-of-' + total)
 
-    if(module_name == undefined) module_name = 'Module-8'
+    if (module_name == undefined) module_name = 'Module-8'
 
     return ({ 'module_title': module_name, 'unit_title': unit_name, 'currentSlidex': x, 'numberSlidesy': total })
 
@@ -397,12 +397,11 @@ function checkProtected(go_to_loc) {
     } //check protected 
 }
 
-function load_admin_page()
-{
-	window.location.replace('admin_actions.html')
+function load_admin_page() {
+    window.location.replace('admin_actions.html')
 }
 
-/* function load page */ 
+/* function load page */
 
 function load_page(page, template) {
     //load config file. 
@@ -416,112 +415,106 @@ function load_page(page, template) {
 
     var root = "/content/"
     var current_page = localStorage.getItem('current_location')
-    if(!current_page) current_page = '0_0_slide01.html'
+    if (!current_page) current_page = '0_0_slide01.html'
 
 
     var current_template = 'home.html'
     var next_template = 'home.html'
 
-    if(current_page.indexOf("_pxl_") > -1 ) current_template = 'home_pxl.html' 
+    if (current_page.indexOf("_pxl_") > -1) current_template = 'home_pxl.html'
 
-    
 
-    if(page.indexOf("_pxl_") > -1 ) next_template = 'home_pxl.html' 
+
+    if (page.indexOf("_pxl_") > -1) next_template = 'home_pxl.html'
 
     //check if the page is first page or last page. 
 
-  if(is_first_or_last_page(page) == 'first') {
-    grey_back_button();
-    document.getElementById('forward-button').onclick = function (){ nav_to('next'); } ;
-    document.getElementById('forward-button').src = "images/forward.png";
-  }
+    if (is_first_or_last_page(page) == 'first') {
+        grey_back_button();
+        document.getElementById('forward-button').onclick = function() { nav_to('next'); };
+        document.getElementById('forward-button').src = "images/forward.png";
+    } else if (is_first_or_last_page(page) == 'last') {
 
-  else if(is_first_or_last_page(page) == 'last') {
+        grey_forward_button();
 
-    grey_forward_button();
-
-    document.getElementById('back-button').onclick = function (){ nav_to('prev'); } ;
-    document.getElementById('back-button').src = "images/backward.png";
-
-  }
-
-  /*
-
-    if (is_first_page(page)) {
-
-      grey_back_button();
-
-    }
-  */
-
-  else {
-
-    if(page == '8_0_slide19.html') {
-        //do nothing.
-    }
-
-    else {
-
-
-        
-        document.getElementById('back-button').onclick = function (){ nav_to('prev'); } ;
+        document.getElementById('back-button').onclick = function() { nav_to('prev'); };
         document.getElementById('back-button').src = "images/backward.png";
 
-        document.getElementById('forward-button').onclick = function (){ nav_to('next'); } ;
-        document.getElementById('forward-button').src = "images/forward.png";
+    }
+
+    /*
+
+      if (is_first_page(page)) {
+
+        grey_back_button();
+
+      }
+    */
+    else {
+
+        if (page == '8_0_slide19.html') {
+            //do nothing.
+        } else {
+
+
+
+            document.getElementById('back-button').onclick = function() { nav_to('prev'); };
+            document.getElementById('back-button').src = "images/backward.png";
+
+            document.getElementById('forward-button').onclick = function() { nav_to('next'); };
+            document.getElementById('forward-button').src = "images/forward.png";
         }
 
     }
 
-/*
-    if(current_page.includes("_pxl_")) current_template = 'home_pxl.html'
-    if(page.includes("_pxl_")) next_template = 'home_pxl.html'
-*/
+    /*
+        if(current_page.includes("_pxl_")) current_template = 'home_pxl.html'
+        if(page.includes("_pxl_")) next_template = 'home_pxl.html'
+    */
     checkProtected(page)
-	
-	var go_to_page = create_page_path(page) // "Module-5/1/5_1_slide53.html" 
-    
+
+    var go_to_page = create_page_path(page) // "Module-5/1/5_1_slide53.html" 
+
 
     //check whether go_to_page exists - if doesn't exist, skip ahead 2 times. else raise error. 
 
-        var count = 0;       
+    var count = 0;
 
-        while(count < 3 && page) {
-                
-          var check_page = page_exists(page); //check_page has actual page data or false. 
-            if (check_page) { 
-              count = 5;
-                    //alert(slide_num) ;
-                }
-            else {
-              alert(page + " : not found..trying next page")
-              count = count + 1 ; // increment by 1
-              //page = get_next_page(page, 'next') //page may be false.
-              //increment the page 0_0_slide01.html --> 0_0_slide01
-              var el = page.split('.')[0].split('_')
-              var slide = el[2]
-              var mod = el[0]
-              var unit = el[1]
-              var slide_no = Number(slide.slice(-1)) //1
-              var next_slide_no = slide_no + 1 ; 
-              var next_page = mod + '_' + unit + '_' + slide.slice(0, -1) + next_slide_no.toString() +'.html' 
+    while (count < 3 && page) {
 
-              alert("next page is : " + next_page);
-              page = next_page
-                    
-                }        
-          }
+        var check_page = page_exists(page); //check_page has actual page data or false. 
+        if (check_page) {
+            count = 5;
+            //alert(slide_num) ;
+        } else {
+            alert(page + " : not found..trying next page")
+            count = count + 1; // increment by 1
+            //page = get_next_page(page, 'next') //page may be false.
+            //increment the page 0_0_slide01.html --> 0_0_slide01
+            var el = page.split('.')[0].split('_')
+            var slide = el[2]
+            var mod = el[0]
+            var unit = el[1]
+            var slide_no = Number(slide.slice(-1)) //1
+            var next_slide_no = slide_no + 1;
+            var next_page = mod + '_' + unit + '_' + slide.slice(0, -1) + next_slide_no.toString() + '.html'
 
-       //console.log("check_page --->" + check_page)
+            alert("next page is : " + next_page);
+            page = next_page
 
-       if(check_page) {
+        }
+    }
 
-       //alert(check_page);
-       //else load the check page. 
+    //console.log("check_page --->" + check_page)
 
-          if(current_template == 'home_pxl.html') {
+    if (check_page) {
 
-              if (next_template == current_template){
+        //alert(check_page);
+        //else load the check page. 
+
+        if (current_template == 'home_pxl.html') {
+
+            if (next_template == current_template) {
                 $("#header1").show();
                 $("#content-right").remove();
                 $("#content-right").html(check_page);
@@ -529,37 +522,36 @@ function load_page(page, template) {
                 localStorage.setItem('current_location', page);
                 update_user_object('last_visited_page', page);
                 loadFooterNav(page);
-alert(unit_title + 'pxl to pxl line 424');
-              }
-              else {
+                alert(unit_title + 'pxl to pxl line 424');
+            } else {
                 window.location = 'home.html?loadPage=' + page;
-				$("#header1").show();
+                $("#header1").show();
                 $("#footer").show();
                 $("#content-inner").html(check_page);
-				localStorage.setItem('current_location', page);
-                 update_user_object('last_visited_page', page);
-				loadFooterNav(page); 
-			//var info = get_titles();
-               //var module_title = info['module_title'];
-               //var unit_title = info['unit_title'];
-               //var currentSlidex = info['currentSlidex'];
-			   //var numberSlidesy = info['numberSlidesy'];//alert(currentSlidex + ' ' + numberSlidesy + 'pxl to non-pxl line 439');
-			   //alert(numberSlidesy);
-			  //document.getElementById("display_current").textContent  =  'Currently on slide ' + currentSlidex + ' of ' + numberSlidesy;
-			  //alert('Currently on slide ' + currentSlidex + ' of ' + numberSlidesy);
-              //document.getElementById("moduleTitle").textContent = module_title;
-			  //document.getElementById("unitTitle").textContent = unit_title;
-			  //alert(unit_title + 'pxl to non-pxl line 443');
-			  //document.getElementById("navBar").style.display = "inline-block";
-				
-              }
+                localStorage.setItem('current_location', page);
+                update_user_object('last_visited_page', page);
+                loadFooterNav(page);
+                //var info = get_titles();
+                //var module_title = info['module_title'];
+                //var unit_title = info['unit_title'];
+                //var currentSlidex = info['currentSlidex'];
+                //var numberSlidesy = info['numberSlidesy'];//alert(currentSlidex + ' ' + numberSlidesy + 'pxl to non-pxl line 439');
+                //alert(numberSlidesy);
+                //document.getElementById("display_current").textContent  =  'Currently on slide ' + currentSlidex + ' of ' + numberSlidesy;
+                //alert('Currently on slide ' + currentSlidex + ' of ' + numberSlidesy);
+                //document.getElementById("moduleTitle").textContent = module_title;
+                //document.getElementById("unitTitle").textContent = unit_title;
+                //alert(unit_title + 'pxl to non-pxl line 443');
+                //document.getElementById("navBar").style.display = "inline-block";
+
+            }
 
 
-            } //if currently at home_pxl 
+        } //if currently at home_pxl 
 
-          if(current_template == 'home.html') {
+        if (current_template == 'home.html') {
 
-              if (next_template == current_template){
+            if (next_template == current_template) {
 
                 $("#header1").show();
                 $("#footer").show();
@@ -568,106 +560,99 @@ alert(unit_title + 'pxl to pxl line 424');
                 update_user_object('last_visited_page', page);
                 loadFooterNav(page);
                 //close the side nav if open.
-                
-               // document.getElementById("display_current").textContent  =  create_page_path(page) + '(' + x_of_y() + ')';
 
-               var info = get_titles()
-               var module_title = info['module_title']
-               var unit_title = info['unit_title']
-               var currentSlidex = info['currentSlidex']
-			         var numberSlidesy = info['numberSlidesy']
+                // document.getElementById("display_current").textContent  =  create_page_path(page) + '(' + x_of_y() + ')';
 
-              document.getElementById("display_current").textContent  =  'Currently on slide ' + currentSlidex + ' of ' + numberSlidesy;
-              document.getElementById("moduleTitle").textContent = module_title;
-              var unit_content = unit_title;
-              var current_unit = page.split('_')[1]
-              if (current_unit == '0') unit_content = 'Unit : ' + unit_title;
-              //alert('unit:' + current_unit + ' title:' +unit_content)
-			       document.getElementById("unitTitle").textContent = unit_content
-				document.getElementById("navBar").style.display = "inline-block";
+                var info = get_titles()
+                var module_title = info['module_title']
+                var unit_title = info['unit_title']
+                var currentSlidex = info['currentSlidex']
+                var numberSlidesy = info['numberSlidesy']
 
-              }
+                document.getElementById("display_current").textContent = 'Currently on slide ' + currentSlidex + ' of ' + numberSlidesy;
+                document.getElementById("moduleTitle").textContent = module_title;
+                var unit_content = unit_title;
+                var current_unit = page.split('_')[1]
+                if (current_unit == '0') unit_content = 'Unit : ' + unit_title;
+                //alert('unit:' + current_unit + ' title:' +unit_content)
+                document.getElementById("unitTitle").textContent = unit_content
+                document.getElementById("navBar").style.display = "inline-block";
 
-              else {
-                window.location = 'home_pxl.html?loadPage=' + page 
-				localStorage.setItem('current_location', page);
+            } else {
+                window.location = 'home_pxl.html?loadPage=' + page
+                localStorage.setItem('current_location', page);
                 update_user_object('last_visited_page', page);
-			//	               var info = get_titles()
-            //   var module_title = info['module_title']
-            //   var unit_title = info['unit_title']
-            //   var currentSlidex = info['currentSlidex']
-			//   var numberSlidesy = info['numberSlidesy']
+                //	               var info = get_titles()
+                //   var module_title = info['module_title']
+                //   var unit_title = info['unit_title']
+                //   var currentSlidex = info['currentSlidex']
+                //   var numberSlidesy = info['numberSlidesy']
 
-              //document.getElementById("display_current").textContent  =  'Currently on slide ' + currentSlidex + ' of ' + numberSlidesy;
-              //document.getElementById("moduleTitle").textContent = module_title;
-			  //document.getElementById("unitTitle").textContent = unit_title;
-			  
-				        loadFooterNav(page);
-              }
+                //document.getElementById("display_current").textContent  =  'Currently on slide ' + currentSlidex + ' of ' + numberSlidesy;
+                //document.getElementById("moduleTitle").textContent = module_title;
+                //document.getElementById("unitTitle").textContent = unit_title;
 
-
-            } //if currently at home.html  
-			
-			//check if navigation should be hidden (if Unit name contains "Test" or "End of Module".  If currentSlidex = 1, it's first page so maybe keep "next" button enabled.
-			   var info = get_titles()
-               var module_title = info['module_title']
-               var unit_title = info['unit_title']
-               var currentSlidex = info['currentSlidex']
-			   var numberSlidesy = info['numberSlidesy']
-				//if(page.indexOf("_pxl_") > -1 ) next_template = 'home_pxl.html'
-				if(unit_title.indexOf("Test") > -1 || unit_title.indexOf("Assessment") > -1) {
-					if((currentSlidex > 1 && currentSlidex != 12 && currentSlidex != (numberSlidesy - 1)) || currentSlidex == 11) { 
-					//this depends on there being 10 multiple choice questions, one intro slide, and an ending slide that can be clicked through.  But post-module assessments have 10 questions and only the last slide is clicked through.
-					document.getElementById('nextPageButton').style.display = 'none';
-					//alert('not a navigable page - alert from main-2.js');
-					}
-					else {
-						document.getElementById('nextPageButton').style.display = 'initial';
-						//alert('can only navigate forward - alert from main-2.js');
-					}
-					document.getElementById('previousPageButton').style.display = 'none';
-					document.getElementById('wrap-footer-menu').style.display = 'none';
-				}
-				else if(unit_title.indexOf("Feedback") > -1) {
-					if(currentSlidex > 1) {
-						document.getElementById('nextPageButton').style.display = 'none';
-						
-					}
-					else {document.getElementById('nextPageButton').style.display = 'initial';}
-					document.getElementById('previousPageButton').style.display = 'none';
-					document.getElementById('wrap-footer-menu').style.display = 'none';
-				}
-				else { //unhide
-					document.getElementById('nextPageButton').style.display = 'initial';
-					document.getElementById('previousPageButton').style.display = 'initial';
-					document.getElementById('wrap-footer-menu').style.display = 'initial';
-				}
-
-                   
-      } //if check page. 
-
-      else { alert('page not found')} ;
-
-     // if(!check_page) { alert('Check page sequence - there is a problem'); return false ; }
-
-/*
-
-    if(!template) next_template = 'home.html' ; 
-
-    //get current template from session or top of the page.
-
-    if(next_template == current_template) {
-        //simply load the page
-    }
-
-    else {
-        // you must load the new template. 
-    }
-
-*/
+                loadFooterNav(page);
+            }
 
 
-}//load_page
+        } //if currently at home.html  
+
+        //check if navigation should be hidden (if Unit name contains "Test" or "End of Module".  If currentSlidex = 1, it's first page so maybe keep "next" button enabled.
+        var info = get_titles()
+        var module_title = info['module_title']
+        var unit_title = info['unit_title']
+        var currentSlidex = info['currentSlidex']
+        var numberSlidesy = info['numberSlidesy']
+            //if(page.indexOf("_pxl_") > -1 ) next_template = 'home_pxl.html'
+        if (unit_title.indexOf("Test") > -1 || unit_title.indexOf("Assessment") > -1) {
+            if ((currentSlidex > 1 && currentSlidex != 12 && currentSlidex != (numberSlidesy - 1)) || currentSlidex == 11) {
+                //this depends on there being 10 multiple choice questions, one intro slide, and an ending slide that can be clicked through.  But post-module assessments have 10 questions and only the last slide is clicked through.
+                document.getElementById('nextPageButton').style.display = 'none';
+                //alert('not a navigable page - alert from main-2.js');
+            } else {
+                document.getElementById('nextPageButton').style.display = 'initial';
+                //alert('can only navigate forward - alert from main-2.js');
+            }
+            document.getElementById('previousPageButton').style.display = 'none';
+            document.getElementById('wrap-footer-menu').style.display = 'none';
+        } else if (unit_title.indexOf("Feedback") > -1) {
+            if (currentSlidex > 1) {
+                document.getElementById('nextPageButton').style.display = 'none';
+
+            } else { document.getElementById('nextPageButton').style.display = 'initial'; }
+            document.getElementById('previousPageButton').style.display = 'none';
+            document.getElementById('wrap-footer-menu').style.display = 'none';
+        } else { //unhide
+            document.getElementById('nextPageButton').style.display = 'initial';
+            document.getElementById('previousPageButton').style.display = 'initial';
+            document.getElementById('wrap-footer-menu').style.display = 'initial';
+        }
+
+
+    } //if check page. 
+    else { alert('page not found') };
+
+    // if(!check_page) { alert('Check page sequence - there is a problem'); return false ; }
+
+    /*
+
+        if(!template) next_template = 'home.html' ; 
+
+        //get current template from session or top of the page.
+
+        if(next_template == current_template) {
+            //simply load the page
+        }
+
+        else {
+            // you must load the new template. 
+        }
+
+    */
+
+
+} //load_page
 
 
 
@@ -1565,197 +1550,195 @@ function submit_data_to_server(data_type, data_object) {
 
 function create_cert_ans_key_to_submit() {
 
-range1 =10;
-range2= 5;
+    range1 = 10;
+    range2 = 5;
 
-var range01 = [1,2,3,4,5,6,7,8,9,10]
-var range02 = [1,2,3,4,5]
+    var range01 = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+    var range02 = [1, 2, 3, 4, 5]
 
-var qs= [];
-var ans =[];
+    var qs = [];
+    var ans = [];
 
 
 
-for (var i = 0; i < range01.length; i++) {
-      
+    for (var i = 0; i < range01.length; i++) {
+
         //console.log('postMCQ' + range01[i]);
         qs.push('postMCQ' + range01[i])
-        
-}
 
-for (var i = 0; i < range02.length; i++) {
+    }
+
+    for (var i = 0; i < range02.length; i++) {
         qs.push('postq' + range02[i])
-        //console.log('postq' + range02[i]);
-        
-}
+            //console.log('postq' + range02[i]);
 
-//console.log(qs);
-console.log(qs.length )
+    }
 
-for (a = 0; a < qs.length; a++) {
-  var an = localStorage.getItem(qs[a]);
-  ans.push(an);
-}
+    //console.log(qs);
+    console.log(qs.length)
 
-return [qs, ans];
-  
+    for (a = 0; a < qs.length; a++) {
+        var an = localStorage.getItem(qs[a]);
+        ans.push(an);
+    }
+
+    return [qs, ans];
+
 } // create_cert_ans
 
 function create_cert_ans_key_to_submit_2() {
 
-range1 =10;
-range2= 5;
+    range1 = 10;
+    range2 = 5;
 
-var range01 = [1,2,3,4,5,6,7,8,9,10]
-var range02 = [1,2,3,4,5]
+    var range01 = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+    var range02 = [1, 2, 3, 4, 5]
 
-var qs= [];
-var ans =[];
+    var qs = [];
+    var ans = [];
 
 
 
-for (var i = 0; i < range01.length; i++) {
-      
+    for (var i = 0; i < range01.length; i++) {
+
         //console.log('postMCQ' + range01[i]);
         qs.push('certMCQ' + range01[i])
-        
-}
 
-for (var i = 0; i < range02.length; i++) {
+    }
+
+    for (var i = 0; i < range02.length; i++) {
         qs.push('certq' + range02[i])
-        //console.log('postq' + range02[i]);
-        
-}
+            //console.log('postq' + range02[i]);
 
-//console.log(qs);
-console.log(qs.length )
+    }
 
-for (a = 0; a < qs.length; a++) {
-  var an = localStorage.getItem(qs[a]);
-  ans.push(an);
-}
+    //console.log(qs);
+    console.log(qs.length)
 
-return [qs, ans];
-  
+    for (a = 0; a < qs.length; a++) {
+        var an = localStorage.getItem(qs[a]);
+        ans.push(an);
+    }
+
+    return [qs, ans];
+
 } // create_cert_ans
 
 function submit_cert_ans_to_server(anskey) {
 
 
-  $.ajax({
-    type: 'GET',
-    //url: 'http://githubbadge.appspot.com/badge/torvalds',
-    url: 'http://githubbbadpspot-bad-url-test.com/badge/toralds',
-    //url: 'http://mmelc.vestigesystems.com/submitcert', 
-    dataType: 'jsonp',
-    data: anskey, 
+    $.ajax({
+        type: 'GET',
+        //url: 'http://githubbadge.appspot.com/badge/torvalds',
+        url: 'http://githubbbadpspot-bad-url-test.com/badge/toralds',
+        //url: 'http://mmelc.vestigesystems.com/submitcert', 
+        dataType: 'jsonp',
+        data: anskey,
 
-    success: function(json) {
-       // var result = json.user.login 
+        success: function(json) {
+            // var result = json.user.login 
 
-       //alert("live results from server:" + json.status + ':' + json.result);
+            //alert("live results from server:" + json.status + ':' + json.result);
 
-       alert("success")
-              
-    },
+            alert("success")
 
-    error: function(){
-      //alert('please note down following key to get your results:  ' + 'USER ID:  '+ load.test_taker_user_id
+        },
+
+        error: function() {
+            //alert('please note down following key to get your results:  ' + 'USER ID:  '+ load.test_taker_user_id
             // + '  Answer Key :' + load.answer_key);
 
-      //window.location.href = "/content/posttest_protected/results.html"; 
+            //window.location.href = "/content/posttest_protected/results.html"; 
 
-      alert('errror')
+            alert('errror')
 
 
+        }
+
+    });
+
+} //  submit_cert to server
+
+
+
+
+function grey_back_button() {
+
+    document.getElementById('back-button').onclick = function() { console.log('no action'); };
+    document.getElementById('back-button').src = "images/back-grey.png";
+
+}
+
+function grey_forward_button() {
+
+    document.getElementById('forward-button').onclick = function() { console.log('no action'); };
+    document.getElementById('forward-button').src = "images/forward-grey.png";
+
+}
+
+
+
+function toggle5_init() {
+
+    document.getElementById('forward-button').onclick = function() { alert('please click on next'); };
+    document.getElementById('forward-button').src = "images/forward-grey.png";
+
+}
+
+function toggle5(counter, max) {
+
+    //alert(counter)
+
+    //var x = document.getElementById('nav_2'); 
+    //x.style.display = "none";
+
+
+    var ele = document.getElementById('box' + counter);
+
+    if (ele.style.display == "block") {
+
+        ele.style.display = "none";
+
+    } else {
+        ele.style.display = "block";
     }
 
-});
+    if (counter == max) {
 
-}//  submit_cert to server
-
-
-
-
-function grey_back_button(){
-
-  document.getElementById('back-button').onclick = function (){console.log('no action');};
-  document.getElementById('back-button').src = "images/back-grey.png";
-
-}
-
-function grey_forward_button(){
-
-  document.getElementById('forward-button').onclick = function (){console.log('no action');};
-  document.getElementById('forward-button').src = "images/forward-grey.png";
-
-}
-
-
-
-function toggle5_init(){
-
-  document.getElementById('forward-button').onclick = function (){alert('please click on next');};
-  document.getElementById('forward-button').src = "images/forward-grey.png";
-
-}
-
- function toggle5(counter, max) {
-
-        //alert(counter)
-
+        document.getElementById("toggleButton").style.display = "none";
         //var x = document.getElementById('nav_2'); 
-        //x.style.display = "none";
+        //x.style.display = "block";
+        document.getElementById('forward-button').onclick = function() { nav_to('next'); };
+        document.getElementById('forward-button').src = "images/forward.png";
 
-
-        var ele = document.getElementById('box' + counter);
-
-        if(ele.style.display == "block") {
-
-            ele.style.display = "none";
-
-        }
-
-        else {
-            ele.style.display = "block";
-        }
-
-        if(counter == max) {
-
-            document.getElementById("toggleButton").style.display = "none";
-            //var x = document.getElementById('nav_2'); 
-            //x.style.display = "block";
-            document.getElementById('forward-button').onclick = function (){ nav_to('next'); } ;
-            document.getElementById('forward-button').src = "images/forward.png";
-            
-
-        }
 
     }
 
-function is_first_page(page){
-  
-  var mod_config = JSON.parse(localStorage.getItem('module_config'));
-  var els = page.split('_');
+}
+
+function is_first_page(page) {
+
+    var mod_config = JSON.parse(localStorage.getItem('module_config'));
+    var els = page.split('_');
     var current_module = 'Module-' + els[0]
     var current_unit = els[1]
 
     var first_page = mod_config['mods'][current_module]['conf'][current_unit]['page_sequence'][0]
-    
+
 
     if (page == first_page) {
-     
-      return true
+
+        return true
 
     }
 
     return false
 }
 
-function is_first_or_last_page(page){
-  
-  var mod_config = JSON.parse(localStorage.getItem('module_config'));
-  var els = page.split('_');
+function is_first_or_last_page(page) {
+
+    var mod_config = JSON.parse(localStorage.getItem('module_config'));
+    var els = page.split('_');
     var current_module = 'Module-' + els[0]
     var current_unit = els[1]
 
@@ -1763,17 +1746,17 @@ function is_first_or_last_page(page){
 
     var first_page = seq[0]
     var last_page = seq[seq.length - 1]
-    
+
 
     if (page == first_page) {
-     
-      return 'first'
+
+        return 'first'
 
     }
 
     if (page == last_page) {
-     
-      return 'last'
+
+        return 'last'
 
     }
 

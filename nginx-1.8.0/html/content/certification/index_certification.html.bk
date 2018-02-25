@@ -9,8 +9,6 @@
     <script src="../js/main.js"></script>
     <script src="../js/main-2.js"></script>
     <script src="../js/main-head.js"></script>
-    <script src="certify.js"></script>
-    <script src="certification-test.js"></script>
     <script src="../js/pxl-fullslide.js"></script>
 
     <style>
@@ -90,6 +88,94 @@
         }
     </style>
 
+
+    <script>
+        $(function() {
+            //run on load. ensure the config is loaded. 
+            // $("#header1").hide();
+
+            var mod_config = JSON.parse(localStorage.getItem('module_config'));
+            //load from file. 
+
+            if (!mod_config) {
+
+                jQuery.ajaxSetup({
+                    async: false
+                }); //required to avoind async status code check issues 
+
+                var jq = $.get('js/module_conf.json'); //alert(jq.status);
+
+                if (jq.status == 200) {
+
+                    var mod_config = jq.responseText;
+                    localStorage.setItem('module_config', mod_config);
+
+                } else {
+                    alert("configuration file not found. please contact the administrator");
+                    return;
+
+                }
+
+            }
+
+            //alert('dom is loaded');
+
+            //grab the url and load the appropriate slide. 
+
+
+            var loc = window.location.href.split("?")[1] // pxl_home.html?loadPage=xyz.html --> returns LoadPage=xyz.html
+
+            //if (!loc) document.getElementById("right").style.display = 'none';
+
+
+            if (loc && loc.split('=')[0] == 'loadPage') {
+
+                var go_to_loc = loc.split('=')[1]
+                    //set current location to this 'xyz_pxl_z.html'  and call load_page(page, template) 
+                    //localStorage.setItem('current_location', loc)
+                    //load_page(go_to_loc)
+
+                var go_to_page = create_page_path(go_to_loc)
+
+                jQuery.ajaxSetup({
+                    async: false
+                }); //required to avoind async status code check issues 
+
+                var jq = $.get(go_to_page); //alert(jq.status);
+
+                if (jq.status == 200) {
+                    var page_data = jq.responseText;
+                }
+
+                $("#header1").show();
+                $("#content-inner").html(page_data);
+                localStorage.setItem('current_location', go_to_loc);
+                loadFooterNav(go_to_loc);
+                //close the side nav if open. 
+                document.getElementById("display_current").textContent = create_page_path(go_to_loc);
+
+            } //if loc and loc == loadPage 
+
+            if (loc && loc.split('=')[0] == 'user') {
+                //log user in and display username. 
+                console.log('user has logged in');
+
+
+            };
+
+        });
+
+
+
+        function initMenu() {
+            $('#menu ul').hide();
+            $('#menu > li > a').on('click', function() {
+                $('#menu ul').slideUp();
+                $(this).next().slideDown();
+            });
+        }
+        $(document).ready(initMenu);
+    </script>
 
 
 
@@ -361,12 +447,12 @@
 
                             <script>
                                 /*
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                    $( document ).ready(function() {
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                        $("#header2").hide();
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                        $("#m1_i_p05").removeClass("page-content");
+                                                                                                                                                                                                                                    $( document ).ready(function() {
+                                                                                                                                                                                                                                        $("#header2").hide();
+                                                                                                                                                                                                                                        $("#m1_i_p05").removeClass("page-content");
 
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                    });
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                */
+                                                                                                                                                                                                                                    });
+                                                                                                                                                                                                                                */
                             </script>
 
 
@@ -462,9 +548,6 @@
 
 <script type="text/javascript">
     //function test_area_login()
-
-
-
     function verifyCallBack(arg1) {
 
         if (arg1 == 'pass') {
@@ -480,7 +563,7 @@
 
             //window.location.href = "home.html?loadPage=Module-8.html";
 
-            //load_module_home('Module-8.html');
+            load_module_home('Module-8.html');
 
             /* 
 
@@ -496,7 +579,6 @@
 
     }
 
-    /*
     function secureLogin() {
 
         var user = document.getElementById("input_test_user").value;
@@ -505,13 +587,6 @@
         alert('verifiying')
 
         external.verifyModule(user, key, verifyCallBack);
-
-    }
-    */
-    //for test
-    function secureLogin() {
-
-        login_cert_user('cert_test');
 
     }
 </script>

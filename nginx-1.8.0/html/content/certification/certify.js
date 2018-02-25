@@ -15,7 +15,7 @@ var CERTCONF = 'conf/certification.conf'
 var CERTKEYNAME = 'certification_conf'
 var LOADMODULEKEY = 'loaded_module'
 var SHUFFLEDKEY = 'shuffled_sequence'
-var BASEUSERCONF = 'data/base_user_config.txt'
+var BASEUSERCONF = 'conf/base_certify_user_config.txt'
 var USERCONFKEY = 'cert_user_conf' // points to current user config 
 var CURRENTUSERKEY = 'current_cert_user' //points to the user_name of current_user. 
 var POSTURLENDPOINT = 'http://mmelc.vestigesystems.com/deviceData'
@@ -28,6 +28,7 @@ function update_cert_user_conf(datakey, datavalue, ondisk) {
 
     var cert_conf = JSON.parse(localStorage.getItem(USERCONFKEY));
     cert_conf[datakey] = datavalue
+
     localStorage.setItem(USERCONFKEY, JSON.stringify(cert_conf))
     console.log('updated cert conf for : ' + datakey)
 
@@ -88,8 +89,8 @@ function login_cert_user(username) {
 
     var user_file_name = username + '_certify_conf.txt';
     var user_file_path = DATADIR + user_file_name;
-    var user_conf = get_from_disk(user_file_path);
-    var base = get_from_disk(BASEUSERCONF); //returns base config. 
+    var user_conf = cert_get_from_disk(user_file_path);
+    var base = cert_get_from_disk(BASEUSERCONF); //returns base config. 
 
     if (!user_conf) {
         //its a new user. 
@@ -159,27 +160,54 @@ function init_cert_page() {
     if (!shuffled_sequence) error += "no page sequence found to be loaded ";
     if (!current_cert_user) error += "could not determine current user. ";
 
-    alert(error);
+    //alert(error);
 
-    alert(window.location.href.indexOf('?loadPage='));
+    //alert(window.location.href.indexOf('?loadPage='));
 
     if (window.location.href.indexOf('?loadPage=') > 0) {
 
         var loc = window.location.href.split("?")[1].split("=")[1]
 
         alert(loc)
-
         var certpage = get_page_from_jquery(loc)
+            //alert(certpage)
 
         if (certpage) {
 
-            $("#content-inner").html(certpage);
+            if (loc.indexOf('_pxl') == -1) {
+
+                alert('i am here')
+
+                //normal page is being loaded. 
+
+                $("#content-inner").html(certpage);
+
+            } else {
+
+                //load pxl slide
+
+                $("#content-right").html(certpage);
+
+                document.getElementById('nextPageButton').style.display = 'none';
+                document.getElementById('previousPageButton').style.display = 'none';
+
+                $("#pxl_left").appendTo("#content-left");
+
+                //hide the nav button. 
+
+
+
+
+
+
+
+            }
+
+
 
         } else {
             alert('page' + loc + 'not found')
         }
-
-
 
 
     }
@@ -191,6 +219,13 @@ function init_cert_page() {
 
 
 function shuffle(array) {
+    /* do not shuffle 1st page, or last 2 pages */
+    var firstelement = array[0]
+    var last = array[array.length - 1]
+    var secondlast = array[array.length - 2]
+
+    var array = array.slice(1, array.length - 2);
+
     var currentIndex = array.length,
         temporaryValue, randomIndex;
 
@@ -206,6 +241,9 @@ function shuffle(array) {
         array[currentIndex] = array[randomIndex];
         array[randomIndex] = temporaryValue;
     }
+    array.push(secondlast)
+    array.push(last)
+    array.unshift(firstelement)
 
     return array;
 }
@@ -313,24 +351,25 @@ function load_certification_page(signal) {
     passes the page to appropriate URL to load.  
 	*/
     //current_page --> 8_0_slide14_pxl_posttestq1.html
+
     var current_module = localStorage.getItem(LOADMODULEKEY)
     var shuffled_sequence = JSON.parse(localStorage.getItem(SHUFFLEDKEY))
     var current_question = localStorage.getItem('current_question')
     var current_index = shuffled_sequence.indexOf(current_question)
     var next_question;
 
-    alert(current_index)
 
 
     if (current_index < 0) {
         next_question = shuffled_sequence[0]
+
     } else if (current_index == (shuffled_sequence.length - 1)) {
         next_question = current_question
     } else {
         next_question = shuffled_sequence[current_index + 1]
     }
 
-    alert('next_question is' + next_question)
+
 
     if (!signal) {
         //load the main page of the module. 
@@ -347,6 +386,7 @@ function load_certification_page(signal) {
     if (signal == 'next') {
 
         var page = current_module + '/0/' + next_question
+        localStorage.setItem('current_question', next_question) // change to the next. 
 
         //var page_data = get_page_from_jquery(current_module + '/0/' + next_question)
 

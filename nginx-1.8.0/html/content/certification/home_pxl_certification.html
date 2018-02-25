@@ -9,27 +9,25 @@
     <link rel="stylesheet" type="text/css" href="../css/slide.css">
 
     <script src="../js/jquery-3.0.0.min.js"></script>
+    <script src="certify.js"></script>
+    <script src="certification-test.js"></script>
 
     <style>
-
-
-        
         .counterbox {
             /* forces children to same row */
             height: 80px;
             width: 100%;
             z-index: 1000000;
-            top:150px;
-            left:15px;
-       
+            top: 150px;
+            left: 15px;
             /*
             padding-left: 15px;
             padding-right: 15px;
           
             */
         }
-
-        #counterbox  input {
+        
+        #counterbox input {
             font-size: 0.8em;
             background-color: transparent;
             text-align: center;
@@ -38,8 +36,6 @@
             margin: 0 0 .1em 0;
             color: blue;
         }
-
-
         
         .box {
             /* basics */
@@ -47,7 +43,7 @@
             background-color: rgb(2, 2, 2);
             color: #C4BE92;
             text-align: center;
-            vertical-align:center
+            vertical-align: center
             /* rounded corners */
             -webkit-border-radius: 5px;
             border-radius: 5px;
@@ -63,9 +59,8 @@
             -webkit-box-shadow: 0px 0px 12px 0px #000;
             box-shadow: 0px 0px 12px 0px #000;
         }
-
+        
         #counterbox button {
-
             align-items: flex-start;
             text-align: center;
             cursor: default;
@@ -77,12 +72,7 @@
             border-style: outset;
             border-color: buttonface;
             border-image: initial;
-
         }
-
-
-
-
     </style>
 
     <script src="../js/main-2.js"></script>
@@ -95,140 +85,10 @@
 
             alert('here')
 
-            jQuery.ajaxSetup({async:false}); 
+            init_cert_page();
 
-            var certpage =  $.get('Module-8/0/8_0_slide14_pxl_posttestq1.html');
-
-              if (certpage.status != 404) {
-
-                alert(certpage.status)
-
-               // $("#content-inner").html(certpage.responseText);
-
-             $("#content-right").html(certpage.responseText);
-
-                //append counter box to the content right. 
-                //alert("adding box");
-                //$("#box").appendTo("#content-right");
-
-
-                $("#pxl_left").appendTo("#content-left")
-
-
-              }
-
-              return;
-
-
-            //hide the next/previous button. and show after some  delay IF not a test/assessment:
-            var info = get_titles()
-            var module_title = info['module_title']
-            var unit_title = info['unit_title']
-            var currentSlidex = info['currentSlidex']
-            var numberSlidesy = info['numberSlidesy']
-                //if(page.indexOf("_pxl_") > -1 ) next_template = 'home_pxl.html'
-            if (unit_title.indexOf("Test") > -1 || unit_title.indexOf("Assessment") > -1) {
-                if (currentSlidex > 1 && currentSlidex != 12) {
-                    document.getElementById('nextPageButton').style.display = 'none';
-                } else {
-                    $('#nextPageButton').hide().delay(1050).show(0);
-                }
-                document.getElementById('previousPageButton').style.display = 'none';
-                document.getElementById('wrap-footer-menu').style.display = 'none';
-            } else { //unhide
-                $('#nextPageButton').hide().delay(1050).show(0);
-                $('#previousPageButton').hide().delay(1000).show(0);
-                document.getElementById('wrap-footer-menu').style.display = 'initial';
-                //alert('should be delay hide then show');
-            }
-
-
-
-
-            //run on load. ensure the config is loaded. 
-
-            var mod_config = JSON.parse(localStorage.getItem('module_config'));
-            //load from file. 
-
-            if (!mod_config) {
-
-                jQuery.ajaxSetup({
-                    async: false
-                }); //required to avoind async status code check issues 
-
-                var jq = $.get('js/module_conf.json'); //alert(jq.status);
-
-                if (jq.status == 200) {
-
-                    var mod_config = jq.responseText;
-                    localStorage.setItem('module_config', mod_config);
-
-                } else {
-                    alert("configuration file not found. please contact the administrator");
-                    return;
-
-                }
-
-            }
-
-            //alert('home_pxl: dom is loaded');
-
-            //grab the url and load the appropriate slide. 
-
-            var loc = window.location.href.split("?")[1] // pxl_home.html?loadPage=xyz_pxl_z.html --> returns LoadPage=xyz_pxl_z.html
-            if (loc) {
-
-                var go_to_loc = loc.split('=')[1]
-                    //set current location to this 'xyz_pxl_z.html'  and call load_page(page, template) 
-                    //localStorage.setItem('current_location', loc)
-                    //load_page(go_to_loc)
-
-                var go_to_page = create_page_path(go_to_loc)
-
-                jQuery.ajaxSetup({
-                    async: false
-                }); //required to avoind async status code check issues 
-
-                var jq = $.get(go_to_page); //alert(jq.status);
-
-                if (jq.status == 200) {
-                    var page_data = jq.responseText;
-                }
-
-                //$("#content-left").html(page_data);
-                //$("#pxl_right").appendTo("#content-right")
-
-                //console.log(page_data);
-
-                $("#content-right").html(page_data);
-
-                //append counter box to the content right. 
-                //alert("adding box");
-                //$("#box").appendTo("#content-right");
-
-
-                $("#pxl_left").appendTo("#content-left")
-
-
-                localStorage.setItem('current_location', go_to_loc);
-                update_user_object('last_visited_page', go_to_loc)
-
-                var footer_page = go_to_loc.split('_pxl')[0] + '.html'
-
-                loadFooterNav(go_to_loc);
-
-                document.getElementById('footer_selector').style.maxWidth = 'calc(100% - 5px)';
-                document.getElementById('footer_selector').style.overflow = 'hidden';
-                document.getElementById('footer_selector').style.maxHeight = '1.5em';
-
-                //alert(go_to_loc)
-
-                //var change = '3_2_slide27_pxl_m3u2pe1q13.html' ;
-
-                $('select option[ value= go_to_loc ]').attr('selected', 'selected');
-                //$("select option[value= '3_2_slide27_pxl_m3u2pe1q13.html' ]").attr("selected","selected");
-
-            }
+            document.getElementById('nextPageButton').style.display = 'none';
+            document.getElementById('nextPageButton').style.display = 'none';
 
 
         });
@@ -244,82 +104,77 @@
     </script>
 
     <script>
-
         function update_counter_object(requesttype, counterarray) {
-    
+
             //get the counter. 
 
-              var current_user = localStorage.getItem('logged_in');
-              var user_data = JSON.parse(localStorage.getItem(JSON.parse(current_user))) ;
-              var current_location = localStorage.getItem('current_location');
+            var current_user = localStorage.getItem('logged_in');
+            var user_data = JSON.parse(localStorage.getItem(JSON.parse(current_user)));
+            var current_location = localStorage.getItem('current_location');
 
-              var x = user_data['counter']
+            var x = user_data['counter']
 
-              if(x ==undefined) {
+            if (x == undefined) {
 
                 user_data['counter'] = {}
 
                 x = {}
-                x[current_location] = [0,0]
+                x[current_location] = [0, 0]
 
-                user_data['counter'] = x 
-
-                localStorage.setItem(JSON.parse(current_user), JSON.stringify(user_data))
-
-                return [0,0]
-
-                
-              }
-
-              if(x[current_location] == undefined ){
-
-                x[current_location] = [0,0]
-
-                user_data['counter'] = x 
+                user_data['counter'] = x
 
                 localStorage.setItem(JSON.parse(current_user), JSON.stringify(user_data))
 
-                return [0,0]
-
-                
-
-              }
-
-              if (requesttype == 'get') {
-
-                return x[current_location] ;
+                return [0, 0]
 
 
-              }
+            }
+
+            if (x[current_location] == undefined) {
+
+                x[current_location] = [0, 0]
+
+                user_data['counter'] = x
+
+                localStorage.setItem(JSON.parse(current_user), JSON.stringify(user_data))
+
+                return [0, 0]
 
 
-              else {
 
-              //update.
-              var x = user_data['counter']
+            }
 
-              x[current_location] = counterarray; 
+            if (requesttype == 'get') {
 
-               user_data['counter'] = x;
-
-              localStorage.setItem(JSON.parse(current_user), JSON.stringify(user_data))
-
-              initial_qty_load(counterarray);
-
-              
-              }
-
-              //user['counter'] = {'page' : [counter1, counter2] }
+                return x[current_location];
 
 
-        }//update counter
+            } else {
+
+                //update.
+                var x = user_data['counter']
+
+                x[current_location] = counterarray;
+
+                user_data['counter'] = x;
+
+                localStorage.setItem(JSON.parse(current_user), JSON.stringify(user_data))
+
+                initial_qty_load(counterarray);
+
+
+            }
+
+            //user['counter'] = {'page' : [counter1, counter2] }
+
+
+        } //update counter
 
         function initial_qty_load(counterarray) {
 
             if (!counterarray) {
-                var qtys = update_counter_object('get'); 
-            }
-            else {
+                var qtys = update_counter_object('get');
+            } else {
                 var qtys = counterarray;
             }
 
@@ -328,7 +183,7 @@
 
             for (var i = 0, len = qtydivs.length; i < len; i++) {
                 var divid = qtydivs[i];
-                var val = qtys[i]; 
+                var val = qtys[i];
 
                 /*
 
@@ -353,7 +208,7 @@
 
         function modify_qty(val, divid, ifenter) {
 
-            var counterarray = update_counter_object('get'); 
+            var counterarray = update_counter_object('get');
             var qty = counterarray[0]
             var qty2 = counterarray[1]
 
@@ -365,58 +220,54 @@
 
             if (divid == 'qty') {
 
-                if(val == 0) {
+                if (val == 0) {
                     update_counter_object('update', [0, qty2]);
 
-                    return; 
-
-                    }
-
-                if(ifenter){
-
-                    update_counter_object('update', [val, qty2]);
-                    return; 
+                    return;
 
                 }
 
-                else{
-                   update_counter_object('update', [parseInt(qty, 10) + val, qty2]);
-                    return; 
+                if (ifenter) {
+
+                    update_counter_object('update', [val, qty2]);
+                    return;
+
+                } else {
+                    update_counter_object('update', [parseInt(qty, 10) + val, qty2]);
+                    return;
                 }
 
             } // if qty
 
             if (divid == 'qty2') {
 
-                if(val == 0) {
+                if (val == 0) {
                     update_counter_object('update', [qty, 0]);
 
-                    return; 
-
-                    }
-
-                if(ifenter){
-
-                    update_counter_object('update', [qty, val]);
-                    return; 
+                    return;
 
                 }
 
-                else{
-                   update_counter_object('update', [qty, parseInt(qty2, 10) + val]);
-                    return; 
+                if (ifenter) {
+
+                    update_counter_object('update', [qty, val]);
+                    return;
+
+                } else {
+                    update_counter_object('update', [qty, parseInt(qty2, 10) + val]);
+                    return;
                 }
 
             } // if qty
 
 
 
-        }// function modify 
+        } // function modify 
 
         //click the button (+) on enter key 
 
 
-    function changeCounter(e){
+        function changeCounter(e) {
 
             if (e.which == 101 || e.which == 69) {
                 $("#up").click();
@@ -438,22 +289,22 @@
                 modify_qty(qty, "qty", "yes");
                 modify_qty(qty2, "qty2", "yes");
 
-                
-            
+
+
 
             }
 
 
 
-    }; //change value of th ecounter.
+        }; //change value of th ecounter.
 
-        
+
 
         $(document).keypress(function(e) {
 
             changeCounter(e);
             //alert(e.which);
-    
+
 
             /*
 
@@ -473,9 +324,6 @@
 
 
         });
-
-
-
     </script>
 
 
@@ -643,7 +491,7 @@
             </div>
             <!--header -->
 
-                                   <!--header -->
+            <!--header -->
             <div id="counterbox" style="display:none; background: tomato;">
 
                 <div class="box" id="box">
@@ -660,7 +508,7 @@
 
                     <label for="qty2"><abbr title="Quantity2">Count-2</abbr></label>
                     <input id="qty2" value="0" />
-                    
+
                     <button id="down2" onclick="modify_qty(-1, 'qty2')">-1</button>
                     <button id="clear2" onclick="modify_qty(0, 'qty2')">c</button>
                     <button id="up2" onclick="modify_qty(1, 'qty2')">+1</button>
@@ -1029,7 +877,7 @@
 
     //show hide counter  box 
 
-   jQuery(function() {
+    jQuery(function() {
         jQuery("#counter").click(function() {
             initial_qty_load();
             //jQuery("#counterbox").toggle("slow");
@@ -1046,30 +894,29 @@
 
     function waitForElementToDisplay(selector, time) {
         var ele = document.getElementById(selector)
-        if(ele !=null) {
+        if (ele != null) {
 
-      
-            $(document.getElementById(selector).contentWindow.document).keydown(function(e){
+
+            $(document.getElementById(selector).contentWindow.document).keydown(function(e) {
 
                 //alert("KEY:" + e.which);
                 changeCounter(e);
 
-       
+
             });
 
             $(document.getElementById(selector)).contents().find("body").on('click', function(event)
 
 
-             { 
+                {
 
-                //alert('test'); 
-                jQuery("#counterbox").show();
+                    //alert('test'); 
+                    jQuery("#counterbox").show();
 
-            });
+                });
 
             return;
-        }
-        else {
+        } else {
             setTimeout(function() {
                 waitForElementToDisplay(selector, time);
             }, time);
@@ -1077,7 +924,6 @@
     };
 
     waitForElementToDisplay('pathXLviewer', 1000);
-
 </script>
 
 </html>
