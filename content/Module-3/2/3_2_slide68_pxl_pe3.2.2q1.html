@@ -1,0 +1,38 @@
+<div id="pxl_left"><slide id="3_2_slide68_pxl_pe3.2.2q1"></slide><form name = "myform">
+<b>Question 1 of 5 </b><p>Are malaria parasites present in the virtual slide?<br>
+(Thoroughly scan at x100 before answering.)
+</p>
+
+<input type = "radio" name = "rad1" onclick = "getAnswer('1a', '1')">No malaria parasites seen<br>
+<input type = "radio" name = "rad1" onclick = "getAnswer('1b', '2')">Malaria parasites are present<br>
+<br>
+<div id = "answerFeedback"></div>
+
+</form>
+
+<br><br>
+<font size="-1"><br>
+</font>
+
+<script type = "text/javascript">
+var reltext = [];
+reltext[1] = "Incorrect.  Keep looking!" 
+reltext[2] = "Correct!  Although this thick blood film contains many artefacts, a high density of clear <i>Plasmodium falciparum</i> trophozoites can be seen.<br><br>Please continue scanning through the slide to observe the various forms the parasite can take.  <br><br>"
+
+var iscorrect = [];
+iscorrect[1] = 0
+iscorrect[2] = 1
+
+function getAnswer(ans, rel) {
+document.getElementById("answerFeedback").innerHTML = reltext[rel];
+
+}
+
+</script>
+</div></div>
+  
+	  <div class="pxl_right" id="pxl_right"><div id="content">
+      <iframe id='pathXLviewer' src='../../standalone.html?slide=images/module3/m3u2pe2q1.svs' frameborder='0'></iframe>
+	  </div>
+
+</div>

@@ -1,0 +1,68 @@
+<div id="pxl_left"><slide id="3_3_slide104_pxl_pe3.3.3q5"></slide><form name = "myform">
+<b>Question 5 of 9</b><p>What species of malaria parasites are present in the virtual slide?</p><br>
+
+<input type = "checkbox" id = "Pf"><i>Plasmodium falciparum</i><br>
+<input type = "checkbox" id = "Pv"><i>Plasmodium vivax</i><br>
+<input type = "checkbox" id = "Po"><i>Plasmodium ovale</i><br>
+<input type = "checkbox" id = "Pm"><i>Plasmodium malariae</i><br>
+<button type = "button" name = "button" onclick = "checkAnswer()">Submit</button><br>
+
+<br>
+<div id = "answerFeedback"></div>
+
+</form>
+
+<br><br>
+<font size="-1"><br>
+</font>
+
+<script type = "text/javascript">
+var correctAnswer = "The thin blood film contains a single <em>P. falciparum</em> gametocyte and several <em>P. ovale</em> trophozoites.  As long as both the <em>P.f.</em> gametocytes and some of the <em>P.o.</em> parasites are seen, it should be clear that this is a mixed infection.  The biggest challenge is then in identifying <em>P. ovale</em>, which is similar to <em>P. vivax</em>.  Some features that identify the sample as <em>P. ovale</em> are the coarse stippling (James' dots), the oval shape of several of the infected cells, and the occasional fimbriations at the edges of the cells.";
+var correctAnswer = correctAnswer+"<br>";
+var multiAnswer = "Incorrect.  <br>But there are two species present on this slide. <br><button type = 'button' name = 'button2' onclick = 'giveUp()'>I give up!</button><br>";
+var wrongAnswer = "Incorrect.  <br>Please try again! <br><button type = 'button' name = 'button2' onclick = 'giveUp()'>I give up!</button><br>";
+var blankAnswer = "Select a species&mdash;all slides in this exercise contain malaria parasites."
+var oneCorrectAnswer = "You're correct, but there is another species present. <br><button type = 'button' name = 'button2' onclick = 'giveUp()'>I give up!</button><br>";
+var displayAnswer = "";
+function checkAnswer() {
+//compile user answer:
+var userAnswer = "";
+if (document.getElementById("Pf").checked) {userAnswer = userAnswer+"Pf";}
+if (document.getElementById("Pv").checked) {userAnswer = userAnswer+"Pv";}
+if (document.getElementById("Po").checked) {userAnswer = userAnswer+"Po";}
+if (document.getElementById("Pm").checked) {userAnswer = userAnswer+"Pm";}
+document.getElementById("answerFeedback").innerHTML = userAnswer;
+//give result based on answer
+if (userAnswer) {
+	switch(userAnswer) {
+	case "PfPo": 
+		displayAnswer = "Correct! <br>"+correctAnswer; 
+		break;
+	case "Pf": 
+	case "Po":
+		displayAnswer = oneCorrectAnswer;
+		break;
+	case "Pv":
+	case "Pm":
+		displayAnswer = wrongAnswer; 
+		break;
+	default: 
+		displayAnswer = multiAnswer;
+}
+}
+else {displayAnswer = blankAnswer;};
+
+document.getElementById("answerFeedback").innerHTML = displayAnswer;
+}
+
+function giveUp() {
+document.getElementById("answerFeedback").innerHTML = correctAnswer;
+}
+</script>
+</div></div>
+  
+	  <div class="pxl_right" id="pxl_right"><div id="content">
+      <iframe id='pathXLviewer' src='../../standalone.html?slide=images/module3/m3u3pe3q5.svs' frameborder='0'></iframe>
+	  </div>
+
+</div>

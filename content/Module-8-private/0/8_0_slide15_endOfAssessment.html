@@ -1,0 +1,105 @@
+<div id="m0_i_p19" class="page-content">
+
+    <slide id="8_0_slide15_endOfAssessment"></slide>
+
+	<h2 class="heading-text"><a href="#preamble" name="preamble"></a>Congratulations : You have completed the Final Assessment!</h2>
+
+
+	<div style="margin-bottom:30px;">
+		<span style="font-size:20px;">Your Answer Key:   </span><span id="anskey" style="font-size:30px; color: blue;"></span>
+	</div>
+
+	<div style="margin-bottom:30px;">
+		
+		<input type="submit" value="submit assessment" onclick="return test_complete();" />
+
+	</div>
+
+		<h3 class="instruction" >Send your ans key to xyz@email.com</h3>
+	
+	<div>
+		
+	</div>
+	<br>
+	
+	
+	<h3 class="instruction" style="margin-top: 30px;">Please Provide Feedback!</h3>
+	<p class="content-text">
+	Thank you for completing the pilot course.  The developers of this course would greatly appreciate your feedback so we can improve the course for a wider audience.  
+	Please click the link below to fill out the course feedback form (TO ADD).
+	</p>
+	
+	
+
+	</div>
+
+
+
+
+</div>
+
+<script type="text/javascript">
+
+	function aggregate_result(mcq, pxl){
+
+  //mcq --> number of multiple choice questions 
+  //pxl --> number or pxl questions 
+
+  //get normal questions 
+
+  var mcq_ans = ''
+  var short_pxl_ans =''
+
+
+  for ( i = 1 ; i < mcq + 1 ; i ++){
+
+
+    var str = 'assessmentMCQ' + i.toString()
+    var ans = localStorage.getItem(str)
+    mcq_ans+= ans
+
+
+  }
+
+    for ( i = 1; i < pxl + 1 ;  i ++){
+
+    var pxstr = 'assessment' + i.toString()
+    var pxans = localStorage.getItem(pxstr)
+    //convert each pxl answer to short base 32 and add to long string seprated with '-'
+
+   short_pxl_ans+= '-'
+   short_pxl_ans+= parseInt(pxans).toString(32) 
+
+  
+
+  }
+
+  //MCQ convert to base 32 short-hand.
+  var short_mcq_ans = parseInt(mcq_ans).toString(32)
+
+  var full_result_key = short_mcq_ans + short_pxl_ans
+
+
+  //console.log(mcq_ans)
+  console.log(short_mcq_ans)
+  console.log( short_pxl_ans)
+  console.log( full_result_key)
+
+  return(full_result_key)
+
+
+}
+$(function() {
+
+	var anskey = aggregate_result(10,6);
+
+	$("#anskey").html(anskey);
+
+	//alert(anskey)
+
+}); 
+
+//$(document).ready(initMenu);
+
+
+</script>

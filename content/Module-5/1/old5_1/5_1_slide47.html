@@ -1,0 +1,136 @@
+
+
+<link rel="stylesheet" type="text/css" href="css/easy-responsive-tabs.css " />
+
+<!--<script src="js/easyResponsiveTabs.js"></script>-->
+<script src="js/jquery.easyResponsiveTabs.js"></script>
+
+
+<div id="m5_elementQM_p47" class="page-content">
+
+    <slide id="5_1_slide47"></slide>
+
+
+
+    <h2 class="heading-text"><a href="#preamble" name="preamble"></a>Assessment (4 of 11)</h2>
+
+    <h3 class="medium-text">Process Improvement</h3>
+
+    <p class="content-text">
+        The PDCA cycle is described as follows:
+    </p>
+
+    <br>
+
+
+    <br/>
+
+
+
+    <div class="scroll-text-5m-p47">
+    </div>
+
+
+    <div id="container">
+        <div class="topSection">
+            <div class="inner">
+
+            </div>
+        </div>
+        <div class="inner">
+            <section id="main_content">
+
+
+                <div id="nested-tabInfo">
+                    <span class="tabName"></span>
+                </div>
+
+                <br/>
+
+                <!--Horizontal Tab-->
+                <div id="parentHorizontalTab">
+                    <ul class="resp-tabs-list hor_1">
+                        <!-- <li>Horizontal 1</li> -->
+                        <!-- <li>Horizontal 2</li>
+                        <li>Horizontal 3</li> -->
+                    </ul>
+                    <div class="resp-tabs-container hor_1">
+                        <div>
+                            <p>
+                                <!--vertical Tabs-->
+
+                            <div id="ChildVerticalTab_1">
+                                <ul class="resp-tabs-list ver_1">
+                                    <li class="a">Plan</li>
+                                    <li class="b">Do</li>
+                                    <li class="c">Check</li>
+                                    <li class="d">Act</li>
+                                </ul>
+                                <div class="resp-tabs-container ver_1">
+                                    <div>
+
+                                        <p class="content-text"> Plan involves identifying problems or errors and their potential sources. This involves deciding on the steps to be used to gather information, such as asking questions to assess the current situation, analysing the root causes and using the gathered information to develop a plan for improvement.</p>
+                                    </div>
+                                    <div>
+                                        <p class="content-text">Do involves implementing the plans you have developed, that is, putting the developed plan into action.</p>
+                                    </div>
+                                    <div>
+                                        <p class="content-text">Check involves monitoring the effectiveness of the implemented action plan. This can be achieved through reviews and audit processes. After 'checking', you may require to revise your action plan to achieve the improvements that you need.</p>
+                                    </div>
+                                    <div>
+                                        <p class="content-text">Act involves taking the required corrective action and then re-checking to make sure the solution has worked.</p>
+                                    </div>
+                                </div>
+                            </div>
+
+
+                            <p style="visibility: hidden;">Contents</p>
+                        </div>
+
+                    </div>
+                </div>
+
+
+
+
+</section>
+
+        </div></div>
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+
+            $('#parentHorizontalTab').easyResponsiveTabs({
+                type: 'default',
+                width: 'auto',
+                fit: true,
+                closed: 'accordion',
+                tabidentify: 'hor_1', // The tab groups identifier
+                activate: function (event) { // Callback function if tab is switched
+                    var $tab = $(this);
+                    var $info = $('#nested-tabInfo');
+                    var $name = $('span', $info);
+
+                    $name.text($tab.text());
+
+                    $info.show();
+                }
+            });
+
+            $('#ChildVerticalTab_1').easyResponsiveTabs({
+                type: 'vertical',
+                width: 'auto',
+                fit: true,
+                tabidentify: 'ver_1',
+                activetab_bg: '#fff',
+                inactive_bg: '#F5F5F5',
+                active_border_color: '#c1c1c1',
+                active_content_border_color: '#5AB1D0'
+            });
+
+        });
+		
+		$(document).ready(function(){$(".a").trigger('click');});
+		
+    </script>
+

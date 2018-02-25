@@ -1,0 +1,76 @@
+<div id="m2_preparationOfD_p19" class="page-content">
+
+    <slide id="2_3_slide19"></slide>
+
+    <h2 class="heading-text"><a href="#preamble" name="preamble"></a>Preparation of Buffered Solution pH 7.2 (9 of 10)</h2>
+
+    <h3 class="learningOutcomeText">Preparation of 2% KH<sub>2</sub>PO<sub>4</sub> Correcting Fluid</h3>
+
+    <p class="content-text">
+        The procedures for preparing 2% KH<sub>2</sub>PO<sub>4</sub> correcting fluid are as follows:
+    </p>
+
+    <div class="button-function-bg">
+
+        <div id="outcome" class="outcome-text outcome-btn-text" style="display:block">
+
+            <div id="outcomex" class="outcomex-text">
+
+                <p id="outcome-1" class="outcome-num none-display">
+                    Weigh 2 g of potassium dihydrogen phosphate (KH<sub>2</sub>PO<sub>4</sub>).
+                </p>
+
+                <p id="outcome-2" class="outcome-num none-display">
+                    Add to 100 mL distilled water in a clean beaker. Stir with the spatula until the salts have dissolved.</p>
+
+                <p id="outcome-3" class="outcome-num none-display">
+                    Pour the solution into one of the glass bottles and label ‘2% KH<sub>2</sub>PO<sub>4</sub>‘. Write the date of preparation and name of the person who prepared the correcting fluid.</p>
+
+                <p id="outcome-4" class="outcome-num none-display">
+                    Store the bottle of 2% KH<sub>2</sub>PO<sub>4</sub> in a cool place away from direct sunlight.
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <div id="slide4-buttons button-alignment">
+
+            <button class="blue-btn" onclick="javascript:slide4show(1)">Step 1</button>
+
+            <button class="red-btn" onclick="javascript:slide4show(2)">Step 2</button>
+
+            <button class="yellow-btn" onclick="javascript:slide4show(3)">Step 3</button>
+
+            <button class="violet-btn" onclick="javascript:slide4show(4)">Step 4</button>
+
+        </div>
+
+
+    </div>
+    <!---outcome 1 -->
+
+
+</div>
+
+<!--actual page content here -->
+
+<script>
+    /* any js that applies to a slide should be included within the slide html page itself */
+
+    function slide4show(count) {
+
+        $(".outcome-text").css('display', 'block');
+
+        for (var i = 1; i <= 4; i++) {
+            if (i == count)
+                document.getElementById("outcome-" + i).style.display = 'block';
+            else
+                document.getElementById("outcome-" + i).style.display = 'none';
+        }
+
+    }
+
+
+</script>

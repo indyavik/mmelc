@@ -1,0 +1,142 @@
+
+<link rel="stylesheet" type="text/css" href="css/easy-responsive-tabs.css " />
+
+<!--<script src="js/easyResponsiveTabs.js"></script>-->
+<script src="js/jquery.easyResponsiveTabs.js"></script>
+
+
+<div id="m2_stainingOfBF_p06" class="page-content">
+
+    <slide id="2_4_slide06"></slide>
+
+    <h2 class="heading-text"><a href="#preamble" name="preamble"></a>Staining Blood Films (4 of 5)</h2>
+
+    <h3 class="medium-text">Staining slides individually</h3>
+
+    <p class="content-text">
+       The following is the step by step procedure for staining slides individually:
+    </p>
+
+   <div id="container">
+        <div class="topSection">
+            <div class="inner">
+
+            </div>
+        </div>
+        <div class="inner">
+            <section id="main_content">
+
+
+
+
+                <br/>
+
+                <!--Horizontal Tab-->
+
+                <div class="resp-tabs-container hor_1">
+                    <div>
+                        <p>
+                            <!--vertical Tabs-->
+
+                        <div id="ChildVerticalTab_1">
+                            <ul class="resp-tabs-list ver_1">
+                                <li class="a">Step One</li>
+                                <li class="b">Step Two</li>
+                                <li class="c">Step Three</li>
+                                <li class="d">Step Four</li>
+                                <li class="e">Step Five</li>
+                            </ul>
+
+                            <div class="resp-tabs-container ver_1">
+                                <div>
+                                    <p class="content-text">
+                                        Place the slides individually on the staining rack making sure that the slides do not touch each other.
+									</p>
+                                </div>
+
+                                <div>
+                                    <p  class="content-text">
+									Pour the diluted stain gently onto the slides until the slides are totally covered. Each slide will need approximately 3 mL of stain. Avoid pouring the stain directly onto the thick blood films as they may float off.
+									</p>
+                                </div>
+                                <div>
+                                    <p class="content-text">
+									Leave the stain on the slides for 30&ndash;45 minutes for 3% Giemsa stain solution and 10&ndash;15 minutes for 10% Giemsa stain solution. Internal quality control of your stain will determine your optimum staining time. 
+									</p>
+                                </div>
+                                <div>
+                                    <p class="content-text">
+									Flood the slides gently with buffered water to float off the iridescent "scum" on the surface of the stain. The buffered water at pH 7.2 should be poured onto the slides from the thin blood film end to avoid undue disturbance and washing-off of the thick blood films.
+									</p>
+                                </div>
+                                <div>
+                                    <p class="content-text">
+									Remove the slides one by one and place them, thick blood film downwards, in a drying rack to drain and dry, making sure the thick blood film does not touch the edge of the rack.
+									</p>
+                                    <br><br>
+                                </div>
+                            </div>
+                        </div>
+                        </p>
+                        <p style="visibility: hidden">Container</p>
+                    </div>
+
+                </div>
+        </div>
+
+
+        </p>
+
+
+
+    </div>
+    <script type="text/javascript">
+        $(document).ready(function () {
+
+            $('#parentHorizontalTab').easyResponsiveTabs({
+                type: 'default', //Types: default, vertical, accordion
+                width: 'auto', //auto or any width like 600px
+                fit: true, // 100% fit in a container
+                closed: 'accordion', // Start closed if in accordion view
+                tabidentify: 'hor_1', // The tab groups identifier
+                activate: function (event) { // Callback function if tab is switched
+                    var $tab = $(this);
+                    var $info = $('#nested-tabInfo');
+                    var $name = $('span', $info);
+
+                    $name.text($tab.text());
+
+                    $info.show();
+                }
+            });
+
+            $('#ChildVerticalTab_1').easyResponsiveTabs({
+                type: 'vertical',
+                width: 'auto',
+                fit: true,
+                tabidentify: 'ver_1', // The tab groups identifier
+                activetab_bg: '#fff', // background color for active tabs in this group
+                inactive_bg: '#F5F5F5', // background color for inactive tabs in this group
+                active_border_color: '#c1c1c1', // border color for active tabs heads in this group
+                active_content_border_color: '#5AB1D0' // border color for active tabs contect in this group so that it matches the tab head border
+            });
+
+        });
+		
+		$(document).ready(function(){$(".a").trigger('click');});
+    </script>
+
+</div> <!--actual page content here -->
+
+<style>
+    .resp-vtabs .resp-tabs-container {
+        padding: 0px;
+        background-color: #fff;
+        border: 1px solid #c1c1c1;
+        float: left;
+        width: 68%;
+        min-height: 375px;
+        border-radius: 4px;
+        clear: none;
+    }
+</style>
