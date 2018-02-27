@@ -36,13 +36,14 @@ function compileMCQ(MCQidArray) {
     //Turn array of MCQ answers (1,2,3,4) into a short string OR 10 digit number (to be converted to code)
 }
 
-function get_pxl_ans_key(ans_array, username, mcqstring) {
+function get_final_ans_key(ans_array, username, mcqstring) {
 
     //ans_array = [1004616, 8004161, 199004104, 12004100, 12002100 ]
     //user_name = 'cert-user1'
-    //get_pxl_ans_key([10,34500,2700,25050,400,10000,125], 'abc' , '1234432123' )
+    //get_final_ans_key([10,34500,2700,25050,400,10000,125], 'abc' , '1234432123' )
 
     function get_mcq_ans_key(MCQanswers) {
+
         //var MCQanswers = "1234432123";
 
         var text = "";
@@ -64,24 +65,27 @@ function get_pxl_ans_key(ans_array, username, mcqstring) {
     if (username.length > ans_array.length) {
         updated_username = username.slice(0, ans_array.length)
 
-    }
-
-    var diff = ans_array.length - username.length;
-
-    updated_username = username + username.slice(0, diff);
-
-
-    if (diff > username.length) {
-
-        var diff2 = diff - username.length
-
-        updated_username = updated_username + username.slice(0, diff2);
-
     } else {
+
+        var diff = ans_array.length - username.length;
 
         updated_username = username + username.slice(0, diff);
 
+        if (diff > username.length) {
+
+            var diff2 = diff - username.length
+
+            updated_username = updated_username + username.slice(0, diff2);
+
+        } else {
+
+            updated_username = username + username.slice(0, diff);
+
+        }
+
     }
+
+
 
     /*
     while (i > 0) {
@@ -106,6 +110,7 @@ function get_pxl_ans_key(ans_array, username, mcqstring) {
     console.log('ascii_ready_string is: ' + updated_username)
 
     //get ascii value for each. 
+
     var ascii_values_array = []
     for (var i = 0; i < updated_username.length; i++) {
         var s = updated_username.charAt(i);
@@ -119,12 +124,10 @@ function get_pxl_ans_key(ans_array, username, mcqstring) {
     for (var j = 0; j < ascii_values_array.length; j++) {
 
         var new_string = ascii_values_array[j] + ans_array[j]
-        console.log(parseInt(new_string).toString(32))
         ans_key += '-' + parseInt(new_string).toString(32)
 
     }
 
-    console.log('answer key is: ' + ans_key)
     return ans_key
 
 } //get_pxl_ans_key(ans_array, username, mcqstring)
@@ -187,52 +190,51 @@ function submit_data_to_server(data_type, data_object) {
 } //submit_data_to_server
 
 
-function create_cert_ans_key_to_submit_2() {
+function create_final_cert_ans_key() {
 
-    range1 = 10;
-    range2 = 5;
+    var mcq = ""
+    var q = []
 
-    var range01 = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
-    var range02 = [1, 2, 3, 4, 5]
-
-    var qs = [];
-    var ans = [];
-
-
-
-    for (var i = 0; i < range01.length; i++) {
-
-        //console.log('postMCQ' + range01[i]);
-        qs.push('certMCQ' + range01[i])
-
-    }
-
-    for (var i = 0; i < range02.length; i++) {
-        qs.push('certq' + range02[i])
-            //console.log('postq' + range02[i]);
-
-    }
-
-    //console.log(qs);
-    console.log(qs.length)
-
+    var user_name = localStorage.getItem(CURRENTUSERKEY);
     var user_conf = JSON.parse(localStorage.getItem(USERCONFKEY));
-    var cert_scores = user_conf['cert_scores'];
 
-    for (a = 0; a < qs.length; a++) {
-        /*
-        var an = localStorage.getItem(qs[a]);
-        ans.push(an);
-        */
+    if (!user_conf) {
+        alert('Could not capture results : please contact an admin');
+        return;
+    }
 
-        var an = cert_scores[qs[a]];
-        ans.push(an);
+    var results = user_conf['cert_scores']
+    var kv = []
 
+    for (r in results) {
+
+        kv.push([r, results[r]])
 
     }
-    alert(qs);
-    alert(qn)
-    return [qs, ans];
+
+    kv.sort(); // now we have sorted questions (from 1 ..n )
+
+    for (var i = 0; i < kv.length; i++) {
+        if (kv[i][0].indexOf('MCQ') > -1) {
+            //mcq.push(kv[i][1])
+            mcq += kv[i][1]
+
+        } else {
+            //q += kv[i][1]
+            q.push(kv[i][1])
+        }
+    }
+
+    console.log("multiple choice string: " + mcq);
+    console.log("pxl ans array: " + q);
+    console.log("username: " + user_name);
+
+    var final_key = get_final_ans_key(q, user_name, mcq);
+
+    console.log("final_key: " + final_key);
+
+    return final_key
+
 
 } // create_cert_ans
 
