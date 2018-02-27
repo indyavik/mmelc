@@ -101,7 +101,8 @@ function login_cert_user(username) {
         load_conf_and_suffle();
 
     } else {
-        alert('New Certification Test or Load the old one')
+        alert('New Certification Test or Start from where you left ???')
+
         var answer = confirm("Restart again with a new test?")
 
         if (answer) {
@@ -117,14 +118,13 @@ function login_cert_user(username) {
             //load the previously saved shuffled sequence. 
             var shuffled_sequence = user_conf['last_shuffled_sequence']
             localStorage.setItem(SHUFFLEDKEY, JSON.stringify(shuffled_sequence))
-            ocalStorage.setItem(CURRENTUSERKEY, username);
+            localStorage.setItem(CURRENTUSERKEY, username);
 
             //update the current question. 
             var last_q = user_conf['last_completed_question_url']
             var current_question = localStorage.setItem('current_question', last_q)
 
             //send to next page.
-
             load_certification_page('next');
 
         }
@@ -176,7 +176,7 @@ function init_cert_page() {
 
             if (loc.indexOf('_pxl') == -1) {
 
-                alert('i am here')
+                //alert('i am here')
 
                 //normal page is being loaded. 
 
@@ -196,13 +196,7 @@ function init_cert_page() {
                 //hide the nav button. 
 
 
-
-
-
-
-
             }
-
 
 
         } else {
@@ -296,7 +290,7 @@ function load_conf_and_suffle() {
 
             localStorage.setItem(CERTKEYNAME, config_data);
 
-            alert('found the certification file. ');
+            alert('Logging you in ......... ');
 
             //pick up a random module and randomize the sequence from the module and load. 
 
@@ -305,8 +299,6 @@ function load_conf_and_suffle() {
             console.log(config)
 
             var modules = Object.keys(config.mods) //
-            alert('modules')
-            alert(modules)
 
             //pick a random module.
 

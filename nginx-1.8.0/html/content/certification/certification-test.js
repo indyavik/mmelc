@@ -12,6 +12,7 @@ function saveCERTanswer(questionId, chkVal) {
     var user_conf = JSON.parse(localStorage.getItem(USERCONFKEY));
 
     var usrAns = chkVal[0].id;
+
     var usrAns = usrAns[1]; //Second part (answer id is r1, r2, r3, r4; just want number)
 
     var cert_scores = user_conf['cert_scores']
@@ -35,11 +36,103 @@ function compileMCQ(MCQidArray) {
     //Turn array of MCQ answers (1,2,3,4) into a short string OR 10 digit number (to be converted to code)
 }
 
+function get_pxl_ans_key(ans_array, username, mcqstring) {
+
+    //ans_array = [1004616, 8004161, 199004104, 12004100, 12002100 ]
+    //user_name = 'cert-user1'
+    //get_pxl_ans_key([10,34500,2700,25050,400,10000,125], 'abc' , '1234432123' )
+
+    function get_mcq_ans_key(MCQanswers) {
+        //var MCQanswers = "1234432123";
+
+        var text = "";
+
+        //replace each digit with itself minus 1 (so 0 to 3 instead of 1 to 4)
+
+        for (var i = 0; i < MCQanswers.length; i++) {
+            text += (parseInt(MCQanswers[i]) - 1).toString();
+        }
+        var MCQanswersBase10 = parseInt(text, 4);
+        return MCQanswersBase10;
+
+    } //get MCQ answer key
+
+    var ans_key = get_mcq_ans_key(mcqstring)
+
+    var updated_username = username
+
+    if (username.length > ans_array.length) {
+        updated_username = username.slice(0, ans_array.length)
+
+    }
+
+    var diff = ans_array.length - username.length;
+
+    updated_username = username + username.slice(0, diff);
+
+
+    if (diff > username.length) {
+
+        var diff2 = diff - username.length
+
+        updated_username = updated_username + username.slice(0, diff2);
+
+    } else {
+
+        updated_username = username + username.slice(0, diff);
+
+    }
+
+    /*
+    while (i > 0) {
+
+        console.log(diff)
+        ascii_string = username + username.slice(0, diff);
+        console.log('new length of ascii ')
+        console.log(ascii_string.lenth)
+
+        if (ascii_string.length == ans_array.length) {
+            i = 1;
+        } else {
+            diff = ans_array.length - ascii_string.length;
+            console.log('new diff')
+            console.log(diff)
+        }
+
+    }
+
+    */
+
+    console.log('ascii_ready_string is: ' + updated_username)
+
+    //get ascii value for each. 
+    var ascii_values_array = []
+    for (var i = 0; i < updated_username.length; i++) {
+        var s = updated_username.charAt(i);
+        var ascii_code = s.toUpperCase().charCodeAt(0);
+        if (ascii_code > 99) ascii_code = 99
+
+        ascii_values_array.push(ascii_code.toString())
+
+    }
+
+    for (var j = 0; j < ascii_values_array.length; j++) {
+
+        var new_string = ascii_values_array[j] + ans_array[j]
+        console.log(parseInt(new_string).toString(32))
+        ans_key += '-' + parseInt(new_string).toString(32)
+
+    }
+
+    console.log('answer key is: ' + ans_key)
+    return ans_key
+
+} //get_pxl_ans_key(ans_array, username, mcqstring)
+
 
 function submit_data_to_server(data_type, data_object) {
 
     //data_type = 'user_data' , 'feedback_survey' , 'certification_test' , pre_test, post_data
-
     //data_object - > a JSON object containing the data load that needs to be set to the serve. 
 
     if (data_object == null || typeof data_object !== 'object') {
@@ -86,9 +179,7 @@ function submit_data_to_server(data_type, data_object) {
             console.log("submit_data_error: " + JSON.stringify(load))
             if (data_type == "survey_response") { alert('An error occurred - please save the result file to your computer and send via email later.'); };
 
-
         }
-
 
 
     });
@@ -184,7 +275,6 @@ function submit_cert_ans_to_server(anskey) {
 function submit_cert_pxl_ans(q_number) {
     //This calculates the answer to submit.  It checks for no answer and too high of quantitation,
     //but does not check for other errors (e.g. if NMPS is checked, but so are species/stages or quantitation)
-    if (q_number) var questionnum = q_number;
 
     var TFanswers = 'fffffffffffff'; //each checkbox answer; not needed in the end but useful for error checking.
     var species = 'fvmo'; //falciparum, vivax, malariae, ovale
@@ -239,6 +329,7 @@ function submit_cert_pxl_ans(q_number) {
 
             var user_conf = JSON.parse(localStorage.getItem(USERCONFKEY));
             var cert_scores = user_conf['cert_scores']
+                //alert(questionnum);
             cert_scores[virtualslidePrefix + questionnum] = useranswer
 
             var completed_question = localStorage.getItem('current_question')
@@ -249,29 +340,6 @@ function submit_cert_pxl_ans(q_number) {
 
             load_certification_page('next');
 
-            /*
-            localStorage.setItem(virtualslidePrefix + questionnum, useranswer);
-            //alert(virtualslidePrefix+questionnum);
-            //alert(useranswer.toString());
-            var pagetemplate = 'home.html';
-            if (nextslide.indexOf("_pxl_") > -1) {
-
-                pagetemplate = 'home_pxl_certification.html';
-                nextslide = pagetemplate + '?loadPage=' + nextslide;
-                window.location = nextslide;
-
-            } else {
-
-                //
-                //nextslide = nextslide.replace('.html','');
-                //alert('nextslide = ' + nextslide + ' pagetemplate = ' + pagetemplate);
-                load_page(nextslide, pagetemplate);
-            }
-            //turn on "next" button in case it got turned off:
-            //document.getElementById('nextPageButton').style.display = 'initial';
-
-
-            */
 
         }
     }
