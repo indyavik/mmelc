@@ -128,6 +128,10 @@ function get_final_ans_key(ans_array, username, mcqstring) {
 
     }
 
+    //write user object to the disk.
+
+
+
     return ans_key
 
 } //get_pxl_ans_key(ans_array, username, mcqstring)
@@ -232,6 +236,10 @@ function create_final_cert_ans_key() {
     var final_key = get_final_ans_key(q, user_name, mcq);
 
     console.log("final_key: " + final_key);
+
+    //update the file on disk.
+    var filename = user_name + '_certify_conf.txt';
+    cert_update_on_disk(filename, user_conf);
 
     return final_key
 
