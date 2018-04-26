@@ -6,65 +6,56 @@
         Quantitation Methods (3 of 6)
 
     </h2>
-    <p class="content-text">
-        The following graphic and calculation illustrate the counting method on a thick blood film.
-    </p>
 	
-	    <p class="instruction-small">
-        Click on the image to magnify.
-    </p>
-	    <div class="plus-main-img" id="zoomImg">
-        <img src="images/m3u4QuantIllustration.png" width="100%"/>
-            <div class="plus-icon">+</div>
-
-    </div>
-	
-    <p class="content-text">
-        Assume that counting continues in the example illustrated above, until 116 parasites and 204 WBCs are counted. Performing the parasite density calculation yields:
-
-    </p>
-        <img src="images/for2.png">
-
-
-    <!-- The Modal -->
-    <div id="myModal" class="modal">
-
-    <!-- Modal content -->
-    <div class="modal-content">
-    <span class="close">&times;</span>
-    <div class="modal-div">
-    <img src="images/m3u4QuantIllustration.png" class="modal-img-div" width="100%"/>
-
-    </div>
-    </div>
-    </div>
+	<p id="box1" class="content-text">
+		The following exercise illustrates the counting method on a thick blood film. <br>
+	</p>
+		<input id="toggleButton" type="button" value="Click to begin the exercise" onclick="counter++; toggleQuantExercise(counter);"><br><br><br>
+	    
 </div>
 
-<script>
-    // Get the modal
-    var modal = document.getElementById('myModal');
+<script type="text/javascript">
+    var counter = 0;
 
-    // Get the button that opens the modal
-    var btn = document.getElementById("zoomImg");
+	
+    function toggleQuantExercise(showHideDiv) {
 
-    // Get the <span> element that closes the modal
-    var span = document.getElementsByClassName("close")[0];
+		
+		if (counter == 1) {
+			document.getElementById("box1").innerHTML = '<img src="images/m3u4QuantIllustration1.png"> <br> In the first field, we count 4 parasites and 7 WBCs. <br><br> Total so far: <br> 4 parasites <br> 7 WBCs';
+			document.getElementById("toggleButton").value = "Click to continue to next field";
+			}
+		if (counter == 2) {
+			document.getElementById("box1").innerHTML = '<img src="images/m3u4QuantIllustration2.png"> <br> In the second field, we count 6 parasites and 10 WBCs. <br><br> Total so far: <br> 10 parasites <br> 17 WBCs';
+		}
+		if (counter == 3) {
+			document.getElementById("box1").innerHTML = '<img src="images/m3u4QuantIllustration3.png"> <br> In the third field, we count 0 parasites and 8 WBCs. <br><br> Total so far: <br> 10 parasites <br> 25 WBCs';
+		}
+		if (counter == 4) {
+			document.getElementById("box1").innerHTML = '<img src="images/m3u4QuantIllustration4.png"> <br> In the fourth field, we count 3 parasites and 5 WBCs. <br><br> Total so far: <br> 13 parasites <br> 30 WBCs';
+		}
+		if (counter == 5) {
+			document.getElementById("box1").innerHTML = '<img src="images/m3u4QuantIllustration5.png"> <br> In the fifth field, we count 1 parasite and 0 WBCs. <br><br> Total so far: <br> 14 parasites <br> 30 WBCs';
+		}
+		if (counter == 6) {
+			document.getElementById("box1").innerHTML = '<img src="images/m3u4QuantIllustration6.png"> <br> In the sixth field, we count 6 parasites and 12 WBCs. <br><br> Total so far: <br> 20 parasites <br> 42 WBCs';
+			document.getElementById("toggleButton").value = "Click to continue counting to 200 WBCs";
+		}
+		if (counter == 7) {
+			document.getElementById("box1").innerHTML = 'Assume counting continues, and at the 30th field the WBC total surpasses 200.  <br><br> Total at end of count: <br> 116 parasites <br> 204 WBCs <br><br>Because the parasite count exceeds 100, we can now calculate the parasite density.';
+			document.getElementById("toggleButton").value = "Click to perform calculation";
+		}
+		if (counter == 8) {
+			document.getElementById("box1").innerHTML = 'Using the formula: <br><img src="images/for1.png" /><br><br>Enter the counts (116 parasites and 204 WBCs):<br><img src="images/for2.png"><br><br>The final parasite density to report is 4,549 parasites per microlitre.';
+			document.getElementById("toggleButton").value = "Click to repeat the exercise";
+		}
+		if (counter == 9) {
+			document.getElementById("box1").innerHTML = 'The following exercise illustrates the counting method on a thick blood film. <br>	  ';
+			document.getElementById("toggleButton").value = "Click to begin the exercise";
+			counter = 0;
+		}
 
-    // When the user clicks the button, open the modal
-    btn.onclick = function() {
-        modal.style.display = "block";
-    }
 
-    // When the user clicks on <span> (x), close the modal
-    span.onclick = function() {
-        modal.style.display = "none";
-    }
-
-    // When the user clicks anywhere outside of the modal, close it
-    window.onclick = function(event) {
-        if (event.target == modal) {
-            modal.style.display = "none";
-        }
     }
 </script>
 
