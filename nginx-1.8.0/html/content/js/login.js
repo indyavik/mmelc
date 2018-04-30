@@ -85,6 +85,91 @@ function loadInitialUsers() {
 
 } //loadInitUsers
 
+function regSurvey() {
+    //submit survey and create user.
+    //get the server details. 
+    try {
+        /*
+        var reg_name = document.getElementById('reg_name').value;
+        var reg_designation = document.getElementById('reg_designation').value;
+        var reg_country_work = document.getElementById('reg_country_work').value;
+        var reg_email = document.getElementById('reg_email').value;
+        var reg_phone = document.getElementById('reg_phone').value;
+
+        //Survey object
+        var survey_object = {
+            'reg_name': reg_name,
+            'reg_designation': reg_designation,
+            'reg_country_work': reg_country_work,
+            'reg_email': reg_email,
+            'reg_phone': reg_phone
+
+        }
+        */
+
+        var survey_object = {}
+
+        var arr1 = ['reg_name', 'reg_designation', 'reg_country_work', 'reg_email', 'reg_phone']
+
+        var required_fields = ['reg_name', 'reg_email']
+        var required_echo = ['Name', 'Email']
+
+        var arr = ['gender', 'refresher', 'certificationlevel', 'accessinternet', 'education', 'workplace']
+
+        for (var i = 0; i < arr1.length; i++) {
+
+            survey_object[arr1[i]] = document.getElementById(arr1[i]).value
+
+        }
+
+        var rtext = ""
+
+        for (var i = 0; i < required_fields.length; i++) {
+            var val = survey_object[required_fields[i]]
+
+            if (val == "") {
+                rtext += ", "
+                rtext += required_echo[i]
+            }
+
+        } //
+
+
+        if (rtext !== "") {
+            alert(rtext + " are required fields.")
+                //return;
+
+        }
+
+
+
+        for (var i = 0; i < arr.length; i++) {
+
+            var e = document.getElementById(arr[i]);
+            var v = e.options[e.selectedIndex].text;
+
+            console.log(v)
+            survey_object[arr[i]] = v
+
+        }
+
+        //submit survey to the web. 
+        console.log(survey_object)
+        console.log(rtext)
+
+
+
+
+    } //try
+    catch {
+        console.log("Error:<login.js:regSurvey()112> Could not capture the options")
+
+    }
+
+
+    createUser();
+
+} // reg_survey
 
 function createUser() {
     var user_input = document.getElementById('input_createUser');
@@ -125,7 +210,6 @@ function createUser() {
 
         //alert('updating new user on disk')
         update_on_disk("Users.txt", { "Users": new_users });
-
 
         //get skeleton object from the file and load. 
 
