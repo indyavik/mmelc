@@ -85,6 +85,117 @@ function loadInitialUsers() {
 
 } //loadInitUsers
 
+function createUser_go(dothis) {
+    if (!dothis) {
+
+        var user_input = document.getElementById('input_createUser');
+        var user_to_create = user_input.value;
+
+        if (user_to_create.length < 3) {
+            alert("Selected Username is too short. Please try again")
+            return;
+        }
+
+        document.getElementById('reg_survey').style.display = "block"
+        return;
+
+    }
+
+    if (dothis == 'skip') {
+
+        document.getElementById('reg_survey').style.display = "none"
+        createUser();
+
+
+    }
+
+
+} //createUser_go
+
+
+
+function createUser() {
+    var user_input = document.getElementById('input_createUser');
+
+    var create_user = user_input.value;
+    create_user = $.trim(create_user).replace(/ /g, '_'); //trim and add 'underscore'
+    var data_dir = localStorage.getItem('data_dir')
+
+
+
+    confirm('Are you sure to create user = ' + create_user)
+
+
+
+    var users_file = get_from_disk(data_dir + 'Users.txt') // string
+
+    if (users_file) {
+        var users = JSON.parse(users_file)
+
+    } else {
+        alert("Error: Could not find the file to create users. please contact admin")
+    }
+
+    if ($.isArray(users)) {
+        var new_users = users
+
+    } else { var new_users = users['Users'] }
+
+    //alert(new_users);
+
+    var user_exists = $.inArray(create_user, new_users); //(value, in_thisarray)
+
+    if (user_exists === -1 && create_user !== "") {
+
+        new_users.push(create_user);
+
+        set_local_object("Users", new_users);
+
+        //alert('updating new user on disk')
+        update_on_disk("Users.txt", { "Users": new_users });
+
+        //get skeleton object from the file and load. 
+
+        var data_dir = get_local_object("data_dir");
+        if (!(data_dir)) data_dir = '/data/';
+
+        var base = get_from_disk(data_dir + 'base_user_config.txt'); //returns 
+
+
+
+        /*
+								
+        if (!base) var user_data = {'x': 'y'}; 
+								
+        alert('am here:' + JSON.parse(base));
+
+        var user_data = JSON.parse(base); 
+
+        alert(user_data);
+								
+        */
+        var new_user = JSON.parse(base);
+
+
+        localStorage.setItem(String(create_user), JSON.stringify(new_user));
+
+        /* write to user file - > nginx/html/data dir  */
+
+        //alert('creating file on disk') ;
+
+        update_on_disk(create_user + '.txt', new_user); //js oject. not string.
+
+        //alert('file created') ;
+
+
+        logUser(create_user);
+
+        //setTimeout(function(){window.location.href="home.html?user="+create_user} , 500); 
+
+    } else alert("User already exists : please try a new name");
+
+};
+
 function regSurvey() {
     //submit survey and create user.
     //get the server details. 
@@ -155,13 +266,14 @@ function regSurvey() {
 
         //submit survey to the web. 
         console.log(survey_object)
-        console.log(rtext)
+            //create user
+        createUser();
 
 
 
 
     } //try
-    catch {
+    catch (error) {
         console.log("Error:<login.js:regSurvey()112> Could not capture the options")
 
     }
@@ -170,89 +282,6 @@ function regSurvey() {
     createUser();
 
 } // reg_survey
-
-function createUser() {
-    var user_input = document.getElementById('input_createUser');
-    var create_user = user_input.value;
-    create_user = $.trim(create_user).replace(/ /g, '_'); //trim and add 'underscore'
-    var data_dir = localStorage.getItem('data_dir')
-
-
-    //alert(create_user); 
-
-    //var users = GetObject("Users", "Users.txt");
-
-    //alert('users_file:' + users)
-
-    var users_file = get_from_disk(data_dir + 'Users.txt') // string
-
-    if (users_file) {
-        var users = JSON.parse(users_file)
-
-    } else {
-        alert("Error: Could not find the file to create users. please contact admin")
-    }
-
-    if ($.isArray(users)) {
-        var new_users = users
-
-    } else { var new_users = users['Users'] }
-
-    //alert(new_users);
-
-    var user_exists = $.inArray(create_user, new_users); //(value, in_thisarray)
-
-    if (user_exists === -1 && create_user !== "") {
-
-        new_users.push(create_user);
-
-        set_local_object("Users", new_users);
-
-        //alert('updating new user on disk')
-        update_on_disk("Users.txt", { "Users": new_users });
-
-        //get skeleton object from the file and load. 
-
-        var data_dir = get_local_object("data_dir");
-        if (!(data_dir)) data_dir = '/data/';
-
-        var base = get_from_disk(data_dir + 'base_user_config.txt'); //returns 
-
-
-
-        /*
-								
-        if (!base) var user_data = {'x': 'y'}; 
-								
-        alert('am here:' + JSON.parse(base));
-
-        var user_data = JSON.parse(base); 
-
-        alert(user_data);
-								
-        */
-        var new_user = JSON.parse(base);
-
-
-
-        localStorage.setItem(String(create_user), JSON.stringify(new_user));
-
-        /* write to user file - > nginx/html/data dir  */
-
-        //alert('creating file on disk') ;
-
-        update_on_disk(create_user + '.txt', new_user); //js oject. not string.
-
-        //alert('file created') ;
-
-
-        logUser(create_user);
-
-        //setTimeout(function(){window.location.href="home.html?user="+create_user} , 500); 
-
-    } else alert("User already exists : please try a new name");
-
-};
 
 function logUserOut() {
 
