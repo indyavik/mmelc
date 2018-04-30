@@ -90,12 +90,23 @@ function createUser() {
     var user_input = document.getElementById('input_createUser');
     var create_user = user_input.value;
     create_user = $.trim(create_user).replace(/ /g, '_'); //trim and add 'underscore'
+    var data_dir = localStorage.getItem('data_dir')
+
 
     //alert(create_user); 
 
-    var users = GetObject("Users", "Users.txt");
+    //var users = GetObject("Users", "Users.txt");
 
     //alert('users_file:' + users)
+
+    var users_file = get_from_disk(data_dir + 'Users.txt') // string
+
+    if (users_file) {
+        var users = JSON.parse(users_file)
+
+    } else {
+        alert("Error: Could not find the file to create users. please contact admin")
+    }
 
     if ($.isArray(users)) {
         var new_users = users

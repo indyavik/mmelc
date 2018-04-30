@@ -792,7 +792,8 @@ class JavascriptExternal:
 
    
     def saveFile(self, file_name, json_object):
-        save_path = 'nginx-1.8.0/html/data/'
+        #save_path = 'nginx-1.8.0/html/data/'
+        save_path = 'nginx-1.8.0/html'
         string_input = json.dumps(json_object)
         with open(save_path + str(file_name), "w") as f: 
             f.write(string_input)

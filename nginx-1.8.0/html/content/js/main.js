@@ -127,11 +127,11 @@ function copy_updates_to_usb_callback(arg) {
 
 function update_on_disk(file_name, json_obj) {
 
-    var file_name = file_name;
+    var data_dir = localStorage.getItem('data_dir')
+    var file_name = data_dir + file_name;
 
-    if (file_name === 'Users') var file_name = 'Users.txt';
-    if (file_name === 'Modules') var file_name = 'module_config.txt';
-
+    if (file_name === 'Users') var file_name = data_dir + 'Users.txt';
+    if (file_name === 'Modules') var file_name = data_dir + 'module_config.txt';
 
     //var data = checkFile(file_name); 
     external.saveFile(file_name, json_obj);

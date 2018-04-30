@@ -89,6 +89,8 @@
 
                                         </div>
 
+
+
                                     </div>
 
 
@@ -99,60 +101,215 @@
                                             If you already have an account, please select your user name to log in.</h3>
                                     </div>
 
-                                </div>
-                            </div>
 
+                                    <div id="reg_survey" style="display:block; margin-top:100px;">
+                                        <span>Name: </span><input type="text" placeholder="None" name="name" id="reg_name" maxlength="15">
+                                        </br>
+                                        <p></p>
+                                        <span>Designation: </span><input type="text" placeholder="None" name="reg_designation" id="reg_designation" maxlength="15">
+                                        </br>
+                                        <p></p>
+                                        <span>Country of work: </span><input type="text" placeholder="None" name="reg_country_work" id="reg_country_work" maxlength="15">
+                                        </br>
+                                        <p></p>
+                                        <span>Contact Email: </span><input type="text" placeholder="None" name="reg_email" id="reg_email" maxlength="15">
+                                        <p></p>
+
+                                        <span>Contact Phone: </span><input type="text" placeholder="None" name="reg_phone" id="reg_phone" maxlength="15"></br>
+                                        <p></p>
+                                        <span style="margin-top:15px;">Gender: </span>
+
+                                        <select id="gender">
+                                                    <option value="1">Male</option>
+                                                    <option value="2" selected="selected">Female</option>
+                                                
+                                                  </select>
+
+                                        </br>
+
+
+                                        <p></p>
+
+                                        <span>Malaria microscopy refresher training in last 2 years: </span>
+
+                                        <select id="refresher">
+                                                    <option value="1">Yes</option>
+                                                    <option value="2" selected="selected">No</option>
+                                                
+                                                  </select>
+
+                                        </br>
+
+                                        <p></p>
+                                        <span style="margin-top:10px; margin-left:10px; ">If yes for above how many years ?: </span><input type="text " placeholder="years " name="refresher_years " id="refresher_years " maxlength="5 ">
+
+
+                                        <p></p>
+
+                                        <span>Current WHO malaria microscopy certification level: </span>
+
+                                        <select id="certificationlevel">
+                                                    <option value="0" selected="selected">0</option>
+                                                    <option value="1">1</option>
+                                                    <option value="2">2</option>
+                                                    <option value="3">3</option>
+                                                    <option value="4">4</option>
+                                                
+                                                  </select>
+
+                                        </br>
+                                        <p></p>
+
+                                        <span>Access to internet: </span>
+
+                                        <select id="accessinternet">
+                                                    <option value="0" selected="selected">Home</option>
+                                                    <option value="1">Work</option>
+                                                    <option value="2">Internet Cafe</option>
+                                                    <option value="3">Mobile HotSpot</option>
+                                                    <option value="4">Other</option>
+                                                
+                                                  </select>
+
+                                        </br>
+
+                                        <p></p>
+
+                                        <span style="margin-top:15px; ">Age Range: </span>
+
+                                        <select id="age ">
+                                                    <option value="1 " selected="selected ">Prefer not to ans</option>
+                                                    <option value="2 "><20></option>
+                                                    <option value="3 ">20-29</option>
+                                                    <option value="4 ">30-39</option>
+                                                    <option value="5 ">40-49</option>
+                                                    <option value="6 ">50-59</option>
+                                                    <option value="6 ">60-59</option>
+                                                    <option value="7 ">>70</option>
+                                                
+                                                  </select>
+
+                                        </br>
+
+                                        <p></p>
+
+                                        <span style="margin-top:15px; ">Education Level: </span>
+
+                                        <select id="education ">
+                                                    <option value="1 " selected="selected ">Prefer not to ans</option>
+                                                    <option value="2 ">Certificate</option>
+                                                    <option value="3 ">Diplome</option>
+                                                    <option value="4 ">Bachelor's degree</option>
+                                                    <option value="5 ">Master's degree</option>
+                                                    <option value="6 ">PhD</option>
+                                                    <option value="6 ">Other..</option>
+                                                   
+                                                
+                                                  </select>
+
+                                        </br>
+                                        <p></p>
+
+                                        <span style="margin-top:15px; ">Worksplace: </span>
+
+                                        <select id="workplace ">
+                                                    <option value="1 " selected="selected ">Prefer not to ans</option>
+                                                    <option value="2 ">Private/Not for Profit/Government</option>
+                                                    <option value="3 ">Health Center</option>
+                                                    <option value="4 ">Hospital</option>
+                                                    <option value="5 ">College/University</option>
+                                                    <option value="6 ">National referce laboratory</option>
+                                                    <option value="6 ">Research institute</option>
+                                                    <option value="7 ">NGO</option>
+                                                    <option value="6 ">Other..</option>
+                                                   
+                                                
+                                                  </select>
+
+
+                                        </br>
+                                        <p></p>
+
+                                        <select id="workplace ">
+                                                    <option value="1 " selected="selected ">Prefer not to ans</option>
+                                                    <option value="2 ">Private/Not for Profit/Government</option>
+                                                    <option value="3 ">Health Center</option>
+                                                    <option value="4 ">Hospital</option>
+                                                    <option value="5 ">College/University</option>
+                                                    <option value="6 ">National referce laboratory</option>
+                                                    <option value="6 ">Research institute</option>
+                                                    <option value="7 ">NGO</option>
+                                                    <option value="6 ">Other..</option>                 
+                                                
+                                                  </select>
+
+                                        <p></p>
+
+                                        <button id="createUser_go" class="button_create_user_go" onclick="createUser()">GO</button>
+
+                                        <p style="margin-top:300px;"></p>
+
+
+                                    </div>
+                                    <!-- survey form -->
+
+                                </div>
+
+                            </div>
                         </div>
 
-                        <br>
                     </div>
-                    <!--actual page content here -->
 
-
-
-                    <style>
-                        #content-inner {
-                            padding: 0;
-                            margin: 0;
-                            width: 100%
-                        }
-                        
-                        body {
-                            margin: 0;
-                        }
-                    </style>
-
-
-                    <script>
-                        /*
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            $( document ).ready(function() {
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                $("#header2").hide();
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                $("#m1_i_p05").removeClass("page-content");
-
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            });
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        */
-                    </script>
-
-
+                    <br>
                 </div>
-                <!-- div conent inner-->
+                <!--actual page content here -->
+
+
+
+                <style>
+                    #content-inner {
+                        padding: 0;
+                        margin: 0;
+                        width: 100%
+                    }
+                    
+                    body {
+                        margin: 0;
+                    }
+                </style>
+
+
+                <script>
+                    /*
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                $( document ).ready(function() {
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    $("#header2
+                                                                                                                                                                                                                                                                        ").hide();
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    $("#m1_i_p05 ").removeClass("page-content ");
+
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                });
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            */
+                </script>
+
 
             </div>
-            <!-- div content -->
-
-            <div id="footer" style="min-height: 50px;">
-                <div style="height:10px;width:100%;background-color: #00AFEF">
-
-                </div>
-
-                <div style="width: 100%; display: table;">
-                </div>
-            </div>
-
-
+            <!-- div conent inner-->
 
         </div>
-        <!-- div footer -->
+        <!-- div content -->
+
+        <div id="footer " style="min-height: 50px; ">
+            <div style="height:10px;width:100%;background-color: #00AFEF ">
+
+            </div>
+
+            <div style="width: 100%; display: table; ">
+            </div>
+        </div>
+
+
+
+    </div>
+    <!-- div footer -->
 
     </div>
 
@@ -160,19 +317,19 @@
 
 
 
-<div id="footer">
+<div id="footer ">
 
     <!-- imp leave JS files in the footer, NOT in the header -->
 
-    <script src="/content/js/jquery-3.0.0.min.js" type="text/javascript"></script>
-    <script src="/content/js/main.js" type="text/javascript"></script>
-    <script src="/content/js/main-2.js" type="text/javascript"></script>
-    <script src="/content/js/autoload.js" type="text/javascript"></script>
-    <script src="/content/js/login.js" type="text/javascript"></script>
-    <script src="/content/js/preview.js"></script>
+    <script src="/content/js/jquery-3.0.0.min.js " type="text/javascript "></script>
+    <script src="/content/js/main.js " type="text/javascript "></script>
+    <script src="/content/js/main-2.js " type="text/javascript "></script>
+    <script src="/content/js/autoload.js " type="text/javascript "></script>
+    <script src="/content/js/login.js " type="text/javascript "></script>
+    <script src="/content/js/preview.js "></script>
 
 
-    <script type="text/javascript">
+    <script type="text/javascript ">
         loadInitialUsers();
         ifpreview();
     </script>
