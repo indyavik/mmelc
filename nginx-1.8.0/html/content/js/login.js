@@ -162,7 +162,7 @@ function createUser() {
 
         //alert('updating new user on disk')
 
-        update_on_disk(data_dir + "Users.txt", { "Users": new_users });
+        update_on_disk("Users.txt", { "Users": new_users });
 
         //get skeleton object from the file and load. 
 
