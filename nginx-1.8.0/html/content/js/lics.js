@@ -55,16 +55,13 @@ function mainEntry(button_id) {
         alert("Some Error Occurred - please contact an administrator")
             //log console here. 
 
-
-
     } //mod_error 
 
     var last_type = localStorage.getItem("data_dir")
-    var mod_config = localStorage.getItem("module_conf.json")
+        //var mod_config = localStorage.getItem("module_conf.json")
     var mmelc = JSON.parse(get_from_disk('/data_l/' + '.mmelc'))
 
     var data_dir;
-
 
     if (button_id == 'licence') {
         /*
@@ -75,6 +72,7 @@ function mainEntry(button_id) {
         type = 'licence'
 
         data_dir = LICENSEDIR
+        mod_config = get_from_disk(data_dir + 'module_conf.json');
 
 
         if (last_type != data_dir) {
@@ -98,12 +96,11 @@ function mainEntry(button_id) {
     } else {
 
         type = 'preview'
+        data_dir = DATADIR
+        mod_config = get_from_disk(data_dir + 'module_conf.json');
 
         if (last_type != DATADIR) {
-            data_dir = DATADIR
             localStorage.clear();
-            mod_config = get_from_disk(data_dir + 'module_conf.json');
-            redirect_location = 'preview'
             if (!mod_config) {
                 mod_error();
                 return;
