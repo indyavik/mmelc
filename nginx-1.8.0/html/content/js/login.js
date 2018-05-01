@@ -65,7 +65,8 @@ function loadInitialUsers() {
 
 
     if (!last_user) last_user = 'guest_user'; // we don't store this in file. 
-    set_local_object("Current_User", last_user);
+    //set_local_object("Current_User", last_user);
+    localStorage.setItem("Current_User", last_user)
 
     userarr.reverse();
     console.log(userarr)
@@ -117,6 +118,7 @@ function createUser_go(dothis) {
 
 
 function createUser() {
+
     var user_input = document.getElementById('input_createUser');
 
     var create_user = user_input.value;
