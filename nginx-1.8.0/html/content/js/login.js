@@ -273,8 +273,6 @@ function regSurvey() {
         createUser();
 
 
-
-
     } //try
     catch (error) {
         console.log("Error:<login.js:regSurvey()112> Could not capture the options")
