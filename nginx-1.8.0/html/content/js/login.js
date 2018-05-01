@@ -121,11 +121,14 @@ function createUser() {
 
     var create_user = user_input.value;
     create_user = $.trim(create_user).replace(/ /g, '_'); //trim and add 'underscore'
-    var data_dir = localStorage.getItem('data_dir')
 
+    var data_dir = localStorage.getItem('data_dir')
+    alert('data_dir:createUser():126 ' + data_dir)
 
     var res = confirm('Are you sure to create user = ' + create_user)
+
     if (res !== true) {
+        alert("cancelling.....")
         document.getElementById('reg_survey').style.display = "none"
         return;
     }
@@ -156,7 +159,8 @@ function createUser() {
         set_local_object("Users", new_users);
 
         //alert('updating new user on disk')
-        update_on_disk("Users.txt", { "Users": new_users });
+
+        update_on_disk(data_dir + "Users.txt", { "Users": new_users });
 
         //get skeleton object from the file and load. 
 

@@ -53,7 +53,7 @@ function checkFile(file_name) {
 
 function get_from_disk(file_name) {
 
-    //user_name.txt, module_config.txt, Users.txt, 
+    //filename shold be complete ..with datadir path. user_name.txt, module_config.txt, Users.txt, 
     //returns json object or false. 
 
     if (file_name === 'Users') var file_name = 'Users.txt';

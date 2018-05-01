@@ -140,6 +140,7 @@
             var mod_config = JSON.parse(localStorage.getItem('module_config'));
             //load from file. 
 
+            alert(mod_config)
 
             if (!mod_config) {
 
@@ -541,12 +542,12 @@
 
         <script>
             /*
-                                                                                                                                                                                                                                                                                        $( document ).ready(function() {
-                                                                                                                                                                                                                                                                                            $("#header2").hide();
-                                                                                                                                                                                                                                                                                            $("#m1_i_p05").removeClass("page-content");
+                                                                                                                                                                                                                                                                                                                $( document ).ready(function() {
+                                                                                                                                                                                                                                                                                                                    $("#header2").hide();
+                                                                                                                                                                                                                                                                                                                    $("#m1_i_p05").removeClass("page-content");
 
-                                                                                                                                                                                                                                                                                        });
-                                                                                                                                                                                                                                                                                    */
+                                                                                                                                                                                                                                                                                                                });
+                                                                                                                                                                                                                                                                                                            */
         </script>
 
 
@@ -916,49 +917,49 @@
 
 <script>
     /*  var leftInit = $(".scroll_fixed").offset().left;
-                                                                                                //var leftInit = 0;
-                                                                                                var topv = $('.scroll_fixed').offset().top - parseFloat($('.scroll_fixed').css('margin-top').replace(/auto/, 0));
-                                                                                                //var topv = 0;
-                                                                                                var docWidth = $(window).innerWidth();
-                                                                                                var subHeaderWidth=docWidth-240;
+                                                                                                        //var leftInit = 0;
+                                                                                                        var topv = $('.scroll_fixed').offset().top - parseFloat($('.scroll_fixed').css('margin-top').replace(/auto/, 0));
+                                                                                                        //var topv = 0;
+                                                                                                        var docWidth = $(window).innerWidth();
+                                                                                                        var subHeaderWidth=docWidth-240;
 
-                                                                                                var docHeight = $(window).innerHeight();
-                                                                                                $('#header1').css('width',docWidth);
-                                                                                                $('#header2').css('width',subHeaderWidth);
-                                                                                                $('#content-inner').css('width',subHeaderWidth);
+                                                                                                        var docHeight = $(window).innerHeight();
+                                                                                                        $('#header1').css('width',docWidth);
+                                                                                                        $('#header2').css('width',subHeaderWidth);
+                                                                                                        $('#content-inner').css('width',subHeaderWidth);
 
-                                                                                                $(window).resize(function(){
-                                                                                                    var docHeight = $(window).innerHeight();
-                                                                                                $('#header1').css('width',docWidth);
-                                                                                                    $('#header2').css('left',100);
+                                                                                                        $(window).resize(function(){
+                                                                                                            var docHeight = $(window).innerHeight();
+                                                                                                        $('#header1').css('width',docWidth);
+                                                                                                            $('#header2').css('left',100);
 
-                                                                                                    var docWidth = $(window).innerWidth();
-                                                                                            //        var subHeaderWidth=docWidth-240;
-                                                                                            //        $('#header2').css('width',subHeaderWidth);
+                                                                                                            var docWidth = $(window).innerWidth();
+                                                                                                    //        var subHeaderWidth=docWidth-240;
+                                                                                                    //        $('#header2').css('width',subHeaderWidth);
 
-                                                                                                });
-                                                                                                $(window).scroll(function(event) {
-                                                                                                    var x = 0 - $(this).scrollLeft();
-                                                                                                    var y = $(this).scrollTop();
+                                                                                                        });
+                                                                                                        $(window).scroll(function(event) {
+                                                                                                            var x = 0 - $(this).scrollLeft();
+                                                                                                            var y = $(this).scrollTop();
 
-                                                                                                    // whether that's below the form
-                                                                                                    if (y >= topv) {
-                                                                                                        // if so, ad the fixed class
-                                                                                                        $('.scroll_fixed').addClass('fixed');
-                                                                                                        $('#header2').css('left',100);
+                                                                                                            // whether that's below the form
+                                                                                                            if (y >= topv) {
+                                                                                                                // if so, ad the fixed class
+                                                                                                                $('.scroll_fixed').addClass('fixed');
+                                                                                                                $('#header2').css('left',100);
 
-                                                                                                    } else {
-                                                                                                        // otherwise remove it
-                                                                                                        $('.scroll_fixed').removeClass('fixed');
-                                                                                                    }
-                                                                                                    $(".scroll_fixed").offset({
-                                                                                                        left: x + leftInit
-                                                                                                    });
+                                                                                                            } else {
+                                                                                                                // otherwise remove it
+                                                                                                                $('.scroll_fixed').removeClass('fixed');
+                                                                                                            }
+                                                                                                            $(".scroll_fixed").offset({
+                                                                                                                left: x + leftInit
+                                                                                                            });
 
 
-                                                                                                });
+                                                                                                        });
 
-                                                                                            */
+                                                                                                    */
 </script>
 
 <script>
