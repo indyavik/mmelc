@@ -25,7 +25,7 @@ function verifyLicense(license) {
 
 function verify_license_callback(response) {
     if (response == 'ok') {
-        alert('confirmed')
+        alert('confirmed. Click ok to proceed')
 
     }
 
@@ -119,6 +119,6 @@ function mainEntry(button_id) {
     localStorage.setItem("data_dir", data_dir);
     localStorage.setItem('module_config', mod_config);
     localStorage.setItem('type', type)
-    window.location.href = "/content/index.html?type=" + type
+    window.location.href = "/content/index_main.html?type=" + type
 
 } //mainEntry

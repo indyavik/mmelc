@@ -2,18 +2,14 @@
 
 <head>
     <meta http-equiv="cache-control" content="no-cache" />
-    <link rel="stylesheet" type="text/css" href="css/main.css">
-    <link rel="stylesheet" type="text/css" href="css/slide.css">
-    <script src="js/jquery-3.0.0.min.js"></script>
-    <script src="js/login.js"></script>
-    <script src="js/main.js"></script>
-    <script src="js/main-2.js"></script>
-    <script src="js/pxl-fullslide.js"></script>
+    <link rel="stylesheet" type="text/css" href="/content/css/main.css">
+    <link rel="stylesheet" type="text/css" href="/content/css/slide.css">
 
 
 
 
 </head>
+
 
 
 <body>
@@ -69,17 +65,12 @@
                                     <img src="images/Picture2.png" style="position: absolute;bottom: 50px;height: 50%;left:0">
                                 </div>
                                 <div style="width:70%;display: inline-block;vertical-align: top;overflow:auto;max-height:calc(100% - 35px);">
+                                    <h1 id="preview"></h1>
                                     <h1>Welcome to the Malaria Microscopy e-Learning Course!</h1>
-                                    <br>
-
-                                    <h3>Select an option below to get started.</h3>
-
-
+                                    <h3>To enable tracking your progress, click below to create a new user account.</h3>
                                     <div id="MainTable" class="main_table" style="margin-left:20px; margin-top:20px; min-height:10px; ">
 
-                                        <button id="mainEntryLicense" class="button_main_entry" onclick="verifyLicense_div()">Enter License</button>
-                                        <button id="mainEntry" class="button_main_entry" onclick="mainEntry('preview')">Preview Version</button>
-
+                                        <button id="createUser" class="button_create_user" onclick="showInput_createUser()">Create a New User Account</button>
 
                                         <div id="div_createUser" style="display:none">
                                             <h2>Enter a user name and click "Go"</h2>
@@ -87,7 +78,8 @@
                                             <input type="text" placeholder="Enter a username" name="some_name" id="input_createUser" maxlength="15" style="width:200px; height:50px; border: solid 1px #9598a0; font-size:18px;">
 
 
-                                            <button id="createUser_go" class="button_create_user_go" onclick="createUser()">GO</button>
+
+                                            <button id="createUser_go" class="button_create_user_go" onclick="createUser_go()">GO</button>
 
                                             <br></br>
 
@@ -97,118 +89,247 @@
 
                                         </div>
 
+
+
                                     </div>
 
 
 
                                     <div id="tablearea" clss="dynamic_table" style="margin-left:40px;">
 
-
-
-                                        <h4 id="numLicense">
-
-                                            License used : 0 out of 0.</h4>
-                                    </div>
-                                    <br>
-                                    <div>
-                                        <a href="" onclick="enterLicense()">Enter New License Key</a>
+                                        <h3>
+                                            If you already have an account, please select your user name to log in.</h3>
                                     </div>
 
-                                    <div id="div_verify" style="display:none">
-                                        <h2>Enter your License key and click "Go"</h2>
 
-                                        <input type="text" placeholder="Enter License key" name="license_key" id="license_key" maxlength="25" style="width:200px; height:50px; border: solid 1px #9598a0; font-size:18px;">
+                                    <div id="reg_survey" style="display:none; margin-top:100px; background:#afbd77;">
+                                        <p><span style="font-size:18px; color:black;">Consider Submitting this short survey</span><span style="margin-left:300px;" onclick="createUser_go('skip')">SKIP</span></p>
+                                        <div id="wrap_reg_survey" style="margin-left:100px; margin-right:100px; ">
+
+                                            <span>Name: </span><input type="text " placeholder="None " name="name " id="reg_name " maxlength="15 ">
+                                            </br>
+                                            <p></p>
+                                            <span>Designation: </span><input type="text " placeholder="None " name="reg_designation " id="reg_designation " maxlength="15 ">
+                                            </br>
+                                            <p></p>
+                                            <span>Country of work: </span><input type="text " placeholder="None " name="reg_country_work " id="reg_country_work " maxlength="15 ">
+                                            </br>
+                                            <p></p>
+                                            <span>Contact Email: </span><input type="text " placeholder="None " name="reg_email " id="reg_email " maxlength="15 ">
+                                            <p></p>
+
+                                            <span>Contact Phone: </span><input type="text " placeholder="None " name="reg_phone " id="reg_phone " maxlength="15 "></br>
+                                            <p></p>
+                                            <span style="margin-top:15px; ">Gender: </span>
+
+                                            <select id="gender ">
+                                                    <option value="1 ">Male</option>
+                                                    <option value="2 " selected="selected ">Female</option>
+                                                
+                                                  </select>
+
+                                            </br>
 
 
-                                        <button id="createUser_go" class="button_create_user_go" onclick="verifyLicense()">GO</button>
+                                            <p></p>
 
-                                        <br></br>
+                                            <span>Malaria microscopy refresher training in last 2 years: </span>
+
+                                            <select id="refresher ">
+                                                    <option value="1 ">Yes</option>
+                                                    <option value="2 " selected="selected ">No</option>
+                                                
+                                                  </select>
+
+                                            </br>
+
+                                            <p></p>
+                                            <span style="margin-top:10px; margin-left:10px; ">If yes for above how many years ?: </span><input type="text " placeholder="years " name="refresher_years " id="refresher_years " maxlength="5 ">
+
+
+                                            <p></p>
+
+                                            <span>Current WHO malaria microscopy certification level: </span>
+
+                                            <select id="certificationlevel ">
+                                                    <option value="0 " selected="selected ">0</option>
+                                                    <option value="1 ">1</option>
+                                                    <option value="2 ">2</option>
+                                                    <option value="3 ">3</option>
+                                                    <option value="4 ">4</option>
+                                                
+                                                  </select>
+
+                                            </br>
+                                            <p></p>
+
+                                            <span>Access to internet: </span>
+
+                                            <select id="accessinternet ">
+                                                    <option value="0 " selected="selected ">Home</option>
+                                                    <option value="1 ">Work</option>
+                                                    <option value="2 ">Internet Cafe</option>
+                                                    <option value="3 ">Mobile HotSpot</option>
+                                                    <option value="4 ">Other</option>
+                                                
+                                                  </select>
+
+                                            </br>
+
+                                            <p></p>
+
+                                            <span style="margin-top:15px; ">Age Range: </span>
+
+                                            <select id="age ">
+                                                    <option value="1 " selected="selected ">Prefer not to ans</option>
+                                                    <option value="2 "><20></option>
+                                                    <option value="3 ">20-29</option>
+                                                    <option value="4 ">30-39</option>
+                                                    <option value="5 ">40-49</option>
+                                                    <option value="6 ">50-59</option>
+                                                    <option value="6 ">60-59</option>
+                                                    <option value="7 ">>70</option>
+                                                
+                                                  </select>
+
+                                            </br>
+
+                                            <p></p>
+
+                                            <span style="margin-top:15px; ">Education Level: </span>
+
+                                            <select id="education ">
+                                                    <option value="1 " selected="selected ">Prefer not to ans</option>
+                                                    <option value="2 ">Certificate</option>
+                                                    <option value="3 ">Diplome</option>
+                                                    <option value="4 ">Bachelor's degree</option>
+                                                    <option value="5 ">Master's degree</option>
+                                                    <option value="6 ">PhD</option>
+                                                    <option value="6 ">Other..</option>
+                                                   
+                                                
+                                                  </select>
+
+                                            </br>
+                                            <p></p>
+
+                                            <span style="margin-top:15px; ">Worksplace: </span>
+
+                                            <select id="workplace ">
+                                                    <option value="1 " selected="selected ">Prefer not to ans</option>
+                                                    <option value="2 ">Private/Not for Profit/Government</option>
+                                                    <option value="3 ">Health Center</option>
+                                                    <option value="4 ">Hospital</option>
+                                                    <option value="5 ">College/University</option>
+                                                    <option value="6 ">National referce laboratory</option>
+                                                    <option value="6 ">Research institute</option>
+                                                    <option value="7 ">NGO</option>
+                                                    <option value="6 ">Other..</option>
+                                                   
+                                                
+                                                  </select>
+
+
+                                            </br>
+
+
+                                            <p></p>
 
 
 
+                                        </div>
+                                        <!-- wrap survey div-->
+
+                                        <button id="createUser_go " class="button_create_user_go" style="min-width:100px;" onclick="regSurvey()">Submit Survey and Create User</button>
+
+                                        <p style="margin-top:100px;">.</p>
 
 
                                     </div>
-                                    <!-- verify license.
+                                    <!-- survey form -->
 
                                 </div>
-                            </div>
 
+                            </div>
                         </div>
 
-                        <br>
                     </div>
-                    <!--actual page content here -->
+
+                    <br>
+                </div>
+                <!--actual page content here -->
 
 
 
-                                    <style>
-                                        #content-inner {
-                                            padding: 0;
-                                            margin: 0;
-                                            width: 100%
-                                        }
-                                        
-                                        body {
-                                            margin: 0;
-                                        }
-                                    </style>
+                <style>
+                    #content-inner {
+                        padding: 0;
+                        margin: 0;
+                        width: 100%
+                    }
+                    
+                    body {
+                        margin: 0;
+                    }
+                </style>
 
 
-                                    <script>
-                                    </script>
+                <script>
+                    /*
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    $( document ).ready(function() {
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        $("#header2
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                ").hide();
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        $("#m1_i_p05 ").removeClass("page-content ");
+
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    });
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                */
+                </script>
 
 
-                                </div>
-                                <!-- div conent inner-->
+            </div>
+            <!-- div conent inner-->
 
-                            </div>
-                            <!-- div content -->
+        </div>
+        <!-- div content -->
 
-                            <div id="footer " style="min-height: 50px; ">
-                                <div style="height:10px;width:100%;background-color: #00AFEF ">
+        <div id="footer " style="min-height: 50px; ">
+            <div style="height:10px;width:100%;background-color: #00AFEF ">
 
-                                </div>
+            </div>
 
-                                <div style="width: 100%; display: table; ">
-                                </div>
-                            </div>
+            <div style="width: 100%; display: table; ">
+            </div>
+        </div>
 
 
 
-                        </div>
-                        <!-- div footer -->
+    </div>
+    <!-- div footer -->
 
-                    </div>
+    </div>
 
 </body>
 
 
+
 <div id="footer ">
+
+    <!-- imp leave JS files in the footer, NOT in the header -->
+
     <script src="/content/js/jquery-3.0.0.min.js " type="text/javascript "></script>
     <script src="/content/js/main.js " type="text/javascript "></script>
+    <script src="/content/js/main-2.js " type="text/javascript "></script>
     <script src="/content/js/autoload.js " type="text/javascript "></script>
-    <script src="/content/js/lics.js " type="text/javascript "></script>
-    <script src="/content/js/preview.js"></script>
+    <script src="/content/js/login.js " type="text/javascript "></script>
+    <script src="/content/js/preview.js "></script>
 
-    <script>
-        var mmelc = JSON.parse(get_from_disk('/data_l/' + '.mmelc'))
 
-        if (mmelc) {
-
-            var id = mmelc['license'].id
-            var seats = mmelc['license'].seats
-            var used = mmelc['license'].used
-            var left = seats - used
-            var msg = 'License used: ' + used + ' of ' + seats
-
-            document.getElementById('mainEntryLicense').innerHTML = id;
-            document.getElementById('numLicense').innerHTML = msg;
-            //document.getElementById('mainEntryLicense').onclick = mainEntry;
-            document.getElementById('mainEntryLicense').setAttribute("onClick", "javascript: mainEntry('licence');");
-
-        }
+    <script type="text/javascript ">
+        loadInitialUsers();
+        ifpreview();
     </script>
+
+
 
 
 </div>

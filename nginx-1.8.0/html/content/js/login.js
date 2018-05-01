@@ -86,6 +86,8 @@ function loadInitialUsers() {
 } //loadInitUsers
 
 function createUser_go(dothis) {
+
+
     if (!dothis) {
 
         var user_input = document.getElementById('input_createUser');
@@ -122,9 +124,11 @@ function createUser() {
     var data_dir = localStorage.getItem('data_dir')
 
 
-
-    confirm('Are you sure to create user = ' + create_user)
-
+    var res = confirm('Are you sure to create user = ' + create_user)
+    if (res !== true) {
+        document.getElementById('reg_survey').style.display = "none"
+        return;
+    }
 
 
     var users_file = get_from_disk(data_dir + 'Users.txt') // string
@@ -186,7 +190,6 @@ function createUser() {
         update_on_disk(create_user + '.txt', new_user); //js oject. not string.
 
         //alert('file created') ;
-
 
         logUser(create_user);
 
