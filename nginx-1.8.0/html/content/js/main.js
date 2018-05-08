@@ -1,3 +1,38 @@
+var BACKEND = 'http://localhost:8081'
+
+function submit_data_to_server(data_object, backend_method, cb_func, ajaxtype) {
+
+    //backend_method = '/usbuser/register'
+
+    if (!ajaxtype) ajaxtype = 'POST'
+
+    alert(backend_method)
+    alert(data_object)
+
+    //return;
+
+    if (!backend_method || !data_object) {
+        alert('Incorrect URL or data to submit. Please contact and admin')
+        console.log('error:submit_data_to_server:main.js=>incorrectURL')
+    }
+
+
+    $.ajax({
+        //url: 'http://localhost:8081/license/update',
+        url: BACKEND + backend_method,
+        data: data_object,
+        // data:"username=guest_user_2016 ", 
+        type: 'POST',
+        success: cb_func,
+        error: function(error) {
+            alert("some error occurred. no data has been submitted to server.")
+            console.log("some error occurred. no data has been submitted to server.")
+        }
+
+
+    });
+} //submit data to server
+
 var check_store = localStorage.getItem("lastname");
 //var check_cache = localStorage.getItem("cache7");
 

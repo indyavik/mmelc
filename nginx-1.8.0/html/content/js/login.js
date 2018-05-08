@@ -257,10 +257,9 @@ function regSurvey() {
 
         if (rtext !== "") {
             alert(rtext + " are required fields.")
-                //return;
+            return;
 
         }
-
 
 
         for (var i = 0; i < arr.length; i++) {
@@ -273,10 +272,32 @@ function regSurvey() {
 
         }
 
+        //get license user. 
+        var license_id = "preview_user"
+        var mmelc = JSON.parse(localStorage.getItem('.mmelc'))
+
+        if (mmelc) {
+            license_id = mmelc.license['id']
+        }
+
+        survey_object['license_id'] = license_id;
+
         //submit survey to the web. 
+
         console.log(survey_object)
-            //create user
-        createUser();
+
+
+        submit_data_to_server(survey_object, '/usbuser/register', function(returnValue) {
+
+            alert(returnValue);
+            //write data to file
+
+        }); //submit_data_to server
+
+        return;
+
+        //create user
+        //createUser();
 
 
     } //try
@@ -286,7 +307,8 @@ function regSurvey() {
     }
 
 
-    createUser();
+
+
 
 } // reg_survey
 
