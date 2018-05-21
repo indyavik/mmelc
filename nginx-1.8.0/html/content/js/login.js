@@ -367,7 +367,12 @@ function logUserOut() {
 
     if (typeof(current_user_data) === 'object' && (current_user_data !== null)) {
 
-        set_local_object('logged_in', 'nobody');
+        set_local_object('(logged_in', 'nobody');
+        /* clear  */
+
+        //localStorage.clear("logged_in", JSON.stringify(user_name));
+        localStorage.clear(current_user);
+        localStorage.clear('module_config');
 
         setTimeout(function() { window.location.href = "/content/index.html?logout=nobody" }, 100);
 
@@ -609,7 +614,77 @@ function createUser_new(user_type) {
 
     }
 
-};
+}; //createUser_new
+
+
+function logUser_new(user_name, user_password, user_type) {
+
+    /*@@ user login @@ */
+
+    /* login the user  */
+    var data_dir = LICENSEDIR
+
+    if (user_type !== 'license') {
+        data_dir = DATADIR
+        user_type = "preview"
+
+    }
+
+    if (!user_name || !user_password) {
+        alert('Error: Username and Password is required')
+        return;
+    }
+
+    /* clear existing storage objects */
+    localStorage.clear("logged_in")
+    localStorage.clear("current_user")
+    localStorage.clear("user_type")
+
+    var users_file = get_from_disk(data_dir + 'Users.txt') // string
+    var allusers = JSON.parse(users_file).Users
+
+    if (allusers.indexOf(user_name) == -1) {
+        alert("Sorry, Username : " + user_name + " is not a valid user")
+        return;
+    }
+
+    var user_obj = JSON.parse(get_from_disk(data_dir + user_name + '.txt'))
+
+    if (!user_obj || user_obj == undefined) {
+        alert("Sorry, Username : " + user_name + " is not a valid user")
+        return;
+
+    } else {
+
+        /* verify password and log uer in. */
+
+        var pw = user_obj.password
+        console.log(user_obj)
+        if (pw != user_password) {
+            alert("Sorry, Wrong Passwrod. Please try again")
+            return;
+
+        } else {
+            /* finally log user in */
+            localStorage.setItem("logged_in", JSON.stringify(user_name));
+            localStorage.setItem("user_type", user_type); // "license" or "preview"
+            localStorage.setItem(user_name, JSON.stringify(user_obj));
+
+            // note that the appropriate module conf get lodaded here. //
+            var mod_config = JSON.parse(get_from_disk(data_dir + 'module_conf.json'))
+            localStorage.setItem('module_config', JSON.stringify(mod_config));
+
+            setTimeout(function() { window.location.href = "home.html?user=" + user_name }, 500);
+
+        }
+
+
+
+    };
+
+} //loguser new
+
+
 
 function getCacheSize(arg1) {
 
