@@ -1,0 +1,84 @@
+<div id="C_m1_endOfM1_p06" class="page-content">
+
+    <div class="alert" id="alert_popup">
+        <span class="closebtn" onclick="javascript:nav_to('next')">&times;</span>
+        <strong>That’s the correct answer.  Severe malaria is most commonly caused by infection with <i>P. falciparum</i>.</strong>
+        <div class="alert-img">
+            <img class="nav-img" onclick="javascript:nav_to('next')"
+                 border="0" src="images/Next-Button-PNG-HD.png" alt="Next slide" height="40px">
+        </div>
+    </div>
+
+
+
+    <div class="alert2" id="alert_popup1">
+        <span class="closebtn2" onclick="this.parentElement.style.display='none';">&times;</span>
+        <strong class="f1" > That’s not the correct answer.  Severe malaria is most commonly caused by infection with <i>P. falciparum</i>.
+        </strong>
+    </div>
+
+
+    <div id="one">
+
+        <slide id="C_1_slide06"></slide>
+        <button class="eom-main-btn">Multiple Choice Question 4</button>
+
+        <div class="eom-main-area">
+
+            <table bgcolor="#FFDBE7" class="eom-table" border="1" cellspacing="0">
+
+                <thead>
+                <tr>
+                    <th align="left" class="eom-table-head">
+                        <b>Which <i>Plasmodium</i> species causes the most severe malaria infections?</b>
+
+                        <p class="eom-table-text"><i>
+                            From the options given below, select the correct option and then click on the
+                        </i><i><b class="eom-i-text">Submit Answer</b> button.</i></p>
+                    </th>
+                </tr><tr>
+                </tr>
+                </thead>
+                <tbody>
+
+
+                <tr class="spaceUnder">
+                    <td bgcolor="white" width="70%" class="eom-radio-btn">
+                        <input type="radio" name="radioBtn" onclick="submitButtonDisplay()" id="r1"/> <i>P. vivax</i></td>
+                </tr>
+
+                <tr class="spaceUnder">
+                    <td bgcolor="white" width="70%" class="eom-radio-btn">
+                        <input type="radio" class="dialog"onclick="submitButtonDisplay()"  name="radioBtn" id="r2"/> <i>P. falciparum</i></td>
+                </tr>
+
+                <tr class="spaceUnder">
+                    <td bgcolor="white" width="70%" class="eom-radio-btn">
+                        <input type="radio" onclick="submitButtonDisplay()" name="radioBtn" id="r3"/>   <i>P. ovale</i></td>
+                </tr>
+
+
+
+                <tr class="spaceUnder">
+                    <td bgcolor="white" width="70%" class="eom-radio-btn">
+                        <input type="radio"onclick="submitButtonDisplay()"  name="radioBtn" id="r4"/> <i>P. malariae</i></td>
+                </tr>
+
+                <tr>
+                    <td bgcolor="#FFDBE7" class="eom-btn-bg">
+                        <div class="button_id eom-btn-style">
+                            <input type="button" onclick="findCorrectAnswer('1_3_slide06',$('[name=radioBtn]:checked').each(function () {
+   return this.id;}))" value="SUBMIT ANSWER" class="eom-submit-btn">
+
+                        </div>
+                        <!--<span style="margin-top: 5px"> Attempts left: <span id="attempts">3</span></span>-->
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+
+    </div>
+</div>
+
+

@@ -1,3 +1,3 @@
 {
-  "license": { "id" : "TEST-101-202-303" , "seats" : 10 , "used" :4 , "valid_till" : "01/01/2050" }   
+  "license": [ { "id" : "TEST-101-202-303" , "seats" : 10 , "used" :4 , "valid_till" : "01/01/2050" }  ] 
 }

@@ -1,3 +1,30 @@
+//Globals for this file. 
+
+var LICENSEDIR = '/data_l/'
+var DATADIR = '/data/'
+
+
+function get_all_users() {
+
+    var all_users = [];
+
+    var lic_users = get_from_disk(LICENSEDIR + 'Users.txt');
+    var preview_users = get_from_disk(DATADIR + 'Users.txt');
+
+    if ((!preview_users) || (!lic_users)) {
+        alert("Error: some error occurred. Please restart. if problem persists, contact an admin")
+        return;
+    }
+
+    var parsed_lic_users = JSON.parse(lic_users).Users
+    var parsed_preview_users = JSON.parse(preview_users).Users
+        //var all_users = parsed_lic_users.concat(parsed_preview_users)
+
+    return { 'license_users': parsed_lic_users, 'preview_users': parsed_preview_users }
+
+
+} //get_all_users. 
+
 function get_users() {
 
     var users = get_local_object("Users");
@@ -87,7 +114,6 @@ function loadInitialUsers() {
 } //loadInitUsers
 
 function createUser_go(dothis) {
-
 
     if (!dothis) {
 
@@ -227,6 +253,11 @@ function regSurvey() {
         }
         */
 
+        //var user_input = document.getElementById('input_createUser').value;
+
+        //var create_user_name = $.trim(user_input).replace(/ /g, '_'); //trim and add 'underscore'
+
+
         var survey_object = {}
 
         var arr1 = ['reg_name', 'reg_designation', 'reg_country_work', 'reg_email', 'reg_phone']
@@ -272,6 +303,13 @@ function regSurvey() {
 
         }
 
+
+
+        var user_ob = JSON.parse(localStorage.getItem('new_user_obj'))
+        survey_object['license_id'] = user_ob.license_id
+        survey_object['usb_id'] = user_ob.create_user
+
+        /*
         //get license user. 
         var license_id = "preview_user"
         var mmelc = JSON.parse(localStorage.getItem('.mmelc'))
@@ -281,11 +319,16 @@ function regSurvey() {
         }
 
         survey_object['license_id'] = license_id;
+        survey_object['usb_id'] = create_user_name;
 
         //submit survey to the web. 
 
+        */
+
         console.log(survey_object)
 
+        console.log('i am here')
+        localStorage.setItem('new_user_survey', JSON.stringify(survey_object))
 
         submit_data_to_server(survey_object, '/usbuser/register', function(returnValue) {
 
@@ -294,10 +337,12 @@ function regSurvey() {
 
         }); //submit_data_to server
 
-        return;
 
         //create user
-        //createUser();
+
+        createUser_new();
+
+
 
 
     } //try
@@ -463,7 +508,108 @@ function populateUserTable(user_array, table, rows, cells, content) {
     return table;
 } //function populate table 
 
+function createUser_new(user_type) {
+    //user_type is 'license' or 'preview'
+    var data_dir = LICENSEDIR
 
+    if (!user_type || user_type != 'license') {
+        user_type = 'preview'
+        data_dir = DATADIR
+    }
+
+    /* get new user object and survey data from local storage */
+
+    var new_user_obj = JSON.parse(localStorage.getItem('new_user_obj'));
+    var new_user_obj_survey = JSON.parse(localStorage.getItem('new_user_survey'));
+
+    var create_user = new_user_obj['username']
+
+
+    /* update the User.txt object  */
+
+    var users_file = get_from_disk(data_dir + 'Users.txt') // string
+
+    if (users_file) {
+        var users = JSON.parse(users_file)
+
+    } else {
+        alert("Error: Could not find the file to create users. please contact admin")
+    }
+
+    if ($.isArray(users)) {
+        var new_users = users
+
+    } else { var new_users = users['Users'] }
+
+    //alert(new_users);
+
+    var user_exists = $.inArray(create_user, new_users); //(value, in_thisarray)
+
+    if (user_exists === -1 && create_user !== "") {
+
+        new_users.push(create_user);
+
+        //get skeleton object from the file and load. 
+
+        var base = get_from_disk(data_dir + 'base_user_config.txt'); //returns 
+
+        var new_user = JSON.parse(base);
+
+        //add new user_objects. 
+
+        new_user['username'] = new_user_obj['username']
+        new_user['password'] = new_user_obj['password']
+        new_user['recovery_email'] = new_user_obj['recovery_email']
+        new_user['license_id'] = new_user_obj['license_id']
+
+
+
+        /*
+
+
+            var new_user_obj = {
+                "username": newuser_name,
+                "password": newuser_pass,
+                "recovery_email": newuser_recovery_email,
+                "license_id": newuser_license_id
+            }
+
+        */
+
+
+
+        /*set new objects in localStorage. */
+
+        localStorage.setItem("Users", JSON.stringify(new_users))
+        localStorage.setItem(String(create_user), JSON.stringify(new_user))
+
+
+        /* write all of the new user objects to the disk. */
+        update_on_disk("Users.txt", { "Users": new_users });
+        update_on_disk(create_user + '.txt', new_user); //js oject. not string.
+        update_on_disk(create_user + '_survey.txt', new_user_obj_survey); //js oject. not string.
+
+        /* clear the local objects that are no longer required */
+        localStorage.removeItem('new_user_obj')
+        localStorage.removeItem('new_user_survey')
+
+
+        return;
+
+        //if everything is good. log user in. 
+
+
+        logUser(create_user);
+
+        //setTimeout(function(){window.location.href="home.html?user="+create_user} , 500); 
+
+    } else {
+
+        alert("User already exists : please try a new name");
+
+    }
+
+};
 
 function getCacheSize(arg1) {
 

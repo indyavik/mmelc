@@ -6,8 +6,8 @@ function submit_data_to_server(data_object, backend_method, cb_func, ajaxtype) {
 
     if (!ajaxtype) ajaxtype = 'POST'
 
-    alert(backend_method)
-    alert(data_object)
+    //alert(backend_method)
+    //alert(data_object)
 
     //return;
 
@@ -33,6 +33,8 @@ function submit_data_to_server(data_object, backend_method, cb_func, ajaxtype) {
     });
 } //submit data to server
 
+
+
 var check_store = localStorage.getItem("lastname");
 //var check_cache = localStorage.getItem("cache7");
 
@@ -49,6 +51,29 @@ if (check_store) {
 
 }
 
+//
+function check_connected_to_internet() {
+    var return_value = false;
+    var xhr = new XMLHttpRequest();
+    var url = BACKEND;
+    xhr.open('HEAD', url)
+    xhr.send();
+
+    xhr.addEventListener("readystatechange", processRequest, false);
+
+    function processRequest(e) {
+        if (xhr.readyState == 4) {
+            if (xhr.status >= 200 && xhr.status < 304) {
+                alert("connection exists!");
+
+            } else {
+                alert("connection doesn't exist!");
+                return_value = true;
+            }
+        }
+    }
+    return return_value;
+} // check_connected_to_internet
 
 //Using jquery to dynamically insert header (and perhaps footer) 
 
@@ -182,8 +207,6 @@ function SaveObject(key, js_object, file_name, target_dir) {
         SaveObject('guest_user', someObject, 'guest_user.txt' , '/content/data')
 
     */
-
-
 
 
 

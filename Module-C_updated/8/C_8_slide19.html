@@ -1,0 +1,38 @@
+<div id="C_m0_i_p19" class="page-content">
+
+    <slide id="C_8_slide19"></slide>
+
+
+
+	<h2 class="heading-text"><a href="#preamble" name="preamble"></a><span id="changeHeading">You have completed the Certification test!	</span></h2>
+
+	<h1> Your test answer key is : </h1>
+
+	<h2 id="anskey"></h2>
+
+
+<button class="blue-btn" onclick="javascript:submitNow()">Submit Ans to server</button>
+
+    </div>
+
+ </div>
+
+    <script type="text/javascript">
+    	var cert_results = create_cert_ans_key_to_submit_2();
+    	var to_display = cert_results[1].toString();
+    	document.getElementById('anskey').innerHTML = to_display;
+
+    	function submitNow(){
+    		var anskey	= document.getElementById('anskey').innerHTML
+    		alert(anskey)
+    		submit_cert_ans_to_server(anskey); 
+    	}
+    </script>
+
+
+
+
+
+
+
+</div>
