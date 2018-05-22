@@ -303,8 +303,6 @@ function regSurvey() {
 
         }
 
-
-
         var user_ob = JSON.parse(localStorage.getItem('new_user_obj'))
         survey_object['license_id'] = user_ob.license_id
         survey_object['usb_id'] = user_ob.create_user
@@ -327,7 +325,6 @@ function regSurvey() {
 
         console.log(survey_object)
 
-        console.log('i am here')
         localStorage.setItem('new_user_survey', JSON.stringify(survey_object))
 
         submit_data_to_server(survey_object, '/usbuser/register', function(returnValue) {
@@ -340,9 +337,13 @@ function regSurvey() {
 
         //create user
 
-        createUser_new();
+        if (user_ob.license_id != "preview") {
 
+            createUser_new('license');
 
+        } else {
+            createUser_new('preview');
+        }
 
 
     } //try
@@ -515,12 +516,14 @@ function populateUserTable(user_array, table, rows, cells, content) {
 
 function createUser_new(user_type) {
     //user_type is 'license' or 'preview'
+
     var data_dir = LICENSEDIR
 
-    if (!user_type || user_type != 'license') {
+    if (user_type != 'license') {
         user_type = 'preview'
         data_dir = DATADIR
     }
+
 
     /* get new user object and survey data from local storage */
 
@@ -590,9 +593,12 @@ function createUser_new(user_type) {
 
 
         /* write all of the new user objects to the disk. */
+
         update_on_disk("Users.txt", { "Users": new_users });
         update_on_disk(create_user + '.txt', new_user); //js oject. not string.
         update_on_disk(create_user + '_survey.txt', new_user_obj_survey); //js oject. not string.
+
+
 
         /* clear the local objects that are no longer required */
         localStorage.removeItem('new_user_obj')

@@ -97,7 +97,7 @@
                                             <tr>
                                                 <td style="min-width:200px; background:transparent;">
 
-                                                    <select id="license-id" style="min-width:150px;"></select>
+                                                    <select id="license-user" style="min-width:150px;"></select>
 
                                                 </td>
 
@@ -108,8 +108,15 @@
                                                 </td>
                                             </tr>
                                             <tr>
-                                                <td style="background:transparent;"><button id="mainEntryLicense" class="button_main_entry_2" onclick="login_selected_User('lic')">Login</button></td>
-                                                <td style="background:transparent;"><button id="mainEntryPreview" class="button_main_entry_2" onclick="login_selected_User('preview')">Login</button></td>
+                                                <td style="background:transparent;"><input type="text" id="license_user_pw" name="license_user_pw" placeholder="password"><br> </td>
+
+                                                <td style="background:transparent;"><input type="text" id="preview_user_pw" name="license_user_pw" placeholder="password"><br>
+                                                </td>
+
+                                            </tr>
+                                            <tr>
+                                                <td style="background:transparent;"><button id="mainEntryLicense" class="button_main_entry_2" onclick="logUser_new_feed('license')">Login Licensed User</button></td>
+                                                <td style="background:transparent;"><button id="mainEntryPreview" class="button_main_entry_2" onclick="logUser_new_feed('preview')">Login Guest</button></td>
 
 
                                             </tr>
@@ -132,9 +139,7 @@
                                             <br></br>
                                             <p>hi</p>
 
-                                            <input type="button" id="cancel_me" value="Click here to cancel" onClick="window.location.reload()">
-
-
+                                            <input type="button" id="cancel_me" value="Click here to cancel" onClick="window.location.reload()"> login_selected_User('lic')
 
                                         </div>
 
@@ -229,14 +234,31 @@
                                         <!-- div_createUser_license -->
 
                                         <div id="div_createUser_preview" style="display:none">
-                                            <h2>Enter a user name and click"Go"</h2>
 
-                                            <input type="text" placeholder="Enter a username" name="some_name" id="input_createUser" maxlength="15" style="width:200px; height:50px; border: solid 1px #9598a0; font-size:12px;">
+                                            <div id="div_createUser_license_form_preview" style="display:block;">
 
 
-                                            <button id="createUser_go" class="button_create_user_go" onclick="createUser_go('preview')">GO</button>
+                                                <p>1. Enter a user name </p>
+                                                <input type="text" placeholder="Enter a username" name="input_createUser_preview" id="input_createUser_preview" maxlength="15" style="width:200px; height:30px; border: solid 1px #9598a0; font-size:12px;">
+                                                <p>2. Enter a password (Optional: PW recovery is not possible without connectivity) </p>
+                                                <input type="text" placeholder="Optional Password" name="input_createUser_password_preview" id="input_createUser_password_preview" maxlength="15" style="width:200px; height:30px; border: solid 1px #9598a0; font-size:12px;">
+                                                <p>3. Email for password recovery </p>
+                                                <input type="text" placeholder="Optional Recovery Email" name="input_createUser_email_preview" id="input_createUser_email_preview" maxlength="15" style="width:200px; height:30px; border: solid 1px #9598a0; font-size:12px;">
 
-                                            <br></br>
+
+
+                                                <p></p>
+                                                <p></p>
+
+                                                <button id="createUser_preview" style="margin-left:0px;" onclick="createUser_preview()">GO</button>
+                                                <p style="margin-left:0px;"><span style="color:blue;" onClick="window.location.reload()"> ( cancel )</span></p>
+
+                                                <p></p>
+
+
+                                            </div>
+
+
 
                                             <input type="button" id="cancel_me" value="Click here to cancel" onClick="window.location.reload()">
 
@@ -584,7 +606,7 @@
         var lic_users = users.license_users
         var preview_users = users.preview_users
 
-        var sel = document.getElementById('license-id');
+        var sel = document.getElementById('license-user');
 
         for (var i = 0; i < lic_users.length; i++) {
             var opt = document.createElement('option');
@@ -639,6 +661,38 @@
 
         });
 
+        function createUser_preview() {
+            //clear any earlier local objects 
+            localStorage.removeItem('new_user_obj')
+            localStorage.removeItem('new_user_survey')
+
+            var newuser_name = document.getElementById('input_createUser_preview').value
+            var newuser_pass = document.getElementById('input_createUser_password_preview').value
+            var newuser_recovery_email = document.getElementById('input_createUser_email_preview').value
+
+            var new_user_obj = {
+                "username": newuser_name,
+                "password": newuser_pass,
+                "recovery_email": newuser_recovery_email,
+                "license_id": 'preview'
+            }
+
+
+            if (!newuser_name) {
+                alert("Username is required")
+                return;
+            }
+
+            localStorage.setItem('new_user_obj', JSON.stringify(new_user_obj))
+
+            console.log(JSON.parse(localStorage.getItem('new_user_obj')))
+
+            $("#div_createUser_license_form_preview").hide();
+            $("#reg_survey").show();
+
+
+        } //createUser_lic
+
         function createUser_lic() {
             //clear any earlier local objects 
             localStorage.removeItem('new_user_obj')
@@ -675,7 +729,29 @@
             $("#reg_survey").show();
 
 
-        }
+        } //createUser_lic
+
+        function logUser_new_feed(user_type) {
+
+            var name_div_id = 'license-user'
+            var pw_div_id = 'license_user_pw'
+            var user_type = user_type
+            if (user_type == 'preview') {
+                name_div_id = 'preview-id'
+                pw_div_id = 'preview_user_pw'
+            }
+
+            var e = document.getElementById(name_div_id)
+            var user_name = e.options[e.selectedIndex].text
+
+            var user_pw = document.getElementById(pw_div_id).value
+
+
+            //call login with parameters. 
+
+            logUser_new(user_name, user_pw, user_type)
+
+        } // logUser_new_feed
     </script>
 
 
