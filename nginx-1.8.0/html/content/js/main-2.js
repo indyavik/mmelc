@@ -14,15 +14,20 @@ function update_user_object(objectName, updatedvalue) {
 
 function return_to_last() {
 
-
+    /*
+    Takes user to the last page they were before last logout. 
+    */
 
     var current_user = localStorage.getItem('logged_in');
     var user_data = JSON.parse(localStorage.getItem(JSON.parse(current_user)));
     var last_visited_page = user_data['last_visited_page']
 
-    alert('last_visited_page' + last_visited_page)
 
 
+    if (!last_visited_page || last_visited_page == undefined) {
+        alert('No last session found: please select a module from the menu')
+        return;
+    }
 
     if (last_visited_page.indexOf("_pxl_") > -1) {
 
@@ -39,8 +44,55 @@ function return_to_last() {
     window.location.href = to_go_page;
 
 
+} //return to last
 
 
+
+function redirect_to_cert() {
+    /*
+    checks whether all modules have been completed. 
+
+    */
+    var msg = "Please complete all modules first"
+    var user_obj = JSON.parse(localStorage.getItem(JSON.parse(localStorage.getItem('logged_in'))))
+    var mod_completed = user_obj.modules_completed
+    if (!mod_completed || mod_completed == undefined) {
+        alert(msg)
+        return;
+    }
+
+    var mod_conf = JSON.parse(localStorage.getItem('module_config'))
+
+    if (mod_conf && mod_conf !== undefined) {
+        var all_modules = []
+        for (var obj in mod_conf.mods) {
+            all_modules.push(obj)
+
+        }
+        /* check if all modules are present in both */
+
+        if (mod_completed.length !== all_modules.length) {
+            alert(msg)
+            return;
+        }
+
+        for (var i = mod_completed.length; i--;) {
+            if (all_modules.indexOf(mod_completed[i]) == -1) {
+                alert("Please complete module -" + mod_completed[i] + " first")
+                return;
+            }
+
+        }
+
+
+
+    } else {
+        alert('Error: Could not find module status. Please contact and administrator') // 
+
+    }
+
+    //redirect the user. 
+    window.location = 'home_protected.html?message=noLogin'
 
 }
 
@@ -99,23 +151,30 @@ function calculate_completion() {
     }
 } //calculate completion. 
 
-function update_units(current_module, current_unit) {
+function update_units(current_module, current_unit, completed_module) {
 
-    //update the user object with unit completed info. 
-    //alert('mod ' + current_module + ' unit ' + current_unit); 
     var current_user = localStorage.getItem('logged_in');
-    //alert('got logged_in ' + current_user);
     var current_user_data = JSON.parse(localStorage.getItem(JSON.parse(current_user)));
-    //alert('got user data ' + current_user_data);
-    // alert(('goNext-main-2.js:' + current_user_data));
+
+    if (completed_module) {
+        /* add this module to the completed module object */
 
 
+        var user_completed_modules = current_user_data.modules_completed
+        if (!user_completed_modules || user_completed_modules == undefined) {
+            current_user_data['modules_completed'] = [completed_module]
+
+        } else {
+            current_user_data['modules_completed'].push(completed_module)
+
+        }
+
+
+    } //
 
     if (typeof(current_user_data) === 'object' && (current_user_data !== null)) {
 
         if (current_user_data['units_completed'][current_module].indexOf(current_unit.toString()) == -1) {
-
-
 
             current_user_data['units_completed'][current_module].push(current_unit.toString())
 
@@ -701,7 +760,7 @@ function goNext(signal) {
         if (next == 6) next += 1;
         var next_module = next.toString()
         var next_page = 'Module-' + next_module + '.html'
-        update_units(current_module, current_unit)
+        update_units(current_module, current_unit, 'Module-' + current_module)
         load_module_home(next_page)
 
     } else if (signal == 'unit') {

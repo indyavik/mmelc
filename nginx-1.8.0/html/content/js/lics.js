@@ -14,7 +14,6 @@ function verifyLicense_div() {
 }
 
 
-
 //backend python to verify the license. 
 
 function verifyLicense() {

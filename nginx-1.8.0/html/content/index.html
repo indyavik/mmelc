@@ -627,7 +627,7 @@
 
     <script>
         $("#existing-users").click(function() {
-            alert("Handler for exiting users called.");
+
             $("#MainTable").show();
             $("#create-user-form").hide();
             $("#div_verify_license").hide();
@@ -638,17 +638,60 @@
         });
 
         $("#create-users").click(function() {
-            //
-            //$("#existing-users").hide();
-            //document.getElementById("MainTable").style.display = 'none';
-            //document.getElementById("MainTable").style.display = 'none';
+
             $("#MainTable").hide();
             $("#create-user-form").show();
             $("#div_verify_license").hide();
             $("#existing-users").css("background-color", "grey");
             $("#create-users").css("background-color", "green");
 
-        });
+
+
+            /*
+
+
+            urlExists(function(exists) {
+                //do more stuff based on the boolean value of exists
+                alert(exists)
+
+            });
+
+
+            */
+
+            /*
+
+            console.log('clicked')
+
+           
+            function cb(returnValue) {
+                console.log('returned is :');
+                console.log(returnValue);
+
+                if (returnValue) {
+                    //show user form. 
+                    $("#MainTable").hide();
+                    $("#create-user-form").show();
+                    $("#div_verify_license").hide();
+                    $("#existing-users").css("background-color", "grey");
+                    $("#create-users").css("background-color", "green");
+
+                } else {
+                    return;
+                }
+
+
+            }
+
+            urlExists(cb);
+
+            */
+
+
+        }); //on click create user
+
+
+
 
         $("#verify-license").click(function() {
 
@@ -657,6 +700,7 @@
             $("#div_verify_license").show();
             $("#existing-users").css("background-color", "grey");
             $("#create-users").css("background-color", "grey");
+
 
 
         });

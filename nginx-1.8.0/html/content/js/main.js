@@ -46,14 +46,29 @@ if (check_store) {
 
 } else {
 
-    localStorage.setItem("lastname", "Smith");
+    // localStorage.setItem("lastname", "Smith");
     //alert("main.js:localStorageAdded") ; 
 
 }
 
 //
+function urlExists(callback, url) {
+    if (!url) url = BACKEND
+    console.log('am here')
+    $.ajax({
+        type: 'GET',
+        url: url,
+        success: function() {
+            callback(true);
+        },
+        error: function() {
+            callback(false);
+        }
+    });
+} //url exists 
+
 function check_connected_to_internet() {
-    var return_value = false;
+    var return_value = true;
     var xhr = new XMLHttpRequest();
     var url = BACKEND;
     xhr.open('HEAD', url)
@@ -68,7 +83,7 @@ function check_connected_to_internet() {
 
             } else {
                 alert("connection doesn't exist!");
-                return_value = true;
+                return_value = false;
             }
         }
     }

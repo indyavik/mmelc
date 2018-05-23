@@ -329,7 +329,7 @@ function regSurvey() {
 
         submit_data_to_server(survey_object, '/usbuser/register', function(returnValue) {
 
-            alert(returnValue);
+            console.log(returnValue);
             //write data to file
 
         }); //submit_data_to server
@@ -571,7 +571,6 @@ function createUser_new(user_type) {
         new_user['license_id'] = new_user_obj['license_id']
 
 
-
         /*
 
 
@@ -585,7 +584,6 @@ function createUser_new(user_type) {
         */
 
 
-
         /*set new objects in localStorage. */
 
         localStorage.setItem("Users", JSON.stringify(new_users))
@@ -597,7 +595,6 @@ function createUser_new(user_type) {
         update_on_disk("Users.txt", { "Users": new_users });
         update_on_disk(create_user + '.txt', new_user); //js oject. not string.
         update_on_disk(create_user + '_survey.txt', new_user_obj_survey); //js oject. not string.
-
 
 
         /* clear the local objects that are no longer required */
@@ -629,6 +626,7 @@ function logUser_new(user_name, user_password, user_type) {
 
     /* login the user  */
     var data_dir = LICENSEDIR
+
 
     if (user_type !== 'license') {
         data_dir = DATADIR
@@ -680,7 +678,7 @@ function logUser_new(user_name, user_password, user_type) {
             var mod_config = JSON.parse(get_from_disk(data_dir + 'module_conf.json'))
             localStorage.setItem('module_config', JSON.stringify(mod_config));
 
-            setTimeout(function() { window.location.href = "home.html?user=" + user_name }, 500);
+            setTimeout(function() { window.location.href = "home.html?user=" + user_name + "&type=" + user_type }, 500);
 
         }
 
