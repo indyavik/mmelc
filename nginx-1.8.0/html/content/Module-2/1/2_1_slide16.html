@@ -7,12 +7,42 @@
 	<p class="content-text">The following video clip demonstrates processes involved in safe capillary blood collection:</p>
 
 	
-<p  class="content-text full_width">
-        <img src="images/Take Note.png" class="noteImgStyle"/>
-        <b class="noteText">
-            Note to Pilot participants: this video and all videos in the following units are not yet available.  They are currently being produced and will appear in the final version of the course.
-        </b>
-    </p>
+<div style="text-align:center"> 
+  <button onclick="playPause()">Play/Pause</button> 
+  <button onclick="makeBig()">Big</button>
+  <button onclick="makeSmall()">Small</button>
+  <button onclick="makeNormal()">Normal</button>
+  <br><br>
+  <video id="video1" width="480" controls>
+    <source src="videos/2_1_2_Collecting a Finger Prick Blood Sample.ogg" type="video/ogg">
+    Your browser does not support HTML5 video.
+  </video>
+</div> 
+
+<script> 
+var myVideo = document.getElementById("video1"); 
+
+function playPause() { 
+    if (myVideo.paused) 
+        myVideo.play(); 
+    else 
+        myVideo.pause(); 
+} 
+
+function makeBig() { 
+    myVideo.width = 640; 
+} 
+
+function makeSmall() { 
+    myVideo.width = 320; 
+} 
+
+function makeNormal() { 
+    myVideo.width = 480; 
+} 
+</script> 
+<p>
+This video is not a substitute for medical advice.</p>
 
 
 	 </div><!--actual page content here -->

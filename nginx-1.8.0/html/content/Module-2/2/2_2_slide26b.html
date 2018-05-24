@@ -1,0 +1,46 @@
+<div id="m2_spreadingBF_p26b" class="page-content">
+        <slide id="2_2_slide26b"></slide>
+
+<h2 class="heading-text"><a href="#preamble" name="preamble"></a>
+	Demonstration Video on Spreading Thick and Thin Blood Films </h2>
+
+	<p class="content-text">The following video clip demonstrates preparation of thick and thin blood films:</p>
+
+<div style="text-align:center"> 
+  <button onclick="playPause()">Play/Pause</button> 
+  <button onclick="makeBig()">Big</button>
+  <button onclick="makeSmall()">Small</button>
+  <button onclick="makeNormal()">Normal</button>
+  <br><br>
+  <video id="video1" width="480" controls>
+    <source src="videos/2_2_1_Spreading Blood Films.ogg" type="video/ogg">
+    Your browser does not support HTML5 video.
+  </video>
+</div> 
+
+<script> 
+var myVideo = document.getElementById("video1"); 
+
+function playPause() { 
+    if (myVideo.paused) 
+        myVideo.play(); 
+    else 
+        myVideo.pause(); 
+} 
+
+function makeBig() { 
+    myVideo.width = 640; 
+} 
+
+function makeSmall() { 
+    myVideo.width = 320; 
+} 
+
+function makeNormal() { 
+    myVideo.width = 480; 
+} 
+</script> 
+<p>
+The video is not a substitute for medical advice.</p>
+
+	 </div><!--actual page content here -->
