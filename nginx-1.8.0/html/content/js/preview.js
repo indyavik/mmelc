@@ -4,12 +4,14 @@ function ifpreview() {
 
     /* if preview change background */
 
-    var type = localStorage.getItem('type')
+    var user_type = localStorage.getItem('user_type')
 
 
-    if (type === 'preview') {
+    if (user_type === 'preview') {
         //document.getElementById('preview').innerHTML = 'Course Preview:'
         document.getElementById('heading_text').style.backgroundColor = 'white'
+
+        alert('Hola, i am running on preview pages')
 
         return;
     }

@@ -353,16 +353,13 @@ function regSurvey() {
     }
 
 
-
-
-
 } // reg_survey
 
 function logUserOut() {
 
     var current_user = localStorage.getItem('logged_in');
 
-    var current_user_data = JSON.parse(localStorage.getItem(JSON.parse(current_user)));
+    var current_user_data = JSON.parse(localStorage.getItem(current_user));
 
     //alert(('logUserOut:' + current_user_data));
 
@@ -408,6 +405,7 @@ function logUser(user_name) {
     //store user name as current user 
 
     localStorage.setItem("logged_in", user_name);
+    localStorage.setItem("Current_User", user_name);
 
     if (!get_local_object(user_name)) {
 

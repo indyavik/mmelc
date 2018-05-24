@@ -3,11 +3,11 @@ function update_user_object(objectName, updatedvalue) {
 
 
     var current_user = localStorage.getItem('logged_in');
-    var user_data = JSON.parse(localStorage.getItem(JSON.parse(current_user)));
+    var user_data = JSON.parse(localStorage.getItem(current_user));
 
     user_data[objectName] = updatedvalue;
 
-    localStorage.setItem(JSON.parse(current_user), JSON.stringify(user_data))
+    localStorage.setItem(current_user, JSON.stringify(user_data))
 
     //update_on_disk(JSON.parse(current_user) + '.txt' , user_data)
 }
@@ -19,9 +19,8 @@ function return_to_last() {
     */
 
     var current_user = localStorage.getItem('logged_in');
-    var user_data = JSON.parse(localStorage.getItem(JSON.parse(current_user)));
+    var user_data = JSON.parse(localStorage.getItem(current_user));
     var last_visited_page = user_data['last_visited_page']
-
 
 
     if (!last_visited_page || last_visited_page == undefined) {
@@ -154,7 +153,7 @@ function calculate_completion() {
 function update_units(current_module, current_unit, completed_module) {
 
     var current_user = localStorage.getItem('logged_in');
-    var current_user_data = JSON.parse(localStorage.getItem(JSON.parse(current_user)));
+    var current_user_data = JSON.parse(localStorage.getItem(current_user));
 
     if (completed_module) {
         /* add this module to the completed module object */
@@ -184,10 +183,10 @@ function update_units(current_module, current_unit, completed_module) {
 
         //units_to_update.push(current_unit.toString());
 
-        localStorage.setItem(JSON.parse(current_user), JSON.stringify(current_user_data))
+        localStorage.setItem(current_user, JSON.stringify(current_user_data))
 
         // update_on_disk(current_user + '.txt', current_user_data)
-        update_on_disk(JSON.parse(current_user) + '.txt', current_user_data)
+        update_on_disk(current_user + '.txt', current_user_data)
     }
 
 } //update_units
@@ -427,10 +426,17 @@ function nav_to(signal) {
 
     //gets the current page and signal, and gets next page to load and calls the load 
     var current_page = localStorage.getItem('current_location'); //5_0_slide02.html
-    //alert(current_page);
+
     if (!current_page) current_page = '0_0_slide01.html'
     var target = get_next_page(current_page, signal);
     console.log("nav_to target next page:" + target)
+
+    /* if it's a preview version run if preview */
+
+    ifpreview()
+
+    /* load page */
+
     load_page(target);
 
 }
@@ -918,7 +924,7 @@ function generateTestFeedback(MCQtestname, numMCQs, PXLtestname, numPXLs) {
         //alert(reportScore);
         all_user_answers[reportName] = userReport;
         var current_user = localStorage.getItem('logged_in');
-        var user_data = JSON.parse(localStorage.getItem(JSON.parse(current_user)))
+        var user_data = JSON.parse(localStorage.getItem(current_user))
 
     }
 
@@ -936,8 +942,8 @@ function generateTestFeedback(MCQtestname, numMCQs, PXLtestname, numPXLs) {
         user_data.pretestVSscores.push(reportScore)
         user_data.pretestcompletiondatetime.push(date)
 
-        localStorage.setItem(JSON.parse(current_user), JSON.stringify(user_data))
-        update_on_disk(JSON.parse(current_user) + '.txt', user_data)
+        localStorage.setItem(current_user, JSON.stringify(user_data))
+        update_on_disk(current_user + '.txt', user_data)
 
     } else {
         //post test
@@ -947,8 +953,8 @@ function generateTestFeedback(MCQtestname, numMCQs, PXLtestname, numPXLs) {
         user_data.posttestVSscores.push(reportScore)
         user_data.posttestcompletiondatetime.push(date)
 
-        localStorage.setItem(JSON.parse(current_user), JSON.stringify(user_data))
-        update_on_disk(JSON.parse(current_user) + '.txt', user_data)
+        localStorage.setItem(current_user, JSON.stringify(user_data))
+        update_on_disk(current_user + '.txt', user_data)
 
 
     }
@@ -1464,7 +1470,7 @@ function capture_survey_result() {
 function show_test_report(test_type, output_table) {
 
     var current_user = localStorage.getItem('logged_in')
-    var user_data = JSON.parse(localStorage.getItem(JSON.parse(current_user)))
+    var user_data = JSON.parse(localStorage.getItem(current_user))
         //test_type = pretest or posttest 
 
     var date_list = 'posttestcompletiondatetime';
@@ -1568,7 +1574,7 @@ function submit_data_to_server(data_type, data_object) {
 
     var url_endpoint = 'http://mmelc.vestigesystems.com/deviceData';
 
-    var load = { 'user': JSON.parse(current_user), 'data_load': data_object, 'data_type': data_type }
+    var load = { 'user': current_user, 'data_load': data_object, 'data_type': data_type }
 
     //alert(JSON.stringify(load));
 
@@ -1583,7 +1589,7 @@ function submit_data_to_server(data_type, data_object) {
         data: load,
 
         success: function(data) {
-            update_on_disk('sentdata/' + JSON.parse(current_user) + now.valueOf(), load);
+            update_on_disk('sentdata/' + current_user + now.valueOf(), load);
             console.log("success: " + JSON.stringify(load))
             if (data_type == "survey_response") { alert('Thank you, your feedback has been received!'); };
 
@@ -1592,7 +1598,7 @@ function submit_data_to_server(data_type, data_object) {
 
         error: function(data) {
 
-            update_on_disk('unreceiveddata/' + JSON.parse(current_user) + now.valueOf(), load);
+            update_on_disk('unreceiveddata/' + current_user + now.valueOf(), load);
             console.log("submit_data_error: " + JSON.stringify(load))
             if (data_type == "survey_response") { alert('An error occurred - please save the result file to your computer and send via email later.'); };
 
