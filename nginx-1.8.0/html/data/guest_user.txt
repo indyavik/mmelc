@@ -188,5 +188,7 @@
     },
     "page_visited": [],
     "pretestVSscores": [],
-    "tests_completed": []
+    "tests_completed": [], 
+    "username": "guest_user",
+    "password": "arar"
 }

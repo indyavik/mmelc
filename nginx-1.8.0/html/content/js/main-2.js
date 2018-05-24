@@ -54,7 +54,7 @@ function redirect_to_cert() {
 
     */
     var msg = "Please complete all modules first"
-    var user_obj = JSON.parse(localStorage.getItem(JSON.parse(localStorage.getItem('logged_in'))))
+    var user_obj = JSON.parse(localStorage.getItem(localStorage.getItem('logged_in')))
     var mod_completed = user_obj.modules_completed
     if (!mod_completed || mod_completed == undefined) {
         alert(msg)

@@ -368,7 +368,7 @@ function logUserOut() {
 
     if (typeof(current_user_data) === 'object' && (current_user_data !== null)) {
 
-        set_local_object('(logged_in', 'nobody');
+        set_local_object('logged_in', 'nobody');
         /* clear  */
 
         //localStorage.clear("logged_in", JSON.stringify(user_name));
@@ -407,9 +407,7 @@ function logUser(user_name) {
     //alert('log_user' + user_name);
     //store user name as current user 
 
-    // localStorage.setItem("Current_User", JSON.stringify(user_name));
-    localStorage.setItem("logged_in", JSON.stringify(user_name));
-
+    localStorage.setItem("logged_in", user_name);
 
     if (!get_local_object(user_name)) {
 
@@ -432,25 +430,6 @@ function logUser(user_name) {
 }
 
 
-
-/* On each inner page, on windows logged in. 
-
-		function path_session() {
-
-			var logged_in_user = JSON.parse(localStorage.getItem('logged_in')) ; 
-			if(!logged_in_user) return false 
-			return logged_in user 
-			} 
-
-		function load_progress() {
-			
-			var user_object = JSON.parse(localStorage.getItem('logged_in')) ; 
-		}
-
-}
-
-
-*/
 
 
 function loadHistory() {
@@ -670,7 +649,7 @@ function logUser_new(user_name, user_password, user_type) {
 
         } else {
             /* finally log user in */
-            localStorage.setItem("logged_in", JSON.stringify(user_name));
+            localStorage.setItem("logged_in", user_name);
             localStorage.setItem("user_type", user_type); // "license" or "preview"
             localStorage.setItem(user_name, JSON.stringify(user_obj));
 
@@ -678,7 +657,7 @@ function logUser_new(user_name, user_password, user_type) {
             var mod_config = JSON.parse(get_from_disk(data_dir + 'module_conf.json'))
             localStorage.setItem('module_config', JSON.stringify(mod_config));
 
-            setTimeout(function() { window.location.href = "home.html?user=" + user_name + "&type=" + user_type }, 500);
+            setTimeout(function() { window.location.href = "home.html?user=" + user_name + "&user_type=" + user_type }, 500);
 
         }
 
