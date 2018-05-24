@@ -100,7 +100,7 @@ function redirect_to_cert() {
 function calculate_completion() {
     //get current user 
 
-    var current_user = JSON.parse(localStorage.getItem('logged_in'))
+    var current_user = localStorage.getItem('logged_in')
         //console.log(current_user)
     var user_data = JSON.parse(localStorage.getItem(current_user)).units_completed //"units_completed":{"1":[],"2":[],"3":[],"4":[],"5":[],"6":[],"7":[]}}"
         //console.log(user_data)
