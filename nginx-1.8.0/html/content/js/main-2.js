@@ -624,6 +624,7 @@ function load_page(page, template) {
                 localStorage.setItem('current_location', page);
                 update_user_object('last_visited_page', page);
                 loadFooterNav(page);
+
                 //close the side nav if open.
 
                 // document.getElementById("display_current").textContent  =  create_page_path(page) + '(' + x_of_y() + ')';
