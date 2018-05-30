@@ -6,6 +6,44 @@
 
 */
 
+function saveCertAnswer(slideId, chkVal) {
+
+    //questionId = 'C_1_slide02'
+    //chkVal = function to get radio buttons. 
+    //saveCertAnswer('C_1_slide02',$('[name=radioBtn]:checked').each(function () {return this.id;}))
+
+    var e = slideId.split('_')
+
+    var questionId = e[1] + e[2].split('slide')[1] // 102 => three digit 1: for unit 1, slide 02
+
+    console.log(questionId)
+
+    var user_conf = JSON.parse(localStorage.getItem(USERCONFKEY));
+
+    var usrAns = chkVal[0].id;
+
+    var usrAns = usrAns[1]; //Second part (answer id is r1, r2, r3, r4; just want number)
+
+    var cert_scores = user_conf['cert_scores']
+
+    cert_scores[JSON.stringify(questionId)] = usrAns
+
+    var completed_question = localStorage.getItem('current_question')
+
+    //save user ans
+    update_cert_user_conf('cert_scores', cert_scores);
+    update_cert_user_conf('last_completed_question_url', completed_question);
+
+    // localStorage.setItem(current_cert_user, JSON.stringify(user_conf))
+    //localStorage.setItem(questionId, usrAns); //questionId is e.g. 
+    //Go to next page
+    //nav_to('next');
+    load_certification_page('next');
+
+
+} //saveCertAnswer(questionId, chkVal)
+
+
 function saveCERTanswer(questionId, chkVal) {
     //capture and save answers to the local storage. 
 
@@ -282,10 +320,11 @@ function submit_cert_ans_to_server(anskey) {
 } //  submit_cert to server
 
 
-function submit_cert_pxl_ans(q_number) {
+//function submit_cert_pxl_ans(q_number) {
+
+function saveCertAnswerPxl(slide_id) {
     //This calculates the answer to submit.  It checks for no answer and too high of quantitation,
     //but does not check for other errors (e.g. if NMPS is checked, but so are species/stages or quantitation)
-
     var TFanswers = 'fffffffffffff'; //each checkbox answer; not needed in the end but useful for error checking.
     var species = 'fvmo'; //falciparum, vivax, malariae, ovale
     var stage = 'tsg'; //troph, schizont, gametocyte
@@ -330,18 +369,27 @@ function submit_cert_pxl_ans(q_number) {
             quantitation = quantitation * 1;
         }
         //document.getElementById("answerFeedback2").innerHTML =quantitation;
+
+
         if (quantitation > 999999) {
             document.getElementById("answerFeedback").innerHTML = 'Enter a quantitation value less than 1,000,000';
         } else {
             quantitation = quantitation * 10000; //to produce a single number
             useranswer = quantitation + numericalBinaryAnswer;
+
+            if (useranswer.length < 1) {
+                alert('please answer atleast 1 question')
+            }
+
+            alert(useranswer)
+
+
             //document.getElementById("answerFeedback").innerHTML = useranswer;
 
             var user_conf = JSON.parse(localStorage.getItem(USERCONFKEY));
             var cert_scores = user_conf['cert_scores']
                 //alert(questionnum);
-            cert_scores[virtualslidePrefix + questionnum] = useranswer
-
+            cert_scores[JSON.stringify(slide_id)] = useranswer
             var completed_question = localStorage.getItem('current_question')
 
             //save user ans
@@ -353,7 +401,7 @@ function submit_cert_pxl_ans(q_number) {
 
         }
     }
-}
+} //submit_cert_pxl_ans
 
 function showthick() {
     document.getElementById('pathXLviewer').src = '../../../standalone.html?slide=images/' + virtualslideDirectory + '/' + virtualslidePrefix + questionnum + 'thick.svs';
