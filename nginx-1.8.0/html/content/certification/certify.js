@@ -14,11 +14,13 @@ var CONFDIR = 'conf/'
 var CERTCONF = 'conf/certification.conf'
 var CERTKEYNAME = 'certification_conf'
 var LOADMODULEKEY = 'loaded_module'
+var MODULENAME = 'Module-C'
 var SHUFFLEDKEY = 'shuffled_sequence'
 var BASEUSERCONF = 'conf/base_certify_user_config.txt'
 var USERCONFKEY = 'cert_user_conf' // points to current user config 
 var CURRENTUSERKEY = 'current_cert_user' //points to the user_name of current_user. 
 var POSTURLENDPOINT = 'http://mmelc.vestigesystems.com/deviceData'
+var NORMALQUESTIONS = 5; //count of the normal questions for each module to pick. 
 
 
 function update_cert_user_conf(datakey, datavalue, ondisk) {
@@ -98,7 +100,7 @@ function login_cert_user(username) {
         new_user_conf['cert_user_name'] = username;
         localStorage.setItem(USERCONFKEY, JSON.stringify(new_user_conf));
         localStorage.setItem(CURRENTUSERKEY, username);
-        load_conf_and_suffle();
+        load_conf_and_shuffle();
 
     } else {
         alert('New Certification Test or Start from where you left ???')
@@ -211,7 +213,6 @@ function init_cert_page() {
 
 
 
-
 function shuffle(array) {
     /* do not shuffle 1st page, or last 2 pages */
     var firstelement = array[0]
@@ -262,8 +263,100 @@ function get_page_from_jquery(page_to_get) {
 } //function get page from jquery.
 
 
+function load_conf_and_shuffle() {
 
-function load_conf_and_suffle() {
+    var cert_config = JSON.parse(localStorage.getItem(CERTKEYNAME));
+    var user_conf = JSON.parse(localStorage.getItem(USERCONFKEY));
+
+    //load from file. 
+
+    if (!cert_config) {
+
+        jQuery.ajaxSetup({
+            async: false
+        }); //required to avoind async status code check issues 
+
+        var jq = $.get(CERTCONF); //alert(jq.status);
+
+        if (jq.status == 200) {
+
+            var config_data = jq.responseText;
+
+            localStorage.setItem(CERTKEYNAME, config_data);
+
+            alert('Logging you in ......... ');
+
+            //pick up a random module and randomize the sequence from the module and load. 
+
+            var config = JSON.parse(localStorage.getItem(CERTKEYNAME));
+
+            console.log(config)
+
+            var modules = Object.keys(config.mods.conf) //["1", "2", "3", "4", "5", "pxl"]
+
+            /* pick all questions form module 'pxl */
+
+            var pxl_questions = config.mods.conf['pxl'].page_sequence
+
+            /* pick x number of questions for each other modules in random */
+
+            var normal_questions = []
+
+            for (var i in modules) {
+                if (modules[i] !== 'pxl') {
+                    var current_sequence = config.mods.conf[modules[i]].page_sequence
+                    var new_sequence = shuffle(current_sequence)
+
+                    /* select x numbers */
+                    for (var j = 0; j < 5; j++) {
+                        console.log(new_sequence[j])
+                        normal_questions.push(new_sequence[j])
+                    }
+
+                } //if i ==pxl
+            }
+
+            /* shuffle normal_questions once again so 25 questions are shuffled */
+
+            normal_questions = shuffle(normal_questions)
+
+            var final_shuffled_sequence = normal_questions.concat(pxl_questions)
+
+            //var load_module = modules[Math.floor(Math.random() * modules.length)]; //'Module-8'
+
+
+            localStorage.setItem(SHUFFLEDKEY, JSON.stringify(final_shuffled_sequence))
+
+            var current_question = MODULENAME + '.html'
+
+            // var current_question = final_shuffled_sequence[0]
+
+            localStorage.setItem('current_question', current_question)
+
+            //add the shuffled sequence to the current_user object. 
+
+            update_cert_user_conf('last_shuffled_sequence', final_shuffled_sequence);
+            localStorage.setItem(LOADMODULEKEY, MODULENAME)
+
+            //set current page. 
+
+            load_certification_page();
+
+
+
+        } else {
+            alert("configuration file not found. please contact the administrator");
+            return;
+
+        }
+
+    }
+
+
+
+} //load_conf_and_shuffle updated version. 
+
+function load_conf_and_suffle_old() {
     /*
     first script to run on every page. 
     -loads the certfication conf if not found 
@@ -303,7 +396,7 @@ function load_conf_and_suffle() {
             //pick a random module.
 
             var load_module = modules[Math.floor(Math.random() * modules.length)]; //'Module-8'
-            localStorage.setItem(LOADMODULEKEY, load_module)
+            localStorage.setItem(LOADMODULEKEY, MODULENAME)
 
             //shuffle. 
 
@@ -351,7 +444,6 @@ function load_certification_page(signal) {
     var next_question;
 
 
-
     if (current_index < 0) {
         next_question = shuffled_sequence[0]
 
@@ -362,12 +454,11 @@ function load_certification_page(signal) {
     }
 
 
-
     if (!signal) {
         //load the main page of the module. 
 
         current_question = current_module + ".html"
-        alert('current_q' + current_question)
+        alert('current_q: ' + current_question)
 
         var page_data = get_page_from_jquery(current_module + '/' + current_question)
 
@@ -375,9 +466,11 @@ function load_certification_page(signal) {
 
     }
 
+    var unit = next_question.split('_')[1] // C_1_slide01.html ==> 
+
     if (signal == 'next') {
 
-        var page = current_module + '/0/' + next_question
+        var page = current_module + '/' + unit + '/' + next_question
         localStorage.setItem('current_question', next_question) // change to the next. 
 
         //var page_data = get_page_from_jquery(current_module + '/0/' + next_question)
