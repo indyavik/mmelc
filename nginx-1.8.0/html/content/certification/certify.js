@@ -19,7 +19,7 @@ var SHUFFLEDKEY = 'shuffled_sequence'
 var BASEUSERCONF = 'conf/base_certify_user_config.txt'
 var USERCONFKEY = 'cert_user_conf' // points to current user config 
 var CURRENTUSERKEY = 'current_cert_user' //points to the user_name of current_user. 
-var POSTURLENDPOINT = 'http://mmelc.vestigesystems.com/deviceData'
+var POSTURLENDPOINT = 'http://mmelc.vestigesystems.com/'
 var NORMALQUESTIONS = 5; //count of the normal questions for each module to pick. 
 
 
@@ -78,6 +78,7 @@ function log_out_cert_user() {
     var filename = current_cert_user + '_certify_conf.txt';
     cert_update_on_disk(filename, userconf_json);
     localStorage.clear(); //check this works ?
+    window.location.href = "/content/index.html"
 }
 
 function login_cert_user(username) {
@@ -98,6 +99,8 @@ function login_cert_user(username) {
         //its a new user. 
         var new_user_conf = JSON.parse(base);
         new_user_conf['cert_user_name'] = username;
+        new_user_conf['usb_user'] = localStorage.getItem('logged_in')
+        new_user_conf['usb_user_type'] = localStorage.getItem('user_type')
         localStorage.setItem(USERCONFKEY, JSON.stringify(new_user_conf));
         localStorage.setItem(CURRENTUSERKEY, username);
         load_conf_and_shuffle();
@@ -171,6 +174,7 @@ function init_cert_page() {
         var loc = window.location.href.split("?")[1].split("=")[1]
 
         alert(loc)
+
         var certpage = get_page_from_jquery(loc)
             //alert(certpage)
 
@@ -339,7 +343,6 @@ function load_conf_and_shuffle() {
             localStorage.setItem(LOADMODULEKEY, MODULENAME)
 
             //set current page. 
-
             load_certification_page();
 
 
@@ -356,79 +359,20 @@ function load_conf_and_shuffle() {
 
 } //load_conf_and_shuffle updated version. 
 
-function load_conf_and_suffle_old() {
-    /*
-    first script to run on every page. 
-    -loads the certfication conf if not found 
-    -shuffles the page_sequence array 
-
-    */
-
-    var cert_config = JSON.parse(localStorage.getItem(CERTKEYNAME));
-    var user_conf = JSON.parse(localStorage.getItem(USERCONFKEY));
-
-    //load from file. 
-
-    if (!cert_config) {
-
-        jQuery.ajaxSetup({
-            async: false
-        }); //required to avoind async status code check issues 
-
-        var jq = $.get(CERTCONF); //alert(jq.status);
-
-        if (jq.status == 200) {
-
-            var config_data = jq.responseText;
-
-            localStorage.setItem(CERTKEYNAME, config_data);
-
-            alert('Logging you in ......... ');
-
-            //pick up a random module and randomize the sequence from the module and load. 
-
-            var config = JSON.parse(localStorage.getItem(CERTKEYNAME));
-
-            console.log(config)
-
-            var modules = Object.keys(config.mods) //
-
-            //pick a random module.
-
-            var load_module = modules[Math.floor(Math.random() * modules.length)]; //'Module-8'
-            localStorage.setItem(LOADMODULEKEY, MODULENAME)
-
-            //shuffle. 
-
-            var page_sequence = config.mods[load_module].conf[0].page_sequence
-
-            var shuffled_sequence = shuffle(page_sequence)
-
-            localStorage.setItem(SHUFFLEDKEY, JSON.stringify(shuffled_sequence))
-
-            var current_question = load_module + '.html' //Module-8.html
-
-            localStorage.setItem('current_question', current_question)
-
-            //add the shuffled sequence to the current_user object. 
-
-            update_cert_user_conf('last_shuffled_sequence', shuffled_sequence);
-
-            //set current page. 
-
-            load_certification_page();
 
 
+function UrlExists(url) {
+    var http = new XMLHttpRequest();
+    http.open('HEAD', url, false);
+    http.send();
+    return http.status != 404;
+}
 
-        } else {
-            alert("configuration file not found. please contact the administrator");
-            return;
+function showFinalPage() {
+    var page_to_show = MODULENAME + '/' + MODULENAME + '-Complete.html'
+    window.location.href = window.location.origin + "/content/certification/home_certification.html?loadPage=" + page_to_show;
 
-        }
-
-    }
-
-} //load_conf_and_shuffle. 
+}
 
 function load_certification_page(signal) {
     /*
@@ -443,16 +387,30 @@ function load_certification_page(signal) {
     var current_index = shuffled_sequence.indexOf(current_question)
     var next_question;
 
-
     if (current_index < 0) {
         next_question = shuffled_sequence[0]
 
     } else if (current_index == (shuffled_sequence.length - 1)) {
-        next_question = current_question
+        //next_question = current_question
+
+
     } else {
         next_question = shuffled_sequence[current_index + 1]
     }
 
+    /* check if page exists otherwise skip once 
+
+    var page_url = current_module + '/' + next_question
+
+    var check_page = UrlExists(page_url)
+
+    if (!check_page) {
+
+        next_question = shuffled_sequence[current_index + 2]
+
+    }
+
+    */
 
     if (!signal) {
         //load the main page of the module. 

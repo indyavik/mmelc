@@ -26,7 +26,9 @@ function saveCertAnswer(slideId, chkVal) {
 
     var cert_scores = user_conf['cert_scores']
 
-    cert_scores[JSON.stringify(questionId)] = usrAns
+    //cert_scores[JSON.stringify(questionId)] = usrAns
+
+    cert_scores[questionId] = usrAns
 
     var completed_question = localStorage.getItem('current_question')
 
@@ -44,57 +46,91 @@ function saveCertAnswer(slideId, chkVal) {
 } //saveCertAnswer(questionId, chkVal)
 
 
-function saveCERTanswer(questionId, chkVal) {
-    //capture and save answers to the local storage. 
-
-    var user_conf = JSON.parse(localStorage.getItem(USERCONFKEY));
-
-    var usrAns = chkVal[0].id;
-
-    var usrAns = usrAns[1]; //Second part (answer id is r1, r2, r3, r4; just want number)
-
-    var cert_scores = user_conf['cert_scores']
-    cert_scores[questionId] = usrAns
-
-    var completed_question = localStorage.getItem('current_question')
-
-    //save user ans
-    update_cert_user_conf('cert_scores', cert_scores);
-    update_cert_user_conf('last_completed_question_url', completed_question);
-
-    // localStorage.setItem(current_cert_user, JSON.stringify(user_conf))
-    //localStorage.setItem(questionId, usrAns); //questionId is e.g. 
-    //Go to next page
-    //nav_to('next');
-    load_certification_page('next');
-}
-
 
 function compileMCQ(MCQidArray) {
     //Turn array of MCQ answers (1,2,3,4) into a short string OR 10 digit number (to be converted to code)
 }
 
+function get_mcq_ans_key(MCQanswers) {
+
+    //var MCQanswers = "1234432123";
+
+    var text = "";
+
+    //replace each digit with itself minus 1 (so 0 to 3 instead of 1 to 4)
+
+    for (var i = 0; i < MCQanswers.length; i++) {
+        text += (parseInt(MCQanswers[i]) - 1).toString();
+    }
+    var MCQanswersBase10 = parseInt(text, 4);
+    return MCQanswersBase10;
+
+} //get MCQ answer key
+
+function get_final_ans_key_updated() {
+
+    /*
+
+        "cert_scores": {
+        "101": "2",
+        "110": "2",
+        "201": "3",
+        "311": "2",
+        "408": "3",
+        "C_pxl_assessmentq1": 19731161
+     }
+
+    */
+
+    var MCQanswers = ""; //string
+    var MCQquestions = ""; //
+    var PXLanswers = []; //array 
+
+    //var ans_object = JSON.parse(localStorage.getItem(USERCONFKEY))
+    var ans_object = JSON.parse(localStorage.getItem('cert_user_conf'))
+
+    var usb_user = ans_object.usb_user
+    var username = ans_object.cert_user_name
+    var user_type = ans_object.usb_user_type
+
+    var question_keys = Object.keys(ans_object.cert_scores) // ["101", "110", "201", "311", "408", "C_pxl_assessmentq1"]
+    for (var i in question_keys) {
+        if (question_keys[i].length < 4) {
+            MCQquestions += question_keys[i]
+            MCQanswers += ans_object.cert_scores[question_keys[i]]
+        } else {
+            PXLanswers.push(ans_object.cert_scores[question_keys[i]])
+
+        }
+
+    }
+
+    /*
+
+    MCQanswers => "22323", MCQquestions => "101110201311408" , PXLanswers => [19731161]
+
+    */
+
+    /* call the earlier function to create appropriate keys */
+
+    //get_final_ans_key([10,34500,2700,25050,400,10000,125], 'abc' , '1234432123' )
+    var final_ans_key = get_final_ans_key(PXLanswers, username, MCQanswers)
+
+    var final_questions_key = parseInt(MCQquestions).toString(32)
+
+    console.log(final_ans_key)
+    console.log(final_questions_key)
+
+    return { 'final_ans_key': final_ans_key, 'final_questions_key': final_questions_key }
+
+} //get_final_ans_key_updated. 
+
 function get_final_ans_key(ans_array, username, mcqstring) {
+
 
     //ans_array = [1004616, 8004161, 199004104, 12004100, 12002100 ]
     //user_name = 'cert-user1'
     //get_final_ans_key([10,34500,2700,25050,400,10000,125], 'abc' , '1234432123' )
-
-    function get_mcq_ans_key(MCQanswers) {
-
-        //var MCQanswers = "1234432123";
-
-        var text = "";
-
-        //replace each digit with itself minus 1 (so 0 to 3 instead of 1 to 4)
-
-        for (var i = 0; i < MCQanswers.length; i++) {
-            text += (parseInt(MCQanswers[i]) - 1).toString();
-        }
-        var MCQanswersBase10 = parseInt(text, 4);
-        return MCQanswersBase10;
-
-    } //get MCQ answer key
 
     var ans_key = get_mcq_ans_key(mcqstring)
 
@@ -168,68 +204,10 @@ function get_final_ans_key(ans_array, username, mcqstring) {
 
     //write user object to the disk.
 
-
-
+    console.log(ans_key)
     return ans_key
 
 } //get_pxl_ans_key(ans_array, username, mcqstring)
-
-
-function submit_data_to_server(data_type, data_object) {
-
-    //data_type = 'user_data' , 'feedback_survey' , 'certification_test' , pre_test, post_data
-    //data_object - > a JSON object containing the data load that needs to be set to the serve. 
-
-    if (data_object == null || typeof data_object !== 'object') {
-        if (data_type == "survey_response") { alert('An error occurred - please save the result file to your computer and send via email later.'); };
-        return;
-    }
-
-    data_object = JSON.stringify(data_object);
-
-    var endpoint = data_type;
-    var current_user = localStorage.getItem('logged_in')
-    var now = new Date();
-
-    //alert(current_user);
-    //alert(JSON.parse(current_user));
-
-    var url_endpoint = 'http://mmelc.vestigesystems.com/deviceData';
-
-    var load = { 'user': JSON.parse(current_user), 'data_load': data_object, 'data_type': data_type }
-
-    //alert(JSON.stringify(load));
-
-    $.ajax({
-
-        type: 'GET',
-
-        url: url_endpoint,
-        //url: 'http://githubbbadpspot-bad-url-test.com/badge/toralds', //bad ur for tets 
-
-        dataType: 'jsonp',
-        data: load,
-
-        success: function(data) {
-            update_on_disk('sentdata/' + JSON.parse(current_user) + now.valueOf(), load);
-            console.log("success: " + JSON.stringify(load))
-            if (data_type == "survey_response") { alert('Thank you, your feedback has been received!'); };
-
-
-        },
-
-        error: function(data) {
-
-            update_on_disk('unreceiveddata/' + JSON.parse(current_user) + now.valueOf(), load);
-            console.log("submit_data_error: " + JSON.stringify(load))
-            if (data_type == "survey_response") { alert('An error occurred - please save the result file to your computer and send via email later.'); };
-
-        }
-
-
-    });
-
-} //submit_data_to_server
 
 
 function create_final_cert_ans_key() {
@@ -284,14 +262,20 @@ function create_final_cert_ans_key() {
 
 } // create_cert_ans
 
-function submit_cert_ans_to_server(anskey) {
+function submit_cert_ans_to_server() {
 
+    var to_submit = {}
+    var ans_object = JSON.parse(localStorage.getItem('cert_user_conf'))
+    to_submit['cert_scores'] = ans_object.cert_scores
+    to_submit['cert_user_name'] = ans_object.cert_user_name
+    to_submit['usb_user_name'] = ans_object.usb_user
+    to_submit['usb_user_type'] = ans_object.usb_user_type
 
     $.ajax({
         type: 'GET',
-        //url: 'http://githubbadge.appspot.com/badge/torvalds',
         url: 'http://githubbbadpspot-bad-url-test.com/badge/toralds',
         //url: 'http://mmelc.vestigesystems.com/submitcert', 
+        url: POSTURLENDPOINT + '/submitcert',
         dataType: 'jsonp',
         data: anskey,
 
@@ -389,7 +373,8 @@ function saveCertAnswerPxl(slide_id) {
             var user_conf = JSON.parse(localStorage.getItem(USERCONFKEY));
             var cert_scores = user_conf['cert_scores']
                 //alert(questionnum);
-            cert_scores[JSON.stringify(slide_id)] = useranswer
+                //cert_scores[JSON.stringify(slide_id)] = useranswer
+            cert_scores[slide_id] = useranswer
             var completed_question = localStorage.getItem('current_question')
 
             //save user ans
