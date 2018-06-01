@@ -1,3 +1,6 @@
+//GLOBALS
+IGNORE_MODULES = ['Module-100', 'Module-8']
+
 function update_user_object(objectName, updatedvalue) {
 
 
@@ -65,7 +68,10 @@ function redirect_to_cert() {
     if (mod_conf && mod_conf !== undefined) {
         var all_modules = []
         for (var obj in mod_conf.mods) {
-            all_modules.push(obj)
+            //if (obj !== 'Module-100' || obj !== 'Module-8')
+            if (IGNORE_MODULES.indexOf(obj) == -1) {
+                all_modules.push(obj)
+            }
 
         }
         /* check if all modules are present in both */
@@ -76,7 +82,9 @@ function redirect_to_cert() {
         }
 
         for (var i = mod_completed.length; i--;) {
+
             if (all_modules.indexOf(mod_completed[i]) == -1) {
+                //alert('here ...')
                 alert("Please complete module -" + mod_completed[i] + " first")
                 return;
             }
