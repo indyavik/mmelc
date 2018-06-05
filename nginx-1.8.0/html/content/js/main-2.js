@@ -99,7 +99,9 @@ function redirect_to_cert() {
     }
 
     //redirect the user. 
-    window.location = 'home_protected.html?message=noLogin'
+   // window.location = 'home_protected.html?message=noLogin'
+
+   window.location = 'certification/index_certification.html?message=noLogin'
 
 }
 

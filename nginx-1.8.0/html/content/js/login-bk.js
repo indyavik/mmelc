@@ -327,8 +327,6 @@ function regSurvey() {
 
         localStorage.setItem('new_user_survey', JSON.stringify(survey_object))
 
-        /*
-
         submit_data_to_server(survey_object, '/usbuser/register', function(returnValue) {
 
             console.log(returnValue);
@@ -336,7 +334,6 @@ function regSurvey() {
 
         }); //submit_data_to server
 
-        */
 
         //create user
 
@@ -504,14 +501,17 @@ function createUser_new(user_type) {
         data_dir = DATADIR
     }
 
-    localStorage.setItem('data_dir', data_dir)
 
     /* get new user object and survey data from local storage */
+
     var new_user_obj = JSON.parse(localStorage.getItem('new_user_obj'));
     var new_user_obj_survey = JSON.parse(localStorage.getItem('new_user_survey'));
+
     var create_user = new_user_obj['username']
 
+
     /* update the User.txt object  */
+
     var users_file = get_from_disk(data_dir + 'Users.txt') // string
 
     if (users_file) {
@@ -546,7 +546,6 @@ function createUser_new(user_type) {
         new_user['password'] = new_user_obj['password']
         new_user['recovery_email'] = new_user_obj['recovery_email']
         new_user['license_id'] = new_user_obj['license_id']
-        new_users['submit_status'] == 'confirmed'
 
 
         /*
@@ -562,68 +561,30 @@ function createUser_new(user_type) {
         */
 
 
+        /*set new objects in localStorage. */
+
+        localStorage.setItem("Users", JSON.stringify(new_users))
+        localStorage.setItem(String(create_user), JSON.stringify(new_user))
 
 
-        /*submit to the server after adding some additional objects.  */
+        /* write all of the new user objects to the disk. */
 
-        new_user_obj_survey['usb_user_name'] = new_user['username']
-        new_user_obj_survey['usb_user_password'] = new_user['password']
-        new_user_obj_survey['usb_user_recovery_email'] = new_user['recovery_email']
-        new_user_obj_survey['usb_user_user_type'] = user_type
-        new_user_obj_survey['usb_id'] = 'testusb_id_generate_random'
-
-        localStorage.setItem('future_user_survey', JSON.stringify(new_user_obj_survey))
-
-        submit_data_to_server(new_user_obj_survey, '/usbuser/register', function(returnValue) {
-            console.log(returnValue);
-       
-            if (JSON.parse(returnValue).response != 'success') {
-                //add some error and change the user tmp. type to guest. 
-                res = JSON.parse(returnValue).details
-                alert(res)
-                if (user_type == 'license') {
-                    new_users['submit_status'] == 'pending'
-                   // alert('sorry - user could not be created')
-                    
-                }
-
-                return;
-
-            }// if error . 
-
-            /* clear the local objects that are no longer needed */
-            localStorage.removeItem('new_user_obj')
-            localStorage.removeItem('new_user_survey')
-
-            /*set new objects in localStorage. */
-
-            localStorage.setItem("Users", JSON.stringify(new_users))
-            localStorage.setItem(String(create_user), JSON.stringify(new_user))
+        update_on_disk("Users.txt", { "Users": new_users });
+        update_on_disk(create_user + '.txt', new_user); //js oject. not string.
+        update_on_disk(create_user + '_survey.txt', new_user_obj_survey); //js oject. not string.
 
 
-            /* write all of the new user objects to the disk. */
-            external.saveFile(data_dir+'Users.txt', { "Users": new_users } )
-            external.saveFile(data_dir+create_user + '.txt', new_user )
-
-            //update_on_disk(create_user + '_survey.txt', new_user_obj_survey); //js oject. not string.
-
-            /* finally log user in */
-            localStorage.setItem("logged_in", create_user);
-            localStorage.setItem("user_type", user_type); // "license" or "preview"
-            localStorage.setItem(create_user, JSON.stringify(new_user));
-
-            // note that the appropriate module conf get lodaded here. //
-            var mod_config = JSON.parse(get_from_disk(data_dir + 'module_conf.json'))
-            localStorage.setItem('module_config', JSON.stringify(mod_config));
-
-            setTimeout(function() { window.location.href = "home.html?user=" + create_user + "&user_type=" + user_type }, 500);
-
-            
-
-        }); //submit_data_to server
+        /* clear the local objects that are no longer required */
+        localStorage.removeItem('new_user_obj')
+        localStorage.removeItem('new_user_survey')
 
 
+        return;
 
+        //if everything is good. log user in. 
+
+
+        logUser(create_user);
 
         //setTimeout(function(){window.location.href="home.html?user="+create_user} , 500); 
 
@@ -637,8 +598,6 @@ function createUser_new(user_type) {
 
 
 function logUser_new(user_name, user_password, user_type) {
-
-    alert(user_name + ":" + user_password + ":" + user_type )
 
     /*@@ user login @@ */
 
@@ -661,8 +620,6 @@ function logUser_new(user_name, user_password, user_type) {
     localStorage.clear("logged_in")
     localStorage.clear("current_user")
     localStorage.clear("user_type")
-
-    /* check if the user name and password exists */
 
     var users_file = get_from_disk(data_dir + 'Users.txt') // string
     var allusers = JSON.parse(users_file).Users

@@ -1,4 +1,5 @@
-var BACKEND = 'http://localhost:8081'
+//var BACKEND = 'http://localhost:8081'
+var BACKEND ='http://35.167.166.17'
 
 function submit_data_to_server(data_object, backend_method, cb_func, ajaxtype) {
 
@@ -25,7 +26,7 @@ function submit_data_to_server(data_object, backend_method, cb_func, ajaxtype) {
         type: 'POST',
         success: cb_func,
         error: function(error) {
-            alert("some error occurred. no data has been submitted to server.")
+            alert("Error: Server error. Please try again later.")
             console.log("some error occurred. no data has been submitted to server.")
         }
 

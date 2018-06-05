@@ -20,7 +20,7 @@ var BASEUSERCONF = 'conf/base_certify_user_config.txt'
 var USERCONFKEY = 'cert_user_conf' // points to current user config 
 var CURRENTUSERKEY = 'current_cert_user' //points to the user_name of current_user. 
 var POSTURLENDPOINT = 'http://mmelc.vestigesystems.com/'
-var NORMALQUESTIONS = 5; //count of the normal questions for each module to pick. 
+var NORMALQUESTIONS = 1; //count of the normal questions for each module to pick. 
 
 
 function update_cert_user_conf(datakey, datavalue, ondisk) {
@@ -312,7 +312,7 @@ function load_conf_and_shuffle() {
                     var new_sequence = shuffle(current_sequence)
 
                     /* select x numbers */
-                    for (var j = 0; j < 5; j++) {
+                    for (var j = 0; j < NORMALQUESTIONS; j++) {
                         console.log(new_sequence[j])
                         normal_questions.push(new_sequence[j])
                     }
@@ -392,6 +392,7 @@ function load_certification_page(signal) {
 
     } else if (current_index == (shuffled_sequence.length - 1)) {
         //next_question = current_question
+        showFinalPage()
 
 
     } else {
