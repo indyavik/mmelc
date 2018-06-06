@@ -262,7 +262,7 @@ function create_final_cert_ans_key() {
 
 } // create_cert_ans
 
-function submit_cert_ans_to_server() {
+function submit_cert_ans_to_server(cert_results) {
 
     var to_submit = {}
     var ans_object = JSON.parse(localStorage.getItem('cert_user_conf'))
@@ -272,29 +272,46 @@ function submit_cert_ans_to_server() {
     to_submit['usb_user_type'] = ans_object.usb_user_type
 
     $.ajax({
-        type: 'GET',
-        url: 'http://githubbbadpspot-bad-url-test.com/badge/toralds',
+        type: 'POST',
+
+        //url: 'http://githubbbadpspot-bad-url-test.com/badge/toralds',
         //url: 'http://mmelc.vestigesystems.com/submitcert', 
-        url: POSTURLENDPOINT + '/submitcert',
-        dataType: 'jsonp',
-        data: anskey,
+
+        url: POSTURLENDPOINT + 'submitcert',
+        data: {'payload' : JSON.stringify(to_submit) },
 
         success: function(json) {
             // var result = json.user.login 
-
             //alert("live results from server:" + json.status + ':' + json.result);
 
-            alert("success")
+            var res = JSON.parse(json)
+            var to_show = 'Successfully submitted'
+            if(res.response !== 'success') to_show = res.details 
+
+            alert(to_show)
+
+            //save user's record for future. 
+
+            var user_obj = JSON.parse(get_from_disk('/data_l/' + ans_object.usb_user +'.txt'))
+            
+            if(user_obj){
+                user_obj['cert_results'] = cert_results
+                user_obj['cert_user_name'] = to_submit['cert_user_name']
+                external.saveFile('/data_l/' + ans_object.usb_user +'.txt', user_obj )
+
+                log_out_cert_user() 
+
+            
+
+            }
 
         },
 
         error: function() {
-            //alert('please note down following key to get your results:  ' + 'USER ID:  '+ load.test_taker_user_id
-            // + '  Answer Key :' + load.answer_key);
 
             //window.location.href = "/content/posttest_protected/results.html"; 
 
-            alert('errror')
+            alert('Errror: Could not submit results to server. Please note down the keys displayed in this page.')
 
 
         }
