@@ -1,1 +1,26 @@
-{"username": "prev2", "posttestMCQscores": [], "posttestVSscores": [], "last_visited_url": "", "page_visited": [], "pretestVSscores": [], "tests_completed": [], "posttestcompletiondatetime": [], "pretestcompletiondatetime": [], "lowest_unit_completed": "", "pretestMCQscores": [], "units_completed": {"1": [], "0": [], "3": [], "2": [], "5": [], "4": [], "7": [], "6": []}, "license_id": "preview", "password": "arar", "recovery_email": "arar@prev"}
+{
+    "username": "prev2",
+    "posttestMCQscores": [],
+    "posttestVSscores": [],
+    "last_visited_url": "",
+    "page_visited": [],
+    "pretestVSscores": [],
+    "tests_completed": [],
+    "posttestcompletiondatetime": [],
+    "pretestcompletiondatetime": [],
+    "lowest_unit_completed": "",
+    "pretestMCQscores": [],
+    "units_completed": {
+        "0": [],
+        "1": [],
+        "2": [],
+        "3": [],
+        "4": [],
+        "5": [],
+        "6": [],
+        "7": []
+    },
+    "license_id": "preview",
+    "password": "arar",
+    "recovery_email": "arar@prev"
+}

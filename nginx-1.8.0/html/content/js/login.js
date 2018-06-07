@@ -3,6 +3,24 @@
 var LICENSEDIR = '/data_l/'
 var DATADIR = '/data/'
 
+function check_user_exists(username, user_type) {
+    var data_dir = LICENSEDIR
+    if (user_type !== 'license') data_dir = DATADIR
+
+    var all_users = JSON.parse(get_from_disk(data_dir + 'Users.txt'));
+
+    if (all_users) {
+        if (all_users.Users.indexOf(username) != -1) {
+            return 0;
+
+        } else {
+            return 1;
+        }
+
+    }
+
+
+} //check_user_exists
 
 function get_all_users() {
 
@@ -368,25 +386,22 @@ function logUserOut() {
 
     if (typeof(current_user_data) === 'object' && (current_user_data !== null)) {
 
-        set_local_object('logged_in', 'nobody');
-        /* clear  */
+        /* update  user's object */
 
-        //localStorage.clear("logged_in", JSON.stringify(user_name));
-        localStorage.clear(current_user);
-        localStorage.clear('module_config');
+        update_on_disk(current_user + '.txt', current_user_data)
 
-        setTimeout(function() { window.location.href = "/content/index.html?logout=nobody" }, 100);
-
-        update_on_disk(JSON.parse(current_user) + '.txt', current_user_data)
-
-    } else {
-
-        set_local_object('logged_in', 'nobody');
-        setTimeout(function() { window.location.href = "index.html?logout=nobody" }, 0);
     }
 
+    /* log out and clear storage */
 
-}
+    set_local_object('logged_in', 'nobody');
+    localStorage.clear(current_user);
+    localStorage.clear('module_config');
+
+    setTimeout(function() { window.location.href = "/content/index.html?logout=nobody" }, 100);
+
+
+} //logUserout
 
 function showInput_createUser() {
     document.getElementById("createUser").style.display = 'none';
@@ -576,22 +591,23 @@ function createUser_new(user_type) {
 
         submit_data_to_server(new_user_obj_survey, '/usbuser/register', function(returnValue) {
             console.log(returnValue);
-       
+
             if (JSON.parse(returnValue).response != 'success') {
                 //add some error and change the user tmp. type to guest. 
                 res = JSON.parse(returnValue).details
                 alert(res)
                 if (user_type == 'license') {
                     new_users['submit_status'] == 'pending'
-                   // alert('sorry - user could not be created')
-                    
+                    alert('sorry - user could not be created')
+
                 }
 
                 return;
 
-            }// if error . 
+            } // if error . 
 
             /* clear the local objects that are no longer needed */
+
             localStorage.removeItem('new_user_obj')
             localStorage.removeItem('new_user_survey')
 
@@ -600,10 +616,33 @@ function createUser_new(user_type) {
             localStorage.setItem("Users", JSON.stringify(new_users))
             localStorage.setItem(String(create_user), JSON.stringify(new_user))
 
+            /* for license users update .mmelc file with the count */
+
+            if (user_type == 'license') {
+                var mmelc = JSON.parse(get_from_disk(LICENSEDIR + '.mmelc'))
+
+                for (var i in mmelc.license) {
+
+                    var existing_license = mmelc.license[i]
+                    if (new_user['license_id'] == existing_license.id) {
+
+                        var current_used = existing_license.used
+                        existing_license['used'] = current_used + 1
+                        external.saveFile(LICENSEDIR + '.mmelc', mmelc)
+
+                    } //
+
+                }
+
+            }
+
+            /* */
+
+
 
             /* write all of the new user objects to the disk. */
-            external.saveFile(data_dir+'Users.txt', { "Users": new_users } )
-            external.saveFile(data_dir+create_user + '.txt', new_user )
+            external.saveFile(data_dir + 'Users.txt', { "Users": new_users })
+            external.saveFile(data_dir + create_user + '.txt', new_user)
 
             //update_on_disk(create_user + '_survey.txt', new_user_obj_survey); //js oject. not string.
 
@@ -618,7 +657,7 @@ function createUser_new(user_type) {
 
             setTimeout(function() { window.location.href = "home.html?user=" + create_user + "&user_type=" + user_type }, 500);
 
-            
+
 
         }); //submit_data_to server
 
@@ -638,7 +677,7 @@ function createUser_new(user_type) {
 
 function logUser_new(user_name, user_password, user_type) {
 
-    alert(user_name + ":" + user_password + ":" + user_type )
+    alert(user_name + ":" + user_password + ":" + user_type)
 
     /*@@ user login @@ */
 

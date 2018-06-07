@@ -361,12 +361,12 @@
 
                             <script>
                                 /*
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                    $( document ).ready(function() {
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                        $("#header2").hide();
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                        $("#m1_i_p05").removeClass("page-content");
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    $( document ).ready(function() {
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        $("#header2").hide();
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        $("#m1_i_p05").removeClass("page-content");
 
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                    });
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                */
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    });
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                */
                             </script>
 
 
@@ -466,13 +466,18 @@
 
     function verifyCallBack(arg1) {
 
-      //  alert('arg1 verify callback is: '+ arg1)
+        //  alert('arg1 verify callback is: '+ arg1)
 
         if (arg1 == 'pass') {
             var user = document.getElementById("input_test_user").value;
 
-            login_cert_user(user);
+            /* save current user's data on the disk just in case */
 
+            var current_user = localStorage.getItem('logged_in');
+            var current_user_data = JSON.parse(localStorage.getItem(current_user));
+            update_on_disk(current_user + '.txt', current_user_data);
+
+            login_cert_user(user);
 
 
         } else {
@@ -482,7 +487,7 @@
 
     }
 
-    
+
     function secureLogin() {
 
         var user = document.getElementById("input_test_user").value;
@@ -493,7 +498,7 @@
         external.verifyModule(user, key, verifyCallBack);
 
     }
-    
+
     //for test
     function secureLogin2() {
 

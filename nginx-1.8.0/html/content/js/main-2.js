@@ -55,8 +55,16 @@ function redirect_to_cert() {
     checks whether all modules have been completed. 
 
     */
+    var user_type = localStorage.getItem('user_type')
+    if (user_type !== 'license') {
+        alert("Please consider becoming a full licensed user first")
+        return;
+    }
+
     var msg = "Please complete all modules first"
+    var current_user = localStorage.getItem('logged_in')
     var user_obj = JSON.parse(localStorage.getItem(localStorage.getItem('logged_in')))
+
     var mod_completed = user_obj.modules_completed
     if (!mod_completed || mod_completed == undefined) {
         alert(msg)
@@ -98,10 +106,11 @@ function redirect_to_cert() {
 
     }
 
-    //redirect the user. 
-   // window.location = 'home_protected.html?message=noLogin'
+    //update ther user's object on the disk. redirect the user. 
 
-   window.location = 'certification/index_certification.html?message=noLogin'
+    //update_on_disk(current_user + '.txt', user_obj)
+
+    window.location = 'certification/index_certification.html?message=noLogin'
 
 }
 

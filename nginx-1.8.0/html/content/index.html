@@ -148,7 +148,7 @@
 
                                     <div id="div_verify_license" style="display:none ">
                                         <p>Enter your License key and click "Go "<span style="color:blue; margin-left:10px;"><a href="#" onclick="window.location.reload();">Cancel</a></span></p>
-                                        
+
                                         <P id="verify_license_response" style="color:blue;"></P>
                                         <input type="text" placeholder="Enter License key" name="license_key_to_verify" id="license_key_to_verify" maxlength="25 " style="width:200px; height:50px; border: solid 1px #9598a0; font-size:18px; ">
 
@@ -704,6 +704,8 @@
 
         });
 
+
+
         function createUser_preview() {
             //clear any earlier local objects 
             localStorage.removeItem('new_user_obj')
@@ -712,6 +714,12 @@
             var newuser_name = document.getElementById('input_createUser_preview').value
             var newuser_pass = document.getElementById('input_createUser_password_preview').value
             var newuser_recovery_email = document.getElementById('input_createUser_email_preview').value
+
+            var check_user = check_user_exists(newuser_name, 'preview')
+            if (check_user == 0) {
+                alert('Username is already taken. Please pick another username')
+                return;
+            }
 
             var new_user_obj = {
                 "username": newuser_name,
@@ -746,6 +754,13 @@
             var newuser_recovery_email = document.getElementById('input_createUser_email_license').value
             var e = document.getElementById('select-license')
             var newuser_license_id = e.options[e.selectedIndex].text
+
+            var check_user = check_user_exists(newuser_name, 'license')
+
+            if (check_user == 0) {
+                alert('Username is already taken. Please pick another username')
+                return;
+            }
 
             var new_user_obj = {
                 "username": newuser_name,
