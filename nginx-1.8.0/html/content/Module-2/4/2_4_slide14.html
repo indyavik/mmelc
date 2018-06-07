@@ -2,16 +2,45 @@
 
     <slide id="2_4_slide14"></slide>
 
-    <h2 class="heading-text"><a href="#preamble" name="preamble"></a>Demonstration Videos</h2>
+    <h2 class="heading-text"><a href="#preamble" name="preamble"></a>Video on the Staining of Blood Films for Malaria Microscopy Using Giemsa Stain</h2>
 
     <p class="content-text">
-   In the last section of this unit, you will enhance your knowledge and practical skills through watching a video of demonstrations covering preparation of Giemsa stain, preparation of buffered water, fixation and staining of blood films.
+   In the last section of this unit, you will enhance your knowledge and practical skills through watching a video demonstration covering fixation and staining of blood films.
     </p>
-<p  class="content-text full_width">
-        <img src="images/Take Note.png" class="noteImgStyle"/>
-        <b class="noteText">
-            Note to Pilot participants: The videos for this unit are not yet available.
-        </b>
-</p>
+<div style="text-align:center"> 
+  <button onclick="playPause()">Play/Pause</button> 
+  <button onclick="makeBig()">Big</button>
+  <button onclick="makeSmall()">Small</button>
+  <button onclick="makeNormal()">Normal</button>
+  <br><br>
+  <video id="video1" width="480" controls>
+    <source src="videos/2_4_1_Staining Blood Films using Giemsa Stain.ogg" type="video/ogg">
+    Your browser does not support HTML5 video.
+  </video>
+</div> 
+
+<script> 
+var myVideo = document.getElementById("video1"); 
+
+function playPause() { 
+    if (myVideo.paused) 
+        myVideo.play(); 
+    else 
+        myVideo.pause(); 
+} 
+
+function makeBig() { 
+    myVideo.width = 640; 
+} 
+
+function makeSmall() { 
+    myVideo.width = 320; 
+} 
+
+function makeNormal() { 
+    myVideo.width = 480; 
+} 
+</script> 
+	
 </div> <!--actual page content here -->
 
