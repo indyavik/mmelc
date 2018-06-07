@@ -464,29 +464,15 @@
     //function test_area_login()
 
 
-
     function verifyCallBack(arg1) {
 
-        if (arg1 == 'pass') {
+      //  alert('arg1 verify callback is: '+ arg1)
 
+        if (arg1 == 'pass') {
             var user = document.getElementById("input_test_user").value;
 
-            localStorage.setItem('certification_user_logged_in', user)
-                //sessionStorage.setItem('certification_user_logged_in', user)
+            login_cert_user(user);
 
-            login_cert_user(username);
-
-            alert("Verified - redirecting to test area");
-
-            //window.location.href = "home.html?loadPage=Module-8.html";
-
-            //load_module_home('Module-8.html');
-
-            /* 
-
-            */
-
-            //$('test-form').hide()
 
 
         } else {
@@ -496,20 +482,20 @@
 
     }
 
-    /*
+    
     function secureLogin() {
 
         var user = document.getElementById("input_test_user").value;
         var key = document.getElementById("input_pass_key").value;
 
-        alert('verifiying')
+        alert('verifiying' + user + key)
 
         external.verifyModule(user, key, verifyCallBack);
 
     }
-    */
+    
     //for test
-    function secureLogin() {
+    function secureLogin2() {
 
         login_cert_user('cert_test');
 

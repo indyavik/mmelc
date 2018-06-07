@@ -1,3 +1,41 @@
+//var BACKEND = 'http://localhost:8081'
+var BACKEND ='http://35.167.166.17'
+
+function submit_data_to_server(data_object, backend_method, cb_func, ajaxtype) {
+
+    //backend_method = '/usbuser/register'
+
+    if (!ajaxtype) ajaxtype = 'POST'
+
+    //alert(backend_method)
+    //alert(data_object)
+
+    //return;
+
+    if (!backend_method || !data_object) {
+        alert('Incorrect URL or data to submit. Please contact and admin')
+        console.log('error:submit_data_to_server:main.js=>incorrectURL')
+    }
+
+
+    $.ajax({
+        //url: 'http://localhost:8081/license/update',
+        url: BACKEND + backend_method,
+        data: data_object,
+        // data:"username=guest_user_2016 ", 
+        type: 'POST',
+        success: cb_func,
+        error: function(error) {
+            alert("Error: Server error. Please try again later.")
+            console.log("some error occurred. no data has been submitted to server.")
+        }
+
+
+    });
+} //submit data to server
+
+
+
 var check_store = localStorage.getItem("lastname");
 //var check_cache = localStorage.getItem("cache7");
 
@@ -9,11 +47,49 @@ if (check_store) {
 
 } else {
 
-    localStorage.setItem("lastname", "Smith");
+    // localStorage.setItem("lastname", "Smith");
     //alert("main.js:localStorageAdded") ; 
 
 }
 
+//
+function urlExists(callback, url) {
+    if (!url) url = BACKEND
+    console.log('am here')
+    $.ajax({
+        type: 'GET',
+        url: url,
+        success: function() {
+            callback(true);
+        },
+        error: function() {
+            callback(false);
+        }
+    });
+} //url exists 
+
+function check_connected_to_internet() {
+    var return_value = true;
+    var xhr = new XMLHttpRequest();
+    var url = BACKEND;
+    xhr.open('HEAD', url)
+    xhr.send();
+
+    xhr.addEventListener("readystatechange", processRequest, false);
+
+    function processRequest(e) {
+        if (xhr.readyState == 4) {
+            if (xhr.status >= 200 && xhr.status < 304) {
+                alert("connection exists!");
+
+            } else {
+                alert("connection doesn't exist!");
+                return_value = false;
+            }
+        }
+    }
+    return return_value;
+} // check_connected_to_internet
 
 //Using jquery to dynamically insert header (and perhaps footer) 
 
@@ -147,8 +223,6 @@ function SaveObject(key, js_object, file_name, target_dir) {
         SaveObject('guest_user', someObject, 'guest_user.txt' , '/content/data')
 
     */
-
-
 
 
 

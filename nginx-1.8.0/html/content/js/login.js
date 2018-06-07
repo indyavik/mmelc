@@ -1,3 +1,30 @@
+//Globals for this file. 
+
+var LICENSEDIR = '/data_l/'
+var DATADIR = '/data/'
+
+
+function get_all_users() {
+
+    var all_users = [];
+
+    var lic_users = get_from_disk(LICENSEDIR + 'Users.txt');
+    var preview_users = get_from_disk(DATADIR + 'Users.txt');
+
+    if ((!preview_users) || (!lic_users)) {
+        alert("Error: some error occurred. Please restart. if problem persists, contact an admin")
+        return;
+    }
+
+    var parsed_lic_users = JSON.parse(lic_users).Users
+    var parsed_preview_users = JSON.parse(preview_users).Users
+        //var all_users = parsed_lic_users.concat(parsed_preview_users)
+
+    return { 'license_users': parsed_lic_users, 'preview_users': parsed_preview_users }
+
+
+} //get_all_users. 
+
 function get_users() {
 
     var users = get_local_object("Users");
@@ -87,7 +114,6 @@ function loadInitialUsers() {
 } //loadInitUsers
 
 function createUser_go(dothis) {
-
 
     if (!dothis) {
 
@@ -227,6 +253,11 @@ function regSurvey() {
         }
         */
 
+        //var user_input = document.getElementById('input_createUser').value;
+
+        //var create_user_name = $.trim(user_input).replace(/ /g, '_'); //trim and add 'underscore'
+
+
         var survey_object = {}
 
         var arr1 = ['reg_name', 'reg_designation', 'reg_country_work', 'reg_email', 'reg_phone']
@@ -257,10 +288,9 @@ function regSurvey() {
 
         if (rtext !== "") {
             alert(rtext + " are required fields.")
-                //return;
+            return;
 
         }
-
 
 
         for (var i = 0; i < arr.length; i++) {
@@ -273,10 +303,50 @@ function regSurvey() {
 
         }
 
+        var user_ob = JSON.parse(localStorage.getItem('new_user_obj'))
+        survey_object['license_id'] = user_ob.license_id
+        survey_object['usb_id'] = user_ob.create_user
+
+        /*
+        //get license user. 
+        var license_id = "preview_user"
+        var mmelc = JSON.parse(localStorage.getItem('.mmelc'))
+
+        if (mmelc) {
+            license_id = mmelc.license['id']
+        }
+
+        survey_object['license_id'] = license_id;
+        survey_object['usb_id'] = create_user_name;
+
         //submit survey to the web. 
+
+        */
+
         console.log(survey_object)
-            //create user
-        createUser();
+
+        localStorage.setItem('new_user_survey', JSON.stringify(survey_object))
+
+        /*
+
+        submit_data_to_server(survey_object, '/usbuser/register', function(returnValue) {
+
+            console.log(returnValue);
+            //write data to file
+
+        }); //submit_data_to server
+
+        */
+
+        //create user
+
+        if (user_ob.license_id != "preview") {
+
+            createUser_new('license');
+
+        } else {
+            createUser_new('preview');
+        }
 
 
     } //try
@@ -286,21 +356,24 @@ function regSurvey() {
     }
 
 
-    createUser();
-
 } // reg_survey
 
 function logUserOut() {
 
     var current_user = localStorage.getItem('logged_in');
 
-    var current_user_data = JSON.parse(localStorage.getItem(JSON.parse(current_user)));
+    var current_user_data = JSON.parse(localStorage.getItem(current_user));
 
     //alert(('logUserOut:' + current_user_data));
 
     if (typeof(current_user_data) === 'object' && (current_user_data !== null)) {
 
         set_local_object('logged_in', 'nobody');
+        /* clear  */
+
+        //localStorage.clear("logged_in", JSON.stringify(user_name));
+        localStorage.clear(current_user);
+        localStorage.clear('module_config');
 
         setTimeout(function() { window.location.href = "/content/index.html?logout=nobody" }, 100);
 
@@ -334,9 +407,8 @@ function logUser(user_name) {
     //alert('log_user' + user_name);
     //store user name as current user 
 
-    // localStorage.setItem("Current_User", JSON.stringify(user_name));
-    localStorage.setItem("logged_in", JSON.stringify(user_name));
-
+    localStorage.setItem("logged_in", user_name);
+    localStorage.setItem("Current_User", user_name);
 
     if (!get_local_object(user_name)) {
 
@@ -359,25 +431,6 @@ function logUser(user_name) {
 }
 
 
-
-/* On each inner page, on windows logged in. 
-
-		function path_session() {
-
-			var logged_in_user = JSON.parse(localStorage.getItem('logged_in')) ; 
-			if(!logged_in_user) return false 
-			return logged_in user 
-			} 
-
-		function load_progress() {
-			
-			var user_object = JSON.parse(localStorage.getItem('logged_in')) ; 
-		}
-
-}
-
-
-*/
 
 
 function loadHistory() {
@@ -440,6 +493,220 @@ function populateUserTable(user_array, table, rows, cells, content) {
     }
     return table;
 } //function populate table 
+
+function createUser_new(user_type) {
+    //user_type is 'license' or 'preview'
+
+    var data_dir = LICENSEDIR
+
+    if (user_type != 'license') {
+        user_type = 'preview'
+        data_dir = DATADIR
+    }
+
+    localStorage.setItem('data_dir', data_dir)
+
+    /* get new user object and survey data from local storage */
+    var new_user_obj = JSON.parse(localStorage.getItem('new_user_obj'));
+    var new_user_obj_survey = JSON.parse(localStorage.getItem('new_user_survey'));
+    var create_user = new_user_obj['username']
+
+    /* update the User.txt object  */
+    var users_file = get_from_disk(data_dir + 'Users.txt') // string
+
+    if (users_file) {
+        var users = JSON.parse(users_file)
+
+    } else {
+        alert("Error: Could not find the file to create users. please contact admin")
+    }
+
+    if ($.isArray(users)) {
+        var new_users = users
+
+    } else { var new_users = users['Users'] }
+
+    //alert(new_users);
+
+    var user_exists = $.inArray(create_user, new_users); //(value, in_thisarray)
+
+    if (user_exists === -1 && create_user !== "") {
+
+        new_users.push(create_user);
+
+        //get skeleton object from the file and load. 
+
+        var base = get_from_disk(data_dir + 'base_user_config.txt'); //returns 
+
+        var new_user = JSON.parse(base);
+
+        //add new user_objects. 
+
+        new_user['username'] = new_user_obj['username']
+        new_user['password'] = new_user_obj['password']
+        new_user['recovery_email'] = new_user_obj['recovery_email']
+        new_user['license_id'] = new_user_obj['license_id']
+        new_users['submit_status'] == 'confirmed'
+
+
+        /*
+
+
+            var new_user_obj = {
+                "username": newuser_name,
+                "password": newuser_pass,
+                "recovery_email": newuser_recovery_email,
+                "license_id": newuser_license_id
+            }
+
+        */
+
+
+
+
+        /*submit to the server after adding some additional objects.  */
+
+        new_user_obj_survey['usb_user_name'] = new_user['username']
+        new_user_obj_survey['usb_user_password'] = new_user['password']
+        new_user_obj_survey['usb_user_recovery_email'] = new_user['recovery_email']
+        new_user_obj_survey['usb_user_user_type'] = user_type
+        new_user_obj_survey['usb_id'] = 'testusb_id_generate_random'
+
+        localStorage.setItem('future_user_survey', JSON.stringify(new_user_obj_survey))
+
+        submit_data_to_server(new_user_obj_survey, '/usbuser/register', function(returnValue) {
+            console.log(returnValue);
+       
+            if (JSON.parse(returnValue).response != 'success') {
+                //add some error and change the user tmp. type to guest. 
+                res = JSON.parse(returnValue).details
+                alert(res)
+                if (user_type == 'license') {
+                    new_users['submit_status'] == 'pending'
+                   // alert('sorry - user could not be created')
+                    
+                }
+
+                return;
+
+            }// if error . 
+
+            /* clear the local objects that are no longer needed */
+            localStorage.removeItem('new_user_obj')
+            localStorage.removeItem('new_user_survey')
+
+            /*set new objects in localStorage. */
+
+            localStorage.setItem("Users", JSON.stringify(new_users))
+            localStorage.setItem(String(create_user), JSON.stringify(new_user))
+
+
+            /* write all of the new user objects to the disk. */
+            external.saveFile(data_dir+'Users.txt', { "Users": new_users } )
+            external.saveFile(data_dir+create_user + '.txt', new_user )
+
+            //update_on_disk(create_user + '_survey.txt', new_user_obj_survey); //js oject. not string.
+
+            /* finally log user in */
+            localStorage.setItem("logged_in", create_user);
+            localStorage.setItem("user_type", user_type); // "license" or "preview"
+            localStorage.setItem(create_user, JSON.stringify(new_user));
+
+            // note that the appropriate module conf get lodaded here. //
+            var mod_config = JSON.parse(get_from_disk(data_dir + 'module_conf.json'))
+            localStorage.setItem('module_config', JSON.stringify(mod_config));
+
+            setTimeout(function() { window.location.href = "home.html?user=" + create_user + "&user_type=" + user_type }, 500);
+
+            
+
+        }); //submit_data_to server
+
+
+
+
+        //setTimeout(function(){window.location.href="home.html?user="+create_user} , 500); 
+
+    } else {
+
+        alert("User already exists : please try a new name");
+
+    }
+
+}; //createUser_new
+
+
+function logUser_new(user_name, user_password, user_type) {
+
+    alert(user_name + ":" + user_password + ":" + user_type )
+
+    /*@@ user login @@ */
+
+    /* login the user  */
+    var data_dir = LICENSEDIR
+
+
+    if (user_type !== 'license') {
+        data_dir = DATADIR
+        user_type = "preview"
+
+    }
+
+    if (!user_name || !user_password) {
+        alert('Error: Username and Password is required')
+        return;
+    }
+
+    /* clear existing storage objects */
+    localStorage.clear("logged_in")
+    localStorage.clear("current_user")
+    localStorage.clear("user_type")
+
+    /* check if the user name and password exists */
+
+    var users_file = get_from_disk(data_dir + 'Users.txt') // string
+    var allusers = JSON.parse(users_file).Users
+
+    if (allusers.indexOf(user_name) == -1) {
+        alert("Sorry, Username : " + user_name + " is not a valid user")
+        return;
+    }
+
+    var user_obj = JSON.parse(get_from_disk(data_dir + user_name + '.txt'))
+
+    if (!user_obj || user_obj == undefined) {
+        alert("Sorry, Username : " + user_name + " is not a valid user")
+        return;
+
+    } else {
+
+        /* verify password and log uer in. */
+
+        var pw = user_obj.password
+        console.log(user_obj)
+        if (pw != user_password) {
+            alert("Sorry, Wrong Passwrod. Please try again")
+            return;
+
+        } else {
+            /* finally log user in */
+            localStorage.setItem("logged_in", user_name);
+            localStorage.setItem("user_type", user_type); // "license" or "preview"
+            localStorage.setItem(user_name, JSON.stringify(user_obj));
+
+            // note that the appropriate module conf get lodaded here. //
+            var mod_config = JSON.parse(get_from_disk(data_dir + 'module_conf.json'))
+            localStorage.setItem('module_config', JSON.stringify(mod_config));
+
+            setTimeout(function() { window.location.href = "home.html?user=" + user_name + "&user_type=" + user_type }, 500);
+
+        }
+
+
+
+    };
+
+} //loguser new
 
 
 

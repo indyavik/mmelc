@@ -9,8 +9,8 @@
     <script src="js/main.js"></script>
     <script src="js/main-2.js"></script>
     <script src="js/pxl-fullslide.js"></script>
-
-
+    <script src="/content/js/preview.js"></script>
+    <script src="/content/js/lics.js"></script>
 
 
 </head>
@@ -72,24 +72,194 @@
                                     <h1>Welcome to the Malaria Microscopy e-Learning Course!</h1>
                                     <br>
 
-                                    <h3>Select an option below to get started.</h3>
+                                    <div id="selectors">
+
+
+                                        <button id="existing-users" style="margin-right:10px;width:200px; height:50px;background:chartreuse;">Existing Users</button>
+                                        <button id="create-users" style="margin-right:100px;width:200px; height:50px;background:grey;">Create New User</button>
+                                        <span id="verify-license" style="margin-right:100px;width:200px;">Verify License</span>
+                                        <hr>
+
+
+                                    </div>
+                                    <!-- selectors -->
 
 
                                     <div id="MainTable" class="main_table" style="margin-left:20px; margin-top:20px; min-height:10px; ">
 
+                                        <table style="min-width:500px;background-color: transparent">
+                                            <th style="background-color:white;">
+                                                <p>Select user ( licensed version ) </p>
+                                            </th>
+                                            <th style="background-color:white;">
+                                                <p>Select user ( preview version )</p>
+                                            </th>
+                                            <tr>
+                                                <td style="min-width:200px; background:transparent;">
+
+                                                    <select id="license-user" style="min-width:150px;"></select>
+
+                                                </td>
+
+                                                <td style="min-width:200px;background:transparent;">
+
+                                                    <select id="preview-id" style="min-width:150px;"></select>
+
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td style="background:transparent;"><input type="text" id="license_user_pw" name="license_user_pw" placeholder="password"><br> </td>
+
+                                                <td style="background:transparent;"><input type="text" id="preview_user_pw" name="license_user_pw" placeholder="password"><br>
+                                                </td>
+
+                                            </tr>
+                                            <tr>
+                                                <td style="background:transparent;"><button id="mainEntryLicense" class="button_main_entry_2" onclick="logUser_new_feed('license')">Login Licensed User</button></td>
+                                                <td style="background:transparent;"><button id="mainEntryPreview" class="button_main_entry_2" onclick="logUser_new_feed('preview')">Login Guest</button></td>
+
+
+                                            </tr>
+                                        </table>
+
+                                        <!--
                                         <button id="mainEntryLicense" class="button_main_entry" onclick="verifyLicense_div()">Enter License</button>
                                         <button id="mainEntry" class="button_main_entry" onclick="mainEntry('preview')">Preview Version</button>
+                                        -->
 
+                                        <hr>
 
                                         <div id="div_createUser" style="display:none">
                                             <h2>Enter a user name and click "Go"</h2>
 
                                             <input type="text" placeholder="Enter a username" name="some_name" id="input_createUser" maxlength="15" style="width:200px; height:50px; border: solid 1px #9598a0; font-size:18px;">
 
-
                                             <button id="createUser_go" class="button_create_user_go" onclick="createUser()">GO</button>
 
                                             <br></br>
+                                            <p>hi</p>
+
+                                            <input type="button" id="cancel_me" value="Click here to cancel" onClick="window.location.reload()"> login_selected_User('lic')
+
+                                        </div>
+
+                                    </div>
+                                    <!-- main table -->
+
+                                    <div id="div_verify_license" style="display:none ">
+                                        <p>Enter your License key and click "Go "<span style="color:blue; margin-left:10px;"><a href="#" onclick="window.location.reload();">Cancel</a></span></p>
+                                        
+                                        <P id="verify_license_response" style="color:blue;"></P>
+                                        <input type="text" placeholder="Enter License key" name="license_key_to_verify" id="license_key_to_verify" maxlength="25 " style="width:200px; height:50px; border: solid 1px #9598a0; font-size:18px; ">
+
+                                        <button id="createUser_go" class="button_create_user_go" onclick="verifyLicense()">GO</button>
+
+                                        <br></br>
+
+
+                                    </div>
+
+
+                                    <div id="create-user-form" style="display:none; margin-left:50px;">
+
+                                        <script>
+                                            function showForm(form_type) {
+                                                //alert(form_type)
+                                                if (!form_type) form_type = 'license'
+                                                document.getElementById('div_createUser_' + form_type).style.display = 'block';
+                                                document.getElementById('MainTable').style.display = 'none';
+                                                document.getElementById('select-radios').style.display = 'none';
+
+
+
+                                            }
+
+                                            function enterLicense() {
+
+                                                $("#div_verify_license").show();
+                                                $("#div_createUser_license").hide();
+
+                                            }
+
+                                            function afterVerifyLicense() {
+
+                                                $("#div_createUser_license").show();
+                                                $("#div_verify_license").hide();
+
+                                            }
+                                        </script>
+
+
+
+                                        <div id="select-radios" style="margin-top:50px;">
+                                            <p>Select a user type :</p>
+
+                                            <label><input type="radio" value="license" onclick="showForm('license');" name="select-type">License</label>
+                                            <label><input type="radio" value="preview" onclick="showForm('preview');" name="select-type">Preview</label>
+
+                                        </div>
+                                        <!-- select-radios -->
+                                        <div id="div_createUser_license" style="display:none;">
+                                            <p id="div_createUser_license_form_message"> </p>
+
+                                            <div id="div_createUser_license_form" style="display:block;">
+
+
+                                                <p>1. Enter a user name </p>
+                                                <input type="text" placeholder="Enter a username" name="input_createUser_license" id="input_createUser_license" maxlength="15" style="width:200px; height:30px; border: solid 1px #9598a0; font-size:12px;">
+                                                <p>2. Enter a password (Optional: PW recovery is not possible without connectivity) </p>
+                                                <input type="text" placeholder="Optional Password" name="input_createUser_password_license" id="input_createUser_password_license" maxlength="15" style="width:200px; height:30px; border: solid 1px #9598a0; font-size:12px;">
+                                                <p>3. Email for password recovery </p>
+                                                <input type="text" placeholder="Optional Recovery Email" name="input_createUser_email_license" id="input_createUser_email_license" maxlength="15" style="width:200px; height:30px; border: solid 1px #9598a0; font-size:12px;">
+
+                                                <p>4. Select and existing License <span style="margin-left:20px;"><a href="#" onclick="enterLicense()">Enter New License Key</a></span></p>
+                                                <select id="select-license" style="display:block;">
+                                                
+                                                
+                                                  </select>
+
+
+                                                <p></p>
+                                                <p></p>
+
+                                                <button id="createUser_lic" style="margin-left:0px;" onclick="createUser_lic()">GO</button>
+                                                <p style="margin-left:0px;"><span style="color:blue;" onClick="window.location.reload()"> ( cancel )</span></p>
+
+                                                <p></p>
+
+
+                                            </div>
+                                            <!-- div_createUser_license_form -->
+
+                                        </div>
+                                        <!-- div_createUser_license -->
+
+                                        <div id="div_createUser_preview" style="display:none">
+
+                                            <div id="div_createUser_license_form_preview" style="display:block;">
+
+
+                                                <p>1. Enter a user name </p>
+                                                <input type="text" placeholder="Enter a username" name="input_createUser_preview" id="input_createUser_preview" maxlength="15" style="width:200px; height:30px; border: solid 1px #9598a0; font-size:12px;">
+                                                <p>2. Enter a password (Optional: PW recovery is not possible without connectivity) </p>
+                                                <input type="text" placeholder="Optional Password" name="input_createUser_password_preview" id="input_createUser_password_preview" maxlength="15" style="width:200px; height:30px; border: solid 1px #9598a0; font-size:12px;">
+                                                <p>3. Email for password recovery </p>
+                                                <input type="text" placeholder="Optional Recovery Email" name="input_createUser_email_preview" id="input_createUser_email_preview" maxlength="15" style="width:200px; height:30px; border: solid 1px #9598a0; font-size:12px;">
+
+
+
+                                                <p></p>
+                                                <p></p>
+
+                                                <button id="createUser_preview" style="margin-left:0px;" onclick="createUser_preview()">GO</button>
+                                                <p style="margin-left:0px;"><span style="color:blue;" onClick="window.location.reload()"> ( cancel )</span></p>
+
+                                                <p></p>
+
+
+                                            </div>
+
+
 
                                             <input type="button" id="cancel_me" value="Click here to cancel" onClick="window.location.reload()">
 
@@ -97,39 +267,213 @@
 
                                         </div>
 
-                                    </div>
-
-
-
-                                    <div id="tablearea" clss="dynamic_table" style="margin-left:40px;">
-
-
-
-                                        <h4 id="numLicense">
-
-                                            License used : 0 out of 0.</h4>
-                                    </div>
-                                    <br>
-                                    <div>
-                                        <a href="" onclick="enterLicense()">Enter New License Key</a>
-                                    </div>
-
-                                    <div id="div_verify" style="display:none">
-                                        <h2>Enter your License key and click "Go"</h2>
-
-                                        <input type="text" placeholder="Enter License key" name="license_key" id="license_key" maxlength="25" style="width:200px; height:50px; border: solid 1px #9598a0; font-size:18px;">
-
-
-                                        <button id="createUser_go" class="button_create_user_go" onclick="verifyLicense()">GO</button>
-
-                                        <br></br>
-
-
-
-
 
                                     </div>
-                                    <!-- verify license.
+                                    <!-- create-user-form -->
+
+                                    <div id="reg_survey" style="display:none; margin-top:10px;">
+                                        <p><span style="font-size:18px; color:black;">Step 2: Please complete the survey</span>
+                                            <!-- <span style="margin-left:300px;" onclick="createUser_go('skip')">SKIP</span></p> -->
+
+                                            <div id="wrap_reg_survey" style="margin-left:50px; margin-right:100px;">
+
+                                                <table class="table_reg_survey">
+                                                    <tr>
+                                                        <td>
+                                                            <span>Name: </span> <span><input type="text" placeholder="None" name="name" id="reg_name" maxlength="15"></span>
+
+                                                        </td>
+                                                        <td>
+                                                            <span>Designation: </span> <span><input type="text" placeholder="None" name="reg_designation" id="reg_designation" maxlength="15"></span>
+
+                                                        </td>
+
+
+                                                    </tr>
+
+                                                    <tr>
+                                                        <td>
+                                                            <span>Country of work: </span> <span><input type="text" placeholder="None" name="reg_country_work" id="reg_country_work" maxlength="15">
+                                                            </span>
+
+                                                        </td>
+                                                        <td>
+                                                            <span>Contact Email: </span> <span><input type="text" placeholder="None" name="reg_email" id="reg_email" maxlength="15"> </span>
+
+                                                        </td>
+
+
+                                                    </tr>
+
+                                                    <tr>
+                                                        <td>
+                                                            <span>Contact Phone: </span> <span><input type="text" placeholder="None" name="reg_phone" id="reg_phone" maxlength="15">
+                                                                </span>
+
+                                                        </td>
+                                                        <td style="width:200px;">
+                                                            <span>Gender: </span>
+                                                            <span>
+                                                                    <select id="gender">
+                                                                            <option value="1" selected="selected">Prefer not to ans</option>
+                                                                            <option value="2">Male</option>
+                                                                            <option value="3">Female</option>
+                                                                        
+                                                                          </select>
+
+                                                            </span>
+
+                                                        </td>
+
+
+                                                    </tr>
+
+                                                    <tr>
+                                                        <td>
+                                                            <span>Access to internet: </span>
+                                                            <span>
+                                                                        <select id="accessinternet">
+                                                                                <option value="0" selected="selected">Home</option>
+                                                                                <option value="1">Work</option>
+                                                                                <option value="2">Internet Cafe</option>
+                                                                                <option value="3">Mobile HotSpot</option>
+                                                                                <option value="4">Other</option>
+                                                                            
+                                                                              </select>
+                                                                    
+                                                                </span>
+
+                                                        </td>
+                                                        <td style="width:200px;">
+                                                            <span>Age Range: </span>
+                                                            <span>
+                                                                    <select id="age">
+                                                                            <option value="1" selected="selected">Prefer not to ans</option>
+                                                                            <option value="2"><20></option>
+                                                                            <option value="3">20-29</option>
+                                                                            <option value="4">30-39</option>
+                                                                            <option value="5">40-49</option>
+                                                                            <option value="6">50-59</option>
+                                                                            <option value="6">60-59</option>
+                                                                            <option value="7">>70</option>
+                                                                        
+                                                                          </select>
+    
+                                                                </span>
+
+                                                        </td>
+
+
+                                                    </tr>
+
+                                                    <tr>
+                                                        <td>
+                                                            <span>Workplace: </span>
+                                                            <span>
+                                                                    <select id="workplace">
+                                                                            <option value="1" selected="selected">Prefer not to ans</option>
+                                                                            <option value="2">Private/Not for Profit/Government</option>
+                                                                            <option value="3">Health Center</option>
+                                                                            <option value="4">Hospital</option>
+                                                                            <option value="5">College/University</option>
+                                                                            <option value="6">National referce laboratory</option>
+                                                                            <option value="6">Research institute</option>
+                                                                            <option value="7">NGO</option>
+                                                                            <option value="6">Other..</option>
+                                                                           
+                                                                        
+                                                                          </select>
+                                                                        
+                                                                    </span>
+
+                                                        </td>
+                                                        <td style="width:200px;">
+                                                            <span>Education Level: </span>
+                                                            <span>
+                                                                    <select id="education">
+                                                                            <option value="1" selected="selected">Prefer not to ans</option>
+                                                                            <option value="2">Certificate</option>
+                                                                            <option value="3">Diplome</option>
+                                                                            <option value="4">Bachelor's degree</option>
+                                                                            <option value="5">Master's degree</option>
+                                                                            <option value="6">PhD</option>
+                                                                            <option value="6">Other..</option>
+                                                                           
+                                                                        
+                                                                          </select>
+        
+                                                                    </span>
+
+                                                        </td>
+
+
+                                                    </tr>
+
+                                                    <tr>
+                                                        <td>
+                                                            <span>Current certification level: </span>
+                                                            <span>
+                                                                        <select id="certificationlevel">
+                                                                                <option value="0" selected="selected">0</option>
+                                                                                <option value="1">1</option>
+                                                                                <option value="2">2</option>
+                                                                                <option value="3">3</option>
+                                                                                <option value="4">4</option>
+                                                                            
+                                                                              </select>
+                                                                            
+                                                                        </span>
+
+                                                        </td>
+                                                        <td style="width:200px;">
+
+
+                                                        </td>
+
+
+                                                    </tr>
+
+                                                </table>
+
+                                                <br>
+
+                                                <hr>
+
+
+
+
+                                                <p style="margin-top:10px; margin-bottom:10px;"></p>
+
+                                                <span>Malaria microscopy refresher training in last 2 years: </span>
+
+                                                <select id="refresher">
+                                                        <option value="1">Yes</option>
+                                                        <option value="2" selected="selected">No</option>
+                                                    
+                                                      </select>
+
+                                                </br>
+
+                                                <br>
+                                                <span style="margin-top:20px; margin-left:10px;">If yes for above how many years ?: </span><input type="text" placeholder="years" name="refresher_years" id="refresher_years" maxlength="5">
+
+
+                                                <p></p>
+
+
+                                                <p style="margin-bottom:10px;"></p>
+                                                <hr>
+                                                <button id="createUser_go" class="button_create_user_go" style="min-width:100px;" onclick="regSurvey()">Submit Survey and Create User</button>
+
+
+                                            </div>
+                                            <!-- wrap survey div-->
+
+                                            <br>
+
+
+
+                                            <!-- verify license.
 
                                 </div>
                             </div>
@@ -142,44 +486,44 @@
 
 
 
-                                    <style>
-                                        #content-inner {
-                                            padding: 0;
-                                            margin: 0;
-                                            width: 100%
-                                        }
-                                        
-                                        body {
-                                            margin: 0;
-                                        }
-                                    </style>
+                                            <style>
+                                                #content-inner {
+                                                    padding: 0;
+                                                    margin: 0;
+                                                    width: 100%
+                                                }
+                                                
+                                                body {
+                                                    margin: 0;
+                                                }
+                                            </style>
 
 
-                                    <script>
-                                    </script>
+                                            <script>
+                                            </script>
 
+
+                                    </div>
+                                    <!-- div conent inner-->
 
                                 </div>
-                                <!-- div conent inner-->
+                                <!-- div content -->
+
+                                <div id="footer " style="min-height: 50px; ">
+                                    <div style="height:10px;width:100%;background-color: #00AFEF ">
+
+                                    </div>
+
+                                    <div style="width: 100%; display: table; ">
+                                    </div>
+                                </div>
+
+
 
                             </div>
-                            <!-- div content -->
-
-                            <div id="footer " style="min-height: 50px; ">
-                                <div style="height:10px;width:100%;background-color: #00AFEF ">
-
-                                </div>
-
-                                <div style="width: 100%; display: table; ">
-                                </div>
-                            </div>
-
-
+                            <!-- div footer -->
 
                         </div>
-                        <!-- div footer -->
-
-                    </div>
 
 </body>
 
@@ -189,12 +533,30 @@
     <script src="/content/js/main.js " type="text/javascript "></script>
     <script src="/content/js/autoload.js " type="text/javascript "></script>
     <script src="/content/js/lics.js " type="text/javascript "></script>
-    <script src="/content/js/preview.js"></script>
+    <script src="/content/js/preview.js "></script>
 
     <script>
         var mmelc = JSON.parse(get_from_disk('/data_l/' + '.mmelc'))
 
+        var available_lic = []
+
         if (mmelc) {
+
+
+
+            var lic = mmelc.license
+
+            for (var i = 0; i < lic.length; i++) {
+
+                if (lic[i].seats > lic[i].used) {
+
+                    available_lic.push(lic[i].id)
+
+                }
+
+            }
+
+            /*
 
             var id = mmelc['license'].id
             var seats = mmelc['license'].seats
@@ -202,12 +564,237 @@
             var left = seats - used
             var msg = 'License used: ' + used + ' of ' + seats
 
+            
             document.getElementById('mainEntryLicense').innerHTML = id;
             document.getElementById('numLicense').innerHTML = msg;
             //document.getElementById('mainEntryLicense').onclick = mainEntry;
-            document.getElementById('mainEntryLicense').setAttribute("onClick", "javascript: mainEntry('licence');");
+            document.getElementById('mainEntryLicense').setAttribute("onClick ", "javascript: mainEntry( 'licence'); ");
+
+            */
 
         }
+
+        //create select box for lic users. 
+
+        var sel_lic = document.getElementById('select-license');
+
+        if (available_lic.length > 0) {
+
+            for (var i = 0; i < available_lic.length; i++) {
+                var opt = document.createElement('option');
+                opt.innerHTML = available_lic[i];
+                opt.value = available_lic[i];
+                sel_lic.appendChild(opt);
+
+            }
+
+
+            /*
+            document.getElementById('div_createUser_license_form').style.display = 'none';
+            document.getElementById('div_createUser_license_form_message').innerHTML = 'Please verify a license first';
+            */
+
+        } else {
+            //set display to none. 
+            document.getElementById('div_createUser_license_form').style.display = 'none';
+            document.getElementById('div_createUser_license_form_message').innerHTML = 'Please verify a license first';
+
+        }
+
+
+
+        var users = get_all_users();
+        var lic_users = users.license_users
+        var preview_users = users.preview_users
+
+        var sel = document.getElementById('license-user');
+
+        for (var i = 0; i < lic_users.length; i++) {
+            var opt = document.createElement('option');
+            opt.innerHTML = lic_users[i];
+            opt.value = lic_users[i];
+            sel.appendChild(opt);
+        }
+
+        var sel2 = document.getElementById('preview-id');
+        for (var i = 0; i < preview_users.length; i++) {
+            var opt = document.createElement('option');
+            opt.innerHTML = preview_users[i];
+            opt.value = preview_users[i];
+            sel2.appendChild(opt);
+        }
+    </script>
+
+
+    <script>
+        $("#existing-users").click(function() {
+
+            $("#MainTable").show();
+            $("#create-user-form").hide();
+            $("#div_verify_license").hide();
+            $("#existing-users").css("background-color", "green");
+            $("#create-users").css("background-color", "grey");
+
+
+        });
+
+        $("#create-users").click(function() {
+
+            $("#MainTable").hide();
+            $("#create-user-form").show();
+            $("#div_verify_license").hide();
+            $("#existing-users").css("background-color", "grey");
+            $("#create-users").css("background-color", "green");
+
+
+            /*
+
+
+            urlExists(function(exists) {
+                //do more stuff based on the boolean value of exists
+                alert(exists)
+
+            });
+
+
+            */
+
+            /*
+
+            console.log('clicked')
+
+           
+            function cb(returnValue) {
+                console.log('returned is :');
+                console.log(returnValue);
+
+                if (returnValue) {
+                    //show user form. 
+                    $("#MainTable").hide();
+                    $("#create-user-form").show();
+                    $("#div_verify_license").hide();
+                    $("#existing-users").css("background-color", "grey");
+                    $("#create-users").css("background-color", "green");
+
+                } else {
+                    return;
+                }
+
+
+            }
+
+            urlExists(cb);
+
+            */
+
+
+        }); //on click create user
+
+
+
+        $("#verify-license").click(function() {
+
+            $("#MainTable").hide();
+            $("#create-user-form").hide();
+            $("#div_verify_license").show();
+            $("#existing-users").css("background-color", "grey");
+            $("#create-users").css("background-color", "grey");
+
+
+
+        });
+
+        function createUser_preview() {
+            //clear any earlier local objects 
+            localStorage.removeItem('new_user_obj')
+            localStorage.removeItem('new_user_survey')
+
+            var newuser_name = document.getElementById('input_createUser_preview').value
+            var newuser_pass = document.getElementById('input_createUser_password_preview').value
+            var newuser_recovery_email = document.getElementById('input_createUser_email_preview').value
+
+            var new_user_obj = {
+                "username": newuser_name,
+                "password": newuser_pass,
+                "recovery_email": newuser_recovery_email,
+                "license_id": 'preview'
+            }
+
+
+            if (!newuser_name) {
+                alert("Username is required")
+                return;
+            }
+
+            localStorage.setItem('new_user_obj', JSON.stringify(new_user_obj))
+
+            console.log(JSON.parse(localStorage.getItem('new_user_obj')))
+
+            $("#div_createUser_license_form_preview").hide();
+            $("#reg_survey").show();
+
+
+        } //createUser_lic
+
+        function createUser_lic() {
+            //clear any earlier local objects 
+            localStorage.removeItem('new_user_obj')
+            localStorage.removeItem('new_user_survey')
+
+            var newuser_name = document.getElementById('input_createUser_license').value
+            var newuser_pass = document.getElementById('input_createUser_password_license').value
+            var newuser_recovery_email = document.getElementById('input_createUser_email_license').value
+            var e = document.getElementById('select-license')
+            var newuser_license_id = e.options[e.selectedIndex].text
+
+            var new_user_obj = {
+                "username": newuser_name,
+                "password": newuser_pass,
+                "recovery_email": newuser_recovery_email,
+                "license_id": newuser_license_id
+            }
+
+            if (!newuser_license_id) {
+                alert('error: no-license-id')
+
+            }
+
+            if (!newuser_name) {
+                alert("Username is required")
+                return;
+            }
+
+            localStorage.setItem('new_user_obj', JSON.stringify(new_user_obj))
+
+            console.log(JSON.parse(localStorage.getItem('new_user_obj')))
+
+            $("#create-user-form").hide();
+            $("#reg_survey").show();
+
+
+        } //createUser_lic
+
+        function logUser_new_feed(user_type) {
+
+            var name_div_id = 'license-user'
+            var pw_div_id = 'license_user_pw'
+            var user_type = user_type
+            if (user_type == 'preview') {
+                name_div_id = 'preview-id'
+                pw_div_id = 'preview_user_pw'
+            }
+
+            var e = document.getElementById(name_div_id)
+            var user_name = e.options[e.selectedIndex].text
+
+            var user_pw = document.getElementById(pw_div_id).value
+
+
+            //call login with parameters. 
+
+            logUser_new(user_name, user_pw, user_type)
+
+        } // logUser_new_feed
     </script>
 
 

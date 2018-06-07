@@ -13,11 +13,67 @@ function verifyLicense_div() {
 
 }
 
+
 //backend python to verify the license. 
 
-function verifyLicense(license) {
+function verifyLicense() {
 
-    external.verifyLicense(license, verify_license_callback)
+    var license_key_to_verify = document.getElementById("license_key_to_verify").value
+
+    /*
+    verify key and write data. 
+    */
+
+    var mmelc = JSON.parse(get_from_disk('/data_l/' + '.mmelc'))
+
+    for (var i =0; i< mmelc.license.length; i++){ 
+        console.log(mmelc.license[i].id) 
+        if (license_key_to_verify == mmelc.license[i].id ){
+            alert("Key already verified")
+            return;
+        }
+    }
+
+    if (license_key_to_verify) {
+        var submit_object = { "license_id": license_key_to_verify }
+    }
+
+    submit_data_to_server(submit_object, '/license/check', function(returnValue) {
+
+        returnValue = JSON.parse(returnValue)
+
+        if (returnValue.response == 'error') {
+
+            alert('Sorry, license could not be verified. please try again')
+
+
+        } else {
+
+            //write data to file
+            
+            var update_obj = {}
+            update_obj['id'] = license_key_to_verify
+            update_obj['seats'] = returnValue.response['seats']
+            update_obj['used'] = returnValue.response['used']
+
+            mmelc['license'].push(update_obj)
+
+            external.saveFile('/data_l/.mmelc', mmelc)
+
+            //alert('updating .mmelc')
+            document.getElementById('verify_license_response').innerHTML = 'License Key is verified'
+            
+
+        }
+
+
+
+
+
+    }); //submit_data_to server
+
+
+
 
 }
 
@@ -47,8 +103,6 @@ function mainEntry(button_id) {
     set some default parameters, and redirect to index appropriately.
 
     */
-
-
 
     function mod_error() {
 
