@@ -417,7 +417,7 @@ function load_certification_page(signal) {
         //load the main page of the module. 
 
         current_question = current_module + ".html"
-        alert('current_q: ' + current_question)
+            //alert('current_q: ' + current_question)
 
         var page_data = get_page_from_jquery(current_module + '/' + current_question)
 

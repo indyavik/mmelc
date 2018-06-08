@@ -647,10 +647,13 @@
             $("#MainTable").hide();
             document.getElementById('select-radios').style.display = 'block';
 
+
             document.getElementById("preview-radio").checked = false;
             document.getElementById("license-radio").checked = false;
 
             $("#create-user-form").show();
+            $("#div_createUser_license").hide();
+            $("#div_createUser_preview").hide();
 
             $("#div_verify_license").hide();
             $("#existing-users").css("background-color", "grey");

@@ -262,6 +262,37 @@ function create_final_cert_ans_key() {
 
 } // create_cert_ans
 
+function TEST_submit_cert_ans_to_server(payload, endpoint, method_type) {
+
+    //TEST_submit_cert_ans_to_server(payload, 'submitcert', 'POST')
+
+    if (!method_type) method_type = 'POST';
+    urlendpoint = 'http://localhost:8081/'
+
+    $.ajax({
+        type: method_type,
+        //url: POSTURLENDPOINT + 'submitcert',
+        url: urlendpoint + endpoint,
+        data: { 'payload': JSON.stringify(payload) },
+        success: function(json) {
+            // var result = json.user.login 
+            //alert("live results from server:" + json.status + ':' + json.result);
+            var res = JSON.parse(json)
+            var to_show = 'Successfully submitted'
+            if (res.response !== 'success') to_show = res.details
+            alert(to_show)
+            return;
+
+        },
+        error: function() {
+            alert('Errror: Could not submit results to server. Please note down the keys displayed in this page.')
+            return;
+        }
+    });
+
+
+} //function to test things during development 
+
 function submit_cert_ans_to_server(cert_results) {
 
     var to_submit = {}
@@ -270,6 +301,11 @@ function submit_cert_ans_to_server(cert_results) {
     to_submit['cert_user_name'] = ans_object.cert_user_name
     to_submit['usb_user_name'] = ans_object.usb_user
     to_submit['usb_user_type'] = ans_object.usb_user_type
+    to_submit['cert_test_answer_key'] = cert_results['final_ans_key']
+    to_submit['cert_test_question_key'] = cert_results['final_questions_key']
+
+    //localStorage.setItem('payload', JSON.stringify(to_submit))
+
 
     $.ajax({
         type: 'POST',
@@ -278,7 +314,7 @@ function submit_cert_ans_to_server(cert_results) {
         //url: 'http://mmelc.vestigesystems.com/submitcert', 
 
         url: POSTURLENDPOINT + 'submitcert',
-        data: {'payload' : JSON.stringify(to_submit) },
+        data: { 'payload': JSON.stringify(to_submit) },
 
         success: function(json) {
             // var result = json.user.login 
@@ -286,22 +322,22 @@ function submit_cert_ans_to_server(cert_results) {
 
             var res = JSON.parse(json)
             var to_show = 'Successfully submitted'
-            if(res.response !== 'success') to_show = res.details 
+            if (res.response !== 'success') to_show = res.details
 
             alert(to_show)
 
             //save user's record for future. 
 
-            var user_obj = JSON.parse(get_from_disk('/data_l/' + ans_object.usb_user +'.txt'))
-            
-            if(user_obj){
+            var user_obj = JSON.parse(get_from_disk('/data_l/' + ans_object.usb_user + '.txt'))
+
+            if (user_obj) {
                 user_obj['cert_results'] = cert_results
                 user_obj['cert_user_name'] = to_submit['cert_user_name']
-                external.saveFile('/data_l/' + ans_object.usb_user +'.txt', user_obj )
+                external.saveFile('/data_l/' + ans_object.usb_user + '.txt', user_obj)
 
-                log_out_cert_user() 
+                log_out_cert_user()
 
-            
+
 
             }
 
