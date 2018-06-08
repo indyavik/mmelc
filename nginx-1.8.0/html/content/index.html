@@ -194,8 +194,8 @@
                                         <div id="select-radios" style="margin-top:50px;">
                                             <p>Select a user type :</p>
 
-                                            <label><input type="radio" value="license" onclick="showForm('license');" name="select-type">License</label>
-                                            <label><input type="radio" value="preview" onclick="showForm('preview');" name="select-type">Preview</label>
+                                            <label><input type="radio" id="license-radio" value="license" onclick="showForm('license');" name="select-type">License</label>
+                                            <label><input type="radio" id="preview-radio" value="preview" onclick="showForm('preview');" name="select-type">Preview</label>
 
                                         </div>
                                         <!-- select-radios -->
@@ -630,7 +630,11 @@
         $("#existing-users").click(function() {
 
             $("#MainTable").show();
+            $("#div_createUser_license").hide();
+            $("#div_createUser_preview").hide();
+
             $("#create-user-form").hide();
+
             $("#div_verify_license").hide();
             $("#existing-users").css("background-color", "green");
             $("#create-users").css("background-color", "grey");
@@ -641,7 +645,13 @@
         $("#create-users").click(function() {
 
             $("#MainTable").hide();
+            document.getElementById('select-radios').style.display = 'block';
+
+            document.getElementById("preview-radio").checked = false;
+            document.getElementById("license-radio").checked = false;
+
             $("#create-user-form").show();
+
             $("#div_verify_license").hide();
             $("#existing-users").css("background-color", "grey");
             $("#create-users").css("background-color", "green");
