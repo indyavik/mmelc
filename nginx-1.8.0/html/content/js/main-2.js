@@ -1,5 +1,6 @@
 //GLOBALS
-IGNORE_MODULES = ['Module-100', 'Module-8']
+IGNORE_MODULES = ['Module-100', 'Module-8' , 'Module-C']
+
 
 function update_user_object(objectName, updatedvalue) {
 
