@@ -323,7 +323,18 @@ function regSurvey() {
 
         var user_ob = JSON.parse(localStorage.getItem('new_user_obj'))
         survey_object['license_id'] = user_ob.license_id
-        survey_object['usb_id'] = user_ob.create_user
+
+        /* GET USB ID */
+
+        //var usb_id; 
+
+        var usb_id = JSON.parse(get_from_disk(LICENSEDIR + 'usb_id.json')).usb_id
+
+        if (!usb_id || usb_id ==undefined){
+            usb_id = 'NO-USB-ID'
+        }
+
+        survey_object['usb_id'] = usb_id
 
         /*
         //get license user. 
@@ -342,6 +353,7 @@ function regSurvey() {
         */
 
         console.log(survey_object)
+    
 
         localStorage.setItem('new_user_survey', JSON.stringify(survey_object))
 
@@ -585,7 +597,13 @@ function createUser_new(user_type) {
         new_user_obj_survey['usb_user_password'] = new_user['password']
         new_user_obj_survey['usb_user_recovery_email'] = new_user['recovery_email']
         new_user_obj_survey['usb_user_user_type'] = user_type
-        new_user_obj_survey['usb_id'] = 'testusb_id_generate_random'
+       
+        var usb_id = JSON.parse(get_from_disk(LICENSEDIR + 'usb_id.json')).usb_id
+
+        if (!usb_id || usb_id ==undefined){
+            usb_id = 'NO-USB-ID'
+        }
+        new_user_obj_survey['usb_id'] = usb_id
 
         localStorage.setItem('future_user_survey', JSON.stringify(new_user_obj_survey))
 
