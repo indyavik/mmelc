@@ -68,7 +68,7 @@
                                     <img src="images/Picture1.png" style="position: absolute;bottom: 10px;max-height: 45%;left:0;max-width:25%">
 									<img src="images/WELCOMMlogoFinal.png" style="position: absolute;top: 75px; max-height: 35%;left:5%;max-width:25%">
                                 </div>
-                                <div style="width:70%;display: inline-block;vertical-align: top;overflow:auto;max-height:calc(100% - 35px);">
+                                <div style="width:70%;display: inline-block;vertical-align: top;overflow:auto;height:calc(100% - 35px);">
                                     <h1>Welcome to the Worlwide E-Learning Course On Malaria Microscopy!</h1>
                                     <br>
 
@@ -76,13 +76,13 @@
                                 <!-- <button id="get-usb_id" style="margin-right:10px;width:200px; 
                                     height:50px;background:chartreuse;"  onclick="external.create_usb_id()">
                                     USB ID</button> -->
-
+								<p> Select a username below, or click the button to create a new user. Most course content is available in the preview version of the course, but access to assessment examinations is limited to licensed users.</p>
                                     <div id="selectors">
 
-
+							
                                         <button id="existing-users" style="margin-right:10px;width:200px; height:50px;background:chartreuse;">Existing Users</button>
                                         <button id="create-users" style="margin-right:100px;width:200px; height:50px;background:grey;">Create New User</button>
-                                        <span id="verify-license" style="margin-right:100px;width:200px;">Verify License</span>
+                                        <!-- <span id="verify-license" style="margin-right:100px;width:200px;">Verify License</span> -->
                                         <hr>
 
 
@@ -94,10 +94,10 @@
 
                                         <table style="min-width:500px;background-color: transparent">
                                             <th style="background-color:white;">
-                                                <p>Select user ( licensed version ) </p>
+                                                <p>Select User ( Licensed Version ) </p>
                                             </th>
                                             <th style="background-color:white;">
-                                                <p>Select user ( preview version )</p>
+                                                <p>Select user ( Preview Version )</p>
                                             </th>
                                             <tr>
                                                 <td style="min-width:200px; background:transparent;">
@@ -121,7 +121,7 @@
                                             </tr>
                                             <tr>
                                                 <td style="background:transparent;"><button id="mainEntryLicense" class="button_main_entry_2" onclick="logUser_new_feed('license')">Login Licensed User</button></td>
-                                                <td style="background:transparent;"><button id="mainEntryPreview" class="button_main_entry_2" onclick="logUser_new_feed('preview')">Login Guest</button></td>
+                                                <td style="background:transparent;"><button id="mainEntryPreview" class="button_main_entry_2" onclick="logUser_new_feed('preview')">Login Preview User</button></td>
 
 
                                             </tr>
@@ -137,7 +137,7 @@
                                         <div id="div_createUser" style="display:none">
                                             <h2>Enter a user name and click "Go"</h2>
 
-                                            <input type="text" placeholder="Enter a username" name="some_name" id="input_createUser" maxlength="15" style="width:200px; height:50px; border: solid 1px #9598a0; font-size:18px;">
+                                            <input type="text" placeholder="Enter a username" name="some_name" id="input_createUser" maxlength="40" style="width:200px; height:50px; border: solid 1px #9598a0; font-size:18px;">
 
                                             <button id="createUser_go" class="button_create_user_go" onclick="createUser()">GO</button>
 
@@ -152,7 +152,7 @@
                                     <!-- main table -->
 
                                     <div id="div_verify_license" style="display:none ">
-                                        <p>Enter your License key and click "Go "<span style="color:blue; margin-left:10px;"><a href="#" onclick="window.location.reload();">Cancel</a></span></p>
+                                        <p>Enter your License key and click "Go."  Internet access is required to verify the License key.  <span style="color:white; margin-left:10px;"><a href="#" onclick="window.location.reload();" style="color:white">Cancel</a></span></p>
 
                                         <P id="verify_license_response" style="color:blue;"></P>
                                         <input type="text" placeholder="Enter License key" name="license_key_to_verify" id="license_key_to_verify" maxlength="25 " style="width:200px; height:50px; border: solid 1px #9598a0; font-size:18px; ">
@@ -197,10 +197,11 @@
 
 
                                         <div id="select-radios" style="margin-top:50px;">
-                                            <p>Select a user type :</p>
+                                            <p>Select a user type.  A license key, which must be verified through the internet, is required for Licensed Users. You will enter the license key at the next step if you choose "Licensed User." </p>
 
-                                            <label><input type="radio" id="license-radio" value="license" onclick="showForm('license');" name="select-type">License</label>
-                                            <label><input type="radio" id="preview-radio" value="preview" onclick="showForm('preview');" name="select-type">Preview</label>
+                                            <label><input type="radio" id="license-radio" value="license" onclick="showForm('license');" name="select-type">Licensed User</label>
+											<br>
+                                            <label><input type="radio" id="preview-radio" value="preview" onclick="showForm('preview');" name="select-type">Preview User</label>
 
                                         </div>
                                         <!-- select-radios -->
@@ -208,16 +209,16 @@
                                             <p id="div_createUser_license_form_message"> </p>
 
                                             <div id="div_createUser_license_form" style="display:block;">
-
+												<span style="font-size:18px; color:white;">Step 1: Please enter user information for a Licensed User.</span>
 
                                                 <p>1. Enter a user name </p>
-                                                <input type="text" placeholder="Enter a username" name="input_createUser_license" id="input_createUser_license" maxlength="15" style="width:200px; height:30px; border: solid 1px #9598a0; font-size:12px;">
-                                                <p>2. Enter a password (Optional: PW recovery is not possible without connectivity) </p>
-                                                <input type="text" placeholder="Optional Password" name="input_createUser_password_license" id="input_createUser_password_license" maxlength="15" style="width:200px; height:30px; border: solid 1px #9598a0; font-size:12px;">
+                                                <input type="text" placeholder="Enter a username" name="input_createUser_license" id="input_createUser_license" maxlength="20" style="width:200px; height:30px; border: solid 1px #9598a0; font-size:12px;">
+                                                <p>2. Enter a password (Optional: password recovery is not possible without internet connectivity) </p>
+                                                <input type="text" placeholder="Optional Password" name="input_createUser_password_license" id="input_createUser_password_license" maxlength="20" style="width:200px; height:30px; border: solid 1px #9598a0; font-size:12px;">
                                                 <p>3. Email for password recovery </p>
-                                                <input type="text" placeholder="Optional Recovery Email" name="input_createUser_email_license" id="input_createUser_email_license" maxlength="15" style="width:200px; height:30px; border: solid 1px #9598a0; font-size:12px;">
+                                                <input type="text" placeholder="Optional Recovery Email" name="input_createUser_email_license" id="input_createUser_email_license" maxlength="254" style="width:200px; height:30px; border: solid 1px #9598a0; font-size:12px;">
 
-                                                <p>4. Select and existing License <span style="margin-left:20px;"><a href="#" onclick="enterLicense()">Enter New License Key</a></span></p>
+                                                <p>4. Select an existing License or <span style="margin-left:20px;"><a href="#" onclick="enterLicense()" style="color:white;">Click here to enter a New License Key</a></span></p>
                                                 <select id="select-license" style="display:block;">
                                                 
                                                 
@@ -227,9 +228,11 @@
                                                 <p></p>
                                                 <p></p>
 
-                                                <button id="createUser_lic" style="margin-left:0px;" onclick="createUser_lic()">GO</button>
-                                                <p style="margin-left:0px;"><span style="color:blue;" onClick="window.location.reload()"> ( cancel )</span></p>
-
+                                                <button id="createUser_lic" style="margin-left:0px;" onclick="createUser_lic()">Continue</button>
+                                                <!-- <p style="margin-left:0px;"><span style="color:blue;" onClick="window.location.reload()"> ( cancel )</span></p> -->
+												<br><br>
+												<input type="button" id="cancel_me" value="Click here to cancel" onClick="window.location.reload()">
+												
                                                 <p></p>
 
 
@@ -242,22 +245,22 @@
                                         <div id="div_createUser_preview" style="display:none">
 
                                             <div id="div_createUser_license_form_preview" style="display:block;">
-
+												<span style="font-size:18px; color:white;">Step 1: Please enter user information for a Preview User.</span>
 
                                                 <p>1. Enter a user name </p>
-                                                <input type="text" placeholder="Enter a username" name="input_createUser_preview" id="input_createUser_preview" maxlength="15" style="width:200px; height:30px; border: solid 1px #9598a0; font-size:12px;">
+                                                <input type="text" placeholder="Enter a username" name="input_createUser_preview" id="input_createUser_preview" maxlength="20" style="width:200px; height:30px; border: solid 1px #9598a0; font-size:12px;">
                                                 <p>2. Enter a password (Optional: PW recovery is not possible without connectivity) </p>
-                                                <input type="text" placeholder="Optional Password" name="input_createUser_password_preview" id="input_createUser_password_preview" maxlength="15" style="width:200px; height:30px; border: solid 1px #9598a0; font-size:12px;">
+                                                <input type="text" placeholder="Optional Password" name="input_createUser_password_preview" id="input_createUser_password_preview" maxlength="20" style="width:200px; height:30px; border: solid 1px #9598a0; font-size:12px;">
                                                 <p>3. Email for password recovery </p>
-                                                <input type="text" placeholder="Optional Recovery Email" name="input_createUser_email_preview" id="input_createUser_email_preview" maxlength="15" style="width:200px; height:30px; border: solid 1px #9598a0; font-size:12px;">
+                                                <input type="text" placeholder="Optional Recovery Email" name="input_createUser_email_preview" id="input_createUser_email_preview" maxlength="254" style="width:200px; height:30px; border: solid 1px #9598a0; font-size:12px;">
 
 
 
                                                 <p></p>
                                                 <p></p>
 
-                                                <button id="createUser_preview" style="margin-left:0px;" onclick="createUser_preview()">GO</button>
-                                                <p style="margin-left:0px;"><span style="color:blue;" onClick="window.location.reload()"> ( cancel )</span></p>
+                                                <button id="createUser_preview" style="margin-left:0px;" onclick="createUser_preview()">Continue</button>
+                                                <!-- <p style="margin-left:0px;"><span style="color:blue;" onClick="window.location.reload()"> ( cancel )</span></p> -->
 
                                                 <p></p>
 
@@ -277,7 +280,7 @@
                                     <!-- create-user-form -->
 
                                     <div id="reg_survey" style="display:none; margin-top:10px;">
-                                        <p><span style="font-size:18px; color:black;">Step 2: Please complete the survey</span>
+                                        <p><span style="font-size:18px; color:white;">Step 2: Please complete the survey</span>
                                             <!-- <span style="margin-left:300px;" onclick="createUser_go('skip')">SKIP</span></p> -->
 
                                             <div id="wrap_reg_survey" style="margin-left:50px; margin-right:100px;">
@@ -285,11 +288,11 @@
                                                 <table class="table_reg_survey">
                                                     <tr>
                                                         <td>
-                                                            <span>Name: </span> <span><input type="text" placeholder="None" name="name" id="reg_name" maxlength="15"></span>
+                                                            <span>Name: </span> <span><input type="text" placeholder="Required" name="name" id="reg_name" maxlength="40"></span>
 
                                                         </td>
                                                         <td>
-                                                            <span>Designation: </span> <span><input type="text" placeholder="None" name="reg_designation" id="reg_designation" maxlength="15"></span>
+                                                            <span>Designation or Title: </span> <span><input type="text" placeholder="None" name="reg_designation" id="reg_designation" maxlength="40"></span>
 
                                                         </td>
 
@@ -298,12 +301,12 @@
 
                                                     <tr>
                                                         <td>
-                                                            <span>Country of work: </span> <span><input type="text" placeholder="None" name="reg_country_work" id="reg_country_work" maxlength="15">
+                                                            <span>Country of work: </span> <span><input type="text" placeholder="None" name="reg_country_work" id="reg_country_work" maxlength="40">
                                                             </span>
 
                                                         </td>
                                                         <td>
-                                                            <span>Contact Email: </span> <span><input type="text" placeholder="None" name="reg_email" id="reg_email" maxlength="15"> </span>
+                                                            <span>Contact Email: </span> <span><input type="text" placeholder="Required" name="reg_email" id="reg_email" maxlength="254"> </span>
 
                                                         </td>
 
@@ -312,7 +315,7 @@
 
                                                     <tr>
                                                         <td>
-                                                            <span>Contact Phone: </span> <span><input type="text" placeholder="None" name="reg_phone" id="reg_phone" maxlength="15">
+                                                            <span>Contact Phone: </span> <span><input type="text" placeholder="None" name="reg_phone" id="reg_phone" maxlength="40">
                                                                 </span>
 
                                                         </td>
@@ -335,7 +338,7 @@
 
                                                     <tr>
                                                         <td>
-                                                            <span>Access to internet: </span>
+                                                            <span>Primary access to internet while taking course: </span>
                                                             <span>
                                                                         <select id="accessinternet">
                                                                                 <option value="0" selected="selected">Home</option>
@@ -359,8 +362,8 @@
                                                                             <option value="4">30-39</option>
                                                                             <option value="5">40-49</option>
                                                                             <option value="6">50-59</option>
-                                                                            <option value="6">60-59</option>
-                                                                            <option value="7">>70</option>
+                                                                            <option value="7">60-59</option>
+                                                                            <option value="8">>70</option>
                                                                         
                                                                           </select>
     
@@ -377,14 +380,13 @@
                                                             <span>
                                                                     <select id="workplace">
                                                                             <option value="1" selected="selected">Prefer not to ans</option>
-                                                                            <option value="2">Private/Not for Profit/Government</option>
-                                                                            <option value="3">Health Center</option>
-                                                                            <option value="4">Hospital</option>
-                                                                            <option value="5">College/University</option>
-                                                                            <option value="6">National referce laboratory</option>
+                                                                            <option value="2">Health Center</option>
+                                                                            <option value="3">Hospital</option>
+                                                                            <option value="4">College/University</option>
+                                                                            <option value="5">National reference laboratory</option>
                                                                             <option value="6">Research institute</option>
                                                                             <option value="7">NGO</option>
-                                                                            <option value="6">Other..</option>
+                                                                            <option value="8">Other</option>
                                                                            
                                                                         
                                                                           </select>
@@ -398,11 +400,11 @@
                                                                     <select id="education">
                                                                             <option value="1" selected="selected">Prefer not to ans</option>
                                                                             <option value="2">Certificate</option>
-                                                                            <option value="3">Diplome</option>
+                                                                            <option value="3">Diploma</option>
                                                                             <option value="4">Bachelor's degree</option>
                                                                             <option value="5">Master's degree</option>
                                                                             <option value="6">PhD</option>
-                                                                            <option value="6">Other..</option>
+                                                                            <option value="7">Other</option>
                                                                            
                                                                         
                                                                           </select>
@@ -415,15 +417,31 @@
                                                     </tr>
 
                                                     <tr>
+													    <td>
+															<span>Workplace Type: </span>
+                                                            <span>
+                                                                    <select id="workplacetype">
+                                                                            <option value="1" selected="selected">Prefer not to ans</option>
+                                                                            <option value="2">Private</option>
+                                                                            <option value="3">Not for profit</option>
+                                                                            <option value="4">Government</option>
+                                                                            <option value="5">Other</option>
+                                                                           
+                                                                        
+                                                                          </select>
+                                                                        
+                                                                    </span>
+
+                                                        </td>
                                                         <td>
-                                                            <span>Current certification level: </span>
+                                                            <span>Do you have a WHO malaria microscopy certification level? </span>
                                                             <span>
                                                                         <select id="certificationlevel">
-                                                                                <option value="0" selected="selected">0</option>
-                                                                                <option value="1">1</option>
-                                                                                <option value="2">2</option>
-                                                                                <option value="3">3</option>
-                                                                                <option value="4">4</option>
+                                                                                <option value="0" selected="selected">None</option>
+                                                                                <option value="1">Level 1</option>
+                                                                                <option value="2">Level 2</option>
+                                                                                <option value="3">Level 3</option>
+                                                                                <option value="4">Level 4</option>
                                                                             
                                                                               </select>
                                                                             
@@ -449,7 +467,7 @@
 
                                                 <p style="margin-top:10px; margin-bottom:10px;"></p>
 
-                                                <span>Malaria microscopy refresher training in last 2 years: </span>
+                                                <span>Have you received malaria microscopy refresher training in the last 2 years: </span>
 
                                                 <select id="refresher">
                                                         <option value="1">Yes</option>
@@ -460,7 +478,7 @@
                                                 </br>
 
                                                 <br>
-                                                <span style="margin-top:20px; margin-left:10px;">If yes for above how many years ?: </span><input type="text" placeholder="years" name="refresher_years" id="refresher_years" maxlength="5">
+                                                <span style="margin-top:20px; margin-left:10px;">How long ago did you last receive formal training in malaria microscopy?: </span><input type="text" placeholder="years" name="refresher_years" id="refresher_years" maxlength="5">
 
 
                                                 <p></p>
@@ -515,9 +533,9 @@
                                 <!-- div content -->
 
                                 <div id="footer " style="min-height: 50px; ">
-                                    <div style="height:10px;width:100%;background-color: #00AFEF ">
+                                    <!-- <div style="height:10px;width:100%;background-color: #00AFEF ">
 
-                                    </div>
+                                    </div> -->
 
                                     <div style="width: 100%; display: table; ">
                                     </div>
