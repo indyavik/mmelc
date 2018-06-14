@@ -14,27 +14,29 @@
         
         .counterbox {
             /* forces children to same row */
-            height: 80px;
+            height: 100px;
             width: 100%;
             z-index: 1000000;
             top:150px;
-            left:15px;
+            left:10px;
        
             /*
-            padding-left: 15px;
-            padding-right: 15px;
+            padding-left: 10px;
+            padding-right: 10px;
           
             */
         }
 
         #counterbox  input {
-            font-size: 0.8em;
+            font-size: 1.2em;
             background-color: transparent;
             text-align: center;
             border-width: 0;
             width: 100%;
             margin: 0 0 .1em 0;
-            color: blue;
+            color: white;
+			font-weight: bold;
+			
         }
 
 
@@ -48,16 +50,16 @@
             vertical-align:center
             /* rounded corners */
             -webkit-border-radius: 5px;
-            border-radius: 5px;
+            border-radius: 8px;
             font-size: 12px;
             -moz-background-clip: padding;
             -webkit-background-clip: padding-box;
             background-clip: padding-box;
-            padding: .4em .4em 1em;
+            padding: .4em .4em .4em;
             /*width: 8em;*/
             width: 80px;
-            height: 50px;
-            margin: 5px 5px 5px 30px;
+            /*height: 60px;*/
+            margin: 5px 5px 5px 10px;
             -webkit-box-shadow: 0px 0px 12px 0px #000;
             box-shadow: 0px 0px 12px 0px #000;
         }
@@ -584,7 +586,7 @@
 
 
 
-                    <p id="page-title" style="color: white;vertical-align:middle;height:46px;display:table-cell;text-align:center;"><b>Malaria Microscopy e-Learning Course</b></p>
+                    <p id="page-title" style="color: white;vertical-align:middle;height:46px;display:table-cell;text-align:center;"><b>Worldwide E-Learning Course on Malaria Microscopy</b></p>
 
 
 
@@ -622,22 +624,22 @@
 
                 <div class="box" id="box">
 
-                    <label for="qty"><abbr title="Quantity">Count</abbr></label>
+                    <label for="qty"><abbr title="Quantity">Counter 1 (press "E")</abbr></label>
                     <input id="qty" value="0" />
-                    <button id="down" onclick="modify_qty(-1, 'qty')">-1</button>
-                    <button id="clear" onclick="modify_qty(0,'qty')">c</button>
-                    <button id="up" onclick="modify_qty(1, 'qty')">+1</button>
+                    <button id="down" onclick="modify_qty(-1, 'qty')"> &ndash; </button>
+                    <button id="clear" onclick="modify_qty(0,'qty')"> C </button>
+                    <button id="up" onclick="modify_qty(1, 'qty')"> + </button>
 
                 </div>
 
                 <div class="box" id="box2">
 
-                    <label for="qty2"><abbr title="Quantity2">Count-2</abbr></label>
+                    <label for="qty2"><abbr title="Quantity2">Counter 2 (press "R")</abbr></label>
                     <input id="qty2" value="0" />
                     
-                    <button id="down2" onclick="modify_qty(-1, 'qty2')">-1</button>
-                    <button id="clear2" onclick="modify_qty(0, 'qty2')">c</button>
-                    <button id="up2" onclick="modify_qty(1, 'qty2')">+1</button>
+                    <button id="down2" onclick="modify_qty(-1, 'qty2')"> &ndash; </button>
+                    <button id="clear2" onclick="modify_qty(0, 'qty2')">C</button>
+                    <button id="up2" onclick="modify_qty(1, 'qty2')"> + </button>
                 </div>
 
 
@@ -664,6 +666,15 @@
 					<span class="tooltiptext" style="width:50px">Help</span>
             </div>
             </span>
+			
+			<span id="counter" class="header_iconDiv">
+				<div class="tooltip">
+                    <img id="counter_img" class="nav-img-pxl" onclick="" border="0" src="images/counter.png" alt="Display Tally Counters">
+					<span class="tooltiptext" style="width:50px">Tally Counters</span>
+					</div>
+
+
+			</span> 
 
             <span id="previousPageButton" class="header_iconDiv" id="nav_prev">
 
@@ -679,12 +690,7 @@
 
                 </span>
 
-            <span id="counter" class="header_iconDiv">
 
-                    <img id="counter_img" class="nav-img-pxl" onclick="" border="0" src="images/counter.png" alt="Next slide">
-
-
-        </span>
 
 
         </div>
@@ -702,11 +708,11 @@
         <!--<a href="javascript:void(0)" class="closebtn" onclick="closeNav()">×</a>-->
         <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">
             <!--<img src="../SampleScreen_changes/images/close-img.png" width="20px"/>-->
-            <img src="images/close-white.svg.png" width="25px" />
+            <img src="images/close-white.svg.png" width="45px" style="margin-top: 4px;"/>
         </a>
 
         <div class="header_sideMenu2">
-            <span id="user_data" class="user_welcome">Malaria Microscopy e-Learning Course Menu</span>
+            <span id="user_data" class="user_welcome">WELCOMM Menu</span>
         </div>
 
         <ul id="menu">
@@ -778,7 +784,7 @@
                     <li><a href="#" id="7_0_slide02.html" onClick="load_page_menu(this.id)"><span id="7_0" side-bullet" style="margin-right:5px;">&#9634;</span> Post Test</a></li>
                 </ul>
             </li>
-            <li><a href="#" id="Module-100"><span id="Module-100-side" class="side-bullet"></span>Pilot Evaluation Survey</a> +
+            <li><a href="#" id="Module-100"><span id="Module-100-side" class="side-bullet"></span>Evaluation Survey</a> +
                 <ul id="submenu">
                     <li><a href="home.html?loadPage=Module-100.html">Module Home</a></li>
                     <li><a href="#" id="100_0_slide00.html" onClick="load_page_menu(this.id)"><span id="100_0" side-bullet" style="margin-right:5px;">&#9634;</span> Feedback Survey</a></li>
@@ -818,7 +824,7 @@
 
     <script type="text/javascript">
     </script>
-
+<!--
     <div class="box-top" id="box-top" style="margin-top:200px;display: none; ">
 
         <label for="qty"><abbr title="Quantity">Count</abbr></label>
@@ -826,7 +832,7 @@
         <button id="down" onclick="modify_qty(-1)">-1</button>
         <button id="up" onclick="modify_qty(1)">+1</button>
     </div>
-
+-->
     </div>
     <!-- wrapper -->
 
@@ -994,12 +1000,12 @@
         window.addEventListener('mousemove', divMove, true);
     }
 
-    function divMove(e) {
-        var div = document.getElementById('box');
-        div.style.position = 'absolute';
-        div.style.top = e.clientY + 'px';
-        div.style.left = e.clientX + 'px';
-    }
+//    function divMove(e) {
+//        var div = document.getElementById('box');
+ //       div.style.position = 'absolute';
+//        div.style.top = e.clientY + 'px';
+//        div.style.left = e.clientX + 'px';
+//    }
 
     //show hide counter  box 
 

@@ -282,7 +282,7 @@ li.topmenu {
     padding: 60px 30px 30px 30px;
     /*border: 2px solid;*/
     border-radius: 30px;
-    height: calc(100% - 200px);
+    height: calc(100% - 220px);
     background-color: #FFDBE7;
     overflow: auto;
     max-width: 1000px;
@@ -307,7 +307,7 @@ li.topmenu {
 }
 
 .global_org {
-    margin-top: 18px;
+    margin-top: 5px;
 }
 
 #heading_text {
@@ -362,7 +362,7 @@ li.topmenu {
 .footer_menu {
     display: block;
     margin: 10px auto;
-    width: 385px;
+    min-width: 450px;
 }
 
 #content-inner ol li {

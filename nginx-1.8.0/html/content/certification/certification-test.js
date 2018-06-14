@@ -6,6 +6,10 @@
 
 */
 
+//global.
+
+LICENSEDIR='/data_l/'
+
 function saveCertAnswer(slideId, chkVal) {
 
     //questionId = 'C_1_slide02'
@@ -328,12 +332,23 @@ function submit_cert_ans_to_server(cert_results) {
 
             //save user's record for future. 
 
-            var user_obj = JSON.parse(get_from_disk('/data_l/' + ans_object.usb_user + '.txt'))
+            var user_obj = JSON.parse(get_from_disk(LICENSEDIR + ans_object.usb_user + '.txt'))
+
+            /*add usb_id */
+
+            var usb_id = JSON.parse(get_from_disk(LICENSEDIR + 'usb_id.json')).usb_id
+
+            if (!usb_id || usb_id ==undefined){
+                usb_id = 'NO-USB-ID'
+            }
 
             if (user_obj) {
                 user_obj['cert_results'] = cert_results
                 user_obj['cert_user_name'] = to_submit['cert_user_name']
-                external.saveFile('/data_l/' + ans_object.usb_user + '.txt', user_obj)
+                user_obj['usb_id'] = usb_id
+
+               // external.saveFile('/data_l/' + ans_object.usb_user + '.txt', user_obj)
+               external.saveFile(LICENSEDIR + ans_object.usb_user + '.txt', user_obj)
 
                 log_out_cert_user()
 
