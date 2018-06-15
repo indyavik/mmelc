@@ -9,6 +9,7 @@
     <h3 class="learningOutcomeText">By the end of the unit, you will be able to: </h3>
     <script>
 //        / any js that applies to a slide should be included within the slide html page itself /
+toggle5_init();
         function slide4show(count) {
             $(".outcome-text").css('display', 'block');
             for (var i = 1; i <= 5; i++) {
@@ -17,6 +18,7 @@
                 else
                     document.getElementById("outcome-" + i).style.display = 'none';
             }
+			if (count == 5) {toggle5_complete();}
         }
     </script>
 

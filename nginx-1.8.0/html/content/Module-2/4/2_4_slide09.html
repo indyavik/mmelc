@@ -59,7 +59,7 @@
     /* any js that applies to a slide should be included within the slide html page itself */
 
     function slide4show(count) {
-
+toggle5_init();
         $("#outcome").css('display', 'block');
 
         for (var i = 1; i <= 4; i++) {
@@ -68,6 +68,7 @@
             else
                 document.getElementById("outcome-" + i).style.display = 'none';
         }
+		if (count == 4) {toggle5_complete();}
 
     }
 

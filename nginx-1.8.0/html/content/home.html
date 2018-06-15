@@ -179,7 +179,7 @@
                 // alert('here')
 
                 document.getElementById('navBar').style.display = "none";
-                document.getElementById('calc-unit').style.display = "none";
+                // document.getElementById('calc-unit').style.display = "none";
                 // document.getElementById('right').style.display = "none";
                 // document.getElementById('contentsMenuButton').style.display = "none";
                 // document.getElementById('nav-img-home').style.display = "none";
@@ -397,7 +397,8 @@
                 <div id="middleTopTitle" style="width: calc(86% - 150px);float: left;overflow: hidden;">
                     <div id="moduleTitle" style="height: 50px;overflow: hidden; font-family: 'Georgia'; font-size:24px; vertical-align:middle; margin-top: 5px; "> 
 					 </div>
-                    <!-- <div id = "unitTitle" style="height: 30%;overflow: hidden; font-size:15px;"> </div> --></div>
+                    <!--<div id = "unitTitle" style="height: 30%;overflow: hidden; font-size:15px;"> </div>-->
+				</div>
                 <div id="right" style="display: inline-block; width:150px; height:100%;">
                     <span class="header_iconDiv" style="float: left; padding-top: 6px;">
                 <div class="tooltip">
@@ -430,13 +431,6 @@
     <div style="width: calc(50% - 100px); height: 1px; display:inline-block; float: left;">
 
     </div>
-
-<!-- 
-	<div id="calc-unit" style="width: 100%; min-height: 40px; background-color: white; position:relative;">
-
-        <div id="unitTitle" style="overflow: hidden; font-size:15px; position:absolute; bottom:0px; margin-left: 100px; font-style: italic;"> </div>
-    </div>
--->
 
 
     </div>
@@ -606,7 +600,7 @@
 					<div id="calc-unit" style="float: left;height: 20px; width:100%;">
 
 						<div id="unitTitle" style="overflow: hidden; font-size:18px; font-style: italic; margin-left:50px"> 
-							TEST Unit Title TEST Unit Title 
+							
 						</div>
 					</div>
 					<div id="footMenuAndOnslide" style="height:40px; width: 100%;float: left;">
@@ -651,8 +645,8 @@
                     <img class="nav-img-home" alt="Contents" src="images/side1.png" style="vertical-align:middle"> The Menu button calls the Course Menu, from which you can navigate to each module and unit. The menu also shows which modules and units
                     have been completed.</p>
 
-                <p><img class="nav-img-home" alt="Next Slide" src="images/forward.png" style="vertical-align:middle"> The Next button moves you to the next page within a Unit.</p>
-                <p> <img class="nav-img-home" alt="Previous Slide" src="images/backward.png" style="vertical-align:middle"> The Previous button moves you back one slide.</p>
+                <p><img class="nav-img-home" alt="Next Slide" src="images/forward.png" style="vertical-align:middle"> The Next button moves you to the next page within a Unit. If disabled, actions must be completed before navigating forwards.</p>
+                <p> <img class="nav-img-home" alt="Previous Slide" src="images/backward.png" style="vertical-align:middle"> The Previous button moves you back one slide. If disabled, you are on the first page of the unit.</p>
 
                 <p> <img class="nav-img-home" alt="Contents" src="images/home1.png" style="vertical-align:middle"> The Home button allows you to return to the welcome screen of the course or the first page of the current unit.
                 </p>
@@ -1025,6 +1019,20 @@
         };
         document.getElementById('back-button').src = "images/backward.png";
     }
+	
+	//grey out forward button on last pages.
+	    if (is_last_page(current_page)) {
+
+        grey_forward_button();
+
+    } else {
+
+        document.getElementById('forward-button').onclick = function() {
+            nav_to('next');
+        };
+        document.getElementById('forward-button').src = "images/forward.png";
+    }
+	
 </script>
 
 

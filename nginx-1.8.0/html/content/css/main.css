@@ -514,7 +514,8 @@ table.resultsTable {
 /* User registration survey */
 
 table.table_reg_survey {
-    min-width: 800px;
+    /*min-width: 800px;*/
+	width: 100%;
 }
 
 table.table_reg_survey tr {

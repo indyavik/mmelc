@@ -1,5 +1,5 @@
 //var BACKEND = 'http://localhost:8081'
-var BACKEND = 'http://35.167.166.17'
+var BACKEND = 'http://35.167.166.17:8081'
 
 function submit_data_to_server(data_object, backend_method, cb_func, ajaxtype) {
 
