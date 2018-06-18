@@ -1,5 +1,5 @@
 //GLOBALS
-IGNORE_MODULES = ['Module-100', 'Module-8' , 'Module-C']
+IGNORE_MODULES = ['Module-100', 'Module-8', 'Module-C']
 
 
 function update_user_object(objectName, updatedvalue) {
@@ -1573,7 +1573,7 @@ function show_test_report(test_type, output_table) {
 
 } //function show test results 
 
-function submit_data_to_server(data_type, data_object) {
+function submit_data_to_server_2(data_type, data_object) {
 
     //data_type = 'user_data' , 'feedback_survey' , 'certification_test' , pre_test, post_data
 

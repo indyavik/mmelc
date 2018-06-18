@@ -1,6 +1,29 @@
 //var BACKEND = 'http://localhost:8081'
 var BACKEND = 'http://35.167.166.17'
 
+function submit_data_to_server_registration(data_object, backend_method, success_func, error_func, ajaxtype) {
+
+    if (!ajaxtype) ajaxtype = 'POST'
+        //if (!backend_method) backend_method = '/usbuser/register'
+
+    if (!backend_method || !data_object) {
+        alert('Incorrect URL or data to submit. Please contact and admin')
+        console.log('error:submit_data_to_server:main.js=>incorrectURL')
+    }
+
+    $.ajax({
+        //url: 'http://localhost:8081/license/update',
+        url: BACKEND + backend_method,
+        data: data_object,
+        // data:"username=guest_user_2016 ", 
+        type: 'POST',
+        success: success_func,
+        error: error_func
+
+    });
+
+} //submit_data_to_server_registration
+
 function submit_data_to_server(data_object, backend_method, cb_func, ajaxtype) {
 
     //backend_method = '/usbuser/register'
@@ -12,7 +35,6 @@ function submit_data_to_server(data_object, backend_method, cb_func, ajaxtype) {
         alert('Incorrect URL or data to submit. Please contact and admin')
         console.log('error:submit_data_to_server:main.js=>incorrectURL')
     }
-
 
     $.ajax({
         //url: 'http://localhost:8081/license/update',
@@ -33,7 +55,6 @@ function submit_data_to_server(data_object, backend_method, cb_func, ajaxtype) {
 
 var check_store = localStorage.getItem("lastname");
 //var check_cache = localStorage.getItem("cache7");
-
 
 
 if (check_store) {
@@ -210,6 +231,7 @@ function update_on_disk(file_name, json_obj) {
     }
 
     //alert(data_dir)
+
     var file_name = data_dir + file_name;
 
     if (file_name === 'Users') var file_name = data_dir + 'Users.txt';

@@ -354,19 +354,8 @@ function regSurvey() {
 
         console.log(survey_object)
 
-
         localStorage.setItem('new_user_survey', JSON.stringify(survey_object))
 
-        /*
-
-        submit_data_to_server(survey_object, '/usbuser/register', function(returnValue) {
-
-            console.log(returnValue);
-            //write data to file
-
-        }); //submit_data_to server
-
-        */
 
         //create user
 
@@ -521,6 +510,38 @@ function populateUserTable(user_array, table, rows, cells, content) {
     return table;
 } //function populate table 
 
+function update_users_file(datadir, user_to_add) {
+    /* adds a user to existing user record */
+    /* returns a new users object */
+
+    if (!user_to_add) { alert('nothing to add'); return; }
+
+
+    var users_file = get_from_disk(datadir + 'Users.txt');
+
+    var users = JSON.parse(users_file)
+
+    if ($.isArray(users)) {
+        var new_users = users
+
+    } else { var new_users = users['Users'] }
+
+    var user_exists = $.inArray(user_to_add, new_users); //(value, in_thisarray)
+
+    if (user_exists === -1 && user_to_add !== "") {
+
+        new_users.push(user_to_add);
+        users['Users'] = new_users
+        return users; //return the full object.
+
+    } else {
+        alert("Error: User exists already")
+        return;
+    }
+
+} //update_users_file 
+
+
 
 function createUser_new(user_type) {
     //user_type is 'license' or 'preview'
@@ -539,158 +560,162 @@ function createUser_new(user_type) {
     var new_user_obj_survey = JSON.parse(localStorage.getItem('new_user_survey'));
     var create_user = new_user_obj['username']
 
-    /* update the User.txt object  */
-    var users_file = get_from_disk(data_dir + 'Users.txt') // string
+    //get skeleton object from the file and load. 
+    var base = get_from_disk(data_dir + 'base_user_config.txt'); //returns 
+    var new_user = JSON.parse(base);
 
-    if (users_file) {
-        var users = JSON.parse(users_file)
+    //add new user_objects. 
 
-    } else {
-        alert("Error: Could not find the file to create users. please contact admin")
+    new_user['username'] = new_user_obj['username']
+    new_user['password'] = new_user_obj['password']
+    new_user['recovery_email'] = new_user_obj['recovery_email']
+    new_user['license_id'] = new_user_obj['license_id']
+    new_user['submit_status'] == 'confirmed'
+    new_user['user_type'] == user_type
+
+
+
+    /* adding some additional details .  */
+
+    new_user_obj_survey['usb_user_name'] = new_user['username']
+    new_user_obj_survey['usb_user_password'] = new_user['password']
+    new_user_obj_survey['usb_user_recovery_email'] = new_user['recovery_email']
+    new_user_obj_survey['usb_user_user_type'] = user_type
+
+    var usb_id = JSON.parse(get_from_disk(LICENSEDIR + 'usb_id.json')).usb_id
+
+    if (!usb_id || usb_id == undefined) {
+        usb_id = 'NO-USB-ID'
     }
 
-    if ($.isArray(users)) {
-        var new_users = users
+    new_user_obj_survey['usb_id'] = usb_id
 
-    } else { var new_users = users['Users'] }
+    localStorage.setItem('new_user_survey_obj', JSON.stringify(new_user_obj_survey))
+    localStorage.setItem('new_user_obj', JSON.stringify(new_user))
 
-    //alert(new_users);
+    /* HELPER FUNCTIONS TO PROCESS RESULTS AFTER SUBMISSION */
 
-    var user_exists = $.inArray(create_user, new_users); //(value, in_thisarray)
+    function on_success(res) {
 
-    if (user_exists === -1 && create_user !== "") {
+        alert(res + 'good')
+            /*send to the on_error processing if server response is not success */
+        if (JSON.parse(res).response != 'success') {
+            on_error('error')
 
-        new_users.push(create_user);
-
-        //get skeleton object from the file and load. 
-
-        var base = get_from_disk(data_dir + 'base_user_config.txt'); //returns 
-
-        var new_user = JSON.parse(base);
-
-        //add new user_objects. 
-
-        new_user['username'] = new_user_obj['username']
-        new_user['password'] = new_user_obj['password']
-        new_user['recovery_email'] = new_user_obj['recovery_email']
-        new_user['license_id'] = new_user_obj['license_id']
-        new_users['submit_status'] == 'confirmed'
-
-        /*
-
-
-            var new_user_obj = {
-                "username": newuser_name,
-                "password": newuser_pass,
-                "recovery_email": newuser_recovery_email,
-                "license_id": newuser_license_id
-            }
-
-        */
-
-
-        /*submit to the server after adding some additional objects.  */
-
-        new_user_obj_survey['usb_user_name'] = new_user['username']
-        new_user_obj_survey['usb_user_password'] = new_user['password']
-        new_user_obj_survey['usb_user_recovery_email'] = new_user['recovery_email']
-        new_user_obj_survey['usb_user_user_type'] = user_type
-
-        var usb_id = JSON.parse(get_from_disk(LICENSEDIR + 'usb_id.json')).usb_id
-
-        if (!usb_id || usb_id == undefined) {
-            usb_id = 'NO-USB-ID'
+        } //if not 'success' 
+        else {
+            final_process()
         }
-        new_user_obj_survey['usb_id'] = usb_id
 
-        localStorage.setItem('future_user_survey', JSON.stringify(new_user_obj_survey))
+    } //
 
-        submit_data_to_server(new_user_obj_survey, '/usbuser/register', function(returnValue) {
-            console.log(returnValue);
+    function on_error(res) {
+        /* if not submitted ..change few values */
+        //res = JSON.parse(res).details
+        //alert("sorry- user can not be created at this time. Only Limited Access")
 
-            if (JSON.parse(returnValue).response != 'success') {
+        var new_user2 = JSON.parse(localStorage.getItem('new_user_obj'))
+        var user_type = new_user2.user_type
 
-                //add some error and change the user tmp. type to guest. 
+        new_user2['submit_status'] = 'pending'
+        new_user2['user_type'] = 'preview'
+        new_user2['temp_user_type'] = 'preview'
+        new_user2['desired_user_type'] = 'preview'
 
-                res = JSON.parse(returnValue).details
-                alert(res)
-                if (user_type == 'license') {
-                    new_users['submit_status'] == 'pending'
-                    alert('sorry - user could not be created')
+        if (user_type == 'license') {
 
-                }
+            new_user2['desired_user_type'] = 'license'
 
-                return;
+            alert('Sorry- user can not be created at this time. Will try log you in as preview user')
 
-            } // if error . 
+            /* change the user_type and data_dir */
+            var data_dir_change = DATADIR
+            localStorage.setItem('data_dir', data_dir_change)
 
-            /* clear the local objects that are no longer needed */
+            /* write all the survey data for future */
+            external.saveFile(data_dir + create_user + 'survey_registration.txt', new_user_obj_survey)
 
-            localStorage.removeItem('new_user_obj')
-            localStorage.removeItem('new_user_survey')
+        }
 
-            /*set new objects in localStorage. */
+        localStorage.setItem('new_user_obj', JSON.stringify(new_user2))
 
-            localStorage.setItem("Users", JSON.stringify(new_users))
-            localStorage.setItem(String(create_user), JSON.stringify(new_user))
+        final_process();
 
-            /* for license users update .mmelc file with the count */
 
-            if (user_type == 'license') {
-                var mmelc = JSON.parse(get_from_disk(LICENSEDIR + '.mmelc'))
+    } //on_error
 
-                for (var i in mmelc.license) {
 
-                    var existing_license = mmelc.license[i]
-                    if (new_user['license_id'] == existing_license.id) {
+    function final_process() {
 
-                        var current_used = existing_license.used
-                        existing_license['used'] = current_used + 1
-                        external.saveFile(LICENSEDIR + '.mmelc', mmelc)
+        /* create and login new user  */
 
-                    } //
+        var data_dir = localStorage.getItem('data_dir')
+        var new_user = JSON.parse(localStorage.getItem('new_user_obj'))
 
-                }
+        var create_user = new_user.username
+        var user_type = new_user.user_type
+
+        /* update the approrpirate user file. */
+
+        var users_file_obj = update_users_file(data_dir, create_user) //add new user name to all users.
+
+        if (!users_file_obj) { alert("Error: please contact admin"); return; }
+
+        /* for license users update .mmelc file with the count */
+
+        if (user_type == 'license') {
+            var mmelc = JSON.parse(get_from_disk(LICENSEDIR + '.mmelc'))
+
+            for (var i in mmelc.license) {
+
+                var existing_license = mmelc.license[i]
+                if (new_user['license_id'] == existing_license.id) {
+
+                    var current_used = existing_license.used
+                    existing_license['used'] = current_used + 1
+                    external.saveFile(LICENSEDIR + '.mmelc', mmelc)
+
+                } //
 
             }
 
-            /* */
+        } //if user_license
+
+        /* FINALLY LOG USER IN */
+
+        /* set some data  in localStorage */
+
+        localStorage.setItem("Users", JSON.stringify(users_file_obj))
+        localStorage.setItem("logged_in", create_user);
+        localStorage.setItem("user_type", user_type); // "license" or "preview"
+        localStorage.setItem(create_user, JSON.stringify(new_user));
+
+        /* clear some data no longer needed  */
+        localStorage.removeItem('new_user_obj')
+        localStorage.removeItem('new_user_survey')
+        localStorage.removeItem('new_user_survey_obj')
+
+        /*set new objects in localStorage. */
+
+        /* write all of the new user objects to the disk. */
+
+        external.saveFile(data_dir + 'Users.txt', users_file_obj)
+        external.saveFile(data_dir + create_user + '.txt', new_user)
+
+        //update_on_disk(create_user + '_survey.txt', new_user_obj_survey); //js oject. not string.
+
+        // note that the appropriate module conf get lodaded here. //
+        var mod_config = JSON.parse(get_from_disk(data_dir + 'module_conf.json'))
+        localStorage.setItem('module_config', JSON.stringify(mod_config));
+
+        setTimeout(function() { window.location.href = "home.html?user=" + create_user + "&user_type=" + user_type }, 500);
 
 
+    } //final_process
 
-            /* write all of the new user objects to the disk. */
-            external.saveFile(data_dir + 'Users.txt', { "Users": new_users })
-            external.saveFile(data_dir + create_user + '.txt', new_user)
+    submit_data_to_server_registration(new_user_obj_survey, '/usbuser/register', on_success, on_error);
 
-            //update_on_disk(create_user + '_survey.txt', new_user_obj_survey); //js oject. not string.
-
-            /* finally log user in */
-            localStorage.setItem("logged_in", create_user);
-            localStorage.setItem("user_type", user_type); // "license" or "preview"
-            localStorage.setItem(create_user, JSON.stringify(new_user));
-
-            // note that the appropriate module conf get lodaded here. //
-            var mod_config = JSON.parse(get_from_disk(data_dir + 'module_conf.json'))
-            localStorage.setItem('module_config', JSON.stringify(mod_config));
-
-            setTimeout(function() { window.location.href = "home.html?user=" + create_user + "&user_type=" + user_type }, 500);
-
-
-
-        }); //submit_data_to server
-
-
-
-
-        //setTimeout(function(){window.location.href="home.html?user="+create_user} , 500); 
-
-    } else {
-
-        alert("User already exists : please try a new name");
-
-    }
-
-}; //createUser_new
+} //createUser_new
 
 
 function logUser_new(user_name, user_password, user_type) {
