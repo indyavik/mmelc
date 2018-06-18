@@ -3,7 +3,6 @@
 var LICENSEDIR = '/data_l/'
 var DATADIR = '/data/'
 
-
 //functions (associated with index.html)
 
 function verifyLicense_div() {
