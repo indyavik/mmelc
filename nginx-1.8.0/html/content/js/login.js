@@ -330,7 +330,7 @@ function regSurvey() {
 
         var usb_id = JSON.parse(get_from_disk(LICENSEDIR + 'usb_id.json')).usb_id
 
-        if (!usb_id || usb_id ==undefined){
+        if (!usb_id || usb_id == undefined) {
             usb_id = 'NO-USB-ID'
         }
 
@@ -353,7 +353,7 @@ function regSurvey() {
         */
 
         console.log(survey_object)
-    
+
 
         localStorage.setItem('new_user_survey', JSON.stringify(survey_object))
 
@@ -419,7 +419,7 @@ function showInput_createUser() {
     document.getElementById("createUser").style.display = 'none';
     document.getElementById("tablearea").style.display = 'none';
     document.getElementById("div_createUser").style.display = 'block';
-    //document.getElementById("input_createUser").setAttribute('class', 'showInput');
+
 
 }
 
@@ -521,6 +521,7 @@ function populateUserTable(user_array, table, rows, cells, content) {
     return table;
 } //function populate table 
 
+
 function createUser_new(user_type) {
     //user_type is 'license' or 'preview'
 
@@ -575,7 +576,6 @@ function createUser_new(user_type) {
         new_user['license_id'] = new_user_obj['license_id']
         new_users['submit_status'] == 'confirmed'
 
-
         /*
 
 
@@ -589,18 +589,16 @@ function createUser_new(user_type) {
         */
 
 
-
-
         /*submit to the server after adding some additional objects.  */
 
         new_user_obj_survey['usb_user_name'] = new_user['username']
         new_user_obj_survey['usb_user_password'] = new_user['password']
         new_user_obj_survey['usb_user_recovery_email'] = new_user['recovery_email']
         new_user_obj_survey['usb_user_user_type'] = user_type
-       
+
         var usb_id = JSON.parse(get_from_disk(LICENSEDIR + 'usb_id.json')).usb_id
 
-        if (!usb_id || usb_id ==undefined){
+        if (!usb_id || usb_id == undefined) {
             usb_id = 'NO-USB-ID'
         }
         new_user_obj_survey['usb_id'] = usb_id
@@ -611,7 +609,9 @@ function createUser_new(user_type) {
             console.log(returnValue);
 
             if (JSON.parse(returnValue).response != 'success') {
+
                 //add some error and change the user tmp. type to guest. 
+
                 res = JSON.parse(returnValue).details
                 alert(res)
                 if (user_type == 'license') {
@@ -702,7 +702,6 @@ function logUser_new(user_name, user_password, user_type) {
     /* login the user  */
     var data_dir = LICENSEDIR
 
-
     if (user_type !== 'license') {
         data_dir = DATADIR
         user_type = "preview"
@@ -749,6 +748,8 @@ function logUser_new(user_name, user_password, user_type) {
             /* finally log user in */
             localStorage.setItem("logged_in", user_name);
             localStorage.setItem("user_type", user_type); // "license" or "preview"
+            localStorage.setItem("data_dir", data_dir);
+
             localStorage.setItem(user_name, JSON.stringify(user_obj));
 
             // note that the appropriate module conf get lodaded here. //

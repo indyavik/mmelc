@@ -7,10 +7,6 @@ function submit_data_to_server(data_object, backend_method, cb_func, ajaxtype) {
 
     if (!ajaxtype) ajaxtype = 'POST'
 
-    //alert(backend_method)
-    //alert(data_object)
-
-    //return;
 
     if (!backend_method || !data_object) {
         alert('Incorrect URL or data to submit. Please contact and admin')
@@ -33,7 +29,6 @@ function submit_data_to_server(data_object, backend_method, cb_func, ajaxtype) {
 
     });
 } //submit data to server
-
 
 
 var check_store = localStorage.getItem("lastname");
@@ -204,6 +199,17 @@ function copy_updates_to_usb_callback(arg) {
 function update_on_disk(file_name, json_obj) {
 
     var data_dir = localStorage.getItem('data_dir')
+
+    /* in case data_dir local storage gets unset */
+
+    if (!data_dir || data_dir == undefined) {
+        data_dir = LICENSEDIR
+        var user_type = localStorage.getItem('user_type')
+        if (user_type == 'preview') data_dir = DATADIR
+
+    }
+
+    //alert(data_dir)
     var file_name = data_dir + file_name;
 
     if (file_name === 'Users') var file_name = data_dir + 'Users.txt';
