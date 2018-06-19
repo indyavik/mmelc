@@ -31,7 +31,7 @@ function resubmit_registration(username, data_dir) {
 
         if (JSON.parse(res).response != 'success') {
             resubmit_error('error')
-            return;
+           
 
         } //if not 'success' 
         else {
@@ -94,7 +94,9 @@ function resubmit_registration(username, data_dir) {
 
     } //resubmit_success
 
-    submit_data_to_server_registration(new_user_obj_survey, '/usbuser/register', resbumit_success, resubmit_error);
+    alert('i am here')
+
+    submit_data_to_server_registration(to_submit, '/usbuser/register', resubmit_success, resubmit_error);
 
 } //resubmit 
 
@@ -681,9 +683,8 @@ function createUser_new(user_type) {
     new_user['password'] = new_user_obj['password']
     new_user['recovery_email'] = new_user_obj['recovery_email']
     new_user['license_id'] = new_user_obj['license_id']
-    new_user['submit_status'] == 'confirmed'
-    new_user['user_type'] == user_type
-
+    new_user['submit_status'] = 'confirmed'
+    new_user['user_type'] = user_type
 
 
     /* adding some additional details .  */
@@ -704,7 +705,6 @@ function createUser_new(user_type) {
     localStorage.setItem('new_user_survey_obj', JSON.stringify(new_user_obj_survey))
     localStorage.setItem('new_user_obj', JSON.stringify(new_user))
 
-    return;
 
     /* HELPER FUNCTIONS TO PROCESS RESULTS AFTER SUBMISSION */
 
@@ -725,11 +725,14 @@ function createUser_new(user_type) {
     function on_error(res) {
         /* if not submitted ..change few values */
         //res = JSON.parse(res).details
-        //alert("sorry- user can not be created at this time. Only Limited Access")
+        
+        alert("sorry- user can not be created at this time. Only Limited Access")
+
 
         var new_user2 = JSON.parse(localStorage.getItem('new_user_obj'))
         var user_type = new_user2.user_type
 
+  
         new_user2['submit_status'] = 'pending'
         new_user2['user_type'] = 'preview'
         new_user2['temp_user_type'] = 'preview'
@@ -745,8 +748,7 @@ function createUser_new(user_type) {
             var data_dir_change = DATADIR
             localStorage.setItem('data_dir', data_dir_change)
 
-            /* write all the survey data for future */
-            external.saveFile(data_dir + create_user + 'survey_registration.txt', new_user_obj_survey)
+           
 
         }
 
@@ -814,6 +816,14 @@ function createUser_new(user_type) {
 
         external.saveFile(data_dir + 'Users.txt', users_file_obj)
         external.saveFile(data_dir + create_user + '.txt', new_user)
+
+        
+        /* write all the survey data for future */
+        if(data_dir == DATADIR && new_user.desired_user_type !='preview'){
+
+        external.saveFile(data_dir + create_user + 'survey_registration.txt', new_user_obj_survey)
+        }
+            
 
         //update_on_disk(create_user + '_survey.txt', new_user_obj_survey); //js oject. not string.
 
