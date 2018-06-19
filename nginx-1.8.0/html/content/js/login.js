@@ -48,8 +48,8 @@ function resubmit_registration(datadir, username) {
                 var user = resubmit_user.username
                 var user_data = JSON.parse(get_from_disk(data_dir + user + '.txt'))
 
-                var update = update_users_file(data_dir, user) // add this user
-                var remove = update_users_file(DATADIR, user, 'remove') //
+                var update = update_users_file(data_dir, user) // add this user to licensed users.
+                var remove_update = update_users_file(DATADIR, user, 'remove') //remove this user from preview users
 
                 /*update  the MMELC */
 
@@ -69,7 +69,12 @@ function resubmit_registration(datadir, username) {
                 }
 
 
+                /* re-write all other files */
+                external.saveFile(data_dir + 'Users.txt', update)
+                external.saveFile(DATADIR + 'Users.txt', remove_update)
+
                 /* Add and remove user files to new place */
+
                 external.saveFile(data_dir + user + '.txt', user_data)
                 external.removeFile(DATADIR + user + '.txt')
 
