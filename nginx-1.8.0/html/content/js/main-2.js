@@ -204,8 +204,7 @@ function update_units(current_module, current_unit, completed_module) {
         //units_to_update.push(current_unit.toString());
 
         localStorage.setItem(current_user, JSON.stringify(current_user_data))
-
-        // update_on_disk(current_user + '.txt', current_user_data)
+            // update_on_disk(current_user + '.txt', current_user_data)
         update_on_disk(current_user + '.txt', current_user_data)
     }
 

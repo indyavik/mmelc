@@ -704,7 +704,6 @@ function createUser_new(user_type) {
     localStorage.setItem('new_user_survey_obj', JSON.stringify(new_user_obj_survey))
     localStorage.setItem('new_user_obj', JSON.stringify(new_user))
 
-    return;
 
     /* HELPER FUNCTIONS TO PROCESS RESULTS AFTER SUBMISSION */
 
@@ -725,7 +724,7 @@ function createUser_new(user_type) {
     function on_error(res) {
         /* if not submitted ..change few values */
         //res = JSON.parse(res).details
-        //alert("sorry- user can not be created at this time. Only Limited Access")
+        alert("sorry- user can not be created at this time. Only Limited Access")
 
         var new_user2 = JSON.parse(localStorage.getItem('new_user_obj'))
         var user_type = new_user2.user_type
