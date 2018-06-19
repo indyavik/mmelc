@@ -3,6 +3,93 @@
 var LICENSEDIR = '/data_l/'
 var DATADIR = '/data/'
 
+function resubmit_registration(datadir, username) {
+    /* tries to resubmit a user to the back-end again */
+
+    var user_survey_object = get_from_disk(data_dir + username + 'survey_registration.txt')
+    if (!user_survey_object) {
+        alert("Error: Sorry there was an error. Please contact an admin")
+        return;
+    }
+
+    var to_submit = JSON.parse(user_survey_object)
+    localStorage.setItem('resubmit_user', JSON.stringify(to_submit))
+
+    /* helper function to deal with error */
+
+    function resubmit_error(res) {
+
+        alert("Error: Could not resubmit. Please try again later")
+
+    }
+
+    function resubmit_success(res) {
+
+        if (JSON.parse(res).response != 'success') {
+            resubmit_error('error')
+            return;
+
+        } //if not 'success' 
+        else {
+
+            var resubmit_user = JSON.parse(localStorage.getItem('resubmit_user'))
+            resubmit_user['submit_status'] == 'confirmed'
+
+            /* convert the user */
+            if (to_submit.desired_user_type == 'preview') {
+                /* preview user, nothing much to do. */
+
+                alert("Registration Successfull");
+
+            } else {
+
+                /* license user, have to change directories. */
+                var data_dir = LICENSEDIR
+                var user = resubmit_user.username
+                var user_data = JSON.parse(get_from_disk(data_dir + user + '.txt'))
+
+                var update = update_users_file(data_dir, user) // add this user
+                var remove = update_users_file(DATADIR, user, 'remove') //
+
+                /*update  the MMELC */
+
+                var mmelc = JSON.parse(get_from_disk(LICENSEDIR + '.mmelc'))
+
+                for (var i in mmelc.license) {
+
+                    var existing_license = mmelc.license[i]
+                    if (user_data['license_id'] == existing_license.id) {
+
+                        var current_used = existing_license.used
+                        existing_license['used'] = current_used + 1
+                        external.saveFile(LICENSEDIR + '.mmelc', mmelc)
+
+                    } //
+
+                }
+
+
+                /* Add and remove user files to new place */
+                external.saveFile(data_dir + user + '.txt', user_data)
+                external.removeFile(DATADIR + user + '.txt')
+
+                alert("Registration Successfull. Please login from home page.")
+
+            }
+
+
+
+
+        }
+
+    } //resubmit_success
+
+
+
+    submit_data_to_server_registration(new_user_obj_survey, '/usbuser/register', resbumit_success, resubmit_error);
+
+} //resubmit 
+
 function check_user_exists(username, user_type) {
     var data_dir = LICENSEDIR
     if (user_type !== 'license') data_dir = DATADIR
@@ -447,8 +534,6 @@ function logUser(user_name) {
 }
 
 
-
-
 function loadHistory() {
 
     //console.log("load event detected!");
@@ -510,12 +595,14 @@ function populateUserTable(user_array, table, rows, cells, content) {
     return table;
 } //function populate table 
 
-function update_users_file(datadir, user_to_add) {
+function update_users_file(datadir, user_to_add, action) {
     /* adds a user to existing user record */
     /* returns a new users object */
+    /* action = add, or remove a particular user */
+
+    if (!action) action = 'add'
 
     if (!user_to_add) { alert('nothing to add'); return; }
-
 
     var users_file = get_from_disk(datadir + 'Users.txt');
 
@@ -526,13 +613,27 @@ function update_users_file(datadir, user_to_add) {
 
     } else { var new_users = users['Users'] }
 
+
     var user_exists = $.inArray(user_to_add, new_users); //(value, in_thisarray)
 
     if (user_exists === -1 && user_to_add !== "") {
 
-        new_users.push(user_to_add);
+        if (action == 'add') {
+            new_users.push(user_to_add);
+
+
+        } //
+
+        if (action == 'remove') {
+
+            var r_index = new_users.indexOf(user_to_add)
+            new_users.splice(r_index, 1)
+
+        }
+
         users['Users'] = new_users
         return users; //return the full object.
+
 
     } else {
         alert("Error: User exists already")
@@ -592,6 +693,8 @@ function createUser_new(user_type) {
 
     localStorage.setItem('new_user_survey_obj', JSON.stringify(new_user_obj_survey))
     localStorage.setItem('new_user_obj', JSON.stringify(new_user))
+
+    return;
 
     /* HELPER FUNCTIONS TO PROCESS RESULTS AFTER SUBMISSION */
 

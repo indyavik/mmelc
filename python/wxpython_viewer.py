@@ -29,6 +29,7 @@ import win32api
 import json
 import hashlib
 import shutil
+import uuid
 from datetime import datetime
 import requests 
 import socket
@@ -798,17 +799,25 @@ class JavascriptExternal:
         with open(save_path + str(file_name), "w") as f: 
             f.write(string_input)
 
+    def removeFile(self, file_name):
+        #save_path = 'nginx-1.8.0/html/data/'
+        remove_path = 'nginx-1.8.0/html'
+        try:
+        	os.remove(remove_path + str(file_name))
+        except Exception as e:
+        	print("could not remove the file: " + file_name )
+
+
     def create_usb_id(self):
         #returns a usb_id or 
-        import shutil 
-        
+
         usb_id_file = 'usb_id.json'
         main_dir_file ='nginx-1.8.0/html/data_l/usb_id.json'
         #usb_dir_file = 'C:\MMELC_pilot\python\usb_id.json'
         #usb_dir_file = 'C:/MMELC_pilot/python/usb_id.json'
         usb_dir_file = 'D:/usb_id.json'
         if not os.path.isfile(main_dir_file):
-            import uuid
+            
             lowercase_str = uuid.uuid4().hex
             data = {'usb_id': lowercase_str}
             with open(main_dir_file, 'w') as f:
