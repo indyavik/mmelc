@@ -3,13 +3,16 @@
 var LICENSEDIR = '/data_l/'
 var DATADIR = '/data/'
 
-function resubmit_registration(datadir, username) {
+function resubmit_registration(username, data_dir) {
     /* tries to resubmit a user to the back-end again */
 
+    if (!data_dir) data_dir = DATADIR
+
     var user_survey_object = get_from_disk(data_dir + username + 'survey_registration.txt')
+
     if (!user_survey_object) {
         alert("Error: Sorry there was an error. Please contact an admin")
-        return;
+        return 'error'
     }
 
     var to_submit = JSON.parse(user_survey_object)
@@ -19,7 +22,8 @@ function resubmit_registration(datadir, username) {
 
     function resubmit_error(res) {
 
-        alert("Error: Could not resubmit. Please try again later")
+        alert("Error: Could not resubmit. Please try again later");
+        return 'error'
 
     }
 
@@ -40,6 +44,7 @@ function resubmit_registration(datadir, username) {
                 /* preview user, nothing much to do. */
 
                 alert("Registration Successfull");
+                return ('success')
 
             } else {
 
@@ -78,18 +83,16 @@ function resubmit_registration(datadir, username) {
                 external.saveFile(data_dir + user + '.txt', user_data)
                 external.removeFile(DATADIR + user + '.txt')
 
-                alert("Registration Successfull. Please login from home page.")
+                alert("Registration Successful. Please login from home page.")
+
+                return 'success';
 
             }
-
-
 
 
         }
 
     } //resubmit_success
-
-
 
     submit_data_to_server_registration(new_user_obj_survey, '/usbuser/register', resbumit_success, resubmit_error);
 
@@ -134,6 +137,8 @@ function get_all_users() {
 
 
 } //get_all_users. 
+
+
 
 function get_users() {
 
