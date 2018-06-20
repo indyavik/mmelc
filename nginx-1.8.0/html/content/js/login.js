@@ -16,6 +16,7 @@ function resubmit_registration(username, data_dir) {
     }
 
     var to_submit = JSON.parse(user_survey_object)
+    console.log(to_submit)
     localStorage.setItem('resubmit_user', JSON.stringify(to_submit))
 
     /* helper function to deal with error */
@@ -23,6 +24,7 @@ function resubmit_registration(username, data_dir) {
     function resubmit_error(res) {
 
         alert("Error: Could not resubmit. Please try again later");
+        console.log(res)
         return 'error'
 
     }
@@ -32,7 +34,6 @@ function resubmit_registration(username, data_dir) {
         if (JSON.parse(res).response != 'success') {
             resubmit_error('error')
            
-
         } //if not 'success' 
         else {
 
@@ -94,8 +95,7 @@ function resubmit_registration(username, data_dir) {
 
     } //resubmit_success
 
-    alert('i am here')
-
+    alert('here')
     submit_data_to_server_registration(to_submit, '/usbuser/register', resubmit_success, resubmit_error);
 
 } //resubmit 

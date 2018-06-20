@@ -1,8 +1,9 @@
 //var BACKEND = 'http://localhost:8081'
-var BACKEND = 'http://35.167.166.17'
+var BACKEND = 'http://mmelc.vestigesystems.com:8081'
 
 function submit_data_to_server_registration(data_object, backend_method, success_func, error_func, ajaxtype) {
 
+    console.log(data_object)
     if (!ajaxtype) ajaxtype = 'POST'
         //if (!backend_method) backend_method = '/usbuser/register'
 
