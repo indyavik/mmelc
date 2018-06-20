@@ -41,12 +41,21 @@ function convert_preview_user(username, license_id) {
                 var update_allUSERS = update_users_file(LICENSEDIR, username) // add this user to licensed users.
                 var remove_allUSERS = update_users_file(DATADIR, username, 'remove') //remove this user from preview users
 
+                if (update_allUSERS == 'error' || remove_allUSERS == 'error'){
+                    //alert. 
+                    alert("Error: Some error occurred. Please contact and admininstrator")
+                }
+
+             
                 user_data.user_type = 'license'
                 user_data['license_id'] = license_id
                 user_data['converted_from_preview'] = 'yes'
                 user_data['converted_backend'] = 'pending'
 
                 //write user data
+
+                external.saveFile(LICENSEDIR+'Users.txt', update_allUSERS)
+                external.saveFile(DATADIR+'Users.txt', remove_allUSERS)
 
                 external.saveFile(LICENSEDIR + username + '.txt', user_data)
                 external.removeFile(DATADIR + username + '.txt')
@@ -693,6 +702,7 @@ function populateUserTable(user_array, table, rows, cells, content) {
 } //function populate table 
 
 function update_users_file(datadir, user_to_add, action) {
+
     /* adds a user to existing user record */
     /* returns a new users object */
     /* action = add, or remove a particular user */
@@ -713,29 +723,39 @@ function update_users_file(datadir, user_to_add, action) {
 
     var user_exists = $.inArray(user_to_add, new_users); //(value, in_thisarray)
 
-    if (user_exists === -1 && user_to_add !== "") {
-
-        if (action == 'add') {
+    if(action == 'add'){
+        if (user_exists == -1 && user_to_add !== "") {
+            //user doesn't exists add. 
             new_users.push(user_to_add);
-
-
-        } //
-
-        if (action == 'remove') {
-
-            var r_index = new_users.indexOf(user_to_add)
-            new_users.splice(r_index, 1)
 
         }
 
+        else {
+            return 'error'
+        }
+
+    }
+
+    if(action == 'remove'){
+        if (user_exists == -1 && user_to_add !== "") {
+            //user doesn't exists nothing to remove.  
+            return 'error'
+
+        }
+
+        else {
+
+            var r_index = new_users.indexOf(user_to_add)
+            new_users.splice(r_index, 1)
+            
+            
+        }
+
+    }
+
+  
         users['Users'] = new_users
         return users; //return the full object.
-
-
-    } else {
-        alert("Error: User exists already")
-        return;
-    }
 
 } //update_users_file 
 
