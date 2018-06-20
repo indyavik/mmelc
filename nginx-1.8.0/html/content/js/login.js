@@ -3,6 +3,90 @@
 var LICENSEDIR = '/data_l/'
 var DATADIR = '/data/'
 
+function convert_preview_user(username, license_id) {
+
+    /*converts a user from preview to license */
+    var user_data = JSON.parse(get_from_disk(DATADIR + username + '.txt'))
+    if (!user_data || user_data == undefined) {
+        alert('Sorry - could not find the user')
+        return;
+
+    }
+
+    //else check if license_id 
+
+    var mmelc = JSON.parse(get_from_disk(LICENSEDIR + '.mmelc'))
+    if (!mmelc || mmelc == undefined) {
+        alert('Error: Please contact an administrator')
+        return;
+
+    }
+
+    var licenses_left = 0
+
+    for (var i in mmelc.license) {
+        //console.log(mmelc.license[i].id ) 
+        var lic = mmelc.license[i]
+        if (lic.id == license_id) {
+
+            if (lic.seats > lic.used) {
+
+                /* convert user */
+                licenses_left == lic.seats - lic.used
+                lic.used == lic.used + 1
+
+                /*move user to license dir */
+
+                //change USERS.txt 
+                var update_allUSERS = update_users_file(LICENSEDIR, username) // add this user to licensed users.
+                var remove_allUSERS = update_users_file(DATADIR, username, 'remove') //remove this user from preview users
+
+                user_data.user_type = 'license'
+                user_data['license_id'] = license_id
+                user_data['converted_from_preview'] = 'yes'
+                user_data['converted_backend'] = 'pending'
+
+                //write user data
+
+                external.saveFile(LICENSEDIR + username + '.txt', user_data)
+                external.removeFile(DATADIR + username + '.txt')
+
+                /*check if user's current status is pending */
+                if (user_data.submit_status == 'pending') {
+                    //copy user's survey data file. 
+                    var user_survey_file = get_from_disk(DATADIR + username + '_survey_registration.txt')
+                    external.saveFile(LICENSEDIR + username + '_survey_registration.txt', JSON.parse(user_survey_file))
+                        //remove
+                    external.removeFile(DATADIR + username + '_survey_registration.txt')
+
+
+                } else {
+
+                    //UPDATE USER STATUS IN BACKEND.
+                    //*********TO DO TO DO TO DO  */
+                    console.log('to-do-convert-user-backend')
+                }
+
+                /*RETURN THE CODE */
+
+                return 'success';
+
+
+            } //if licenses are left. 
+
+
+        } //if license id is found. 
+    } //for license id 
+
+    /* if licenses_left is zero let user know */
+    if (licenses_left == 0) {
+        alert("Sorry license not valid or not enough seats available for license id = " + license_id)
+        return;
+    }
+
+
+} //convert  a preview user to licensed user. 
+
 function resubmit_registration(username, data_dir) {
     /* tries to resubmit a user to the back-end again */
 
@@ -16,6 +100,7 @@ function resubmit_registration(username, data_dir) {
     }
 
     var to_submit = JSON.parse(user_survey_object)
+    console.log(to_submit)
     localStorage.setItem('resubmit_user', JSON.stringify(to_submit))
 
     /* helper function to deal with error */
@@ -23,6 +108,7 @@ function resubmit_registration(username, data_dir) {
     function resubmit_error(res) {
 
         alert("Error: Could not resubmit. Please try again later");
+        console.log(res)
         return 'error'
 
     }
@@ -94,8 +180,7 @@ function resubmit_registration(username, data_dir) {
 
     } //resubmit_success
 
-    alert('i am here')
-
+    alert('here')
     submit_data_to_server_registration(to_submit, '/usbuser/register', resubmit_success, resubmit_error);
 
 } //resubmit 
@@ -723,34 +808,15 @@ function createUser_new(user_type) {
     } //
 
     function on_error(res) {
+
         /* if not submitted ..change few values */
         //res = JSON.parse(res).details
 
-        alert("sorry- user can not be created at this time. Only Limited Access")
-
+        alert("Creating user, however no data was submitted to server")
 
         var new_user2 = JSON.parse(localStorage.getItem('new_user_obj'))
-        var user_type = new_user2.user_type
-
 
         new_user2['submit_status'] = 'pending'
-        new_user2['user_type'] = 'preview'
-        new_user2['temp_user_type'] = 'preview'
-        new_user2['desired_user_type'] = 'preview'
-
-        if (user_type == 'license') {
-
-            new_user2['desired_user_type'] = 'license'
-
-            alert('Sorry- user can not be created at this time. Will try log you in as preview user')
-
-            /* change the user_type and data_dir */
-            var data_dir_change = DATADIR
-            localStorage.setItem('data_dir', data_dir_change)
-
-
-
-        }
 
         localStorage.setItem('new_user_obj', JSON.stringify(new_user2))
 
@@ -805,12 +871,6 @@ function createUser_new(user_type) {
         localStorage.setItem("user_type", user_type); // "license" or "preview"
         localStorage.setItem(create_user, JSON.stringify(new_user));
 
-        /* clear some data no longer needed  */
-        localStorage.removeItem('new_user_obj')
-        localStorage.removeItem('new_user_survey')
-        localStorage.removeItem('new_user_survey_obj')
-
-        /*set new objects in localStorage. */
 
         /* write all of the new user objects to the disk. */
 
@@ -818,14 +878,19 @@ function createUser_new(user_type) {
         external.saveFile(data_dir + create_user + '.txt', new_user)
 
 
-        /* write all the survey data for future */
-        if (data_dir == DATADIR && new_user.desired_user_type != 'preview') {
+        /* write all the survey data onto disk for future resubmit */
 
-            external.saveFile(data_dir + create_user + 'survey_registration.txt', new_user_obj_survey)
+        if (data_dir == DATADIR && new_user['submit_status'] == 'pending') {
+            var new_user_obj_survey = JSON.parse(localStorage.getItem('new_user_survey_obj'))
+            external.saveFile(data_dir + create_user + '_survey_registration.txt', new_user_obj_survey)
         }
 
+        /* clear local storage   */
 
-        //update_on_disk(create_user + '_survey.txt', new_user_obj_survey); //js oject. not string.
+        localStorage.removeItem('new_user_obj')
+        localStorage.removeItem('new_user_survey')
+        localStorage.removeItem('new_user_survey_obj')
+
 
         // note that the appropriate module conf get lodaded here. //
         var mod_config = JSON.parse(get_from_disk(data_dir + 'module_conf.json'))
