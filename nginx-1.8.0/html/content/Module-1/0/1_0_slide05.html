@@ -11,7 +11,8 @@
 
     <script>
 //        / any js that applies to a slide should be included within the slide html page itself /
-        function slide4show(count) {
+        toggle5_init();
+		function slide4show(count) {
             $(".outcome-text").css('display', 'block');
             for (var i = 1; i <= 2; i++) {
                 if (i <= count)
@@ -19,6 +20,7 @@
                 else
                     document.getElementById("outcome-" + i).style.display = 'none';
             }
+			if (count == 2) {toggle5_complete();}
         }
     </script>
     <div id="slide4-buttons button-alignment">

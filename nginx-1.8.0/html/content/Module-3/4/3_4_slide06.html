@@ -17,6 +17,7 @@
 <script type="text/javascript">
     var counter = 0;
 
+	toggle5_init();
 	
     function toggleQuantExercise(showHideDiv) {
 
@@ -48,11 +49,13 @@
 		if (counter == 8) {
 			document.getElementById("box1").innerHTML = 'Using the formula: <br><img src="images/for1.png" /><br><br>Enter the counts (116 parasites and 204 WBCs):<br><img src="images/for2.png"><br><br>The final parasite density to report is 4,549 parasites per microlitre.';
 			document.getElementById("toggleButton").value = "Click to repeat the exercise";
+			toggle5_complete();
 		}
 		if (counter == 9) {
 			document.getElementById("box1").innerHTML = 'The following exercise illustrates the counting method on a thick blood film. <br>	  ';
 			document.getElementById("toggleButton").value = "Click to begin the exercise";
 			counter = 0;
+			
 		}
 
 

@@ -47,7 +47,7 @@
 </div> <!--actual page content here -->
 
 <script type="text/javascript">
-
+toggle5_init();
     var counter = 0;
 
     var numBoxes = 2;
@@ -69,9 +69,10 @@
         if(counter == numBoxes) {
 
             document.getElementById("toggleButton").style.display = "none";
+			toggle5_complete();
 
         }
-}
+	}
 
 </script>
 

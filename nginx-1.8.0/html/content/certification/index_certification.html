@@ -13,86 +13,6 @@
     <script src="certification-test.js"></script>
     <script src="../js/pxl-fullslide.js"></script>
 
-    <style>
-        .helpModal {
-            display: none;
-            /* Hidden by default */
-            position: fixed;
-            /* Stay in place */
-            z-index: 1;
-            /* Sit on top */
-            padding-top: 100px;
-            /* Location of the box */
-            left: 0;
-            top: 0;
-            width: 100%;
-            /* Full width */
-            height: 100%;
-            /* Full height */
-            overflow: auto;
-            /* Enable scroll if needed */
-            background-color: rgb(0, 0, 0);
-            /* Fallback color */
-            background-color: rgba(0, 0, 0, 0.4);
-            /* Black w/ opacity */
-        }
-        /* Modal Content */
-        
-        .help-modal-content {
-            background-color: #fefefe;
-            margin: auto;
-            padding: 20px;
-            border: 1px solid #888;
-            width: 60%;
-        }
-        
-        .mc-width {
-            width: 50%;
-        }
-        /* The Close Button */
-        
-        .help-close {
-            color: #aaaaaa;
-            float: right;
-            font-size: 28px;
-            font-weight: bold;
-        }
-        
-        .help-close:hover,
-        .help-close:focus {
-            color: #000;
-            text-decoration: none;
-            cursor: pointer;
-        }
-        
-        .ack-close {
-            color: #aaaaaa;
-            float: right;
-            font-size: 28px;
-            font-weight: bold;
-        }
-        
-        .ack-close:hover,
-        .ack-close:focus {
-            color: #000;
-            text-decoration: none;
-            cursor: pointer;
-        }
-        
-        .ackbtn {
-            font-size: 18px;
-            margin-right: 5px;
-            background: #EE6088;
-            color: white;
-            border-radius: 5px;
-            padding: 5px 5px;
-            border: 1px solid #EE6088;
-        }
-    </style>
-
-
-
-
 </head>
 
 
@@ -106,198 +26,34 @@
 
             <!-- wrap all the menus inside this div. once finalized this section remains same for each module.  -->
 
-            <div id="mySidenav" class="sidenav">
-                <!-- sliding menu from left. will overlay the content page. -->
+	<div id="header1" style="background-color: none;">
 
-                <!--<a href="javascript:void(0)" class="closebtn" onclick="closeNav()">×</a>-->
-                <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">
-                    <!--<img src="../SampleScreen_changes/../images/close-img.png" width="20px"/>-->
-                    <img src="../images/close-white.svg.png" width="25px" />
-                </a>
+                <div id="heading_text" style="height:54px; width:100%; background-color: #bbbbbb;">
 
-                <div class="header_sideMenu2">
-                    <span id="user_data" class="user_welcome">cache_size: 10 MB</span>
-                </div>
-
-                <ul id="menu">
-                    <li><a href="home.html">Welcome</a></li>
-                    <li><a href="#" id="Module-0"><span id="Module-0-side" class="side-bullet" style="margin-right:5px;"></span>Course Introduction, Software Setup and Tutorial, and Pre-Test</a> +
-                        <ul id="submenu">
-                            <li><a href="home.html?loadPage=Module-0.html">Module Home</a>
-                                <li>
-                                    <li><a href="#" id="0_0_slide01.html" onClick="load_page_menu(this.id)"><span id="0_0" side-bullet" style="margin-right:5px;">&#9634;</span> 0 : Introduction to the Malaria Microscopy Course </a></li>
-                                    <li><a href="#" id="0_1_slide01.html" onClick="load_page_menu(this.id)"><span id="0_1" side-bullet" style="margin-right:5px;">&#9634;</span> 1 : Software Setup and  Tutorial</a></li>
-                                    <li><a href="#" id="0_2_slide02.html" onClick="load_page_menu(this.id)"><span id="0_2" side-bullet" style="margin-right:5px;">&#9634;</span> 2 : Pre Test</a></li>
-                        </ul>
-                        </li>
-                        <li><a href="#" id="Module-1"><span id="Module-1-side" class="side-bullet" style="margin-right:5px;"></span>Module 1: Introduction to Malaria</a> +
-                            <ul id="submenu">
-                                <li><a href="home.html?loadPage=Module-1.html">Module Home</a>
-                                    <li>
-                                        <li><a href="#" id="1_0_slide02.html" onClick="load_page_menu(this.id)"><span id="1_0" side-bullet" style="margin-right:5px;">&#9634;</span> 0 : Introduction to the Module</a></li>
-                                        <li><a href="#" id="1_1_slide02.html" onClick="load_page_menu(this.id)"><span id="1_1" side-bullet" style="margin-right:5px;">&#9634;</span> 1 : Overview of the Global Malaria Situation</a></li>
-                                        <li><a href="#" id="1_2_slide02.html" onClick="load_page_menu(this.id)"><span id="1_2" side-bullet" style="margin-right:5px;">&#9634;</span> 2 : Life Cycle of the Malaria Parasite</a></li>
-                                        <li><a href="#" id="1_3_slide02.html" onClick="load_page_menu(this.id)"><span id="1_3" side-bullet" style="margin-right:5px;">&#9634;</span> 3 : End of Module One Assessment</a></li>
-                            </ul>
-                            </li>
-                            <li><a href="#" id="Module-2"><span id="Module-2-side" class="side-bullet" style="margin-right:5px;"></span>Module 2: Blood Collection, Preparation and Staining of Blood Films</a> +
-                                <ul id="submenu">
-                                    <li><a href="home.html?loadPage=Module-2.html">Module Home</a>
-                                        <li>
-                                            <li><a href="#" id="2_0_slide01.html" onClick="load_page_menu(this.id)"><span id="2_0" side-bullet" style="margin-right:5px;">&#9634;</span> 0 : Introduction to the Module</a></li>
-                                            <li><a href="#" id="2_1_slide01.html" onClick="load_page_menu(this.id)"><span id="2_1" side-bullet" style="margin-right:5px;">&#9634;</span> 1 : Collection of Blood Specimens for Malaria Diagnosis</a></li>
-                                            <li><a href="#" id="2_2_slide01.html" onClick="load_page_menu(this.id)"><span id="2_2" side-bullet" style="margin-right:5px;">&#9634;</span> 2 : Preparation of Blood Films for Malaria Microscopy</a></li>
-                                            <li><a href="#" id="2_3_slide01.html" onClick="load_page_menu(this.id)"><span id="2_3" side-bullet" style="margin-right:5px;">&#9634;</span> 3 : Preparation and Dilution of Giemsa Stain</a></li>
-                                            <li><a href="#" id="2_4_slide01.html" onClick="load_page_menu(this.id)"><span id="2_4" side-bullet" style="margin-right:5px;">&#9634;</span> 4 : Staining of Blood Films for Malaria Microscopy</a></li>
-                                            <li><a href="#" id="2_5_slide01.html" onClick="load_page_menu(this.id)"><span id="2_5" side-bullet" style="margin-right:5px;">&#9634;</span> 5 : End of Module Two Assessment</a></li>
-                                </ul>
-                                </li>
-                                <li><a href="#" id="Module-3"><span id="Module-3-side" class="side-bullet" style="margin-right:5px;"></span>Module 3: Blood Film Examination</a> +
-                                    <ul id="submenu">
-                                        <li><a href="home.html?loadPage=Module-3.html">Module Home</a>
-                                            <li>
-                                                <li><a href="#" id="3_0_slide01.html" onClick="load_page_menu(this.id)"><span id="3_0" side-bullet" style="margin-right:5px;">&#9634;</span> 0 : Introduction to the Module</a></li>
-                                                <li><a href="#" id="3_1_slide01.html" onClick="load_page_menu(this.id)"><span id="3_1" side-bullet" style="margin-right:5px;">&#9634;</span> 1 : Blood Components</a></li>
-                                                <li><a href="#" id="3_2_slide01.html" onClick="load_page_menu(this.id)"><span id="3_2" side-bullet" style="margin-right:5px;">&#9634;</span> 2 : Malaria Parasite Detection</a></li>
-                                                <li><a href="#" id="3_3_slide01.html" onClick="load_page_menu(this.id)"><span id="3_3" side-bullet" style="margin-right:5px;">&#9634;</span> 3 : Malaria Parasite Species Identification</a></li>
-                                                <li><a href="#" id="3_4_slide01.html" onClick="load_page_menu(this.id)"><span id="3_4" side-bullet" style="margin-right:5px;">&#9634;</span> 4 : Malaria Parasite Quantitation</a></li>
-                                                <li><a href="#" id="3_5_slide01.html" onClick="load_page_menu(this.id)"><span id="3_5" side-bullet" style="margin-right:5px;">&#9634;</span> 5 : Non-Malaria Pathogens in Blood Films</a></li>
-                                                <li><a href="#" id="3_6_slide01.html" onClick="load_page_menu(this.id)"><span id="3_6" side-bullet" style="margin-right:5px;">&#9634;</span> 6 : Commonly Found Artefacts in Blood Films</a></li>
-                                                <li><a href="#" id="3_7_slide01.html" onClick="load_page_menu(this.id)"><span id="3_7" side-bullet" style="margin-right:5px;">&#9634;</span> 7 : Reporting Blood Film Examination Results</a></li>
-                                                <li><a href="#" id="3_8_slide01.html" onClick="load_page_menu(this.id)"><span id="3_8" side-bullet" style="margin-right:5px;">&#9634;</span> 8 : End of Module Three Assessment</a></li>
-                                    </ul>
-                                    </li>
-                                    <li><a href="#" id="Module-4"><span id="Module-4-side" class="side-bullet" style="margin-right:5px;"></span>Module 4: Non-Microscopic Methods for the Detection of Malaria Parasites and Diagnosis of Malaria</a> +
-                                        <ul id="submenu">
-                                            <li><a href="home.html?loadPage=Module-4.html">Module Home</a>
-                                                <li>
-                                                    <li><a href="#" id="4_0_slide01.html" onClick="load_page_menu(this.id)"><span id="4_0" side-bullet" style="margin-right:5px;">&#9634;</span> 0 : Introduction to the Module</a></li>
-                                                    <li><a href="#" id="4_1_slide01.html" onClick="load_page_menu(this.id)"><span id="4_1" side-bullet" style="margin-right:5px;">&#9634;</span> 1 : Role of Diagnosis and Screening Methods for Malaria Case Management and Elimination</a></li>
-                                                    <li><a href="#" id="4_2_slide01.html" onClick="load_page_menu(this.id)"><span id="4_2" side-bullet" style="margin-right:5px;">&#9634;</span> 2 : Other Methods used for Diagnosing and Screening for Malaria</a></li>
-                                                    <li><a href="#" id="4_3_slide01.html" onClick="load_page_menu(this.id)"><span id="4_3" side-bullet" style="margin-right:5px;">&#9634;</span> 3 : End of Module Four Assessment</a></li>
-                                        </ul>
-                                        </li>
-                                        <li><a href="#" id="Module-5"><span id="Module-5-side" class="side-bullet" style="margin-right:5px;"></span>Module 5: Laboratory Quality Management Systems</a> +
-                                            <ul id="submenu">
-                                                <li><a href="home.html?loadPage=Module-5.html">Module Home</a>
-                                                    <li>
-                                                        <li><a href="#" id="5_0_slide03.html" onClick="load_page_menu(this.id)"><span id="5_0" side-bullet" style="margin-right:5px;">&#9634;</span> 0 : Introduction to the Module</a></li>
-                                                        <li><a href="#" id="5_1_slide02.html" onClick="load_page_menu(this.id)"><span id="5_1" side-bullet" style="margin-right:5px;">&#9634;</span> 1 : Elements of a Laboratory Quality Management System</a></li>
-                                                        <li><a href="#" id="5_2_slide02.html" onClick="load_page_menu(this.id)"><span id="5_2" side-bullet" style="margin-right:5px;">&#9634;</span> 2 : Monitoring Quality Indicators in Malaria Diagnosis</a></li>
-                                                        <li><a href="#" id="5_3_slide02.html" onClick="load_page_menu(this.id)"><span id="5_3" side-bullet" style="margin-right:5px;">&#9634;</span> 3 : Errors in Malaria Microscopy</a></li>
-                                                        <li><a href="#" id="5_4_slide02.html" onClick="load_page_menu(this.id)"><span id="5_4" side-bullet" style="margin-right:5px;">&#9634;</span> 4 : End of Module Five Assessment</a></li>
-                                            </ul>
-                                            </li>
-                                            <li><a href="#" id="Module-7"><span id="Module-7-side" class="side-bullet" style="margin-right:5px;"></span>Post-Test</a> +
-                                                <ul id="submenu">
-                                                    <li><a href="home.html?loadPage=Module-7.html">Module Home</a>
-                                                        <li>
-                                                            <li><a href="#" id="7_0_slide02.html" onClick="load_page_menu(this.id)"><span id="7_0" side-bullet" style="margin-right:5px;">&#9634;</span> 0 : Post Test</a></li>
-                                                </ul>
-                                                </li>
-                </ul>
-                <br><br><br><br>
-            </div>
-            <!-- mysidenav -->
+                    <div id="amref" style="display: inline-block; width:24%; height:100%; float:left;">
 
 
-            <div id="header1" style="min-height: 120px; background-color: none;">
-                <!--
-            <div class="amref_logo">
-                <img src="../images/Picture26.png" width="125px"/>
-                <img src="../images/Picture25.png" class="amref_org" width="100px">
-            </div>
-            <div class="globalgoodLogo">
-                <img src="../images/GG_Logo_PMS%20356.png" width="180px" class="global_org"/>
-            </div>
--->
-                <div id="heading_text" style="height:45%; width:100%; background-color: black;">
-                    <!--<div id="amref" style="display: inline-block; width:20%; height:100%; ">
-                <img src="../images/GG_Logo_small.png" style="max-height: 100%;" />
-              
-              </div> 
-                            <div id="globalgoods" style="display: inline-block; width:20%; height:100%; background-color: red">
-                <img src="../images/Picture25.png" style="max-height: 100%;" />
-              </div>
-
-              -->
-
-                    <div id="amref" style="display: inline-block; width:30%; height:100%; ">
-                        <img src="../images/logo.png" style="max-height: 100%;" />
+                        <img src="../images/logo.png" style="max-width: 100% ;max-height:100%;">
 
                     </div>
 
-
-
-
-                    <div id="right" style="display: inline-block; width:65%; height:100%;">
-
-
-                        <span class="header_iconDiv" style="float: right; padding-top: 6px;">
-				<div class="tooltip">
-                    <img class="nav-img-home" onclick="javascript:nav_to('logout)" alt="Contents" src="../images/logout.png" style="max-width:30px;margin-bottom: 10px; ">
-                    <span class="tooltiptext">Log Out</span>
+                    <div id="middleTopTitle" style="height: 50px;overflow: hidden; font-family: 'Georgia'; font-size:24px; vertical-align:middle; margin-top: 5px; ">
+					WELCOMM Final Assessment
                     </div>
-                    </span>
+                    <div id="right" style="display: inline-block; width:150px; height:100%;">
 
-                    <span class="header_iconDiv" style="float: right; padding-top: 6px;">
-				<div class="tooltip">
-                    <img class="nav-img-home" border="0" alt="Help" src="../images/help1.png" style="max-width:30px;margin-bottom: 10px; " id="help-btn"> 
-                    <span class="tooltiptext">Help</span>
+
+                    </div>
+
                 </div>
-                </span>
 
-                <span class="header_iconDiv" style="float: right; padding-top: 5px;">
-				<div class="tooltip">
-                    <img class="nav-img-home" onclick="javascript:nav_to('home')" alt="Contents" src="../images/home1.png" style="max-width:30px;margin-bottom: 10px; ">
-                    <span class="tooltiptext">Home</span>
+                <div style="height:8px;width:100%;background-color: #00AFEF">
+
+                </div>
+
+
             </div>
-            </span>
-
-        </div>
-
-
-    </div>
-
-    <div style="height:10px;width:100%;background-color: #00AFEF">
-
-    </div>
-
-    <div id="nav_2" style="height:50%; text-align: center; margin-top: 10px;">
-
-        <div style="margin: 0 auto; display: inline-block;">
-
-
-            <span class="header_iconDiv">
-				<div class="tooltip">
-                    <img class="nav-img-home" onclick="javascript:nav_to('prev')" border="0" alt="Previous slide" src="../images/backward.png">
-                    <span class="tooltiptext">Previous Page</span>
-        </div>
-        </span>
-
-
-        <span class="header_iconDiv" style="margin-right: 20px; margin-left: 20px;">
-                 <div class="tooltip">
-                    <img class="nav-img-home" onclick="javascript:openNav()" alt="Contents" src="../images/side1.png">
-                    <span class="tooltiptext">Contents Menu</span>
-    </div>
-    </span>
-
-    <span class="header_iconDiv">
-				<div class="tooltip">
-                    <img class="nav-img-home" onclick="javascript:nav_to('next')" border="0" src="../images/forward.png" alt="Next slide">
-				<span class="tooltiptext">Next Page</span>
-    </div>
-    </span>
-
-    </div>
-
-
-    </div>
-
-
-
-    </div>
+            <!-- div header 1 -->
     <!-- div header 1 -->
 
 
@@ -309,42 +65,39 @@
 
         <div id="content-inner">
 
-            <div id="m1_i_p05" class="page-content" style="padding: 0;width:100%;height:100%">
+            <div id="indextop" class="" style="padding: 0;width:100%;height:100%;margin-top: 42px;max-height:calc(100% - 75px)">
                 <slide id="Module-1"></slide>
-                <div style="background-image: url('../images/Picture18.png');width:100%;height:100%">
-                    <div style="padding-top:85px;color:white">
-                        <div style="width:50%;display: inline-block;padding-top: 30px;">
-                            <img src="../images/Picture1.png" width="100%" height="auto" style="width:500px;">
-                            <img src="../images/Picture2.png" style="position: absolute;top: 272px;height: 200px;left:0">
-                        </div>
-                        <div style="width:49%;display: inline-block;vertical-align: top;">
+				<div style="background-image: url('../images/Picture18.png');width:100%;height:100%;">
+					<div style="padding-top:32px;color:white; height:100%">
+						<div style="width:29%;display: inline-block;padding-top: 30px;">
+							<img src="../images/Picture1.png" style="position: absolute;bottom: 10px;max-height: 45%;left:0;max-width:25%">
+							<img src="../images/WELCOMMlogoFinal.png" style="position: absolute;top: 75px; max-height: 35%;left:5%;max-width:25%">
+						</div>
+						<div style="width:70%;display: inline-block;vertical-align: top;overflow:auto;height:calc(100% - 55px);">
+							<h3>Login credentials are required to take the final assessment.  
+							Access to the final assessment may be purchased separately from the main WELCOMM course. 
+							If you do not have an Assessment User ID and Assessment Pass Key, please visit XXXamrefXXX.com/XXX to register. </h3>
+							<br>
+							<h3 style="margin-top:20px">If you have credentials, please enter them below. </h3>
 
-                            <h1 style="margin-top:50px">Enter Credentials for Certification Test </h1>
+							<br>
 
-                            <br>
-
-                            <p><a href="index.html" style="color:white" ;>Click here to go back to START PAGE</a></p>
-
-
-                            <div id="test-form" style="margin-left:0px; margin-top:20px;">
-
-                                <p><input type="text" placeholder="Enter your test user id" name="test-user" id="input_test_user" maxlength="15" style="width:250px; height:50px; border: solid 1px #9598a0; font-size:18px;"></p>
-
-                                <p><input type="text" placeholder="Enter your pass key" name="pass_key" id="input_pass_key" maxlength="10" style="width:250px; height:50px; border: solid 1px #9598a0; font-size:18px;"></p>
-
-                                <p><button id="createUser_go" class="button_create_user_go" onClick="secureLogin()" style="min-width:100px;height:50px;">Log In</button></p>
+							<p><a href="../home.html" style="color:white" ;>Click here to return to the course welcome page.</a></p>
 
 
+								<div id="test-form" style="margin-left:0px; margin-top:20px;">
 
+									<p><input type="text" placeholder="Enter your Assessment User ID" name="test-user" id="input_test_user" maxlength="20" style="width:250px; height:50px; border: solid 1px #9598a0; font-size:18px;"></p>
 
+									<p><input type="text" placeholder="Enter your Assessment Pass Key" name="pass_key" id="input_pass_key" maxlength="20" style="width:250px; height:50px; border: solid 1px #9598a0; font-size:18px;"></p>
 
+									<p><button id="createUser_go" class="button_create_user_go" onClick="secureLogin()" style="min-width:100px;height:50px;">Log In</button></p>
 
+								</div>
+						</div>
+					<!--actual page content here -->
 
-
-                            </div>
-                            <!--actual page content here -->
-
-
+					</div>
 
                             <style>
                                 #content-inner {
@@ -359,55 +112,49 @@
                             </style>
 
 
-                            <script>
-                                /*
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    $( document ).ready(function() {
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        $("#header2").hide();
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        $("#m1_i_p05").removeClass("page-content");
-
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    });
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                */
-                            </script>
+				</div>
+			</div>
 
 
-                        </div>
-                        <!-- div conent inner-->
+		</div>
+		<!-- div conent inner-->
 
-                    </div>
-                    <!-- div content -->
+	</div>
+	<!-- div content -->
 
-                    <div id="footer" style="min-height: 50px;">
-                        <div style="height:10px;width:100%;background-color: #00AFEF">
+	<div id="footer" style="min-height: 50px;">
+		<div style="height:10px;width:100%;background-color: #00AFEF">
 
-                        </div>
+		</div>
 
-                        <div style="width: 100%; display: table;">
+		<div style="width: 100%; display: table;">
 
-                            <div style="display: table-row">
-                                <div class="footer_menu" style="width: 50% ; display: table-cell;">
+			<div style="display: table-row">
+				<div class="footer_menu" style="width: 50% ; display: table-cell;">
 
-                                    <div id="wrap-footer-menu" style="float:right; margin-top: 5px;">
+					<div id="wrap-footer-menu" style="float:right; margin-top: 5px;">
 
-                                        <!-- <span style="font-size: 12px; font-style: italic; margin-right: 10px;">Jump To Topic:</span><select style="margin-top: 5px;" onchange="CallMethod('nav_001_selector','JumpToSlide', { pid: 'OBJ_30'}); return false;" id="OBJ_30_selector" name="OBJ_30_selector"><option value="SLIDE_5"> Module 1: Introduction to the Malaria </option><option value="SLIDE_12" selected="1"> Module Overview ( 1 of 3) </option><option value="SLIDE_22"> Module Overview ( 2 of 3)</option><option value="SLIDE_23"> Module Overview ( 3 of 3) </option><option value="SLIDE_24"> Module Learing Outcomes</option><option value="SLIDE_25"> Credits </option></select> -->
+						<!-- <span style="font-size: 12px; font-style: italic; margin-right: 10px;">Jump To Topic:</span><select style="margin-top: 5px;" onchange="CallMethod('nav_001_selector','JumpToSlide', { pid: 'OBJ_30'}); return false;" id="OBJ_30_selector" name="OBJ_30_selector"><option value="SLIDE_5"> Module 1: Introduction to the Malaria </option><option value="SLIDE_12" selected="1"> Module Overview ( 1 of 3) </option><option value="SLIDE_22"> Module Overview ( 2 of 3)</option><option value="SLIDE_23"> Module Overview ( 3 of 3) </option><option value="SLIDE_24"> Module Learing Outcomes</option><option value="SLIDE_25"> Credits </option></select> -->
 
-                                    </div>
-                                    <!--wrap footer menu. -->
+					</div>
+					<!--wrap footer menu. -->
 
 
 
-                                </div>
-                                <!-- footer_menu -->
+				</div>
+				<!-- footer_menu -->
 
-                                <div style="display: table-cell;"> <span id="display_current" style="float:right; font-size: 10px; font-style: italic; margin-right: 30px;">Right</span></div>
-                            </div>
-                        </div>
+				<div style="display: table-cell;"> <span id="display_current" style="float:right; font-size: 10px; font-style: italic; margin-right: 30px;">Right</span></div>
+			</div>
+		</div>
 
 
 
-                    </div>
-                    <!-- div footer -->
+	</div>
+	<!-- div footer -->
 
-                </div>
+</div>
+</div>
 
 </body>
 
@@ -493,7 +240,7 @@
         var user = document.getElementById("input_test_user").value;
         var key = document.getElementById("input_pass_key").value;
 
-        alert('verifiying' + user + key)
+        //alert('verifiying' + user + key)
 
         external.verifyModule(user, key, verifyCallBack);
 

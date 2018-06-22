@@ -289,7 +289,7 @@ function TEST_submit_cert_ans_to_server(payload, endpoint, method_type) {
 
         },
         error: function() {
-            alert('Errror: Could not submit results to server. Please note down the keys displayed in this page.')
+            alert('Error: Could not submit results to server. Please record the keys displayed and submit via email.')
             return;
         }
     });
@@ -325,7 +325,7 @@ function submit_cert_ans_to_server(cert_results) {
             //alert("live results from server:" + json.status + ':' + json.result);
 
             var res = JSON.parse(json)
-            var to_show = 'Successfully submitted'
+            var to_show = 'Your results have been successfully submitted. You will now be logged out. '
             if (res.response !== 'success') to_show = res.details
 
             alert(to_show)
@@ -362,7 +362,7 @@ function submit_cert_ans_to_server(cert_results) {
 
             //window.location.href = "/content/posttest_protected/results.html"; 
 
-            alert('Errror: Could not submit results to server. Please note down the keys displayed in this page.')
+            alert('Error: Could not submit results to server. Please record the keys displayed in this page and submit via email.')
 
 
         }
@@ -433,7 +433,7 @@ function saveCertAnswerPxl(slide_id) {
                 alert('please answer atleast 1 question')
             }
 
-            alert(useranswer)
+            //alert(useranswer)
 
 
             //document.getElementById("answerFeedback").innerHTML = useranswer;
