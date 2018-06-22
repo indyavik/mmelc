@@ -2,6 +2,10 @@
 IGNORE_MODULES = ['Module-100', 'Module-8', 'Module-C']
 
 
+function get_available_licences() {
+
+}
+
 function update_user_object(objectName, updatedvalue) {
 
 

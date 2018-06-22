@@ -83,7 +83,7 @@
                                         <button id="existing-users" style="margin-right:10px;width:200px; height:50px;background:chartreuse;">Existing Users</button>
                                         <button id="create-users" style="margin-right:50px;width:200px; height:50px;background:grey;">Create New User</button>
                                         <span id="verify-license" style="margin-right:50px;width:200px;">Verify License</span>
-                                        <span id="verify-license" style="margin-right:100px;width:200px;" onclick="window.location.href='index_resubmit.html';">Resubmit User</span>
+                                        <span id="verify-license" style="margin-right:100px;width:200px;" onclick="window.location.href='index_resubmit.html';">Convert User</span>
                                         <hr>
 
 
@@ -114,9 +114,9 @@
                                                 </td>
                                             </tr>
                                             <tr>
-                                                <td style="background:transparent;"><input type="text" id="license_user_pw" name="license_user_pw" placeholder="password"><br> </td>
+                                                <td style="background:transparent;"><input type="text" width="200px;" id="license_user_pw" name="license_user_pw" placeholder="password(if any)"><br> </td>
 
-                                                <td style="background:transparent;"><input type="text" id="preview_user_pw" name="license_user_pw" placeholder="password"><br>
+                                                <td style="background:transparent;"><input type="text" id="preview_user_pw" name="license_user_pw" placeholder="password(if any)"><br>
                                                 </td>
 
                                             </tr>
@@ -153,8 +153,8 @@
                                     <!-- main table -->
 
                                     <div id="div_verify_license" style="display:none ">
-                                        <p>Enter your License key and click "Go "<span style="color:blue; margin-left:10px;"><a href="#" onclick="window.location.reload();">Cancel</a></span></p>
-
+                                        <p>Enter your License key and click "Go "<span style="color:white; margin-left:20px;"><a href="#" onclick="window.location.reload();">Cancel</a></span></p>
+                                        <p><span style="color:white; margin-left:20px;font-style: italic;"> Internet access is required to verify the License key</span></p>
                                         <P id="verify_license_response" style="color:blue;"></P>
                                         <input type="text" placeholder="Enter License key" name="license_key_to_verify" id="license_key_to_verify" maxlength="25 " style="width:200px; height:50px; border: solid 1px #9598a0; font-size:18px; ">
 
@@ -200,8 +200,9 @@
                                         <div id="select-radios" style="margin-top:50px;">
                                             <p>Select a user type :</p>
 
-                                            <label><input type="radio" id="license-radio" value="license" onclick="showForm('license');" name="select-type">License</label>
-                                            <label><input type="radio" id="preview-radio" value="preview" onclick="showForm('preview');" name="select-type">Preview</label>
+                                            <label><input type="radio" id="license-radio" value="license" onclick="showForm('license');" name="select-type">License User</label>
+                                            <p></p>
+                                            <label><input type="radio" id="preview-radio" value="preview" onclick="showForm('preview');" name="select-type">Preview User</label>
 
                                         </div>
                                         <!-- select-radios -->
@@ -218,18 +219,21 @@
                                                 <p>3. Email for password recovery </p>
                                                 <input type="text" placeholder="Optional Recovery Email" name="input_createUser_email_license" id="input_createUser_email_license" maxlength="15" style="width:200px; height:30px; border: solid 1px #9598a0; font-size:12px;">
 
-                                                <p>4. Select and existing License <span style="margin-left:20px;"><a href="#" onclick="enterLicense()">Enter New License Key</a></span></p>
+                                                <p>4. Select and existing License or <span style="margin-left:20px;"><a href="#" onclick="enterLicense()"><a href="#" onclick="enterLicense()" style="color:white;">Click here to enter a New License Key</a></a></span></p>
                                                 <select id="select-license" style="display:block;">
                                                 
                                                 
                                                   </select>
 
 
-                                                <p></p>
+
                                                 <p></p>
 
-                                                <button id="createUser_lic" style="margin-left:0px;" onclick="createUser_lic()">GO</button>
-                                                <p style="margin-left:0px;"><span style="color:blue;" onClick="window.location.reload()"> ( cancel )</span></p>
+                                                <button id="createUser_lic" style="margin-left:0px;" onclick="createUser_lic()">Continue</button>
+                                                <p></p>
+                                                <p></p>
+                                                <input type="button" id="cancel_me" value="Click here to cancel" onclick="window.location.reload()">
+
 
                                                 <p></p>
 
@@ -257,10 +261,9 @@
                                                 <p></p>
                                                 <p></p>
 
-                                                <button id="createUser_preview" style="margin-left:0px;" onclick="createUser_preview()">GO</button>
-                                                <p style="margin-left:0px;"><span style="color:blue;" onClick="window.location.reload()"> ( cancel )</span></p>
-
+                                                <button id="createUser_preview" style="margin-left:0px;" onclick="createUser_preview()">Continue</button>
                                                 <p></p>
+
 
 
                                             </div>
@@ -275,10 +278,11 @@
 
 
                                     </div>
+
                                     <!-- create-user-form -->
 
                                     <div id="reg_survey" style="display:none; margin-top:10px;">
-                                        <p><span style="font-size:18px; color:black;">Step 2: Please complete the survey</span>
+                                        <p><span style="font-size:18px; color:white;">Step 2: Please complete the survey</span>
                                             <!-- <span style="margin-left:300px;" onclick="createUser_go('skip')">SKIP</span></p> -->
 
                                             <div id="wrap_reg_survey" style="margin-left:50px; margin-right:100px;">
@@ -286,158 +290,195 @@
                                                 <table class="table_reg_survey">
                                                     <tr>
                                                         <td>
-                                                            <span>Name: </span> <span><input type="text" placeholder="None" name="name" id="reg_name" maxlength="15"></span>
 
+                                                            <span>Name: </span> <span><input type="text" placeholder="Required" name="name" id="reg_name" maxlength="40"></span>
                                                         </td>
-                                                        <td>
-                                                            <span>Designation: </span> <span><input type="text" placeholder="None" name="reg_designation" id="reg_designation" maxlength="15"></span>
-
-                                                        </td>
-
-
                                                     </tr>
 
                                                     <tr>
                                                         <td>
-                                                            <span>Country of work: </span> <span><input type="text" placeholder="None" name="reg_country_work" id="reg_country_work" maxlength="15">
-                                                            </span>
+                                                            <span>Designation or Title: </span> <span><input type="text" placeholder="None" name="reg_designation" id="reg_designation" maxlength="40"></span>
 
                                                         </td>
-                                                        <td>
-                                                            <span>Contact Email: </span> <span><input type="text" placeholder="None" name="reg_email" id="reg_email" maxlength="15"> </span>
-
-                                                        </td>
-
-
                                                     </tr>
+
+
+
 
                                                     <tr>
                                                         <td>
-                                                            <span>Contact Phone: </span> <span><input type="text" placeholder="None" name="reg_phone" id="reg_phone" maxlength="15">
-                                                                </span>
 
-                                                        </td>
-                                                        <td style="width:200px;">
-                                                            <span>Gender: </span>
-                                                            <span>
-                                                                    <select id="gender">
-                                                                            <option value="1" selected="selected">Prefer not to ans</option>
-                                                                            <option value="2">Male</option>
-                                                                            <option value="3">Female</option>
-                                                                        
-                                                                          </select>
-
-                                                            </span>
-
-                                                        </td>
-
-
-                                                    </tr>
-
-                                                    <tr>
-                                                        <td>
-                                                            <span>Access to internet: </span>
-                                                            <span>
-                                                                        <select id="accessinternet">
-                                                                                <option value="0" selected="selected">Home</option>
-                                                                                <option value="1">Work</option>
-                                                                                <option value="2">Internet Cafe</option>
-                                                                                <option value="3">Mobile HotSpot</option>
-                                                                                <option value="4">Other</option>
-                                                                            
-                                                                              </select>
-                                                                    
-                                                                </span>
-
-                                                        </td>
-                                                        <td style="width:200px;">
-                                                            <span>Age Range: </span>
-                                                            <span>
-                                                                    <select id="age">
-                                                                            <option value="1" selected="selected">Prefer not to ans</option>
-                                                                            <option value="2"><20></option>
-                                                                            <option value="3">20-29</option>
-                                                                            <option value="4">30-39</option>
-                                                                            <option value="5">40-49</option>
-                                                                            <option value="6">50-59</option>
-                                                                            <option value="6">60-59</option>
-                                                                            <option value="7">>70</option>
-                                                                        
-                                                                          </select>
-    
-                                                                </span>
-
-                                                        </td>
-
-
-                                                    </tr>
-
-                                                    <tr>
-                                                        <td>
-                                                            <span>Workplace: </span>
-                                                            <span>
-                                                                    <select id="workplace">
-                                                                            <option value="1" selected="selected">Prefer not to ans</option>
-                                                                            <option value="2">Private/Not for Profit/Government</option>
-                                                                            <option value="3">Health Center</option>
-                                                                            <option value="4">Hospital</option>
-                                                                            <option value="5">College/University</option>
-                                                                            <option value="6">National referce laboratory</option>
-                                                                            <option value="6">Research institute</option>
-                                                                            <option value="7">NGO</option>
-                                                                            <option value="6">Other..</option>
-                                                                           
-                                                                        
-                                                                          </select>
-                                                                        
+                                                            <span>Country of work: </span> <span><input type="text" placeholder="None" name="reg_country_work" id="reg_country_work" maxlength="40">
                                                                     </span>
 
                                                         </td>
-                                                        <td style="width:200px;">
-                                                            <span>Education Level: </span>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>
+                                                            <span>Contact Email: </span> <span><input type="text" placeholder="Required" name="reg_email" id="reg_email" maxlength="254"> </span>
+
+                                                        </td>
+                                                    </tr>
+
+
+
+
+                                                    <tr>
+                                                        <td>
+
+                                                            <span>Contact Phone: </span> <span><input type="text" placeholder="None" name="reg_phone" id="reg_phone" maxlength="40">
+                                                                        </span>
+
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>
+                                                            <span>Gender: </span>
                                                             <span>
-                                                                    <select id="education">
-                                                                            <option value="1" selected="selected">Prefer not to ans</option>
-                                                                            <option value="2">Certificate</option>
-                                                                            <option value="3">Diplome</option>
-                                                                            <option value="4">Bachelor's degree</option>
-                                                                            <option value="5">Master's degree</option>
-                                                                            <option value="6">PhD</option>
-                                                                            <option value="6">Other..</option>
-                                                                           
-                                                                        
-                                                                          </select>
+                                                                            <select id="gender">
+                                                                                    <option value="1" selected="selected">Prefer not to answer</option>
+                                                                                    <option value="2">Male</option>
+                                                                                    <option value="3">Female</option>
+                                                                                
+                                                                                  </select>
         
                                                                     </span>
 
                                                         </td>
-
-
                                                     </tr>
+
+
+
 
                                                     <tr>
                                                         <td>
-                                                            <span>Current certification level: </span>
+
+                                                            <span>Primary access to internet while taking course: </span>
                                                             <span>
-                                                                        <select id="certificationlevel">
-                                                                                <option value="0" selected="selected">0</option>
-                                                                                <option value="1">1</option>
-                                                                                <option value="2">2</option>
-                                                                                <option value="3">3</option>
-                                                                                <option value="4">4</option>
-                                                                            
-                                                                              </select>
+                                                                                <select id="accessinternet">
+                                                                                        <option value="0" selected="selected">Home</option>
+                                                                                        <option value="1">Work</option>
+                                                                                        <option value="2">Internet Cafe</option>
+                                                                                        <option value="3">Mobile HotSpot</option>
+                                                                                        <option value="4">Other</option>
+                                                                                        <option value="5">Offline</option>
+                                                                                    
+                                                                                      </select>
                                                                             
                                                                         </span>
 
                                                         </td>
-                                                        <td style="width:200px;">
-
+                                                    </tr>
+                                                    <tr>
+                                                        <td>
+                                                            <span>Age Range: </span>
+                                                            <span>
+                                                                            <select id="age">
+                                                                                    <option value="1" selected="selected">Prefer not to answer</option>
+                                                                                    <option value="2"><20></option>
+                                                                                    <option value="3">20-29</option>
+                                                                                    <option value="4">30-39</option>
+                                                                                    <option value="5">40-49</option>
+                                                                                    <option value="6">50-59</option>
+                                                                                    <option value="7">60-59</option>
+                                                                                    <option value="8">>70</option>
+                                                                                
+                                                                                  </select>
+            
+                                                                        </span>
 
                                                         </td>
-
-
                                                     </tr>
+
+
+
+
+                                                    <tr>
+                                                        <td>
+
+                                                            <span>Workplace: </span>
+                                                            <span>
+                                                                            <select id="workplace">
+                                                                                    <option value="1" selected="selected">Prefer not to answer</option>
+                                                                                    <option value="2">Health Center</option>
+                                                                                    <option value="3">Hospital</option>
+                                                                                    <option value="4">College/University</option>
+                                                                                    <option value="5">National reference laboratory</option>
+                                                                                    <option value="6">Research institute</option>
+                                                                                    <option value="7">NGO</option>
+                                                                                    <option value="8">Other</option>
+                                                                                   
+                                                                                
+                                                                                  </select>
+                                                                                
+                                                                            </span>
+
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>
+                                                            <span>Education Level: </span>
+                                                            <span>
+                                                                            <select id="education">
+                                                                                    <option value="1" selected="selected">Prefer not to answer</option>
+                                                                                    <option value="2">Certificate</option>
+                                                                                    <option value="3">Diploma</option>
+                                                                                    <option value="4">Bachelor's degree</option>
+                                                                                    <option value="5">Master's degree</option>
+                                                                                    <option value="6">PhD</option>
+                                                                                    <option value="7">Other</option>
+                                                                                   
+                                                                                
+                                                                                  </select>
+                
+                                                                            </span>
+
+                                                        </td>
+                                                    </tr>
+
+
+
+
+
+                                                    <tr>
+                                                        <td>
+                                                            <span>Workplace Type: </span>
+                                                            <span>
+                                                                            <select id="workplacetype">
+                                                                                    <option value="1" selected="selected">Prefer not to answer</option>
+                                                                                    <option value="2">Private</option>
+                                                                                    <option value="3">Not for profit</option>
+                                                                                    <option value="4">Government</option>
+                                                                                    <option value="5">Other</option>
+                                                                                   
+                                                                                
+                                                                                  </select>
+                                                                                
+                                                                            </span>
+
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>
+                                                            <span>WHO malaria microscopy certification level: </span>
+                                                            <span>
+                                                                                <select id="certificationlevel">
+                                                                                        <option value="0" selected="selected">None/Not applicable</option>
+                                                                                        <option value="1">Level 1</option>
+                                                                                        <option value="2">Level 2</option>
+                                                                                        <option value="3">Level 3</option>
+                                                                                        <option value="4">Level 4</option>
+                                                                                    
+                                                                                      </select>
+                                                                                    
+                                                                                </span>
+
+                                                        </td>
+                                                    </tr>
+
+
+
+
 
                                                 </table>
 
@@ -450,18 +491,19 @@
 
                                                 <p style="margin-top:10px; margin-bottom:10px;"></p>
 
-                                                <span>Malaria microscopy refresher training in last 2 years: </span>
+                                                <span>Have you received malaria microscopy refresher training in the last 2 years: </span>
 
                                                 <select id="refresher">
-                                                        <option value="1">Yes</option>
-                                                        <option value="2" selected="selected">No</option>
-                                                    
-                                                      </select>
+                                                                <option value="1">Yes</option>
+                                                                <option value="2" selected="selected">No</option>
+                                                            
+                                                              </select>
 
                                                 </br>
 
                                                 <br>
-                                                <span style="margin-top:20px; margin-left:10px;">If yes for above how many years ?: </span><input type="text" placeholder="years" name="refresher_years" id="refresher_years" maxlength="5">
+                                                <span style="margin-top:20px; margin-left:10px;">How long ago did you last receive formal training in malaria microscopy?: </span><input type="text" placeholder="years" name="refresher_years" id="refresher_years"
+                                                    maxlength="5">
 
 
                                                 <p></p>
@@ -474,6 +516,8 @@
 
                                             </div>
                                             <!-- wrap survey div-->
+
+
 
                                             <br>
 
@@ -632,6 +676,11 @@
     <script>
         $("#existing-users").click(function() {
 
+            location.reload();
+
+            /*
+
+
             $("#MainTable").show();
             $("#div_createUser_license").hide();
             $("#div_createUser_preview").hide();
@@ -641,6 +690,8 @@
             $("#div_verify_license").hide();
             $("#existing-users").css("background-color", "green");
             $("#create-users").css("background-color", "grey");
+
+            */
 
 
         });

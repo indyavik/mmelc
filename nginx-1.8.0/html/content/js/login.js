@@ -41,12 +41,11 @@ function convert_preview_user(username, license_id) {
                 var update_allUSERS = update_users_file(LICENSEDIR, username) // add this user to licensed users.
                 var remove_allUSERS = update_users_file(DATADIR, username, 'remove') //remove this user from preview users
 
-                if (update_allUSERS == 'error' || remove_allUSERS == 'error'){
+                if (update_allUSERS == 'error' || remove_allUSERS == 'error') {
                     //alert. 
                     alert("Error: Some error occurred. Please contact and admininstrator")
                 }
 
-             
                 user_data.user_type = 'license'
                 user_data['license_id'] = license_id
                 user_data['converted_from_preview'] = 'yes'
@@ -54,15 +53,37 @@ function convert_preview_user(username, license_id) {
 
                 //write user data
 
-                external.saveFile(LICENSEDIR+'Users.txt', update_allUSERS)
-                external.saveFile(DATADIR+'Users.txt', remove_allUSERS)
+                external.saveFile(LICENSEDIR + 'Users.txt', update_allUSERS)
+                external.saveFile(DATADIR + 'Users.txt', remove_allUSERS)
 
                 external.saveFile(LICENSEDIR + username + '.txt', user_data)
                 external.removeFile(DATADIR + username + '.txt')
 
+                /* get the pending file */
+
+                var pending = get_from_disk(LICENSEDIR + '_pending.txt')
+
+                if (pending && pending != undefined) {
+                    var pendingobj = JSON.parse(pending)
+
+                } else {
+                    var pendingobj = { 'regSurvey_license': [], 'convert': [], 'regSurvey_preview': [] }
+
+                }
+
+                pendingobj['convert'].push(username)
+
                 /*check if user's current status is pending */
+
                 if (user_data.submit_status == 'pending') {
                     //copy user's survey data file. 
+                    pendingobj['regSurvey_license'].push(username)
+                    var idx = pendingobj['regSurvey_preview'].indexOf(username)
+                    if (idx > -1) {
+                        pendingobj['regSurvey_preview'].splice(idx, 1)
+
+                    }
+
                     var user_survey_file = get_from_disk(DATADIR + username + '_survey_registration.txt')
                     external.saveFile(LICENSEDIR + username + '_survey_registration.txt', JSON.parse(user_survey_file))
                         //remove
@@ -73,6 +94,7 @@ function convert_preview_user(username, license_id) {
 
                     //UPDATE USER STATUS IN BACKEND.
                     //*********TO DO TO DO TO DO  */
+                    external.saveFile(LICENSEDIR + '_pending.txt', pendingobj)
                     console.log('to-do-convert-user-backend')
                 }
 
@@ -476,7 +498,7 @@ function regSurvey() {
         var required_fields = ['reg_name', 'reg_email']
         var required_echo = ['Name', 'Email']
 
-        var arr = ['gender', 'refresher', 'certificationlevel', 'accessinternet', 'education', 'workplace']
+        var arr = ['gender', 'refresher', 'certificationlevel', 'accessinternet', 'education', 'workplace', 'workplacetype']
 
         for (var i = 0; i < arr1.length; i++) {
 
@@ -548,6 +570,8 @@ function regSurvey() {
         console.log(survey_object)
 
         localStorage.setItem('new_user_survey', JSON.stringify(survey_object))
+
+        return;
 
 
         //create user
@@ -723,39 +747,35 @@ function update_users_file(datadir, user_to_add, action) {
 
     var user_exists = $.inArray(user_to_add, new_users); //(value, in_thisarray)
 
-    if(action == 'add'){
+    if (action == 'add') {
         if (user_exists == -1 && user_to_add !== "") {
             //user doesn't exists add. 
             new_users.push(user_to_add);
 
-        }
-
-        else {
+        } else {
             return 'error'
         }
 
     }
 
-    if(action == 'remove'){
+    if (action == 'remove') {
         if (user_exists == -1 && user_to_add !== "") {
             //user doesn't exists nothing to remove.  
             return 'error'
 
-        }
-
-        else {
+        } else {
 
             var r_index = new_users.indexOf(user_to_add)
             new_users.splice(r_index, 1)
-            
-            
+
+
         }
 
     }
 
-  
-        users['Users'] = new_users
-        return users; //return the full object.
+
+    users['Users'] = new_users
+    return users; //return the full object.
 
 } //update_users_file 
 
@@ -836,7 +856,32 @@ function createUser_new(user_type) {
 
         var new_user2 = JSON.parse(localStorage.getItem('new_user_obj'))
 
+        var user_type = new_user2.user_type
+
         new_user2['submit_status'] = 'pending'
+
+        /* update the pending file in LICENSE DIR */
+
+        var pending = get_from_disk(LICENSEDIR + '_pending.txt')
+
+        if (pending && pending != undefined) {
+
+            var pendingobj = JSON.parse(pending)
+
+        } else {
+            var pendingobj = { 'regSurvey_license': [], 'convert': [], 'regSurvey_preview': [] }
+
+        }
+
+        if (user_type == 'license') {
+            pendingobj['regSurvey_license'].push(new_user2.username)
+
+        } else {
+            pendingobj['regSurvey_preview'].push(new_user2.username)
+
+        }
+
+        external.saveFile(LICENSEDIR + '_pending.txt', pendingobj)
 
         localStorage.setItem('new_user_obj', JSON.stringify(new_user2))
 
@@ -933,6 +978,7 @@ function logUser_new(user_name, user_password, user_type) {
     /*@@ user login @@ */
 
     /* login the user  */
+
     var data_dir = LICENSEDIR
 
     if (user_type !== 'license') {
@@ -941,10 +987,12 @@ function logUser_new(user_name, user_password, user_type) {
 
     }
 
-    if (!user_name || !user_password) {
-        alert('Error: Username and Password is required')
+    if (!user_name) {
+        alert('Error: Username is required')
         return;
     }
+
+    if (!user_password) user_password = "" //
 
     /* clear existing storage objects */
     localStorage.clear("logged_in")
@@ -970,7 +1018,6 @@ function logUser_new(user_name, user_password, user_type) {
     } else {
 
         /* verify password and log uer in. */
-
         var pw = user_obj.password
         console.log(user_obj)
         if (pw != user_password) {

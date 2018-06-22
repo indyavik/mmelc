@@ -3,6 +3,39 @@
 var LICENSEDIR = '/data_l/'
 var DATADIR = '/data/'
 
+function get_available_licences() {
+
+    /* returns the id of liceses available (verified and seats > available) 
+    :retruns: Array []
+    
+    */
+
+    var mmelc = JSON.parse(get_from_disk(LICENSEDIR + '.mmelc'))
+
+    var available_lic = []
+
+    if (mmelc) {
+
+        var lic = mmelc.license
+
+        for (var i = 0; i < lic.length; i++) {
+
+            if (lic[i].seats > lic[i].used) {
+
+                available_lic.push(lic[i].id)
+
+            }
+
+        }
+
+
+    }
+
+    return available_lic;
+
+
+} //get available liceses. 
+
 //functions (associated with index.html)
 
 function verifyLicense_div() {

@@ -86,8 +86,11 @@
                                             <p id="verify_resubmit_response" style="color:blue;"></p>
                                             <input type="text" placeholder="Enter Username" name="username_convert" id="username_convert" maxlength="25 " style="width:200px; height:50px; border: solid 1px #9598a0; font-size:18px; ">
                                             <p></p>
-                                            <input type="text" placeholder="Enter License" name="license_convert" id="license_convert" maxlength="25 " style="width:200px; height:50px; border: solid 1px #9598a0; font-size:18px; ">
+                                            <p>Select License:</p>
+                                            <select id="select-license-convert" style="display:block;"></select>
+
                                             <p></p>
+
                                             <button id="convert_go" class="button_create_user_go" onclick="convert_user()">GO</button>
 
                                             <br></br>
@@ -131,9 +134,38 @@
     <script src="/content/js/preview.js "></script>
 
     <script>
+        /*drop down for licenses */
+
+        var sel_lic = document.getElementById('select-license-convert');
+
+        var available_lic = get_available_licences()
+
+        if (available_lic.length > 0) {
+
+            for (var i = 0; i < available_lic.length; i++) {
+                var opt = document.createElement('option');
+                opt.innerHTML = available_lic[i];
+                opt.value = available_lic[i];
+                sel_lic.appendChild(opt);
+
+            }
+
+        }
+
+
+
+        /* function to convert users */
+
+
+
         function convert_user() {
+
             var username = document.getElementById("username_convert").value;
-            var license_id = document.getElementById("license_convert").value;
+            //var license_id = document.getElementById("license_convert").value;
+
+            var e = document.getElementById('select-license-convert')
+            var license_id = e.options[e.selectedIndex].text
+
 
             if (!username) {
                 alert('please enter a username');
