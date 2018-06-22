@@ -1,6 +1,10 @@
 //GLOBALS
-IGNORE_MODULES = ['Module-100', 'Module-8' , 'Module-C']
+IGNORE_MODULES = ['Module-100', 'Module-8', 'Module-C']
 
+
+function get_available_licences() {
+
+}
 
 function update_user_object(objectName, updatedvalue) {
 
@@ -204,8 +208,7 @@ function update_units(current_module, current_unit, completed_module) {
         //units_to_update.push(current_unit.toString());
 
         localStorage.setItem(current_user, JSON.stringify(current_user_data))
-
-        // update_on_disk(current_user + '.txt', current_user_data)
+            // update_on_disk(current_user + '.txt', current_user_data)
         update_on_disk(current_user + '.txt', current_user_data)
     }
 
@@ -1583,7 +1586,7 @@ function show_test_report(test_type, output_table) {
 
 } //function show test results 
 
-function submit_data_to_server(data_type, data_object) {
+function submit_data_to_server_2(data_type, data_object) {
 
     //data_type = 'user_data' , 'feedback_survey' , 'certification_test' , pre_test, post_data
 

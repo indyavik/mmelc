@@ -1,19 +1,19 @@
 {
     "cert_scores": {
-        "101": "1",
+        "101": "4",
         "201": "2",
-        "301": "2",
-        "401": "2",
-        "501": "2",
-        "C_pxl_assessmentq1": 5004608,
+        "301": "4",
+        "401": "1",
+        "501": "1",
+        "C_pxl_assessmentq1": 3004108,
         "C_pxl_assessmentq2": 2004352,
-        "C_pxl_assessmentq3": 10004128,
+        "C_pxl_assessmentq3": 30004328,
         "C_pxl_assessmentq4": 100000512,
         "C_pxl_assessmentq5": 2004352,
         "C_pxl_assessmentq6": 124096
     },
     "cert_user_name": "hi",
-    "usb_user_name": "prev112",
+    "usb_user_name": "prev1980",
     "usb_user_type": "preview",
     "cert_test_answer_key": "85-osaa60-p2vts0-620dht0-1thtrto0-k0ru80-1dsk60",
     "cert_test_question_key": "2s1b1ptrst"
