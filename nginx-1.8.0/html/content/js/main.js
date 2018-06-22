@@ -1,5 +1,5 @@
-var BACKEND = 'http://localhost:8081'
-    //var BACKEND = 'http://mmelc.vestigesystems.com:8081'
+//var BACKEND = 'http://localhost:8081'
+var BACKEND = 'http://mmelc.vestigesystems.com:8081'
 
 function submit_data_to_server_registration(data_object, backend_method, success_func, error_func, ajaxtype) {
 

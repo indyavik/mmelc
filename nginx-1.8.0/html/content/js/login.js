@@ -551,28 +551,7 @@ function regSurvey() {
 
         survey_object['usb_id'] = usb_id
 
-        /*
-        //get license user. 
-        var license_id = "preview_user"
-        var mmelc = JSON.parse(localStorage.getItem('.mmelc'))
-
-        if (mmelc) {
-            license_id = mmelc.license['id']
-        }
-
-        survey_object['license_id'] = license_id;
-        survey_object['usb_id'] = create_user_name;
-
-        //submit survey to the web. 
-
-        */
-
-        console.log(survey_object)
-
         localStorage.setItem('new_user_survey', JSON.stringify(survey_object))
-
-        return;
-
 
         //create user
 
@@ -973,7 +952,7 @@ function createUser_new(user_type) {
 
 function logUser_new(user_name, user_password, user_type) {
 
-    alert(user_name + ":" + user_password + ":" + user_type)
+    //alert(user_name + ":" + user_password + ":" + user_type)
 
     /*@@ user login @@ */
 
@@ -1021,7 +1000,7 @@ function logUser_new(user_name, user_password, user_type) {
         var pw = user_obj.password
         console.log(user_obj)
         if (pw != user_password) {
-            alert("Sorry, Wrong Passwrod. Please try again")
+            alert("Sorry, Wrong Password. Please try again")
             return;
 
         } else {
