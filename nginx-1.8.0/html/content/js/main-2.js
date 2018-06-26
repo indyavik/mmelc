@@ -1,5 +1,10 @@
 //GLOBALS
-IGNORE_MODULES = ['Module-100', 'Module-8']
+IGNORE_MODULES = ['Module-100', 'Module-8', 'Module-C']
+
+
+function get_available_licences() {
+
+}
 
 function update_user_object(objectName, updatedvalue) {
 
@@ -57,7 +62,7 @@ function redirect_to_cert() {
     */
     var user_type = localStorage.getItem('user_type')
     if (user_type !== 'license') {
-        alert("Please consider becoming a full licensed user first")
+        alert("Only licensed users are able to take the Final Assessment.")
         return;
     }
 
@@ -203,8 +208,7 @@ function update_units(current_module, current_unit, completed_module) {
         //units_to_update.push(current_unit.toString());
 
         localStorage.setItem(current_user, JSON.stringify(current_user_data))
-
-        // update_on_disk(current_user + '.txt', current_user_data)
+            // update_on_disk(current_user + '.txt', current_user_data)
         update_on_disk(current_user + '.txt', current_user_data)
     }
 
@@ -512,45 +516,10 @@ function load_page(page, template) {
     if (page.indexOf("_pxl_") > -1) next_template = 'home_pxl.html'
 
     //check if the page is first page or last page. 
-
-    if (is_first_or_last_page(page) == 'first') {
-        grey_back_button();
-        document.getElementById('forward-button').onclick = function() { nav_to('next'); };
-        document.getElementById('forward-button').src = "images/forward.png";
-    } else if (is_first_or_last_page(page) == 'last') {
-
-        grey_forward_button();
-
-        document.getElementById('back-button').onclick = function() { nav_to('prev'); };
-        document.getElementById('back-button').src = "images/backward.png";
-
-    }
-
-    /*
-
-      if (is_first_page(page)) {
-
-        grey_back_button();
-
-      }
-    */
-    else {
-
-        if (page == '8_0_slide19.html') {
-            //do nothing.
-        } else {
-
-
-
-            document.getElementById('back-button').onclick = function() { nav_to('prev'); };
-            document.getElementById('back-button').src = "images/backward.png";
-
-            document.getElementById('forward-button').onclick = function() { nav_to('next'); };
-            document.getElementById('forward-button').src = "images/forward.png";
-        }
-
-    }
-
+	//Doing this here caused error on PXL page, which doesn't have the elements next-button and back-button.  
+	//Even if it did, the change doesn't carry from PXL to non-PXL pages.
+	//Need to make changes AFTER loading new page, otherwise fails when switching from PXL to non-PXL.
+	
     /*
         if(current_page.includes("_pxl_")) current_template = 'home_pxl.html'
         if(page.includes("_pxl_")) next_template = 'home_pxl.html'
@@ -606,11 +575,16 @@ function load_page(page, template) {
                 localStorage.setItem('current_location', page);
                 update_user_object('last_visited_page', page);
                 loadFooterNav(page);
-                alert(unit_title + 'pxl to pxl line 424');
+                //alert(unit_title + 'pxl to pxl line 424');
+				//PXL to PXL: no need to grey-out buttons.
             } else {
-                window.location = 'home.html?loadPage=' + page;
+	
+				window.location = 'home.html?loadPage=' + page; //once this happens, script stops if not fast enough!
                 $("#header1").show();
                 $("#footer").show();
+/*				//PXL to non-PXL; if first or last, should grey-out.  It doesn't really work here, because the script stops when the new page is loaded.  Instead 
+				//this is handled on home.html.
+*/
                 $("#content-inner").html(check_page);
                 localStorage.setItem('current_location', page);
                 update_user_object('last_visited_page', page);
@@ -627,6 +601,8 @@ function load_page(page, template) {
                 //document.getElementById("unitTitle").textContent = unit_title;
                 //alert(unit_title + 'pxl to non-pxl line 443');
                 //document.getElementById("navBar").style.display = "inline-block";
+				
+
 
             }
 
@@ -634,9 +610,40 @@ function load_page(page, template) {
         } //if currently at home_pxl 
 
         if (current_template == 'home.html') {
-
+			
+			
             if (next_template == current_template) {
+				//Now check if next page is first or last page of a unit to hide/show arrows:
+				    if (is_first_or_last_page(page) == 'first') {
+						grey_back_button();
+						document.getElementById('forward-button').onclick = function() { nav_to('next'); };
+						document.getElementById('forward-button').src = "images/forward.png";
+					} else if (is_first_or_last_page(page) == 'last') {
 
+						grey_forward_button();
+
+						document.getElementById('back-button').onclick = function() { nav_to('prev'); };
+						document.getElementById('back-button').src = "images/backward.png";
+
+					}
+
+					else {
+
+						if (page == '8_0_slide19.html') {
+							//do nothing.
+						} else {
+
+
+
+							document.getElementById('back-button').onclick = function() { nav_to('prev'); };
+							document.getElementById('back-button').src = "images/backward.png";
+
+							document.getElementById('forward-button').onclick = function() { nav_to('next'); };
+							document.getElementById('forward-button').src = "images/forward.png";
+						}
+
+					}
+					
                 $("#header1").show();
                 $("#footer").show();
                 $("#content-inner").html(check_page);
@@ -651,22 +658,29 @@ function load_page(page, template) {
                 var info = get_titles()
                 var module_title = info['module_title']
                 var unit_title = info['unit_title']
+				//alert(unit_title)
                 var currentSlidex = info['currentSlidex']
                 var numberSlidesy = info['numberSlidesy']
 
                 document.getElementById("display_current").textContent = 'Currently on slide ' + currentSlidex + ' of ' + numberSlidesy;
                 document.getElementById("moduleTitle").textContent = module_title;
+				document.getElementById("unitTitle").textContent = unit_title;
                 var unit_content = unit_title;
                 var current_unit = page.split('_')[1]
-                if (current_unit == '0') unit_content = 'Unit : ' + unit_title;
+                //if (current_unit != '0') {unit_content = 'Unit ' + current_unit + ': ' + unit_title;}
+				unit_content = 'Unit ' + current_unit + ': ' + unit_title;
                 //alert('unit:' + current_unit + ' title:' +unit_content)
+				//alert(unit_content)
                 document.getElementById("unitTitle").textContent = unit_content
                 document.getElementById("navBar").style.display = "inline-block";
+				
+
 
             } else {
-                window.location = 'home_pxl.html?loadPage=' + page
                 localStorage.setItem('current_location', page);
                 update_user_object('last_visited_page', page);
+				window.location = 'home_pxl.html?loadPage=' + page
+				//alert('does this ever get called?');
                 //	               var info = get_titles()
                 //   var module_title = info['module_title']
                 //   var unit_title = info['unit_title']
@@ -1572,7 +1586,7 @@ function show_test_report(test_type, output_table) {
 
 } //function show test results 
 
-function submit_data_to_server(data_type, data_object) {
+function submit_data_to_server_2(data_type, data_object) {
 
     //data_type = 'user_data' , 'feedback_survey' , 'certification_test' , pre_test, post_data
 
@@ -1765,7 +1779,7 @@ function grey_forward_button() {
 
 function toggle5_init() {
 
-    document.getElementById('forward-button').onclick = function() { alert('please click on next'); };
+    document.getElementById('forward-button').onclick = function() { alert('Please complete the activity on this page.'); };
     document.getElementById('forward-button').src = "images/forward-grey.png";
 
 }
@@ -1801,6 +1815,13 @@ function toggle5(counter, max) {
 
 }
 
+function toggle5_complete() {
+	//Used for pages without toggle5 that we want to delay clicking next.
+	    document.getElementById('forward-button').onclick = function() { nav_to('next'); };
+        document.getElementById('forward-button').src = "images/forward.png";
+	
+}
+
 function is_first_page(page) {
 
     var mod_config = JSON.parse(localStorage.getItem('module_config'));
@@ -1818,6 +1839,28 @@ function is_first_page(page) {
     }
 
     return false
+}
+
+function is_last_page(page) {
+	
+	var mod_config = JSON.parse(localStorage.getItem('module_config'));
+    var els = page.split('_');
+    var current_module = 'Module-' + els[0]
+    var current_unit = els[1]
+
+    var seq = mod_config['mods'][current_module]['conf'][current_unit]['page_sequence']
+
+    //var first_page = seq[0]
+    var last_page = seq[seq.length - 1]
+
+    if (page == last_page) {
+
+        return true
+
+    }
+
+    return false
+	
 }
 
 function is_first_or_last_page(page) {

@@ -1,5 +1,29 @@
 //var BACKEND = 'http://localhost:8081'
-var BACKEND ='http://35.167.166.17'
+var BACKEND = 'http://mmelc.vestigesystems.com:8081'
+
+function submit_data_to_server_registration(data_object, backend_method, success_func, error_func, ajaxtype) {
+
+    console.log(data_object)
+    if (!ajaxtype) ajaxtype = 'POST'
+        //if (!backend_method) backend_method = '/usbuser/register'
+
+    if (!backend_method || !data_object) {
+        alert('Incorrect URL or data to submit. Please contact and admin')
+        console.log('error:submit_data_to_server:main.js=>incorrectURL')
+    }
+
+    $.ajax({
+        //url: 'http://localhost:8081/license/update',
+        url: BACKEND + backend_method,
+        data: data_object,
+        // data:"username=guest_user_2016 ", 
+        type: 'POST',
+        success: success_func,
+        error: error_func
+
+    });
+
+} //submit_data_to_server_registration
 
 function submit_data_to_server(data_object, backend_method, cb_func, ajaxtype) {
 
@@ -7,16 +31,11 @@ function submit_data_to_server(data_object, backend_method, cb_func, ajaxtype) {
 
     if (!ajaxtype) ajaxtype = 'POST'
 
-    //alert(backend_method)
-    //alert(data_object)
-
-    //return;
 
     if (!backend_method || !data_object) {
         alert('Incorrect URL or data to submit. Please contact and admin')
         console.log('error:submit_data_to_server:main.js=>incorrectURL')
     }
-
 
     $.ajax({
         //url: 'http://localhost:8081/license/update',
@@ -35,10 +54,8 @@ function submit_data_to_server(data_object, backend_method, cb_func, ajaxtype) {
 } //submit data to server
 
 
-
 var check_store = localStorage.getItem("lastname");
 //var check_cache = localStorage.getItem("cache7");
-
 
 
 if (check_store) {
@@ -204,6 +221,18 @@ function copy_updates_to_usb_callback(arg) {
 function update_on_disk(file_name, json_obj) {
 
     var data_dir = localStorage.getItem('data_dir')
+
+    /* in case data_dir local storage gets unset */
+
+    if (!data_dir || data_dir == undefined) {
+        data_dir = LICENSEDIR
+        var user_type = localStorage.getItem('user_type')
+        if (user_type == 'preview') data_dir = DATADIR
+
+    }
+
+    //alert(data_dir)
+
     var file_name = data_dir + file_name;
 
     if (file_name === 'Users') var file_name = data_dir + 'Users.txt';

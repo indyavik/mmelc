@@ -11,14 +11,30 @@ function ifpreview() {
         document.getElementById('heading_text').style.backgroundColor = 'white'
             //document.getElementById('preview').innerHTML = 'Course Preview:'
 
-        var current_location = localStorage.getItem('current_location') //1_0_slide02.html
-        var num = parseInt(current_location.split('.')[0].split('slide')[1])
+        var cur_loc = localStorage.getItem('current_location') //1_0_slide02.html
+        var num = parseInt(cur_loc.split('.')[0].split('slide')[1])
+		//var mod = parseInt(current_location);
+		//var unit = parseInt(current_location.split('_')[1]);
+		//alert('mod ' + mod + ' unit ' + unit + ' num ' + num);
+		//alert(cur_loc);
 
-        /* example - run this on alternate pages */
+		/* example don't load module 7 - the post test */
+		if (cur_loc[0] === '7' || cur_loc.substr(0,3) === '0_2' || cur_loc.substr(0,3) === '1_3' || cur_loc.substr(0,3) === '2_5' || cur_loc.substr(0,3) === '3_8' || cur_loc.substr(0,3) === '4_3' || cur_loc.substr(0,3) === '5_4')
+		{ 
+			window.location = 'home.html';
+			alert('Tests are only available to licensed users of the WELCOMM course! Please consider registering.');
+			var goto_page = 'Module-' + cur_loc[0] + '.html';
+			localStorage.setItem('current_location', goto_page);
+			
+			
+			
+			//load_module_home(goto_page);
+		}
+		
+		/* example - run this on alternate pages */
+        if (num % 4 == 0) {
 
-        if (num % 2 == 0) {
-
-            alert('Hope you are enjoying the course. Please sign up for full licensed version')
+            alert('We hope you are enjoying the course. Please sign up for the full licensed version of the course!')
 
         }
 

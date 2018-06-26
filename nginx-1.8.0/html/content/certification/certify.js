@@ -173,7 +173,7 @@ function init_cert_page() {
 
         var loc = window.location.href.split("?")[1].split("=")[1]
 
-        alert(loc)
+        //alert(loc)
 
         var certpage = get_page_from_jquery(loc)
             //alert(certpage)
@@ -288,7 +288,7 @@ function load_conf_and_shuffle() {
 
             localStorage.setItem(CERTKEYNAME, config_data);
 
-            alert('Logging you in ......... ');
+            //alert('Logging you in ......... ');
 
             //pick up a random module and randomize the sequence from the module and load. 
 
@@ -417,7 +417,7 @@ function load_certification_page(signal) {
         //load the main page of the module. 
 
         current_question = current_module + ".html"
-        alert('current_q: ' + current_question)
+            //alert('current_q: ' + current_question)
 
         var page_data = get_page_from_jquery(current_module + '/' + current_question)
 

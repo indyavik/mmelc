@@ -3,6 +3,38 @@
 var LICENSEDIR = '/data_l/'
 var DATADIR = '/data/'
 
+function get_available_licences() {
+
+    /* returns the id of liceses available (verified and seats > available) 
+    :retruns: Array []
+    
+    */
+
+    var mmelc = JSON.parse(get_from_disk(LICENSEDIR + '.mmelc'))
+
+    var available_lic = []
+
+    if (mmelc) {
+
+        var lic = mmelc.license
+
+        for (var i = 0; i < lic.length; i++) {
+
+            if (lic[i].seats > lic[i].used) {
+
+                available_lic.push(lic[i].id)
+
+            }
+
+        }
+
+
+    }
+
+    return available_lic;
+
+
+} //get available liceses. 
 
 //functions (associated with index.html)
 
@@ -14,8 +46,6 @@ function verifyLicense_div() {
 }
 
 
-//backend python to verify the license. 
-
 function verifyLicense() {
 
     var license_key_to_verify = document.getElementById("license_key_to_verify").value
@@ -24,11 +54,11 @@ function verifyLicense() {
     verify key and write data. 
     */
 
-    var mmelc = JSON.parse(get_from_disk('/data_l/' + '.mmelc'))
+    var mmelc = JSON.parse(get_from_disk(LICENSEDIR + '.mmelc'))
 
-    for (var i =0; i< mmelc.license.length; i++){ 
-        console.log(mmelc.license[i].id) 
-        if (license_key_to_verify == mmelc.license[i].id ){
+    for (var i = 0; i < mmelc.license.length; i++) {
+        console.log(mmelc.license[i].id)
+        if (license_key_to_verify == mmelc.license[i].id) {
             alert("Key already verified")
             return;
         }
@@ -50,7 +80,7 @@ function verifyLicense() {
         } else {
 
             //write data to file
-            
+
             var update_obj = {}
             update_obj['id'] = license_key_to_verify
             update_obj['seats'] = returnValue.response['seats']
@@ -62,7 +92,7 @@ function verifyLicense() {
 
             //alert('updating .mmelc')
             document.getElementById('verify_license_response').innerHTML = 'License Key is verified'
-            
+
 
         }
 

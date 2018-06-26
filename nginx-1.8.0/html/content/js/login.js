@@ -3,6 +3,221 @@
 var LICENSEDIR = '/data_l/'
 var DATADIR = '/data/'
 
+function convert_preview_user(username, license_id) {
+
+    /*converts a user from preview to license */
+    var user_data = JSON.parse(get_from_disk(DATADIR + username + '.txt'))
+    if (!user_data || user_data == undefined) {
+        alert('Sorry - could not find the user')
+        return;
+
+    }
+
+    //else check if license_id 
+
+    var mmelc = JSON.parse(get_from_disk(LICENSEDIR + '.mmelc'))
+    if (!mmelc || mmelc == undefined) {
+        alert('Error: Please contact an administrator')
+        return;
+
+    }
+
+    var licenses_left = 0
+
+    for (var i in mmelc.license) {
+        //console.log(mmelc.license[i].id ) 
+        var lic = mmelc.license[i]
+        if (lic.id == license_id) {
+
+            if (lic.seats > lic.used) {
+
+                /* convert user */
+                licenses_left == lic.seats - lic.used
+                lic.used == lic.used + 1
+
+                /*move user to license dir */
+
+                //change USERS.txt 
+                var update_allUSERS = update_users_file(LICENSEDIR, username) // add this user to licensed users.
+                var remove_allUSERS = update_users_file(DATADIR, username, 'remove') //remove this user from preview users
+
+                if (update_allUSERS == 'error' || remove_allUSERS == 'error') {
+                    //alert. 
+                    alert("Error: Some error occurred. Please contact and admininstrator")
+					alert("update_allUSERS" + update_allUSERS + " remove_allUSERS " + remove_allUSERS)
+					//TODO: need to return here, or not update whichever of these returned error (OR IT OVERWRITES Users.txt with 'error'!!!)
+                }
+
+                user_data.user_type = 'license'
+                user_data['license_id'] = license_id
+                user_data['converted_from_preview'] = 'yes'
+                user_data['converted_backend'] = 'pending'
+
+                //write user data
+
+                external.saveFile(LICENSEDIR + 'Users.txt', update_allUSERS)
+                external.saveFile(DATADIR + 'Users.txt', remove_allUSERS)
+
+                external.saveFile(LICENSEDIR + username + '.txt', user_data)
+                external.removeFile(DATADIR + username + '.txt')
+
+                /* get the pending file */
+
+                var pending = get_from_disk(LICENSEDIR + '_pending.txt')
+
+                if (pending && pending != undefined) {
+                    var pendingobj = JSON.parse(pending)
+
+                } else {
+                    var pendingobj = { 'regSurvey_license': [], 'convert': [], 'regSurvey_preview': [] }
+
+                }
+
+                pendingobj['convert'].push(username)
+
+                /*check if user's current status is pending */
+
+                if (user_data.submit_status == 'pending') {
+                    //copy user's survey data file. 
+                    pendingobj['regSurvey_license'].push(username)
+                    var idx = pendingobj['regSurvey_preview'].indexOf(username)
+                    if (idx > -1) {
+                        pendingobj['regSurvey_preview'].splice(idx, 1)
+
+                    }
+
+                    var user_survey_file = get_from_disk(DATADIR + username + '_survey_registration.txt')
+                    external.saveFile(LICENSEDIR + username + '_survey_registration.txt', JSON.parse(user_survey_file))
+                        //remove
+                    external.removeFile(DATADIR + username + '_survey_registration.txt')
+
+
+                } else {
+
+                    //UPDATE USER STATUS IN BACKEND.
+                    //*********TO DO TO DO TO DO  */
+                    external.saveFile(LICENSEDIR + '_pending.txt', pendingobj)
+                    console.log('to-do-convert-user-backend')
+                }
+
+                /*RETURN THE CODE */
+
+                return 'success';
+
+
+            } //if licenses are left. 
+
+
+        } //if license id is found. 
+    } //for license id 
+
+    /* if licenses_left is zero let user know */
+    if (licenses_left == 0) {
+        alert("Sorry license not valid or not enough seats available for license id = " + license_id)
+        return;
+    }
+
+
+} //convert  a preview user to licensed user. 
+
+function resubmit_registration(username, data_dir) {
+    /* tries to resubmit a user to the back-end again */
+
+    if (!data_dir) data_dir = DATADIR
+
+    var user_survey_object = get_from_disk(data_dir + username + 'survey_registration.txt')
+
+    if (!user_survey_object) {
+        alert("Error: Sorry there was an error. Please contact an admin")
+        return 'error'
+    }
+
+    var to_submit = JSON.parse(user_survey_object)
+    console.log(to_submit)
+    localStorage.setItem('resubmit_user', JSON.stringify(to_submit))
+
+    /* helper function to deal with error */
+
+    function resubmit_error(res) {
+
+        alert("Error: Could not resubmit. Please try again later");
+        console.log(res)
+        return 'error'
+
+    }
+
+    function resubmit_success(res) {
+
+        if (JSON.parse(res).response != 'success') {
+            resubmit_error('error')
+
+
+        } //if not 'success' 
+        else {
+
+            var resubmit_user = JSON.parse(localStorage.getItem('resubmit_user'))
+            resubmit_user['submit_status'] == 'confirmed'
+
+            /* convert the user */
+            if (to_submit.desired_user_type == 'preview') {
+                /* preview user, nothing much to do. */
+
+                alert("Registration Successfull");
+                return ('success')
+
+            } else {
+
+                /* license user, have to change directories. */
+                var data_dir = LICENSEDIR
+                var user = resubmit_user.username
+                var user_data = JSON.parse(get_from_disk(data_dir + user + '.txt'))
+
+                var update = update_users_file(data_dir, user) // add this user to licensed users.
+                var remove_update = update_users_file(DATADIR, user, 'remove') //remove this user from preview users
+
+                /*update  the MMELC */
+
+                var mmelc = JSON.parse(get_from_disk(LICENSEDIR + '.mmelc'))
+
+                for (var i in mmelc.license) {
+
+                    var existing_license = mmelc.license[i]
+                    if (user_data['license_id'] == existing_license.id) {
+
+                        var current_used = existing_license.used
+                        existing_license['used'] = current_used + 1
+                        external.saveFile(LICENSEDIR + '.mmelc', mmelc)
+
+                    } //
+
+                }
+
+
+                /* re-write all other files */
+                external.saveFile(data_dir + 'Users.txt', update)
+                external.saveFile(DATADIR + 'Users.txt', remove_update)
+
+                /* Add and remove user files to new place */
+
+                external.saveFile(data_dir + user + '.txt', user_data)
+                external.removeFile(DATADIR + user + '.txt')
+
+                alert("Registration Successful. Please login from home page.")
+
+                return 'success';
+
+            }
+
+
+        }
+
+    } //resubmit_success
+
+    alert('here')
+    submit_data_to_server_registration(to_submit, '/usbuser/register', resubmit_success, resubmit_error);
+
+} //resubmit 
+
 function check_user_exists(username, user_type) {
     var data_dir = LICENSEDIR
     if (user_type !== 'license') data_dir = DATADIR
@@ -42,6 +257,8 @@ function get_all_users() {
 
 
 } //get_all_users. 
+
+
 
 function get_users() {
 
@@ -283,7 +500,7 @@ function regSurvey() {
         var required_fields = ['reg_name', 'reg_email']
         var required_echo = ['Name', 'Email']
 
-        var arr = ['gender', 'refresher', 'certificationlevel', 'accessinternet', 'education', 'workplace']
+        var arr = ['gender', 'refresher', 'certificationlevel', 'accessinternet', 'education', 'workplace', 'workplacetype']
 
         for (var i = 0; i < arr1.length; i++) {
 
@@ -323,38 +540,20 @@ function regSurvey() {
 
         var user_ob = JSON.parse(localStorage.getItem('new_user_obj'))
         survey_object['license_id'] = user_ob.license_id
-        survey_object['usb_id'] = user_ob.create_user
 
-        /*
-        //get license user. 
-        var license_id = "preview_user"
-        var mmelc = JSON.parse(localStorage.getItem('.mmelc'))
+        /* GET USB ID */
 
-        if (mmelc) {
-            license_id = mmelc.license['id']
+        //var usb_id; 
+
+        var usb_id = JSON.parse(get_from_disk(LICENSEDIR + 'usb_id.json')).usb_id
+
+        if (!usb_id || usb_id == undefined) {
+            usb_id = 'NO-USB-ID'
         }
 
-        survey_object['license_id'] = license_id;
-        survey_object['usb_id'] = create_user_name;
-
-        //submit survey to the web. 
-
-        */
-
-        console.log(survey_object)
+        survey_object['usb_id'] = usb_id
 
         localStorage.setItem('new_user_survey', JSON.stringify(survey_object))
-
-        /*
-
-        submit_data_to_server(survey_object, '/usbuser/register', function(returnValue) {
-
-            console.log(returnValue);
-            //write data to file
-
-        }); //submit_data_to server
-
-        */
 
         //create user
 
@@ -407,7 +606,7 @@ function showInput_createUser() {
     document.getElementById("createUser").style.display = 'none';
     document.getElementById("tablearea").style.display = 'none';
     document.getElementById("div_createUser").style.display = 'block';
-    //document.getElementById("input_createUser").setAttribute('class', 'showInput');
+
 
 }
 
@@ -444,8 +643,6 @@ function logUser(user_name) {
 
     //check progress should be the last to run.
 }
-
-
 
 
 function loadHistory() {
@@ -509,6 +706,64 @@ function populateUserTable(user_array, table, rows, cells, content) {
     return table;
 } //function populate table 
 
+function update_users_file(datadir, user_to_add, action) {
+
+    /* adds a user to existing user record */
+    /* returns a new users object */
+    /* action = add, or remove a particular user */
+
+    if (!action) action = 'add'
+
+    if (!user_to_add) { alert('nothing to add'); return; }
+
+    var users_file = get_from_disk(datadir + 'Users.txt');
+
+    var users = JSON.parse(users_file)
+
+    if ($.isArray(users)) {
+        var new_users = users
+
+    } else { var new_users = users['Users'] }
+
+
+    var user_exists = $.inArray(user_to_add, new_users); //(value, in_thisarray)
+
+    if (action == 'add') {
+        if (user_exists == -1 && user_to_add !== "") {
+            //user doesn't exists add. 
+            new_users.push(user_to_add);
+
+        } else {
+			alert('Error: user not added.');
+            return users;
+        }
+
+    }
+
+    if (action == 'remove') {
+        if (user_exists == -1 && user_to_add !== "") {
+            //user doesn't exists nothing to remove.  
+			alert('Error: user may not have been removed from list')
+            return users;
+
+        } else {
+
+            var r_index = new_users.indexOf(user_to_add)
+            new_users.splice(r_index, 1)
+
+
+        }
+
+    }
+
+
+    users['Users'] = new_users
+    return users; //return the full object.
+
+} //update_users_file 
+
+
+
 function createUser_new(user_type) {
     //user_type is 'license' or 'preview'
 
@@ -526,164 +781,188 @@ function createUser_new(user_type) {
     var new_user_obj_survey = JSON.parse(localStorage.getItem('new_user_survey'));
     var create_user = new_user_obj['username']
 
-    /* update the User.txt object  */
-    var users_file = get_from_disk(data_dir + 'Users.txt') // string
+    //get skeleton object from the file and load. 
+    var base = get_from_disk(data_dir + 'base_user_config.txt'); //returns 
+    var new_user = JSON.parse(base);
 
-    if (users_file) {
-        var users = JSON.parse(users_file)
+    //add new user_objects. 
 
-    } else {
-        alert("Error: Could not find the file to create users. please contact admin")
+    new_user['username'] = new_user_obj['username']
+    new_user['password'] = new_user_obj['password']
+    new_user['recovery_email'] = new_user_obj['recovery_email']
+    new_user['license_id'] = new_user_obj['license_id']
+    new_user['submit_status'] = 'confirmed'
+    new_user['user_type'] = user_type
+
+
+    /* adding some additional details .  */
+
+    new_user_obj_survey['usb_user_name'] = new_user['username']
+    new_user_obj_survey['usb_user_password'] = new_user['password']
+    new_user_obj_survey['usb_user_recovery_email'] = new_user['recovery_email']
+    new_user_obj_survey['usb_user_user_type'] = user_type
+
+    var usb_id = JSON.parse(get_from_disk(LICENSEDIR + 'usb_id.json')).usb_id
+
+    if (!usb_id || usb_id == undefined) {
+        usb_id = 'NO-USB-ID'
     }
 
-    if ($.isArray(users)) {
-        var new_users = users
+    new_user_obj_survey['usb_id'] = usb_id
 
-    } else { var new_users = users['Users'] }
-
-    //alert(new_users);
-
-    var user_exists = $.inArray(create_user, new_users); //(value, in_thisarray)
-
-    if (user_exists === -1 && create_user !== "") {
-
-        new_users.push(create_user);
-
-        //get skeleton object from the file and load. 
-
-        var base = get_from_disk(data_dir + 'base_user_config.txt'); //returns 
-
-        var new_user = JSON.parse(base);
-
-        //add new user_objects. 
-
-        new_user['username'] = new_user_obj['username']
-        new_user['password'] = new_user_obj['password']
-        new_user['recovery_email'] = new_user_obj['recovery_email']
-        new_user['license_id'] = new_user_obj['license_id']
-        new_users['submit_status'] == 'confirmed'
+    localStorage.setItem('new_user_survey_obj', JSON.stringify(new_user_obj_survey))
+    localStorage.setItem('new_user_obj', JSON.stringify(new_user))
 
 
-        /*
+    /* HELPER FUNCTIONS TO PROCESS RESULTS AFTER SUBMISSION */
+
+    function on_success(res) {
+
+        alert(res + 'good')
+            /*send to the on_error processing if server response is not success */
+        if (JSON.parse(res).response != 'success') {
+            on_error('error')
+
+        } //if not 'success' 
+        else {
+            final_process()
+        }
+
+    } //
+
+    function on_error(res) {
+
+        /* if not submitted ..change few values */
+        //res = JSON.parse(res).details
+
+        alert("Creating user, however no data was submitted to server")
+
+        var new_user2 = JSON.parse(localStorage.getItem('new_user_obj'))
+
+        var user_type = new_user2.user_type
+
+        new_user2['submit_status'] = 'pending'
+
+        /* update the pending file in LICENSE DIR */
+
+        var pending = get_from_disk(LICENSEDIR + '_pending.txt')
+
+        if (pending && pending != undefined) {
+
+            var pendingobj = JSON.parse(pending)
+
+        } else {
+            var pendingobj = { 'regSurvey_license': [], 'convert': [], 'regSurvey_preview': [] }
+
+        }
+
+        if (user_type == 'license') {
+            pendingobj['regSurvey_license'].push(new_user2.username)
+
+        } else {
+            pendingobj['regSurvey_preview'].push(new_user2.username)
+
+        }
+
+        external.saveFile(LICENSEDIR + '_pending.txt', pendingobj)
+
+        localStorage.setItem('new_user_obj', JSON.stringify(new_user2))
+
+        final_process();
 
 
-            var new_user_obj = {
-                "username": newuser_name,
-                "password": newuser_pass,
-                "recovery_email": newuser_recovery_email,
-                "license_id": newuser_license_id
+    } //on_error
+
+
+    function final_process() {
+
+        /* create and login new user  */
+
+        var data_dir = localStorage.getItem('data_dir')
+        var new_user = JSON.parse(localStorage.getItem('new_user_obj'))
+
+        var create_user = new_user.username
+        var user_type = new_user.user_type
+
+        /* update the approrpirate user file. */
+
+        var users_file_obj = update_users_file(data_dir, create_user) //add new user name to all users.
+
+        if (!users_file_obj) { alert("Error: please contact admin"); return; }
+
+        /* for license users update .mmelc file with the count */
+
+        if (user_type == 'license') {
+            var mmelc = JSON.parse(get_from_disk(LICENSEDIR + '.mmelc'))
+
+            for (var i in mmelc.license) {
+
+                var existing_license = mmelc.license[i]
+                if (new_user['license_id'] == existing_license.id) {
+
+                    var current_used = existing_license.used
+                    existing_license['used'] = current_used + 1
+                    external.saveFile(LICENSEDIR + '.mmelc', mmelc)
+
+                } //
+
             }
 
-        */
+        } //if user_license
+
+        /* FINALLY LOG USER IN */
+
+        /* set some data  in localStorage */
+
+        localStorage.setItem("Users", JSON.stringify(users_file_obj))
+        localStorage.setItem("logged_in", create_user);
+        localStorage.setItem("user_type", user_type); // "license" or "preview"
+        localStorage.setItem(create_user, JSON.stringify(new_user));
 
 
+        /* write all of the new user objects to the disk. */
+
+        external.saveFile(data_dir + 'Users.txt', users_file_obj)
+        external.saveFile(data_dir + create_user + '.txt', new_user)
 
 
-        /*submit to the server after adding some additional objects.  */
+        /* write all the survey data onto disk for future resubmit */
 
-        new_user_obj_survey['usb_user_name'] = new_user['username']
-        new_user_obj_survey['usb_user_password'] = new_user['password']
-        new_user_obj_survey['usb_user_recovery_email'] = new_user['recovery_email']
-        new_user_obj_survey['usb_user_user_type'] = user_type
-        new_user_obj_survey['usb_id'] = 'testusb_id_generate_random'
+        if (data_dir == DATADIR && new_user['submit_status'] == 'pending') {
+            var new_user_obj_survey = JSON.parse(localStorage.getItem('new_user_survey_obj'))
+            external.saveFile(data_dir + create_user + '_survey_registration.txt', new_user_obj_survey)
+        }
 
-        localStorage.setItem('future_user_survey', JSON.stringify(new_user_obj_survey))
+        /* clear local storage   */
 
-        submit_data_to_server(new_user_obj_survey, '/usbuser/register', function(returnValue) {
-            console.log(returnValue);
-
-            if (JSON.parse(returnValue).response != 'success') {
-                //add some error and change the user tmp. type to guest. 
-                res = JSON.parse(returnValue).details
-                alert(res)
-                if (user_type == 'license') {
-                    new_users['submit_status'] == 'pending'
-                    alert('sorry - user could not be created')
-
-                }
-
-                return;
-
-            } // if error . 
-
-            /* clear the local objects that are no longer needed */
-
-            localStorage.removeItem('new_user_obj')
-            localStorage.removeItem('new_user_survey')
-
-            /*set new objects in localStorage. */
-
-            localStorage.setItem("Users", JSON.stringify(new_users))
-            localStorage.setItem(String(create_user), JSON.stringify(new_user))
-
-            /* for license users update .mmelc file with the count */
-
-            if (user_type == 'license') {
-                var mmelc = JSON.parse(get_from_disk(LICENSEDIR + '.mmelc'))
-
-                for (var i in mmelc.license) {
-
-                    var existing_license = mmelc.license[i]
-                    if (new_user['license_id'] == existing_license.id) {
-
-                        var current_used = existing_license.used
-                        existing_license['used'] = current_used + 1
-                        external.saveFile(LICENSEDIR + '.mmelc', mmelc)
-
-                    } //
-
-                }
-
-            }
-
-            /* */
+        localStorage.removeItem('new_user_obj')
+        localStorage.removeItem('new_user_survey')
+        localStorage.removeItem('new_user_survey_obj')
 
 
+        // note that the appropriate module conf get lodaded here. //
+        var mod_config = JSON.parse(get_from_disk(data_dir + 'module_conf.json'))
+        localStorage.setItem('module_config', JSON.stringify(mod_config));
 
-            /* write all of the new user objects to the disk. */
-            external.saveFile(data_dir + 'Users.txt', { "Users": new_users })
-            external.saveFile(data_dir + create_user + '.txt', new_user)
-
-            //update_on_disk(create_user + '_survey.txt', new_user_obj_survey); //js oject. not string.
-
-            /* finally log user in */
-            localStorage.setItem("logged_in", create_user);
-            localStorage.setItem("user_type", user_type); // "license" or "preview"
-            localStorage.setItem(create_user, JSON.stringify(new_user));
-
-            // note that the appropriate module conf get lodaded here. //
-            var mod_config = JSON.parse(get_from_disk(data_dir + 'module_conf.json'))
-            localStorage.setItem('module_config', JSON.stringify(mod_config));
-
-            setTimeout(function() { window.location.href = "home.html?user=" + create_user + "&user_type=" + user_type }, 500);
+        setTimeout(function() { window.location.href = "home.html?user=" + create_user + "&user_type=" + user_type }, 500);
 
 
+    } //final_process
 
-        }); //submit_data_to server
+    submit_data_to_server_registration(new_user_obj_survey, '/usbuser/register', on_success, on_error);
 
-
-
-
-        //setTimeout(function(){window.location.href="home.html?user="+create_user} , 500); 
-
-    } else {
-
-        alert("User already exists : please try a new name");
-
-    }
-
-}; //createUser_new
+} //createUser_new
 
 
 function logUser_new(user_name, user_password, user_type) {
 
-    alert(user_name + ":" + user_password + ":" + user_type)
+    //alert(user_name + ":" + user_password + ":" + user_type)
 
     /*@@ user login @@ */
 
     /* login the user  */
-    var data_dir = LICENSEDIR
 
+    var data_dir = LICENSEDIR
 
     if (user_type !== 'license') {
         data_dir = DATADIR
@@ -691,10 +970,12 @@ function logUser_new(user_name, user_password, user_type) {
 
     }
 
-    if (!user_name || !user_password) {
-        alert('Error: Username and Password is required')
+    if (!user_name) {
+        alert('Error: Username is required')
         return;
     }
+
+    if (!user_password) user_password = "" //
 
     /* clear existing storage objects */
     localStorage.clear("logged_in")
@@ -720,17 +1001,18 @@ function logUser_new(user_name, user_password, user_type) {
     } else {
 
         /* verify password and log uer in. */
-
         var pw = user_obj.password
         console.log(user_obj)
         if (pw != user_password) {
-            alert("Sorry, Wrong Passwrod. Please try again")
+            alert("Sorry, Wrong Password. Please try again")
             return;
 
         } else {
             /* finally log user in */
             localStorage.setItem("logged_in", user_name);
             localStorage.setItem("user_type", user_type); // "license" or "preview"
+            localStorage.setItem("data_dir", data_dir);
+
             localStorage.setItem(user_name, JSON.stringify(user_obj));
 
             // note that the appropriate module conf get lodaded here. //

@@ -29,6 +29,7 @@ import win32api
 import json
 import hashlib
 import shutil
+import uuid
 from datetime import datetime
 import requests 
 import socket
@@ -798,6 +799,38 @@ class JavascriptExternal:
         with open(save_path + str(file_name), "w") as f: 
             f.write(string_input)
 
+    def removeFile(self, file_name):
+        #save_path = 'nginx-1.8.0/html/data/'
+        remove_path = 'nginx-1.8.0/html'
+        try:
+        	os.remove(remove_path + str(file_name))
+        except Exception as e:
+        	print("could not remove the file: " + file_name )
+
+
+    def create_usb_id(self):
+        #returns a usb_id or 
+
+        usb_id_file = 'usb_id.json'
+        main_dir_file ='nginx-1.8.0/html/data_l/usb_id.json'
+        #usb_dir_file = 'C:\MMELC_pilot\python\usb_id.json'
+        #usb_dir_file = 'C:/MMELC_pilot/python/usb_id.json'
+        usb_dir_file = 'D:/usb_id.json'
+        if not os.path.isfile(main_dir_file):
+            
+            lowercase_str = uuid.uuid4().hex
+            data = {'usb_id': lowercase_str}
+            with open(main_dir_file, 'w') as f:
+                json.dump(data, f)
+
+            if not os.path.isfile(usb_dir_file):
+                try:
+                    shutil.copyfile(main_dir_file, usb_dir_file)
+                except Exception as e:
+                    print(e)
+
+
+
     def verifyModule(self, selected_user_name, pass_key_input, jsCallback):
         secret_salt = "weare7"
         main = hashlib.md5()
@@ -1321,6 +1354,7 @@ class MyApp(wx.App):
             self.timer.Stop()
 
 
+
 def GetSources():
     # Get sources of all python functions and methods from this file.
     # This is to provide sources preview to wxpython.html.
@@ -1343,6 +1377,29 @@ def GetSources():
                 pass
     return sources
 
+def create_usb_id_on_start():
+    #returns a usb_id or 
+    import shutil 
+    
+    usb_id_file = 'usb_id.json'
+    main_dir_file ='nginx-1.8.0/html/data_l/usb_id.json'
+    #usb_dir_file = 'C:\MMELC_pilot\python\usb_id.json'
+    #usb_dir_file = 'C:/MMELC_pilot/python/usb_id.json'
+    usb_dir_file = 'D:/usb_id.json'
+    if not os.path.isfile(main_dir_file):
+        import uuid
+        lowercase_str = uuid.uuid4().hex
+        data = {'usb_id': lowercase_str}
+        with open(main_dir_file, 'w') as f:
+            json.dump(data, f)
+
+        if not os.path.isfile(usb_dir_file):
+            try:
+                shutil.copyfile(main_dir_file, usb_dir_file)
+            except Exception as e:
+                print(e)
+
+
 
 if __name__ == '__main__':
     print('[wxpython_viewer.py] architecture=%s-bit' % (8 * struct.calcsize("P")))
@@ -1353,7 +1410,6 @@ if __name__ == '__main__':
     log_file_size_kb = int(os.path.getsize(log_file))/1000
         
     if log_file_size_kb > 2056 :
-
         if os.path.isfile(log_file+'.1') :  
             shutil.move(log_file, log_file+'.2')
 
@@ -1366,6 +1422,9 @@ if __name__ == '__main__':
     sys.excepthook = ExceptHook
 
     cache_path = os.getcwd() + '\python\CEFStorage'
+
+    #create a unique usb_id if doesn't exists
+    create_usb_id_on_start();
 
 
     # Application settings

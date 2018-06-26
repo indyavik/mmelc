@@ -2,19 +2,27 @@
 
     <slide id="8_0_slide19"></slide>
 
-    <h2 class="heading-text">
-        <a href="#preamble" name="preamble"></a><span id="changeHeading">You have completed the Certification test!	</span></h2>
+    <h1 class="heading-text" style="font-size:30px">
+        <a href="#preamble" name="preamble"></a><span id="changeHeading">You have completed the Final Assessment!	</span></h1>
 
-    <h1> Your test answer key is : </h1>
+    <h2> Your test answer key is : </h2>
 
-    <h2 id="anskey"></h2>
+    <h3 id="anskey"></h3>
 
-    <h1> Your test question key is : </h1>
+    <h2> Your test question key is : </h2>
 
-    <h2 id="questionkey"></h2>
+    <h3 id="questionkey"></h3>
 
+	<p> You may submit your question and answer keys online by clicking below.  
+	If you are not able to submit due to no connectivity or an error, you may also send both keys, along with your Assessment User ID 
+	via email to MalariaMicroscopyCourse@gmail.com
+	
+	<br><br>
+	
+	We recommend copying these keys and saving whether submitting online or via email in case they need to be resubmitted for any reason.
+	</p>
 
-    <button class="blue-btn" style="margin-top:30px;" onclick="javascript:submitNow()">Submit Ans to server</button>
+    <button class="blue-btn" style="margin-top:30px;" onclick="javascript:submitNow()">Submit Answer key to server</button>
 
 </div>
 
@@ -25,6 +33,7 @@
 
     document.getElementById('anskey').innerHTML = cert_results['final_ans_key'];
     document.getElementById('questionkey').innerHTML = cert_results['final_questions_key'];
+	//document.getElementById('userID').innerHTML = ;
 
     function submitNow() {
         var anskey = document.getElementById('anskey').innerHTML

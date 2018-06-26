@@ -5,7 +5,7 @@
    <ServerIP>localhost</ServerIP>
 
    <IServeLocation>iserve</IServeLocation>
-   <Default_ImagePath>G:/</Default_ImagePath>
+   <Default_ImagePath>C:\WELCOMM\images</Default_ImagePath>
    <Scan_ImagePath>images.location</Scan_ImagePath>
   </Config>
 </PathXL>
