@@ -21,6 +21,6 @@
         "7": []
     },
     "license_id": "preview",
-    "password": "",
+    "password": "arar",
     "recovery_email": "arar@prev"
 }

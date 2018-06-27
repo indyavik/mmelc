@@ -1,18 +1,452 @@
-﻿<html>
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
 
 <head>
     <meta http-equiv="cache-control" content="no-cache" />
+    <link rel="stylesheet" type="text/css" href="css/mmelt-pe.css">
     <link rel="stylesheet" type="text/css" href="css/main.css">
     <link rel="stylesheet" type="text/css" href="css/slide.css">
-    <link href='https://fonts.googleapis.com/css?family=Chicle' rel='stylesheet'>
+
+    <style>
+        
+        .counterbox {
+            /* forces children to same row */
+            height: 100px;
+            width: 100%;
+            z-index: 1000000;
+            top:150px;
+            left:10px;
+       
+            /*
+            padding-left: 10px;
+            padding-right: 10px;
+          
+            */
+        }
+
+        #counterbox  input {
+            font-size: 1.2em;
+            background-color: transparent;
+            text-align: center;
+            border-width: 0;
+            width: 100%;
+            margin: 0 0 .1em 0;
+            color: white;
+			font-weight: bold;
+			
+        }
+
+
+        
+        .box {
+            /* basics */
+            float: left;
+            background-color: rgb(2, 2, 2);
+            color: #C4BE92;
+            text-align: center;
+            vertical-align:center
+            /* rounded corners */
+            -webkit-border-radius: 5px;
+            border-radius: 8px;
+            font-size: 12px;
+            -moz-background-clip: padding;
+            -webkit-background-clip: padding-box;
+            background-clip: padding-box;
+            padding: .4em .4em .4em;
+            /*width: 8em;*/
+            width: 80px;
+            /*height: 60px;*/
+            margin: 5px 5px 5px 10px;
+            -webkit-box-shadow: 0px 0px 12px 0px #000;
+            box-shadow: 0px 0px 12px 0px #000;
+        }
+
+        #counterbox button {
+
+            align-items: flex-start;
+            text-align: center;
+            cursor: default;
+            color: buttontext;
+            background-color: buttonface;
+            box-sizing: border-box;
+            padding: 2px 2px 3px;
+            border-width: 2px;
+            border-style: outset;
+            border-color: buttonface;
+            border-image: initial;
+
+        }
+
+    </style>
+
+
+
     <script src="js/jquery-3.0.0.min.js"></script>
-    <script src="js/login.js"></script>
-    <script src="js/main.js"></script>
     <script src="js/main-2.js"></script>
-    <script src="/content/js/preview.js"></script>
-    <script src="/content/js/lics.js"></script>
     <script src="js/pxl-fullslide.js"></script>
 
+
+
+    <script>
+        $(function() {
+
+            //hide the next/previous button. and show after some  delay IF not a test/assessment:
+            var info = get_titles()
+            var module_title = info['module_title']
+            var unit_title = info['unit_title']
+            var currentSlidex = info['currentSlidex']
+            var numberSlidesy = info['numberSlidesy']
+                //if(page.indexOf("_pxl_") > -1 ) next_template = 'home_pxl.html'
+            if (unit_title.indexOf("Test") > -1 || unit_title.indexOf("Assessment") > -1) {
+                if (currentSlidex > 1 && currentSlidex != 12) {
+                    document.getElementById('nextPageButton').style.display = 'none';
+                } else {
+                    $('#nextPageButton').hide().delay(1050).show(0);
+                }
+                document.getElementById('previousPageButton').style.display = 'none';
+                document.getElementById('wrap-footer-menu').style.display = 'none';
+            } else { //unhide
+                $('#nextPageButton').hide().delay(1050).show(0);
+                $('#previousPageButton').hide().delay(1000).show(0);
+                document.getElementById('wrap-footer-menu').style.display = 'initial';
+                //alert('should be delay hide then show');
+            }
+
+
+
+
+            //run on load. ensure the config is loaded. 
+
+            var mod_config = JSON.parse(localStorage.getItem('module_config'));
+            //load from file. 
+
+            if (!mod_config) {
+
+                jQuery.ajaxSetup({
+                    async: false
+                }); //required to avoind async status code check issues 
+
+                var jq = $.get('js/module_conf.json'); //alert(jq.status);
+
+                if (jq.status == 200) {
+
+                    var mod_config = jq.responseText;
+                    localStorage.setItem('module_config', mod_config);
+
+                } else {
+                    alert("configuration file not found. please contact the administrator");
+                    return;
+
+                }
+
+            }
+
+            //alert('home_pxl: dom is loaded');
+
+            //grab the url and load the appropriate slide. 
+
+            var loc = window.location.href.split("?")[1] // pxl_home.html?loadPage=xyz_pxl_z.html --> returns LoadPage=xyz_pxl_z.html
+            if (loc) {
+
+                var go_to_loc = loc.split('=')[1]
+                    //set current location to this 'xyz_pxl_z.html'  and call load_page(page, template) 
+                    //localStorage.setItem('current_location', loc)
+                    //load_page(go_to_loc)
+
+                var go_to_page = create_page_path(go_to_loc)
+
+                jQuery.ajaxSetup({
+                    async: false
+                }); //required to avoind async status code check issues 
+
+                var jq = $.get(go_to_page); //alert(jq.status);
+
+                if (jq.status == 200) {
+                    var page_data = jq.responseText;
+                }
+
+                //$("#content-left").html(page_data);
+                //$("#pxl_right").appendTo("#content-right")
+
+                //console.log(page_data);
+
+                $("#content-right").html(page_data);
+
+                //append counter box to the content right. 
+                //alert("adding box");
+                //$("#box").appendTo("#content-right");
+
+
+                $("#pxl_left").appendTo("#content-left")
+
+
+                localStorage.setItem('current_location', go_to_loc);
+                update_user_object('last_visited_page', go_to_loc)
+
+                var footer_page = go_to_loc.split('_pxl')[0] + '.html'
+
+                loadFooterNav(go_to_loc);
+
+                document.getElementById('footer_selector').style.maxWidth = 'calc(100% - 5px)';
+                document.getElementById('footer_selector').style.overflow = 'hidden';
+                document.getElementById('footer_selector').style.maxHeight = '1.5em';
+
+                //alert(go_to_loc)
+
+                //var change = '3_2_slide27_pxl_m3u2pe1q13.html' ;
+
+                $('select option[ value= go_to_loc ]').attr('selected', 'selected');
+                //$("select option[value= '3_2_slide27_pxl_m3u2pe1q13.html' ]").attr("selected","selected");
+
+            }
+
+
+        });
+
+        function initMenu() {
+            $('#menu ul').hide();
+            $('#menu > li > a').on('click', function() {
+                $('#menu ul').slideUp();
+                $(this).next().slideDown();
+            });
+        }
+        $(document).ready(initMenu);
+    </script>
+
+    <script>
+
+        function update_counter_object(requesttype, counterarray) {
+    
+            //get the counter. 
+
+              var current_user = localStorage.getItem('logged_in');
+              var user_data = JSON.parse(localStorage.getItem(JSON.parse(current_user))) ;
+              var current_location = localStorage.getItem('current_location');
+
+              var x = user_data['counter']
+
+              if(x ==undefined) {
+
+                user_data['counter'] = {}
+
+                x = {}
+                x[current_location] = [0,0]
+
+                user_data['counter'] = x 
+
+                localStorage.setItem(JSON.parse(current_user), JSON.stringify(user_data))
+
+                return [0,0]
+
+                
+              }
+
+              if(x[current_location] == undefined ){
+
+                x[current_location] = [0,0]
+
+                user_data['counter'] = x 
+
+                localStorage.setItem(JSON.parse(current_user), JSON.stringify(user_data))
+
+                return [0,0]
+
+                
+
+              }
+
+              if (requesttype == 'get') {
+
+                return x[current_location] ;
+
+
+              }
+
+
+              else {
+
+              //update.
+              var x = user_data['counter']
+
+              x[current_location] = counterarray; 
+
+               user_data['counter'] = x;
+
+              localStorage.setItem(JSON.parse(current_user), JSON.stringify(user_data))
+
+              initial_qty_load(counterarray);
+
+              
+              }
+
+              //user['counter'] = {'page' : [counter1, counter2] }
+
+
+        }//update counter
+
+        function initial_qty_load(counterarray) {
+
+            if (!counterarray) {
+                var qtys = update_counter_object('get'); 
+            }
+            else {
+                var qtys = counterarray;
+            }
+
+
+            var qtydivs = ['qty', 'qty2']
+
+            for (var i = 0, len = qtydivs.length; i < len; i++) {
+                var divid = qtydivs[i];
+                var val = qtys[i]; 
+
+                /*
+
+                var page_id = localStorage.getItem('current_location');
+                var counter_id = 'counter_' + page_id + '_' + divid;
+                var val = localStorage.getItem(counter_id);
+
+                */
+
+                if (!val) {
+                    val = 0;
+                };
+
+                document.getElementById(divid).value = val;
+
+
+            }
+
+
+
+        }
+
+        function modify_qty(val, divid, ifenter) {
+
+            var counterarray = update_counter_object('get'); 
+            var qty = counterarray[0]
+            var qty2 = counterarray[1]
+
+            //counter1 = parseInt(qty, 10) + val;
+            //counter2 = parseInt(qty2, 10) + val;
+
+            //var counter1 = document.getElementById("qty").value;
+            //var counter2 = document.getElementById("qty2").value;
+
+            if (divid == 'qty') {
+
+                if(val == 0) {
+                    update_counter_object('update', [0, qty2]);
+
+                    return; 
+
+                    }
+
+                if(ifenter){
+
+                    update_counter_object('update', [val, qty2]);
+                    return; 
+
+                }
+
+                else{
+                   update_counter_object('update', [parseInt(qty, 10) + val, qty2]);
+                    return; 
+                }
+
+            } // if qty
+
+            if (divid == 'qty2') {
+
+                if(val == 0) {
+                    update_counter_object('update', [qty, 0]);
+
+                    return; 
+
+                    }
+
+                if(ifenter){
+
+                    update_counter_object('update', [qty, val]);
+                    return; 
+
+                }
+
+                else{
+                   update_counter_object('update', [qty, parseInt(qty2, 10) + val]);
+                    return; 
+                }
+
+            } // if qty
+
+
+
+        }// function modify 
+
+        //click the button (+) on enter key 
+
+
+    function changeCounter(e){
+
+            if (e.which == 101 || e.which == 69) {
+                $("#up").click();
+            }
+
+            if (e.which == 114 || e.which == 82) {
+                $("#up2").click();
+            }
+
+
+            if (e.which == 13) {
+                //if values are manually manipulated.
+
+                var qty = document.getElementById("qty").value;
+                var qty2 = document.getElementById("qty2").value;
+
+
+
+                modify_qty(qty, "qty", "yes");
+                modify_qty(qty2, "qty2", "yes");
+
+                
+            
+
+            }
+
+
+
+    }; //change value of th ecounter.
+
+        
+
+        $(document).keypress(function(e) {
+
+            changeCounter(e);
+            //alert(e.which);
+    
+
+            /*
+
+            if (e.which == 13) {
+                //$("#up2").click();
+                var qty = document.getElementById("qty").value;
+                var qty2 = document.getElementById("qty2").value;
+
+                modify_qty(qty, "qty");
+                modify_qty(qty2, "qty2");
+
+            }
+
+            */
+
+
+
+
+        });
+
+
+
+    </script>
 
 
     <style>
@@ -21,9 +455,9 @@
             /* Hidden by default */
             position: fixed;
             /* Stay in place */
-            z-index: 1;
+            z-index: 100;
             /* Sit on top */
-            padding-top: 50px;
+            padding-top: 150px;
             /* Location of the box */
             left: 0;
             top: 0;
@@ -43,15 +477,18 @@
             background-color: #fefefe;
             margin: auto;
             padding: 20px;
+            margin-right: 50%;
             border: 1px solid #888;
-            width: 60%;
-            height: calc(100% - 150px);
+            width: 40%;
+            height: 60%;
             overflow: auto;
+            max-width: 500px;
             font-family: sans-serif;
         }
         
         .mc-width {
             width: 50%;
+            align: left;
         }
         /* The Close Button */
         
@@ -69,573 +506,333 @@
             cursor: pointer;
         }
         
-        .ack-close {
+        .modal2343 {
+            display: none;
+            /* Hidden by default */
+            position: fixed;
+            /* Stay in place */
+            z-index: 101;
+            /* Sit on top */
+            padding-top: 5%;
+            /* Location of the box */
+            left: 0;
+            top: 0;
+            width: 100%;
+            /* Full width */
+            height: 100%;
+            /* Full height */
+            /*overflow: none;  Enable scroll if needed */
+            background-color: rgb(0, 0, 0);
+            /* Fallback color */
+            background-color: rgba(0, 0, 0, 0.4);
+            /* Black w/ opacity */
+        }
+        /* Modal Content */
+        
+        .modal-2343-content {
+            background-color: #fefefe;
+            margin: auto;
+            padding: 20px;
+            /*margin-right: 50%;*/
+            border: 1px solid #888;
+            width: 80%;
+            height: 80%;
+            overflow: auto;
+            max-width: 800px;
+            font-family: sans-serif;
+        }
+        
+        .mc-width {
+            width: 50%;
+            align: left;
+        }
+        /* The Close Button */
+        
+        .modal2343-close {
             color: #aaaaaa;
             float: right;
             font-size: 28px;
             font-weight: bold;
         }
         
-        .ack-close:hover,
-        .ack-close:focus {
-            color: #000;
-            text-decoration: none;
-            cursor: pointer;
-        }
-        
-        .adminbtn {
-            font-size: 18px;
-            margin-right: 5px;
-            background: #AAAAAA;
-            color: white;
-            border-radius: 5px;
-            padding: 5px 5px;
-            border: 1px solid #EE6088;
-        }
-        
-        .ackbtn {
-            font-size: 18px;
-            margin-right: 5px;
-            background: #EE6088;
-            color: white;
-            border-radius: 5px;
-            padding: 5px 5px;
-            border: 1px solid #EE6088;
-        }
-        
-        .home-close {
-            color: #aaaaaa;
-            float: right;
-            font-size: 28px;
-            font-weight: bold;
-        }
-        
-        .home-close:hover,
-        .home-close:focus {
-            color: #000;
-            text-decoration: none;
-            cursor: pointer;
-        }
-        
-        .logout-close {
-            color: #aaaaaa;
-            float: right;
-            font-size: 28px;
-            font-weight: bold;
-        }
-        
-        .logout-close:hover,
-        .logout-close:focus {
+        .modal2343-close:hover,
+        .modal2343-close:focus {
             color: #000;
             text-decoration: none;
             cursor: pointer;
         }
     </style>
 
-
-    <script>
-        $(function() {
-            //run on load. ensure the config is loaded. 
-            // $("#header1").hide();
-
-            var mod_config = JSON.parse(localStorage.getItem('module_config'));
-            //load from file. 
-
-            //alert(mod_config)
-
-            if (!mod_config) {
-
-                alert("Error: LOADING APPLICATION IN PREVIEW. Please contact your admin")
-
-                jQuery.ajaxSetup({
-                    async: false
-                }); //required to avoind async status code check issues 
-
-                var jq = $.get('js/module_conf.json'); //alert(jq.status);
-
-                if (jq.status == 200) {
-
-                    var mod_config = jq.responseText;
-                    localStorage.setItem('module_config', mod_config);
-                    localStorage.setItem('user_type', "preview");
-
-                } else {
-                    alert("configuration file not found. please contact the administrator");
-                    return;
-
-                }
-
-            } //if mod_config not found. 
-
-            var is_preview = localStorage.getItem('user_type')
-            if (is_preview == 'preview') {
-
-                alert('Welcome to the Preview version of the course.  Please consider registering!')
-                document.getElementById('heading_text').style.backgroundColor = 'white'
-
-            }
-
-            if (window.location.href.indexOf('?loadPage=') < 0) {
-
-                // alert('here')
-
-                document.getElementById('navBar').style.display = "none";
-                // document.getElementById('calc-unit').style.display = "none";
-                // document.getElementById('right').style.display = "none";
-                // document.getElementById('contentsMenuButton').style.display = "none";
-                // document.getElementById('nav-img-home').style.display = "none";
-
-
-
-            } else {
-
-                document.getElementById('navBar').style.display = "inline-block";
-
-
-            }
-
-
-
-            var loc = window.location.href.split("?")[1] // pxl_home.html?loadPage=xyz.html --> returns LoadPage=xyz.html
-
-            //if (!loc) document.getElementById("right").style.display = 'none';
-
-
-            if (loc && loc.split('=')[0] == 'loadPage') {
-
-                var go_to_loc = loc.split('=')[1]
-                    //set current location to this 'xyz_pxl_z.html'  and call load_page(page, template) 
-                    //localStorage.setItem('current_location', loc)
-                    //load_page(go_to_loc)
-
-                checkProtected(go_to_loc)
-                var go_to_page = create_page_path(go_to_loc)
-
-                jQuery.ajaxSetup({
-                    async: false
-                }); //required to avoind async status code check issues 
-
-                var jq = $.get(go_to_page); //alert(jq.status);
-
-                if (jq.status == 200) {
-                    var page_data = jq.responseText;
-                }
-
-                $("#header1").show();
-                $("#content-inner").html(page_data);
-                localStorage.setItem('current_location', go_to_loc);
-                loadFooterNav(go_to_loc);
-                //close the side nav if open. 
-                document.getElementById("display_current").textContent = create_page_path(go_to_loc);
-                var info = get_titles()
-                var module_title = info['module_title']
-                var unit_title = info['unit_title']
-                var currentSlidex = info['currentSlidex']
-                var numberSlidesy = info['numberSlidesy']
-
-                document.getElementById("display_current").textContent = currentSlidex + ' of ' + numberSlidesy;
-                document.getElementById("moduleTitle").textContent = module_title;
-                document.getElementById("unitTitle").textContent = unit_title;
-                document.getElementById("navBar").style.display = "inline-block";
-                document.getElementById("onSlide").style.display = "inline-block";
-
-
-            } //if loc and loc == loadPage 
-
-            if (loc && loc.split('=')[0] == 'user') {
-                //log user in and display username. 
-                console.log('user has logged in');
-
-
-            };
-
-        });
-
-
-
-        function initMenu() {
-            $('#menu ul').hide();
-            $('#menu > li > a').on('click', function() {
-                $('#menu ul').slideUp();
-                $(this).next().slideDown();
-            });
-        }
-        $(document).ready(initMenu);
-
-        //ifpreview();
-    </script>
-
-
-
 </head>
-
-
 
 <body>
 
-    <div id="super-wrapper">
 
-        <div id="aside">
-            <!-- wrapper div for all menu stuff-->
-
-            <!-- wrap all the menus inside this div. once finalized this section remains same for each module.  -->
-
-            <div id="mySidenav" class="sidenav">
-                <!-- sliding menu from left. will overlay the content page. -->
-
-                <!--<a href="javascript:void(0)" class="closebtn" onclick="closeNav()">×</a>-->
-                <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">
-                    <!--<img src="../SampleScreen_changes/images/close-img.png" width="20px"/>-->
-                    <img src="images/close-white.svg.png" width="45px" style="margin-top: 4px;" />
-                </a>
-
-                <div class="header_sideMenu2">
-                    <span id="user_data" class="user_welcome">WELCOMM Menu</span>
-                </div>
-
-                <ul id="menu">
-                    <li><a href="home.html">Welcome</a></li>
-                    <li><a href="#" id="Module-0"><span id="Module-0-side" class="side-bullet"></span>Course Introduction, Software Setup and Tutorial, and Pre-Test</a> +
-                        <ul id="submenu">
-                            <li><a href="home.html?loadPage=Module-0.html">Module Home</a></li>
-                            <li><a href="#" id="0_0_slide01.html" onClick="load_page_menu(this.id)"><span id="0_0" side-bullet" style="margin-right:5px;">&#9634;</span> Introduction to the Malaria Microscopy Course </a></li>
-                            <li><a href="#" id="0_1_slide01.html" onClick="load_page_menu(this.id)"><span id="0_1" side-bullet" style="margin-right:5px;">&#9634;</span> Software Setup and  Tutorial</a></li>
-                            <li><a href="#" id="0_2_slide02.html" onClick="load_page_menu(this.id)"><span id="0_2" side-bullet" style="margin-right:5px;">&#9634;</span> Pre Test</a></li>
-                        </ul>
-                    </li>
-                    <li><a href="#" id="Module-1"><span id="Module-1-side" class="side-bullet"></span>Module 1: Introduction to Malaria</a> +
-                        <ul id="submenu">
-                            <li><a href="home.html?loadPage=Module-1.html">Module Home</a></li>
-                            <li><a href="#" id="1_0_slide02.html" onClick="load_page_menu(this.id)"><span id="1_0" side-bullet" style="margin-right:5px;">&#9634;</span> Introduction to the Module</a></li>
-                            <li><a href="#" id="1_1_slide02.html" onClick="load_page_menu(this.id)"><span id="1_1" side-bullet" style="margin-right:5px;">&#9634;</span> Unit 1: Overview of the Global Malaria Situation</a></li>
-                            <li><a href="#" id="1_2_slide02.html" onClick="load_page_menu(this.id)"><span id="1_2" side-bullet" style="margin-right:5px;">&#9634;</span> Unit 2: Life Cycle of the Malaria Parasite</a></li>
-                            <li><a href="#" id="1_3_slide02.html" onClick="load_page_menu(this.id)"><span id="1_3" side-bullet" style="margin-right:5px;">&#9634;</span> End of Module One Assessment</a></li>
-                        </ul>
-                    </li>
-                    <li><a href="#" id="Module-2"><span id="Module-2-side" class="side-bullet"></span>Module 2: Blood Collection and Preparation and Staining of Blood Films</a> +
-                        <ul id="submenu">
-                            <li><a href="home.html?loadPage=Module-2.html">Module Home</a></li>
-                            <li><a href="#" id="2_0_slide01.html" onClick="load_page_menu(this.id)"><span id="2_0" side-bullet" style="margin-right:5px;">&#9634;</span> Introduction to the Module</a></li>
-                            <li><a href="#" id="2_1_slide01.html" onClick="load_page_menu(this.id)"><span id="2_1" side-bullet" style="margin-right:5px;">&#9634;</span> Unit 1: Collection of Blood Specimens for Malaria Diagnosis</a></li>
-                            <li><a href="#" id="2_2_slide01.html" onClick="load_page_menu(this.id)"><span id="2_2" side-bullet" style="margin-right:5px;">&#9634;</span> Unit 2: Preparation of Blood Films for Malaria Microscopy</a></li>
-                            <li><a href="#" id="2_3_slide01.html" onClick="load_page_menu(this.id)"><span id="2_3" side-bullet" style="margin-right:5px;">&#9634;</span> Unit 3: Preparation and Dilution of Giemsa Stain</a></li>
-                            <li><a href="#" id="2_4_slide01.html" onClick="load_page_menu(this.id)"><span id="2_4" side-bullet" style="margin-right:5px;">&#9634;</span> Unit 4: Staining of Blood Films for Malaria Microscopy</a></li>
-                            <li><a href="#" id="2_5_slide01.html" onClick="load_page_menu(this.id)"><span id="2_5" side-bullet" style="margin-right:5px;">&#9634;</span> End of Module Two Assessment</a></li>
-                        </ul>
-                    </li>
-                    <li><a href="#" id="Module-3"><span id="Module-3-side" class="side-bullet"></span>Module 3: Blood Film Examination</a> +
-                        <ul id="submenu">
-                            <li><a href="home.html?loadPage=Module-3.html">Module Home</a></li>
-                            <li><a href="#" id="3_0_slide01.html" onClick="load_page_menu(this.id)"><span id="3_0" side-bullet" style="margin-right:5px;">&#9634;</span> Introduction to the Module</a></li>
-                            <li><a href="#" id="3_1_slide01.html" onClick="load_page_menu(this.id)"><span id="3_1" side-bullet" style="margin-right:5px;">&#9634;</span> Unit 1: Blood Components</a></li>
-                            <li><a href="#" id="3_2_slide01.html" onClick="load_page_menu(this.id)"><span id="3_2" side-bullet" style="margin-right:5px;">&#9634;</span> Unit 2: Malaria Parasite Detection</a></li>
-                            <li><a href="#" id="3_3_slide01.html" onClick="load_page_menu(this.id)"><span id="3_3" side-bullet" style="margin-right:5px;">&#9634;</span> Unit 3: Malaria Parasite Species Identification</a></li>
-                            <li><a href="#" id="3_4_slide01.html" onClick="load_page_menu(this.id)"><span id="3_4" side-bullet" style="margin-right:5px;">&#9634;</span> Unit 4: Malaria Parasite Quantitation</a></li>
-                            <li><a href="#" id="3_5_slide01.html" onClick="load_page_menu(this.id)"><span id="3_5" side-bullet" style="margin-right:5px;">&#9634;</span> Unit 5: Non-Malaria Pathogens in Blood Films</a></li>
-                            <li><a href="#" id="3_6_slide01.html" onClick="load_page_menu(this.id)"><span id="3_6" side-bullet" style="margin-right:5px;">&#9634;</span> Unit 6: Commonly Found Artefacts in Blood Films</a></li>
-                            <li><a href="#" id="3_7_slide01.html" onClick="load_page_menu(this.id)"><span id="3_7" side-bullet" style="margin-right:5px;">&#9634;</span> Unit 7: Reporting Blood Film Examination Results</a></li>
-                            <li><a href="#" id="3_8_slide01.html" onClick="load_page_menu(this.id)"><span id="3_8" side-bullet" style="margin-right:5px;">&#9634;</span> End of Module Three Assessment</a></li>
-                        </ul>
-                    </li>
-                    <li><a href="#" id="Module-4"><span id="Module-4-side" class="side-bullet"></span>Module 4: Non-Microscopic Methods for the Detection of Malaria Parasites and Diagnosis of Malaria</a> +
-                        <ul id="submenu">
-                            <li><a href="home.html?loadPage=Module-4.html">Module Home</a></li>
-                            <li><a href="#" id="4_0_slide01.html" onClick="load_page_menu(this.id)"><span id="4_0" side-bullet" style="margin-right:5px;">&#9634;</span> Introduction to the Module</a></li>
-                            <li><a href="#" id="4_1_slide01.html" onClick="load_page_menu(this.id)"><span id="4_1" side-bullet" style="margin-right:5px;">&#9634;</span> Unit 1: Role of Diagnosis and Screening Methods for Malaria Case Management and Elimination</a></li>
-                            <li><a href="#" id="4_2_slide01.html" onClick="load_page_menu(this.id)"><span id="4_2" side-bullet" style="margin-right:5px;">&#9634;</span> Unit 2: Other Methods used for Diagnosing and Screening for Malaria</a></li>
-                            <li><a href="#" id="4_3_slide01.html" onClick="load_page_menu(this.id)"><span id="4_3" side-bullet" style="margin-right:5px;">&#9634;</span> End of Module Four Assessment</a></li>
-                        </ul>
-                    </li>
-                    <li><a href="#" id="Module-5"><span id="Module-5-side" class="side-bullet"></span>Module 5: Laboratory Quality Management Systems</a> +
-                        <ul id="submenu">
-                            <li><a href="home.html?loadPage=Module-5.html">Module Home</a></li>
-                            <li><a href="#" id="5_0_slide03.html" onClick="load_page_menu(this.id)"><span id="5_0" side-bullet" style="margin-right:5px;">&#9634;</span> Introduction to the Module</a></li>
-                            <li><a href="#" id="5_1_slide02.html" onClick="load_page_menu(this.id)"><span id="5_1" side-bullet" style="margin-right:5px;">&#9634;</span> Unit 1: Elements of a Laboratory Quality Management System</a></li>
-                            <li><a href="#" id="5_2_slide02.html" onClick="load_page_menu(this.id)"><span id="5_2" side-bullet" style="margin-right:5px;">&#9634;</span> Unit 2: Monitoring Quality Indicators in Malaria Diagnosis</a></li>
-                            <li><a href="#" id="5_3_slide02.html" onClick="load_page_menu(this.id)"><span id="5_3" side-bullet" style="margin-right:5px;">&#9634;</span> Unit 3: Errors in Malaria Microscopy</a></li>
-                            <li><a href="#" id="5_4_slide02.html" onClick="load_page_menu(this.id)"><span id="5_4" side-bullet" style="margin-right:5px;">&#9634;</span> End of Module Five Assessment</a></li>
-                        </ul>
-                    </li>
-                    <li><a href="#" id="Module-7"><span id="Module-7-side" class="side-bullet"></span>Post-Test</a> +
-                        <ul id="submenu">
-                            <li><a href="home.html?loadPage=Module-7.html">Module Home</a></li>
-                            <li><a href="#" id="7_0_slide02.html" onClick="load_page_menu(this.id)"><span id="7_0" side-bullet" style="margin-right:5px;">&#9634;</span> Post Test</a></li>
-                        </ul>
-                    </li>
-                    <li><a href="#" id="Module-100"><span id="Module-100-side" class="side-bullet"></span>Course Evaluation Survey</a> +
-                        <ul id="submenu">
-                            <li><a href="home.html?loadPage=Module-100.html">Module Home</a></li>
-                            <li><a href="#" id="100_0_slide00.html" onClick="load_page_menu(this.id)"><span id="100_0" side-bullet" style="margin-right:5px;">&#9634;</span> Feedback Survey</a></li>
-                        </ul>
-                    </li>
-                </ul>
-
-                <br><br><br><br>
-            </div>
-            <!-- mysidenav -->
+    <div id="wrapper">
 
 
-            <div id="header1" style="background-color: none;">
-
-                <!-- <div id="header1-bar" style="background-color: none; min-height: 30px; background-color: pink;"> </div> -->
-
-                <div id="heading_text" style="height:54px; width:100%; background-color: #afbd77;">
-
-                    <div id="amrefOld" style="display: inline-block; width:14%; height:100%; float:left;">
+        <div id="aside" valign="top">
 
 
-                        <!-- <img src="images/logo.png" style="max-width: 100% ;max-height:100%;"> -->
+            <div id="header-pxl">
 
-                        <span id="contentsMenuButton" class="header_iconDiv" style="margin-right: 20px; margin-left: 20px; margin-top: 5px;">
-                 <div class="tooltip">
-                    <img class="nav-img-home" onclick="javascript:openNav()" alt="Contents" src="images/side1.png">
-                    <span class="tooltiptext">Contents Menu</span>
-                    </div>
-                    </span>
+                <div id="header-a" style="height:46px; background-color: black; text-align:center; display:table;width:100%;margin:auto;">
+
+
+
+                    <p id="page-title" style="color: white;vertical-align:middle;height:46px;display:table-cell;text-align:center;"><b>Worldwide E-Learning Course on Malaria Microscopy</b></p>
+
+
 
                 </div>
-
-                <div id="middleTopTitle" style="width: calc(86% - 150px);float: left;overflow: hidden;">
-                    <div id="moduleTitle" style="height: 50px;overflow: hidden; font-family: 'Georgia'; font-size:24px; vertical-align:middle; margin-top: 5px; ">
-                    </div>
-                    <!--<div id = "unitTitle" style="height: 30%;overflow: hidden; font-size:15px;"> </div>-->
-                </div>
-                <div id="right" style="display: inline-block; width:150px; height:100%;">
-                    <span class="header_iconDiv" style="float: left; padding-top: 6px;">
-                <div class="tooltip">
-                    <img class="nav-img-home" alt="Home" src="images/home1.png" style="max-width:30px;margin-bottom: 10px; " id="home-btn">
-                    <span class="tooltiptext">Home</span>
-                </div>
-                </span>
-                <span class="header_iconDiv" style="float: left; padding-top: 6px;">
-                <div class="tooltip">
-                    <img class="nav-img-home" alt="Help" src="images/help1.png" style="max-width:30px;margin-bottom: 10px; " id="help-btn" border="0"> 
-                    <span class="tooltiptext">Help</span>
-            </div>
-            </span>
-
-            <span class="header_iconDiv" style="float: left; padding-top: 6px;">
-                <div class="tooltip">
-                    <img class="nav-img-home" alt="Log Out" src="images/logout.png" style="max-width:30px;margin-bottom: 10px; " id="logout-btn">
-                    <span class="tooltiptext">Log Out</span>
-        </div>
-        </span>
-
-    </div>
-
-    </div>
-
-    <div style="height:8px;width:100%;background-color: #00AFEF">
-
-    </div>
-
-    <div style="width: calc(50% - 100px); height: 1px; display:inline-block; float: left;">
-
-    </div>
+                <!--- header a -->
 
 
-    </div>
-    <script>
-        //ifpreview();
-    </script>
-    <!-- div header 1 -->
+                <div id="header-b" style="height:50px; background-color: #FFDBE7;">
+
+                    <div style="margin-top:2px; display: inline-block; width:100%;">
+
+                        <div id="wrap-footer-menu" style="margin-top: 5px; margin-left: 5px;">
 
 
-    <div id="content">
-        <!-- wrapper div for main content area -->
 
-        <div></div>
-
-        <div id="content-inner">
-
-
-            <div id="m1_i_p05" class="" style="padding: 0;width:100%;height:100%;margin-top: 42px;max-height:calc(100% - 75px)">
-                <slide id="Module-1"></slide>
-                <div style="background-image: url('images/Picture18.png');width:100%;height:100%">
-                    <div style="padding-top:32px;color:white;height:100%;">
-                        <div style="width:35%;display: inline-block;padding-top: 30px;">
-                            <img src="images/Picture1.png" style="position: absolute;bottom: 10px;max-height: 45%;left:0;max-width:29%">
-                            <img src="images/WELCOMMlogoFinal.png" style="position: absolute;top: 75px; max-height: 35%;left:5%;max-width:30%">
 
                         </div>
-                        <div style="width:64%;display: inline-block;vertical-align: top;overflow:auto;max-height:calc(100% - 35px);">
-                            <!--img src="images/StartModule.png" height="80px" style="vertical-align: top;padding-top: 17px;position: absolute;right: 50px;" onclick="load_page('admin_actions.html');"-->
-
-                            <!--<span id="admin-btn"><button class="adminbtn" style="vertical-align: top;position: absolute;right: 50px;" onclick="load_admin_page();">Admin Actions</button></span>-->
-
-                            <h1 style="padding:10px;margin:0px">Welcome <span id="usernamespot">Guest</span>!</h1>
-
-                            <p class="content-text" style="line-height:1.0;">If this is your first time using the course, please click on "Course Introduction" below.</p>
-                            <div style="padding:0px">
-
-                                <ul class="frontPageList">
-                                    <li class="frontPageListItem">
-                                        <a href="#" style="font-family: sans-serif;" onclick="load_module_home('Module-0.html');"><span style="vertical-align: top ; font-size:18px; color:white;">Course Introduction, Software Setup and Tutorial, and Pre-Test</span></a>
-                                    </li>
-                                    <li class="frontPageListItem">
-                                        <a href="#" style="font-family: sans-serif;" onclick="load_module_home('Module-1.html');"><span style="vertical-align: top ; font-size:18px; color:white;">Module 1: Introduction to Malaria </span></a>
-                                    </li>
-                                    <li class="frontPageListItem">
-                                        <a href="#" style="font-family: sans-serif;" onclick="load_module_home('Module-2.html');"><span style="vertical-align: top ; font-size:18px; color:white;">Module 2: Blood Collection and Preparation and Staining of Blood Films</span></a>
-                                    </li>
-                                    <li class="frontPageListItem">
-                                        <a href="#" style="font-family: sans-serif;" onclick="load_module_home('Module-3.html');"><span style="vertical-align: top ; font-size:18px; color:white;">Module 3: Blood Film Examination</span></a>
-                                    </li>
-                                    <li class="frontPageListItem">
-                                        <a href="#" style="font-family: sans-serif;" onclick="load_module_home('Module-4.html');"><span style="vertical-align: top ; font-size:18px; color:white;">Module 4: Non-Microscopic Methods for the Detection of Malaria Parasites and Diagnosis of Malaria</span></a>
-                                    </li>
-                                    <li class="frontPageListItem">
-                                        <a href="#" style="font-family: sans-serif;" onclick="load_module_home('Module-5.html');"><span style="vertical-align: top ; font-size:18px; color:white;">Module 5: Laboratory Quality Management Systems</span></a>
-                                    </li>
-                                    <li class="frontPageListItem">
-                                        <a href="#" style="font-family: sans-serif;" onclick="load_module_home('Module-7.html');"><span style="vertical-align: top ; font-size:18px; color:white;">Post-Test </span></a>
-                                    </li>
-                                    <li class="frontPageListItem">
-                                        <a href="#" style="font-family: sans-serif;" onclick="load_module_home('Module-100.html');"><span style="vertical-align: top ; font-size:18px; color:white;">Course Feedback Form</span></a>
-                                    </li>
-                                </ul>
-
-                            </div>
-
-                            <br>
-                            <p>
-                                <span><button style="background: #EE6088; color: white;" onclick="return_to_last();">Click here to return to where you left off.</button></span></p>
-                            <br>
-
-
-                            <!--  <p><a href="home_protected.html?message=noLogin">Take Certification Test</a></p> -->
-                            <span><button style="background :#EE6088; color: white;" onclick="redirect_to_cert();">Click here to take the final assessment.</button></span></p>
-
-
-                            <br>
-                            <p>
-                                <span id="ack-btn"><button class="ackbtn">Contact Information and Acknowledgements</button></span></p>
-                            <br>
-                        </div>
-                    </div>
-
-                </div>
-
-
-            </div>
-            <!--actual page content here -->
-
-
-
-            <style>
-                #content-inner {
-                    padding: 0;
-                    margin: 0;
-                    width: 100%
-                }
-                
-                body {
-                    margin: 0;
-                }
-            </style>
-
-
-            <script>
-                /*
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            $( document ).ready(function() {
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                $("#header2").hide();
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                $("#m1_i_p05").removeClass("page-content");
-
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            });
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        */
-            </script>
-
-
-        </div>
-        <!-- div conent inner-->
-
-    </div>
-    <!-- div content -->
-
-    <div id="footer" style="display: block;">
-
-        <div id="nav_2" style=" width:200px; text-align: center;  position: absolute;bottom: 70;left: calc(50% - 100px);">
-
-
-            <div id="navBar" style="margin: 0px auto; display: inline-block;">
-
-                <span id="previousPageButton" class="header_iconDiv" style="display: initial;margin-right: 40px;">
-					<div class="tooltip">
-						<img class="nav-img-home" id="back-button" onclick="javascript:nav_to('prev')" alt="Previous slide" src="images/back-grey.png" style="/*! margin-right: 40px; */" border="0">
-						<span class="tooltiptext">Previous Page</span>
-            </div>
-            </span>
-
-
-            <span id="nextPageButton" class="header_iconDiv" style="display: initial;">
-					<div class="tooltip">
-						<img class="nav-img-home" id="forward-button" onclick="javascript:nav_to('next')" src="images/forward.png" alt="Next slide" border="0">
-						<span class="tooltiptext">Next Page</span>
-        </div>
-        </span>
-
-    </div>
-    <!-- div id="navBar" -->
-
-    </div>
-    <!-- div id="nav_2" -->
-
-
-
-
-
-
-    <div style="height:10px;width:100%;background-color: #00AFEF; /*! margin-bottom: 5px; */">
-    </div>
-
-    <div style="width: 100%; display: table;max-height: 60px;">
-
-        <div style="display: table-row; width:100%">
-            <div id="amref" style="display: table-cell; width:300px; height:100%; max-width: 30%;">
-
-
-                <img src="images/logo.png" style="max-width: 100% ;max-height:100%;">
-
-            </div>
-
-            <div id="restOfBottomTable" style="display:table-cell;height:100%">
-
-                <div id="calc-unit" style="float: left;height: 20px; width:100%;">
-
-                    <div id="unitTitle" style="overflow: hidden; font-size:18px; font-style: italic; margin-left:50px">
-
-                    </div>
-                </div>
-                <div id="footMenuAndOnslide" style="height:40px; width: 100%;float: left;">
-
-                    <div class="footer_menu" style="float: left;">
-
-                        <div id="wrap-footer-menu" style="display: initial;margin-left:25px;margin-bottom:5px;height:30px;"><span> </span></div>
                         <!--wrap footer menu. -->
 
-                    </div>
-                    <!-- footer_menu -->
 
-                    <div>
-                        <span id="onSlide" style="float:left;margin-left:10px;max-height: 20px;overflow: hidden;font-style:italic;display:none;"></span>
-                        <span id="display_current" style="float:right; font-style: italic; margin-right: 20px; margin-bottom: 5px;overflow:hidden;max-height:20px">  </span>
                     </div>
+
+
+
                 </div>
+                <!--- header a -->
+
+
 
             </div>
+            <!--header -->
+
+                                   <!--header -->
+            <div id="counterbox" style="display:none; background: tomato;">
+
+                <div class="box" id="box">
+
+                    <label for="qty"><abbr title="Quantity">Counter 1 (press "E")</abbr></label>
+                    <input id="qty" value="0" />
+                    <button id="down" onclick="modify_qty(-1, 'qty')"> &ndash; </button>
+                    <button id="clear" onclick="modify_qty(0,'qty')"> C </button>
+                    <button id="up" onclick="modify_qty(1, 'qty')"> + </button>
+
+                </div>
+
+                <div class="box" id="box2">
+
+                    <label for="qty2"><abbr title="Quantity2">Counter 2 (press "R")</abbr></label>
+                    <input id="qty2" value="0" />
+                    
+                    <button id="down2" onclick="modify_qty(-1, 'qty2')"> &ndash; </button>
+                    <button id="clear2" onclick="modify_qty(0, 'qty2')">C</button>
+                    <button id="up2" onclick="modify_qty(1, 'qty2')"> + </button>
+                </div>
+
+
+            </div>
+            <!-- counter box -->
+
+            <!-- counter box -->
+
+            <div id="headerx" style="width:100%; background-color: azure;">
+
+                <div style="margin-top:10px; margin-left: 15px; display: inline-block; margin-bottom:5px;">
+
+
+                    <span id="contentsMenuButton" class="header_iconDiv">
+                 <div class="tooltip">
+                    <img class="nav-img-pxl" onclick="javascript:openNav()" alt="Contents" src="images/side1.png">
+                    <span class="tooltiptext">Contents Menu</span>
+                </div>
+                </span>
+
+                <span class="header_iconDiv">
+				<div class="tooltip">
+                    <img class="nav-img-pxl" border="0" alt="Help" src="images/help_pxl.png" id = "help-btn">
+					<span class="tooltiptext" style="width:50px">Help</span>
+            </div>
+            </span>
+			
+			<span id="counter" class="header_iconDiv">
+				<div class="tooltip">
+                    <img id="counter_img" class="nav-img-pxl" onclick="" border="0" src="images/counter.png" alt="Display Tally Counters">
+					<span class="tooltiptext" style="width:50px">Tally Counters</span>
+					</div>
+
+
+			</span> 
+
+            <span id="previousPageButton" class="header_iconDiv" id="nav_prev">
+
+                    <img class="nav-img-pxl" onclick="javascript:nav_to_pxl('prev')" border="0" alt="Previous slide" src="images/left_pxl.png">
+
+                </span>
+
+
+
+            <span id="nextPageButton" class="header_iconDiv" id="nav_next">
+
+                    <img class="nav-img-pxl" onclick="javascript:nav_to_pxl('next')" border="0" src="images/right_pxl.png" alt="Next slide">
+
+                </span>
+
+
+
+
         </div>
+
+
     </div>
 
 
 
+    <!-- div headerx-->
+
+    <div id="mySidenav" class="sidenav">
+        <!-- sliding menu from left. will overlay the content page. -->
+
+        <!--<a href="javascript:void(0)" class="closebtn" onclick="closeNav()">×</a>-->
+        <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">
+            <!--<img src="../SampleScreen_changes/images/close-img.png" width="20px"/>-->
+            <img src="images/close-white.svg.png" width="45px" style="margin-top: 4px;"/>
+        </a>
+
+        <div class="header_sideMenu2">
+            <span id="user_data" class="user_welcome">WELCOMM Menu</span>
+        </div>
+
+        <ul id="menu">
+            <li><a href="home.html">Welcome</a></li>
+            <li><a href="#" id="Module-0"><span id="Module-0-side" class="side-bullet"></span>Course Introduction, Software Setup and Tutorial, and Pre-Test</a> +
+                <ul id="submenu">
+                    <li><a href="home.html?loadPage=Module-0.html">Module Home</a></li>
+                    <li><a href="#" id="0_0_slide01.html" onClick="load_page_menu(this.id)"><span id="0_0" side-bullet" style="margin-right:5px;">&#9634;</span> Introduction to the Malaria Microscopy Course </a></li>
+                    <li><a href="#" id="0_1_slide01.html" onClick="load_page_menu(this.id)"><span id="0_1" side-bullet" style="margin-right:5px;">&#9634;</span> Software Setup and  Tutorial</a></li>
+                    <li><a href="#" id="0_2_slide02.html" onClick="load_page_menu(this.id)"><span id="0_2" side-bullet" style="margin-right:5px;">&#9634;</span> Pre Test</a></li>
+                </ul>
+            </li>
+            <li><a href="#" id="Module-1"><span id="Module-1-side" class="side-bullet"></span>Module 1: Introduction to Malaria</a> +
+                <ul id="submenu">
+                    <li><a href="home.html?loadPage=Module-1.html">Module Home</a></li>
+                    <li><a href="#" id="1_0_slide02.html" onClick="load_page_menu(this.id)"><span id="1_0" side-bullet" style="margin-right:5px;">&#9634;</span> Introduction to the Module</a></li>
+                    <li><a href="#" id="1_1_slide02.html" onClick="load_page_menu(this.id)"><span id="1_1" side-bullet" style="margin-right:5px;">&#9634;</span> Unit 1: Overview of the Global Malaria Situation</a></li>
+                    <li><a href="#" id="1_2_slide02.html" onClick="load_page_menu(this.id)"><span id="1_2" side-bullet" style="margin-right:5px;">&#9634;</span> Unit 2: Life Cycle of the Malaria Parasite</a></li>
+                    <li><a href="#" id="1_3_slide02.html" onClick="load_page_menu(this.id)"><span id="1_3" side-bullet" style="margin-right:5px;">&#9634;</span> End of Module One Assessment</a></li>
+                </ul>
+            </li>
+            <li><a href="#" id="Module-2"><span id="Module-2-side" class="side-bullet"></span>Module 2: Blood Collection and Preparation and Staining of Blood Films</a> +
+                <ul id="submenu">
+                    <li><a href="home.html?loadPage=Module-2.html">Module Home</a></li>
+                    <li><a href="#" id="2_0_slide01.html" onClick="load_page_menu(this.id)"><span id="2_0" side-bullet" style="margin-right:5px;">&#9634;</span> Introduction to the Module</a></li>
+                    <li><a href="#" id="2_1_slide01.html" onClick="load_page_menu(this.id)"><span id="2_1" side-bullet" style="margin-right:5px;">&#9634;</span> Unit 1: Collection of Blood Specimens for Malaria Diagnosis</a></li>
+                    <li><a href="#" id="2_2_slide01.html" onClick="load_page_menu(this.id)"><span id="2_2" side-bullet" style="margin-right:5px;">&#9634;</span> Unit 2: Preparation of Blood Films for Malaria Microscopy</a></li>
+                    <li><a href="#" id="2_3_slide01.html" onClick="load_page_menu(this.id)"><span id="2_3" side-bullet" style="margin-right:5px;">&#9634;</span> Unit 3: Preparation and Dilution of Giemsa Stain</a></li>
+                    <li><a href="#" id="2_4_slide01.html" onClick="load_page_menu(this.id)"><span id="2_4" side-bullet" style="margin-right:5px;">&#9634;</span> Unit 4: Staining of Blood Films for Malaria Microscopy</a></li>
+                    <li><a href="#" id="2_5_slide01.html" onClick="load_page_menu(this.id)"><span id="2_5" side-bullet" style="margin-right:5px;">&#9634;</span> End of Module Two Assessment</a></li>
+                </ul>
+            </li>
+            <li><a href="#" id="Module-3"><span id="Module-3-side" class="side-bullet"></span>Module 3: Blood Film Examination</a> +
+                <ul id="submenu">
+                    <li><a href="home.html?loadPage=Module-3.html">Module Home</a></li>
+                    <li><a href="#" id="3_0_slide01.html" onClick="load_page_menu(this.id)"><span id="3_0" side-bullet" style="margin-right:5px;">&#9634;</span> Introduction to the Module</a></li>
+                    <li><a href="#" id="3_1_slide01.html" onClick="load_page_menu(this.id)"><span id="3_1" side-bullet" style="margin-right:5px;">&#9634;</span> Unit 1: Blood Components</a></li>
+                    <li><a href="#" id="3_2_slide01.html" onClick="load_page_menu(this.id)"><span id="3_2" side-bullet" style="margin-right:5px;">&#9634;</span> Unit 2: Malaria Parasite Detection</a></li>
+                    <li><a href="#" id="3_3_slide01.html" onClick="load_page_menu(this.id)"><span id="3_3" side-bullet" style="margin-right:5px;">&#9634;</span> Unit 3: Malaria Parasite Species Identification</a></li>
+                    <li><a href="#" id="3_4_slide01.html" onClick="load_page_menu(this.id)"><span id="3_4" side-bullet" style="margin-right:5px;">&#9634;</span> Unit 4: Malaria Parasite Quantitation</a></li>
+                    <li><a href="#" id="3_5_slide01.html" onClick="load_page_menu(this.id)"><span id="3_5" side-bullet" style="margin-right:5px;">&#9634;</span> Unit 5: Non-Malaria Pathogens in Blood Films</a></li>
+                    <li><a href="#" id="3_6_slide01.html" onClick="load_page_menu(this.id)"><span id="3_6" side-bullet" style="margin-right:5px;">&#9634;</span> Unit 6: Commonly Found Artefacts in Blood Films</a></li>
+                    <li><a href="#" id="3_7_slide01.html" onClick="load_page_menu(this.id)"><span id="3_7" side-bullet" style="margin-right:5px;">&#9634;</span> Unit 7: Reporting Blood Film Examination Results</a></li>
+                    <li><a href="#" id="3_8_slide01.html" onClick="load_page_menu(this.id)"><span id="3_8" side-bullet" style="margin-right:5px;">&#9634;</span> End of Module Three Assessment</a></li>
+                </ul>
+            </li>
+            <li><a href="#" id="Module-4"><span id="Module-4-side" class="side-bullet"></span>Module 4: Non-Microscopic Methods for the Detection of Malaria Parasites and Diagnosis of Malaria</a> +
+                <ul id="submenu">
+                    <li><a href="home.html?loadPage=Module-4.html">Module Home</a></li>
+                    <li><a href="#" id="4_0_slide01.html" onClick="load_page_menu(this.id)"><span id="4_0" side-bullet" style="margin-right:5px;">&#9634;</span> Introduction to the Module</a></li>
+                    <li><a href="#" id="4_1_slide01.html" onClick="load_page_menu(this.id)"><span id="4_1" side-bullet" style="margin-right:5px;">&#9634;</span> Unit 1: Role of Diagnosis and Screening Methods for Malaria Case Management and Elimination</a></li>
+                    <li><a href="#" id="4_2_slide01.html" onClick="load_page_menu(this.id)"><span id="4_2" side-bullet" style="margin-right:5px;">&#9634;</span> Unit 2: Other Methods used for Diagnosing and Screening for Malaria</a></li>
+                    <li><a href="#" id="4_3_slide01.html" onClick="load_page_menu(this.id)"><span id="4_3" side-bullet" style="margin-right:5px;">&#9634;</span> End of Module Four Assessment</a></li>
+                </ul>
+            </li>
+            <li><a href="#" id="Module-5"><span id="Module-5-side" class="side-bullet"></span>Module 5: Laboratory Quality Management Systems</a> +
+                <ul id="submenu">
+                    <li><a href="home.html?loadPage=Module-5.html">Module Home</a></li>
+                    <li><a href="#" id="5_0_slide03.html" onClick="load_page_menu(this.id)"><span id="5_0" side-bullet" style="margin-right:5px;">&#9634;</span> Introduction to the Module</a></li>
+                    <li><a href="#" id="5_1_slide02.html" onClick="load_page_menu(this.id)"><span id="5_1" side-bullet" style="margin-right:5px;">&#9634;</span> Unit 1: Elements of a Laboratory Quality Management System</a></li>
+                    <li><a href="#" id="5_2_slide02.html" onClick="load_page_menu(this.id)"><span id="5_2" side-bullet" style="margin-right:5px;">&#9634;</span> Unit 2: Monitoring Quality Indicators in Malaria Diagnosis</a></li>
+                    <li><a href="#" id="5_3_slide02.html" onClick="load_page_menu(this.id)"><span id="5_3" side-bullet" style="margin-right:5px;">&#9634;</span> Unit 3: Errors in Malaria Microscopy</a></li>
+                    <li><a href="#" id="5_4_slide02.html" onClick="load_page_menu(this.id)"><span id="5_4" side-bullet" style="margin-right:5px;">&#9634;</span> End of Module Five Assessment</a></li>
+                </ul>
+            </li>
+            <li><a href="#" id="Module-7"><span id="Module-7-side" class="side-bullet"></span>Post-Test</a> +
+                <ul id="submenu">
+                    <li><a href="home.html?loadPage=Module-7.html">Module Home</a></li>
+                    <li><a href="#" id="7_0_slide02.html" onClick="load_page_menu(this.id)"><span id="7_0" side-bullet" style="margin-right:5px;">&#9634;</span> Post Test</a></li>
+                </ul>
+            </li>
+            <li><a href="#" id="Module-100"><span id="Module-100-side" class="side-bullet"></span>Evaluation Survey</a> +
+                <ul id="submenu">
+                    <li><a href="home.html?loadPage=Module-100.html">Module Home</a></li>
+                    <li><a href="#" id="100_0_slide00.html" onClick="load_page_menu(this.id)"><span id="100_0" side-bullet" style="margin-right:5px;">&#9634;</span> Feedback Survey</a></li>
+                </ul>
+            </li>
+        </ul>
+
+        <br><br><br><br>
     </div>
-    <!-- div footer -->
+    <!-- mysidenav -->
+
+
+    <div id="content-left" style="margin-left: 10px; overflow: scroll;">
+
+
+
+
+        <slide id="home_pxl"> </slide>
+
+
+
 
     </div>
+    <!--div id content-left  -->
+
+
+
+    </div>
+    <!--div aside -->
+
+    <div id="content-right">
+
+        <!--dynamic content here -->
+
+
+    </div>
+
+    <script type="text/javascript">
+    </script>
+<!--
+    <div class="box-top" id="box-top" style="margin-top:200px;display: none; ">
+
+        <label for="qty"><abbr title="Quantity">Count</abbr></label>
+        <input id="qty" value="0" />
+        <button id="down" onclick="modify_qty(-1)">-1</button>
+        <button id="up" onclick="modify_qty(1)">+1</button>
+    </div>
+-->
+    </div>
+    <!-- wrapper -->
 
 </body>
 
-<!-- The help Modal -->
+<!-- The Modal -->
 <div id="myModalContent" class="helpModal">
 
     <!-- Modal content -->
@@ -643,138 +840,59 @@
         <span class="help-close">&times;</span>
         <div class="help-modal-div">
             <div id="help-content-home">
-                <h2 class="heading-text">Navigating Worldwide E-Learning Course on Malaria Microscopy</h2>
-                <p class="content-text"> The following buttons are used to Navigate through the course content: </p>
-                <p>
-                    <img class="nav-img-home" alt="Contents" src="images/side1.png" style="vertical-align:middle"> The Menu button calls the Course Menu, from which you can navigate to each module and unit. The menu also shows which modules and units
-                    have been completed.</p>
+                <br>
+                <b>Summary of virtual microscope controls</b>
 
-                <p><img class="nav-img-home" alt="Next Slide" src="images/forward.png" style="vertical-align:middle"> The Next button moves you to the next page within a Unit. If disabled, actions must be completed before navigating forwards.</p>
-                <p> <img class="nav-img-home" alt="Previous Slide" src="images/backward.png" style="vertical-align:middle"> The Previous button moves you back one slide. If disabled, you are on the first page of the unit.</p>
+                <ul>
+                    <li><strong>Changing Magnification: </strong></li>
+                    <ul>
+                        <li>Keyboard: '+' and '-' keys</li>
+                        <li>Mouse/Trackpad: scroll wheel or two-finger swipe up and down</li>
+                        <li>On-screen objective button</li>
+                    </ul>
+                    <li><strong>Scanning: </strong></li>
+                    <ul>
+                        <li>Keyboard: arrow keys</li>
+                        <li>Mouse/Trackpad: "drag and drop" or click thumbnail</li>
+                    </ul>
+                    <li><strong>Focusing: </strong></li>
+                    <ul>
+                        <li>Keyboard: 'Page Up' and 'Page Down' or 'A' and 'Q'</li>
+                        <li>Mouse/Trackpad: Drag slider or click arrows</li>
+                    </ul>
 
-                <p> <img class="nav-img-home" alt="Contents" src="images/home1.png" style="vertical-align:middle"> The Home button allows you to return to the welcome screen of the course or the first page of the current unit.
-                </p>
-
-                <p> <img class="nav-img-home" alt="Contents" src="images/help1.png" style="vertical-align:middle"> The Help button will display this screen.
-                </p>
-
-                <p> <img class="nav-img-home" alt="Contents" src="images/logout.png" style="vertical-align:middle"> The Logout button will log you out and take you to the login screen.
-                </p>
-
-                <p>You can also use the navigation menu at the bottom of the screen to skip to different slides within a unit.</p>
-
-                <h2>Other Software Help</h2>
-                <p>To visit the more detailed help section, including help with colour settings and using the virtual microscope,
-                    <span class="goto-help-unit"><a href="#" id="0_1_slide01.html" onClick="load_page(this.id)" >click here</a></span>.</p>
-
-                <h2>Contact Information</h2>
-                <p>For issues with using this software, you can contact the focal person who distributed the course for the fastest response. You may also email MalariaMicroscopyCourse@gmail.com with any questions or feedback.</p>
-
-                <br><br>
-            </div>
-        </div>
-    </div>
-
-</div>
-
-<script>
-</script>
-
-<!-- The acknowledgements Modal -->
-<div id="acknowledgementsModal" class="helpModal">
-
-    <!-- Modal content -->
-    <div class="help-modal-content">
-        <span class="ack-close">&times;</span>
-        <div class="help-modal-div">
-            <div id="acknowledgements-content-home">
-                <h2>Worldwide E-Learning Course on Malaria Microscopy (WELCOMM)</h2>
-                <h3>Contact Information</h3>
-                <p>The Worldwide E-Learning Course on Malaria Microscopy is managed by the Amref International University, http://amref.ac.ke/
-                    <br> For issues with using this software, you may email MalariaMicroscopyCourse@gmail.com with any questions or feedback.</p>
-                <p>The course is currently in development by Global Good/Intellectual Ventures Lab and Amref Health Africa. The contents of the course are fully protected by copyright. However, the publishers will gladly consider any request for permission
-                    to reproduce part or whole of the course materials with the intention of increasing its availability to those who need it, and welcome enquiries from individuals or organisations wishing to use any material from the course for non-commercial
-                    purposes. The publishers also welcome feedback on the course, and invite constructive comments and suggestions.</p>
-
-                <h3>Authors and Reviewers (in alphabetical order)</h3>
-
-                <ul class="nobullet">
-                    <li>Rachel Achilla&mdash;United States Army Medical Research Directorate, Kenya </li>
-                    <li>Evelyn Ansah&mdash;University of Health and Allied Sciences, Accra, Ghana </li>
-                    <li>Christine Bachman&mdash;Intellectual Ventures Global Good Fund, Bellevue, USA </li>
-                    <li>David Bell&mdash;Intellectual Ventures Global Good Fund, Bellevue, USA </li>
-                    <li>Jane Carter&mdash;Amref International University, Nairobi, Kenya</li>
-                    <li>Anderson Chinorumba&mdash;WHO AFRO, Harare, Zimbabwe </li>
-                    <li>Dionicia Gamboa&mdash;Universidad Peruana Cayetano Heredia, Peru </li>
-                    <li>Matthew Horning&mdash;Intellectual Ventures Global Good Fund, Bellevue, USA </li>
-                    <li>Cecilia Hugo&mdash;ACTMalaria Foundation, Inc. </li>
-                    <li>David Isaboke&mdash;Amref Health Africa Headquarters, Nairobi, Kenya </li>
-                    <li>Ken Lilley&mdash;Australian Army Malaria Institute, Brisbane, Australia </li>
-                    <li>Earl Long&mdash;Consultant Parasitologist, Atlanta, USA </li>
-                    <li>David Ocheng&mdash;Amref Health Africa Tanzania, Dar es Salaam, Tanzania</li>
                 </ul>
 
-                <h3>Acknowledgements</h3>
-                <p> Financial support for development of this course was provided by Bill and Melinda Gates through the Intellectual Ventures Global Good Fund. Our extended appreciation goes to Amref Health Africa, the Shoklo Malaria Research Unit (SMRU),
-                    Universidad Peruana Cayetano Heredia (UPCH), and the Hospital of Tropical Diseases (HTD) for providing microscope slides and sharing relevant images to enhance learning for students. We also thank Ms. Arlene Santiago and the Asian
-                    Collaborative Training Network for Malaria (ACTMalaria Foundation, Inc.), for sharing images and video clips used in the course. Special thanks to David Bell and Jane Carter for their strategic stewardship and the following individuals
-                    who participated in determining the course curricula: Cornel Arima, Rachel Achilla, Earl Long, Christine Bachman, David Ocheng, Peter Mwatha, Matthew Horning, Ken Lilley, Cary Champlin, Silla Thiam, Jane Carter, Julius Tome, Ephantus
-                    Murigi, Josephine Namboze, David Bell, David Isaboke, Stephen Munene, Zipporah Katiku, and Anastasiah Kimeu. The virtual microscope and slide viewing software was developed by PathXL, and the course was designed and created by Bernard
-                    Kikechi and Diana Mukami at Amref Health Africa, and Vikas Agrawal and Matthew Horning at Intellectual Ventures Laboratory. Videos were produced by Matthew Horning at Intellectual Ventures Laboratory, and Bernard Kikechi and David
-                    Isaboke at Amref Health Africa. </p>
-
-                <p>
-                    We are grateful to the following individuals and organisations for their support in piloting the course: Nicole Whitehurst at MalariaCare, Ephantus Murigi at the National Malaria Conrtol Programme, Ministry of Health, Republic of Kenya, Dionicia Gamboa
-                    at the Universidad Peruana Cayetano Heredia, Peru, Ken Lilley at the Australian Army Malaria Institute, Brisbane, Australia, and Rachel Achilla at the United States Army Medical Research Directorate, Kenya.
-                </p>
-
                 <br><br>
+                <b>Help with PathXL error message</b><br> If you receive error message 2343 when trying to view the Virtual Slides, <a onclick="javascript:helpWithError2343()" class="outTo2343help" href="#">click here for our help page on this error</a>.
+                <br>
             </div>
         </div>
     </div>
 
 </div>
 
-<!-- The home Modal -->
-<div id="homeModal" class="helpModal">
+<!-- The 2343 Modal -->
+<div id="modal2343" class="modal2343">
 
     <!-- Modal content -->
-    <div class="help-modal-content">
-        <span class="home-close">&times;</span>
-        <div class="help-modal-div">
-            <div id="home-content-home">
-
-                <h2>You have clicked the "Home" button.</h2>
-                <p>Note: You may not be able to resume a test from your current location if you navigate away from the test.</p>
-                <h3>Where would you like to go?</h3>
-                <p><span class="goto-course-home"><a href="home.html">The WELCOMM home page</a></span>.</p>
-
-                <p><span class="goto-unit-home"><a href="#" onClick="goHome('unit')" >The first page of this unit</a></span>.</p>
-
-            </div>
-        </div>
-    </div>
-
-</div>
-
-<!-- The logout Modal -->
-<div id="logoutModal" class="helpModal">
-
-    <!-- Modal content -->
-    <div class="help-modal-content">
-        <span class="logout-close">&times;</span>
-        <div class="logout-modal-div">
-            <div id="logout-content-home">
-                <center>
-                    <h2>Are you sure you would like to log out?</h2>
-                    <button class="red-btn" onclick="javascript:logUserOut('logout')"><img alt="Log Out" src="images/logout.png" style="max-width:60px;margin-bottom: 0px; "> <br>Yes, log me out!</button>
-                    <br><br>
-
-                    <p>Note: You may not be able to resume a test from your current location if you log out.</p>
-
-                    <p>
-                        To cancel and stay logged in, click on the small x above.</p>
-                </center>
+    <div class="modal-2343-content">
+        <span class="modal2343-close">&times;</span>
+        <div class="modal2343-div">
+            <div id="modal2343-home">
+                <b>Error message 2343</b>
+                <p> This error message appears when the Virtual Microscope software cannot locate the Virtual Slides that are on the course USB drive. One of the following two solutions will likely solve the problem for you. If you still get this error, or
+                    other errors when trying to view Virtual Slides, please contact us using the contact information on the course Welcome page.</p>
+                <ol>
+                    <li>The USB drive must be in the computer when taking the course - it also has to be attached when opening the software. So if it isn't attached, please close the software, connect the USB drive, then re-open the software. The software
+                        should then be able to find the slides automatically.</li>
+                    <br>
+                    <li>If step 1 doesn't work, you can manually set the drive letter that the images are on. From within the software, open the "Settings" menu, then "Server Settings". A warning will pop up, and you can click "OK." The window shown in the
+                        first image below should appear. Under "Default Images Drive" enter the letter for the MMELC drive, followed by ":\". In the second image below, you can see that the MMELC drive is drive J, so we enter "J:\". Then click Apply,
+                        and then close and reopen the software.</li>
+                </ol>
+                <img src="images/systemSettingsimage.jpg" />
+                <img src="images/driveJimage.jpg" />
             </div>
         </div>
     </div>
@@ -782,251 +900,158 @@
 </div>
 
 <script>
-    // Modal for acknowledgements and contact pages
     // Get the modal
-    var help_Modal = document.getElementById('myModalContent');
+    var helpModal = document.getElementById('myModalContent');
 
     // Get the button that opens the modal
     var btn = document.getElementById("help-btn");
 
     // Get the <span> element that closes the modal
-    var helpspan = document.getElementsByClassName("help-close")[0];
+    var span = document.getElementsByClassName("help-close")[0];
 
     // Get the <span> element that links out to the help unit
-    var helpspan2 = document.getElementsByClassName("goto-help-unit")[0];
+    var span2 = document.getElementsByClassName("outTo2343help")[0];
 
     // When the user clicks the button, open the modal
     btn.onclick = function() {
-        help_Modal.style.display = "block";
+        helpModal.style.display = "block";
     }
 
     // When the user clicks on <span> (x), close the modal
-    helpspan.onclick = function() {
-        help_Modal.style.display = "none";
+    span.onclick = function() {
+        helpModal.style.display = "none";
     }
 
     // When the user clicks anywhere outside of the modal, close it
     window.onclick = function(event) {
-        //if (event.target != help_Modal) {
-        help_Modal.style.display = "none";
-        //}
+        if (event.target == helpModal) {
+            helpModal.style.display = "none";
+        }
     }
 
     // When the user clicks to help page, also close modal
-    helpspan2.onclick = function() {
-        help_Modal.style.display = "none";
+    span2.onclick = function() {
+        helpModal.style.display = "none";
+        helpWithError2343();
     }
-
-    // Modal for acknowledgements and contact pages
-
-    // Get the modal
-    var ackModal = document.getElementById('acknowledgementsModal');
+</script>
+<script>
+    // Get the modal 2343
+    var modal2343var = document.getElementById('modal2343');
 
     // Get the button that opens the modal
-    var ackbtn = document.getElementById("ack-btn");
+    var btn = document.getElementById("helpWithError2343button");
 
     // Get the <span> element that closes the modal
-    var ackspan = document.getElementsByClassName("ack-close")[0];
+    var span2343 = document.getElementsByClassName("modal2343-close")[0];
 
     // Get the <span> element that links out to the help unit
     //var span2 = document.getElementsByClassName("goto-help-unit")[0];
 
     // When the user clicks the button, open the modal
-    ackbtn.onclick = function() {
-        ackModal.style.display = "block";
+    function helpWithError2343() {
+        modal2343var.style.display = "block";
+        //alert('display!');
     }
 
     // When the user clicks on <span> (x), close the modal
-    ackspan.onclick = function() {
-        ackModal.style.display = "none";
+    span2343.onclick = function() {
+        modal2343var.style.display = "none";
     }
 
-
-    // Get the home modal
-    var homeModal = document.getElementById('homeModal');
-
-    // Get the button that opens the modal
-    var homebtn = document.getElementById("home-btn");
-
-    // Get the <span> element that closes the modal
-    var homespan = document.getElementsByClassName("home-close")[0];
-
-    // Get the <span> element that links out to the help unit
-    //var span2 = document.getElementsByClassName("goto-help-unit")[0];
-
-    // When the user clicks the button, open the modal
-    homebtn.onclick = function() {
-        homeModal.style.display = "block";
-    }
-
-    // When the user clicks on <span> (x), close the modal
-    homespan.onclick = function() {
-        homeModal.style.display = "none";
-    }
-
-    // Get the logout modal
-    var logoutModal = document.getElementById('logoutModal');
-
-    // Get the button that opens the modal
-    var logoutbtn = document.getElementById("logout-btn");
-
-    // Get the <span> element that closes the modal
-    var logoutspan = document.getElementsByClassName("logout-close")[0];
-
-    // Get the <span> element that links out to the help unit
-    //var span2 = document.getElementsByClassName("goto-help-unit")[0];
-
-    // When the user clicks the button, open the modal
-    logoutbtn.onclick = function() {
-        logoutModal.style.display = "block";
-    }
-
-    // When the user clicks on <span> (x), close the modal
-    logoutspan.onclick = function() {
-        logoutModal.style.display = "none";
-    }
-
-    // When the user clicks anywhere outside of the modal, close all modals
+    // When the user clicks anywhere outside of the modal, close it
     window.onclick = function(event) {
-        if (event.target == ackModal) {
-            ackModal.style.display = "none";
-        }
-        if (event.target == help_Modal) {
-            help_Modal.style.display = "none";
-        }
-        if (event.target == homeModal) {
-            homeModal.style.display = "none";
-        }
-        if (event.target == logoutModal) {
-            logoutModal.style.display = "none";
+        if (event.target == modal2343) {
+            modal2343var.style.display = "none";
         }
     }
 
-    // Get the <span> element that links out to the help unit
-    var homespan2 = document.getElementsByClassName("goto-course-home")[0];
-    //var homespan3 = document.getElementsByClassName("goto-module-home")[0];
-    var homespan4 = document.getElementsByClassName("goto-unit-home")[0];
-
-    // When the user clicks to any home page, also close modal
-    homespan2.onclick = function() {
-            homeModal.style.display = "none";
-        }
-        //homespan3.onclick = function() {
-        //  homeModal.style.display = "none";
-        //}
-    homespan4.onclick = function() {
-        homeModal.style.display = "none";
-    }
-</script>
-
-
-
-<script src="js/jquery-2.2.0.min.js"></script>
-
-<script>
-    /*  var leftInit = $(".scroll_fixed").offset().left;
-                                                                                                                                                                                                //var leftInit = 0;
-                                                                                                                                                                                                var topv = $('.scroll_fixed').offset().top - parseFloat($('.scroll_fixed').css('margin-top').replace(/auto/, 0));
-                                                                                                                                                                                                //var topv = 0;
-                                                                                                                                                                                                var docWidth = $(window).innerWidth();
-                                                                                                                                                                                                var subHeaderWidth=docWidth-240;
-
-                                                                                                                                                                                                var docHeight = $(window).innerHeight();
-                                                                                                                                                                                                $('#header1').css('width',docWidth);
-                                                                                                                                                                                                $('#header2').css('width',subHeaderWidth);
-                                                                                                                                                                                                $('#content-inner').css('width',subHeaderWidth);
-
-                                                                                                                                                                                                $(window).resize(function(){
-                                                                                                                                                                                                    var docHeight = $(window).innerHeight();
-                                                                                                                                                                                                $('#header1').css('width',docWidth);
-                                                                                                                                                                                                    $('#header2').css('left',100);
-
-                                                                                                                                                                                                    var docWidth = $(window).innerWidth();
-                                                                                                                                                                                            //        var subHeaderWidth=docWidth-240;
-                                                                                                                                                                                            //        $('#header2').css('width',subHeaderWidth);
-
-                                                                                                                                                                                                });
-                                                                                                                                                                                                $(window).scroll(function(event) {
-                                                                                                                                                                                                    var x = 0 - $(this).scrollLeft();
-                                                                                                                                                                                                    var y = $(this).scrollTop();
-
-                                                                                                                                                                                                    // whether that's below the form
-                                                                                                                                                                                                    if (y >= topv) {
-                                                                                                                                                                                                        // if so, ad the fixed class
-                                                                                                                                                                                                        $('.scroll_fixed').addClass('fixed');
-                                                                                                                                                                                                        $('#header2').css('left',100);
-
-                                                                                                                                                                                                    } else {
-                                                                                                                                                                                                        // otherwise remove it
-                                                                                                                                                                                                        $('.scroll_fixed').removeClass('fixed');
-                                                                                                                                                                                                    }
-                                                                                                                                                                                                    $(".scroll_fixed").offset({
-                                                                                                                                                                                                        left: x + leftInit
-                                                                                                                                                                                                    });
-
-
-                                                                                                                                                                                                });
-
-                                                                                                                                                                                            */
+    // When the user clicks to help page, also close modal
+    //span2.onclick = function() {
+    //	helpModal.style.display = "none";
+    //}
 </script>
 
 <script>
-    /*
-     * Main include script here. this is to be included everytime. 
-     */
-    var username = localStorage.getItem('logged_in');
-    document.getElementById('usernamespot').innerHTML = username;
-</script>
-<script>
-    var info = get_titles()
-    var module_title = info['module_title']
-    var unit_title = info['unit_title']
-    var currentSlidex = info['currentSlidex']
-    var numberSlidesy = info['numberSlidesy']
-        //if(page.indexOf("_pxl_") > -1 ) next_template = 'home_pxl.html'
-    if (unit_title.indexOf("Test") > -1 || unit_title.indexOf("Assessment") > -1) {
-        if ((currentSlidex > 1 && currentSlidex != 12 && currentSlidex != (numberSlidesy - 1)) || currentSlidex == 11) {
-            document.getElementById('nextPageButton').style.display = 'none';
-        } else {
-            document.getElementById('nextPageButton').style.display = 'initial';
+    //counter 1. 
+
+    window.onload = addListeners();
+    window.onload = initial_qty_load();
+
+
+
+    function addListeners() {
+        document.getElementById('box').addEventListener('mousedown', mouseDown, false);
+        window.addEventListener('mouseup', mouseUp, false);
+
+    }
+
+    function mouseUp() {
+        window.removeEventListener('mousemove', divMove, true);
+    }
+
+    function mouseDown(e) {
+        window.addEventListener('mousemove', divMove, true);
+    }
+
+//    function divMove(e) {
+//        var div = document.getElementById('box');
+//        div.style.position = 'absolute';
+//        div.style.top = e.clientY + 'px';
+//        div.style.left = e.clientX + 'px';
+//    }
+
+    //show hide counter  box 
+
+   jQuery(function() {
+        jQuery("#counter").click(function() {
+            initial_qty_load();
+            //jQuery("#counterbox").toggle("slow");
+            jQuery("#counterbox").toggle();
+            jQuery("#counterbox").css("background-color", "tomato");
+            jQuery("#counterbox").css("position", "fixed");
+            jQuery("#counterbox").css("width", "100%");
+            jQuery("#counterbox").css("top", "0px");
+            //jQuery("#box").toggle("slow");
+            //jQuery("#box2").toggle("slow");
+        });
+    });
+
+
+    function waitForElementToDisplay(selector, time) {
+        var ele = document.getElementById(selector)
+        if(ele !=null) {
+
+      
+            $(document.getElementById(selector).contentWindow.document).keydown(function(e){
+
+                //alert("KEY:" + e.which);
+                changeCounter(e);
+
+       
+            });
+
+//            $(document.getElementById(selector)).contents().find("body").on('click', function(event)
+//
+//
+//             { 
+//
+//                //alert('test'); 
+//                jQuery("#counterbox").show();
+//
+//            });
+
+            return;
         }
-        document.getElementById('previousPageButton').style.display = 'none';
-        document.getElementById('wrap-footer-menu').style.display = 'none';
-    } else { //unhide
-        document.getElementById('nextPageButton').style.display = 'initial';
-        document.getElementById('previousPageButton').style.display = 'initial';
-        document.getElementById('wrap-footer-menu').style.display = 'initial';
-    }
+        else {
+            setTimeout(function() {
+                waitForElementToDisplay(selector, time);
+            }, time);
+        }
+    };
 
-    //grey out back button on first pages.  //hide nav_2 on welcome. 
-    var current_page = localStorage.getItem('current_location'); //5_0_slide02.html
-    //alert(current_page)
-    if (is_first_page(current_page)) {
+    waitForElementToDisplay('pathXLviewer', 1000);
 
-        grey_back_button();
-
-    } else {
-
-        document.getElementById('back-button').onclick = function() {
-            nav_to('prev');
-        };
-        document.getElementById('back-button').src = "images/backward.png";
-    }
-
-    //grey out forward button on last pages.
-    if (is_last_page(current_page)) {
-
-        grey_forward_button();
-
-    } else {
-
-        document.getElementById('forward-button').onclick = function() {
-            nav_to('next');
-        };
-        document.getElementById('forward-button').src = "images/forward.png";
-    }
 </script>
-
-
 
 </html>

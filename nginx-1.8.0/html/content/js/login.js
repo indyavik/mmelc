@@ -44,8 +44,6 @@ function convert_preview_user(username, license_id) {
                 if (update_allUSERS == 'error' || remove_allUSERS == 'error') {
                     //alert. 
                     alert("Error: Some error occurred. Please contact and admininstrator")
-                    alert("update_allUSERS" + update_allUSERS + " remove_allUSERS " + remove_allUSERS)
-                        //TODO: need to return here, or not update whichever of these returned error (OR IT OVERWRITES Users.txt with 'error'!!!)
                 }
 
                 user_data.user_type = 'license'
@@ -734,8 +732,7 @@ function update_users_file(datadir, user_to_add, action) {
             new_users.push(user_to_add);
 
         } else {
-            alert('Error: user not added.');
-            return users;
+            return 'error'
         }
 
     }
@@ -743,8 +740,7 @@ function update_users_file(datadir, user_to_add, action) {
     if (action == 'remove') {
         if (user_exists == -1 && user_to_add !== "") {
             //user doesn't exists nothing to remove.  
-            alert('Error: user may not have been removed from list')
-            return users;
+            return 'error'
 
         } else {
 

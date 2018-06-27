@@ -11,22 +11,26 @@
     <script src="certify.js"></script>
     <script src="certification-test.js"></script>
 
-    <style>
+	<style>
+
+
+        
         .counterbox {
             /* forces children to same row */
-            height: 98px;
+            height: 100px;
             width: 100%;
             z-index: 1000000;
-            top: 150px;
-            left: 10px;
+            top:150px;
+            left:10px;
+       
             /*
             padding-left: 10px;
             padding-right: 10px;
           
             */
         }
-        
-        #counterbox input {
+
+        #counterbox  input {
             font-size: 1.2em;
             background-color: transparent;
             text-align: center;
@@ -34,8 +38,11 @@
             width: 100%;
             margin: 0 0 .1em 0;
             color: white;
-            font-weight: bold;
+			font-weight: bold;
+			
         }
+
+
         
         .box {
             /* basics */
@@ -43,7 +50,7 @@
             background-color: rgb(2, 2, 2);
             color: #C4BE92;
             text-align: center;
-            vertical-align: center
+            vertical-align:center
             /* rounded corners */
             -webkit-border-radius: 5px;
             border-radius: 8px;
@@ -59,8 +66,9 @@
             -webkit-box-shadow: 0px 0px 12px 0px #000;
             box-shadow: 0px 0px 12px 0px #000;
         }
-        
+
         #counterbox button {
+
             align-items: flex-start;
             text-align: center;
             cursor: default;
@@ -72,7 +80,9 @@
             border-style: outset;
             border-color: buttonface;
             border-image: initial;
+
         }
+
     </style>
 
     <script src="../js/main-2.js"></script>
@@ -99,40 +109,166 @@
     </script>
 
     <script>
+        function update_counter_object(requesttype, counterarray) {
+
+            //get the counter. 
+
+            var current_user = localStorage.getItem('logged_in');
+            var user_data = JSON.parse(localStorage.getItem(JSON.parse(current_user)));
+            var current_location = localStorage.getItem('current_location');
+
+            var x = user_data['counter']
+
+            if (x == undefined) {
+
+                user_data['counter'] = {}
+
+                x = {}
+                x[current_location] = [0, 0]
+
+                user_data['counter'] = x
+
+                localStorage.setItem(JSON.parse(current_user), JSON.stringify(user_data))
+
+                return [0, 0]
+
+
+            }
+
+            if (x[current_location] == undefined) {
+
+                x[current_location] = [0, 0]
+
+                user_data['counter'] = x
+
+                localStorage.setItem(JSON.parse(current_user), JSON.stringify(user_data))
+
+                return [0, 0]
+
+
+
+            }
+
+            if (requesttype == 'get') {
+
+                return x[current_location];
+
+
+            } else {
+
+                //update.
+                var x = user_data['counter']
+
+                x[current_location] = counterarray;
+
+                user_data['counter'] = x;
+
+                localStorage.setItem(JSON.parse(current_user), JSON.stringify(user_data))
+
+                initial_qty_load(counterarray);
+
+
+            }
+
+            //user['counter'] = {'page' : [counter1, counter2] }
+
+
+        } //update counter
+
+        function initial_qty_load(counterarray) {
+
+            if (!counterarray) {
+                var qtys = update_counter_object('get');
+            } else {
+                var qtys = counterarray;
+            }
+
+
+            var qtydivs = ['qty', 'qty2']
+
+            for (var i = 0, len = qtydivs.length; i < len; i++) {
+                var divid = qtydivs[i];
+                var val = qtys[i];
+
+                /*
+
+                var page_id = localStorage.getItem('current_location');
+                var counter_id = 'counter_' + page_id + '_' + divid;
+                var val = localStorage.getItem(counter_id);
+
+                */
+
+                if (!val) {
+                    val = 0;
+                };
+
+                document.getElementById(divid).value = val;
+
+
+            }
+
+
+
+        }
+
         function modify_qty(val, divid, ifenter) {
 
-
-            //var counterarray = update_counter_object('get'); 
-            //var qty = counterarray[0]
-            //var qty2 = counterarray[1]
-
+            var counterarray = update_counter_object('get');
+            var qty = counterarray[0]
+            var qty2 = counterarray[1]
 
             //counter1 = parseInt(qty, 10) + val;
             //counter2 = parseInt(qty2, 10) + val;
 
+            //var counter1 = document.getElementById("qty").value;
+            //var counter2 = document.getElementById("qty2").value;
+
+            if (divid == 'qty') {
+
+                if (val == 0) {
+                    update_counter_object('update', [0, qty2]);
+
+                    return;
+
+                }
+
+                if (ifenter) {
+
+                    update_counter_object('update', [val, qty2]);
+                    return;
+
+                } else {
+                    update_counter_object('update', [parseInt(qty, 10) + val, qty2]);
+                    return;
+                }
+
+            } // if qty
+
+            if (divid == 'qty2') {
+
+                if (val == 0) {
+                    update_counter_object('update', [qty, 0]);
+
+                    return;
+
+                }
+
+                if (ifenter) {
+
+                    update_counter_object('update', [qty, val]);
+                    return;
+
+                } else {
+                    update_counter_object('update', [qty, parseInt(qty2, 10) + val]);
+                    return;
+                }
+
+            } // if qty
 
 
-
-
-            var counter1 = document.getElementById(divid).value;
-            counter1 = parseInt(counter1, 10);
-
-            if (val == 0) {
-                counter1 = 0;
-
-
-
-            } else if (ifenter) {
-                counter1 = val;
-
-
-            } else {
-                counter1 = counter1 + val;
-            }
-
-            document.getElementById(divid).value = counter1;
 
         } // function modify 
+
         //click the button (+) on enter key 
 
 
@@ -377,7 +513,7 @@
 
                     <label for="qty2"><abbr title="Quantity2">Counter 2 (press "R")</abbr></label>
                     <input id="qty2" value="0" />
-
+                    
                     <button id="down2" onclick="modify_qty(-1, 'qty2')"> &ndash; </button>
                     <button id="clear2" onclick="modify_qty(0, 'qty2')">C</button>
                     <button id="up2" onclick="modify_qty(1, 'qty2')"> + </button>
@@ -396,20 +532,11 @@
 
 
 
-                    <span class="header_iconDiv">
+                <span class="header_iconDiv">
 				<div class="tooltip">
                     <img class="nav-img-pxl" border="0" alt="Help" src="../images/help_pxl.png" id = "help-btn">
 					<span class="tooltiptext" style="width:50px">Help</span>
-                </div>
-                </span>
-
-                <span id="counter" class="header_iconDiv">
-				<div class="tooltip">
-                    <img id="counter_img" class="nav-img-pxl" onclick="" border="0" src="../images/counter.png" alt="Display Tally Counters">
-					<span class="tooltiptext" style="width:60px">Tally Counters</span>
             </div>
-
-
             </span>
 
             <span id="previousPageButton" class="header_iconDiv" id="nav_prev">
@@ -425,7 +552,14 @@
 
                 </span>
 
+			<span id="counter" class="header_iconDiv">
+				<div class="tooltip">
+                    <img id="counter_img" class="nav-img-pxl" onclick="" border="0" src="../images/counter.png" alt="Display Tally Counters">
+					<span class="tooltiptext" style="width:50px">Tally Counters</span>
+					</div>
 
+
+			</span> 
 
 
         </div>
@@ -441,7 +575,7 @@
     <!-- mysidenav -->
 
 
-    <div id="content-left" style="margin-left: 10px; overflow: scroll;height:calc(100% - 150px)">
+    <div id="content-left" style="margin-left: 10px; ">
 
 
 
@@ -468,7 +602,7 @@
 
     <script type="text/javascript">
     </script>
-    <!--
+
     <div class="box-top" id="box-top" style="margin-top:200px;display: none; ">
 
         <label for="qty"><abbr title="Quantity">Count</abbr></label>
@@ -476,7 +610,6 @@
         <button id="down" onclick="modify_qty(-1)">-1</button>
         <button id="up" onclick="modify_qty(1)">+1</button>
     </div>
--->
 
     </div>
     <!-- wrapper -->
@@ -626,8 +759,8 @@
 <script>
     //counter 1. 
 
-    //   window.onload = addListeners();
-    //   window.onload = initial_qty_load();
+    window.onload = addListeners();
+    window.onload = initial_qty_load();
 
 
 
@@ -645,18 +778,18 @@
         window.addEventListener('mousemove', divMove, true);
     }
 
-    //    function divMove(e) {
-    //        var div = document.getElementById('box');
-    //        div.style.position = 'absolute';
-    //        div.style.top = e.clientY + 'px';
-    //        div.style.left = e.clientX + 'px';
-    //    }
+//    function divMove(e) {
+//        var div = document.getElementById('box');
+//        div.style.position = 'absolute';
+//        div.style.top = e.clientY + 'px';
+//        div.style.left = e.clientX + 'px';
+//    }
 
     //show hide counter  box 
 
     jQuery(function() {
         jQuery("#counter").click(function() {
-            //initial_qty_load();
+            initial_qty_load();
             //jQuery("#counterbox").toggle("slow");
             jQuery("#counterbox").toggle();
             jQuery("#counterbox").css("background-color", "tomato");
@@ -682,15 +815,15 @@
 
             });
 
-            //           $(document.getElementById(selector)).contents().find("body").on('click', function(event)
+            $(document.getElementById(selector)).contents().find("body").on('click', function(event)
 
 
-            //                {
+                {
 
-            //alert('test'); 
-            //jQuery("#counterbox").show();
+                    //alert('test'); 
+                    jQuery("#counterbox").show();
 
-            //                });
+                });
 
             return;
         } else {
