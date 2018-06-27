@@ -16,7 +16,7 @@
 </head>
 
 
-<body>
+<body style="width: 100%;">
 
     <div id="super-wrapper">
 
@@ -58,20 +58,20 @@
 
                 <div></div>
 
-                <div id="content-inner">
+                <div id="content-inner-resubmit">
 
-                    <div id="indextop" class="" style="padding: 0;width:100%;height:100%;margin-top: 42px;max-height:calc(100% - 75px)">
+                    <div id="indextop" class="" style="padding: 0;width:100%;height:100%;margin-top: 42px;">
                         <slide id="index"></slide>
                         <div style="background-image: url('images/Picture18.png');width:100%;height:100%;">
                             <div style="padding-top:32px;color:white; height:100%">
                                 <div style="width:29%;display: inline-block;padding-top: 30px;">
                                     <img src="images/Picture1.png" style="position: absolute;bottom: 10px;max-height: 45%;left:0;max-width:25%">
-                                    <img src="images/WELCOMMlogoFinal.png" style="position: absolute;top: 75px; max-height: 35%;left:5%;max-width:25%">
+                                    <img src="images/WELCOMMlogoFinal.png" style="position: absolute;top: 75px; max-height: 35%;left:5%;max-width:23%">
                                 </div>
                                 <div style="width:70%;display: inline-block;vertical-align: top;overflow:auto;max-height:calc(100% - 35px);">
 
                                     <br>
-                                    <h1>Use the form below to convert a preview user to a licensed user!</h1>
+                                    <h1>Use the form below to convert a Preview User to a Licensed User.</h1>
 
 
                                     <!-- <button id="get-usb_id" style="margin-right:10px;width:200px; 
@@ -81,10 +81,11 @@
                                     <div id="MainTable" class="main_table" style="margin-left:20px; margin-top:20px; min-height:10px; ">
 
                                         <div id="div_resubmit_registration">
-                                            <p>Enter Username and License id then click "Go "<span style="color:blue; margin-left:10px;"><a href="#" onclick="window.location.href='index.html';">Cancel</a></span></p>
+                                            <p>Enter Username and select the License Key, then click "Go."<span style="color:blue; margin-left:10px;"></p>
+
 
                                             <p id="verify_resubmit_response" style="color:blue;"></p>
-                                            <input type="text" placeholder="Enter Username" name="username_convert" id="username_convert" maxlength="25 " style="width:200px; height:50px; border: solid 1px #9598a0; font-size:18px; ">
+                                            <input type="text" placeholder="Enter Username" name="username_convert" id="username_convert" maxlength="25" style="width:200px; height:50px; border: solid 1px #9598a0; font-size:18px; ">
                                             <p></p>
                                             <p>Select License:</p>
                                             <select id="select-license-convert" style="display:block;"></select>
@@ -94,8 +95,7 @@
                                             <button id="convert_go" class="button_create_user_go" onclick="convert_user()">GO</button>
 
                                             <br></br>
-
-
+											<p><button onclick="window.location.href='index.html';">Cancel</button></span></p>
                                         </div>
 
                                     </div>
@@ -181,7 +181,10 @@
             if (convert == 'success') {
                 alert('User is successfully converted to a licensed user. Redirect to home page to login again')
                 setTimeout(function() {
-                    window.location.href = "index.html"
+                    var date = new Date;
+                    window.location.href = "index.html";
+                    window.location.reload(true);
+
                 }, 500);
 
             }
