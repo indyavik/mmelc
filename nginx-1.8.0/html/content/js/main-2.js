@@ -29,7 +29,7 @@ function return_to_last() {
     var current_user = localStorage.getItem('logged_in');
     var user_data = JSON.parse(localStorage.getItem(current_user));
     var last_visited_page = user_data['last_visited_page']
-
+	//alert('last visited page on button click: ' + last_visited_page)
 
     if (!last_visited_page || last_visited_page == undefined) {
         alert('No last session found: please select a module from the menu')
@@ -456,12 +456,12 @@ function nav_to(signal) {
 
     /* if it's a preview version run if preview */
 
-    ifpreview()
+    var load = ifpreview() //returns true by default
 
     /* load page */
-
-    load_page(target);
-
+	if (load) {
+		load_page(target);
+	}
 }
 
 function load_page_menu(target) {
