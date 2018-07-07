@@ -44,7 +44,9 @@ function convert_preview_user(username, license_id) {
                 if (update_allUSERS == 'error' || remove_allUSERS == 'error') {
                     //alert. 
                     alert("Error: Some error occurred. Please contact and admininstrator")
-					alert("update_allUSERS" + update_allUSERS + " remove_allUSERS " + remove_allUSERS)
+                    alert("update_allUSERS" + update_allUSERS + " remove_allUSERS " + remove_allUSERS)
+                    
+                    return;
 					//TODO: need to return here, or not update whichever of these returned error (OR IT OVERWRITES Users.txt with 'error'!!!)
                 }
 
@@ -597,7 +599,10 @@ function logUserOut() {
     localStorage.clear(current_user);
     localStorage.clear('module_config');
 
-    setTimeout(function() { window.location.href = "/content/index.html?logout=nobody" }, 100);
+    //setTimeout(function() { window.location.href = "/content/index.html?logout=nobody" }, 100);
+
+    
+    setTimeout(function() { window.location.assign("index.html") }, 100);
 
 
 } //logUserout
@@ -734,7 +739,7 @@ function update_users_file(datadir, user_to_add, action) {
             new_users.push(user_to_add);
 
         } else {
-			alert('Error: user not added.');
+			console.log('Error: user not added.');
             return users;
         }
 
@@ -743,7 +748,7 @@ function update_users_file(datadir, user_to_add, action) {
     if (action == 'remove') {
         if (user_exists == -1 && user_to_add !== "") {
             //user doesn't exists nothing to remove.  
-			alert('Error: user may not have been removed from list')
+			console.log('Error: user may not have been removed from list')
             return users;
 
         } else {

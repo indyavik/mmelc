@@ -718,7 +718,7 @@ class JavascriptExternal:
 
         jsCallBack.Call(response)
 
-    def send_error_reports(self, userid, email, description, jsCallBack):
+    def send_error_reports2(self, userid, email, description, jsCallBack):
         response = 'Error reports sent.'
 
         now = datetime.now().strftime('%Y-%m-%d-%H-%M-%S')
@@ -747,8 +747,8 @@ class JavascriptExternal:
 
         params = {'zipTimeStamp' : now, 'version' : get_version(), 'userid' : userid, 'email' : email, 'description' : description}
 
-        url =  get_endpoint()+'/api/v1.0/upload/'+zip_name #'http://mmelc.vestigesystems.com/putZip'
-
+        #url =  get_endpoint()+'/api/v1.0/upload/'+zip_name #'http://mmelc.vestigesystems.com/putZip'
+        url = get_endpoint()+'/api_v1_upload'
         with open(file_name+'.zip', 'rb') as f:
             try:
                 res = requests.post(url, files={'zipFile' : f}, data=params)
@@ -845,6 +845,57 @@ class JavascriptExternal:
         #jsCallback.Call("str:" + pass_key_output + "result:" + output)
         jsCallback.Call(output);
 
+    #def send_error_reports(self, userid, email, jsCallBack):
+    def send_error_reports(self, jsCallback, email, description):
+        print 'email is' + email ;
+
+        now = datetime.now().strftime('%Y-%m-%d-%H-%M-%S')
+        loc = os.path.dirname(os.path.abspath(__file__))
+
+        error_log_file = os.path.join(loc, 'error.log')
+        debug_log_file = os.path.join(loc, 'debug.log')
+        nginx_logs_dir = os.path.join(os.path.dirname(loc), 'nginx-1.8.0/logs')
+        nginx_html_data_dir = os.path.join(os.path.dirname(loc), 'nginx-1.8.0/html/data')
+        temp_loc = os.path.join(loc, 'temp_error_reports_loc')
+        shutil.rmtree(temp_loc)
+        if not os.path.exists(temp_loc):
+            os.makedirs(temp_loc)
+        shutil.copy2(error_log_file, temp_loc)
+        shutil.copy2(debug_log_file, temp_loc)
+        shutil.copytree(nginx_logs_dir, os.path.join(temp_loc,'nginx-1.8.0/logs'))
+        shutil.copytree(nginx_html_data_dir, os.path.join(temp_loc,'nginx-1.8.0/html/data'))
+
+        zip_name = 'error_reports_zip'
+        file_name = os.path.join(loc, zip_name)
+        shutil.make_archive(file_name, 'zip', temp_loc)
+ 
+
+        files = {'zipFile' : open( os.path.join(loc, 'error_reports_zip.zip') )} 
+
+        #params = {'userid' : userid , 'email' : email, 'description' : description}
+
+        url =  'http://mmelc.vestigesystems.com:8081/api_v1_upload'
+
+        try:
+            res = requests.post(url, files=files, data={'email':email, 'description': description} )
+            with open(log_file, 'a') as f:
+                to_write = 'source:python,' + now + ',' + res.text
+                f.write(to_write)
+
+            if 'ok' in res.text: 
+                output = res.text 
+            else: 
+                output = 'error'
+
+            jsCallback.Call(res.text);
+
+            #jsCallback.Call(res.text);
+
+
+        except:
+
+            jsCallback.Call('error')
+
 
     def createZip(self, jsCallback, zipOrg='notProvided', zipLoc='notProvied'):
         zipOrganization =zipOrg
@@ -859,7 +910,7 @@ class JavascriptExternal:
 
         params = {'zipOrganization' : zipOrganization , 'zipLocation' : zipLocation, 'zipTimeStamp' : now}
 
-        url =  'http://mmelc.vestigesystems.com/putZip'
+        url =  'http://mmelc.vestigesystems.com:8081/putZip'
 
         try:
             res = requests.post(url, files=files, data=params )

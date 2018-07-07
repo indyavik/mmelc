@@ -3411,4 +3411,2182 @@ source:python,2017-12-21-17-54-07,{
 source:python,2017-12-21-17-54-44,{
     "status": "OK"
 }
-source:python,2018-01-19-14-23-23,{"status": "OK"}source:python,2018-01-19-14-23-30,{"status": "OK"}source:python,2018-01-23-11-03-35,{"status": "OK"}source:python,2018-01-23-11-03-40,{"status": "OK"}
+source:python,2018-01-19-14-23-23,{"status": "OK"}source:python,2018-01-19-14-23-30,{"status": "OK"}source:python,2018-01-23-11-03-35,{"status": "OK"}source:python,2018-01-23-11-03-40,{"status": "OK"}source:python,2018-07-06-15-47-51,<html>
+<head><title>502 Bad Gateway</title></head>
+<body bgcolor="white">
+<center><h1>502 Bad Gateway</h1></center>
+<hr><center>nginx/1.12.1</center>
+</body>
+</html>
+source:python,2018-07-06-15-49-04,<html>
+<head><title>502 Bad Gateway</title></head>
+<body bgcolor="white">
+<center><h1>502 Bad Gateway</h1></center>
+<hr><center>nginx/1.12.1</center>
+</body>
+</html>
+source:python,2018-07-06-17-40-04,<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+  "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+  <head>
+    <title>File &quot;/var/www/html/mmelc-flask/app.py&quot;, line 2
+    m functools import wraps
+              ^
+SyntaxError: invalid syntax // Werkzeug Debugger</title>
+    <link rel="stylesheet" href="?__debugger__=yes&amp;cmd=resource&amp;f=style.css"
+        type="text/css">
+    <!-- We need to make sure this has a favicon so that the debugger does
+         not by accident trigger a request to /favicon.ico which might
+         change the application state. -->
+    <link rel="shortcut icon"
+        href="?__debugger__=yes&amp;cmd=resource&amp;f=console.png">
+    <script src="?__debugger__=yes&amp;cmd=resource&amp;f=jquery.js"></script>
+    <script src="?__debugger__=yes&amp;cmd=resource&amp;f=debugger.js"></script>
+    <script type="text/javascript">
+      var TRACEBACK = 139635268918736,
+          CONSOLE_MODE = false,
+          EVALEX = true,
+          EVALEX_TRUSTED = false,
+          SECRET = "Tk6d5U1iKd73mP00BHzE";
+    </script>
+  </head>
+  <body>
+    <div class="debugger">
+<h1>SyntaxError</h1>
+<div class="detail">
+  <p class="errormsg">File &quot;/var/www/html/mmelc-flask/app.py&quot;, line 2
+    m functools import wraps
+              ^
+SyntaxError: invalid syntax</p>
+</div>
+<h2 class="traceback">Traceback <em>(most recent call last)</em></h2>
+<div class="traceback">
+  
+  <ul><li><div class="frame" id="frame-139635268918800">
+  <h4>File <cite class="filename">"/usr/local/lib/python2.7/dist-packages/flask/cli.py"</cite>,
+      line <em class="line">178</em>,
+      in <code class="function">__call__</code></h4>
+  <div class="source"><pre class="line before"><span class="ws"></span> </pre>
+<pre class="line before"><span class="ws">    </span>def __call__(self, environ, start_response):</pre>
+<pre class="line before"><span class="ws">        </span>__traceback_hide__ = True</pre>
+<pre class="line before"><span class="ws">        </span>if self._app is not None:</pre>
+<pre class="line before"><span class="ws">            </span>return self._app(environ, start_response)</pre>
+<pre class="line current"><span class="ws">        </span>self._flush_bg_loading_exception()</pre>
+<pre class="line after"><span class="ws">        </span>with self._lock:</pre>
+<pre class="line after"><span class="ws">            </span>if self._app is not None:</pre>
+<pre class="line after"><span class="ws">                </span>rv = self._app</pre>
+<pre class="line after"><span class="ws">            </span>else:</pre>
+<pre class="line after"><span class="ws">                </span>rv = self._load_unlocked()</pre></div>
+</div>
+
+<li><div class="frame" id="frame-139635268919056">
+  <h4>File <cite class="filename">"/usr/local/lib/python2.7/dist-packages/flask/cli.py"</cite>,
+      line <em class="line">166</em>,
+      in <code class="function">_flush_bg_loading_exception</code></h4>
+  <div class="source"><pre class="line before"><span class="ws">    </span>def _flush_bg_loading_exception(self):</pre>
+<pre class="line before"><span class="ws">        </span>__traceback_hide__ = True</pre>
+<pre class="line before"><span class="ws">        </span>exc_info = self._bg_loading_exc_info</pre>
+<pre class="line before"><span class="ws">        </span>if exc_info is not None:</pre>
+<pre class="line before"><span class="ws">            </span>self._bg_loading_exc_info = None</pre>
+<pre class="line current"><span class="ws">            </span>reraise(*exc_info)</pre>
+<pre class="line after"><span class="ws"></span> </pre>
+<pre class="line after"><span class="ws">    </span>def _load_unlocked(self):</pre>
+<pre class="line after"><span class="ws">        </span>__traceback_hide__ = True</pre>
+<pre class="line after"><span class="ws">        </span>self._app = rv = self.loader()</pre>
+<pre class="line after"><span class="ws">        </span>self._bg_loading_exc_info = None</pre></div>
+</div>
+
+<li><div class="frame" id="frame-139635268919120">
+  <h4>File <cite class="filename">"/usr/local/lib/python2.7/dist-packages/flask/cli.py"</cite>,
+      line <em class="line">155</em>,
+      in <code class="function">_load_app</code></h4>
+  <div class="source"><pre class="line before"><span class="ws">    </span>def _load_in_background(self):</pre>
+<pre class="line before"><span class="ws">        </span>def _load_app():</pre>
+<pre class="line before"><span class="ws">            </span>__traceback_hide__ = True</pre>
+<pre class="line before"><span class="ws">            </span>with self._lock:</pre>
+<pre class="line before"><span class="ws">                </span>try:</pre>
+<pre class="line current"><span class="ws">                    </span>self._load_unlocked()</pre>
+<pre class="line after"><span class="ws">                </span>except Exception:</pre>
+<pre class="line after"><span class="ws">                    </span>self._bg_loading_exc_info = sys.exc_info()</pre>
+<pre class="line after"><span class="ws">        </span>t = Thread(target=_load_app, args=())</pre>
+<pre class="line after"><span class="ws">        </span>t.start()</pre>
+<pre class="line after"><span class="ws"></span> </pre></div>
+</div>
+
+<li><div class="frame" id="frame-139635268919184">
+  <h4>File <cite class="filename">"/usr/local/lib/python2.7/dist-packages/flask/cli.py"</cite>,
+      line <em class="line">170</em>,
+      in <code class="function">_load_unlocked</code></h4>
+  <div class="source"><pre class="line before"><span class="ws">            </span>self._bg_loading_exc_info = None</pre>
+<pre class="line before"><span class="ws">            </span>reraise(*exc_info)</pre>
+<pre class="line before"><span class="ws"></span> </pre>
+<pre class="line before"><span class="ws">    </span>def _load_unlocked(self):</pre>
+<pre class="line before"><span class="ws">        </span>__traceback_hide__ = True</pre>
+<pre class="line current"><span class="ws">        </span>self._app = rv = self.loader()</pre>
+<pre class="line after"><span class="ws">        </span>self._bg_loading_exc_info = None</pre>
+<pre class="line after"><span class="ws">        </span>return rv</pre>
+<pre class="line after"><span class="ws"></span> </pre>
+<pre class="line after"><span class="ws">    </span>def __call__(self, environ, start_response):</pre>
+<pre class="line after"><span class="ws">        </span>__traceback_hide__ = True</pre></div>
+</div>
+
+<li><div class="frame" id="frame-139635268919248">
+  <h4>File <cite class="filename">"/usr/local/lib/python2.7/dist-packages/flask/cli.py"</cite>,
+      line <em class="line">231</em>,
+      in <code class="function">load_app</code></h4>
+  <div class="source"><pre class="line before"><span class="ws">                </span>raise NoAppException(</pre>
+<pre class="line before"><span class="ws">                    </span>'Could not locate Flask application. You did not provide '</pre>
+<pre class="line before"><span class="ws">                    </span>'the FLASK_APP environment variable.\n\nFor more '</pre>
+<pre class="line before"><span class="ws">                    </span>'information see '</pre>
+<pre class="line before"><span class="ws">                    </span>'http://flask.pocoo.org/docs/latest/quickstart/')</pre>
+<pre class="line current"><span class="ws">            </span>rv = locate_app(self.app_import_path)</pre>
+<pre class="line after"><span class="ws">        </span>debug = get_debug_flag()</pre>
+<pre class="line after"><span class="ws">        </span>if debug is not None:</pre>
+<pre class="line after"><span class="ws">            </span>rv.debug = debug</pre>
+<pre class="line after"><span class="ws">        </span>self._loaded_app = rv</pre>
+<pre class="line after"><span class="ws">        </span>return rv</pre></div>
+</div>
+
+<li><div class="frame" id="frame-139635268918992">
+  <h4>File <cite class="filename">"/usr/local/lib/python2.7/dist-packages/flask/cli.py"</cite>,
+      line <em class="line">90</em>,
+      in <code class="function">locate_app</code></h4>
+  <div class="source"><pre class="line before"><span class="ws">    </span>else:</pre>
+<pre class="line before"><span class="ws">        </span>module = app_id</pre>
+<pre class="line before"><span class="ws">        </span>app_obj = None</pre>
+<pre class="line before"><span class="ws"></span> </pre>
+<pre class="line before"><span class="ws">    </span>try:</pre>
+<pre class="line current"><span class="ws">        </span>__import__(module)</pre>
+<pre class="line after"><span class="ws">    </span>except ImportError:</pre>
+<pre class="line after"><span class="ws">        </span>raise NoAppException('The file/path provided (%s) does not appear to '</pre>
+<pre class="line after"><span class="ws">                             </span>'exist.  Please verify the path is correct.  If '</pre>
+<pre class="line after"><span class="ws">                             </span>'app is not on PYTHONPATH, ensure the extension '</pre>
+<pre class="line after"><span class="ws">                             </span>'is .py' % module)</pre></div>
+</div>
+</ul>
+  <pre class=syntaxerror>File &quot;/var/www/html/mmelc-flask/app.py&quot;, line 2
+    m functools import wraps
+              ^
+SyntaxError: invalid syntax</pre>
+</div>
+
+<div class="plain">
+  <form action="/?__debugger__=yes&amp;cmd=paste" method="post">
+    <p>
+      <input type="hidden" name="language" value="pytb">
+      This is the Copy/Paste friendly version of the traceback.  <span
+      class="pastemessage">You can also paste this traceback into
+      a <a href="https://gist.github.com/">gist</a>:
+      <input type="submit" value="create paste"></span>
+    </p>
+    <textarea cols="50" rows="10" name="code" readonly>Traceback (most recent call last):
+  File &quot;/usr/local/lib/python2.7/dist-packages/flask/cli.py&quot;, line 178, in __call__
+    self._flush_bg_loading_exception()
+  File &quot;/usr/local/lib/python2.7/dist-packages/flask/cli.py&quot;, line 166, in _flush_bg_loading_exception
+    reraise(*exc_info)
+  File &quot;/usr/local/lib/python2.7/dist-packages/flask/cli.py&quot;, line 155, in _load_app
+    self._load_unlocked()
+  File &quot;/usr/local/lib/python2.7/dist-packages/flask/cli.py&quot;, line 170, in _load_unlocked
+    self._app = rv = self.loader()
+  File &quot;/usr/local/lib/python2.7/dist-packages/flask/cli.py&quot;, line 231, in load_app
+    rv = locate_app(self.app_import_path)
+  File &quot;/usr/local/lib/python2.7/dist-packages/flask/cli.py&quot;, line 90, in locate_app
+    __import__(module)
+File &quot;/var/www/html/mmelc-flask/app.py&quot;, line 2
+    m functools import wraps
+              ^
+SyntaxError: invalid syntax</textarea>
+  </form>
+</div>
+<div class="explanation">
+  The debugger caught an exception in your WSGI application.  You can now
+  look at the traceback which led to the error.  <span class="nojavascript">
+  If you enable JavaScript you can also use additional features such as code
+  execution (if the evalex feature is enabled), automatic pasting of the
+  exceptions and much more.</span>
+</div>
+      <div class="footer">
+        Brought to you by <strong class="arthur">DON'T PANIC</strong>, your
+        friendly Werkzeug powered traceback interpreter.
+      </div>
+    </div>
+
+    <div class="pin-prompt">
+      <div class="inner">
+        <h3>Console Locked</h3>
+        <p>
+          The console is locked and needs to be unlocked by entering the PIN.
+          You can find the PIN printed out on the standard output of your
+          shell that runs the server.
+        <form>
+          <p>PIN:
+            <input type=text name=pin size=14>
+            <input type=submit name=btn value="Confirm Pin">
+        </form>
+      </div>
+    </div>
+  </body>
+</html>
+
+<!--
+
+Traceback (most recent call last):
+  File "/usr/local/lib/python2.7/dist-packages/flask/cli.py", line 178, in __call__
+    self._flush_bg_loading_exception()
+  File "/usr/local/lib/python2.7/dist-packages/flask/cli.py", line 166, in _flush_bg_loading_exception
+    reraise(*exc_info)
+  File "/usr/local/lib/python2.7/dist-packages/flask/cli.py", line 155, in _load_app
+    self._load_unlocked()
+  File "/usr/local/lib/python2.7/dist-packages/flask/cli.py", line 170, in _load_unlocked
+    self._app = rv = self.loader()
+  File "/usr/local/lib/python2.7/dist-packages/flask/cli.py", line 231, in load_app
+    rv = locate_app(self.app_import_path)
+  File "/usr/local/lib/python2.7/dist-packages/flask/cli.py", line 90, in locate_app
+    __import__(module)
+File "/var/www/html/mmelc-flask/app.py", line 2
+    m functools import wraps
+              ^
+SyntaxError: invalid syntax
+
+-->
+source:python,2018-07-06-17-45-33,<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<title>404 Not Found</title>
+<h1>Not Found</h1>
+<p>The requested URL was not found on the server.  If you entered the URL manually please check your spelling and try again.</p>
+source:python,2018-07-06-17-47-32,<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+  "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+  <head>
+    <title>ValueError: View function did not return a response // Werkzeug Debugger</title>
+    <link rel="stylesheet" href="?__debugger__=yes&amp;cmd=resource&amp;f=style.css"
+        type="text/css">
+    <!-- We need to make sure this has a favicon so that the debugger does
+         not by accident trigger a request to /favicon.ico which might
+         change the application state. -->
+    <link rel="shortcut icon"
+        href="?__debugger__=yes&amp;cmd=resource&amp;f=console.png">
+    <script src="?__debugger__=yes&amp;cmd=resource&amp;f=jquery.js"></script>
+    <script src="?__debugger__=yes&amp;cmd=resource&amp;f=debugger.js"></script>
+    <script type="text/javascript">
+      var TRACEBACK = 140115480488784,
+          CONSOLE_MODE = false,
+          EVALEX = true,
+          EVALEX_TRUSTED = false,
+          SECRET = "j0j5D4ygzXCBtjIPwmyZ";
+    </script>
+  </head>
+  <body>
+    <div class="debugger">
+<h1>ValueError</h1>
+<div class="detail">
+  <p class="errormsg">ValueError: View function did not return a response</p>
+</div>
+<h2 class="traceback">Traceback <em>(most recent call last)</em></h2>
+<div class="traceback">
+  
+  <ul><li><div class="frame" id="frame-140115480489232">
+  <h4>File <cite class="filename">"/usr/local/lib/python2.7/dist-packages/flask/app.py"</cite>,
+      line <em class="line">1994</em>,
+      in <code class="function">__call__</code></h4>
+  <div class="source"><pre class="line before"><span class="ws">                </span>error = None</pre>
+<pre class="line before"><span class="ws">            </span>ctx.auto_pop(error)</pre>
+<pre class="line before"><span class="ws"></span> </pre>
+<pre class="line before"><span class="ws">    </span>def __call__(self, environ, start_response):</pre>
+<pre class="line before"><span class="ws">        </span>&quot;&quot;&quot;Shortcut for :attr:`wsgi_app`.&quot;&quot;&quot;</pre>
+<pre class="line current"><span class="ws">        </span>return self.wsgi_app(environ, start_response)</pre>
+<pre class="line after"><span class="ws"></span> </pre>
+<pre class="line after"><span class="ws">    </span>def __repr__(self):</pre>
+<pre class="line after"><span class="ws">        </span>return '&lt;%s %r&gt;' % (</pre>
+<pre class="line after"><span class="ws">            </span>self.__class__.__name__,</pre>
+<pre class="line after"><span class="ws">            </span>self.name,</pre></div>
+</div>
+
+<li><div class="frame" id="frame-140115480489296">
+  <h4>File <cite class="filename">"/usr/local/lib/python2.7/dist-packages/flask/app.py"</cite>,
+      line <em class="line">1985</em>,
+      in <code class="function">wsgi_app</code></h4>
+  <div class="source"><pre class="line before"><span class="ws">        </span>try:</pre>
+<pre class="line before"><span class="ws">            </span>try:</pre>
+<pre class="line before"><span class="ws">                </span>response = self.full_dispatch_request()</pre>
+<pre class="line before"><span class="ws">            </span>except Exception as e:</pre>
+<pre class="line before"><span class="ws">                </span>error = e</pre>
+<pre class="line current"><span class="ws">                </span>response = self.handle_exception(e)</pre>
+<pre class="line after"><span class="ws">            </span>return response(environ, start_response)</pre>
+<pre class="line after"><span class="ws">        </span>finally:</pre>
+<pre class="line after"><span class="ws">            </span>if self.should_ignore_error(error):</pre>
+<pre class="line after"><span class="ws">                </span>error = None</pre>
+<pre class="line after"><span class="ws">            </span>ctx.auto_pop(error)</pre></div>
+</div>
+
+<li><div class="frame" id="frame-140115480489360">
+  <h4>File <cite class="filename">"/usr/local/lib/python2.7/dist-packages/flask/app.py"</cite>,
+      line <em class="line">1540</em>,
+      in <code class="function">handle_exception</code></h4>
+  <div class="source"><pre class="line before"><span class="ws">            </span># if we want to repropagate the exception, we can attempt to</pre>
+<pre class="line before"><span class="ws">            </span># raise it with the whole traceback in case we can do that</pre>
+<pre class="line before"><span class="ws">            </span># (the function was actually called from the except part)</pre>
+<pre class="line before"><span class="ws">            </span># otherwise, we just raise the error again</pre>
+<pre class="line before"><span class="ws">            </span>if exc_value is e:</pre>
+<pre class="line current"><span class="ws">                </span>reraise(exc_type, exc_value, tb)</pre>
+<pre class="line after"><span class="ws">            </span>else:</pre>
+<pre class="line after"><span class="ws">                </span>raise e</pre>
+<pre class="line after"><span class="ws"></span> </pre>
+<pre class="line after"><span class="ws">        </span>self.log_exception((exc_type, exc_value, tb))</pre>
+<pre class="line after"><span class="ws">        </span>if handler is None:</pre></div>
+</div>
+
+<li><div class="frame" id="frame-140115480489424">
+  <h4>File <cite class="filename">"/usr/local/lib/python2.7/dist-packages/flask/app.py"</cite>,
+      line <em class="line">1982</em>,
+      in <code class="function">wsgi_app</code></h4>
+  <div class="source"><pre class="line before"><span class="ws">        </span>ctx = self.request_context(environ)</pre>
+<pre class="line before"><span class="ws">        </span>ctx.push()</pre>
+<pre class="line before"><span class="ws">        </span>error = None</pre>
+<pre class="line before"><span class="ws">        </span>try:</pre>
+<pre class="line before"><span class="ws">            </span>try:</pre>
+<pre class="line current"><span class="ws">                </span>response = self.full_dispatch_request()</pre>
+<pre class="line after"><span class="ws">            </span>except Exception as e:</pre>
+<pre class="line after"><span class="ws">                </span>error = e</pre>
+<pre class="line after"><span class="ws">                </span>response = self.handle_exception(e)</pre>
+<pre class="line after"><span class="ws">            </span>return response(environ, start_response)</pre>
+<pre class="line after"><span class="ws">        </span>finally:</pre></div>
+</div>
+
+<li><div class="frame" id="frame-140115480489488">
+  <h4>File <cite class="filename">"/usr/local/lib/python2.7/dist-packages/flask/app.py"</cite>,
+      line <em class="line">1614</em>,
+      in <code class="function">full_dispatch_request</code></h4>
+  <div class="source"><pre class="line before"><span class="ws">            </span>request_started.send(self)</pre>
+<pre class="line before"><span class="ws">            </span>rv = self.preprocess_request()</pre>
+<pre class="line before"><span class="ws">            </span>if rv is None:</pre>
+<pre class="line before"><span class="ws">                </span>rv = self.dispatch_request()</pre>
+<pre class="line before"><span class="ws">        </span>except Exception as e:</pre>
+<pre class="line current"><span class="ws">            </span>rv = self.handle_user_exception(e)</pre>
+<pre class="line after"><span class="ws">        </span>return self.finalize_request(rv)</pre>
+<pre class="line after"><span class="ws"></span> </pre>
+<pre class="line after"><span class="ws">    </span>def finalize_request(self, rv, from_error_handler=False):</pre>
+<pre class="line after"><span class="ws">        </span>&quot;&quot;&quot;Given the return value from a view function this finalizes</pre>
+<pre class="line after"><span class="ws">        </span>the request by converting it into a response and invoking the</pre></div>
+</div>
+
+<li><div class="frame" id="frame-140115484299024">
+  <h4>File <cite class="filename">"/usr/local/lib/python2.7/dist-packages/flask/app.py"</cite>,
+      line <em class="line">1517</em>,
+      in <code class="function">handle_user_exception</code></h4>
+  <div class="source"><pre class="line before"><span class="ws">            </span>return self.handle_http_exception(e)</pre>
+<pre class="line before"><span class="ws"></span> </pre>
+<pre class="line before"><span class="ws">        </span>handler = self._find_error_handler(e)</pre>
+<pre class="line before"><span class="ws"></span> </pre>
+<pre class="line before"><span class="ws">        </span>if handler is None:</pre>
+<pre class="line current"><span class="ws">            </span>reraise(exc_type, exc_value, tb)</pre>
+<pre class="line after"><span class="ws">        </span>return handler(e)</pre>
+<pre class="line after"><span class="ws"></span> </pre>
+<pre class="line after"><span class="ws">    </span>def handle_exception(self, e):</pre>
+<pre class="line after"><span class="ws">        </span>&quot;&quot;&quot;Default exception handling that kicks in when an exception</pre>
+<pre class="line after"><span class="ws">        </span>occurs that is not caught.  In debug mode the exception will</pre></div>
+</div>
+
+<li><div class="frame" id="frame-140115484298832">
+  <h4>File <cite class="filename">"/usr/local/lib/python2.7/dist-packages/flask/app.py"</cite>,
+      line <em class="line">1612</em>,
+      in <code class="function">full_dispatch_request</code></h4>
+  <div class="source"><pre class="line before"><span class="ws">        </span>self.try_trigger_before_first_request_functions()</pre>
+<pre class="line before"><span class="ws">        </span>try:</pre>
+<pre class="line before"><span class="ws">            </span>request_started.send(self)</pre>
+<pre class="line before"><span class="ws">            </span>rv = self.preprocess_request()</pre>
+<pre class="line before"><span class="ws">            </span>if rv is None:</pre>
+<pre class="line current"><span class="ws">                </span>rv = self.dispatch_request()</pre>
+<pre class="line after"><span class="ws">        </span>except Exception as e:</pre>
+<pre class="line after"><span class="ws">            </span>rv = self.handle_user_exception(e)</pre>
+<pre class="line after"><span class="ws">        </span>return self.finalize_request(rv)</pre>
+<pre class="line after"><span class="ws"></span> </pre>
+<pre class="line after"><span class="ws">    </span>def finalize_request(self, rv, from_error_handler=False):</pre></div>
+</div>
+
+<li><div class="frame" id="frame-140115484299088">
+  <h4>File <cite class="filename">"/usr/local/lib/python2.7/dist-packages/flask/app.py"</cite>,
+      line <em class="line">1598</em>,
+      in <code class="function">dispatch_request</code></h4>
+  <div class="source"><pre class="line before"><span class="ws">        </span># request came with the OPTIONS method, reply automatically</pre>
+<pre class="line before"><span class="ws">        </span>if getattr(rule, 'provide_automatic_options', False) \</pre>
+<pre class="line before"><span class="ws">           </span>and req.method == 'OPTIONS':</pre>
+<pre class="line before"><span class="ws">            </span>return self.make_default_options_response()</pre>
+<pre class="line before"><span class="ws">        </span># otherwise dispatch to the handler for that endpoint</pre>
+<pre class="line current"><span class="ws">        </span>return self.view_functions[rule.endpoint](**req.view_args)</pre>
+<pre class="line after"><span class="ws"></span> </pre>
+<pre class="line after"><span class="ws">    </span>def full_dispatch_request(self):</pre>
+<pre class="line after"><span class="ws">        </span>&quot;&quot;&quot;Dispatches the request and on top of that performs request</pre>
+<pre class="line after"><span class="ws">        </span>pre and postprocessing as well as HTTP exception catching and</pre>
+<pre class="line after"><span class="ws">        </span>error handling.</pre></div>
+</div>
+
+<li><div class="frame" id="frame-140115484298960">
+  <h4>File <cite class="filename">"/usr/local/lib/python2.7/dist-packages/flask_cors/decorator.py"</cite>,
+      line <em class="line">128</em>,
+      in <code class="function">wrapped_function</code></h4>
+  <div class="source"><pre class="line before"><span class="ws">            </span>options = get_cors_options(current_app, _options)</pre>
+<pre class="line before"><span class="ws"></span> </pre>
+<pre class="line before"><span class="ws">            </span>if options.get('automatic_options') and request.method == 'OPTIONS':</pre>
+<pre class="line before"><span class="ws">                </span>resp = current_app.make_default_options_response()</pre>
+<pre class="line before"><span class="ws">            </span>else:</pre>
+<pre class="line current"><span class="ws">                </span>resp = make_response(f(*args, **kwargs))</pre>
+<pre class="line after"><span class="ws"></span> </pre>
+<pre class="line after"><span class="ws">            </span>set_cors_headers(resp, options)</pre>
+<pre class="line after"><span class="ws">            </span>setattr(resp, FLASK_CORS_EVALUATED, True)</pre>
+<pre class="line after"><span class="ws">            </span>return resp</pre>
+<pre class="line after"><span class="ws"></span> </pre></div>
+</div>
+
+<li><div class="frame" id="frame-140115484299152">
+  <h4>File <cite class="filename">"/usr/local/lib/python2.7/dist-packages/flask/helpers.py"</cite>,
+      line <em class="line">191</em>,
+      in <code class="function">make_response</code></h4>
+  <div class="source"><pre class="line before"><span class="ws">    </span>&quot;&quot;&quot;</pre>
+<pre class="line before"><span class="ws">    </span>if not args:</pre>
+<pre class="line before"><span class="ws">        </span>return current_app.response_class()</pre>
+<pre class="line before"><span class="ws">    </span>if len(args) == 1:</pre>
+<pre class="line before"><span class="ws">        </span>args = args[0]</pre>
+<pre class="line current"><span class="ws">    </span>return current_app.make_response(args)</pre>
+<pre class="line after"><span class="ws"></span> </pre>
+<pre class="line after"><span class="ws"></span> </pre>
+<pre class="line after"><span class="ws"></span>def url_for(endpoint, **values):</pre>
+<pre class="line after"><span class="ws">    </span>&quot;&quot;&quot;Generates a URL to the given endpoint with the method provided.</pre>
+<pre class="line after"><span class="ws"></span> </pre></div>
+</div>
+
+<li><div class="frame" id="frame-140115484299216">
+  <h4>File <cite class="filename">"/usr/local/lib/python2.7/dist-packages/flask/app.py"</cite>,
+      line <em class="line">1725</em>,
+      in <code class="function">make_response</code></h4>
+  <div class="source"><pre class="line before"><span class="ws">        </span>status_or_headers = headers = None</pre>
+<pre class="line before"><span class="ws">        </span>if isinstance(rv, tuple):</pre>
+<pre class="line before"><span class="ws">            </span>rv, status_or_headers, headers = rv + (None,) * (3 - len(rv))</pre>
+<pre class="line before"><span class="ws"></span> </pre>
+<pre class="line before"><span class="ws">        </span>if rv is None:</pre>
+<pre class="line current"><span class="ws">            </span>raise ValueError('View function did not return a response')</pre>
+<pre class="line after"><span class="ws"></span> </pre>
+<pre class="line after"><span class="ws">        </span>if isinstance(status_or_headers, (dict, list)):</pre>
+<pre class="line after"><span class="ws">            </span>headers, status_or_headers = status_or_headers, None</pre>
+<pre class="line after"><span class="ws"></span> </pre>
+<pre class="line after"><span class="ws">        </span>if not isinstance(rv, self.response_class):</pre></div>
+</div>
+</ul>
+  <blockquote>ValueError: View function did not return a response</blockquote>
+</div>
+
+<div class="plain">
+  <form action="/?__debugger__=yes&amp;cmd=paste" method="post">
+    <p>
+      <input type="hidden" name="language" value="pytb">
+      This is the Copy/Paste friendly version of the traceback.  <span
+      class="pastemessage">You can also paste this traceback into
+      a <a href="https://gist.github.com/">gist</a>:
+      <input type="submit" value="create paste"></span>
+    </p>
+    <textarea cols="50" rows="10" name="code" readonly>Traceback (most recent call last):
+  File &quot;/usr/local/lib/python2.7/dist-packages/flask/app.py&quot;, line 1994, in __call__
+    return self.wsgi_app(environ, start_response)
+  File &quot;/usr/local/lib/python2.7/dist-packages/flask/app.py&quot;, line 1985, in wsgi_app
+    response = self.handle_exception(e)
+  File &quot;/usr/local/lib/python2.7/dist-packages/flask/app.py&quot;, line 1540, in handle_exception
+    reraise(exc_type, exc_value, tb)
+  File &quot;/usr/local/lib/python2.7/dist-packages/flask/app.py&quot;, line 1982, in wsgi_app
+    response = self.full_dispatch_request()
+  File &quot;/usr/local/lib/python2.7/dist-packages/flask/app.py&quot;, line 1614, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File &quot;/usr/local/lib/python2.7/dist-packages/flask/app.py&quot;, line 1517, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File &quot;/usr/local/lib/python2.7/dist-packages/flask/app.py&quot;, line 1612, in full_dispatch_request
+    rv = self.dispatch_request()
+  File &quot;/usr/local/lib/python2.7/dist-packages/flask/app.py&quot;, line 1598, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File &quot;/usr/local/lib/python2.7/dist-packages/flask_cors/decorator.py&quot;, line 128, in wrapped_function
+    resp = make_response(f(*args, **kwargs))
+  File &quot;/usr/local/lib/python2.7/dist-packages/flask/helpers.py&quot;, line 191, in make_response
+    return current_app.make_response(args)
+  File &quot;/usr/local/lib/python2.7/dist-packages/flask/app.py&quot;, line 1725, in make_response
+    raise ValueError('View function did not return a response')
+ValueError: View function did not return a response</textarea>
+  </form>
+</div>
+<div class="explanation">
+  The debugger caught an exception in your WSGI application.  You can now
+  look at the traceback which led to the error.  <span class="nojavascript">
+  If you enable JavaScript you can also use additional features such as code
+  execution (if the evalex feature is enabled), automatic pasting of the
+  exceptions and much more.</span>
+</div>
+      <div class="footer">
+        Brought to you by <strong class="arthur">DON'T PANIC</strong>, your
+        friendly Werkzeug powered traceback interpreter.
+      </div>
+    </div>
+
+    <div class="pin-prompt">
+      <div class="inner">
+        <h3>Console Locked</h3>
+        <p>
+          The console is locked and needs to be unlocked by entering the PIN.
+          You can find the PIN printed out on the standard output of your
+          shell that runs the server.
+        <form>
+          <p>PIN:
+            <input type=text name=pin size=14>
+            <input type=submit name=btn value="Confirm Pin">
+        </form>
+      </div>
+    </div>
+  </body>
+</html>
+
+<!--
+
+Traceback (most recent call last):
+  File "/usr/local/lib/python2.7/dist-packages/flask/app.py", line 1994, in __call__
+    return self.wsgi_app(environ, start_response)
+  File "/usr/local/lib/python2.7/dist-packages/flask/app.py", line 1985, in wsgi_app
+    response = self.handle_exception(e)
+  File "/usr/local/lib/python2.7/dist-packages/flask/app.py", line 1540, in handle_exception
+    reraise(exc_type, exc_value, tb)
+  File "/usr/local/lib/python2.7/dist-packages/flask/app.py", line 1982, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/usr/local/lib/python2.7/dist-packages/flask/app.py", line 1614, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/usr/local/lib/python2.7/dist-packages/flask/app.py", line 1517, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/usr/local/lib/python2.7/dist-packages/flask/app.py", line 1612, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/usr/local/lib/python2.7/dist-packages/flask/app.py", line 1598, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/usr/local/lib/python2.7/dist-packages/flask_cors/decorator.py", line 128, in wrapped_function
+    resp = make_response(f(*args, **kwargs))
+  File "/usr/local/lib/python2.7/dist-packages/flask/helpers.py", line 191, in make_response
+    return current_app.make_response(args)
+  File "/usr/local/lib/python2.7/dist-packages/flask/app.py", line 1725, in make_response
+    raise ValueError('View function did not return a response')
+ValueError: View function did not return a response
+
+-->
+source:python,2018-07-06-17-50-49,<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+  "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+  <head>
+    <title>ValueError: View function did not return a response // Werkzeug Debugger</title>
+    <link rel="stylesheet" href="?__debugger__=yes&amp;cmd=resource&amp;f=style.css"
+        type="text/css">
+    <!-- We need to make sure this has a favicon so that the debugger does
+         not by accident trigger a request to /favicon.ico which might
+         change the application state. -->
+    <link rel="shortcut icon"
+        href="?__debugger__=yes&amp;cmd=resource&amp;f=console.png">
+    <script src="?__debugger__=yes&amp;cmd=resource&amp;f=jquery.js"></script>
+    <script src="?__debugger__=yes&amp;cmd=resource&amp;f=debugger.js"></script>
+    <script type="text/javascript">
+      var TRACEBACK = 140115480487248,
+          CONSOLE_MODE = false,
+          EVALEX = true,
+          EVALEX_TRUSTED = false,
+          SECRET = "j0j5D4ygzXCBtjIPwmyZ";
+    </script>
+  </head>
+  <body>
+    <div class="debugger">
+<h1>ValueError</h1>
+<div class="detail">
+  <p class="errormsg">ValueError: View function did not return a response</p>
+</div>
+<h2 class="traceback">Traceback <em>(most recent call last)</em></h2>
+<div class="traceback">
+  
+  <ul><li><div class="frame" id="frame-140115480489808">
+  <h4>File <cite class="filename">"/usr/local/lib/python2.7/dist-packages/flask/app.py"</cite>,
+      line <em class="line">1994</em>,
+      in <code class="function">__call__</code></h4>
+  <div class="source"><pre class="line before"><span class="ws">                </span>error = None</pre>
+<pre class="line before"><span class="ws">            </span>ctx.auto_pop(error)</pre>
+<pre class="line before"><span class="ws"></span> </pre>
+<pre class="line before"><span class="ws">    </span>def __call__(self, environ, start_response):</pre>
+<pre class="line before"><span class="ws">        </span>&quot;&quot;&quot;Shortcut for :attr:`wsgi_app`.&quot;&quot;&quot;</pre>
+<pre class="line current"><span class="ws">        </span>return self.wsgi_app(environ, start_response)</pre>
+<pre class="line after"><span class="ws"></span> </pre>
+<pre class="line after"><span class="ws">    </span>def __repr__(self):</pre>
+<pre class="line after"><span class="ws">        </span>return '&lt;%s %r&gt;' % (</pre>
+<pre class="line after"><span class="ws">            </span>self.__class__.__name__,</pre>
+<pre class="line after"><span class="ws">            </span>self.name,</pre></div>
+</div>
+
+<li><div class="frame" id="frame-140115480489744">
+  <h4>File <cite class="filename">"/usr/local/lib/python2.7/dist-packages/flask/app.py"</cite>,
+      line <em class="line">1985</em>,
+      in <code class="function">wsgi_app</code></h4>
+  <div class="source"><pre class="line before"><span class="ws">        </span>try:</pre>
+<pre class="line before"><span class="ws">            </span>try:</pre>
+<pre class="line before"><span class="ws">                </span>response = self.full_dispatch_request()</pre>
+<pre class="line before"><span class="ws">            </span>except Exception as e:</pre>
+<pre class="line before"><span class="ws">                </span>error = e</pre>
+<pre class="line current"><span class="ws">                </span>response = self.handle_exception(e)</pre>
+<pre class="line after"><span class="ws">            </span>return response(environ, start_response)</pre>
+<pre class="line after"><span class="ws">        </span>finally:</pre>
+<pre class="line after"><span class="ws">            </span>if self.should_ignore_error(error):</pre>
+<pre class="line after"><span class="ws">                </span>error = None</pre>
+<pre class="line after"><span class="ws">            </span>ctx.auto_pop(error)</pre></div>
+</div>
+
+<li><div class="frame" id="frame-140115480486736">
+  <h4>File <cite class="filename">"/usr/local/lib/python2.7/dist-packages/flask/app.py"</cite>,
+      line <em class="line">1540</em>,
+      in <code class="function">handle_exception</code></h4>
+  <div class="source"><pre class="line before"><span class="ws">            </span># if we want to repropagate the exception, we can attempt to</pre>
+<pre class="line before"><span class="ws">            </span># raise it with the whole traceback in case we can do that</pre>
+<pre class="line before"><span class="ws">            </span># (the function was actually called from the except part)</pre>
+<pre class="line before"><span class="ws">            </span># otherwise, we just raise the error again</pre>
+<pre class="line before"><span class="ws">            </span>if exc_value is e:</pre>
+<pre class="line current"><span class="ws">                </span>reraise(exc_type, exc_value, tb)</pre>
+<pre class="line after"><span class="ws">            </span>else:</pre>
+<pre class="line after"><span class="ws">                </span>raise e</pre>
+<pre class="line after"><span class="ws"></span> </pre>
+<pre class="line after"><span class="ws">        </span>self.log_exception((exc_type, exc_value, tb))</pre>
+<pre class="line after"><span class="ws">        </span>if handler is None:</pre></div>
+</div>
+
+<li><div class="frame" id="frame-140115480486480">
+  <h4>File <cite class="filename">"/usr/local/lib/python2.7/dist-packages/flask/app.py"</cite>,
+      line <em class="line">1982</em>,
+      in <code class="function">wsgi_app</code></h4>
+  <div class="source"><pre class="line before"><span class="ws">        </span>ctx = self.request_context(environ)</pre>
+<pre class="line before"><span class="ws">        </span>ctx.push()</pre>
+<pre class="line before"><span class="ws">        </span>error = None</pre>
+<pre class="line before"><span class="ws">        </span>try:</pre>
+<pre class="line before"><span class="ws">            </span>try:</pre>
+<pre class="line current"><span class="ws">                </span>response = self.full_dispatch_request()</pre>
+<pre class="line after"><span class="ws">            </span>except Exception as e:</pre>
+<pre class="line after"><span class="ws">                </span>error = e</pre>
+<pre class="line after"><span class="ws">                </span>response = self.handle_exception(e)</pre>
+<pre class="line after"><span class="ws">            </span>return response(environ, start_response)</pre>
+<pre class="line after"><span class="ws">        </span>finally:</pre></div>
+</div>
+
+<li><div class="frame" id="frame-140115480486544">
+  <h4>File <cite class="filename">"/usr/local/lib/python2.7/dist-packages/flask/app.py"</cite>,
+      line <em class="line">1614</em>,
+      in <code class="function">full_dispatch_request</code></h4>
+  <div class="source"><pre class="line before"><span class="ws">            </span>request_started.send(self)</pre>
+<pre class="line before"><span class="ws">            </span>rv = self.preprocess_request()</pre>
+<pre class="line before"><span class="ws">            </span>if rv is None:</pre>
+<pre class="line before"><span class="ws">                </span>rv = self.dispatch_request()</pre>
+<pre class="line before"><span class="ws">        </span>except Exception as e:</pre>
+<pre class="line current"><span class="ws">            </span>rv = self.handle_user_exception(e)</pre>
+<pre class="line after"><span class="ws">        </span>return self.finalize_request(rv)</pre>
+<pre class="line after"><span class="ws"></span> </pre>
+<pre class="line after"><span class="ws">    </span>def finalize_request(self, rv, from_error_handler=False):</pre>
+<pre class="line after"><span class="ws">        </span>&quot;&quot;&quot;Given the return value from a view function this finalizes</pre>
+<pre class="line after"><span class="ws">        </span>the request by converting it into a response and invoking the</pre></div>
+</div>
+
+<li><div class="frame" id="frame-140115480486800">
+  <h4>File <cite class="filename">"/usr/local/lib/python2.7/dist-packages/flask/app.py"</cite>,
+      line <em class="line">1517</em>,
+      in <code class="function">handle_user_exception</code></h4>
+  <div class="source"><pre class="line before"><span class="ws">            </span>return self.handle_http_exception(e)</pre>
+<pre class="line before"><span class="ws"></span> </pre>
+<pre class="line before"><span class="ws">        </span>handler = self._find_error_handler(e)</pre>
+<pre class="line before"><span class="ws"></span> </pre>
+<pre class="line before"><span class="ws">        </span>if handler is None:</pre>
+<pre class="line current"><span class="ws">            </span>reraise(exc_type, exc_value, tb)</pre>
+<pre class="line after"><span class="ws">        </span>return handler(e)</pre>
+<pre class="line after"><span class="ws"></span> </pre>
+<pre class="line after"><span class="ws">    </span>def handle_exception(self, e):</pre>
+<pre class="line after"><span class="ws">        </span>&quot;&quot;&quot;Default exception handling that kicks in when an exception</pre>
+<pre class="line after"><span class="ws">        </span>occurs that is not caught.  In debug mode the exception will</pre></div>
+</div>
+
+<li><div class="frame" id="frame-140115480486672">
+  <h4>File <cite class="filename">"/usr/local/lib/python2.7/dist-packages/flask/app.py"</cite>,
+      line <em class="line">1612</em>,
+      in <code class="function">full_dispatch_request</code></h4>
+  <div class="source"><pre class="line before"><span class="ws">        </span>self.try_trigger_before_first_request_functions()</pre>
+<pre class="line before"><span class="ws">        </span>try:</pre>
+<pre class="line before"><span class="ws">            </span>request_started.send(self)</pre>
+<pre class="line before"><span class="ws">            </span>rv = self.preprocess_request()</pre>
+<pre class="line before"><span class="ws">            </span>if rv is None:</pre>
+<pre class="line current"><span class="ws">                </span>rv = self.dispatch_request()</pre>
+<pre class="line after"><span class="ws">        </span>except Exception as e:</pre>
+<pre class="line after"><span class="ws">            </span>rv = self.handle_user_exception(e)</pre>
+<pre class="line after"><span class="ws">        </span>return self.finalize_request(rv)</pre>
+<pre class="line after"><span class="ws"></span> </pre>
+<pre class="line after"><span class="ws">    </span>def finalize_request(self, rv, from_error_handler=False):</pre></div>
+</div>
+
+<li><div class="frame" id="frame-140115480486352">
+  <h4>File <cite class="filename">"/usr/local/lib/python2.7/dist-packages/flask/app.py"</cite>,
+      line <em class="line">1598</em>,
+      in <code class="function">dispatch_request</code></h4>
+  <div class="source"><pre class="line before"><span class="ws">        </span># request came with the OPTIONS method, reply automatically</pre>
+<pre class="line before"><span class="ws">        </span>if getattr(rule, 'provide_automatic_options', False) \</pre>
+<pre class="line before"><span class="ws">           </span>and req.method == 'OPTIONS':</pre>
+<pre class="line before"><span class="ws">            </span>return self.make_default_options_response()</pre>
+<pre class="line before"><span class="ws">        </span># otherwise dispatch to the handler for that endpoint</pre>
+<pre class="line current"><span class="ws">        </span>return self.view_functions[rule.endpoint](**req.view_args)</pre>
+<pre class="line after"><span class="ws"></span> </pre>
+<pre class="line after"><span class="ws">    </span>def full_dispatch_request(self):</pre>
+<pre class="line after"><span class="ws">        </span>&quot;&quot;&quot;Dispatches the request and on top of that performs request</pre>
+<pre class="line after"><span class="ws">        </span>pre and postprocessing as well as HTTP exception catching and</pre>
+<pre class="line after"><span class="ws">        </span>error handling.</pre></div>
+</div>
+
+<li><div class="frame" id="frame-140115480486416">
+  <h4>File <cite class="filename">"/usr/local/lib/python2.7/dist-packages/flask_cors/decorator.py"</cite>,
+      line <em class="line">128</em>,
+      in <code class="function">wrapped_function</code></h4>
+  <div class="source"><pre class="line before"><span class="ws">            </span>options = get_cors_options(current_app, _options)</pre>
+<pre class="line before"><span class="ws"></span> </pre>
+<pre class="line before"><span class="ws">            </span>if options.get('automatic_options') and request.method == 'OPTIONS':</pre>
+<pre class="line before"><span class="ws">                </span>resp = current_app.make_default_options_response()</pre>
+<pre class="line before"><span class="ws">            </span>else:</pre>
+<pre class="line current"><span class="ws">                </span>resp = make_response(f(*args, **kwargs))</pre>
+<pre class="line after"><span class="ws"></span> </pre>
+<pre class="line after"><span class="ws">            </span>set_cors_headers(resp, options)</pre>
+<pre class="line after"><span class="ws">            </span>setattr(resp, FLASK_CORS_EVALUATED, True)</pre>
+<pre class="line after"><span class="ws">            </span>return resp</pre>
+<pre class="line after"><span class="ws"></span> </pre></div>
+</div>
+
+<li><div class="frame" id="frame-140115480487184">
+  <h4>File <cite class="filename">"/usr/local/lib/python2.7/dist-packages/flask/helpers.py"</cite>,
+      line <em class="line">191</em>,
+      in <code class="function">make_response</code></h4>
+  <div class="source"><pre class="line before"><span class="ws">    </span>&quot;&quot;&quot;</pre>
+<pre class="line before"><span class="ws">    </span>if not args:</pre>
+<pre class="line before"><span class="ws">        </span>return current_app.response_class()</pre>
+<pre class="line before"><span class="ws">    </span>if len(args) == 1:</pre>
+<pre class="line before"><span class="ws">        </span>args = args[0]</pre>
+<pre class="line current"><span class="ws">    </span>return current_app.make_response(args)</pre>
+<pre class="line after"><span class="ws"></span> </pre>
+<pre class="line after"><span class="ws"></span> </pre>
+<pre class="line after"><span class="ws"></span>def url_for(endpoint, **values):</pre>
+<pre class="line after"><span class="ws">    </span>&quot;&quot;&quot;Generates a URL to the given endpoint with the method provided.</pre>
+<pre class="line after"><span class="ws"></span> </pre></div>
+</div>
+
+<li><div class="frame" id="frame-140115480487312">
+  <h4>File <cite class="filename">"/usr/local/lib/python2.7/dist-packages/flask/app.py"</cite>,
+      line <em class="line">1725</em>,
+      in <code class="function">make_response</code></h4>
+  <div class="source"><pre class="line before"><span class="ws">        </span>status_or_headers = headers = None</pre>
+<pre class="line before"><span class="ws">        </span>if isinstance(rv, tuple):</pre>
+<pre class="line before"><span class="ws">            </span>rv, status_or_headers, headers = rv + (None,) * (3 - len(rv))</pre>
+<pre class="line before"><span class="ws"></span> </pre>
+<pre class="line before"><span class="ws">        </span>if rv is None:</pre>
+<pre class="line current"><span class="ws">            </span>raise ValueError('View function did not return a response')</pre>
+<pre class="line after"><span class="ws"></span> </pre>
+<pre class="line after"><span class="ws">        </span>if isinstance(status_or_headers, (dict, list)):</pre>
+<pre class="line after"><span class="ws">            </span>headers, status_or_headers = status_or_headers, None</pre>
+<pre class="line after"><span class="ws"></span> </pre>
+<pre class="line after"><span class="ws">        </span>if not isinstance(rv, self.response_class):</pre></div>
+</div>
+</ul>
+  <blockquote>ValueError: View function did not return a response</blockquote>
+</div>
+
+<div class="plain">
+  <form action="/?__debugger__=yes&amp;cmd=paste" method="post">
+    <p>
+      <input type="hidden" name="language" value="pytb">
+      This is the Copy/Paste friendly version of the traceback.  <span
+      class="pastemessage">You can also paste this traceback into
+      a <a href="https://gist.github.com/">gist</a>:
+      <input type="submit" value="create paste"></span>
+    </p>
+    <textarea cols="50" rows="10" name="code" readonly>Traceback (most recent call last):
+  File &quot;/usr/local/lib/python2.7/dist-packages/flask/app.py&quot;, line 1994, in __call__
+    return self.wsgi_app(environ, start_response)
+  File &quot;/usr/local/lib/python2.7/dist-packages/flask/app.py&quot;, line 1985, in wsgi_app
+    response = self.handle_exception(e)
+  File &quot;/usr/local/lib/python2.7/dist-packages/flask/app.py&quot;, line 1540, in handle_exception
+    reraise(exc_type, exc_value, tb)
+  File &quot;/usr/local/lib/python2.7/dist-packages/flask/app.py&quot;, line 1982, in wsgi_app
+    response = self.full_dispatch_request()
+  File &quot;/usr/local/lib/python2.7/dist-packages/flask/app.py&quot;, line 1614, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File &quot;/usr/local/lib/python2.7/dist-packages/flask/app.py&quot;, line 1517, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File &quot;/usr/local/lib/python2.7/dist-packages/flask/app.py&quot;, line 1612, in full_dispatch_request
+    rv = self.dispatch_request()
+  File &quot;/usr/local/lib/python2.7/dist-packages/flask/app.py&quot;, line 1598, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File &quot;/usr/local/lib/python2.7/dist-packages/flask_cors/decorator.py&quot;, line 128, in wrapped_function
+    resp = make_response(f(*args, **kwargs))
+  File &quot;/usr/local/lib/python2.7/dist-packages/flask/helpers.py&quot;, line 191, in make_response
+    return current_app.make_response(args)
+  File &quot;/usr/local/lib/python2.7/dist-packages/flask/app.py&quot;, line 1725, in make_response
+    raise ValueError('View function did not return a response')
+ValueError: View function did not return a response</textarea>
+  </form>
+</div>
+<div class="explanation">
+  The debugger caught an exception in your WSGI application.  You can now
+  look at the traceback which led to the error.  <span class="nojavascript">
+  If you enable JavaScript you can also use additional features such as code
+  execution (if the evalex feature is enabled), automatic pasting of the
+  exceptions and much more.</span>
+</div>
+      <div class="footer">
+        Brought to you by <strong class="arthur">DON'T PANIC</strong>, your
+        friendly Werkzeug powered traceback interpreter.
+      </div>
+    </div>
+
+    <div class="pin-prompt">
+      <div class="inner">
+        <h3>Console Locked</h3>
+        <p>
+          The console is locked and needs to be unlocked by entering the PIN.
+          You can find the PIN printed out on the standard output of your
+          shell that runs the server.
+        <form>
+          <p>PIN:
+            <input type=text name=pin size=14>
+            <input type=submit name=btn value="Confirm Pin">
+        </form>
+      </div>
+    </div>
+  </body>
+</html>
+
+<!--
+
+Traceback (most recent call last):
+  File "/usr/local/lib/python2.7/dist-packages/flask/app.py", line 1994, in __call__
+    return self.wsgi_app(environ, start_response)
+  File "/usr/local/lib/python2.7/dist-packages/flask/app.py", line 1985, in wsgi_app
+    response = self.handle_exception(e)
+  File "/usr/local/lib/python2.7/dist-packages/flask/app.py", line 1540, in handle_exception
+    reraise(exc_type, exc_value, tb)
+  File "/usr/local/lib/python2.7/dist-packages/flask/app.py", line 1982, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/usr/local/lib/python2.7/dist-packages/flask/app.py", line 1614, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/usr/local/lib/python2.7/dist-packages/flask/app.py", line 1517, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/usr/local/lib/python2.7/dist-packages/flask/app.py", line 1612, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/usr/local/lib/python2.7/dist-packages/flask/app.py", line 1598, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/usr/local/lib/python2.7/dist-packages/flask_cors/decorator.py", line 128, in wrapped_function
+    resp = make_response(f(*args, **kwargs))
+  File "/usr/local/lib/python2.7/dist-packages/flask/helpers.py", line 191, in make_response
+    return current_app.make_response(args)
+  File "/usr/local/lib/python2.7/dist-packages/flask/app.py", line 1725, in make_response
+    raise ValueError('View function did not return a response')
+ValueError: View function did not return a response
+
+-->
+source:python,2018-07-06-17-52-30,<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+  "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+  <head>
+    <title>ValueError: View function did not return a response // Werkzeug Debugger</title>
+    <link rel="stylesheet" href="?__debugger__=yes&amp;cmd=resource&amp;f=style.css"
+        type="text/css">
+    <!-- We need to make sure this has a favicon so that the debugger does
+         not by accident trigger a request to /favicon.ico which might
+         change the application state. -->
+    <link rel="shortcut icon"
+        href="?__debugger__=yes&amp;cmd=resource&amp;f=console.png">
+    <script src="?__debugger__=yes&amp;cmd=resource&amp;f=jquery.js"></script>
+    <script src="?__debugger__=yes&amp;cmd=resource&amp;f=debugger.js"></script>
+    <script type="text/javascript">
+      var TRACEBACK = 139810666538256,
+          CONSOLE_MODE = false,
+          EVALEX = true,
+          EVALEX_TRUSTED = false,
+          SECRET = "30NJAzTVkJDTvRCnh7Mj";
+    </script>
+  </head>
+  <body>
+    <div class="debugger">
+<h1>ValueError</h1>
+<div class="detail">
+  <p class="errormsg">ValueError: View function did not return a response</p>
+</div>
+<h2 class="traceback">Traceback <em>(most recent call last)</em></h2>
+<div class="traceback">
+  
+  <ul><li><div class="frame" id="frame-139810666539920">
+  <h4>File <cite class="filename">"/usr/local/lib/python2.7/dist-packages/flask/app.py"</cite>,
+      line <em class="line">1994</em>,
+      in <code class="function">__call__</code></h4>
+  <div class="source"><pre class="line before"><span class="ws">                </span>error = None</pre>
+<pre class="line before"><span class="ws">            </span>ctx.auto_pop(error)</pre>
+<pre class="line before"><span class="ws"></span> </pre>
+<pre class="line before"><span class="ws">    </span>def __call__(self, environ, start_response):</pre>
+<pre class="line before"><span class="ws">        </span>&quot;&quot;&quot;Shortcut for :attr:`wsgi_app`.&quot;&quot;&quot;</pre>
+<pre class="line current"><span class="ws">        </span>return self.wsgi_app(environ, start_response)</pre>
+<pre class="line after"><span class="ws"></span> </pre>
+<pre class="line after"><span class="ws">    </span>def __repr__(self):</pre>
+<pre class="line after"><span class="ws">        </span>return '&lt;%s %r&gt;' % (</pre>
+<pre class="line after"><span class="ws">            </span>self.__class__.__name__,</pre>
+<pre class="line after"><span class="ws">            </span>self.name,</pre></div>
+</div>
+
+<li><div class="frame" id="frame-139810666539856">
+  <h4>File <cite class="filename">"/usr/local/lib/python2.7/dist-packages/flask/app.py"</cite>,
+      line <em class="line">1985</em>,
+      in <code class="function">wsgi_app</code></h4>
+  <div class="source"><pre class="line before"><span class="ws">        </span>try:</pre>
+<pre class="line before"><span class="ws">            </span>try:</pre>
+<pre class="line before"><span class="ws">                </span>response = self.full_dispatch_request()</pre>
+<pre class="line before"><span class="ws">            </span>except Exception as e:</pre>
+<pre class="line before"><span class="ws">                </span>error = e</pre>
+<pre class="line current"><span class="ws">                </span>response = self.handle_exception(e)</pre>
+<pre class="line after"><span class="ws">            </span>return response(environ, start_response)</pre>
+<pre class="line after"><span class="ws">        </span>finally:</pre>
+<pre class="line after"><span class="ws">            </span>if self.should_ignore_error(error):</pre>
+<pre class="line after"><span class="ws">                </span>error = None</pre>
+<pre class="line after"><span class="ws">            </span>ctx.auto_pop(error)</pre></div>
+</div>
+
+<li><div class="frame" id="frame-139810666538832">
+  <h4>File <cite class="filename">"/usr/local/lib/python2.7/dist-packages/flask/app.py"</cite>,
+      line <em class="line">1540</em>,
+      in <code class="function">handle_exception</code></h4>
+  <div class="source"><pre class="line before"><span class="ws">            </span># if we want to repropagate the exception, we can attempt to</pre>
+<pre class="line before"><span class="ws">            </span># raise it with the whole traceback in case we can do that</pre>
+<pre class="line before"><span class="ws">            </span># (the function was actually called from the except part)</pre>
+<pre class="line before"><span class="ws">            </span># otherwise, we just raise the error again</pre>
+<pre class="line before"><span class="ws">            </span>if exc_value is e:</pre>
+<pre class="line current"><span class="ws">                </span>reraise(exc_type, exc_value, tb)</pre>
+<pre class="line after"><span class="ws">            </span>else:</pre>
+<pre class="line after"><span class="ws">                </span>raise e</pre>
+<pre class="line after"><span class="ws"></span> </pre>
+<pre class="line after"><span class="ws">        </span>self.log_exception((exc_type, exc_value, tb))</pre>
+<pre class="line after"><span class="ws">        </span>if handler is None:</pre></div>
+</div>
+
+<li><div class="frame" id="frame-139810666541008">
+  <h4>File <cite class="filename">"/usr/local/lib/python2.7/dist-packages/flask/app.py"</cite>,
+      line <em class="line">1982</em>,
+      in <code class="function">wsgi_app</code></h4>
+  <div class="source"><pre class="line before"><span class="ws">        </span>ctx = self.request_context(environ)</pre>
+<pre class="line before"><span class="ws">        </span>ctx.push()</pre>
+<pre class="line before"><span class="ws">        </span>error = None</pre>
+<pre class="line before"><span class="ws">        </span>try:</pre>
+<pre class="line before"><span class="ws">            </span>try:</pre>
+<pre class="line current"><span class="ws">                </span>response = self.full_dispatch_request()</pre>
+<pre class="line after"><span class="ws">            </span>except Exception as e:</pre>
+<pre class="line after"><span class="ws">                </span>error = e</pre>
+<pre class="line after"><span class="ws">                </span>response = self.handle_exception(e)</pre>
+<pre class="line after"><span class="ws">            </span>return response(environ, start_response)</pre>
+<pre class="line after"><span class="ws">        </span>finally:</pre></div>
+</div>
+
+<li><div class="frame" id="frame-139810666540944">
+  <h4>File <cite class="filename">"/usr/local/lib/python2.7/dist-packages/flask/app.py"</cite>,
+      line <em class="line">1614</em>,
+      in <code class="function">full_dispatch_request</code></h4>
+  <div class="source"><pre class="line before"><span class="ws">            </span>request_started.send(self)</pre>
+<pre class="line before"><span class="ws">            </span>rv = self.preprocess_request()</pre>
+<pre class="line before"><span class="ws">            </span>if rv is None:</pre>
+<pre class="line before"><span class="ws">                </span>rv = self.dispatch_request()</pre>
+<pre class="line before"><span class="ws">        </span>except Exception as e:</pre>
+<pre class="line current"><span class="ws">            </span>rv = self.handle_user_exception(e)</pre>
+<pre class="line after"><span class="ws">        </span>return self.finalize_request(rv)</pre>
+<pre class="line after"><span class="ws"></span> </pre>
+<pre class="line after"><span class="ws">    </span>def finalize_request(self, rv, from_error_handler=False):</pre>
+<pre class="line after"><span class="ws">        </span>&quot;&quot;&quot;Given the return value from a view function this finalizes</pre>
+<pre class="line after"><span class="ws">        </span>the request by converting it into a response and invoking the</pre></div>
+</div>
+
+<li><div class="frame" id="frame-139810666538768">
+  <h4>File <cite class="filename">"/usr/local/lib/python2.7/dist-packages/flask/app.py"</cite>,
+      line <em class="line">1517</em>,
+      in <code class="function">handle_user_exception</code></h4>
+  <div class="source"><pre class="line before"><span class="ws">            </span>return self.handle_http_exception(e)</pre>
+<pre class="line before"><span class="ws"></span> </pre>
+<pre class="line before"><span class="ws">        </span>handler = self._find_error_handler(e)</pre>
+<pre class="line before"><span class="ws"></span> </pre>
+<pre class="line before"><span class="ws">        </span>if handler is None:</pre>
+<pre class="line current"><span class="ws">            </span>reraise(exc_type, exc_value, tb)</pre>
+<pre class="line after"><span class="ws">        </span>return handler(e)</pre>
+<pre class="line after"><span class="ws"></span> </pre>
+<pre class="line after"><span class="ws">    </span>def handle_exception(self, e):</pre>
+<pre class="line after"><span class="ws">        </span>&quot;&quot;&quot;Default exception handling that kicks in when an exception</pre>
+<pre class="line after"><span class="ws">        </span>occurs that is not caught.  In debug mode the exception will</pre></div>
+</div>
+
+<li><div class="frame" id="frame-139810666538960">
+  <h4>File <cite class="filename">"/usr/local/lib/python2.7/dist-packages/flask/app.py"</cite>,
+      line <em class="line">1612</em>,
+      in <code class="function">full_dispatch_request</code></h4>
+  <div class="source"><pre class="line before"><span class="ws">        </span>self.try_trigger_before_first_request_functions()</pre>
+<pre class="line before"><span class="ws">        </span>try:</pre>
+<pre class="line before"><span class="ws">            </span>request_started.send(self)</pre>
+<pre class="line before"><span class="ws">            </span>rv = self.preprocess_request()</pre>
+<pre class="line before"><span class="ws">            </span>if rv is None:</pre>
+<pre class="line current"><span class="ws">                </span>rv = self.dispatch_request()</pre>
+<pre class="line after"><span class="ws">        </span>except Exception as e:</pre>
+<pre class="line after"><span class="ws">            </span>rv = self.handle_user_exception(e)</pre>
+<pre class="line after"><span class="ws">        </span>return self.finalize_request(rv)</pre>
+<pre class="line after"><span class="ws"></span> </pre>
+<pre class="line after"><span class="ws">    </span>def finalize_request(self, rv, from_error_handler=False):</pre></div>
+</div>
+
+<li><div class="frame" id="frame-139810666539024">
+  <h4>File <cite class="filename">"/usr/local/lib/python2.7/dist-packages/flask/app.py"</cite>,
+      line <em class="line">1598</em>,
+      in <code class="function">dispatch_request</code></h4>
+  <div class="source"><pre class="line before"><span class="ws">        </span># request came with the OPTIONS method, reply automatically</pre>
+<pre class="line before"><span class="ws">        </span>if getattr(rule, 'provide_automatic_options', False) \</pre>
+<pre class="line before"><span class="ws">           </span>and req.method == 'OPTIONS':</pre>
+<pre class="line before"><span class="ws">            </span>return self.make_default_options_response()</pre>
+<pre class="line before"><span class="ws">        </span># otherwise dispatch to the handler for that endpoint</pre>
+<pre class="line current"><span class="ws">        </span>return self.view_functions[rule.endpoint](**req.view_args)</pre>
+<pre class="line after"><span class="ws"></span> </pre>
+<pre class="line after"><span class="ws">    </span>def full_dispatch_request(self):</pre>
+<pre class="line after"><span class="ws">        </span>&quot;&quot;&quot;Dispatches the request and on top of that performs request</pre>
+<pre class="line after"><span class="ws">        </span>pre and postprocessing as well as HTTP exception catching and</pre>
+<pre class="line after"><span class="ws">        </span>error handling.</pre></div>
+</div>
+
+<li><div class="frame" id="frame-139810666539152">
+  <h4>File <cite class="filename">"/usr/local/lib/python2.7/dist-packages/flask_cors/decorator.py"</cite>,
+      line <em class="line">128</em>,
+      in <code class="function">wrapped_function</code></h4>
+  <div class="source"><pre class="line before"><span class="ws">            </span>options = get_cors_options(current_app, _options)</pre>
+<pre class="line before"><span class="ws"></span> </pre>
+<pre class="line before"><span class="ws">            </span>if options.get('automatic_options') and request.method == 'OPTIONS':</pre>
+<pre class="line before"><span class="ws">                </span>resp = current_app.make_default_options_response()</pre>
+<pre class="line before"><span class="ws">            </span>else:</pre>
+<pre class="line current"><span class="ws">                </span>resp = make_response(f(*args, **kwargs))</pre>
+<pre class="line after"><span class="ws"></span> </pre>
+<pre class="line after"><span class="ws">            </span>set_cors_headers(resp, options)</pre>
+<pre class="line after"><span class="ws">            </span>setattr(resp, FLASK_CORS_EVALUATED, True)</pre>
+<pre class="line after"><span class="ws">            </span>return resp</pre>
+<pre class="line after"><span class="ws"></span> </pre></div>
+</div>
+
+<li><div class="frame" id="frame-139810666538640">
+  <h4>File <cite class="filename">"/usr/local/lib/python2.7/dist-packages/flask/helpers.py"</cite>,
+      line <em class="line">191</em>,
+      in <code class="function">make_response</code></h4>
+  <div class="source"><pre class="line before"><span class="ws">    </span>&quot;&quot;&quot;</pre>
+<pre class="line before"><span class="ws">    </span>if not args:</pre>
+<pre class="line before"><span class="ws">        </span>return current_app.response_class()</pre>
+<pre class="line before"><span class="ws">    </span>if len(args) == 1:</pre>
+<pre class="line before"><span class="ws">        </span>args = args[0]</pre>
+<pre class="line current"><span class="ws">    </span>return current_app.make_response(args)</pre>
+<pre class="line after"><span class="ws"></span> </pre>
+<pre class="line after"><span class="ws"></span> </pre>
+<pre class="line after"><span class="ws"></span>def url_for(endpoint, **values):</pre>
+<pre class="line after"><span class="ws">    </span>&quot;&quot;&quot;Generates a URL to the given endpoint with the method provided.</pre>
+<pre class="line after"><span class="ws"></span> </pre></div>
+</div>
+
+<li><div class="frame" id="frame-139810666539088">
+  <h4>File <cite class="filename">"/usr/local/lib/python2.7/dist-packages/flask/app.py"</cite>,
+      line <em class="line">1725</em>,
+      in <code class="function">make_response</code></h4>
+  <div class="source"><pre class="line before"><span class="ws">        </span>status_or_headers = headers = None</pre>
+<pre class="line before"><span class="ws">        </span>if isinstance(rv, tuple):</pre>
+<pre class="line before"><span class="ws">            </span>rv, status_or_headers, headers = rv + (None,) * (3 - len(rv))</pre>
+<pre class="line before"><span class="ws"></span> </pre>
+<pre class="line before"><span class="ws">        </span>if rv is None:</pre>
+<pre class="line current"><span class="ws">            </span>raise ValueError('View function did not return a response')</pre>
+<pre class="line after"><span class="ws"></span> </pre>
+<pre class="line after"><span class="ws">        </span>if isinstance(status_or_headers, (dict, list)):</pre>
+<pre class="line after"><span class="ws">            </span>headers, status_or_headers = status_or_headers, None</pre>
+<pre class="line after"><span class="ws"></span> </pre>
+<pre class="line after"><span class="ws">        </span>if not isinstance(rv, self.response_class):</pre></div>
+</div>
+</ul>
+  <blockquote>ValueError: View function did not return a response</blockquote>
+</div>
+
+<div class="plain">
+  <form action="/?__debugger__=yes&amp;cmd=paste" method="post">
+    <p>
+      <input type="hidden" name="language" value="pytb">
+      This is the Copy/Paste friendly version of the traceback.  <span
+      class="pastemessage">You can also paste this traceback into
+      a <a href="https://gist.github.com/">gist</a>:
+      <input type="submit" value="create paste"></span>
+    </p>
+    <textarea cols="50" rows="10" name="code" readonly>Traceback (most recent call last):
+  File &quot;/usr/local/lib/python2.7/dist-packages/flask/app.py&quot;, line 1994, in __call__
+    return self.wsgi_app(environ, start_response)
+  File &quot;/usr/local/lib/python2.7/dist-packages/flask/app.py&quot;, line 1985, in wsgi_app
+    response = self.handle_exception(e)
+  File &quot;/usr/local/lib/python2.7/dist-packages/flask/app.py&quot;, line 1540, in handle_exception
+    reraise(exc_type, exc_value, tb)
+  File &quot;/usr/local/lib/python2.7/dist-packages/flask/app.py&quot;, line 1982, in wsgi_app
+    response = self.full_dispatch_request()
+  File &quot;/usr/local/lib/python2.7/dist-packages/flask/app.py&quot;, line 1614, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File &quot;/usr/local/lib/python2.7/dist-packages/flask/app.py&quot;, line 1517, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File &quot;/usr/local/lib/python2.7/dist-packages/flask/app.py&quot;, line 1612, in full_dispatch_request
+    rv = self.dispatch_request()
+  File &quot;/usr/local/lib/python2.7/dist-packages/flask/app.py&quot;, line 1598, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File &quot;/usr/local/lib/python2.7/dist-packages/flask_cors/decorator.py&quot;, line 128, in wrapped_function
+    resp = make_response(f(*args, **kwargs))
+  File &quot;/usr/local/lib/python2.7/dist-packages/flask/helpers.py&quot;, line 191, in make_response
+    return current_app.make_response(args)
+  File &quot;/usr/local/lib/python2.7/dist-packages/flask/app.py&quot;, line 1725, in make_response
+    raise ValueError('View function did not return a response')
+ValueError: View function did not return a response</textarea>
+  </form>
+</div>
+<div class="explanation">
+  The debugger caught an exception in your WSGI application.  You can now
+  look at the traceback which led to the error.  <span class="nojavascript">
+  If you enable JavaScript you can also use additional features such as code
+  execution (if the evalex feature is enabled), automatic pasting of the
+  exceptions and much more.</span>
+</div>
+      <div class="footer">
+        Brought to you by <strong class="arthur">DON'T PANIC</strong>, your
+        friendly Werkzeug powered traceback interpreter.
+      </div>
+    </div>
+
+    <div class="pin-prompt">
+      <div class="inner">
+        <h3>Console Locked</h3>
+        <p>
+          The console is locked and needs to be unlocked by entering the PIN.
+          You can find the PIN printed out on the standard output of your
+          shell that runs the server.
+        <form>
+          <p>PIN:
+            <input type=text name=pin size=14>
+            <input type=submit name=btn value="Confirm Pin">
+        </form>
+      </div>
+    </div>
+  </body>
+</html>
+
+<!--
+
+Traceback (most recent call last):
+  File "/usr/local/lib/python2.7/dist-packages/flask/app.py", line 1994, in __call__
+    return self.wsgi_app(environ, start_response)
+  File "/usr/local/lib/python2.7/dist-packages/flask/app.py", line 1985, in wsgi_app
+    response = self.handle_exception(e)
+  File "/usr/local/lib/python2.7/dist-packages/flask/app.py", line 1540, in handle_exception
+    reraise(exc_type, exc_value, tb)
+  File "/usr/local/lib/python2.7/dist-packages/flask/app.py", line 1982, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/usr/local/lib/python2.7/dist-packages/flask/app.py", line 1614, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/usr/local/lib/python2.7/dist-packages/flask/app.py", line 1517, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/usr/local/lib/python2.7/dist-packages/flask/app.py", line 1612, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/usr/local/lib/python2.7/dist-packages/flask/app.py", line 1598, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/usr/local/lib/python2.7/dist-packages/flask_cors/decorator.py", line 128, in wrapped_function
+    resp = make_response(f(*args, **kwargs))
+  File "/usr/local/lib/python2.7/dist-packages/flask/helpers.py", line 191, in make_response
+    return current_app.make_response(args)
+  File "/usr/local/lib/python2.7/dist-packages/flask/app.py", line 1725, in make_response
+    raise ValueError('View function did not return a response')
+ValueError: View function did not return a response
+
+-->
+source:python,2018-07-06-18-04-46,<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+  "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+  <head>
+    <title>ValueError: View function did not return a response // Werkzeug Debugger</title>
+    <link rel="stylesheet" href="?__debugger__=yes&amp;cmd=resource&amp;f=style.css"
+        type="text/css">
+    <!-- We need to make sure this has a favicon so that the debugger does
+         not by accident trigger a request to /favicon.ico which might
+         change the application state. -->
+    <link rel="shortcut icon"
+        href="?__debugger__=yes&amp;cmd=resource&amp;f=console.png">
+    <script src="?__debugger__=yes&amp;cmd=resource&amp;f=jquery.js"></script>
+    <script src="?__debugger__=yes&amp;cmd=resource&amp;f=debugger.js"></script>
+    <script type="text/javascript">
+      var TRACEBACK = 139810666235664,
+          CONSOLE_MODE = false,
+          EVALEX = true,
+          EVALEX_TRUSTED = false,
+          SECRET = "30NJAzTVkJDTvRCnh7Mj";
+    </script>
+  </head>
+  <body>
+    <div class="debugger">
+<h1>ValueError</h1>
+<div class="detail">
+  <p class="errormsg">ValueError: View function did not return a response</p>
+</div>
+<h2 class="traceback">Traceback <em>(most recent call last)</em></h2>
+<div class="traceback">
+  
+  <ul><li><div class="frame" id="frame-139810666237264">
+  <h4>File <cite class="filename">"/usr/local/lib/python2.7/dist-packages/flask/app.py"</cite>,
+      line <em class="line">1994</em>,
+      in <code class="function">__call__</code></h4>
+  <div class="source"><pre class="line before"><span class="ws">                </span>error = None</pre>
+<pre class="line before"><span class="ws">            </span>ctx.auto_pop(error)</pre>
+<pre class="line before"><span class="ws"></span> </pre>
+<pre class="line before"><span class="ws">    </span>def __call__(self, environ, start_response):</pre>
+<pre class="line before"><span class="ws">        </span>&quot;&quot;&quot;Shortcut for :attr:`wsgi_app`.&quot;&quot;&quot;</pre>
+<pre class="line current"><span class="ws">        </span>return self.wsgi_app(environ, start_response)</pre>
+<pre class="line after"><span class="ws"></span> </pre>
+<pre class="line after"><span class="ws">    </span>def __repr__(self):</pre>
+<pre class="line after"><span class="ws">        </span>return '&lt;%s %r&gt;' % (</pre>
+<pre class="line after"><span class="ws">            </span>self.__class__.__name__,</pre>
+<pre class="line after"><span class="ws">            </span>self.name,</pre></div>
+</div>
+
+<li><div class="frame" id="frame-139810666237200">
+  <h4>File <cite class="filename">"/usr/local/lib/python2.7/dist-packages/flask/app.py"</cite>,
+      line <em class="line">1985</em>,
+      in <code class="function">wsgi_app</code></h4>
+  <div class="source"><pre class="line before"><span class="ws">        </span>try:</pre>
+<pre class="line before"><span class="ws">            </span>try:</pre>
+<pre class="line before"><span class="ws">                </span>response = self.full_dispatch_request()</pre>
+<pre class="line before"><span class="ws">            </span>except Exception as e:</pre>
+<pre class="line before"><span class="ws">                </span>error = e</pre>
+<pre class="line current"><span class="ws">                </span>response = self.handle_exception(e)</pre>
+<pre class="line after"><span class="ws">            </span>return response(environ, start_response)</pre>
+<pre class="line after"><span class="ws">        </span>finally:</pre>
+<pre class="line after"><span class="ws">            </span>if self.should_ignore_error(error):</pre>
+<pre class="line after"><span class="ws">                </span>error = None</pre>
+<pre class="line after"><span class="ws">            </span>ctx.auto_pop(error)</pre></div>
+</div>
+
+<li><div class="frame" id="frame-139810666236112">
+  <h4>File <cite class="filename">"/usr/local/lib/python2.7/dist-packages/flask/app.py"</cite>,
+      line <em class="line">1540</em>,
+      in <code class="function">handle_exception</code></h4>
+  <div class="source"><pre class="line before"><span class="ws">            </span># if we want to repropagate the exception, we can attempt to</pre>
+<pre class="line before"><span class="ws">            </span># raise it with the whole traceback in case we can do that</pre>
+<pre class="line before"><span class="ws">            </span># (the function was actually called from the except part)</pre>
+<pre class="line before"><span class="ws">            </span># otherwise, we just raise the error again</pre>
+<pre class="line before"><span class="ws">            </span>if exc_value is e:</pre>
+<pre class="line current"><span class="ws">                </span>reraise(exc_type, exc_value, tb)</pre>
+<pre class="line after"><span class="ws">            </span>else:</pre>
+<pre class="line after"><span class="ws">                </span>raise e</pre>
+<pre class="line after"><span class="ws"></span> </pre>
+<pre class="line after"><span class="ws">        </span>self.log_exception((exc_type, exc_value, tb))</pre>
+<pre class="line after"><span class="ws">        </span>if handler is None:</pre></div>
+</div>
+
+<li><div class="frame" id="frame-139810666236176">
+  <h4>File <cite class="filename">"/usr/local/lib/python2.7/dist-packages/flask/app.py"</cite>,
+      line <em class="line">1982</em>,
+      in <code class="function">wsgi_app</code></h4>
+  <div class="source"><pre class="line before"><span class="ws">        </span>ctx = self.request_context(environ)</pre>
+<pre class="line before"><span class="ws">        </span>ctx.push()</pre>
+<pre class="line before"><span class="ws">        </span>error = None</pre>
+<pre class="line before"><span class="ws">        </span>try:</pre>
+<pre class="line before"><span class="ws">            </span>try:</pre>
+<pre class="line current"><span class="ws">                </span>response = self.full_dispatch_request()</pre>
+<pre class="line after"><span class="ws">            </span>except Exception as e:</pre>
+<pre class="line after"><span class="ws">                </span>error = e</pre>
+<pre class="line after"><span class="ws">                </span>response = self.handle_exception(e)</pre>
+<pre class="line after"><span class="ws">            </span>return response(environ, start_response)</pre>
+<pre class="line after"><span class="ws">        </span>finally:</pre></div>
+</div>
+
+<li><div class="frame" id="frame-139810666236240">
+  <h4>File <cite class="filename">"/usr/local/lib/python2.7/dist-packages/flask/app.py"</cite>,
+      line <em class="line">1614</em>,
+      in <code class="function">full_dispatch_request</code></h4>
+  <div class="source"><pre class="line before"><span class="ws">            </span>request_started.send(self)</pre>
+<pre class="line before"><span class="ws">            </span>rv = self.preprocess_request()</pre>
+<pre class="line before"><span class="ws">            </span>if rv is None:</pre>
+<pre class="line before"><span class="ws">                </span>rv = self.dispatch_request()</pre>
+<pre class="line before"><span class="ws">        </span>except Exception as e:</pre>
+<pre class="line current"><span class="ws">            </span>rv = self.handle_user_exception(e)</pre>
+<pre class="line after"><span class="ws">        </span>return self.finalize_request(rv)</pre>
+<pre class="line after"><span class="ws"></span> </pre>
+<pre class="line after"><span class="ws">    </span>def finalize_request(self, rv, from_error_handler=False):</pre>
+<pre class="line after"><span class="ws">        </span>&quot;&quot;&quot;Given the return value from a view function this finalizes</pre>
+<pre class="line after"><span class="ws">        </span>the request by converting it into a response and invoking the</pre></div>
+</div>
+
+<li><div class="frame" id="frame-139810666236304">
+  <h4>File <cite class="filename">"/usr/local/lib/python2.7/dist-packages/flask/app.py"</cite>,
+      line <em class="line">1517</em>,
+      in <code class="function">handle_user_exception</code></h4>
+  <div class="source"><pre class="line before"><span class="ws">            </span>return self.handle_http_exception(e)</pre>
+<pre class="line before"><span class="ws"></span> </pre>
+<pre class="line before"><span class="ws">        </span>handler = self._find_error_handler(e)</pre>
+<pre class="line before"><span class="ws"></span> </pre>
+<pre class="line before"><span class="ws">        </span>if handler is None:</pre>
+<pre class="line current"><span class="ws">            </span>reraise(exc_type, exc_value, tb)</pre>
+<pre class="line after"><span class="ws">        </span>return handler(e)</pre>
+<pre class="line after"><span class="ws"></span> </pre>
+<pre class="line after"><span class="ws">    </span>def handle_exception(self, e):</pre>
+<pre class="line after"><span class="ws">        </span>&quot;&quot;&quot;Default exception handling that kicks in when an exception</pre>
+<pre class="line after"><span class="ws">        </span>occurs that is not caught.  In debug mode the exception will</pre></div>
+</div>
+
+<li><div class="frame" id="frame-139810666236368">
+  <h4>File <cite class="filename">"/usr/local/lib/python2.7/dist-packages/flask/app.py"</cite>,
+      line <em class="line">1612</em>,
+      in <code class="function">full_dispatch_request</code></h4>
+  <div class="source"><pre class="line before"><span class="ws">        </span>self.try_trigger_before_first_request_functions()</pre>
+<pre class="line before"><span class="ws">        </span>try:</pre>
+<pre class="line before"><span class="ws">            </span>request_started.send(self)</pre>
+<pre class="line before"><span class="ws">            </span>rv = self.preprocess_request()</pre>
+<pre class="line before"><span class="ws">            </span>if rv is None:</pre>
+<pre class="line current"><span class="ws">                </span>rv = self.dispatch_request()</pre>
+<pre class="line after"><span class="ws">        </span>except Exception as e:</pre>
+<pre class="line after"><span class="ws">            </span>rv = self.handle_user_exception(e)</pre>
+<pre class="line after"><span class="ws">        </span>return self.finalize_request(rv)</pre>
+<pre class="line after"><span class="ws"></span> </pre>
+<pre class="line after"><span class="ws">    </span>def finalize_request(self, rv, from_error_handler=False):</pre></div>
+</div>
+
+<li><div class="frame" id="frame-139810666236432">
+  <h4>File <cite class="filename">"/usr/local/lib/python2.7/dist-packages/flask/app.py"</cite>,
+      line <em class="line">1598</em>,
+      in <code class="function">dispatch_request</code></h4>
+  <div class="source"><pre class="line before"><span class="ws">        </span># request came with the OPTIONS method, reply automatically</pre>
+<pre class="line before"><span class="ws">        </span>if getattr(rule, 'provide_automatic_options', False) \</pre>
+<pre class="line before"><span class="ws">           </span>and req.method == 'OPTIONS':</pre>
+<pre class="line before"><span class="ws">            </span>return self.make_default_options_response()</pre>
+<pre class="line before"><span class="ws">        </span># otherwise dispatch to the handler for that endpoint</pre>
+<pre class="line current"><span class="ws">        </span>return self.view_functions[rule.endpoint](**req.view_args)</pre>
+<pre class="line after"><span class="ws"></span> </pre>
+<pre class="line after"><span class="ws">    </span>def full_dispatch_request(self):</pre>
+<pre class="line after"><span class="ws">        </span>&quot;&quot;&quot;Dispatches the request and on top of that performs request</pre>
+<pre class="line after"><span class="ws">        </span>pre and postprocessing as well as HTTP exception catching and</pre>
+<pre class="line after"><span class="ws">        </span>error handling.</pre></div>
+</div>
+
+<li><div class="frame" id="frame-139810666236496">
+  <h4>File <cite class="filename">"/usr/local/lib/python2.7/dist-packages/flask_cors/decorator.py"</cite>,
+      line <em class="line">128</em>,
+      in <code class="function">wrapped_function</code></h4>
+  <div class="source"><pre class="line before"><span class="ws">            </span>options = get_cors_options(current_app, _options)</pre>
+<pre class="line before"><span class="ws"></span> </pre>
+<pre class="line before"><span class="ws">            </span>if options.get('automatic_options') and request.method == 'OPTIONS':</pre>
+<pre class="line before"><span class="ws">                </span>resp = current_app.make_default_options_response()</pre>
+<pre class="line before"><span class="ws">            </span>else:</pre>
+<pre class="line current"><span class="ws">                </span>resp = make_response(f(*args, **kwargs))</pre>
+<pre class="line after"><span class="ws"></span> </pre>
+<pre class="line after"><span class="ws">            </span>set_cors_headers(resp, options)</pre>
+<pre class="line after"><span class="ws">            </span>setattr(resp, FLASK_CORS_EVALUATED, True)</pre>
+<pre class="line after"><span class="ws">            </span>return resp</pre>
+<pre class="line after"><span class="ws"></span> </pre></div>
+</div>
+
+<li><div class="frame" id="frame-139810666235920">
+  <h4>File <cite class="filename">"/usr/local/lib/python2.7/dist-packages/flask/helpers.py"</cite>,
+      line <em class="line">191</em>,
+      in <code class="function">make_response</code></h4>
+  <div class="source"><pre class="line before"><span class="ws">    </span>&quot;&quot;&quot;</pre>
+<pre class="line before"><span class="ws">    </span>if not args:</pre>
+<pre class="line before"><span class="ws">        </span>return current_app.response_class()</pre>
+<pre class="line before"><span class="ws">    </span>if len(args) == 1:</pre>
+<pre class="line before"><span class="ws">        </span>args = args[0]</pre>
+<pre class="line current"><span class="ws">    </span>return current_app.make_response(args)</pre>
+<pre class="line after"><span class="ws"></span> </pre>
+<pre class="line after"><span class="ws"></span> </pre>
+<pre class="line after"><span class="ws"></span>def url_for(endpoint, **values):</pre>
+<pre class="line after"><span class="ws">    </span>&quot;&quot;&quot;Generates a URL to the given endpoint with the method provided.</pre>
+<pre class="line after"><span class="ws"></span> </pre></div>
+</div>
+
+<li><div class="frame" id="frame-139810666235856">
+  <h4>File <cite class="filename">"/usr/local/lib/python2.7/dist-packages/flask/app.py"</cite>,
+      line <em class="line">1725</em>,
+      in <code class="function">make_response</code></h4>
+  <div class="source"><pre class="line before"><span class="ws">        </span>status_or_headers = headers = None</pre>
+<pre class="line before"><span class="ws">        </span>if isinstance(rv, tuple):</pre>
+<pre class="line before"><span class="ws">            </span>rv, status_or_headers, headers = rv + (None,) * (3 - len(rv))</pre>
+<pre class="line before"><span class="ws"></span> </pre>
+<pre class="line before"><span class="ws">        </span>if rv is None:</pre>
+<pre class="line current"><span class="ws">            </span>raise ValueError('View function did not return a response')</pre>
+<pre class="line after"><span class="ws"></span> </pre>
+<pre class="line after"><span class="ws">        </span>if isinstance(status_or_headers, (dict, list)):</pre>
+<pre class="line after"><span class="ws">            </span>headers, status_or_headers = status_or_headers, None</pre>
+<pre class="line after"><span class="ws"></span> </pre>
+<pre class="line after"><span class="ws">        </span>if not isinstance(rv, self.response_class):</pre></div>
+</div>
+</ul>
+  <blockquote>ValueError: View function did not return a response</blockquote>
+</div>
+
+<div class="plain">
+  <form action="/?__debugger__=yes&amp;cmd=paste" method="post">
+    <p>
+      <input type="hidden" name="language" value="pytb">
+      This is the Copy/Paste friendly version of the traceback.  <span
+      class="pastemessage">You can also paste this traceback into
+      a <a href="https://gist.github.com/">gist</a>:
+      <input type="submit" value="create paste"></span>
+    </p>
+    <textarea cols="50" rows="10" name="code" readonly>Traceback (most recent call last):
+  File &quot;/usr/local/lib/python2.7/dist-packages/flask/app.py&quot;, line 1994, in __call__
+    return self.wsgi_app(environ, start_response)
+  File &quot;/usr/local/lib/python2.7/dist-packages/flask/app.py&quot;, line 1985, in wsgi_app
+    response = self.handle_exception(e)
+  File &quot;/usr/local/lib/python2.7/dist-packages/flask/app.py&quot;, line 1540, in handle_exception
+    reraise(exc_type, exc_value, tb)
+  File &quot;/usr/local/lib/python2.7/dist-packages/flask/app.py&quot;, line 1982, in wsgi_app
+    response = self.full_dispatch_request()
+  File &quot;/usr/local/lib/python2.7/dist-packages/flask/app.py&quot;, line 1614, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File &quot;/usr/local/lib/python2.7/dist-packages/flask/app.py&quot;, line 1517, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File &quot;/usr/local/lib/python2.7/dist-packages/flask/app.py&quot;, line 1612, in full_dispatch_request
+    rv = self.dispatch_request()
+  File &quot;/usr/local/lib/python2.7/dist-packages/flask/app.py&quot;, line 1598, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File &quot;/usr/local/lib/python2.7/dist-packages/flask_cors/decorator.py&quot;, line 128, in wrapped_function
+    resp = make_response(f(*args, **kwargs))
+  File &quot;/usr/local/lib/python2.7/dist-packages/flask/helpers.py&quot;, line 191, in make_response
+    return current_app.make_response(args)
+  File &quot;/usr/local/lib/python2.7/dist-packages/flask/app.py&quot;, line 1725, in make_response
+    raise ValueError('View function did not return a response')
+ValueError: View function did not return a response</textarea>
+  </form>
+</div>
+<div class="explanation">
+  The debugger caught an exception in your WSGI application.  You can now
+  look at the traceback which led to the error.  <span class="nojavascript">
+  If you enable JavaScript you can also use additional features such as code
+  execution (if the evalex feature is enabled), automatic pasting of the
+  exceptions and much more.</span>
+</div>
+      <div class="footer">
+        Brought to you by <strong class="arthur">DON'T PANIC</strong>, your
+        friendly Werkzeug powered traceback interpreter.
+      </div>
+    </div>
+
+    <div class="pin-prompt">
+      <div class="inner">
+        <h3>Console Locked</h3>
+        <p>
+          The console is locked and needs to be unlocked by entering the PIN.
+          You can find the PIN printed out on the standard output of your
+          shell that runs the server.
+        <form>
+          <p>PIN:
+            <input type=text name=pin size=14>
+            <input type=submit name=btn value="Confirm Pin">
+        </form>
+      </div>
+    </div>
+  </body>
+</html>
+
+<!--
+
+Traceback (most recent call last):
+  File "/usr/local/lib/python2.7/dist-packages/flask/app.py", line 1994, in __call__
+    return self.wsgi_app(environ, start_response)
+  File "/usr/local/lib/python2.7/dist-packages/flask/app.py", line 1985, in wsgi_app
+    response = self.handle_exception(e)
+  File "/usr/local/lib/python2.7/dist-packages/flask/app.py", line 1540, in handle_exception
+    reraise(exc_type, exc_value, tb)
+  File "/usr/local/lib/python2.7/dist-packages/flask/app.py", line 1982, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/usr/local/lib/python2.7/dist-packages/flask/app.py", line 1614, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/usr/local/lib/python2.7/dist-packages/flask/app.py", line 1517, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/usr/local/lib/python2.7/dist-packages/flask/app.py", line 1612, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/usr/local/lib/python2.7/dist-packages/flask/app.py", line 1598, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/usr/local/lib/python2.7/dist-packages/flask_cors/decorator.py", line 128, in wrapped_function
+    resp = make_response(f(*args, **kwargs))
+  File "/usr/local/lib/python2.7/dist-packages/flask/helpers.py", line 191, in make_response
+    return current_app.make_response(args)
+  File "/usr/local/lib/python2.7/dist-packages/flask/app.py", line 1725, in make_response
+    raise ValueError('View function did not return a response')
+ValueError: View function did not return a response
+
+-->
+source:python,2018-07-06-18-06-30,<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+  "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+  <head>
+    <title>File &quot;/var/www/html/mmelc-flask/app.py&quot;, line 1681
+    if zip_file and allowed_file(zip_file.filename):
+     ^
+IndentationError: expected an indented block // Werkzeug Debugger</title>
+    <link rel="stylesheet" href="?__debugger__=yes&amp;cmd=resource&amp;f=style.css"
+        type="text/css">
+    <!-- We need to make sure this has a favicon so that the debugger does
+         not by accident trigger a request to /favicon.ico which might
+         change the application state. -->
+    <link rel="shortcut icon"
+        href="?__debugger__=yes&amp;cmd=resource&amp;f=console.png">
+    <script src="?__debugger__=yes&amp;cmd=resource&amp;f=jquery.js"></script>
+    <script src="?__debugger__=yes&amp;cmd=resource&amp;f=debugger.js"></script>
+    <script type="text/javascript">
+      var TRACEBACK = 140572476849424,
+          CONSOLE_MODE = false,
+          EVALEX = true,
+          EVALEX_TRUSTED = false,
+          SECRET = "XRobUOoCnFVjfQN2Huxn";
+    </script>
+  </head>
+  <body>
+    <div class="debugger">
+<h1>IndentationError</h1>
+<div class="detail">
+  <p class="errormsg">File &quot;/var/www/html/mmelc-flask/app.py&quot;, line 1681
+    if zip_file and allowed_file(zip_file.filename):
+     ^
+IndentationError: expected an indented block</p>
+</div>
+<h2 class="traceback">Traceback <em>(most recent call last)</em></h2>
+<div class="traceback">
+  
+  <ul><li><div class="frame" id="frame-140572476849616">
+  <h4>File <cite class="filename">"/usr/local/lib/python2.7/dist-packages/flask/cli.py"</cite>,
+      line <em class="line">178</em>,
+      in <code class="function">__call__</code></h4>
+  <div class="source"><pre class="line before"><span class="ws"></span> </pre>
+<pre class="line before"><span class="ws">    </span>def __call__(self, environ, start_response):</pre>
+<pre class="line before"><span class="ws">        </span>__traceback_hide__ = True</pre>
+<pre class="line before"><span class="ws">        </span>if self._app is not None:</pre>
+<pre class="line before"><span class="ws">            </span>return self._app(environ, start_response)</pre>
+<pre class="line current"><span class="ws">        </span>self._flush_bg_loading_exception()</pre>
+<pre class="line after"><span class="ws">        </span>with self._lock:</pre>
+<pre class="line after"><span class="ws">            </span>if self._app is not None:</pre>
+<pre class="line after"><span class="ws">                </span>rv = self._app</pre>
+<pre class="line after"><span class="ws">            </span>else:</pre>
+<pre class="line after"><span class="ws">                </span>rv = self._load_unlocked()</pre></div>
+</div>
+
+<li><div class="frame" id="frame-140572476849872">
+  <h4>File <cite class="filename">"/usr/local/lib/python2.7/dist-packages/flask/cli.py"</cite>,
+      line <em class="line">166</em>,
+      in <code class="function">_flush_bg_loading_exception</code></h4>
+  <div class="source"><pre class="line before"><span class="ws">    </span>def _flush_bg_loading_exception(self):</pre>
+<pre class="line before"><span class="ws">        </span>__traceback_hide__ = True</pre>
+<pre class="line before"><span class="ws">        </span>exc_info = self._bg_loading_exc_info</pre>
+<pre class="line before"><span class="ws">        </span>if exc_info is not None:</pre>
+<pre class="line before"><span class="ws">            </span>self._bg_loading_exc_info = None</pre>
+<pre class="line current"><span class="ws">            </span>reraise(*exc_info)</pre>
+<pre class="line after"><span class="ws"></span> </pre>
+<pre class="line after"><span class="ws">    </span>def _load_unlocked(self):</pre>
+<pre class="line after"><span class="ws">        </span>__traceback_hide__ = True</pre>
+<pre class="line after"><span class="ws">        </span>self._app = rv = self.loader()</pre>
+<pre class="line after"><span class="ws">        </span>self._bg_loading_exc_info = None</pre></div>
+</div>
+
+<li><div class="frame" id="frame-140572476849936">
+  <h4>File <cite class="filename">"/usr/local/lib/python2.7/dist-packages/flask/cli.py"</cite>,
+      line <em class="line">155</em>,
+      in <code class="function">_load_app</code></h4>
+  <div class="source"><pre class="line before"><span class="ws">    </span>def _load_in_background(self):</pre>
+<pre class="line before"><span class="ws">        </span>def _load_app():</pre>
+<pre class="line before"><span class="ws">            </span>__traceback_hide__ = True</pre>
+<pre class="line before"><span class="ws">            </span>with self._lock:</pre>
+<pre class="line before"><span class="ws">                </span>try:</pre>
+<pre class="line current"><span class="ws">                    </span>self._load_unlocked()</pre>
+<pre class="line after"><span class="ws">                </span>except Exception:</pre>
+<pre class="line after"><span class="ws">                    </span>self._bg_loading_exc_info = sys.exc_info()</pre>
+<pre class="line after"><span class="ws">        </span>t = Thread(target=_load_app, args=())</pre>
+<pre class="line after"><span class="ws">        </span>t.start()</pre>
+<pre class="line after"><span class="ws"></span> </pre></div>
+</div>
+
+<li><div class="frame" id="frame-140572476850000">
+  <h4>File <cite class="filename">"/usr/local/lib/python2.7/dist-packages/flask/cli.py"</cite>,
+      line <em class="line">170</em>,
+      in <code class="function">_load_unlocked</code></h4>
+  <div class="source"><pre class="line before"><span class="ws">            </span>self._bg_loading_exc_info = None</pre>
+<pre class="line before"><span class="ws">            </span>reraise(*exc_info)</pre>
+<pre class="line before"><span class="ws"></span> </pre>
+<pre class="line before"><span class="ws">    </span>def _load_unlocked(self):</pre>
+<pre class="line before"><span class="ws">        </span>__traceback_hide__ = True</pre>
+<pre class="line current"><span class="ws">        </span>self._app = rv = self.loader()</pre>
+<pre class="line after"><span class="ws">        </span>self._bg_loading_exc_info = None</pre>
+<pre class="line after"><span class="ws">        </span>return rv</pre>
+<pre class="line after"><span class="ws"></span> </pre>
+<pre class="line after"><span class="ws">    </span>def __call__(self, environ, start_response):</pre>
+<pre class="line after"><span class="ws">        </span>__traceback_hide__ = True</pre></div>
+</div>
+
+<li><div class="frame" id="frame-140572476850064">
+  <h4>File <cite class="filename">"/usr/local/lib/python2.7/dist-packages/flask/cli.py"</cite>,
+      line <em class="line">231</em>,
+      in <code class="function">load_app</code></h4>
+  <div class="source"><pre class="line before"><span class="ws">                </span>raise NoAppException(</pre>
+<pre class="line before"><span class="ws">                    </span>'Could not locate Flask application. You did not provide '</pre>
+<pre class="line before"><span class="ws">                    </span>'the FLASK_APP environment variable.\n\nFor more '</pre>
+<pre class="line before"><span class="ws">                    </span>'information see '</pre>
+<pre class="line before"><span class="ws">                    </span>'http://flask.pocoo.org/docs/latest/quickstart/')</pre>
+<pre class="line current"><span class="ws">            </span>rv = locate_app(self.app_import_path)</pre>
+<pre class="line after"><span class="ws">        </span>debug = get_debug_flag()</pre>
+<pre class="line after"><span class="ws">        </span>if debug is not None:</pre>
+<pre class="line after"><span class="ws">            </span>rv.debug = debug</pre>
+<pre class="line after"><span class="ws">        </span>self._loaded_app = rv</pre>
+<pre class="line after"><span class="ws">        </span>return rv</pre></div>
+</div>
+
+<li><div class="frame" id="frame-140572476850128">
+  <h4>File <cite class="filename">"/usr/local/lib/python2.7/dist-packages/flask/cli.py"</cite>,
+      line <em class="line">90</em>,
+      in <code class="function">locate_app</code></h4>
+  <div class="source"><pre class="line before"><span class="ws">    </span>else:</pre>
+<pre class="line before"><span class="ws">        </span>module = app_id</pre>
+<pre class="line before"><span class="ws">        </span>app_obj = None</pre>
+<pre class="line before"><span class="ws"></span> </pre>
+<pre class="line before"><span class="ws">    </span>try:</pre>
+<pre class="line current"><span class="ws">        </span>__import__(module)</pre>
+<pre class="line after"><span class="ws">    </span>except ImportError:</pre>
+<pre class="line after"><span class="ws">        </span>raise NoAppException('The file/path provided (%s) does not appear to '</pre>
+<pre class="line after"><span class="ws">                             </span>'exist.  Please verify the path is correct.  If '</pre>
+<pre class="line after"><span class="ws">                             </span>'app is not on PYTHONPATH, ensure the extension '</pre>
+<pre class="line after"><span class="ws">                             </span>'is .py' % module)</pre></div>
+</div>
+</ul>
+  <pre class=syntaxerror>File &quot;/var/www/html/mmelc-flask/app.py&quot;, line 1681
+    if zip_file and allowed_file(zip_file.filename):
+     ^
+IndentationError: expected an indented block</pre>
+</div>
+
+<div class="plain">
+  <form action="/?__debugger__=yes&amp;cmd=paste" method="post">
+    <p>
+      <input type="hidden" name="language" value="pytb">
+      This is the Copy/Paste friendly version of the traceback.  <span
+      class="pastemessage">You can also paste this traceback into
+      a <a href="https://gist.github.com/">gist</a>:
+      <input type="submit" value="create paste"></span>
+    </p>
+    <textarea cols="50" rows="10" name="code" readonly>Traceback (most recent call last):
+  File &quot;/usr/local/lib/python2.7/dist-packages/flask/cli.py&quot;, line 178, in __call__
+    self._flush_bg_loading_exception()
+  File &quot;/usr/local/lib/python2.7/dist-packages/flask/cli.py&quot;, line 166, in _flush_bg_loading_exception
+    reraise(*exc_info)
+  File &quot;/usr/local/lib/python2.7/dist-packages/flask/cli.py&quot;, line 155, in _load_app
+    self._load_unlocked()
+  File &quot;/usr/local/lib/python2.7/dist-packages/flask/cli.py&quot;, line 170, in _load_unlocked
+    self._app = rv = self.loader()
+  File &quot;/usr/local/lib/python2.7/dist-packages/flask/cli.py&quot;, line 231, in load_app
+    rv = locate_app(self.app_import_path)
+  File &quot;/usr/local/lib/python2.7/dist-packages/flask/cli.py&quot;, line 90, in locate_app
+    __import__(module)
+File &quot;/var/www/html/mmelc-flask/app.py&quot;, line 1681
+    if zip_file and allowed_file(zip_file.filename):
+     ^
+IndentationError: expected an indented block</textarea>
+  </form>
+</div>
+<div class="explanation">
+  The debugger caught an exception in your WSGI application.  You can now
+  look at the traceback which led to the error.  <span class="nojavascript">
+  If you enable JavaScript you can also use additional features such as code
+  execution (if the evalex feature is enabled), automatic pasting of the
+  exceptions and much more.</span>
+</div>
+      <div class="footer">
+        Brought to you by <strong class="arthur">DON'T PANIC</strong>, your
+        friendly Werkzeug powered traceback interpreter.
+      </div>
+    </div>
+
+    <div class="pin-prompt">
+      <div class="inner">
+        <h3>Console Locked</h3>
+        <p>
+          The console is locked and needs to be unlocked by entering the PIN.
+          You can find the PIN printed out on the standard output of your
+          shell that runs the server.
+        <form>
+          <p>PIN:
+            <input type=text name=pin size=14>
+            <input type=submit name=btn value="Confirm Pin">
+        </form>
+      </div>
+    </div>
+  </body>
+</html>
+
+<!--
+
+Traceback (most recent call last):
+  File "/usr/local/lib/python2.7/dist-packages/flask/cli.py", line 178, in __call__
+    self._flush_bg_loading_exception()
+  File "/usr/local/lib/python2.7/dist-packages/flask/cli.py", line 166, in _flush_bg_loading_exception
+    reraise(*exc_info)
+  File "/usr/local/lib/python2.7/dist-packages/flask/cli.py", line 155, in _load_app
+    self._load_unlocked()
+  File "/usr/local/lib/python2.7/dist-packages/flask/cli.py", line 170, in _load_unlocked
+    self._app = rv = self.loader()
+  File "/usr/local/lib/python2.7/dist-packages/flask/cli.py", line 231, in load_app
+    rv = locate_app(self.app_import_path)
+  File "/usr/local/lib/python2.7/dist-packages/flask/cli.py", line 90, in locate_app
+    __import__(module)
+File "/var/www/html/mmelc-flask/app.py", line 1681
+    if zip_file and allowed_file(zip_file.filename):
+     ^
+IndentationError: expected an indented block
+
+-->
+source:python,2018-07-06-18-23-40,<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+  "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+  <head>
+    <title>File &quot;/var/www/html/mmelc-flask/app.py&quot;, line 1677
+    sent_zip.save(os.path.join(app.config['UPLOAD_FOLDER'], save_filename))
+           ^
+SyntaxError: invalid syntax // Werkzeug Debugger</title>
+    <link rel="stylesheet" href="?__debugger__=yes&amp;cmd=resource&amp;f=style.css"
+        type="text/css">
+    <!-- We need to make sure this has a favicon so that the debugger does
+         not by accident trigger a request to /favicon.ico which might
+         change the application state. -->
+    <link rel="shortcut icon"
+        href="?__debugger__=yes&amp;cmd=resource&amp;f=console.png">
+    <script src="?__debugger__=yes&amp;cmd=resource&amp;f=jquery.js"></script>
+    <script src="?__debugger__=yes&amp;cmd=resource&amp;f=debugger.js"></script>
+    <script type="text/javascript">
+      var TRACEBACK = 139776070884560,
+          CONSOLE_MODE = false,
+          EVALEX = true,
+          EVALEX_TRUSTED = false,
+          SECRET = "hWAFA4RFxvauaYPLzl4R";
+    </script>
+  </head>
+  <body>
+    <div class="debugger">
+<h1>SyntaxError</h1>
+<div class="detail">
+  <p class="errormsg">File &quot;/var/www/html/mmelc-flask/app.py&quot;, line 1677
+    sent_zip.save(os.path.join(app.config['UPLOAD_FOLDER'], save_filename))
+           ^
+SyntaxError: invalid syntax</p>
+</div>
+<h2 class="traceback">Traceback <em>(most recent call last)</em></h2>
+<div class="traceback">
+  
+  <ul><li><div class="frame" id="frame-139776070884752">
+  <h4>File <cite class="filename">"/usr/local/lib/python2.7/dist-packages/flask/cli.py"</cite>,
+      line <em class="line">178</em>,
+      in <code class="function">__call__</code></h4>
+  <div class="source"><pre class="line before"><span class="ws"></span> </pre>
+<pre class="line before"><span class="ws">    </span>def __call__(self, environ, start_response):</pre>
+<pre class="line before"><span class="ws">        </span>__traceback_hide__ = True</pre>
+<pre class="line before"><span class="ws">        </span>if self._app is not None:</pre>
+<pre class="line before"><span class="ws">            </span>return self._app(environ, start_response)</pre>
+<pre class="line current"><span class="ws">        </span>self._flush_bg_loading_exception()</pre>
+<pre class="line after"><span class="ws">        </span>with self._lock:</pre>
+<pre class="line after"><span class="ws">            </span>if self._app is not None:</pre>
+<pre class="line after"><span class="ws">                </span>rv = self._app</pre>
+<pre class="line after"><span class="ws">            </span>else:</pre>
+<pre class="line after"><span class="ws">                </span>rv = self._load_unlocked()</pre></div>
+</div>
+
+<li><div class="frame" id="frame-139776070885008">
+  <h4>File <cite class="filename">"/usr/local/lib/python2.7/dist-packages/flask/cli.py"</cite>,
+      line <em class="line">166</em>,
+      in <code class="function">_flush_bg_loading_exception</code></h4>
+  <div class="source"><pre class="line before"><span class="ws">    </span>def _flush_bg_loading_exception(self):</pre>
+<pre class="line before"><span class="ws">        </span>__traceback_hide__ = True</pre>
+<pre class="line before"><span class="ws">        </span>exc_info = self._bg_loading_exc_info</pre>
+<pre class="line before"><span class="ws">        </span>if exc_info is not None:</pre>
+<pre class="line before"><span class="ws">            </span>self._bg_loading_exc_info = None</pre>
+<pre class="line current"><span class="ws">            </span>reraise(*exc_info)</pre>
+<pre class="line after"><span class="ws"></span> </pre>
+<pre class="line after"><span class="ws">    </span>def _load_unlocked(self):</pre>
+<pre class="line after"><span class="ws">        </span>__traceback_hide__ = True</pre>
+<pre class="line after"><span class="ws">        </span>self._app = rv = self.loader()</pre>
+<pre class="line after"><span class="ws">        </span>self._bg_loading_exc_info = None</pre></div>
+</div>
+
+<li><div class="frame" id="frame-139776070885072">
+  <h4>File <cite class="filename">"/usr/local/lib/python2.7/dist-packages/flask/cli.py"</cite>,
+      line <em class="line">155</em>,
+      in <code class="function">_load_app</code></h4>
+  <div class="source"><pre class="line before"><span class="ws">    </span>def _load_in_background(self):</pre>
+<pre class="line before"><span class="ws">        </span>def _load_app():</pre>
+<pre class="line before"><span class="ws">            </span>__traceback_hide__ = True</pre>
+<pre class="line before"><span class="ws">            </span>with self._lock:</pre>
+<pre class="line before"><span class="ws">                </span>try:</pre>
+<pre class="line current"><span class="ws">                    </span>self._load_unlocked()</pre>
+<pre class="line after"><span class="ws">                </span>except Exception:</pre>
+<pre class="line after"><span class="ws">                    </span>self._bg_loading_exc_info = sys.exc_info()</pre>
+<pre class="line after"><span class="ws">        </span>t = Thread(target=_load_app, args=())</pre>
+<pre class="line after"><span class="ws">        </span>t.start()</pre>
+<pre class="line after"><span class="ws"></span> </pre></div>
+</div>
+
+<li><div class="frame" id="frame-139776070885136">
+  <h4>File <cite class="filename">"/usr/local/lib/python2.7/dist-packages/flask/cli.py"</cite>,
+      line <em class="line">170</em>,
+      in <code class="function">_load_unlocked</code></h4>
+  <div class="source"><pre class="line before"><span class="ws">            </span>self._bg_loading_exc_info = None</pre>
+<pre class="line before"><span class="ws">            </span>reraise(*exc_info)</pre>
+<pre class="line before"><span class="ws"></span> </pre>
+<pre class="line before"><span class="ws">    </span>def _load_unlocked(self):</pre>
+<pre class="line before"><span class="ws">        </span>__traceback_hide__ = True</pre>
+<pre class="line current"><span class="ws">        </span>self._app = rv = self.loader()</pre>
+<pre class="line after"><span class="ws">        </span>self._bg_loading_exc_info = None</pre>
+<pre class="line after"><span class="ws">        </span>return rv</pre>
+<pre class="line after"><span class="ws"></span> </pre>
+<pre class="line after"><span class="ws">    </span>def __call__(self, environ, start_response):</pre>
+<pre class="line after"><span class="ws">        </span>__traceback_hide__ = True</pre></div>
+</div>
+
+<li><div class="frame" id="frame-139776070885200">
+  <h4>File <cite class="filename">"/usr/local/lib/python2.7/dist-packages/flask/cli.py"</cite>,
+      line <em class="line">231</em>,
+      in <code class="function">load_app</code></h4>
+  <div class="source"><pre class="line before"><span class="ws">                </span>raise NoAppException(</pre>
+<pre class="line before"><span class="ws">                    </span>'Could not locate Flask application. You did not provide '</pre>
+<pre class="line before"><span class="ws">                    </span>'the FLASK_APP environment variable.\n\nFor more '</pre>
+<pre class="line before"><span class="ws">                    </span>'information see '</pre>
+<pre class="line before"><span class="ws">                    </span>'http://flask.pocoo.org/docs/latest/quickstart/')</pre>
+<pre class="line current"><span class="ws">            </span>rv = locate_app(self.app_import_path)</pre>
+<pre class="line after"><span class="ws">        </span>debug = get_debug_flag()</pre>
+<pre class="line after"><span class="ws">        </span>if debug is not None:</pre>
+<pre class="line after"><span class="ws">            </span>rv.debug = debug</pre>
+<pre class="line after"><span class="ws">        </span>self._loaded_app = rv</pre>
+<pre class="line after"><span class="ws">        </span>return rv</pre></div>
+</div>
+
+<li><div class="frame" id="frame-139776070885264">
+  <h4>File <cite class="filename">"/usr/local/lib/python2.7/dist-packages/flask/cli.py"</cite>,
+      line <em class="line">90</em>,
+      in <code class="function">locate_app</code></h4>
+  <div class="source"><pre class="line before"><span class="ws">    </span>else:</pre>
+<pre class="line before"><span class="ws">        </span>module = app_id</pre>
+<pre class="line before"><span class="ws">        </span>app_obj = None</pre>
+<pre class="line before"><span class="ws"></span> </pre>
+<pre class="line before"><span class="ws">    </span>try:</pre>
+<pre class="line current"><span class="ws">        </span>__import__(module)</pre>
+<pre class="line after"><span class="ws">    </span>except ImportError:</pre>
+<pre class="line after"><span class="ws">        </span>raise NoAppException('The file/path provided (%s) does not appear to '</pre>
+<pre class="line after"><span class="ws">                             </span>'exist.  Please verify the path is correct.  If '</pre>
+<pre class="line after"><span class="ws">                             </span>'app is not on PYTHONPATH, ensure the extension '</pre>
+<pre class="line after"><span class="ws">                             </span>'is .py' % module)</pre></div>
+</div>
+</ul>
+  <pre class=syntaxerror>File &quot;/var/www/html/mmelc-flask/app.py&quot;, line 1677
+    sent_zip.save(os.path.join(app.config['UPLOAD_FOLDER'], save_filename))
+           ^
+SyntaxError: invalid syntax</pre>
+</div>
+
+<div class="plain">
+  <form action="/?__debugger__=yes&amp;cmd=paste" method="post">
+    <p>
+      <input type="hidden" name="language" value="pytb">
+      This is the Copy/Paste friendly version of the traceback.  <span
+      class="pastemessage">You can also paste this traceback into
+      a <a href="https://gist.github.com/">gist</a>:
+      <input type="submit" value="create paste"></span>
+    </p>
+    <textarea cols="50" rows="10" name="code" readonly>Traceback (most recent call last):
+  File &quot;/usr/local/lib/python2.7/dist-packages/flask/cli.py&quot;, line 178, in __call__
+    self._flush_bg_loading_exception()
+  File &quot;/usr/local/lib/python2.7/dist-packages/flask/cli.py&quot;, line 166, in _flush_bg_loading_exception
+    reraise(*exc_info)
+  File &quot;/usr/local/lib/python2.7/dist-packages/flask/cli.py&quot;, line 155, in _load_app
+    self._load_unlocked()
+  File &quot;/usr/local/lib/python2.7/dist-packages/flask/cli.py&quot;, line 170, in _load_unlocked
+    self._app = rv = self.loader()
+  File &quot;/usr/local/lib/python2.7/dist-packages/flask/cli.py&quot;, line 231, in load_app
+    rv = locate_app(self.app_import_path)
+  File &quot;/usr/local/lib/python2.7/dist-packages/flask/cli.py&quot;, line 90, in locate_app
+    __import__(module)
+File &quot;/var/www/html/mmelc-flask/app.py&quot;, line 1677
+    sent_zip.save(os.path.join(app.config['UPLOAD_FOLDER'], save_filename))
+           ^
+SyntaxError: invalid syntax</textarea>
+  </form>
+</div>
+<div class="explanation">
+  The debugger caught an exception in your WSGI application.  You can now
+  look at the traceback which led to the error.  <span class="nojavascript">
+  If you enable JavaScript you can also use additional features such as code
+  execution (if the evalex feature is enabled), automatic pasting of the
+  exceptions and much more.</span>
+</div>
+      <div class="footer">
+        Brought to you by <strong class="arthur">DON'T PANIC</strong>, your
+        friendly Werkzeug powered traceback interpreter.
+      </div>
+    </div>
+
+    <div class="pin-prompt">
+      <div class="inner">
+        <h3>Console Locked</h3>
+        <p>
+          The console is locked and needs to be unlocked by entering the PIN.
+          You can find the PIN printed out on the standard output of your
+          shell that runs the server.
+        <form>
+          <p>PIN:
+            <input type=text name=pin size=14>
+            <input type=submit name=btn value="Confirm Pin">
+        </form>
+      </div>
+    </div>
+  </body>
+</html>
+
+<!--
+
+Traceback (most recent call last):
+  File "/usr/local/lib/python2.7/dist-packages/flask/cli.py", line 178, in __call__
+    self._flush_bg_loading_exception()
+  File "/usr/local/lib/python2.7/dist-packages/flask/cli.py", line 166, in _flush_bg_loading_exception
+    reraise(*exc_info)
+  File "/usr/local/lib/python2.7/dist-packages/flask/cli.py", line 155, in _load_app
+    self._load_unlocked()
+  File "/usr/local/lib/python2.7/dist-packages/flask/cli.py", line 170, in _load_unlocked
+    self._app = rv = self.loader()
+  File "/usr/local/lib/python2.7/dist-packages/flask/cli.py", line 231, in load_app
+    rv = locate_app(self.app_import_path)
+  File "/usr/local/lib/python2.7/dist-packages/flask/cli.py", line 90, in locate_app
+    __import__(module)
+File "/var/www/html/mmelc-flask/app.py", line 1677
+    sent_zip.save(os.path.join(app.config['UPLOAD_FOLDER'], save_filename))
+           ^
+SyntaxError: invalid syntax
+
+-->
+source:python,2018-07-06-18-26-04,<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+  "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+  <head>
+    <title>File &quot;/var/www/html/mmelc-flask/app.py&quot;, line 1677
+    sent_zip.save(os.path.join(app.config['UPLOAD_FOLDER'], save_filename))
+           ^
+SyntaxError: invalid syntax // Werkzeug Debugger</title>
+    <link rel="stylesheet" href="?__debugger__=yes&amp;cmd=resource&amp;f=style.css"
+        type="text/css">
+    <!-- We need to make sure this has a favicon so that the debugger does
+         not by accident trigger a request to /favicon.ico which might
+         change the application state. -->
+    <link rel="shortcut icon"
+        href="?__debugger__=yes&amp;cmd=resource&amp;f=console.png">
+    <script src="?__debugger__=yes&amp;cmd=resource&amp;f=jquery.js"></script>
+    <script src="?__debugger__=yes&amp;cmd=resource&amp;f=debugger.js"></script>
+    <script type="text/javascript">
+      var TRACEBACK = 140292374973648,
+          CONSOLE_MODE = false,
+          EVALEX = true,
+          EVALEX_TRUSTED = false,
+          SECRET = "TUu9IIZJd0o7BIFQik0i";
+    </script>
+  </head>
+  <body>
+    <div class="debugger">
+<h1>SyntaxError</h1>
+<div class="detail">
+  <p class="errormsg">File &quot;/var/www/html/mmelc-flask/app.py&quot;, line 1677
+    sent_zip.save(os.path.join(app.config['UPLOAD_FOLDER'], save_filename))
+           ^
+SyntaxError: invalid syntax</p>
+</div>
+<h2 class="traceback">Traceback <em>(most recent call last)</em></h2>
+<div class="traceback">
+  
+  <ul><li><div class="frame" id="frame-140292374973840">
+  <h4>File <cite class="filename">"/usr/local/lib/python2.7/dist-packages/flask/cli.py"</cite>,
+      line <em class="line">178</em>,
+      in <code class="function">__call__</code></h4>
+  <div class="source"><pre class="line before"><span class="ws"></span> </pre>
+<pre class="line before"><span class="ws">    </span>def __call__(self, environ, start_response):</pre>
+<pre class="line before"><span class="ws">        </span>__traceback_hide__ = True</pre>
+<pre class="line before"><span class="ws">        </span>if self._app is not None:</pre>
+<pre class="line before"><span class="ws">            </span>return self._app(environ, start_response)</pre>
+<pre class="line current"><span class="ws">        </span>self._flush_bg_loading_exception()</pre>
+<pre class="line after"><span class="ws">        </span>with self._lock:</pre>
+<pre class="line after"><span class="ws">            </span>if self._app is not None:</pre>
+<pre class="line after"><span class="ws">                </span>rv = self._app</pre>
+<pre class="line after"><span class="ws">            </span>else:</pre>
+<pre class="line after"><span class="ws">                </span>rv = self._load_unlocked()</pre></div>
+</div>
+
+<li><div class="frame" id="frame-140292374974096">
+  <h4>File <cite class="filename">"/usr/local/lib/python2.7/dist-packages/flask/cli.py"</cite>,
+      line <em class="line">166</em>,
+      in <code class="function">_flush_bg_loading_exception</code></h4>
+  <div class="source"><pre class="line before"><span class="ws">    </span>def _flush_bg_loading_exception(self):</pre>
+<pre class="line before"><span class="ws">        </span>__traceback_hide__ = True</pre>
+<pre class="line before"><span class="ws">        </span>exc_info = self._bg_loading_exc_info</pre>
+<pre class="line before"><span class="ws">        </span>if exc_info is not None:</pre>
+<pre class="line before"><span class="ws">            </span>self._bg_loading_exc_info = None</pre>
+<pre class="line current"><span class="ws">            </span>reraise(*exc_info)</pre>
+<pre class="line after"><span class="ws"></span> </pre>
+<pre class="line after"><span class="ws">    </span>def _load_unlocked(self):</pre>
+<pre class="line after"><span class="ws">        </span>__traceback_hide__ = True</pre>
+<pre class="line after"><span class="ws">        </span>self._app = rv = self.loader()</pre>
+<pre class="line after"><span class="ws">        </span>self._bg_loading_exc_info = None</pre></div>
+</div>
+
+<li><div class="frame" id="frame-140292374974160">
+  <h4>File <cite class="filename">"/usr/local/lib/python2.7/dist-packages/flask/cli.py"</cite>,
+      line <em class="line">155</em>,
+      in <code class="function">_load_app</code></h4>
+  <div class="source"><pre class="line before"><span class="ws">    </span>def _load_in_background(self):</pre>
+<pre class="line before"><span class="ws">        </span>def _load_app():</pre>
+<pre class="line before"><span class="ws">            </span>__traceback_hide__ = True</pre>
+<pre class="line before"><span class="ws">            </span>with self._lock:</pre>
+<pre class="line before"><span class="ws">                </span>try:</pre>
+<pre class="line current"><span class="ws">                    </span>self._load_unlocked()</pre>
+<pre class="line after"><span class="ws">                </span>except Exception:</pre>
+<pre class="line after"><span class="ws">                    </span>self._bg_loading_exc_info = sys.exc_info()</pre>
+<pre class="line after"><span class="ws">        </span>t = Thread(target=_load_app, args=())</pre>
+<pre class="line after"><span class="ws">        </span>t.start()</pre>
+<pre class="line after"><span class="ws"></span> </pre></div>
+</div>
+
+<li><div class="frame" id="frame-140292374974224">
+  <h4>File <cite class="filename">"/usr/local/lib/python2.7/dist-packages/flask/cli.py"</cite>,
+      line <em class="line">170</em>,
+      in <code class="function">_load_unlocked</code></h4>
+  <div class="source"><pre class="line before"><span class="ws">            </span>self._bg_loading_exc_info = None</pre>
+<pre class="line before"><span class="ws">            </span>reraise(*exc_info)</pre>
+<pre class="line before"><span class="ws"></span> </pre>
+<pre class="line before"><span class="ws">    </span>def _load_unlocked(self):</pre>
+<pre class="line before"><span class="ws">        </span>__traceback_hide__ = True</pre>
+<pre class="line current"><span class="ws">        </span>self._app = rv = self.loader()</pre>
+<pre class="line after"><span class="ws">        </span>self._bg_loading_exc_info = None</pre>
+<pre class="line after"><span class="ws">        </span>return rv</pre>
+<pre class="line after"><span class="ws"></span> </pre>
+<pre class="line after"><span class="ws">    </span>def __call__(self, environ, start_response):</pre>
+<pre class="line after"><span class="ws">        </span>__traceback_hide__ = True</pre></div>
+</div>
+
+<li><div class="frame" id="frame-140292374974288">
+  <h4>File <cite class="filename">"/usr/local/lib/python2.7/dist-packages/flask/cli.py"</cite>,
+      line <em class="line">231</em>,
+      in <code class="function">load_app</code></h4>
+  <div class="source"><pre class="line before"><span class="ws">                </span>raise NoAppException(</pre>
+<pre class="line before"><span class="ws">                    </span>'Could not locate Flask application. You did not provide '</pre>
+<pre class="line before"><span class="ws">                    </span>'the FLASK_APP environment variable.\n\nFor more '</pre>
+<pre class="line before"><span class="ws">                    </span>'information see '</pre>
+<pre class="line before"><span class="ws">                    </span>'http://flask.pocoo.org/docs/latest/quickstart/')</pre>
+<pre class="line current"><span class="ws">            </span>rv = locate_app(self.app_import_path)</pre>
+<pre class="line after"><span class="ws">        </span>debug = get_debug_flag()</pre>
+<pre class="line after"><span class="ws">        </span>if debug is not None:</pre>
+<pre class="line after"><span class="ws">            </span>rv.debug = debug</pre>
+<pre class="line after"><span class="ws">        </span>self._loaded_app = rv</pre>
+<pre class="line after"><span class="ws">        </span>return rv</pre></div>
+</div>
+
+<li><div class="frame" id="frame-140292374974352">
+  <h4>File <cite class="filename">"/usr/local/lib/python2.7/dist-packages/flask/cli.py"</cite>,
+      line <em class="line">90</em>,
+      in <code class="function">locate_app</code></h4>
+  <div class="source"><pre class="line before"><span class="ws">    </span>else:</pre>
+<pre class="line before"><span class="ws">        </span>module = app_id</pre>
+<pre class="line before"><span class="ws">        </span>app_obj = None</pre>
+<pre class="line before"><span class="ws"></span> </pre>
+<pre class="line before"><span class="ws">    </span>try:</pre>
+<pre class="line current"><span class="ws">        </span>__import__(module)</pre>
+<pre class="line after"><span class="ws">    </span>except ImportError:</pre>
+<pre class="line after"><span class="ws">        </span>raise NoAppException('The file/path provided (%s) does not appear to '</pre>
+<pre class="line after"><span class="ws">                             </span>'exist.  Please verify the path is correct.  If '</pre>
+<pre class="line after"><span class="ws">                             </span>'app is not on PYTHONPATH, ensure the extension '</pre>
+<pre class="line after"><span class="ws">                             </span>'is .py' % module)</pre></div>
+</div>
+</ul>
+  <pre class=syntaxerror>File &quot;/var/www/html/mmelc-flask/app.py&quot;, line 1677
+    sent_zip.save(os.path.join(app.config['UPLOAD_FOLDER'], save_filename))
+           ^
+SyntaxError: invalid syntax</pre>
+</div>
+
+<div class="plain">
+  <form action="/?__debugger__=yes&amp;cmd=paste" method="post">
+    <p>
+      <input type="hidden" name="language" value="pytb">
+      This is the Copy/Paste friendly version of the traceback.  <span
+      class="pastemessage">You can also paste this traceback into
+      a <a href="https://gist.github.com/">gist</a>:
+      <input type="submit" value="create paste"></span>
+    </p>
+    <textarea cols="50" rows="10" name="code" readonly>Traceback (most recent call last):
+  File &quot;/usr/local/lib/python2.7/dist-packages/flask/cli.py&quot;, line 178, in __call__
+    self._flush_bg_loading_exception()
+  File &quot;/usr/local/lib/python2.7/dist-packages/flask/cli.py&quot;, line 166, in _flush_bg_loading_exception
+    reraise(*exc_info)
+  File &quot;/usr/local/lib/python2.7/dist-packages/flask/cli.py&quot;, line 155, in _load_app
+    self._load_unlocked()
+  File &quot;/usr/local/lib/python2.7/dist-packages/flask/cli.py&quot;, line 170, in _load_unlocked
+    self._app = rv = self.loader()
+  File &quot;/usr/local/lib/python2.7/dist-packages/flask/cli.py&quot;, line 231, in load_app
+    rv = locate_app(self.app_import_path)
+  File &quot;/usr/local/lib/python2.7/dist-packages/flask/cli.py&quot;, line 90, in locate_app
+    __import__(module)
+File &quot;/var/www/html/mmelc-flask/app.py&quot;, line 1677
+    sent_zip.save(os.path.join(app.config['UPLOAD_FOLDER'], save_filename))
+           ^
+SyntaxError: invalid syntax</textarea>
+  </form>
+</div>
+<div class="explanation">
+  The debugger caught an exception in your WSGI application.  You can now
+  look at the traceback which led to the error.  <span class="nojavascript">
+  If you enable JavaScript you can also use additional features such as code
+  execution (if the evalex feature is enabled), automatic pasting of the
+  exceptions and much more.</span>
+</div>
+      <div class="footer">
+        Brought to you by <strong class="arthur">DON'T PANIC</strong>, your
+        friendly Werkzeug powered traceback interpreter.
+      </div>
+    </div>
+
+    <div class="pin-prompt">
+      <div class="inner">
+        <h3>Console Locked</h3>
+        <p>
+          The console is locked and needs to be unlocked by entering the PIN.
+          You can find the PIN printed out on the standard output of your
+          shell that runs the server.
+        <form>
+          <p>PIN:
+            <input type=text name=pin size=14>
+            <input type=submit name=btn value="Confirm Pin">
+        </form>
+      </div>
+    </div>
+  </body>
+</html>
+
+<!--
+
+Traceback (most recent call last):
+  File "/usr/local/lib/python2.7/dist-packages/flask/cli.py", line 178, in __call__
+    self._flush_bg_loading_exception()
+  File "/usr/local/lib/python2.7/dist-packages/flask/cli.py", line 166, in _flush_bg_loading_exception
+    reraise(*exc_info)
+  File "/usr/local/lib/python2.7/dist-packages/flask/cli.py", line 155, in _load_app
+    self._load_unlocked()
+  File "/usr/local/lib/python2.7/dist-packages/flask/cli.py", line 170, in _load_unlocked
+    self._app = rv = self.loader()
+  File "/usr/local/lib/python2.7/dist-packages/flask/cli.py", line 231, in load_app
+    rv = locate_app(self.app_import_path)
+  File "/usr/local/lib/python2.7/dist-packages/flask/cli.py", line 90, in locate_app
+    __import__(module)
+File "/var/www/html/mmelc-flask/app.py", line 1677
+    sent_zip.save(os.path.join(app.config['UPLOAD_FOLDER'], save_filename))
+           ^
+SyntaxError: invalid syntax
+
+-->
+source:python,2018-07-06-18-27-42,<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<title>400 Bad Request</title>
+<h1>Bad Request</h1>
+<p>The browser (or proxy) sent a request that this server could not understand.</p>
+source:python,2018-07-06-18-30-15,<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<title>400 Bad Request</title>
+<h1>Bad Request</h1>
+<p>The browser (or proxy) sent a request that this server could not understand.</p>
+source:python,2018-07-06-18-39-48,success: file saved

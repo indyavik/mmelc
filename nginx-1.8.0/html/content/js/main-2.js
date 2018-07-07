@@ -993,11 +993,15 @@ function generateTestFeedback(MCQtestname, numMCQs, PXLtestname, numPXLs) {
 
     }
 
+    
+
     all_user_answers["username"] = current_user;
     all_user_answers["timestamp"] = now.valueOf();
     //update_on_disk(JSON.parse(current_user) + '_' + now.valueOf(), all_user_answers); //now handling saving data in submit_data_to_server
     //try to send all_user_answers to server:
-    submit_data_to_server('user_test_data_object', all_user_answers);
+
+    submit_device_data_to_server('user_test_data_object', all_user_answers); // fails silently. 
+
     //alert('submitted');
 
     //alert(JSON.stringify(all_user_answers));
@@ -1586,14 +1590,20 @@ function show_test_report(test_type, output_table) {
 
 } //function show test results 
 
-function submit_data_to_server_2(data_type, data_object) {
+function submit_device_data_to_server(data_type, data_object) {
+
+    /*
+    can be used to submit any data to server. target route => deviceData
+
+    */
 
     //data_type = 'user_data' , 'feedback_survey' , 'certification_test' , pre_test, post_data
 
     //data_object - > a JSON object containing the data load that needs to be set to the serve. 
 
     if (data_object == null || typeof data_object !== 'object') {
-        if (data_type == "survey_response") { alert('An error occurred - please save the result file to your computer and send via email later.'); };
+        if (data_type == "survey_response") {
+             console.log('An error occurred - please save the result file to your computer and send via email later.'); };
         return;
     }
 
@@ -1606,7 +1616,9 @@ function submit_data_to_server_2(data_type, data_object) {
     //alert(current_user);
     //alert(JSON.parse(current_user));
 
-    var url_endpoint = 'http://mmelc.vestigesystems.com/deviceData';
+    //var url_endpoint = 'http://mmelc.vestigesystems.com/deviceData';
+
+    var url_endpoint = BACKEND + '/deviceData' ;
 
     var load = { 'user': current_user, 'data_load': data_object, 'data_type': data_type }
 
@@ -1623,8 +1635,9 @@ function submit_data_to_server_2(data_type, data_object) {
         data: load,
 
         success: function(data) {
-            update_on_disk('sentdata/' + current_user + now.valueOf(), load);
-            console.log("success: " + JSON.stringify(load))
+           // update_on_disk('sentdata/' + current_user + now.valueOf(), load); // no need to add this info. 
+
+            console.log("succesfully uploaded: " + JSON.stringify(load))
             if (data_type == "survey_response") { alert('Thank you, your feedback has been received!'); };
 
 
@@ -1632,7 +1645,8 @@ function submit_data_to_server_2(data_type, data_object) {
 
         error: function(data) {
 
-            update_on_disk('unreceiveddata/' + current_user + now.valueOf(), load);
+            // update_on_disk('unreceiveddata/' + current_user + now.valueOf(), load); // no need to do this. buggy. 
+            
             console.log("submit_data_error: " + JSON.stringify(load))
             if (data_type == "survey_response") { alert('An error occurred - please save the result file to your computer and send via email later.'); };
 

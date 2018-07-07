@@ -148,7 +148,7 @@
 		   <br>
 		   <textarea id="error_description" name="error_description" cols="80" rows="5"></textarea>
 		   <br><br><br>
-                   <span id="sendreport-btn"><button class="sendreportbtn" style="vertical-align: top;position: absolute;" onclick="send_error_reports(JSON.parse(localStorage.getItem('logged_in')),document.getElementById('email').value,document.getElementById('error_description').value);">Send Error Report</button></span>
+                   <span id="sendreport-btn"><button class="sendreportbtn" style="vertical-align: top;position: absolute;" onclick="send_error_reports(localStorage.getItem('logged_in'),document.getElementById('email').value,document.getElementById('error_description').value);">Send Error Report</button></span>
 		   <br><br><br><br>
                  
 

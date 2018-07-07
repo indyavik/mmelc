@@ -176,14 +176,16 @@
                 return;
             }
 
-            var convert = convert_preview_user(username, license_id)
+           var convert = convert_preview_user(username, license_id)
+
+           //var convert = 'success';
 
             if (convert == 'success') {
                 alert('User is successfully converted to a licensed user. Redirect to home page to login again')
                 setTimeout(function() {
-				var date = new Date;
-                    window.location.href = "index.html";
-					window.location.reload(true);
+			        //window.location.href = "index.html?reload=true";
+                    //window.location.reload(true);
+                    window.location.assign("index.html")
 					
                 }, 500);
 
