@@ -293,7 +293,8 @@ class MainFrame(wx.Frame):
 
             params = {'zipOrganization' : 'intvenWeare7' , 'filename' : file_name, 'zipTimeStamp' : now}
 
-            url =  'http://mmelc.vestigesystems.com/unsentData'
+            #url =  'http://mmelc.vestigesystems.com/unsentData'
+            url = get_endpoint() + '/unsentData'
 
             
             try:
@@ -874,7 +875,9 @@ class JavascriptExternal:
 
         #params = {'userid' : userid , 'email' : email, 'description' : description}
 
-        url =  'http://mmelc.vestigesystems.com:8081/api_v1_upload'
+        #url =  'http://mmelc.vestigesystems.com:8081/api_v1_upload'
+        
+        url = get_endpoint() + '/api_v1_upload'
 
         try:
             res = requests.post(url, files=files, data={'email':email, 'description': description} )
@@ -910,7 +913,9 @@ class JavascriptExternal:
 
         params = {'zipOrganization' : zipOrganization , 'zipLocation' : zipLocation, 'zipTimeStamp' : now}
 
-        url =  'http://mmelc.vestigesystems.com:8081/putZip'
+        #url =  'http://mmelc.vestigesystems.com:8081/putZip'
+
+        url = get_endpoint() + '/putzip'
 
         try:
             res = requests.post(url, files=files, data=params )

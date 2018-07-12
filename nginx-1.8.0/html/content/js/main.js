@@ -1,5 +1,6 @@
 //var BACKEND = 'http://localhost:8081'
-var BACKEND = 'http://mmelc.vestigesystems.com:8081'
+//var BACKEND = 'http://mmelc.vestigesystems.com:8081'
+var BACKEND = 'http://malariamicroscopy.amref.org'
 
 function submit_data_to_server_registration(data_object, backend_method, success_func, error_func, ajaxtype) {
 
@@ -204,17 +205,17 @@ function send_error_reports_callback(arg) {
 function send_error_reports(userid, email, description) {
     //alert(userid + email + description);
     //external.createZip(send_error_reports_callback)
-    var user = userid; 
-    var email = email; ;
-    var description = description; 
+    var user = userid;
+    var email = email;;
+    var description = description;
 
     if (user) {
 
-        external.send_error_reports(send_error_reports_callback, email, description );
+        external.send_error_reports(send_error_reports_callback, email, description);
 
     }
 
-    
+
 }
 
 function get_updates() {
