@@ -91,7 +91,7 @@ function verifyLicense() {
             external.saveFile('/data_l/.mmelc', mmelc)
 
             //alert('updating .mmelc')
-            document.getElementById('verify_license_response').innerHTML = 'License Key is verified'
+            document.getElementById('verify_license_response').innerHTML = 'Licence Key is verified'
 
 
         }
@@ -120,7 +120,7 @@ function verify_license_callback(response) {
     }
 
     if (response == 'error') {
-        alert('Error: Could not verify license key. please enter again')
+        alert('Error: Could not verify licence key. please enter again')
     }
 
 
@@ -149,7 +149,7 @@ function mainEntry(button_id) {
 
     if (button_id == 'licence') {
         /*
-            check the license is valid. 
+            check the licence is valid. 
             then send. 
 
         */

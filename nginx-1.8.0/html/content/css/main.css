@@ -279,10 +279,10 @@ li.topmenu {
     right: 0;
     margin: 10px auto;
     width: 80%;
-    padding: 60px 30px 30px 30px;
+    padding: 30px 30px 30px 30px;
     /*border: 2px solid;*/
     border-radius: 30px;
-    height: calc(100% - 220px);
+    height: calc(100% - 190px);
     background-color: #FFDBE7;
     overflow: auto;
     max-width: 1000px;

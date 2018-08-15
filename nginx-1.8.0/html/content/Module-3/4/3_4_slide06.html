@@ -12,7 +12,7 @@
 	</p>
 		<input id="toggleButton" type="button" value="Click to begin the exercise" onclick="counter++; toggleQuantExercise(counter);"><br><br><br>
 	    
-</div>
+<br><br><br> </div> <!--actual page content here -->
 
 <script type="text/javascript">
     var counter = 0;
@@ -43,7 +43,7 @@
 			document.getElementById("toggleButton").value = "Click to continue counting to 200 WBCs";
 		}
 		if (counter == 7) {
-			document.getElementById("box1").innerHTML = 'Assume counting continues, and at the 30th field the WBC total surpasses 200.  <br><br> Total at end of count: <br> 116 parasites <br> 204 WBCs <br><br>Because the parasite count exceeds 100, we can now calculate the parasite density.';
+			document.getElementById("box1").innerHTML = 'Assume counting continues, and at the 30th field the WBC total surpasses 200.  <br><br> Total at the end of the count: <br> 116 parasites <br> 204 WBCs <br><br>Because the parasite count exceeds 100, we can now calculate the parasite density.';
 			document.getElementById("toggleButton").value = "Click to perform calculation";
 		}
 		if (counter == 8) {

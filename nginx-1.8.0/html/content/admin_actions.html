@@ -70,7 +70,7 @@
                                 </div>
                                 <div style="width:calc(71% - 5px);display: inline-block;vertical-align: top;overflow:auto;height:100%;">
 								<span id="admin-btn"><button class="adminbtn" style="vertical-align: top;position: absolute;right: 50px;" onclick="window.location.href='index.html';">Return</button></span>
-                                    <h1>Welcome to the Worlwide E-Learning Course On Malaria Microscopy!</h1>
+                                    <h1>Welcome to the Worldwide E-Learning Course on Malaria Microscopy!</h1>
                                     <br>
 
                         <script type="text/javascript">
@@ -148,7 +148,7 @@
 		   <br>
 		   <textarea id="error_description" name="error_description" cols="80" rows="5"></textarea>
 		   <br><br><br>
-                   <span id="sendreport-btn"><button class="sendreportbtn" style="vertical-align: top;position: absolute;" onclick="send_error_reports(localStorage.getItem('logged_in'),document.getElementById('email').value,document.getElementById('error_description').value);">Send Error Report</button></span>
+                   <span id="sendreport-btn"><button class="sendreportbtn" style="vertical-align: top;position: absolute;" onclick="send_error_reports(JSON.parse(localStorage.getItem('logged_in')),document.getElementById('email').value,document.getElementById('error_description').value);">Send Error Report</button></span>
 		   <br><br><br><br>
                  
 
