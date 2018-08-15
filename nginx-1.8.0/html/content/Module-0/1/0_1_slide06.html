@@ -15,7 +15,7 @@
 	Click the button below to continue.
 	</p>
 	
-	<input id="toggleButton" type="button" value="Click to begin the exercise" onclick="counter++; toggleQuantExercise(counter);"><br><br><br>
+	<input id="toggleButton" type="button" value="Click to begin the exercise" onclick="counter++; toggleQuantExercise(counter);">
 
 	
 
@@ -24,7 +24,7 @@
 
 
 
-</div>
+<br><br><br> </div> <!--actual page content here -->
 <script type="text/javascript">
     var counter = 0;
 
@@ -34,14 +34,14 @@
 
 		
 		if (counter == 1) {
-			document.getElementById("box1").innerHTML = "	The images above should be used for guidance as you adjust your display settings.  On the left are two small images with malaria parasites in a thick blood film as well as a thin blood film with red blood cells.  These samples have been properly stained with Giemsa stain.  If you have experience in malaria microscopy, you may immediately notice whether the image colour looks correct or if, for example, it looks too blue and the parasite chromatin doesn't look red at all.  The image on the right shows a simple gradient between the 'chromatin-red' and the 'cytoplasm-blue'.  While the colour on the left should never look truly red, it should be closer to red or pink than to blue.  The colour on the right should be a more pure purple and closer to blue.  There should be a definite contrast between the two colours.";
+			document.getElementById("box1").innerHTML = "	The images above should be used for guidance as you adjust your display settings.  On the left are two small images with malaria parasites in a thick blood film; on the lower right is a thin blood film with red blood cells.  These samples have been properly stained with Giemsa stain.  If you are experienced in malaria microscopy, you may immediately notice whether the image colours looks correct or if, for example, the images look too blue and the parasite chromatin doesn't look red at all.  The image on the right shows a simple gradient between the 'chromatin-red' and the 'cytoplasm-blue'.  While the colour on the left should never look truly red, it should be closer to red or pink than to blue.  The colour on the right should be a more blue violet and closer to blue.  There should be a definite contrast between the two colours.";
 			document.getElementById("toggleButton").value = "Click to continue.";
 			}
 		if (counter == 2) {
 			document.getElementById("box1").innerHTML = "	The goal of adjusting your display settings is to accurately match what is seen in the images in this course to what one would see when looking at a real slide through a microscope.  	The most common problem we've come across, especially common on laptop computers, is that the images look 'too blue'.  	";
 		}
 		if (counter == 3) {
-			document.getElementById("box1").innerHTML = "	While observing the changes in the images above, we suggest adjusting your display settings in one of the following ways:	<ol>	<li><strong>Adjust the monitor settings directly.</strong>  Most desktop monitors have buttons that allow you to adjust the colour.  Unfortunately all monitors are different and we cannot provide specific instructions.  You will likely want to increase the amount of red, while decreasing blue and green.</li>	<li><strong>Adjust your settings through your graphics card.</strong>  Most computers have some way to adjust the colour through the control of their graphics cards.  Unfortunately, all computers are different and we cannot provide instructions specific to any one machine.  These may be accessed by right-clicking on the desktop or through the control panel.  Again, it is likely that the red channel brightness or gamma needs be increased, while blue and green are decreased.</li>	<li><strong>Use the third-party program Gamma Panel</strong> to adjust your computer's settings.  We have included this free program on the course USB drive, and provide instructions in the following steps.  This program works on Windows versions as old as Windows 98 and all newer Windows operating systems.</li>	</ol>";
+			document.getElementById("box1").innerHTML = "	While observing the changes in the images above, we suggest adjusting your display settings in one of the following ways:	<ol>	<li><strong>Adjust the monitor settings directly.</strong>  Most desktop monitors have buttons that allow you to adjust the colour.  Unfortunately all monitors are different and we cannot provide specific instructions.  You will likely want to increase the amount of red, while decreasing blue and green.</li>	<li><strong>Adjust your settings through your graphics card.</strong>  Most computers have some way to adjust the colour through the control of their graphics card.  Unfortunately, all computers are different and we cannot provide instructions specific to any one machine.  These settings may be accessed by right-clicking on the desktop, or through the control panel.  Again, it is likely that the red channel brightness or gamma will need to be increased, while the blue and green are decreased.</li>	<li><strong>Use the third-party program Gamma Panel</strong> to adjust your computer's settings.  We have included this free program on the course USB drive, and provided instructions in the following steps.  This program works on Windows versions as old as Windows 98 and all newer Windows operating systems.</li>	</ol>";
 		}
 		if (counter == 4) {
 			document.getElementById("box1").innerHTML = '<h3>Gamma Panel Instructions</h3> <p class="content-text"><strong>Note:</strong> While we have not had problems using Gamma Panel, as with any third party software we highly recommend saving any open documents before using the program!</p>';
@@ -55,12 +55,12 @@
 
 		}
 		if (counter == 7) {
-			document.getElementById("box1").innerHTML = "Scroll up to the example images and switch back and forth; if you are satisfied with the new colours, you can press 'Hide' or 'Exit' in Gamma Panel and the current settings will remain selected.  If you want to further refine, you can change each channel individually by clicking each colour's button and adjusting the values.  For us, slightly changing only the Gamma values was most successful&mdash;the provided profile has red gamma set to 1.1, green to 0.7, and blue to 0.6.  After you are satisfied with your settings, you can save your profile by pressing 'Save as...', which can then be applied again at a future time.";
+			document.getElementById("box1").innerHTML = "Scroll up to the example images and switch back and forth; if you are satisfied with the new colours, you can press 'Hide' or 'Exit' in Gamma Panel and the current settings will remain selected.  If you want to further refine the colours, you can change each channel individually by clicking each colour's button and adjusting the values.  For us, slightly changing only the Gamma values was most successful&mdash;the provided profile has red gamma set to 1.1, green to 0.7, and blue to 0.6.  After you are satisfied with your settings, you can save your profile by pressing 'Save as...', which can then be applied again at a future time.";
 
 			
 		}
 		if (counter == 8) {
-			document.getElementById("box1").innerHTML = 'As you work through the course, you may occasionally realise you need to re-adjust your settings.  Keep in mind that there is some variation between images from different slides that were stained in different laboratories.  After taking the course, or when using your computer for other purposes, you will likely want to switch back to your original settings.  In that case, simply re-open Gamma Panel and press the "Esc" key.  <br><br>A special thanks to the author of this program, Tomasz Porosinski, for producing this useful free software tool.';
+			document.getElementById("box1").innerHTML = 'As you work through the course, you may occasionally realise you need to re-adjust your settings.  Keep in mind that there is some variation between images from different slides that were stained in different laboratories.  After taking the course, or when using your computer for other purposes, you will likely want to switch back to your original settings.  In that case, simply re-open Gamma Panel and press the "Esc" key.  <br><br>Special thanks to the author of this program, Tomasz Porosinski, for producing this useful free software tool.';
 			
 			document.getElementById("toggleButton").value = "Click to begin again. ";
 			

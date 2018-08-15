@@ -81,13 +81,13 @@
                                     <div id="MainTable" class="main_table" style="margin-left:20px; margin-top:20px; min-height:10px; ">
 
                                         <div id="div_resubmit_registration">
-                                            <p>Enter Username and select the License Key, then click "Go."<span style="color:blue; margin-left:10px;"></p>
+                                            <p>Enter Username and select the Licence Key, then click "Go."<span style="color:blue; margin-left:10px;"></p>
 
 
                                             <p id="verify_resubmit_response" style="color:blue;"></p>
                                             <input type="text" placeholder="Enter Username" name="username_convert" id="username_convert" maxlength="25" style="width:200px; height:50px; border: solid 1px #9598a0; font-size:18px; ">
                                             <p></p>
-                                            <p>Select License:</p>
+                                            <p>Select Licence:</p>
                                             <select id="select-license-convert" style="display:block;"></select>
 
                                             <p></p>
@@ -172,20 +172,18 @@
                 return;
             }
             if (!license_id) {
-                alert('please enter a license id');
+                alert('please enter a licence id');
                 return;
             }
 
-           var convert = convert_preview_user(username, license_id)
-
-           //var convert = 'success';
+            var convert = convert_preview_user(username, license_id)
 
             if (convert == 'success') {
                 alert('User is successfully converted to a licensed user. Redirect to home page to login again')
                 setTimeout(function() {
-			        //window.location.href = "index.html?reload=true";
-                    //window.location.reload(true);
-                    window.location.assign("index.html")
+				var date = new Date;
+                    window.location.href = "index.html";
+					window.location.reload(true);
 					
                 }, 500);
 

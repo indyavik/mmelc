@@ -46,6 +46,7 @@ function ifpreview() {
             alert('We hope you are enjoying the course. Please sign up for the full licensed version of the course!')
 
         }
+
     }
     return load;
 } //if preview

@@ -300,7 +300,7 @@ td {
     width:94%;display: inline-block;vertical-align: top;padding-top: 10px;
 }
 .figCaption-style{
-    padding:3px 0 0 30px;
+    padding:3px 0 0px 30px;
 }
 
  .noteImgStyle{
@@ -533,6 +533,12 @@ tr.spaceUnder > td
     border-top:1px dashed #0000b1;*/
 	}
 
+.list-timeout5{ /*numbered list showing*/
+	display: list-item;
+	padding: 2px;
+	line-height:1;
+	}
+	
 .nextbtn{
     float:right;
     padding:6px;

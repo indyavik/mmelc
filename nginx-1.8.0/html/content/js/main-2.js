@@ -220,7 +220,7 @@ function get_titles() {
 
     var mods_title = {
 
-        '0': "Course introduction, Software Setup and Tutorial, and Pre-Test",
+        '0': "Course Introduction, Software Setup and Tutorial, and Pre-Test",
         '1': "Module One: Introduction to Malaria",
         '2': "Module Two: Blood Collection, Preparation and Staining of Blood Films",
         '3': "Module Three: Blood Film Examination",
@@ -815,13 +815,13 @@ function goNext(signal) {
 
         load_page(next_page)
     } else {
-        //feedback
-        var next = 100;
+        //feedback - now return to home since feedback survey removed.
+        //var next = 100;
         //if (next == 6) next +=1; 
-        var next_module = next.toString()
-        var next_page = 'Module-' + next_module + '.html'
+        //var next_module = next.toString()
+        //var next_page = 'Module-' + next_module + '.html'
         update_units(current_module, current_unit)
-        load_module_home(next_page)
+        load_page('home.html')
     }
 
 
@@ -993,15 +993,11 @@ function generateTestFeedback(MCQtestname, numMCQs, PXLtestname, numPXLs) {
 
     }
 
-    
-
     all_user_answers["username"] = current_user;
     all_user_answers["timestamp"] = now.valueOf();
     //update_on_disk(JSON.parse(current_user) + '_' + now.valueOf(), all_user_answers); //now handling saving data in submit_data_to_server
     //try to send all_user_answers to server:
-
-    submit_device_data_to_server('user_test_data_object', all_user_answers); // fails silently. 
-
+    submit_data_to_server('user_test_data_object', all_user_answers);
     //alert('submitted');
 
     //alert(JSON.stringify(all_user_answers));
@@ -1248,7 +1244,7 @@ function getSingleReportScoreAndFeedback(userReport, reportName) {
             var correctQuant = 12000;
             var correctQuant2 = 50000;
             //alert('case1');
-            thisReport = thisReport + '<br>Our report for this sample is:   <font color="blue"><em>P. malariae</em> trophozoites, schizonts, and gametocytes seen, 12000 asexual parasites/microlitre. </font><br>  Note: This is an example where quantitation using the thick film resulted in much higher count than using the thin film.  We used the thin film for the above report, but using the thick film we calculate roughly 50000 parasites/microlitre!  The discrepancy seems to be due to a low white blood cell density. The score calculated for this sample gives credit as long as you are within range of either of these values. <br>';
+            thisReport = thisReport + '<br>Our report for this sample is:   <font color="blue"><em>P. malariae</em> trophozoites, schizonts, and gametocytes seen, 12000 asexual parasites/microlitre. </font><br>  Note: This is an example where quantitation using the thick film resulted in a much higher count than using the thin film.  We used the thin film for the above report, but using the thick film we calculated roughly 50,000 parasites/microlitre!  The discrepancy seems to be due to a low white blood cell density. The score calculated for this sample gives credit as long as you are within range of either of these values. <br>';
             //check that MPS:
             if (nmps == 0) {
                 thisScore = 5;
@@ -1590,20 +1586,14 @@ function show_test_report(test_type, output_table) {
 
 } //function show test results 
 
-function submit_device_data_to_server(data_type, data_object) {
-
-    /*
-    can be used to submit any data to server. target route => deviceData
-
-    */
+function submit_data_to_server_2(data_type, data_object) {
 
     //data_type = 'user_data' , 'feedback_survey' , 'certification_test' , pre_test, post_data
 
     //data_object - > a JSON object containing the data load that needs to be set to the serve. 
 
     if (data_object == null || typeof data_object !== 'object') {
-        if (data_type == "survey_response") {
-             console.log('An error occurred - please save the result file to your computer and send via email later.'); };
+        if (data_type == "survey_response") { alert('An error occurred - please save the result file to your computer and send via email later.'); };
         return;
     }
 
@@ -1616,9 +1606,7 @@ function submit_device_data_to_server(data_type, data_object) {
     //alert(current_user);
     //alert(JSON.parse(current_user));
 
-    //var url_endpoint = 'http://mmelc.vestigesystems.com/deviceData';
-
-    var url_endpoint = BACKEND + '/deviceData' ;
+    var url_endpoint = 'http://mmelc.vestigesystems.com/deviceData';
 
     var load = { 'user': current_user, 'data_load': data_object, 'data_type': data_type }
 
@@ -1635,9 +1623,8 @@ function submit_device_data_to_server(data_type, data_object) {
         data: load,
 
         success: function(data) {
-           // update_on_disk('sentdata/' + current_user + now.valueOf(), load); // no need to add this info. 
-
-            console.log("succesfully uploaded: " + JSON.stringify(load))
+            update_on_disk('sentdata/' + current_user + now.valueOf(), load);
+            console.log("success: " + JSON.stringify(load))
             if (data_type == "survey_response") { alert('Thank you, your feedback has been received!'); };
 
 
@@ -1645,8 +1632,7 @@ function submit_device_data_to_server(data_type, data_object) {
 
         error: function(data) {
 
-            // update_on_disk('unreceiveddata/' + current_user + now.valueOf(), load); // no need to do this. buggy. 
-            
+            update_on_disk('unreceiveddata/' + current_user + now.valueOf(), load);
             console.log("submit_data_error: " + JSON.stringify(load))
             if (data_type == "survey_response") { alert('An error occurred - please save the result file to your computer and send via email later.'); };
 
@@ -1834,6 +1820,32 @@ function toggle5_complete() {
 	    document.getElementById('forward-button').onclick = function() { nav_to('next'); };
         document.getElementById('forward-button').src = "images/forward.png";
 	
+}
+
+function toggle6(counter, max) {
+	    //same as toggle 5 but for numbered lists, so display type changes to list-item instead of block.
+
+
+    var ele = document.getElementById('box' + counter);
+
+    if (ele.style.display == "block") {
+
+        ele.style.display = "none";
+
+    } else {
+        ele.style.display = "list-item";
+    }
+
+    if (counter == max) {
+
+        document.getElementById("toggleButton").style.display = "none";
+        //var x = document.getElementById('nav_2'); 
+        //x.style.display = "block";
+        document.getElementById('forward-button').onclick = function() { nav_to('next'); };
+        document.getElementById('forward-button').src = "images/forward.png";
+
+
+    }
 }
 
 function is_first_page(page) {

@@ -1,6 +1,5 @@
 //var BACKEND = 'http://localhost:8081'
-//var BACKEND = 'http://mmelc.vestigesystems.com:8081'
-var BACKEND = 'http://malariamicroscopy.amref.org'
+var BACKEND = 'http://mmelc.vestigesystems.com:8081'
 
 function submit_data_to_server_registration(data_object, backend_method, success_func, error_func, ajaxtype) {
 
@@ -25,8 +24,6 @@ function submit_data_to_server_registration(data_object, backend_method, success
     });
 
 } //submit_data_to_server_registration
-
-
 
 function submit_data_to_server(data_object, backend_method, cb_func, ajaxtype) {
 
@@ -194,28 +191,13 @@ function GetObject(obj_identifier, file_on_disk) {
 
 }
 
-
-
+function send_error_reports(userid, email, description) {
+    external.send_error_reports(userid, email, description, send_error_reports_callback);
+}
 
 function send_error_reports_callback(arg) {
     var response = arg;
     alert(response);
-}
-
-function send_error_reports(userid, email, description) {
-    //alert(userid + email + description);
-    //external.createZip(send_error_reports_callback)
-    var user = userid;
-    var email = email;;
-    var description = description;
-
-    if (user) {
-
-        external.send_error_reports(send_error_reports_callback, email, description);
-
-    }
-
-
 }
 
 function get_updates() {
@@ -468,6 +450,8 @@ function MarkComplete(module_id, section_url, next_page) {
         if (next_page) window.location.href = next_page;
 
     }
+
+
 
 
 
