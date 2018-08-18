@@ -819,7 +819,7 @@ class JavascriptExternal:
 
         jsCallBack.Call(response)
 
-    def send_error_reports2(self, userid, email, description, jsCallBack):
+    def send_error_reports2_bkup(self, userid, email, description, jsCallBack):
         response = 'Error reports sent.'
 
         now = datetime.now().strftime('%Y-%m-%d-%H-%M-%S')
