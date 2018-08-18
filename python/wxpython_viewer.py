@@ -981,8 +981,8 @@ class JavascriptExternal:
         #jsCallback.Call("str:" + pass_key_output + "result:" + output)
         jsCallback.Call(output);
 
-    #def send_error_reports(self, userid, email, jsCallBack):
-    def send_error_reports(self, jsCallback, email, description):
+    def send_error_reports(self, userid, email, description, jsCallBack):
+    #def send_error_reports(self, jsCallback, email, description):
         print 'email is' + email ;
 
         now = datetime.now().strftime('%Y-%m-%d-%H-%M-%S')
@@ -1025,14 +1025,14 @@ class JavascriptExternal:
             else: 
                 output = 'error'
 
-            jsCallback.Call(res.text);
+            jsCallBack.Call(res.text);
 
-            #jsCallback.Call(res.text);
+            #jsCallBack.Call(res.text);
 
 
         except:
 
-            jsCallback.Call('error')
+            jsCallBack.Call('error')
 
 
     def createZip(self, jsCallback, zipOrg='notProvided', zipLoc='notProvied'):
