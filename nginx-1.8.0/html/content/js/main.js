@@ -206,7 +206,8 @@ function send_error_reports_callback(arg) {
 
     }
     alert(show);
-    return;
+    window.location.replace("index.html");
+
 }
 
 function get_updates() {

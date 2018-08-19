@@ -122,7 +122,7 @@
 
                                             <span id="getupdates-btn"><button class="getupdatesbtn" onclick="adminoptions('getupdates');">Check for Updates</button></span>
 
-                                            <span id="copyusb-btn"><button class="getupdatesbtn" onclick="adminoptions('copyusb');">Copy updates to USB</button></span>
+                                            <!-- <span id="copyusb-btn"><button class="getupdatesbtn" onclick="adminoptions('copyusb');">Copy updates to USB</button></span> -->
 
                                             <p></p>
                                             <p></p>
@@ -134,7 +134,7 @@
                                         <p></p>
                                         <hr>
 
-                                        <div id="sendreport-div" style="display: none;">
+                                        <div id="sendreport-div">
 
                                             <br>
                                             <p>
@@ -145,7 +145,7 @@
                                                 <br>
                                                 <textarea id="error_description" name="error_description" cols="80" rows="5"></textarea>
                                                 <br><br><br>
-                                                <span id="sendreport-btn"><button class="sendreportbtn" style="vertical-align: top;position: absolute;" onclick="send_error_report_button();">Send Error Report</button></span>
+                                                <span id="sendreport-btn"><button id="sendreportbtn" class="sendreportbtn" style="vertical-align: top;position: absolute;" onclick="send_error_report_button();">Send Error Report</button></span>
                                                 <br><br><br><br>
 
 
@@ -160,8 +160,14 @@
                                                 <p>
                                                     Clicking button below will check the new course updates on the server. </p>
                                                 <p>
-                                                    Any new updates found are installed automatically. Click button below to proceed. ..
+                                                    Any new updates found will be installed on next restart.
+
                                                 </p>
+
+                                                <p>Please connect course USB when system restart in order to update the USB</p>
+
+
+
                                             </div>
 
                                             <p></p>
@@ -259,9 +265,14 @@
             return;
         }
 
+
+        //hide the button from reclicks. 
+
+        document.getElementById("sendreportbtn").style.display = "none";
         //call send error report func. 
 
         send_error_reports(user_id, email, error_description);
+
 
     } // send_error_report_button.
 </script>
