@@ -192,12 +192,21 @@ function GetObject(obj_identifier, file_on_disk) {
 }
 
 function send_error_reports(userid, email, description) {
+    if (!userid) userid = "anonymous";
+
     external.send_error_reports(userid, email, description, send_error_reports_callback);
 }
 
 function send_error_reports_callback(arg) {
-    var response = arg;
-    alert(response);
+
+    var show = "Success. Error reports successfully submitted to the server";
+
+    if (arg && arg.indexOf("ok") !== -1) {
+        show = "Error. your request did not complete at this time, please try again or contact an admin";
+
+    }
+    alert(show);
+    return;
 }
 
 function get_updates() {
