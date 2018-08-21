@@ -173,7 +173,7 @@
                                             <p></p>
                                             <p></p>
 
-                                            <span id="getupdates-btn"><button class="getupdatesbtn" style="vertical-align: top;position: absolute; margin-left: 20px;" onclick="get_updates();">Ok - Check for Updates</button></span>
+                                            <span id="getupdates-btn"><button class="getupdatesbtn" style="vertical-align: top;position: absolute; margin-left: 20px;" onclick="get_updates_btn();">Ok - Check for Updates</button></span>
 
 
                                         </div>
@@ -265,7 +265,6 @@
             return;
         }
 
-
         //hide the button from reclicks. 
 
         document.getElementById("sendreportbtn").style.display = "none";
@@ -275,6 +274,15 @@
 
 
     } // send_error_report_button.
+
+    function get_updates_btn() {
+
+        //hide the button. 
+
+        document.getElementById("getupdates-btn").style.display = "none";
+
+        get_updates();
+    }
 </script>
 
 <div id="footer ">
