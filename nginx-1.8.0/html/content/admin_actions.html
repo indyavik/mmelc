@@ -160,11 +160,11 @@
                                                 <p>
                                                     Clicking button below will check the new course updates on the server. </p>
                                                 <p>
-                                                    Any new updates found will be installed on next restart.
+                                                    Any new updates found will be installed on next restart.Please connect course USB when system restart in order to update the USB.
 
                                                 </p>
 
-                                                <p>Please connect course USB when system restart in order to update the USB</p>
+
 
 
 
@@ -173,7 +173,7 @@
                                             <p></p>
                                             <p></p>
 
-                                            <span id="getupdates-btn"><button class="getupdatesbtn" style="vertical-align: top;position: absolute; margin-left: 20px;" onclick="get_updates_btn();">Ok - Check for Updates</button></span>
+                                            <span id="getupdates-btn"><button id="getupdatesbtn" class="getupdatesbtn" style="vertical-align: top;position: absolute; margin-left: 20px;" onclick="get_updates_btn();">Ok - Check for Updates</button></span>
 
 
                                         </div>
@@ -279,7 +279,7 @@
 
         //hide the button. 
 
-        document.getElementById("getupdates-btn").style.display = "none";
+        document.getElementById("getupdatesbtn").style.display = "none";
 
         get_updates();
     }
