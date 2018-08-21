@@ -860,7 +860,7 @@ class JavascriptExternal:
         now = datetime.now().strftime('%Y-%m-%d-%H-%M-%S')
         loc = os.path.dirname(os.path.abspath(__file__))
         #downloaded_zip_name_path = loc + '/updates-' + str(now) + '.zip' 
-        downloaded_zip_name_path = os.path.abspath(os.path.join(loc,'payload-1.2.zip'))
+        #downloaded_zip_name_path = os.path.abspath(os.path.join(loc,'payload-1.2.zip'))
         url = get_endpoint()+'/api/v1.0/getUpdates?version='+get_version()
         try:
             req = urllib2.Request(url)
