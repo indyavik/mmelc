@@ -17,7 +17,7 @@
     <br><br><br>
     <p></p>
 
-    <p class="content-text">If not connected or submission above produces an error, please click below to save responses as a text file. When you are able to, please send the file by email to MalariaMicroscopyCourse@gmail.com or submit to your regional course coordinator. </p>
+    <p class="content-text">If not connected or submission above produces an error, please click below to save responses as a text file. When you are able to, please send the file by email to MalariaMicroscopyCourse@amref.org or submit to your regional course coordinator. </p>
 
     <input type="button" class="eom-submit-btn" value=" Download Feedback to File " onclick="click_function()" style="font-size:17pt;">
 
@@ -26,17 +26,16 @@
     <h3>You are welcome to revisit any portion of the course, and if you have any feedback in the future please send it to us!</h3>
 
     <script>
-        
         /*
-        function download_file() {
+                function download_file() {
 
-            var dl = document.getElementById('d1')
-            content = 'this is some content' ; 
-            dav.href = "data:text/plain,"+encodeURIComponent(content);
-            dav.download = 'surveyfeedback.text'
+                    var dl = document.getElementById('d1')
+                    content = 'this is some content' ; 
+                    dav.href = "data:text/plain,"+encodeURIComponent(content);
+                    dav.download = 'surveyfeedback.text'
 
-        }
-        */
+                }
+                */
 
         var survey_results = JSON.parse(localStorage.getItem('survey_results')) //returns an object
         var current_user = localStorage.getItem('logged_in')

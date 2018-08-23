@@ -44,8 +44,8 @@ function convert_preview_user(username, license_id) {
                 if (update_allUSERS == 'error' || remove_allUSERS == 'error') {
                     //alert. 
                     alert("Error: Some error occurred. Please contact and admininstrator")
-					alert("update_allUSERS" + update_allUSERS + " remove_allUSERS " + remove_allUSERS)
-					//TODO: need to return here, or not update whichever of these returned error (OR IT OVERWRITES Users.txt with 'error'!!!)
+                    alert("update_allUSERS" + update_allUSERS + " remove_allUSERS " + remove_allUSERS)
+                        //TODO: need to return here, or not update whichever of these returned error (OR IT OVERWRITES Users.txt with 'error'!!!)
                 }
 
                 user_data.user_type = 'license'
@@ -734,7 +734,7 @@ function update_users_file(datadir, user_to_add, action) {
             new_users.push(user_to_add);
 
         } else {
-			alert('Error: user not added.');
+            alert('Error: user not added.');
             return users;
         }
 
@@ -743,7 +743,7 @@ function update_users_file(datadir, user_to_add, action) {
     if (action == 'remove') {
         if (user_exists == -1 && user_to_add !== "") {
             //user doesn't exists nothing to remove.  
-			alert('Error: user may not have been removed from list')
+            alert('Error: user may not have been removed from list')
             return users;
 
         } else {
@@ -835,7 +835,9 @@ function createUser_new(user_type) {
         /* if not submitted ..change few values */
         //res = JSON.parse(res).details
 
-        alert("Creating user, however no data was submitted to server")
+        //alert("Creating user, however no data was submitted to server")
+
+        alert("User has been created, however data was not submitted to server as no connection was made")
 
         var new_user2 = JSON.parse(localStorage.getItem('new_user_obj'))
 
@@ -941,7 +943,8 @@ function createUser_new(user_type) {
 
 
         // note that the appropriate module conf get lodaded here. //
-        var mod_config = JSON.parse(get_from_disk(data_dir + 'module_conf.json'))
+        //var mod_config = JSON.parse(get_from_disk(data_dir + 'module_conf.json'))
+        var mod_config = JSON.parse(get_from_disk('js/module_conf.json'))
         localStorage.setItem('module_config', JSON.stringify(mod_config));
 
         setTimeout(function() { window.location.href = "home.html?user=" + create_user + "&user_type=" + user_type }, 500);
@@ -1016,7 +1019,9 @@ function logUser_new(user_name, user_password, user_type) {
             localStorage.setItem(user_name, JSON.stringify(user_obj));
 
             // note that the appropriate module conf get lodaded here. //
-            var mod_config = JSON.parse(get_from_disk(data_dir + 'module_conf.json'))
+            //var mod_config = JSON.parse(get_from_disk(data_dir + 'module_conf.json'))
+
+            var mod_config = JSON.parse(get_from_disk('js/module_conf.json'))
             localStorage.setItem('module_config', JSON.stringify(mod_config));
 
             setTimeout(function() { window.location.href = "home.html?user=" + user_name + "&user_type=" + user_type }, 500);

@@ -70,12 +70,9 @@ function verifyLicense() {
 
     submit_data_to_server(submit_object, '/license/check', function(returnValue) {
 
-        returnValue = JSON.parse(returnValue)
-
         if (returnValue.response == 'error') {
 
-            alert('Sorry, license could not be verified. please try again')
-
+            alert('Licence key could not verified at this time. Please try again later or contact an administrator.')
 
         } else {
 
@@ -110,6 +107,7 @@ function verifyLicense() {
 //call back for verify license. 
 
 function verify_license_callback(response) {
+
     if (response == 'ok') {
         alert('confirmed. Click ok to proceed')
 
@@ -156,13 +154,16 @@ function mainEntry(button_id) {
         type = 'licence'
 
         data_dir = LICENSEDIR
-        mod_config = get_from_disk(data_dir + 'module_conf.json');
+            //mod_config = get_from_disk(data_dir + 'module_conf.json');
+
+        mod_config = get_from_disk('js/module_conf.json');
 
 
         if (last_type != data_dir) {
 
             localStorage.clear();
-            mod_config = get_from_disk(data_dir + 'module_conf.json');
+            //mod_config = get_from_disk(data_dir + 'module_conf.json');
+            mod_config = get_from_disk('js/module_conf.json');
             localStorage.setItem('.mmelc', JSON.stringify(mmelc))
 
             redirect_location = 'license'
@@ -181,7 +182,8 @@ function mainEntry(button_id) {
 
         type = 'preview'
         data_dir = DATADIR
-        mod_config = get_from_disk(data_dir + 'module_conf.json');
+            //mod_config = get_from_disk(data_dir + 'module_conf.json');
+        mod_config = get_from_disk('js/module_conf.json');
 
         if (last_type != DATADIR) {
             localStorage.clear();

@@ -13,19 +13,13 @@
 
     <h3 id="questionkey"></h3>
 
-	<p> You may submit your question and answer keys online by clicking below.  
-	If you are not able to submit due to no connectivity or an error, you may also send both keys, along with your Assessment User ID 
-	via email to MalariaMicroscopyCourse@gmail.com
-	
-	<br><br>
-	
-	We recommend copying these keys and saving whether submitting online or via email in case they need to be resubmitted for any reason.
-	</p>
+    <p> You may submit your question and answer keys online by clicking below. If you are not able to submit due to no connectivity or an error, you may also send both keys, along with your Assessment User ID via email to MalariaMicroscopyCourse@amref.org
 
-    <button class="blue-btn" style="margin-top:30px;" onclick="javascript:submitNow()">Submit Answer key to server</button>
-	
-	After submitting or saving the question and answer keys, you may click below to return to the Welcome Page.
-	<button class = "blue-btn" style="margin-top:30px;" onclick="javascript:load_page('home.html')">Return to the Welcome Page</button> 
+        <br><br> We recommend copying these keys and saving whether submitting online or via email in case they need to be resubmitted for any reason.
+    </p>
+
+    <button class="blue-btn" style="margin-top:30px;" onclick="javascript:submitNow()">Submit Answer key to server</button> After submitting or saving the question and answer keys, you may click below to return to the Welcome Page.
+    <button class="blue-btn" style="margin-top:30px;" onclick="javascript:load_page('home.html')">Return to the Welcome Page</button>
 
 </div>
 
@@ -36,12 +30,12 @@
 
     document.getElementById('anskey').innerHTML = cert_results['final_ans_key'];
     document.getElementById('questionkey').innerHTML = cert_results['final_questions_key'];
-	//document.getElementById('userID').innerHTML = ;
+    //document.getElementById('userID').innerHTML = ;
 
     function submitNow() {
         var anskey = document.getElementById('anskey').innerHTML
-        //alert(anskey)
-        //alert('to-do : submit data to server')
+            //alert(anskey)
+            //alert('to-do : submit data to server')
 
         submit_cert_ans_to_server(cert_results);
 

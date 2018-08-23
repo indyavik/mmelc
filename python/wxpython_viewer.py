@@ -1006,7 +1006,7 @@ class JavascriptExternal:
 
         params = {'zipOrganization' : zipOrganization , 'zipLocation' : zipLocation, 'zipTimeStamp' : now}
 
-        #url =  'http://mmelc.vestigesystems.com:8081/putZip'
+        #url =  'http://malariamicroscopy.amref.org:8081/putZip'
 
         url = get_endpoint() + '/putzip'
 

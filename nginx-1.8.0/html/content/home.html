@@ -151,6 +151,8 @@
                     async: false
                 }); //required to avoind async status code check issues 
 
+                //var jq = $.get('module_conf/module_conf.json'); //alert(jq.status);
+
                 var jq = $.get('js/module_conf.json'); //alert(jq.status);
 
                 if (jq.status == 200) {
@@ -171,7 +173,7 @@
             if (is_preview == 'preview') {
 
                 alert('Welcome to the Preview version of the course.  Please consider registering!')
-				document.getElementById('heading_text').style.backgroundColor = 'white'
+                document.getElementById('heading_text').style.backgroundColor = 'white'
 
             }
 
@@ -286,7 +288,7 @@
                 <!--<a href="javascript:void(0)" class="closebtn" onclick="closeNav()">×</a>-->
                 <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">
                     <!--<img src="../SampleScreen_changes/images/close-img.png" width="20px"/>-->
-                    <img src="images/close-white.svg.png" width="45px" style="margin-top: 4px;"/>
+                    <img src="images/close-white.svg.png" width="45px" style="margin-top: 4px;" />
                 </a>
 
                 <div class="header_sideMenu2">
@@ -375,7 +377,7 @@
 
                 <div id="heading_text" style="height:54px; width:100%; background-color: #afbd77;">
 
-                <div id="amrefOld" style="display: inline-block; width:14%; height:100%; float:left;">
+                    <div id="amrefOld" style="display: inline-block; width:14%; height:100%; float:left;">
 
 
                         <!-- <img src="images/logo.png" style="max-width: 100% ;max-height:100%;"> -->
@@ -390,10 +392,10 @@
                 </div>
 
                 <div id="middleTopTitle" style="width: calc(86% - 150px);float: left;overflow: hidden;">
-                    <div id="moduleTitle" style="height: 50px;overflow: hidden; font-family: 'Georgia'; font-size:24px; vertical-align:middle; margin-top: 5px; "> 
-					 </div>
+                    <div id="moduleTitle" style="height: 50px;overflow: hidden; font-family: 'Georgia'; font-size:24px; vertical-align:middle; margin-top: 5px; ">
+                    </div>
                     <!--<div id = "unitTitle" style="height: 30%;overflow: hidden; font-size:15px;"> </div>-->
-				</div>
+                </div>
                 <div id="right" style="display: inline-block; width:150px; height:100%;">
                     <span class="header_iconDiv" style="float: left; padding-top: 6px;">
                 <div class="tooltip">
@@ -448,136 +450,138 @@
                 <div style="background-image: url('images/Picture18.png');width:100%;height:100%">
                     <div style="padding-top:32px;color:white;height:100%;">
                         <div style="width:35%;display: inline-block;padding-top: 30px;">
-							<img src="images/Picture1.png" style="position: absolute;bottom: 10px;max-height: 45%;left:0;max-width:29%">
-							<img src="images/WELCOMMlogoFinal.png" style="position: absolute;top: 75px; max-height: 35%;left:5%;max-width:30%">
-
-                    </div>
-                    <div style="width:64%;display: inline-block;vertical-align: top;overflow:auto;max-height:calc(100% - 35px);">
-                        <!--img src="images/StartModule.png" height="80px" style="vertical-align: top;padding-top: 17px;position: absolute;right: 50px;" onclick="load_page('admin_actions.html');"-->
-
-                        <!--<span id="admin-btn"><button class="adminbtn" style="vertical-align: top;position: absolute;right: 50px;" onclick="load_admin_page();">Admin Actions</button></span>-->
-
-                        <h1 style="padding:10px;margin:0px">Welcome <span id="usernamespot">Guest</span>!</h1>
-
-                        <p class="content-text" style="line-height:1.0;">If this is your first time using the course, please click on "Course Introduction" below.</p>
-                        <div style="padding:0px">
-
-                            <ul class="frontPageList">
-                                <li class="frontPageListItem">
-                                    <a href="#" style="font-family: sans-serif;" onclick="load_module_home('Module-0.html');"><span style="vertical-align: top ; font-size:18px; color:white;">Course Introduction, Software Setup and Tutorial, and Pre-Test</span></a>
-                                </li>
-                                <li class="frontPageListItem">
-                                    <a href="#" style="font-family: sans-serif;" onclick="load_module_home('Module-1.html');"><span style="vertical-align: top ; font-size:18px; color:white;">Module 1: Introduction to Malaria </span></a>
-                                </li>
-                                <li class="frontPageListItem">
-                                    <a href="#" style="font-family: sans-serif;" onclick="load_module_home('Module-2.html');"><span style="vertical-align: top ; font-size:18px; color:white;">Module 2: Blood Collection and Preparation and Staining of Blood Films</span></a>
-                                </li>
-                                <li class="frontPageListItem">
-                                    <a href="#" style="font-family: sans-serif;" onclick="load_module_home('Module-3.html');"><span style="vertical-align: top ; font-size:18px; color:white;">Module 3: Blood Film Examination</span></a>
-                                </li>
-                                <li class="frontPageListItem">
-                                    <a href="#" style="font-family: sans-serif;" onclick="load_module_home('Module-4.html');"><span style="vertical-align: top ; font-size:18px; color:white;">Module 4: Non-Microscopic Methods for the Detection of Malaria Parasites and Diagnosis of Malaria</span></a>
-                                </li>
-                                <li class="frontPageListItem">
-                                    <a href="#" style="font-family: sans-serif;" onclick="load_module_home('Module-5.html');"><span style="vertical-align: top ; font-size:18px; color:white;">Module 5: Laboratory Quality Management Systems</span></a>
-                                </li>
-                                <li class="frontPageListItem">
-                                    <a href="#" style="font-family: sans-serif;" onclick="load_module_home('Module-7.html');"><span style="vertical-align: top ; font-size:18px; color:white;">Post-Test </span></a>
-                                </li>
-                            </ul>
+                            <img src="images/Picture1.png" style="position: absolute;bottom: 10px;max-height: 45%;left:0;max-width:29%">
+                            <img src="images/WELCOMMlogoFinal.png" style="position: absolute;top: 75px; max-height: 35%;left:5%;max-width:30%">
 
                         </div>
+                        <div style="width:64%;display: inline-block;vertical-align: top;overflow:auto;max-height:calc(100% - 35px);">
+                            <!--img src="images/StartModule.png" height="80px" style="vertical-align: top;padding-top: 17px;position: absolute;right: 50px;" onclick="load_page('admin_actions.html');"-->
 
-                        <br>
-                        <p>
-                            <span><button style="background: #EE6088; color: white;" onclick="return_to_last();">Click here to return to where you left off.</button></span></p>
-                        <br>
+                            <!--<span id="admin-btn"><button class="adminbtn" style="vertical-align: top;position: absolute;right: 50px;" onclick="load_admin_page();">Admin Actions</button></span>-->
+
+                            <h1 style="padding:10px;margin:0px">Welcome <span id="usernamespot">Guest</span>!</h1>
+
+                            <p class="content-text" style="line-height:1.0;">If this is your first time using the course, please click on "Course Introduction" below.</p>
+                            <div style="padding:0px">
+
+                                <ul class="frontPageList">
+                                    <li class="frontPageListItem">
+                                        <a href="#" style="font-family: sans-serif;" onclick="load_module_home('Module-0.html');"><span style="vertical-align: top ; font-size:18px; color:white;">Course Introduction, Software Setup and Tutorial, and Pre-Test</span></a>
+                                    </li>
+                                    <li class="frontPageListItem">
+                                        <a href="#" style="font-family: sans-serif;" onclick="load_module_home('Module-1.html');"><span style="vertical-align: top ; font-size:18px; color:white;">Module 1: Introduction to Malaria </span></a>
+                                    </li>
+                                    <li class="frontPageListItem">
+                                        <a href="#" style="font-family: sans-serif;" onclick="load_module_home('Module-2.html');"><span style="vertical-align: top ; font-size:18px; color:white;">Module 2: Blood Collection and Preparation and Staining of Blood Films</span></a>
+                                    </li>
+                                    <li class="frontPageListItem">
+                                        <a href="#" style="font-family: sans-serif;" onclick="load_module_home('Module-3.html');"><span style="vertical-align: top ; font-size:18px; color:white;">Module 3: Blood Film Examination</span></a>
+                                    </li>
+                                    <li class="frontPageListItem">
+                                        <a href="#" style="font-family: sans-serif;" onclick="load_module_home('Module-4.html');"><span style="vertical-align: top ; font-size:18px; color:white;">Module 4: Non-Microscopic Methods for the Detection of Malaria Parasites and Diagnosis of Malaria</span></a>
+                                    </li>
+                                    <li class="frontPageListItem">
+                                        <a href="#" style="font-family: sans-serif;" onclick="load_module_home('Module-5.html');"><span style="vertical-align: top ; font-size:18px; color:white;">Module 5: Laboratory Quality Management Systems</span></a>
+                                    </li>
+                                    <li class="frontPageListItem">
+                                        <a href="#" style="font-family: sans-serif;" onclick="load_module_home('Module-7.html');"><span style="vertical-align: top ; font-size:18px; color:white;">Post-Test </span></a>
+                                    </li>
+                                </ul>
+
+                            </div>
+
+                            <br>
+                            <p>
+                                <span><button style="background: #EE6088; color: white;" onclick="return_to_last();">Click here to return to where you left off.</button></span></p>
+                            <br>
 
 
-                        <!--  <p><a href="home_protected.html?message=noLogin">Take Certification Test</a></p> -->
-                        <span><button style="background :#EE6088; color: white;" onclick="redirect_to_cert();">Click here to take the final assessment.</button></span></p>
+                            <!--  <p><a href="home_protected.html?message=noLogin">Take Certification Test</a></p> -->
+                            <span><button style="background :#EE6088; color: white;" onclick="redirect_to_cert();">Click here to take the final assessment.</button></span></p>
 
 
-                        <br>
-                        <p>
-                            <span id="ack-btn"><button class="ackbtn">Contact Information and Acknowledgements</button></span></p>
-                        <br>
+                            <br>
+                            <p>
+                                <span id="ack-btn"><button class="ackbtn">Contact Information and Acknowledgements</button></span></p>
+                            <br>
+                        </div>
                     </div>
+
                 </div>
 
+
             </div>
+            <!--actual page content here -->
+
+
+
+            <style>
+                #content-inner {
+                    padding: 0;
+                    margin: 0;
+                    width: 100%
+                }
+                
+                body {
+                    margin: 0;
+                }
+            </style>
+
+
+            <script>
+                /*
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            $( document ).ready(function() {
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                $("#header2").hide();
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                $("#m1_i_p05").removeClass("page-content");
+
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            });
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        */
+            </script>
 
 
         </div>
-        <!--actual page content here -->
-
-
-
-        <style>
-            #content-inner {
-                padding: 0;
-                margin: 0;
-                width: 100%
-            }
-            
-            body {
-                margin: 0;
-            }
-        </style>
-
-
-        <script>
-            /*
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            $( document ).ready(function() {
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                $("#header2").hide();
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                $("#m1_i_p05").removeClass("page-content");
-
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            });
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        */
-        </script>
-
-
-    </div>
-    <!-- div conent inner-->
+        <!-- div conent inner-->
 
     </div>
     <!-- div content -->
 
-<div id="footer" style="display: block;">
+    <div id="footer" style="display: block;">
 
-	    <div id="nav_2" style=" width:200px; text-align: center;  position: absolute;bottom: 70;left: calc(50% - 100px);">
+        <div id="nav_2" style=" width:200px; text-align: center;  position: absolute;bottom: 70;left: calc(50% - 100px);">
 
-                
+
             <div id="navBar" style="margin: 0px auto; display: inline-block;">
 
                 <span id="previousPageButton" class="header_iconDiv" style="display: initial;margin-right: 40px;">
 					<div class="tooltip">
 						<img class="nav-img-home" id="back-button" onclick="javascript:nav_to('prev')" alt="Previous slide" src="images/back-grey.png" style="/*! margin-right: 40px; */" border="0">
 						<span class="tooltiptext">Previous Page</span>
-					</div>
-				</span>
+            </div>
+            </span>
 
 
-				<span id="nextPageButton" class="header_iconDiv" style="display: initial;">
+            <span id="nextPageButton" class="header_iconDiv" style="display: initial;">
 					<div class="tooltip">
 						<img class="nav-img-home" id="forward-button" onclick="javascript:nav_to('next')" src="images/forward.png" alt="Next slide" border="0">
 						<span class="tooltiptext">Next Page</span>
-					</div>
-				</span>
+        </div>
+        </span>
 
-			</div> <!-- div id="navBar" -->
+    </div>
+    <!-- div id="navBar" -->
 
-		</div> <!-- div id="nav_2" -->
-	
-        
-        
+    </div>
+    <!-- div id="nav_2" -->
 
-    
+
+
+
+
 
     <div style="height:10px;width:100%;background-color: #00AFEF; /*! margin-bottom: 5px; */">
     </div>
-		
-	<div style="width: 100%; display: table;max-height: 60px;">
+
+    <div style="width: 100%; display: table;max-height: 60px;">
 
         <div style="display: table-row; width:100%">
             <div id="amref" style="display: table-cell; width:300px; height:100%; max-width: 30%;">
@@ -586,32 +590,33 @@
                 <img src="images/logo.png" style="max-width: 100% ;max-height:100%;">
 
             </div>
-			
-			<div id="restOfBottomTable" style="display:table-cell;height:100%">
-				
-					<div id="calc-unit" style="float: left;height: 20px; width:100%;">
 
-						<div id="unitTitle" style="overflow: hidden; font-size:18px; font-style: italic; margin-left:50px"> 
-							
-						</div>
-					</div>
-					<div id="footMenuAndOnslide" style="height:40px; width: 100%;float: left;">
-					
-					<div class="footer_menu" style="float: left;">
+            <div id="restOfBottomTable" style="display:table-cell;height:100%">
 
-						<div id="wrap-footer-menu" style="display: initial;margin-left:25px;margin-bottom:5px;height:30px;"><span> </span></div>
-						<!--wrap footer menu. -->
+                <div id="calc-unit" style="float: left;height: 20px; width:100%;">
 
-					</div><!-- footer_menu -->
+                    <div id="unitTitle" style="overflow: hidden; font-size:18px; font-style: italic; margin-left:50px">
 
-					<div> 
-						<span id="onSlide" style="float:left;margin-left:10px;max-height: 20px;overflow: hidden;font-style:italic;display:none;"></span>
-						<span id="display_current" style="float:right; font-style: italic; margin-right: 20px; margin-bottom: 5px;overflow:hidden;max-height:20px">  </span>
-					</div>
-					</div>
+                    </div>
+                </div>
+                <div id="footMenuAndOnslide" style="height:40px; width: 100%;float: left;">
 
-			</div>
-		</div>
+                    <div class="footer_menu" style="float: left;">
+
+                        <div id="wrap-footer-menu" style="display: initial;margin-left:25px;margin-bottom:5px;height:30px;"><span> </span></div>
+                        <!--wrap footer menu. -->
+
+                    </div>
+                    <!-- footer_menu -->
+
+                    <div>
+                        <span id="onSlide" style="float:left;margin-left:10px;max-height: 20px;overflow: hidden;font-style:italic;display:none;"></span>
+                        <span id="display_current" style="float:right; font-style: italic; margin-right: 20px; margin-bottom: 5px;overflow:hidden;max-height:20px">  </span>
+                    </div>
+                </div>
+
+            </div>
+        </div>
     </div>
 
 
@@ -656,8 +661,7 @@
                     <span class="goto-help-unit"><a href="#" id="0_1_slide01.html" onClick="load_page(this.id)" >click here</a></span>.</p>
 
                 <h2>Contact Information</h2>
-                <p>For issues with using this software, you can contact the focal person who distributed the course for the fastest response. 
-					You may also email MalariaMicroscopyCourse@gmail.com with any questions or feedback.</p>
+                <p>For issues with using this software, you can contact the focal person who distributed the course for the fastest response. You may also email MalariaMicroscopyCourse@amref.org with any questions or feedback.</p>
 
                 <br><br>
             </div>
@@ -679,53 +683,43 @@
             <div id="acknowledgements-content-home">
                 <h2>Worldwide E-Learning Course on Malaria Microscopy (WELCOMM)</h2>
                 <h3>Contact Information</h3>
-                <p>The Worldwide E-Learning Course on Malaria Microscopy is managed by the Amref International University, Nairobi, Kenya http://amref.ac.ke/ 
-					<br> For issues with using this software, you may email MalariaMicroscopyCourse@gmail.com with any questions or feedback.</p>
-				<p>The course is currently in development by Global Good/Intellectual Ventures Lab and Amref International University. 
-					The contents of the course are fully protected by copyright. However, the publishers will gladly consider 
-					any request for permission to reproduce part or whole of the course materials with the intention of increasing 
-					its availability to those who need it, and welcome enquiries from individuals or organisations wishing to use 
-					any material from the course for non-commercial purposes. The publishers also welcome feedback on the course, 
-					and invite constructive comments and suggestions.</p>
-					
+                <p>The Worldwide E-Learning Course on Malaria Microscopy is managed by the Amref International University, Nairobi, Kenya http://amref.ac.ke/
+                    <br> For issues with using this software, you may email MalariaMicroscopyCourse@amref.org with any questions or feedback.</p>
+                <p>The course is currently in development by Global Good/Intellectual Ventures Lab and Amref International University. The contents of the course are fully protected by copyright. However, the publishers will gladly consider any request for
+                    permission to reproduce part or whole of the course materials with the intention of increasing its availability to those who need it, and welcome enquiries from individuals or organisations wishing to use any material from the course
+                    for non-commercial purposes. The publishers also welcome feedback on the course, and invite constructive comments and suggestions.</p>
+
                 <h3>Authors and Reviewers (in alphabetical order)</h3>
 
-				<ul class="nobullet">
-					<li>Rachel Achilla&mdash;United States Army Medical Research Directorate, Kenya </li>
-					<li>Evelyn Ansah&mdash;University of Health and Allied Sciences, Accra, Ghana </li>
-					<li>Christine Bachman&mdash;Intellectual Ventures Global Good Fund, Bellevue, USA </li>
-					<li>David Bell&mdash;Intellectual Ventures Global Good Fund, Bellevue, USA </li>
-					<li>Jane Carter&mdash;Amref International University, Nairobi, Kenya</li>
-					<li>Anderson Chinorumba&mdash;WHO AFRO, Harare, Zimbabwe </li>
-					<li>Dionicia Gamboa&mdash;Universidad Peruana Cayetano Heredia, Peru  </li>
-					<li>Matthew Horning&mdash;Intellectual Ventures Global Good Fund, Bellevue, USA </li>
-					<li>Cecilia Hugo&mdash;ACTMalaria Foundation, Inc. </li>
-					<li>David Isaboke&mdash;Amref Health Africa Headquarters, Nairobi, Kenya  </li>
-					<li>Ken Lilley&mdash;Australian Army Malaria Institute, Brisbane, Australia  </li>
-					<li>Earl Long&mdash;Consultant Parasitologist, Atlanta, USA </li>
-					<li>David Ocheng&mdash;Amref Health Africa Tanzania, Dar es Salaam, Tanzania</li>
-				</ul>
+                <ul class="nobullet">
+                    <li>Rachel Achilla&mdash;United States Army Medical Research Directorate, Kenya </li>
+                    <li>Evelyn Ansah&mdash;University of Health and Allied Sciences, Accra, Ghana </li>
+                    <li>Christine Bachman&mdash;Intellectual Ventures Global Good Fund, Bellevue, USA </li>
+                    <li>David Bell&mdash;Intellectual Ventures Global Good Fund, Bellevue, USA </li>
+                    <li>Jane Carter&mdash;Amref International University, Nairobi, Kenya</li>
+                    <li>Anderson Chinorumba&mdash;WHO AFRO, Harare, Zimbabwe </li>
+                    <li>Dionicia Gamboa&mdash;Universidad Peruana Cayetano Heredia, Peru </li>
+                    <li>Matthew Horning&mdash;Intellectual Ventures Global Good Fund, Bellevue, USA </li>
+                    <li>Cecilia Hugo&mdash;ACTMalaria Foundation, Inc. </li>
+                    <li>David Isaboke&mdash;Amref Health Africa Headquarters, Nairobi, Kenya </li>
+                    <li>Ken Lilley&mdash;Australian Army Malaria Institute, Brisbane, Australia </li>
+                    <li>Earl Long&mdash;Consultant Parasitologist, Atlanta, USA </li>
+                    <li>David Ocheng&mdash;Amref Health Africa Tanzania, Dar es Salaam, Tanzania</li>
+                </ul>
 
-				<h3>Acknowledgements</h3>
-				<p> Financial support for development of this course was provided by Bill and Melinda Gates through the Intellectual Ventures Global Good Fund.  
-				Our extended appreciation goes to Amref Health Africa, the Shoklo Malaria Research Unit (SMRU), Universidad Peruana Cayetano Heredia (UPCH), 
-				and the Hospital of Tropical Diseases (HTD) for providing microscope slides and sharing relevant images to enhance learning for students. 
-				We also thank Ms. Arlene Santiago and the Asian Collaborative Training Network for Malaria (ACTMalaria Foundation, Inc.), for sharing images 
-				and video clips used in the course. 
-				Special thanks to David Bell and Jane Carter for their strategic stewardship and the following individuals who participated in determining the course 
-				curriculum: Cornel Arima, Rachel Achilla, Earl Long, Christine Bachman, David Ocheng, Peter Mwatha, Matthew Horning, Ken Lilley, Cary Champlin, 
-				Sylla Thiam, Jane Carter, 
-				Julius Tome, Ephantus Murigi, Josephine Namboze, David Bell, David Isaboke, Stephen Munene, Zipporah Katiku and Anastasiah Kimeu. 
-				The virtual microscope and slide viewing software was developed by PathXL, and the course was designed and created by Bernard Kikechi 
-				and Diana Mukami at Amref Health Africa, and Vikas Agrawal and Matthew Horning at Intellectual Ventures Laboratory.
-				Videos were produced by Matthew Horning at Intellectual Ventures Laboratory, and Bernard Kikechi and David Isaboke at Amref Health Africa. </p>
+                <h3>Acknowledgements</h3>
+                <p> Financial support for development of this course was provided by Bill and Melinda Gates through the Intellectual Ventures Global Good Fund. Our extended appreciation goes to Amref Health Africa, the Shoklo Malaria Research Unit (SMRU),
+                    Universidad Peruana Cayetano Heredia (UPCH), and the Hospital of Tropical Diseases (HTD) for providing microscope slides and sharing relevant images to enhance learning for students. We also thank Ms. Arlene Santiago and the Asian
+                    Collaborative Training Network for Malaria (ACTMalaria Foundation, Inc.), for sharing images and video clips used in the course. Special thanks to David Bell and Jane Carter for their strategic stewardship and the following individuals
+                    who participated in determining the course curriculum: Cornel Arima, Rachel Achilla, Earl Long, Christine Bachman, David Ocheng, Peter Mwatha, Matthew Horning, Ken Lilley, Cary Champlin, Sylla Thiam, Jane Carter, Julius Tome, Ephantus
+                    Murigi, Josephine Namboze, David Bell, David Isaboke, Stephen Munene, Zipporah Katiku and Anastasiah Kimeu. The virtual microscope and slide viewing software was developed by PathXL, and the course was designed and created by Bernard
+                    Kikechi and Diana Mukami at Amref Health Africa, and Vikas Agrawal and Matthew Horning at Intellectual Ventures Laboratory. Videos were produced by Matthew Horning at Intellectual Ventures Laboratory, and Bernard Kikechi and David
+                    Isaboke at Amref Health Africa. </p>
 
-				<p>
-				We are grateful to the following individuals and organisations for their support in piloting the course: 
-				Nicole Whitehurst at MalariaCare, Ephantus Murigi at the National Malaria Control Programme, Ministry of Health, Republic of Kenya, 
-				Dionicia Gamboa at the Universidad Peruana Cayetano Heredia, Peru, Ken Lilley at the Australian Army Malaria Institute, Brisbane, Australia, 
-				and Rachel Achilla at the United States Army Medical Research Directorate, Kenya. 
-				</p>
+                <p>
+                    We are grateful to the following individuals and organisations for their support in piloting the course: Nicole Whitehurst at MalariaCare, Ephantus Murigi at the National Malaria Control Programme, Ministry of Health, Republic of Kenya, Dionicia Gamboa
+                    at the Universidad Peruana Cayetano Heredia, Peru, Ken Lilley at the Australian Army Malaria Institute, Brisbane, Australia, and Rachel Achilla at the United States Army Medical Research Directorate, Kenya.
+                </p>
 
                 <br><br>
             </div>
@@ -924,49 +918,49 @@
 
 <script>
     /*  var leftInit = $(".scroll_fixed").offset().left;
-                                                                                                                                                                                            //var leftInit = 0;
-                                                                                                                                                                                            var topv = $('.scroll_fixed').offset().top - parseFloat($('.scroll_fixed').css('margin-top').replace(/auto/, 0));
-                                                                                                                                                                                            //var topv = 0;
-                                                                                                                                                                                            var docWidth = $(window).innerWidth();
-                                                                                                                                                                                            var subHeaderWidth=docWidth-240;
+                                                                                                                                                                                                                        //var leftInit = 0;
+                                                                                                                                                                                                                        var topv = $('.scroll_fixed').offset().top - parseFloat($('.scroll_fixed').css('margin-top').replace(/auto/, 0));
+                                                                                                                                                                                                                        //var topv = 0;
+                                                                                                                                                                                                                        var docWidth = $(window).innerWidth();
+                                                                                                                                                                                                                        var subHeaderWidth=docWidth-240;
 
-                                                                                                                                                                                            var docHeight = $(window).innerHeight();
-                                                                                                                                                                                            $('#header1').css('width',docWidth);
-                                                                                                                                                                                            $('#header2').css('width',subHeaderWidth);
-                                                                                                                                                                                            $('#content-inner').css('width',subHeaderWidth);
+                                                                                                                                                                                                                        var docHeight = $(window).innerHeight();
+                                                                                                                                                                                                                        $('#header1').css('width',docWidth);
+                                                                                                                                                                                                                        $('#header2').css('width',subHeaderWidth);
+                                                                                                                                                                                                                        $('#content-inner').css('width',subHeaderWidth);
 
-                                                                                                                                                                                            $(window).resize(function(){
-                                                                                                                                                                                                var docHeight = $(window).innerHeight();
-                                                                                                                                                                                            $('#header1').css('width',docWidth);
-                                                                                                                                                                                                $('#header2').css('left',100);
+                                                                                                                                                                                                                        $(window).resize(function(){
+                                                                                                                                                                                                                            var docHeight = $(window).innerHeight();
+                                                                                                                                                                                                                        $('#header1').css('width',docWidth);
+                                                                                                                                                                                                                            $('#header2').css('left',100);
 
-                                                                                                                                                                                                var docWidth = $(window).innerWidth();
-                                                                                                                                                                                        //        var subHeaderWidth=docWidth-240;
-                                                                                                                                                                                        //        $('#header2').css('width',subHeaderWidth);
+                                                                                                                                                                                                                            var docWidth = $(window).innerWidth();
+                                                                                                                                                                                                                    //        var subHeaderWidth=docWidth-240;
+                                                                                                                                                                                                                    //        $('#header2').css('width',subHeaderWidth);
 
-                                                                                                                                                                                            });
-                                                                                                                                                                                            $(window).scroll(function(event) {
-                                                                                                                                                                                                var x = 0 - $(this).scrollLeft();
-                                                                                                                                                                                                var y = $(this).scrollTop();
+                                                                                                                                                                                                                        });
+                                                                                                                                                                                                                        $(window).scroll(function(event) {
+                                                                                                                                                                                                                            var x = 0 - $(this).scrollLeft();
+                                                                                                                                                                                                                            var y = $(this).scrollTop();
 
-                                                                                                                                                                                                // whether that's below the form
-                                                                                                                                                                                                if (y >= topv) {
-                                                                                                                                                                                                    // if so, ad the fixed class
-                                                                                                                                                                                                    $('.scroll_fixed').addClass('fixed');
-                                                                                                                                                                                                    $('#header2').css('left',100);
+                                                                                                                                                                                                                            // whether that's below the form
+                                                                                                                                                                                                                            if (y >= topv) {
+                                                                                                                                                                                                                                // if so, ad the fixed class
+                                                                                                                                                                                                                                $('.scroll_fixed').addClass('fixed');
+                                                                                                                                                                                                                                $('#header2').css('left',100);
 
-                                                                                                                                                                                                } else {
-                                                                                                                                                                                                    // otherwise remove it
-                                                                                                                                                                                                    $('.scroll_fixed').removeClass('fixed');
-                                                                                                                                                                                                }
-                                                                                                                                                                                                $(".scroll_fixed").offset({
-                                                                                                                                                                                                    left: x + leftInit
-                                                                                                                                                                                                });
+                                                                                                                                                                                                                            } else {
+                                                                                                                                                                                                                                // otherwise remove it
+                                                                                                                                                                                                                                $('.scroll_fixed').removeClass('fixed');
+                                                                                                                                                                                                                            }
+                                                                                                                                                                                                                            $(".scroll_fixed").offset({
+                                                                                                                                                                                                                                left: x + leftInit
+                                                                                                                                                                                                                            });
 
 
-                                                                                                                                                                                            });
+                                                                                                                                                                                                                        });
 
-                                                                                                                                                                                        */
+                                                                                                                                                                                                                    */
 </script>
 
 <script>
@@ -1011,9 +1005,9 @@
         };
         document.getElementById('back-button').src = "images/backward.png";
     }
-	
-	//grey out forward button on last pages.
-	    if (is_last_page(current_page)) {
+
+    //grey out forward button on last pages.
+    if (is_last_page(current_page)) {
 
         grey_forward_button();
 
@@ -1024,7 +1018,6 @@
         };
         document.getElementById('forward-button').src = "images/forward.png";
     }
-	
 </script>
 
 

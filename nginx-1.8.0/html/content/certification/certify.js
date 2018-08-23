@@ -19,7 +19,8 @@ var SHUFFLEDKEY = 'shuffled_sequence'
 var BASEUSERCONF = 'conf/base_certify_user_config.txt'
 var USERCONFKEY = 'cert_user_conf' // points to current user config 
 var CURRENTUSERKEY = 'current_cert_user' //points to the user_name of current_user. 
-var POSTURLENDPOINT = 'http://mmelc.vestigesystems.com/'
+    //var POSTURLENDPOINT = 'http://mmelc.vestigesystems.com/'
+var POSTURLENDPOINT = 'http://malariamicroscopy.amref.org/'
 var NORMALQUESTIONS = 1; //count of the normal questions for each module to pick. 
 
 

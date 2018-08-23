@@ -1,5 +1,6 @@
 //var BACKEND = 'http://localhost:8081'
-var BACKEND = 'http://mmelc.vestigesystems.com:8081'
+//var BACKEND = 'http://mmelc.vestigesystems.com:8081'
+var BACKEND = 'http://malariamicroscopy.amref.org'
 
 function submit_data_to_server_registration(data_object, backend_method, success_func, error_func, ajaxtype) {
 
@@ -45,8 +46,9 @@ function submit_data_to_server(data_object, backend_method, cb_func, ajaxtype) {
         type: 'POST',
         success: cb_func,
         error: function(error) {
-            alert("Error: Server error. Please try again later.")
-            console.log("some error occurred. no data has been submitted to server.")
+            cb_func({ "response": "error" });
+            //alert("Error: Server error. Please try again later.")
+            console.log("mainjs:line50:some error occurred. no data has been submitted to server.")
         }
 
 
@@ -202,6 +204,7 @@ function send_error_reports_callback(arg) {
     var show = "Success. Error reports successfully submitted to the server";
 
     if (arg && arg.indexOf("ok") !== -1) {
+
         show = "Error. your request did not complete at this time, please try again or contact an admin";
 
     }

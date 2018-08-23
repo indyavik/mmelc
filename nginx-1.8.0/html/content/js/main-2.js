@@ -29,7 +29,7 @@ function return_to_last() {
     var current_user = localStorage.getItem('logged_in');
     var user_data = JSON.parse(localStorage.getItem(current_user));
     var last_visited_page = user_data['last_visited_page']
-	//alert('last visited page on button click: ' + last_visited_page)
+        //alert('last visited page on button click: ' + last_visited_page)
 
     if (!last_visited_page || last_visited_page == undefined) {
         alert('No last session found: please select a module from the menu')
@@ -66,7 +66,8 @@ function redirect_to_cert() {
         return;
     }
 
-    var msg = "Please complete all modules first"
+    //var msg = "Please complete all modules first"
+    var msg = "All modules (including pre and post test) must be completed before taking the final assessment."
     var current_user = localStorage.getItem('logged_in')
     var user_obj = JSON.parse(localStorage.getItem(localStorage.getItem('logged_in')))
 
@@ -459,9 +460,9 @@ function nav_to(signal) {
     var load = ifpreview() //returns true by default
 
     /* load page */
-	if (load) {
-		load_page(target);
-	}
+    if (load) {
+        load_page(target);
+    }
 }
 
 function load_page_menu(target) {
@@ -516,10 +517,10 @@ function load_page(page, template) {
     if (page.indexOf("_pxl_") > -1) next_template = 'home_pxl.html'
 
     //check if the page is first page or last page. 
-	//Doing this here caused error on PXL page, which doesn't have the elements next-button and back-button.  
-	//Even if it did, the change doesn't carry from PXL to non-PXL pages.
-	//Need to make changes AFTER loading new page, otherwise fails when switching from PXL to non-PXL.
-	
+    //Doing this here caused error on PXL page, which doesn't have the elements next-button and back-button.  
+    //Even if it did, the change doesn't carry from PXL to non-PXL pages.
+    //Need to make changes AFTER loading new page, otherwise fails when switching from PXL to non-PXL.
+
     /*
         if(current_page.includes("_pxl_")) current_template = 'home_pxl.html'
         if(page.includes("_pxl_")) next_template = 'home_pxl.html'
@@ -576,15 +577,15 @@ function load_page(page, template) {
                 update_user_object('last_visited_page', page);
                 loadFooterNav(page);
                 //alert(unit_title + 'pxl to pxl line 424');
-				//PXL to PXL: no need to grey-out buttons.
+                //PXL to PXL: no need to grey-out buttons.
             } else {
-	
-				window.location = 'home.html?loadPage=' + page; //once this happens, script stops if not fast enough!
+
+                window.location = 'home.html?loadPage=' + page; //once this happens, script stops if not fast enough!
                 $("#header1").show();
                 $("#footer").show();
-/*				//PXL to non-PXL; if first or last, should grey-out.  It doesn't really work here, because the script stops when the new page is loaded.  Instead 
-				//this is handled on home.html.
-*/
+                /*				//PXL to non-PXL; if first or last, should grey-out.  It doesn't really work here, because the script stops when the new page is loaded.  Instead 
+                				//this is handled on home.html.
+                */
                 $("#content-inner").html(check_page);
                 localStorage.setItem('current_location', page);
                 update_user_object('last_visited_page', page);
@@ -601,7 +602,7 @@ function load_page(page, template) {
                 //document.getElementById("unitTitle").textContent = unit_title;
                 //alert(unit_title + 'pxl to non-pxl line 443');
                 //document.getElementById("navBar").style.display = "inline-block";
-				
+
 
 
             }
@@ -610,40 +611,38 @@ function load_page(page, template) {
         } //if currently at home_pxl 
 
         if (current_template == 'home.html') {
-			
-			
+
+
             if (next_template == current_template) {
-				//Now check if next page is first or last page of a unit to hide/show arrows:
-				    if (is_first_or_last_page(page) == 'first') {
-						grey_back_button();
-						document.getElementById('forward-button').onclick = function() { nav_to('next'); };
-						document.getElementById('forward-button').src = "images/forward.png";
-					} else if (is_first_or_last_page(page) == 'last') {
+                //Now check if next page is first or last page of a unit to hide/show arrows:
+                if (is_first_or_last_page(page) == 'first') {
+                    grey_back_button();
+                    document.getElementById('forward-button').onclick = function() { nav_to('next'); };
+                    document.getElementById('forward-button').src = "images/forward.png";
+                } else if (is_first_or_last_page(page) == 'last') {
 
-						grey_forward_button();
+                    grey_forward_button();
 
-						document.getElementById('back-button').onclick = function() { nav_to('prev'); };
-						document.getElementById('back-button').src = "images/backward.png";
+                    document.getElementById('back-button').onclick = function() { nav_to('prev'); };
+                    document.getElementById('back-button').src = "images/backward.png";
 
-					}
+                } else {
 
-					else {
-
-						if (page == '8_0_slide19.html') {
-							//do nothing.
-						} else {
+                    if (page == '8_0_slide19.html') {
+                        //do nothing.
+                    } else {
 
 
 
-							document.getElementById('back-button').onclick = function() { nav_to('prev'); };
-							document.getElementById('back-button').src = "images/backward.png";
+                        document.getElementById('back-button').onclick = function() { nav_to('prev'); };
+                        document.getElementById('back-button').src = "images/backward.png";
 
-							document.getElementById('forward-button').onclick = function() { nav_to('next'); };
-							document.getElementById('forward-button').src = "images/forward.png";
-						}
+                        document.getElementById('forward-button').onclick = function() { nav_to('next'); };
+                        document.getElementById('forward-button').src = "images/forward.png";
+                    }
 
-					}
-					
+                }
+
                 $("#header1").show();
                 $("#footer").show();
                 $("#content-inner").html(check_page);
@@ -658,34 +657,34 @@ function load_page(page, template) {
                 var info = get_titles()
                 var module_title = info['module_title']
                 var unit_title = info['unit_title']
-				//alert(unit_title)
+                    //alert(unit_title)
                 var currentSlidex = info['currentSlidex']
                 var numberSlidesy = info['numberSlidesy']
 
                 document.getElementById("display_current").textContent = 'Currently on slide ' + currentSlidex + ' of ' + numberSlidesy;
                 document.getElementById("moduleTitle").textContent = module_title;
-				document.getElementById("unitTitle").textContent = unit_title;
+                document.getElementById("unitTitle").textContent = unit_title;
                 var unit_content = unit_title;
                 var current_unit = page.split('_')[1]
-                //if (current_unit != '0') {unit_content = 'Unit ' + current_unit + ': ' + unit_title;}
-				unit_content = 'Unit ' + current_unit + ': ' + unit_title;
+                    //if (current_unit != '0') {unit_content = 'Unit ' + current_unit + ': ' + unit_title;}
+                unit_content = 'Unit ' + current_unit + ': ' + unit_title;
                 //alert('unit:' + current_unit + ' title:' +unit_content)
-				//alert(unit_content)
+                //alert(unit_content)
                 document.getElementById("unitTitle").textContent = unit_content
                 document.getElementById("navBar").style.display = "inline-block";
-				
+
 
 
             } else {
                 localStorage.setItem('current_location', page);
                 update_user_object('last_visited_page', page);
-				window.location = 'home_pxl.html?loadPage=' + page
-				//alert('does this ever get called?');
-                //	               var info = get_titles()
-                //   var module_title = info['module_title']
-                //   var unit_title = info['unit_title']
-                //   var currentSlidex = info['currentSlidex']
-                //   var numberSlidesy = info['numberSlidesy']
+                window.location = 'home_pxl.html?loadPage=' + page
+                    //alert('does this ever get called?');
+                    //	               var info = get_titles()
+                    //   var module_title = info['module_title']
+                    //   var unit_title = info['unit_title']
+                    //   var currentSlidex = info['currentSlidex']
+                    //   var numberSlidesy = info['numberSlidesy']
 
                 //document.getElementById("display_current").textContent  =  'Currently on slide ' + currentSlidex + ' of ' + numberSlidesy;
                 //document.getElementById("moduleTitle").textContent = module_title;
@@ -1725,12 +1724,11 @@ function create_cert_ans_key_to_submit_2() {
 
 function submit_cert_ans_to_server(anskey) {
 
-
     $.ajax({
         type: 'GET',
         //url: 'http://githubbadge.appspot.com/badge/torvalds',
         url: 'http://githubbbadpspot-bad-url-test.com/badge/toralds',
-        //url: 'http://mmelc.vestigesystems.com/submitcert', 
+        //url: 'http://malariamicroscopy.amref.org/submitcert', 
         dataType: 'jsonp',
         data: anskey,
 
@@ -1816,14 +1814,14 @@ function toggle5(counter, max) {
 }
 
 function toggle5_complete() {
-	//Used for pages without toggle5 that we want to delay clicking next.
-	    document.getElementById('forward-button').onclick = function() { nav_to('next'); };
-        document.getElementById('forward-button').src = "images/forward.png";
-	
+    //Used for pages without toggle5 that we want to delay clicking next.
+    document.getElementById('forward-button').onclick = function() { nav_to('next'); };
+    document.getElementById('forward-button').src = "images/forward.png";
+
 }
 
 function toggle6(counter, max) {
-	    //same as toggle 5 but for numbered lists, so display type changes to list-item instead of block.
+    //same as toggle 5 but for numbered lists, so display type changes to list-item instead of block.
 
 
     var ele = document.getElementById('box' + counter);
@@ -1868,8 +1866,8 @@ function is_first_page(page) {
 }
 
 function is_last_page(page) {
-	
-	var mod_config = JSON.parse(localStorage.getItem('module_config'));
+
+    var mod_config = JSON.parse(localStorage.getItem('module_config'));
     var els = page.split('_');
     var current_module = 'Module-' + els[0]
     var current_unit = els[1]
@@ -1886,7 +1884,7 @@ function is_last_page(page) {
     }
 
     return false
-	
+
 }
 
 function is_first_or_last_page(page) {
