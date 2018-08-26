@@ -118,14 +118,23 @@
                                     <div style="width:64%;display: inline-block;vertical-align: top;overflow:auto;max-height:calc(100% - 35px);">
                                         <div id="admin-options" style="margin-top: 50px;">
 
-                                            <span id="sendreport-btn"><button class="getupdatesbtn" style="background-color: green;" onclick="adminoptions('sendreport');">Send Error Report</button></span>
+                                            <span id="sendreport-btn"><button id="sendreportbtn" class="getupdatesbtn" style="background-color: green;" onclick="adminoptions('sendreport');">Send Error Report</button></span>
 
-                                            <span id="getupdates-btn"><button class="getupdatesbtn" onclick="adminoptions('getupdates');">Check for Updates</button></span>
+                                            <span id="getupdates-btn"><button id="getupdatesbtn" class="getupdatesbtn" onclick="adminoptions('getupdates');">Check for Updates</button></span>
 
                                             <!-- <span id="copyusb-btn"><button class="getupdatesbtn" onclick="adminoptions('copyusb');">Copy updates to USB</button></span> -->
 
                                             <p></p>
                                             <p></p>
+
+                                            <div id="loading" style="display:none;">
+                                                <hr>
+                                                <h2>Please wait while we try to get updates</h2>
+                                                <p>Do not close the browser or click on back button ...</p>
+                                                <p>If updates are found, they would be installed automatically on next restart. </p>
+                                                <p></p>
+                                                <img id="loading-image" src="images/loading.gif" alt="Loading..." />
+                                            </div>
 
 
                                         </div>
@@ -166,14 +175,12 @@
 
 
 
-
-
                                             </div>
 
                                             <p></p>
                                             <p></p>
 
-                                            <span id="getupdates-btn"><button id="getupdatesbtn" class="getupdatesbtn" style="vertical-align: top;position: absolute; margin-left: 20px;" onclick="get_updates_btn();">Ok - Check for Updates</button></span>
+                                            <span id="getupdates-btn"><button id="getupdatesbtnclick" class="getupdatesbtn" style="vertical-align: top;position: absolute; margin-left: 20px;" onclick="get_updates_btn();">Ok - Check for Updates</button></span>
 
 
                                         </div>
@@ -277,11 +284,17 @@
 
     function get_updates_btn() {
 
-        //hide the button. 
-
+        //hide everything. 
         document.getElementById("getupdatesbtn").style.display = "none";
+        document.getElementById("sendreportbtn").style.display = "none";
+        document.getElementById("getupdatesbtnclick").style.display = "none";
+        document.getElementById("getupdates-txt").style.display = "none";
 
-        get_updates();
+
+        //show the spinner. 
+        document.getElementById("loading").style.display = "block";
+
+        //get_updates();
     }
 </script>
 

@@ -218,8 +218,12 @@ function get_updates() {
 }
 
 function get_updates_callback(arg) {
-    var response = arg;
+    var response = arg.response;
     alert(response);
+
+    //redirect to index page. 
+
+    window.location.replace("index.html");
 }
 
 function copy_updates_to_usb() {

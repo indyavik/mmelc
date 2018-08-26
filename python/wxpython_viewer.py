@@ -725,7 +725,7 @@ class JavascriptExternal:
 
     def get_updates(self, jsCallBack):
 
-        response = "Error: Could not get updates at this time. please contact and admin."
+        response = {"response" : "Error :Could not get updates at this time. please contact and admin."}
         
         now = datetime.now().strftime('%Y-%m-%d-%H-%M-%S')
         loc = os.path.dirname(os.path.abspath(__file__))
@@ -762,21 +762,14 @@ class JavascriptExternal:
 
                 else:
                     #New version is  not found update the mmelc.properties.
-                    response = 'No updates are available at this time' 
+                    response = {"response" : "Ok - No new updates. You have the latest version."} 
 
 
         except Exception as e:
-            response = "Error: Could not get updates at this time. please contact and admin."
+            response = {"response" : "Error :Could not get updates at this time. please contact and admin."}
             print(e)
 
         jsCallBack.Call(response)
-
-    def install_updates(self, jsCallBack):
-        #copy the latest files
-        #take backup
-        archive_name ="current_version_backup.zip"
-        shutil.make_archive(archive_name, 'zip', 'nginx-1.8.0/')
-        jsCallBack("file backedup")
 
 
     def saveFile(self, file_name, json_object):
@@ -1425,8 +1418,10 @@ def create_usb_id_on_start():
     
     usb_id_file = 'usb_id.json'
     main_dir_file ='nginx-1.8.0/html/data_l/usb_id.json'
+
     #usb_dir_file = 'C:\MMELC_pilot\python\usb_id.json'
     #usb_dir_file = 'C:/MMELC_pilot/python/usb_id.json'
+
     usb_dir_file = 'D:/usb_id.json'
     if not os.path.isfile(main_dir_file):
         import uuid
@@ -1444,130 +1439,120 @@ def create_usb_id_on_start():
 def install_updates():
     #check for the updates and install if necessary.
 
-    #globals. 
-
     current_nginxdir = 'nginx-1.8.0'
     backupdir_prefix = 'nginx-1.8.0'
 
     if not os.path.exists(current_nginxdir):
         #raise error and exist
         print('current dir not found')
+        update_status = "error"
+        return; # nothing to do. 
 
     else:
         #check whether install is required. 
-        config_file = MMELC_CONFIG_FILE
-        config = ConfigParser.RawConfigParser()
-        config.read(config_file)
-        current_version = config.get('SETTINGS', 'version')
-        new_version = config.get('SETTINGS', 'new_version_available')
-        new_version_file = config.get('SETTINGS', 'filename')
-        install_pending = config.get('SETTINGS', 'install_pending')
 
-        """
-        with open('updates.json') as f:
-            check = json.load(f)
-            
-        update_status = "ok"
+        try:
+            config_file = MMELC_CONFIG_FILE
+            config = ConfigParser.RawConfigParser()
+            config.read(config_file)
+            current_version = config.get('SETTINGS', 'version')
+            new_version = config.get('SETTINGS', 'new_version_available')
+            new_version_file = config.get('SETTINGS', 'filename')
+            install_pending = config.get('SETTINGS', 'install_pending')
+        
+        except Exception as e:
+            print(e)
+            return;  # exit nothing to do. 
 
-        """
-
-        #if check['install_pending'] == 'yes':
+        #if there's something to install, go ahead and do .:
         if install_pending =='yes' and (float(current_version) < float(new_version)):
 
-        #if install_pending: 
-            """
-            new_version_file =  check['filename']
-            current_version =check['current_version']
-            new_version = check['new_version_available']
-            """ 
+            now = datetime.now().strftime('%Y-%m-%d-%H-%M-%S')
+            
             print new_version_file, current_version, new_version
 
             #install updates. 
 
             #try:
-            #create a backup that can be stored. 
-            print 'creating backup'
 
-            #backupdir = './nginx-1.8.0_' + new_version 
-            backupdir = backupdir_prefix + '_backup_' + current_version
+                #create a backup that can be stored. 
+                print 'creating backup'
 
-            print backupdir
+                backupdir = backupdir_prefix + '_backup_' + current_version
 
-            if os.path.exists(backupdir):
-                "print removing dir"
-                shutil.rmtree(backupdir) 
+                #remove the dir if exists. shutil would complain otherwise. 
 
-            """
-            else:
-                "creating backupdir."
-                os.mkdir(backupdir)
-            """
-            #backup current directory and move. 
-            shutil.copytree(current_nginxdir, backupdir)
-            shutil.rmtree(current_nginxdir + '/html')  # removes the html dir. 
+                if os.path.exists(backupdir):
+                    "print removing dir"
+                    shutil.rmtree(backupdir) 
 
-            #unpack new version in place. 
+                #backup current directory, copy the existing to backup, and delete '/html'  from existing. 
 
-            print 'unpacking new version in place'
-            z= zipfile.ZipFile(new_version_file, 'r')
-            z.extractall(current_nginxdir + '/') # should create html directory. 
+                shutil.copytree(current_nginxdir, backupdir)
+                shutil.rmtree(current_nginxdir + '/html')  # removes the html dir. 
 
-            #restore video files from backup. 
-            #keep the old files only overwrite if doesn't exists. 
+                #unpack new version in place. 
 
-            print 'restoring video files'  
+                print 'unpacking new version in place'
 
-            for filename in glob.glob(os.path.join(backupdir + '/html/content/videos/' , '*.*')):
-                if not os.path.isfile(current_nginxdir +'/html/content/videos/' + filename):
-                    shutil.copy(filename, current_nginxdir + '/html/content/videos/')
+                z= zipfile.ZipFile(new_version_file, 'r')
+                z.extractall(current_nginxdir + '/') # should create html directory. 
 
-            #restore user data from 'data, data_l, and certification 
-            print 'restoring user data'
+                #restore video files from backup. 
+                #keep the old files only overwrite if doesn't exists. 
 
-            restore_dirs =[backupdir +'/html/data/', backupdir +'/html/data_l/' , backupdir +'/html/content/certification/conf/']
-            #destinations = ['nginx-1.8.0/html/data/', 'nginx-1.8.0/html/data_l/' , 'nginx-1.8.0/html/content/certification/conf/']
-            destinations = [current_nginxdir +'/html/data/', current_nginxdir + '/html/data_l/' , current_nginxdir + '/html/content/certification/conf/']
-            
-            #do not over-write conf files. they can be new. 
-            skip_files =['certification.conf' , 'module_conf.json']
+                print 'restoring video files'  
 
-            for i,d in enumerate(restore_dirs):
-                file_list =os.listdir(d)
-                for f in file_list:
-                    if os.path.isfile(d+f) and f not in skip_files:
-                        shutil.copy(d + f ,  destinations[i] )
+                for filename in glob.glob(os.path.join(backupdir + '/html/content/videos/' , '*.*')):
+                    if not os.path.isfile(current_nginxdir +'/html/content/videos/' + filename):
+                        shutil.copy(filename, current_nginxdir + '/html/content/videos/')
 
-            print 'completed new version install'
+                #restore user data from 'data, data_l, and certification 
 
-            """
+                print 'restoring user data'
+
+                restore_dirs =[backupdir +'/html/data/', backupdir +'/html/data_l/' , backupdir +'/html/content/certification/conf/']
+                #destinations = ['nginx-1.8.0/html/data/', 'nginx-1.8.0/html/data_l/' , 'nginx-1.8.0/html/content/certification/conf/']
+                destinations = [current_nginxdir +'/html/data/', current_nginxdir + '/html/data_l/' , current_nginxdir + '/html/content/certification/conf/']
+                
+                #while restoring do not over-write conf files. They may have changed. 
+
+                skip_files =['certification.conf' , 'module_conf.json']
+
+                for i,d in enumerate(restore_dirs):
+                    file_list =os.listdir(d)
+                    for f in file_list:
+                        if os.path.isfile(d+f) and f not in skip_files:
+                            shutil.copy(d + f ,  destinations[i] )
+
+                print 'completed new version install'
+                update_status = "ok"
+ 
             except Exception as e:
                 print(e)
                 print("error could not restore")
                 update_status = "error"
+
                 #rollback.
-                #shutil.copytree( './nginx-1.8.0-backup', 'nginx-1.8.0')
                 shutil.copytree( backupdir + '/html',  current_nginxdir + '/') # copies back html. 
 
+            #update the properties file for next time. 
 
-            #update the json file for next  time. current -> try only 1 time to update. 
-            if update_status =='ok':
-                check['install_pending'] = 'no'
-                check['last_update_install_status'] = 'ok'
-            else:
-                check['install_pending'] = 'no'
-                check['last_update_install_status'] = 'error'
-
-            with open('updates.json', 'w') as f:
-                json.dump(check, f)
             """
-        config.set('SETTINGS', 'install_pending', 'ok')
+            with open('updates_status.json', 'a') as f:
+                #json.dump(check, f)
+                f.write("done")
+            """
+            config.set('SETTINGS', 'install_pending', update_status)
+            if update_status =='ok':
+                #change the current version to new version. 
+                config.set('SETTINGS', 'version',new_version)
+                
+            config.set('SETTINGS', 'install_update_last_try_datetime', now)
+            
+            with open(config_file, 'wb') as f:
+                config.write(f)
 
-        with open(config_file, 'wb') as f:
-            config.write(f)
-
-        with open('updates_status.json', 'a') as f:
-            #json.dump(check, f)
-            f.write("done")
 
 if __name__ == '__main__':
     print('[wxpython_viewer.py] architecture=%s-bit' % (8 * struct.calcsize("P")))
