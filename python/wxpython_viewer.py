@@ -50,6 +50,7 @@ import zipfile
 g_applicationSettings = None
 g_browserSettings = None
 g_commandLineSwitches = None
+MMELC_CONFIG_FILE="mmelc.properties"
 
 # Which method to use for message loop processing.
 #   EVT_IDLE - wx application has priority
@@ -512,105 +513,7 @@ class MainFrame(wx.Frame):
         #self.writeCloseLog()
         #self.sendDataZip()
 
-        #check for the updates and install if necessary.
-
-        #globals. 
-
-        current_nginxdir = 'nginx-1.8.0'
-        backupdir_prefix = 'nginx-1.8.0'
-
-        if not os.path.exists(current_nginxdir):
-            #raise error and exist
-            print('current dir not found')
-
-        else:
-            with open('updates.json') as f:
-                check = json.load(f)
-                
-            update_status = "ok"
-
-            if check['install_pending'] == 'yes':
-                new_version_file =  check['filename']
-                current_version =check['current_version']
-                new_version = check['new_version_available']
-                
-                print new_version_file, current_version, new_version
-
-                #install updates. 
-
-                try:
-                    #create a backup that can be stored. 
-                    print 'creating backup'
-
-                    #backupdir = './nginx-1.8.0_' + new_version 
-                    backupdir = backupdir_prefix + '_backup_' + current_version
-
-                    print backupdir
-
-                    if os.path.exists(backupdir):
-                        "print removing dir"
-                        shutil.rmtree(backupdir) 
-                    else:
-                        "creating backupdir."
-                        os.mkdir(backupdir)
-
-                    #backup current directory and move. 
-
-                    shutil.copytree(current_nginxdir, backupdir)
-                    shutil.rmtree(current_nginxdir + '/html')  # removes the html dir. 
-
-                    #unpack new version in place. 
-
-                    print 'unpacking new version in place'
-                    z= zipfile.ZipFile(new_version_file, 'r')
-                    z.extractall(current_nginxdir + '/') # should create html directory. 
-
-                    #restore video files from backup. 
-                    #keep the old files only overwrite if doesn't exists. 
-
-                    print 'restoring video files'  
-
-                    for filename in glob.glob(os.path.join(backupdir + '/html/content/videos/' , '*.*')):
-                        if not os.path.isfile(current_nginxdir +'/html/content/videos/' + filename):
-                            shutil.copy(filename, current_nginxdir + '/html/content/videos/')
-
-                    #restore user data from 'data, data_l, and certification 
-                    print 'restoring user data'
-
-                    restore_dirs =[backupdir +'/html/data/', backupdir +'/html/data_l/' , backupdir +'/html/content/certification/conf/']
-                    #destinations = ['nginx-1.8.0/html/data/', 'nginx-1.8.0/html/data_l/' , 'nginx-1.8.0/html/content/certification/conf/']
-                    destinations = [current_nginxdir +'/html/data/', current_nginxdir + '/html/data_l/' , current_nginxdir + '/html/content/certification/conf/']
-                    
-                    #do not over-write conf files. they can be new. 
-                    skip_files =['certification.conf' , 'module_conf.json']
-
-                    for i,d in enumerate(restore_dirs):
-                        file_list =os.listdir(d)
-                        for f in file_list:
-                            if os.path.isfile(d+f) and f not in skip_files:
-                                shutil.copy(d + f ,  destinations[i] )
-
-                    print 'completed new version install'
-
-                except Exception as e:
-                    print(e)
-                    print("error could not restore")
-                    update_status = "error"
-                    #rollback.
-                    #shutil.copytree( './nginx-1.8.0-backup', 'nginx-1.8.0')
-                    shutil.copytree( backupdir + '/html',  current_nginxdir + '/') # copies back html. 
-
-
-                #update the json file for next  time. current -> try only 1 time to update. 
-                if update_status =='ok':
-                    check['install_pending'] = 'no'
-                    check['last_update_install_status'] = 'ok'
-                else:
-                    check['install_pending'] = 'no'
-                    check['last_update_install_status'] = 'error'
-
-                with open('updates.json', 'w') as f:
-                    json.dump(check, f)
+        
 
         # Remove Temp file
         self.removeTEMPDrive()
@@ -821,29 +724,49 @@ class JavascriptExternal:
 
 
     def get_updates(self, jsCallBack):
-        response = 'No updates are available at this time' 
+
+        response = "Error: Could not get updates at this time. please contact and admin."
+        
         now = datetime.now().strftime('%Y-%m-%d-%H-%M-%S')
         loc = os.path.dirname(os.path.abspath(__file__))
-        #downloaded_zip_name_path = loc + '/updates-' + str(now) + '.zip' 
-        downloaded_zip_name_path = os.path.abspath(os.path.join(loc,'payload-1.2.zip'))
-        url = get_endpoint()+'/api/v1.0/getUpdates?version='+get_version()
-        try:
 
+        #downloaded_zip_name_path = loc + '/updates-' + str(now) + '.zip' 
+        #downloaded_zip_name_path = os.path.abspath(os.path.join(loc,'payload-1.2.zip'))
+
+        url = get_endpoint()+'/api/v1.0/getUpdates?version='+get_version()
+
+        try:
             r = requests.get(url, stream=True)
             #write file if filename is found 
             if r.status_code == 200 and 'filename' in r.headers.get('Content-Disposition'):
                 filename = r.headers.get('Content-Disposition').split(';')[1].split('=')[1] # payload_1.1.zip
                 new_version = filename.split('_')[1]
-                with open(filename, 'wb') as f:
-                    shutil.copyfileobj(r.raw, f)
-                    response = 'Updates downloaded to ' + filename
-                    #write the json file.
-                    d= {'current_version' : get_version(), 'new_version_available' : new_version, 'filename': filename, 'datetime' : now , 'install_pending' : 'yes' } 
-                    with open('updates.json', 'w') as f:
-                        f.write(json.dumps(d))
+                current_version = get_version()
+
+                if float(new_version) > float(current_version):
+                    #new updates available. save the new zip file. 
+                    with open(filename, 'wb') as f:
+                        shutil.copyfileobj(r.raw, f)
+
+                    #update the mmelc.properties file. 
+
+                    config_file = MMELC_CONFIG_FILE
+                    config = ConfigParser.RawConfigParser() 
+                    config.read(config_file)
+                    config.set('SETTINGS', 'new_version_available', new_version)
+                    config.set('SETTINGS', 'filename', filename)
+                    config.set('SETTINGS', 'install_pending', 'yes')
+                    config.set('SETTINGS', 'datetime', now)
+                    with open(config_file, 'wb') as f:
+                        config.write(f)
+
+                else:
+                    #New version is  not found update the mmelc.properties.
+                    response = 'No updates are available at this time' 
+
 
         except Exception as e:
-            response = str(e)
+            response = "Error: Could not get updates at this time. please contact and admin."
             print(e)
 
         jsCallBack.Call(response)
@@ -855,37 +778,7 @@ class JavascriptExternal:
         shutil.make_archive(archive_name, 'zip', 'nginx-1.8.0/')
         jsCallBack("file backedup")
 
-    def get_updates_old(self, jsCallBack):
-        response = 'No updates Available.'
-        now = datetime.now().strftime('%Y-%m-%d-%H-%M-%S')
-        loc = os.path.dirname(os.path.abspath(__file__))
-        #downloaded_zip_name_path = loc + '/updates-' + str(now) + '.zip' 
-        #downloaded_zip_name_path = os.path.abspath(os.path.join(loc,'payload-1.2.zip'))
-        url = get_endpoint()+'/api/v1.0/getUpdates?version='+get_version()
-        try:
-            req = urllib2.Request(url)
-            res = urllib2.urlopen(req, None, 15)
-            
-            if (res.getcode() == 204):
-                response = 'No updates available.'
-            else:
-                _, params = cgi.parse_header(res.headers.get('Content-Disposition', ''))
-                filename = params['filename']
-                downloaded_zip_name_path = os.path.join(loc,filename)
-                with open(downloaded_zip_name_path, 'wb') as f:
-                    while True:
-                        chunk = res.read(16*1024)
-                        if not chunk:
-                            break
-                        f.write(chunk)
-                response = 'Updates downloaded to ' + downloaded_zip_name_path
-        except Exception as e:
-            response = str(e)
-        if (response.startswith('Updates downloaded')):
-                response = upgrade(downloaded_zip_name_path)
-        jsCallBack.Call(response)
 
-   
     def saveFile(self, file_name, json_object):
         #save_path = 'nginx-1.8.0/html/data/'
         save_path = 'nginx-1.8.0/html'
@@ -1548,7 +1441,133 @@ def create_usb_id_on_start():
             except Exception as e:
                 print(e)
 
+def install_updates():
+    #check for the updates and install if necessary.
 
+    #globals. 
+
+    current_nginxdir = 'nginx-1.8.0'
+    backupdir_prefix = 'nginx-1.8.0'
+
+    if not os.path.exists(current_nginxdir):
+        #raise error and exist
+        print('current dir not found')
+
+    else:
+        #check whether install is required. 
+        config_file = MMELC_CONFIG_FILE
+        config = ConfigParser.RawConfigParser()
+        config.read(config_file)
+        current_version = config.get('SETTINGS', 'version')
+        new_version = config.get('SETTINGS', 'new_version_available')
+        new_version_file = config.get('SETTINGS', 'filename')
+        install_pending = config.get('SETTINGS', 'install_pending')
+
+        """
+        with open('updates.json') as f:
+            check = json.load(f)
+            
+        update_status = "ok"
+
+        """
+
+        #if check['install_pending'] == 'yes':
+        if install_pending =='yes' and (float(current_version) < float(new_version)):
+
+        #if install_pending: 
+            """
+            new_version_file =  check['filename']
+            current_version =check['current_version']
+            new_version = check['new_version_available']
+            """ 
+            print new_version_file, current_version, new_version
+
+            #install updates. 
+
+            #try:
+            #create a backup that can be stored. 
+            print 'creating backup'
+
+            #backupdir = './nginx-1.8.0_' + new_version 
+            backupdir = backupdir_prefix + '_backup_' + current_version
+
+            print backupdir
+
+            if os.path.exists(backupdir):
+                "print removing dir"
+                shutil.rmtree(backupdir) 
+
+            """
+            else:
+                "creating backupdir."
+                os.mkdir(backupdir)
+            """
+            #backup current directory and move. 
+            shutil.copytree(current_nginxdir, backupdir)
+            shutil.rmtree(current_nginxdir + '/html')  # removes the html dir. 
+
+            #unpack new version in place. 
+
+            print 'unpacking new version in place'
+            z= zipfile.ZipFile(new_version_file, 'r')
+            z.extractall(current_nginxdir + '/') # should create html directory. 
+
+            #restore video files from backup. 
+            #keep the old files only overwrite if doesn't exists. 
+
+            print 'restoring video files'  
+
+            for filename in glob.glob(os.path.join(backupdir + '/html/content/videos/' , '*.*')):
+                if not os.path.isfile(current_nginxdir +'/html/content/videos/' + filename):
+                    shutil.copy(filename, current_nginxdir + '/html/content/videos/')
+
+            #restore user data from 'data, data_l, and certification 
+            print 'restoring user data'
+
+            restore_dirs =[backupdir +'/html/data/', backupdir +'/html/data_l/' , backupdir +'/html/content/certification/conf/']
+            #destinations = ['nginx-1.8.0/html/data/', 'nginx-1.8.0/html/data_l/' , 'nginx-1.8.0/html/content/certification/conf/']
+            destinations = [current_nginxdir +'/html/data/', current_nginxdir + '/html/data_l/' , current_nginxdir + '/html/content/certification/conf/']
+            
+            #do not over-write conf files. they can be new. 
+            skip_files =['certification.conf' , 'module_conf.json']
+
+            for i,d in enumerate(restore_dirs):
+                file_list =os.listdir(d)
+                for f in file_list:
+                    if os.path.isfile(d+f) and f not in skip_files:
+                        shutil.copy(d + f ,  destinations[i] )
+
+            print 'completed new version install'
+
+            """
+            except Exception as e:
+                print(e)
+                print("error could not restore")
+                update_status = "error"
+                #rollback.
+                #shutil.copytree( './nginx-1.8.0-backup', 'nginx-1.8.0')
+                shutil.copytree( backupdir + '/html',  current_nginxdir + '/') # copies back html. 
+
+
+            #update the json file for next  time. current -> try only 1 time to update. 
+            if update_status =='ok':
+                check['install_pending'] = 'no'
+                check['last_update_install_status'] = 'ok'
+            else:
+                check['install_pending'] = 'no'
+                check['last_update_install_status'] = 'error'
+
+            with open('updates.json', 'w') as f:
+                json.dump(check, f)
+            """
+        config.set('SETTINGS', 'install_pending', 'ok')
+
+        with open(config_file, 'wb') as f:
+            config.write(f)
+
+        with open('updates_status.json', 'a') as f:
+            #json.dump(check, f)
+            f.write("done")
 
 if __name__ == '__main__':
     print('[wxpython_viewer.py] architecture=%s-bit' % (8 * struct.calcsize("P")))
@@ -1684,6 +1703,9 @@ if __name__ == '__main__':
 
     }
 
+    #install updates as required
+    install_updates();
+
     cefpython.Initialize(g_applicationSettings, g_commandLineSwitches)
 
     app = MyApp(False)
@@ -1694,4 +1716,3 @@ if __name__ == '__main__':
     del app
 
     cefpython.Shutdown()
-
