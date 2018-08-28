@@ -50,7 +50,7 @@ import zipfile
 g_applicationSettings = None
 g_browserSettings = None
 g_commandLineSwitches = None
-MMELC_CONFIG_FILE="mmelc.properties"
+MMELC_CONFIG_FILE="python/mmelc.properties"
 
 # Which method to use for message loop processing.
 #   EVT_IDLE - wx application has priority
@@ -725,7 +725,7 @@ class JavascriptExternal:
 
     def get_updates(self, jsCallBack):
 
-        response = {"response" : "Error :Could not get updates at this time. please contact and admin."}
+        response = {"response" : "Ok. Successfully downloaded new version"}
         
         now = datetime.now().strftime('%Y-%m-%d-%H-%M-%S')
         loc = os.path.dirname(os.path.abspath(__file__))
@@ -733,17 +733,19 @@ class JavascriptExternal:
         #downloaded_zip_name_path = loc + '/updates-' + str(now) + '.zip' 
         #downloaded_zip_name_path = os.path.abspath(os.path.join(loc,'payload-1.2.zip'))
 
-        url = get_endpoint()+'/api/v1.0/getUpdates?version='+get_version()
+        url = get_endpoint()+'/api/v1.0/getUpdates?version='+ get_version()
+
 
         try:
             r = requests.get(url, stream=True)
             #write file if filename is found 
+
             if r.status_code == 200 and 'filename' in r.headers.get('Content-Disposition'):
                 filename = r.headers.get('Content-Disposition').split(';')[1].split('=')[1] # payload_1.1.zip
-                new_version = filename.split('_')[1]
+                new_version = filename.split('_')[1].split('.zip')[0]
                 current_version = get_version()
 
-                if float(new_version) > float(current_version):
+                if float(new_version.strip()) > float(current_version.strip()):
                     #new updates available. save the new zip file. 
                     with open(filename, 'wb') as f:
                         shutil.copyfileobj(r.raw, f)
@@ -763,11 +765,15 @@ class JavascriptExternal:
                 else:
                     #New version is  not found update the mmelc.properties.
                     response = {"response" : "Ok - No new updates. You have the latest version."} 
+            else:
+                 response = {"response" : "Ok - No new updates. You have the latest version."}
 
 
         except Exception as e:
             response = {"response" : "Error :Could not get updates at this time. please contact and admin."}
             print(e)
+            #response = { "response" : str(float(new_version)) +":" + str(float(current_nginxdir))}
+            #response = {"response" : e}
 
         jsCallBack.Call(response)
 
@@ -1473,7 +1479,7 @@ def install_updates():
 
             #install updates. 
 
-            #try:
+            try:
 
                 #create a backup that can be stored. 
                 print 'creating backup'
