@@ -19,7 +19,7 @@
     </p>
 
     <button class="blue-btn" style="margin-top:30px;" onclick="javascript:submitNow()">Submit Answer key to server</button> After submitting or saving the question and answer keys, you may click below to return to the Welcome Page.
-    <button class="blue-btn" style="margin-top:30px;" onclick="javascript:load_page('home.html')">Return to the Welcome Page</button>
+    <button class="blue-btn" style="margin-top:30px;" onclick="javascript:redirect_to_home('home.html')">Return to the Welcome Page</button>
 
 </div>
 
@@ -39,5 +39,9 @@
 
         submit_cert_ans_to_server(cert_results);
 
+    }
+
+    function redirect_to_home(pagename) {
+        window.location.replace("../../home.html");
     }
 </script>
