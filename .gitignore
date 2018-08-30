@@ -1,5 +1,7 @@
+scrap/
 *.pyc
 *.swp
 *data_0
 *data_1
 *.DS_Store
+*.ipynb
