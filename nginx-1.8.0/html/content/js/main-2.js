@@ -128,11 +128,7 @@ function calculate_completion() {
         //console.log(current_user)
     var user_data = JSON.parse(localStorage.getItem(current_user)).units_completed //"units_completed":{"1":[],"2":[],"3":[],"4":[],"5":[],"6":[],"7":[]}}"
         //console.log(user_data)
-
-    var current_location = localStorage.getItem('current_location').split('_') //["4", "2", "slide06.html"]
-    var slide_pointer = current_location[0] + '_' + current_location[1]
-
-
+//First set all menu items to checkbox or (open square for incomplete units)
     for (var key in user_data) {
 
         if (user_data.hasOwnProperty(key)) {
@@ -154,8 +150,14 @@ function calculate_completion() {
                     document.getElementById('Module-' + m + '-side').innerHTML = "&#10003;";
                 }
 
+				//clear all checkboxes for units
+				for (var i = 0; i < Object.keys(total_units).length; i++) {
+                    var to_change_1 = m + '_' + i
 
-
+                    document.getElementById(to_change_1).innerHTML = "&#9634;";
+                }
+				
+				//now mark completed with checkmark
 
                 for (var i = 0; i < completed_units.length; i++) {
                     var to_change = m + '_' + completed_units[i]
@@ -165,7 +167,7 @@ function calculate_completion() {
                     document.getElementById(to_change).innerHTML = "&#10003;";
                 }
 
-                document.getElementById(slide_pointer).innerHTML = "&#187;"
+                
 
 
 
@@ -173,6 +175,16 @@ function calculate_completion() {
 
         }
     }
+//Next set current_location to double arrows.
+	var current_page = localStorage.getItem('current_location')
+	//alert(current_location1)
+	//if on home page, current_location1 will be null or undefined or object, etc.
+	if (typeof current_page == 'string'){
+		var current_location = localStorage.getItem('current_location').split('_') //["4", "2", "slide06.html"]
+		var slide_pointer = current_location[0] + '_' + current_location[1]
+		document.getElementById(slide_pointer).innerHTML = "&#187;"
+	}
+
 } //calculate completion. 
 
 function update_units(current_module, current_unit, completed_module) {
@@ -233,6 +245,7 @@ function get_titles() {
     }
 
     var current_page = localStorage.getItem('current_location'); //5_0_slide02.html
+
     var els = current_page.split('_')
     var mod = 'Module-' + els[0]
     var unit = els[1]
@@ -253,7 +266,7 @@ function get_titles() {
     if (module_name == undefined) module_name = 'Module-8'
 
     return ({ 'module_title': module_name, 'unit_title': unit_name, 'currentSlidex': x, 'numberSlidesy': total })
-
+	
 
 
 } // get_titles 
@@ -261,9 +274,8 @@ function get_titles() {
 
 
 function openNav() {
-    document.getElementById("mySidenav").style.width = "375px";
-    calculate_completion()
-
+	document.getElementById("mySidenav").style.width = "375px";
+	calculate_completion()
 }
 
 function closeNav() {

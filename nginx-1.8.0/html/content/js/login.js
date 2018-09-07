@@ -818,8 +818,9 @@ function createUser_new(user_type) {
 
     function on_success(res) {
 
-        alert(res + 'good')
-            /*send to the on_error processing if server response is not success */
+        //alert(res + 'good')
+
+        /*send to the on_error processing if server response is not success */
         if (JSON.parse(res).response != 'success') {
             on_error('error')
 

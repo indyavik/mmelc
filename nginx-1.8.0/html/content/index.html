@@ -177,14 +177,14 @@
 
 
                                     <div id="MainTable" class="main_table" style="margin-left:20px; margin-top:20px; min-height:10px;">
-
+										<button id="refreshUserList" style="margin-right:0px;height:30px;background:#aaaaaa;margin-top:10px;" onclick="window.location.reload();">Click here to refresh user list (may be required after creating a new user)</button> 
                                         <table style="min-width:400px;background-color: transparent">
                                             <th style="background-color:white;">
-                                                <p>Select Licensed User</p>
+                                                <p>Licensed Users</p>
                                             </th>
                                             <th> </th>
                                             <th style="background-color:white;">
-                                                <p>Select Preview User</p>
+                                                <p>Preview Users</p>
                                             </th>
                                             <tr>
                                                 <td style="min-width:200px; background:transparent;">
@@ -224,7 +224,7 @@
                                         <hr>
 
                                         <div id="div_createUser" style="display:none">
-                                            <h2>Enter a user name and click"Go"</h2>
+                                            <h2>Enter a user name and click "Go"</h2>
 
                                             <input type="text" placeholder="Enter a username" name="some_name" id="input_createUser" maxlength="40" style="width:200px; height:50px; border: solid 1px #9598a0; font-size:18px;">
 
@@ -241,7 +241,7 @@
                                     <!-- main table -->
 
                                     <div id="div_verify_license" style="display:none">
-                                        <p>Enter your Licence key and click"Go." Internet access is required to verify the Licence key. </p>
+                                        <p>Enter your Licence key and click "Go." Internet access is required to verify the Licence key. </p>
                                         <P id="verify_license_response" style="color:blue;"></P>
                                         <input type="text" placeholder="Enter Licence key" name="license_key_to_verify" id="license_key_to_verify" maxlength="25" style="width:200px; height:50px; border: solid 1px #9598a0; font-size:18px;">
 
@@ -285,7 +285,7 @@
 
 
                                         <div id="select-radios" style="margin-top:50px;">
-                                            <p>Select a user type. A licence key, which must be verified through the internet, is required for Licensed Users. You will select the licence key at the next step if you choose"Licensed User." </p>
+                                            <p>Select a user type. A licence key, which must be verified through the internet, is required for Licensed Users. You will select the licence key at the next step if you choose "Licensed User." </p>
 
                                             <label><input type="radio" id="license-radio" value="license" onclick="showForm('license');" name="select-type">Licensed User</label>
                                             <p></p>
@@ -303,7 +303,7 @@
                                                 <p>1. Enter a user name </p>
                                                 <input type="text" placeholder="Enter a username" name="input_createUser_license" id="input_createUser_license" maxlength="25" style="width:200px; height:30px; border: solid 1px #9598a0; font-size:12px;">
                                                 <p>2. Enter a password (Optional). Note: Passwords are not secure, so do not use a password associated with sensitive accounts!</p>
-                                                <input type="text" placeholder="Optional Password" name="input_createUser_password_license" id="input_createUser_password_license" maxlength=20" style="width:200px; height:30px; border: solid 1px #9598a0; font-size:12px;">
+                                                <input type="text" placeholder="Optional Password" name="input_createUser_password_license" id="input_createUser_password_license" maxlength="20" style="width:200px; height:30px; border: solid 1px #9598a0; font-size:12px;">
                                                 <p>3. Email for password recovery (password recovery is not possible without internet connectivity)</p>
                                                 <input type="text" placeholder="Optional Recovery Email" name="input_createUser_email_license" id="input_createUser_email_license" maxlength="254" style="width:200px; height:30px; border: solid 1px
                                                     #9598a0; font-size:12px;">
@@ -650,15 +650,6 @@
                                 </div>
                                 <!-- div content -->
 
-                                <div id="footer" style="min-height: 50px;">
-                                    <!--<div style="height:10px;width:100%;background-color: #00AFEF">
-
-                                    </div> -->
-
-                                    <div style="width: 100%; display: table;">
-                                    </div>
-                                </div>
-
 
                             </div>
                             <!-- div footer -->
@@ -675,12 +666,12 @@
         <span class="help-close">&times;</span>
         <div class="help-modal-div">
             <div id="help-content-home">
-                <h2 class="heading-text">OK Worldwide E-Learning Course on Malaria Microscopy: Getting Started</h2>
-                <p class="content-text"> Participation in the course requires creating a user account, which is done by clicking the"Create New User" button.  There are two types of users: </p>
+                <h2 class="heading-text">Worldwide E-Learning Course on Malaria Microscopy: Getting Started</h2>
+                <p class="content-text"> Participation in the course requires creating a user account, which is done by clicking the "Create New User" button.  There are two types of users: </p>
 				<p class="content-text"> <b>Licensed Users </b> have full access to the course content.  Creating a licensed user requires entering a licence key (see below).</p>
 				<p class="content-text"> <b> Preview Users </b> do not have access to the pre-test, end-of-module tests, nor the post-test.  </p>
-				<p class="content-text"> <b> License Keys </b> must be validated while online.  To enter a licence key, click the"Add a new Licence Key" button.  If you do not have a licence key but would like to purchase one, please contact Amref International University, http://amref.ac.ke/, or email MalariaMicroscopyCourse@amref.org for details.</p>
-                <p>	If a licence key is added after creating a preview user, the user can be converted to a licensed user by clicking the"Convert Preview to Licensed User" button.</p>
+				<p class="content-text"> <b> License Keys </b> must be validated while online.  To enter a licence key, click the "Add a new Licence Key" button.  If you do not have a licence key but would like to purchase one, please contact Amref International University, http://amref.ac.ke/, or email MalariaMicroscopyCourse@amref.org for details.</p>
+                <p>	If a licence key is added after creating a preview user, the user can be converted to a licensed user by clicking the "Convert Preview to Licensed User" button.</p>
 				<p> The <b>final assessment</b>, which must be passed to receive a certificate, requires an additional registration, and can only be taken after completing the entire course as a Licensed User.</p>
 
 
@@ -727,7 +718,7 @@
 
 	</script>
 
-<div id="footer">
+<div id="footer" style="min-height:0px">
     <script src="/content/js/jquery-3.0.0.min.js" type="text/javascript"></script>
     <script src="/content/js/main.js" type="text/javascript"></script>
     <script src="/content/js/autoload.js" type="text/javascript"></script>
