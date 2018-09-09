@@ -53,6 +53,15 @@ function return_to_last() {
 
 } //return to last
 
+function remove_duplicates_from_array(arr){
+    var unique_array = []
+    for(var i = 0;i < arr.length; i++){
+        if(unique_array.indexOf(arr[i]) == -1){
+            unique_array.push(arr[i])
+        }
+    }
+    return unique_array
+} // remove duplicates from array 
 
 
 function redirect_to_cert() {
@@ -67,14 +76,22 @@ function redirect_to_cert() {
     }
 
     //var msg = "Please complete all modules first"
+
     var msg = "All modules (including pre and post test) must be completed before taking the final assessment."
     var current_user = localStorage.getItem('logged_in')
     var user_obj = JSON.parse(localStorage.getItem(localStorage.getItem('logged_in')))
 
+     
     var mod_completed = user_obj.modules_completed
+
     if (!mod_completed || mod_completed == undefined) {
         alert(msg)
         return;
+    }
+
+    else {
+        //remove duplicates. 
+        mod_completed = remove_duplicates_from_array(mod_completed)
     }
 
     var mod_conf = JSON.parse(localStorage.getItem('module_config'))
@@ -201,6 +218,9 @@ function update_units(current_module, current_unit, completed_module) {
             current_user_data['modules_completed'] = [completed_module]
 
         } else {
+            /* make sure not to insert duplicates  */
+            //if (user_completed_modules.indexOf(completed_module) === -1) user_completed_modules.push(completed_module);
+
             current_user_data['modules_completed'].push(completed_module)
 
         }

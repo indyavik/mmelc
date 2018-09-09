@@ -864,7 +864,7 @@ class JavascriptExternal:
             files = {'zipFile' : open( os.path.join(loc, 'error_reports_zip.zip') )} 
 
         except Exception as e:
-            to_write = "source:python - error shutil ops " + now +',' + e
+            to_write = "source:python - error shutil ops " + str(e)
     
         #upload the logs 
         try:
