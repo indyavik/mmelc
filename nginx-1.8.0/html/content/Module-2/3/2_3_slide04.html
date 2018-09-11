@@ -1,0 +1,60 @@
+<div id="m2_preparationOfD_p04" class="page-content">
+
+    <slide id="2_3_slide04"></slide>
+
+    <span><img src="images/objective.png" class="objectiveImgStyle"><h2 class="outcome-heading">Learning Outcomes</h2></span>
+                </span>
+
+    <h3 class="learningOutcomeText">By the end of the unit, you will be able to: </h3>
+
+
+    <div id="slide4-buttons button-alignment">
+
+        <button class="green-btn" onclick="javascript:slide4show(1)"> 1</button>
+
+        <button class="red-btn" onclick="javascript:slide4show(2)"> 2</button>
+
+        <button class="blue-btn" onclick="javascript:slide4show(3)"> 3</button>
+
+
+    </div>
+
+    <div id="outcome" class="outcome-text">
+
+        <div id="outcomex" class="outcomex-text">
+
+            <p id="outcome-1" class="outcome-num none-display">
+                1. Describe the preparation of Giemsa stain stock solution.</p>
+
+            <p id="outcome-2" class="outcome-num none-display">
+                2. Describe the preparation of buffered solution at pH 7.2 and correcting fluids.</p>
+
+            <p id="outcome-3" class="outcome-num none-display">
+                3. Describe the preparation of 3% and 10% Giemsa stain working solutions.</p>
+
+        </div>
+    </div>
+    <!---outcome 1 -->
+
+
+<br><br><br> </div> <!--actual page content here -->
+
+<script>
+    /* any js that applies to a slide should be included within the slide html page itself */
+toggle5_init();
+    function slide4show(count) {
+
+        $(".outcome-text").css('display', 'block');
+
+        for (var i = 1; i <= 3; i++) {
+            if (i <= count)
+                document.getElementById("outcome-" + i).style.display = 'block';
+            else
+                document.getElementById("outcome-" + i).style.display = 'none';
+        }
+		if (count == 3) {toggle5_complete();}
+
+    }
+
+</script>
+

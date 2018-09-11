@@ -1,0 +1,42 @@
+<div id="pxl_left"><slide id="3_7_slide14_pxl_pe3.7.1q1"></slide><form name = "myform">
+<button type="button" name="gthk" onclick = "showthick()">Thick blood film</button>
+<button type="button" name="gthn" onclick = "showthin()">Thin blood film</button>
+<br><b>Sample 1 of 4</b>
+<p>Enter your report below.  Make sure to include all necessary information!</p><br>  
+<textarea placeholder="Parasites seen? Species. Stages. Quantitation." rows="5" cols="30" style="width:95%"></textarea><br>
+<button type = "button" name = "button" onclick = "showResult()">Continue</button><br>
+
+<br>
+<div id = "answerFeedback"></div>
+
+</form>
+
+<br><br>
+<font size="-1"><br>
+</font>
+
+<script type = "text/javascript">
+function showResult() {
+
+document.getElementById("answerFeedback").innerHTML = "This sample contains a very high density of <em>P. falciparum</em> trophozoites, although the cytoplasm is very faint in the thick blood film.  The high density of young, compact trophozoites combined with the absence of mature stages suggest <em>P. falciparum</em>.  For quantitation we used the thin blood film, as the thick blood film was very dense, and calculated 120,000 parasites/microlitre.  Our report would read:<br><br><strong><em>P. falciparum</em> trophozoites seen, 120,000 parasites/microlitre.</strong><br><br>How did your answer compare?<br><br>";
+
+}
+
+function showthick() {
+document.getElementById('pathXLviewer').src = '../../standalone.html?slide=images/module3/m3u7pe1q1thick.svs';
+
+}
+
+function showthin() {
+document.getElementById('pathXLviewer').src = '../../standalone.html?slide=images/module3/m3u7pe1q1thin.svs';
+}
+
+
+</script>
+</div></div>
+  
+	  <div class="pxl_right" id="pxl_right"><div id="content">
+      <iframe id='pathXLviewer' src='../../standalone.html?slide=images/module3/m3u7pe1q1thick.svs' frameborder='0'></iframe>
+	  </div>
+
+</div>

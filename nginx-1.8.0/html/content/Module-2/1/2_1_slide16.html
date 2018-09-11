@@ -1,0 +1,47 @@
+<div id="m2_collectionOfBS_p16" class="page-content">
+        <slide id="2_1_slide16"></slide>
+
+<h2 class="heading-text"><a href="#preamble" name="preamble"></a>
+	Demonstration Video on Capillary Blood Collection </h2>
+
+	<p class="content-text">The following video clip demonstrates processes involved in safe capillary blood collection:</p>
+
+	
+<div style="text-align:center"> 
+  <button onclick="playPause()">Play/Pause</button> 
+  <button onclick="makeBig()">Big</button>
+  <button onclick="makeSmall()">Small</button>
+  <button onclick="makeNormal()">Normal</button>
+  <br><br>
+  <video id="video1" width="480" controls>
+    <source src="videos/2_1_2_Collecting a Finger Prick Blood Sample.ogg" type="video/ogg">
+    Your browser does not support HTML5 video.
+  </video>
+</div> 
+
+<script> 
+var myVideo = document.getElementById("video1"); 
+
+function playPause() { 
+    if (myVideo.paused) 
+        myVideo.play(); 
+    else 
+        myVideo.pause(); 
+} 
+
+function makeBig() { 
+    myVideo.width = 640; 
+} 
+
+function makeSmall() { 
+    myVideo.width = 320; 
+} 
+
+function makeNormal() { 
+    myVideo.width = 480; 
+} 
+</script> 
+<p>
+This video is not a substitute for medical advice.</p>
+
+<br><br><br> </div> <!--actual page content here -->

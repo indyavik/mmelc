@@ -1,0 +1,1030 @@
+<html>
+
+<head>
+    <meta http-equiv="cache-control" content="no-cache" />
+    <link rel="stylesheet" type="text/css" href="css/main.css">
+    <link rel="stylesheet" type="text/css" href="css/slide.css">
+    <script src="js/jquery-3.0.0.min.js"></script>
+    <script src="js/login.js"></script>
+    <script src="js/main.js"></script>
+    <script src="js/main-2.js"></script>
+    <script src="js/pxl-fullslide.js"></script>
+    <script src="/content/js/preview.js"></script>
+    <script src="/content/js/lics.js"></script>
+
+    <style>
+        .helpModal {
+            display: none;
+            /* Hidden by default */
+            position: fixed;
+            /* Stay in place */
+            z-index: 1;
+            /* Sit on top */
+            padding-top: 50px;
+            /* Location of the box */
+            left: 0;
+            top: 0;
+            width: 100%;
+            /* Full width */
+            height: 100%;
+            /* Full height */
+            /*overflow: none;  Enable scroll if needed */
+            background-color: rgb(0, 0, 0);
+            /* Fallback color */
+            background-color: rgba(0, 0, 0, 0.4);
+            /* Black w/ opacity */
+        }
+        /* Modal Content */
+        
+        .help-modal-content {
+            background-color: #fefefe;
+            margin: auto;
+            padding: 20px;
+            border: 1px solid #888;
+            width: 60%;
+            height: calc(100% - 150px);
+            overflow: auto;
+            font-family: sans-serif;
+        }
+        
+        .mc-width {
+            width: 50%;
+        }
+        /* The Close Button */
+        
+        .help-close {
+            color: #aaaaaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+        }
+        
+        .help-close:hover,
+        .help-close:focus {
+            color: #000;
+            text-decoration: none;
+            cursor: pointer;
+        }
+        
+        .home-close {
+            color: #aaaaaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+        }
+        
+        .home-close:hover,
+        .home-close:focus {
+            color: #000;
+            text-decoration: none;
+            cursor: pointer;
+        }
+        
+        .logout-close {
+            color: #aaaaaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+        }
+        
+        .logout-close:hover,
+        .logout-close:focus {
+            color: #000;
+            text-decoration: none;
+            cursor: pointer;
+        }
+    </style>
+
+</head>
+
+
+<body>
+
+    <div id="super-wrapper">
+
+        <div id="aside">
+            <!-- wrapper div for all menu stuff-->
+
+            <!-- wrap all the menus inside this div. once finalized this section remains same for each module.  -->
+
+            <div id="header1" style="background-color: none;">
+
+                <div id="heading_text" style="height:54px; width:100%; background-color: #afbd77;">
+
+                    <div id="amref" style="display: inline-block; width:24%; height:100%; float:left;">
+
+
+                        <img src="images/logo.png" style="max-width: 100% ;max-height:100%;">
+
+                    </div>
+
+                    <div id="middleTopTitle" style="width: calc(76% - 150px);float: left;overflow: hidden;">
+                    </div>
+                    <div id="right" style="display: inline-block; width:150px; height:100%;">
+
+
+                    </div>
+
+                </div>
+
+                <div style="height:8px;width:100%;background-color: #00AFEF">
+
+                </div>
+
+
+            </div>
+            <!-- div header 1 -->
+
+            <div id="content">
+                <!-- wrapper div for main content area -->
+
+                <div></div>
+
+                <div id="content-inner" style="max-height:calc(100% - 32px)">
+
+                    <div id="indextop" class="" style="padding: 0;width:100%;height:calc(100% - 30px);margin-top: 30px">
+                        <slide id="index"></slide>
+                        <div style="background-image: url('images/Picture18.png');width:100%;">
+                            <div style="padding-top:32px;color:white; height:100%">
+                                <div style="width:29%;display: inline-block;padding-top: 30px;">
+                                    <img src="images/Picture1.png" style="position: absolute;bottom: 10px;max-height: 45%;left:0;max-width:25%">
+                                    <img src="images/WELCOMMlogoFinal.png" style="position: absolute;top: 75px; max-height: 35%;left:5%;max-width:23%">
+                                </div>
+                                <div style="width:calc(71% - 5px);display: inline-block;vertical-align: top;overflow:auto;height:100%;">
+                                    <span id="admin-btn"><button class="adminbtn" style="vertical-align: top;position: absolute;right: 50px;" onclick="load_admin_page();">Admin Actions</button></span>
+                                    <h1>Welcome to the Worldwide E-Learning Course on Malaria Microscopy!</h1>
+                                    <p> For help getting started, <button id="help-btn">click here</button> </p>
+
+
+                                    <!-- <button id="get-usb_id" style="margin-right:10px;width:200px; 
+                                    height:50px;background:chartreuse;"  onclick="external.create_usb_id()">
+                                    USB ID</button> -->
+                                    <p> Select a username below, or click the button to create a new user. Most course content is available in the preview version of the course, but access to examinations is limited to licensed users. Adding a licence key
+                                        requires internet access.</p>
+
+                                    <div id="selectors">
+
+
+                                        <button id="existing-users" style="margin-right:10px;width:180px; height:50px;background:chartreuse;margin-top:10px;">Existing Users</button>
+                                        <button id="create-users" style="margin-right:10px;width:180px; height:50px;background:#aaaaaa;margin-top:10px;">Create New User</button>
+                                        <button id="verify-license" style="margin-right:10px;width:180px;height:50px;background:#aaaaaa;margin-top:10px;">Add a New Licence Key</button>
+                                        <button id="verify-license" style="margin-right:10px;width:220px;height:50px;background:#aaaaaa;margin-top:10px;" onclick="window.location.href='index_resubmit.html';">Convert Preview to Licensed User</button>
+                                        <hr>
+
+
+                                    </div>
+                                    <!-- selectors -->
+
+
+                                    <div id="MainTable" class="main_table" style="margin-left:20px; margin-top:20px; min-height:10px;">
+										<button id="refreshUserList" style="margin-right:0px;height:30px;background:#aaaaaa;margin-top:10px;" onclick="window.location.reload();">Click here to refresh user list (may be required after creating a new user)</button> 
+                                        <table style="min-width:400px;background-color: transparent">
+                                            <th style="background-color:white;">
+                                                <p>Licensed Users</p>
+                                            </th>
+                                            <th> </th>
+                                            <th style="background-color:white;">
+                                                <p>Preview Users</p>
+                                            </th>
+                                            <tr>
+                                                <td style="min-width:200px; background:transparent;">
+
+                                                    <select id="license-user" style="min-width:150px;"></select>
+
+                                                </td>
+                                                <td style="min-width:20px;background:transparent"></td>
+                                                <td style="min-width:200px;background:transparent;">
+
+                                                    <select id="preview-id" style="min-width:150px;"></select>
+
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td style="background:transparent;"><input type="text" id="license_user_pw" name="license_user_pw" placeholder="Password (if any)"><br> </td>
+                                                <td style="min-width:20px;background:transparent"></td>
+
+                                                <td style="background:transparent;"><input type="text" id="preview_user_pw" name="license_user_pw" placeholder="Password (if any)"><br>
+                                                </td>
+
+                                            </tr>
+                                            <tr>
+                                                <td style="background:transparent;"><button id="mainEntryLicense" class="button_main_entry_2" onclick="logUser_new_feed('license')">Login Licensed User</button></td>
+                                                <td style="min-width:20px;background:transparent"></td>
+                                                <td style="background:transparent;"><button id="mainEntryPreview" class="button_main_entry_2" onclick="logUser_new_feed('preview')">Login Preview User</button></td>
+
+
+                                            </tr>
+                                        </table>
+
+                                        <!--
+                                        <button id="mainEntryLicense" class="button_main_entry" onclick="verifyLicense_div()">Enter License</button>
+                                        <button id="mainEntry" class="button_main_entry" onclick="mainEntry('preview')">Preview Version</button>
+                                        -->
+
+                                        <hr>
+
+                                        <div id="div_createUser" style="display:none">
+                                            <h2>Enter a user name and click "Go"</h2>
+
+                                            <input type="text" placeholder="Enter a username" name="some_name" id="input_createUser" maxlength="40" style="width:200px; height:50px; border: solid 1px #9598a0; font-size:18px;">
+
+                                            <button id="createUser_go" class="button_create_user_go" onclick="createUser()">GO</button>
+
+                                            <br></br>
+                                            <p>hi</p>
+
+                                            <input type="button" id="cancel_me" value="Click here to cancel" onClick="window.location.reload()"> login_selected_User('lic')
+
+                                        </div>
+
+                                    </div>
+                                    <!-- main table -->
+
+                                    <div id="div_verify_license" style="display:none">
+                                        <p>Enter your Licence key and click "Go." Internet access is required to verify the Licence key. </p>
+                                        <P id="verify_license_response" style="color:blue;"></P>
+                                        <input type="text" placeholder="Enter Licence key" name="license_key_to_verify" id="license_key_to_verify" maxlength="25" style="width:200px; height:50px; border: solid 1px #9598a0; font-size:18px;">
+
+                                        <button id="createUser_go" class="button_create_user_go" onclick="verifyLicense()">GO</button>
+
+                                        <br></br>
+                                        <button onclick="window.location.reload();">Cancel</button></span>
+
+                                    </div>
+
+
+                                    <div id="create-user-form" style="display:none; margin-left:50px;">
+
+                                        <script>
+                                            function showForm(form_type) {
+                                                //alert(form_type)
+                                                if (!form_type) form_type = 'license'
+                                                document.getElementById('div_createUser_' + form_type).style.display = 'block';
+                                                document.getElementById('MainTable').style.display = 'none';
+                                                document.getElementById('select-radios').style.display = 'none';
+
+
+
+                                            }
+
+                                            function enterLicense() {
+
+                                                $("#div_verify_license").show();
+                                                $("#div_createUser_license").hide();
+
+                                            }
+
+                                            function afterVerifyLicense() {
+
+                                                $("#div_createUser_license").show();
+                                                $("#div_verify_license").hide();
+
+                                            }
+                                        </script>
+
+
+
+                                        <div id="select-radios" style="margin-top:50px;">
+                                            <p>Select a user type. A licence key, which must be verified through the internet, is required for Licensed Users. You will select the licence key at the next step if you choose "Licensed User." </p>
+
+                                            <label><input type="radio" id="license-radio" value="license" onclick="showForm('license');" name="select-type">Licensed User</label>
+                                            <p></p>
+                                            <label><input type="radio" id="preview-radio" value="preview" onclick="showForm('preview');" name="select-type">Preview User</label>
+
+                                        </div>
+                                        <!-- select-radios -->
+                                        <div id="div_createUser_license" style="display:none;">
+                                            <p id="div_createUser_license_form_message"> </p>
+
+                                            <div id="div_createUser_license_form" style="display:block;">
+                                                <span style="font-size:18px; color:white;">Step 1: Please enter user information for a Licensed User.</span>
+
+
+                                                <p>1. Enter a user name </p>
+                                                <input type="text" placeholder="Enter a username" name="input_createUser_license" id="input_createUser_license" maxlength="25" style="width:200px; height:30px; border: solid 1px #9598a0; font-size:12px;">
+                                                <p>2. Enter a password (Optional). Note: Passwords are not secure, so do not use a password associated with sensitive accounts!</p>
+                                                <input type="text" placeholder="Optional Password" name="input_createUser_password_license" id="input_createUser_password_license" maxlength="20" style="width:200px; height:30px; border: solid 1px #9598a0; font-size:12px;">
+                                                <p>3. Email for password recovery (password recovery is not possible without internet connectivity)</p>
+                                                <input type="text" placeholder="Optional Recovery Email" name="input_createUser_email_license" id="input_createUser_email_license" maxlength="254" style="width:200px; height:30px; border: solid 1px
+                                                    #9598a0; font-size:12px;">
+
+                                                <p>4. Select an existing Licence or <span style="margin-left:20px;"><a href="#" onclick="enterLicense()"><a href="#" onclick="enterLicense()" style="color:white;">Click here to enter a New Licence Key</a></a></span></p>
+                                                <select id="select-license" style="display:block;">
+                                                
+                                                
+                                                  </select>
+
+
+
+                                                <p></p>
+
+                                                <button id="createUser_lic" style="margin-left:0px;" onclick="createUser_lic()">Continue</button>
+                                                <p></p>
+                                                <p></p>
+                                                <input type="button" id="cancel_me" value="Click here to cancel" onclick="window.location.reload()">
+
+
+                                                <p></p>
+
+
+                                            </div>
+                                            <!-- div_createUser_license_form -->
+
+                                        </div>
+                                        <!-- div_createUser_license -->
+
+                                        <div id="div_createUser_preview" style="display:none">
+
+                                            <div id="div_createUser_license_form_preview" style="display:block;">
+												<span style="font-size:18px; color:white;">Step 1: Please enter user information for a Preview User.</span>
+
+                                                <p>1. Enter a user name </p>
+                                                <input type="text" placeholder="Enter a username" name="input_createUser_preview" id="input_createUser_preview" maxlength="25" style="width:200px; height:30px; border: solid 1px #9598a0; font-size:12px;">
+                                                <p>2. Enter a password (Optional). Note: Passwords are not secure, so do not use a password associated with sensitive accounts! </p>
+                                                <input type="text" placeholder="Optional Password" name="input_createUser_password_preview" id="input_createUser_password_preview" maxlength="20" style="width:200px; height:30px; border: solid 1px
+                                                    #9598a0; font-size:12px;">
+                                                <p>3. Email for password recovery (password recovery is not possible without internet connectivity)</p>
+                                                <input type="text" placeholder="Optional Recovery Email" name="input_createUser_email_preview" id="input_createUser_email_preview" maxlength="254" style="width:200px; height:30px; border: solid 1px
+                                                    #9598a0; font-size:12px;">
+
+
+
+                                                <p></p>
+                                                <p></p>
+
+                                                <button id="createUser_preview" style="margin-left:0px;" onclick="createUser_preview()">Continue</button>
+                                                <p></p>
+
+
+
+                                            </div>
+
+
+
+                                            <input type="button" id="cancel_me" value="Click here to cancel" onClick="window.location.reload()">
+
+
+
+                                        </div>
+
+
+                                    </div>
+
+                                    <!-- create-user-form -->
+
+                                    <div id="reg_survey" style="display:none; margin-top:10px;">
+                                        <p><span style="font-size:18px; color:white;">Step 2: Please complete the survey</span>
+                                            <!-- <span style="margin-left:300px;" onclick="createUser_go( 'skip')">SKIP</span></p> -->
+
+                                            <div id="wrap_reg_survey" style="margin-left:50px; margin-right:100px;">
+
+                                                <table class="table_reg_survey">
+                                                    <tr>
+                                                        <td>
+
+                                                            <span>Name: </span> <span><input type="text" placeholder="Required" name="name" id="reg_name" maxlength="40"></span>
+                                                        </td>
+                                                    </tr>
+
+                                                    <tr>
+                                                        <td>
+                                                            <span>Designation or Title: </span> <span><input type="text" placeholder="None" name="reg_designation" id="reg_designation" maxlength="40"></span>
+
+                                                        </td>
+                                                    </tr>
+
+
+
+
+                                                    <tr>
+                                                        <td>
+
+                                                            <span>Country of Work: </span> <span><input type="text" placeholder="None" name="reg_country_work" id="reg_country_work" maxlength="40">
+                                                                    </span>
+
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>
+                                                            <span>Contact Email: </span> <span><input type="text" placeholder="Required" name="reg_email" id="reg_email" maxlength="254"> </span>
+
+                                                        </td>
+                                                    </tr>
+
+
+
+
+                                                    <tr>
+                                                        <td>
+
+                                                            <span>Contact Phone: </span> <span><input type="text" placeholder="None" name="reg_phone" id="reg_phone" maxlength="40">
+                                                                        </span>
+
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>
+                                                            <span>Gender: </span>
+                                                            <span>
+                                                                            <select id="gender">
+                                                                                    <option value="1" selected="selected">Prefer not to answer</option>
+                                                                                    <option value="2">Male</option>
+                                                                                    <option value="3">Female</option>
+                                                                                
+                                                                                  </select>
+        
+                                                                    </span>
+
+                                                        </td>
+                                                    </tr>
+
+
+
+
+
+                                                    <tr>
+                                                        <td>
+
+                                                            <span>Primary access to internet while taking the course: </span>
+                                                            <span>
+                                                                                <select id="accessinternet">
+                                                                                        <option value="0" selected="selected">Home</option>
+                                                                                        <option value="1">Work</option>
+                                                                                        <option value="2">Internet Cafe</option>
+                                                                                        <option value="3">Mobile HotSpot</option>
+                                                                                        <option value="4">Other</option>
+                                                                                        <option value="5">Offline</option>
+                                                                                    
+                                                                                      </select>
+                                                                            
+                                                                        </span>
+
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>
+                                                            <span>Age Range: </span>
+                                                            <span>
+                                                                            <select id="age">
+                                                                                    <option value="1" selected="selected">Prefer not to answer</option>
+                                                                                    <option value="2"><20</option>
+                                                                                    <option value="3">20-29</option>
+                                                                                    <option value="4">30-39</option>
+                                                                                    <option value="5">40-49</option>
+                                                                                    <option value="6">50-59</option>
+                                                                                    <option value="7">60-59</option>
+                                                                                    <option value="8">>70</option>
+                                                                                
+                                                                                  </select>
+            
+                                                                        </span>
+
+                                                        </td>
+                                                    </tr>
+
+
+
+
+                                                    <tr>
+                                                        <td>
+
+                                                            <span>Workplace: </span>
+                                                            <span>
+                                                                            <select id="workplace">
+                                                                                    <option value="1" selected="selected">Prefer not to answer</option>
+                                                                                    <option value="2">Health centre</option>
+                                                                                    <option value="3">Hospital</option>
+                                                                                    <option value="4">College/University</option>
+                                                                                    <option value="5">National reference laboratory</option>
+                                                                                    <option value="6">Research institute</option>
+                                                                                    <option value="7">NGO</option>
+                                                                                    <option value="8">Other</option>
+                                                                                   
+                                                                                
+                                                                                  </select>
+                                                                                
+                                                                            </span>
+
+                                                        </td>
+                                                    </tr>
+
+                                                    <tr>
+                                                        <td>
+                                                            <span>Workplace Type: </span>
+                                                            <span>
+                                                                            <select id="workplacetype">
+                                                                                    <option value="1" selected="selected">Prefer not to answer</option>
+                                                                                    <option value="2">Private</option>
+                                                                                    <option value="3">Not for profit</option>
+                                                                                    <option value="4">Government</option>
+                                                                                    <option value="5">Other</option>
+                                                                                   
+                                                                                
+                                                                                  </select>
+                                                                                
+                                                                            </span>
+
+                                                        </td>
+                                                    </tr>
+													
+													<tr>
+                                                        <td>
+                                                            <span>Education Level: </span>
+                                                            <span>
+                                                                            <select id="education">
+                                                                                    <option value="1" selected="selected">Prefer not to answer</option>
+                                                                                    <option value="2">Certificate</option>
+                                                                                    <option value="3">Diploma</option>
+                                                                                    <option value="4">Bachelor's degree</option>
+                                                                                    <option value="5">Master's degree</option>
+                                                                                    <option value="6">PhD</option>
+                                                                                    <option value="7">Other</option>
+                                                                                   
+                                                                                
+                                                                                  </select>
+                
+                                                                            </span>
+
+                                                        </td>
+                                                    </tr>
+
+
+                                                    <tr>
+                                                        <td>
+                                                            <span>WHO malaria microscopy certification level: </span>
+                                                            <span>
+                                                                                <select id="certificationlevel">
+                                                                                        <option value="0" selected="selected">None/Not applicable</option>
+                                                                                        <option value="1">Level 1</option>
+                                                                                        <option value="2">Level 2</option>
+                                                                                        <option value="3">Level 3</option>
+                                                                                        <option value="4">Level 4</option>
+                                                                                    
+                                                                                      </select>
+                                                                                    
+                                                                                </span>
+
+                                                        </td>
+                                                    </tr>
+
+
+
+
+
+                                                </table>
+
+                                                <br>
+
+                                                <hr>
+
+
+
+
+                                                <p style="margin-top:10px; margin-bottom:10px;"></p>
+
+                                                <span>Have you received malaria microscopy refresher training in the last 2 years: </span>
+
+                                                <select id="refresher">
+                                                                <option value="1">Yes</option>
+                                                                <option value="2" selected="selected">No</option>
+                                                            
+                                                              </select>
+
+                                                </br>
+
+                                                <br>
+                                                <span style="margin-top:20px;">How long ago did you last receive refresher training in malaria microscopy?: </span><input type="text" placeholder="years" name="refresher_years" id="refresher_years"
+                                                    maxlength="5">
+
+
+                                                <p></p>
+
+
+                                                <p style="margin-bottom:10px;"></p>
+                                                <hr>
+                                                <button id="createUser_go" class="button_create_user_go" style="min-width:100px;" onclick="regSurvey()">Submit Survey and Create User</button>
+
+
+                                            </div>
+                                            <!-- wrap survey div-->
+
+
+
+                                            <br>
+
+
+
+                                            <!-- verify license.
+
+                                </div>
+                            </div>
+
+                        </div>
+
+                        <br>
+                    </div>
+                    <!--actual page content here -->
+
+
+
+                                            <style>
+                                                #content-inner {
+                                                    padding: 0;
+                                                    margin: 0;
+                                                    width: 100%
+                                                }
+                                                
+                                                body {
+                                                    margin: 0;
+                                                }
+                                            </style>
+
+
+                                            <script>
+                                            </script>
+
+
+                                    </div>
+                                    <!-- div conent inner-->
+
+                                </div>
+                                <!-- div content -->
+
+
+                            </div>
+                            <!-- div footer -->
+
+                        </div>
+
+</body>
+
+<!-- The help Modal -->
+<div id="myModalContent" class="helpModal">
+
+    <!-- Modal content -->
+    <div class="help-modal-content">
+        <span class="help-close">&times;</span>
+        <div class="help-modal-div">
+            <div id="help-content-home">
+                <h2 class="heading-text">Worldwide E-Learning Course on Malaria Microscopy: Getting Started</h2>
+                <p class="content-text"> Participation in the course requires creating a user account, which is done by clicking the "Create New User" button.  There are two types of users: </p>
+				<p class="content-text"> <b>Licensed Users </b> have full access to the course content.  Creating a licensed user requires entering a licence key (see below).</p>
+				<p class="content-text"> <b> Preview Users </b> do not have access to the pre-test, end-of-module tests, nor the post-test.  </p>
+				<p class="content-text"> <b> License Keys </b> must be validated while online.  To enter a licence key, click the "Add a new Licence Key" button.  If you do not have a licence key but would like to purchase one, please contact Amref International University, http://amref.ac.ke/, or email MalariaMicroscopyCourse@amref.org for details.</p>
+                <p>	If a licence key is added after creating a preview user, the user can be converted to a licensed user by clicking the "Convert Preview to Licensed User" button.</p>
+				<p> The <b>final assessment</b>, which must be passed to receive a certificate, requires an additional registration, and can only be taken after completing the entire course as a Licensed User.</p>
+
+
+                <br><br>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+	<script>
+    // Modal for acknowledgements and contact pages
+    // Get the modal
+    var help_Modal = document.getElementById('myModalContent');
+
+    // Get the button that opens the modal
+    var btn = document.getElementById("help-btn");
+
+    // Get the <span> element that closes the modal
+    var helpspan = document.getElementsByClassName("help-close")[0];
+	
+
+    // When the user clicks the button, open the modal
+    btn.onclick = function() {
+	//alert('hey');
+        help_Modal.style.display ="block";
+	//	alert('hey');
+    }
+
+    // When the user clicks on <span> (x), close the modal
+    helpspan.onclick = function() {
+	//alert('hey');
+        help_Modal.style.display ="none";
+    }
+
+    // When the user clicks anywhere outside of the modal, close it
+    window.onclick = function(event) {
+        if (event.target == help_Modal) { //Not sure why == instead of !=, but it works.
+        help_Modal.style.display ="none";
+
+	 }
+    }
+
+
+	</script>
+
+<div id="footer" style="min-height:0px">
+    <script src="/content/js/jquery-3.0.0.min.js" type="text/javascript"></script>
+    <script src="/content/js/main.js" type="text/javascript"></script>
+    <script src="/content/js/autoload.js" type="text/javascript"></script>
+    <script src="/content/js/lics.js" type="text/javascript"></script>
+    <script src="/content/js/preview.js"></script>
+
+
+	
+    <script>
+        var mmelc = JSON.parse(get_from_disk('/data_l/' + '.mmelc'))
+
+        var available_lic = []
+
+        if (mmelc) {
+
+            var lic = mmelc.license
+
+            for (var i = 0; i < lic.length; i++) {
+
+                if (lic[i].seats > lic[i].used) {
+
+                    available_lic.push(lic[i].id)
+
+                }
+
+            }
+
+            /*
+
+            var id = mmelc['license'].id
+            var seats = mmelc['license'].seats
+            var used = mmelc['license'].used
+            var left = seats - used
+            var msg = 'Licence used: ' + used + ' of ' + seats
+
+            
+            document.getElementById('mainEntryLicense').innerHTML = id;
+            document.getElementById('numLicense').innerHTML = msg;
+            //document.getElementById('mainEntryLicense').onclick = mainEntry;
+            document.getElementById('mainEntryLicense').setAttribute("onClick","javascript: mainEntry( 'licence');");
+
+            */
+
+        }
+
+        //create select box for lic users. 
+
+        var sel_lic = document.getElementById('select-license');
+
+        if (available_lic.length > 0) {
+
+            for (var i = 0; i < available_lic.length; i++) {
+                var opt = document.createElement('option');
+                opt.innerHTML = available_lic[i];
+                opt.value = available_lic[i];
+                sel_lic.appendChild(opt);
+
+            }
+
+
+            /*
+            document.getElementById('div_createUser_license_form').style.display = 'none';
+            document.getElementById('div_createUser_license_form_message').innerHTML = 'Please verify a licence first';
+            */
+
+        } else {
+            //set display to none. 
+            document.getElementById('div_createUser_license_form').style.display = 'none';
+            document.getElementById('div_createUser_license_form_message').innerHTML = 'Please add a licence key first!';
+
+        }
+
+
+
+        var users = get_all_users();
+        var lic_users = users.license_users
+        var preview_users = users.preview_users
+
+        var sel = document.getElementById('license-user');
+
+        for (var i = 0; i < lic_users.length; i++) {
+            var opt = document.createElement('option');
+            opt.innerHTML = lic_users[i];
+            opt.value = lic_users[i];
+            sel.appendChild(opt);
+        }
+
+        var sel2 = document.getElementById('preview-id');
+        for (var i = 0; i < preview_users.length; i++) {
+            var opt = document.createElement('option');
+            opt.innerHTML = preview_users[i];
+            opt.value = preview_users[i];
+            sel2.appendChild(opt);
+        }
+    </script>
+
+
+    <script>
+        $("#existing-users").click(function() {
+
+            location.reload();
+
+            /*
+
+
+            $("#MainTable").show();
+            $("#div_createUser_license").hide();
+            $("#div_createUser_preview").hide();
+
+            $("#create-user-form").hide();
+
+            $("#div_verify_license").hide();
+            $("#existing-users").css("background-color","chartreuse");
+            $("#create-users").css("background-color","#aaaaaa");
+
+            */
+
+
+        });
+
+        $("#create-users").click(function() {
+
+            $("#MainTable").hide();
+            document.getElementById('select-radios').style.display = 'block';
+
+
+            document.getElementById("preview-radio").checked = false;
+            document.getElementById("license-radio").checked = false;
+
+            $("#create-user-form").show();
+            $("#div_createUser_license").hide();
+            $("#div_createUser_preview").hide();
+
+            $("#div_verify_license").hide();
+            $("#existing-users").css("background-color","#aaaaaa");
+            $("#create-users").css("background-color","chartreuse");
+			$("#verify-license").css("background-color","#aaaaaa");
+
+            /*
+
+
+            urlExists(function(exists) {
+                //do more stuff based on the boolean value of exists
+                alert(exists)
+
+            });
+
+
+            */
+
+            /*
+
+            console.log('clicked')
+
+           
+            function cb(returnValue) {
+                console.log('returned is :');
+                console.log(returnValue);
+
+                if (returnValue) {
+                    //show user form. 
+                    $("#MainTable").hide();
+                    $("#create-user-form").show();
+                    $("#div_verify_license").hide();
+                    $("#existing-users").css("background-color","#aaaaaa");
+                    $("#create-users").css("background-color","chartreuse");
+
+                } else {
+                    return;
+                }
+
+
+            }
+
+            urlExists(cb);
+
+            */
+
+
+        }); //on click create user
+
+
+
+        $("#verify-license").click(function() {
+
+            $("#MainTable").hide();
+            $("#create-user-form").hide();
+            $("#div_verify_license").show();
+            $("#existing-users").css("background-color","#aaaaaa");
+            $("#create-users").css("background-color","#aaaaaa");
+			$("#verify-license").css("background-color","chartreuse");
+
+
+
+        });
+
+
+
+        function createUser_preview() {
+            //clear any earlier local objects 
+            localStorage.removeItem('new_user_obj')
+            localStorage.removeItem('new_user_survey')
+
+            var newuser_name = document.getElementById('input_createUser_preview').value
+            var newuser_pass = document.getElementById('input_createUser_password_preview').value
+            var newuser_recovery_email = document.getElementById('input_createUser_email_preview').value
+
+            var check_user = check_user_exists(newuser_name, 'preview')
+            if (check_user == 0) {
+                alert('Username is already taken. Please pick another username')
+                return;
+            }
+
+            var new_user_obj = {
+              "username": newuser_name,
+              "password": newuser_pass,
+              "recovery_email": newuser_recovery_email,
+              "license_id": 'preview'
+            }
+
+
+            if (!newuser_name) {
+                alert("Username is required")
+                return;
+            }
+
+            localStorage.setItem('new_user_obj', JSON.stringify(new_user_obj))
+
+            console.log(JSON.parse(localStorage.getItem('new_user_obj')))
+
+            $("#div_createUser_license_form_preview").hide();
+            $("#reg_survey").show();
+
+
+        } //createUser_lic
+
+        function createUser_lic() {
+            //clear any earlier local objects 
+            localStorage.removeItem('new_user_obj')
+            localStorage.removeItem('new_user_survey')
+
+            var newuser_name = document.getElementById('input_createUser_license').value
+            var newuser_pass = document.getElementById('input_createUser_password_license').value
+            var newuser_recovery_email = document.getElementById('input_createUser_email_license').value
+            var e = document.getElementById('select-license')
+            var newuser_license_id = e.options[e.selectedIndex].text
+
+            var check_user = check_user_exists(newuser_name, 'license')
+
+            if (check_user == 0) {
+                alert('Username is already taken. Please pick another username')
+                return;
+            }
+
+            var new_user_obj = {
+              "username": newuser_name,
+              "password": newuser_pass,
+              "recovery_email": newuser_recovery_email,
+              "license_id": newuser_license_id
+            }
+
+            if (!newuser_license_id) {
+                alert('error: no-license-id')
+
+            }
+
+            if (!newuser_name) {
+                alert("Username is required")
+                return;
+            }
+
+            localStorage.setItem('new_user_obj', JSON.stringify(new_user_obj))
+
+            console.log(JSON.parse(localStorage.getItem('new_user_obj')))
+
+            $("#create-user-form").hide();
+            $("#reg_survey").show();
+
+
+        } //createUser_lic
+
+        function logUser_new_feed(user_type) {
+
+            var name_div_id = 'license-user'
+            var pw_div_id = 'license_user_pw'
+            var user_type = user_type
+            if (user_type == 'preview') {
+                name_div_id = 'preview-id'
+                pw_div_id = 'preview_user_pw'
+            }
+
+            var e = document.getElementById(name_div_id)
+            var user_name = e.options[e.selectedIndex].text
+
+            var user_pw = document.getElementById(pw_div_id).value
+
+
+            //call login with parameters. 
+
+            logUser_new(user_name, user_pw, user_type)
+
+        } // logUser_new_feed
+    </script>
+
+
+</div>
+<!-- div.footer -->
+
+</html>

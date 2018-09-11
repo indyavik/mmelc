@@ -1,0 +1,86 @@
+<script>
+   toggle5_init(); 
+</script>
+
+<div id="m5_elementQM_p06" class="page-content">
+
+    <slide id="5_1_slide06"></slide>
+
+    <div class="scroll-text-5m-p6">
+
+        <h2 class="heading-text"><a href="#preamble" name="preamble"></a>Definition of Terms (3 of 5)</h2>
+
+        <h3 class="medium-text">Quality Management System</h3>
+
+        <p class="content-text">
+            There are many procedures and processes that are performed in the laboratory and each of these must be carried out correctly to ensure accuracy and reliability of testing. An error in any part of these procedures can produce a poor laboratory result. A method of detecting errors at each phase of testing is needed to assure quality.
+        </p>
+
+        <p class="content-text">
+            Health outcomes depend on the accuracy of your malaria microscopy test results and how you report them. If you provide inaccurate results or report results incorrectly, the consequences can be very significant and may include the following:
+        </p>
+
+    </div>
+
+
+    <ul class="u-list">
+        <li class="list-timeout2">
+            <img src="images/rightImage.png" height="15px"/>
+            Delay in correct diagnosis and therefore failure by clinicians to provide correct treatment.
+        </li>
+    </ul>
+
+
+    <ul class="u-list">
+
+        <li id="box1" class="list-timeout">
+            <img src="images/rightImage.png" height="15px"/>
+            Use of unnecessary drugs and their associated side effects.</li>
+        <li id="box2" class="list-timeout">
+            <img src="images/rightImage.png" height="15px"/>
+            Additional and unnecessary diagnostic testing with waste of personnel time, supplies and reagents.</li>
+        <li id="box3" class="list-timeout">
+            <img src="images/rightImage.png" height="15px"/>
+            Longer hospital stays.</li>
+        <li id="box4" class="list-timeout">
+            <img src="images/rightImage.png" height="15px"/>
+            Increased hospital and laboratory costs.</li>
+        <li id="box5" class="list-timeout">
+            <img src="images/rightImage.png" height="15px"/>
+            Poor patient outcomes including death.</li>
+
+    </ul>
+    <input id="toggleButton" type="button" value="Next" class="nextbtn" onclick="counter++; toggle5(counter, 5);"><br><br><br>
+<br><br><br> </div> <!--actual page content here -->
+
+
+
+
+<script type="text/javascript">
+    var counter = 0;
+
+    var numBoxes = 5;
+
+    function toggle4(showHideDiv) {
+
+        var ele = document.getElementById(showHideDiv + counter);
+
+        if(ele.style.display == "block") {
+
+            ele.style.display = "none";
+
+        }
+
+        else {
+            ele.style.display = "block";
+        }
+
+        if(counter == numBoxes) {
+
+            document.getElementById("toggleButton").style.display = "none";
+
+        }
+
+    }
+
+</script>

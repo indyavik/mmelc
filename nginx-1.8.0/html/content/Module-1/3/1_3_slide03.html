@@ -1,0 +1,78 @@
+<div id="m1_endOfM1_p03" class="page-content">
+    <slide id="1_3_slide03"></slide>
+    <div class="alert" id="alert_popup">
+        
+        <strong> That's the correct answer.  Most of the approximately 90% of deaths that occur in
+            malaria involve children below five years of age.</strong>
+        <div class="alert-img">
+            <img class="nav-img" onclick="javascript:nav_to('next')"
+                 border="0" src="images/Next-Button-PNG-HD.png" alt="Next slide" height="40px">
+        </div>
+    </div>
+
+
+    <div class="alert2" id="alert_popup1">
+        <span class="closebtn2" onclick="this.parentElement.style.display='none';">&times;</span>
+        <strong class="f1" > That's not the correct answer.  Most of the approximately 90% of deaths that occur in
+            malaria involve children below five years of age.</strong>
+    </div>
+
+
+    <div id="one">
+
+        <button class="eom-main-btn">Multiple Choice Question 1</button>
+        <div class="eom-main-area">
+            <table bgcolor="#FFDBE7" class="eom-table" border="1" cellspacing="0" id="testTblId">
+
+
+                <thead>
+                <tr>
+                    <th align="left" class="eom-table-head">
+                        <b>What population sub-group is most affected by malaria in high-transmission areas?</b>
+
+                        <p class="eom-table-text" align="left"><i>
+                            From the options given below, select the correct option and then click on the
+                        </i><i class="eom-i-text"><b>Submit Answer</b> button.</i></p>
+                    </th>
+                </tr><tr>
+                </tr>
+                </thead>
+
+                <tbody>
+                <tr class="spaceUnder">
+                    <td bgcolor="white" width="70%" class="eom-radio-btn">
+                        <input type="radio" onclick="submitButtonDisplay()" name="radioBtn" id="r1"/>  Adult men</td>
+                </tr>
+
+                <tr class="spaceUnder">
+                    <td bgcolor="white" width="70%" class="eom-radio-btn">
+                        <input type="radio" onclick="submitButtonDisplay()" name="radioBtn" id="r2"/>  Children below five years </td>
+                </tr>
+
+                <tr class="spaceUnder">
+                    <td bgcolor="white" width="70%" class="eom-radio-btn">
+                        <input type="radio" onclick="submitButtonDisplay()" name="radioBtn" id="r3"/>  Neonates</td>
+                </tr>
+
+                <tr class="spaceUnder">
+                    <td bgcolor="white" width="70%" class="eom-radio-btn">
+                        <input type="radio" onclick="submitButtonDisplay()" name="radioBtn" id="r4"/>  Children above 15 years </td>
+                </tr>
+
+                <tr>
+                    <td bgcolor="#FFDBE7" class="eom-btn-bg">
+                        <div class="button_id eom-btn-style">
+                            <input type="button" onclick="findCorrectAnswer('1_3_slide03',$('[name=radioBtn]:checked').each(function () {
+   return this.id;}))" value="SUBMIT ANSWER" class="eom-submit-btn">
+
+                        </div>
+                        <!--<span style="margin-top: 5px"> Attempts left: <span id="attempts">3</span></span>-->
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+
+    </div>
+</div>
+

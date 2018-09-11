@@ -1,0 +1,82 @@
+<div id="m3_i_p04" class="page-content">
+
+    <slide id="3_0_slide04"></slide>
+
+<span><img src="images/objective.png" class="objectiveImgStyle"><h2 class="outcome-heading">Module Learning Outcomes</h2></span>
+                </span>
+
+	<h3 class="learningOutcomeText">By the end of the module, you will be able to: </h3>
+
+    <h3 class="learningOutcomeText"></h3>
+
+    <div id="slide4-buttons button-alignment">
+
+        <button class="green-btn" onclick="javascript:slide4show(1)"> 1</button>
+
+        <button class="violet-btn" onclick="javascript:slide4show(2)"> 2</button>
+
+        <button class="red-btn" onclick="javascript:slide4show(3)"> 3</button>
+
+        <button class="green-btn" onclick="javascript:slide4show(4)"> 4</button>
+
+        <button class="dark-green-btn" onclick="javascript:slide4show(5)"> 5</button>
+
+        <button class="pink-btn" onclick="javascript:slide4show(6)"> 6</button>
+
+        <button class="lite-green-btn" onclick="javascript:slide4show(7)"> 7</button>
+
+
+        <script>
+            /* any js that applies to a slide should be included within the slide html page itself */
+toggle5_init();
+            function slide4show(count) {
+
+                $(".outcome-text").css('display', 'block');
+
+                for (var i = 1; i <= 7; i++) {
+                    if (i <= count)
+                        document.getElementById("outcome-" + i).style.display = 'block';
+                    else
+                        document.getElementById("outcome-" + i).style.display = 'none';
+                }
+				if (count == 7) {toggle5_complete();}
+
+            }
+
+
+        </script>
+
+ </div>
+
+    <div id="outcome" class="outcome-text">
+
+        <div id="outcomex" class="outcomex-text">
+
+            <p id="outcome-1" class="outcome-num none-display">
+                1. Correctly identify normal cellular components of blood and recognise common abnormalities of blood cells. </p>
+
+            <p id="outcome-2" class="outcome-num none-display">
+                2. Detect malaria parasites in thick and thin blood films. </p>
+
+            <p id="outcome-3" class="outcome-num none-display">
+                3. Correctly identify human malaria parasite species in thick and thin blood films.</p>
+
+            <p id="outcome-4" class="outcome-num none-display">
+                4. Accurately quantitate malaria parasites in thick and thin blood films.</p>
+
+            <p id="outcome-5" class="outcome-num none-display">
+                5. Identify non-malaria pathogens in thick and thin blood films.</p>
+
+            <p id="outcome-6" class="outcome-num none-display">
+                6. Recognise artefacts observed in thick and thin blood films.</p>
+
+            <p id="outcome-7" class="outcome-num none-display">
+                7. Properly record and report results of blood film examination.</p>
+
+        </div>
+
+
+    </div>
+    <!---outcome 1 -->
+
+<br><br><br> </div> <!--actual page content here -->

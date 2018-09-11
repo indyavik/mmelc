@@ -1,0 +1,110 @@
+<script>
+   toggle5_init(); 
+</script>
+
+<div id="m5_elementQM_p05" class="page-content">
+
+    <slide id="5_1_slide05"></slide>
+
+    <h2 class="heading-text"><a href="#preamble" name="preamble"></a>
+        Elements of a Quality Management System
+    </h2>
+
+	<p class="content-text">
+        The following are the 12 elements of a quality management system, known as the 12 quality system essentials.  These elements must be implemented and monitored in the laboratory to ensure quality of laboratory services.  
+    </p>
+	
+	<div style="width:38%; float:left;">
+	
+<ol>
+        <li class="list-timeout5">
+			Laboratory organisation 
+        </li>
+        <li id="box1" class="list-timeout3">
+            Personnel management </li>
+
+        <li id="box2" class="list-timeout3">
+            Equipment management </li>
+
+        <li id="box3" class="list-timeout3">
+            Purchasing and inventory </li>
+
+        <li id="box4" class="list-timeout3">
+            Process control </li>
+			        
+		<li id="box5" class="list-timeout3">
+            Information management </li>
+
+        <li id="box6" class="list-timeout3">
+            Documents and records  </li>
+
+        <li id="box7" class="list-timeout3">
+            Occurrence management </li>
+
+        <li id="box8" class="list-timeout3">
+            Assessment </li>
+			        
+		<li id="box9" class="list-timeout3">
+            Process improvement  </li>
+
+        <li id="box10" class="list-timeout3">
+            Customer service  </li>
+
+        <li id="box11" class="list-timeout3">
+            Facilities and safety  </li>
+
+</ol>
+
+    <input id="toggleButton" type="button" value="Next" class="nextbtn2" onclick="counter++; toggle6(counter, 12);">
+	<br><br><br>
+	</div>
+	
+	<div style="width:58%; float:right;">
+	<span id="box12" style="display:none;">
+	<p class="content-text">
+	This module will address only quality system essential numbers <b>3</b> and <b>7</b>, which are directly related to the provision of quality malaria microscopy services. <br><br>
+	</p>
+		<p class="content-text">
+	<img src="images/Take Note.png" class="noteImgStyle"/>
+        <b class="noteText">
+            All 12 quality system essentials are important to ensure accuracy and reliability of microscopy test results. A detailed description of QMS is available from the WHO:<br>
+			http://www.who.int/ihr/training/laboratory_quality/doc/en/   (URL checked May 24, 2018.  Links are disabled in this course; copy the URL into a browser to visit.)
+			<br><br><br><br>
+        </b>
+	</p>
+	</span>
+	</div>
+<br><br>
+<br><br><br> </div> <!--actual page content here -->
+
+<script type="text/javascript">
+
+    var counter = 0;
+
+    var numBoxes = 11;
+
+    function toggle4(showHideDiv) {
+
+        var ele = document.getElementById(showHideDiv + counter);
+
+        if(ele.style.display == "block") {
+
+            ele.style.display = "none";
+
+        }
+
+        else {
+            ele.style.display = "block";
+        }
+
+        if(counter == numBoxes) {
+
+            document.getElementById("toggleButton").style.display = "none";
+			document.getElementById("rightHiddenContent").style.display = "block";
+			document.getElementById("rightHiddenContent").style.display = "auto";
+
+        }
+
+    }
+
+</script>

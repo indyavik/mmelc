@@ -1,0 +1,76 @@
+<script>
+   toggle5_init(); 
+</script>
+
+<div id="m2_stainingOfBF_p07" class="page-content">
+
+    <slide id="2_4_slide07"></slide>
+
+    	<h2 class="heading-text"><a href="#preamble" name="preamble"></a>Staining Blood Films (5 of 5)</h2>
+
+
+    <p class="content-text">
+   You should take the following precautions to obtain quality staining of your blood films:
+    </p>
+
+ <ul class="u-list">
+        <li class="list-timeout2">
+            <img src="images/rightImage.png" height="15px"/>
+		Thick blood films must be completely dry before staining. Allow time for air drying; do not place slides in direct sunlight and do not use artificial heat.
+        </li>
+    </ul>
+
+ <ul class="u-list">
+
+        <li id="box1" class="list-timeout">
+            <img src="images/rightImage.png" height="15px"/>
+         Stain blood films as soon as possible after drying. Storing unstained slides for a few days in humid and hot conditions before staining will result in auto-fixation of the thick blood film which is then useless for microscopy.</li>
+
+        <li id="box2" class="list-timeout">
+            <img src="images/rightImage.png" height="15px"/>
+	   The pH of water used for rinsing is important as acidic water may decolourise the films. For this reason rinse slides with the same buffered water pH 7.2 that is used for diluting the stain.
+
+	<li id="box3" class="list-timeout">
+            <img src="images/rightImage.png" height="15px"/>
+	   Avoid getting the metallic green scum on the surface of the Giemsa stain onto blood films during rinsing as it can impair examination.
+
+	<li id="box4" class="list-timeout">
+            <img src="images/rightImage.png" height="15px"/>
+	   Methanol (methyl alcohol) is highly toxic and ﬂammable; it can cause blindness and even death if swallowed. When not in use, methanol must be stored in a locked cupboard.
+
+</ul>  
+
+    <input id="toggleButton" type="button" value="Next" class="nextbtn" onclick="counter++; toggle5(counter, 4);">
+
+<br><br><br> </div> <!--actual page content here -->
+
+<script type="text/javascript">
+
+    var counter = 0;
+
+    var numBoxes = 4;
+
+    function toggle4(showHideDiv) {
+
+        var ele = document.getElementById(showHideDiv + counter);
+
+        if(ele.style.display == "block") {
+
+            ele.style.display = "none";
+
+        }
+
+        else {
+            ele.style.display = "block";
+        }
+
+        if(counter == numBoxes) {
+
+            document.getElementById("toggleButton").style.display = "none";
+
+        }
+}
+
+</script>
+
+

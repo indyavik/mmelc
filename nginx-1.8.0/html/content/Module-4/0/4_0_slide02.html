@@ -1,0 +1,45 @@
+<div id="m4_i_p02" class="page-content">
+
+    <slide id="4_0_slide02"></slide>
+
+    <h2 class="heading-text"><a href="#preamble" name="preamble"></a>Module Overview (2 of 2)</h2>
+
+    <h3 class="medium-text">Module Content </h3>
+
+    <p class="content-text">
+        This module is composed of two units namely:
+    </p><br>
+
+
+
+    <!--1st -->
+
+    <div class="office-row">
+        <h3 class="office-title" id="flipDiv"> Unit One: The Role of Different Tests for Malaria Diagnosis and Screening for Malaria Elimination</h3>
+
+        <div class="office" id="flipDiv1">The first unit covers methods other than microscopy that are used for malaria diagnosis and case management; the difference between malaria diagnosis and screening; and the range and importance of tests to detect low density parasites for malaria elimination.</div>
+    </div>
+    <br>
+
+
+    <!--2nd  -->
+    <div class="office-row">
+        <h3 class="office-title" id="flipDiv-part2">Unit Two: Other Methods used in Detecting Malaria Parasites and their Potential Uses</h3>
+        <div class="office" id="flipDiv2-part2">The second unit covers the principles of malaria Rapid Diagnostic Tests (RDT); how RDTs are increasing access to malaria diagnostic testing; other tests that may be used to diagnose low density malaria infection; and tests used to screen for recent or past malaria infection.</div>
+    </div><br>
+
+
+
+<br><br><br> </div> <!--actual page content here -->
+
+
+<script>
+    $(function () {
+        $('.office-title').click(function () {
+            $(this).next('div').slideToggle();
+
+            $(this).parent().siblings().children().next().slideUp();
+            return false;
+        });
+    });
+</script>

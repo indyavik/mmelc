@@ -1,0 +1,39 @@
+﻿Build started 20/10/2015 12:27:21.
+     1>Project "C:\imageserver\iserve_x64\iServeCGI\iServeCGI.vcxproj" on node 3 (Build target(s)).
+     1>ClCompile:
+         C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\CL.exe /c /IC:\imageserver\iserve_x64\\libs\openCV\include /IC:\imageserver\iserve_x64\\ImageRead /IC:\imageserver\iserve_x64\\iServeX64 /IC:\imageserver\iserve_x64\libs\fastcgi /I"C:\Users\adamaskew\Downloads\fcgicc-0.1.3\fcgicc-0.1.3\fastcgi_devkit" /I"..\libs\j2k-codec\include" /IC:\imageserver\iserve_x64\\iServeX64 /IC:\opencv\build\include /Zi /nologo /W3 /WX- /sdl- /O2 /Oi /Oy- /GL /D WIN32 /D NDEBUG /D _CONSOLE /D _LIB /D _PXL_BUILD_iServeCGI /D NDEBUG /D _CRT_SECURE_NO_WARNINGS /D _CRT_NONSTDC_NO_DEPRECATE /D _USING_V110_SDK71_ /D _MBCS /Gm- /EHsc /MD /GS /Gy /fp:precise /Zc:wchar_t /Zc:forScope /openmp /Fo"C:\imageserver\iserve_x64\..\build\Win32\Release\iServeCGI\\" /Fd"C:\imageserver\iserve_x64\..\build\Win32\Release\iServeCGI\vc120.pdb" /Gd /TP /analyze- /errorReport:prompt iServeCGI.cpp stdafx.cpp
+         iServeCGI.cpp
+     1>c:\imageserver\iserve_x64\imageread\ImageRead.h(6): warning C4067: unexpected tokens following preprocessor directive - expected a newline
+     1>iServeCGI.cpp(49): warning C4102: 'std' : unreferenced label
+         stdafx.cpp
+       PreLinkEvent:
+         copy "C:\opencv\build\x86\vc12\bin\opencv_nonfree2410.dll" "C:\imageserver\iserve_x64\..\build\Win32\Release\iServeCGI\" > NUL
+         copy "C:\opencv\build\x86\vc12\bin\opencv_core2410.dll" "C:\imageserver\iserve_x64\..\build\Win32\Release\iServeCGI\" > NUL
+         copy "C:\opencv\build\x86\vc12\bin\opencv_imgproc2410.dll" "C:\imageserver\iserve_x64\..\build\Win32\Release\iServeCGI\" > NUL
+         copy "C:\opencv\build\x86\vc12\bin\opencv_highgui2410.dll" "C:\imageserver\iserve_x64\..\build\Win32\Release\iServeCGI\" > NUL
+         copy "C:\opencv\build\x86\vc12\bin\opencv_ml2410.dll" "C:\imageserver\iserve_x64\..\build\Win32\Release\iServeCGI\" > NUL
+         copy "C:\opencv\build\x86\vc12\bin\opencv_video2410.dll" "C:\imageserver\iserve_x64\..\build\Win32\Release\iServeCGI\" > NUL
+         copy "C:\opencv\build\x86\vc12\bin\opencv_features2d2410.dll" "C:\imageserver\iserve_x64\..\build\Win32\Release\iServeCGI\" > NUL
+         copy "C:\opencv\build\x86\vc12\bin\opencv_calib3d2410.dll" "C:\imageserver\iserve_x64\..\build\Win32\Release\iServeCGI\" > NUL
+         copy "C:\opencv\build\x86\vc12\bin\opencv_objdetect2410.dll" "C:\imageserver\iserve_x64\..\build\Win32\Release\iServeCGI\" > NUL
+         copy "C:\opencv\build\x86\vc12\bin\opencv_contrib2410.dll" "C:\imageserver\iserve_x64\..\build\Win32\Release\iServeCGI\" > NUL
+         copy "C:\opencv\build\x86\vc12\bin\opencv_legacy2410.dll" "C:\imageserver\iserve_x64\..\build\Win32\Release\iServeCGI\" > NUL
+         copy "C:\opencv\build\x86\vc12\bin\opencv_flann2410.dll" "C:\imageserver\iserve_x64\..\build\Win32\Release\iServeCGI\" > NUL
+         copy "C:\opencv\build\x86\vc12\bin\opencv_gpu2410.dll" "C:\imageserver\iserve_x64\..\build\Win32\Release\iServeCGI\" > NUL
+         copy "C:\opencv\build\x86\vc12\bin\opencv_ocl2410.dll" "C:\imageserver\iserve_x64\..\build\Win32\Release\iServeCGI\" > NUL
+         
+         :VCEnd
+       Link:
+         C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"C:\imageserver\iserve_x64\..\build\Win32\Release\iServeCGI\iServeCGI.exe" /INCREMENTAL:NO /NOLOGO /LIBPATH:../libs/libfcgi /LIBPATH:../libs/fastcgi /LIBPATH:"../libs/j2k-codec/lib/32" /LIBPATH:C:\opencv\build\x86\vc12\lib libfcgi.lib "j2k-dynamic.lib" Winhttp.lib Rpcrt4.lib opencv_nonfree2410.lib opencv_core2410.lib opencv_imgproc2410.lib opencv_highgui2410.lib opencv_ml2410.lib opencv_video2410.lib opencv_features2d2410.lib opencv_calib3d2410.lib opencv_objdetect2410.lib opencv_contrib2410.lib opencv_legacy2410.lib opencv_flann2410.lib opencv_gpu2410.lib opencv_ocl2410.lib kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"C:\imageserver\iserve_x64\..\build\Win32\Release\iServeCGI\iServeCGI.pdb" /SUBSYSTEM:WINDOWS,"5.01" /OPT:REF /OPT:ICF /LTCG /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:\imageserver\iserve_x64\..\build\Win32\Release\iServeCGI\iServeCGI.lib" /MACHINE:X86 /SAFESEH C:\imageserver\iserve_x64\..\build\Win32\Release\iServeCGI\iServeCGI.obj
+         C:\imageserver\iserve_x64\..\build\Win32\Release\iServeCGI\stdafx.obj
+         C:\imageserver\iserve_x64\Release\ImageRead.lib
+         C:\imageserver\iserve_x64\Release\iServeX64.lib
+            Creating library C:\imageserver\iserve_x64\..\build\Win32\Release\iServeCGI\iServeCGI.lib and object C:\imageserver\iserve_x64\..\build\Win32\Release\iServeCGI\iServeCGI.exp
+         Generating code
+         Finished generating code
+         iServeCGI.vcxproj -> C:\imageserver\iserve_x64\..\build\Win32\Release\iServeCGI\iServeCGI.exe
+     1>Done Building Project "C:\imageserver\iserve_x64\iServeCGI\iServeCGI.vcxproj" (Build target(s)).
+
+Build succeeded.
+
+Time Elapsed 00:00:02.57

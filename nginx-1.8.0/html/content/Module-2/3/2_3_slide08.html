@@ -1,0 +1,174 @@
+
+
+<link rel="stylesheet" type="text/css" href="css/easy-responsive-tabs.css " />
+
+<!--<script src="js/easyResponsiveTabs.js"></script>-->
+<script src="js/jquery.easyResponsiveTabs.js"></script>
+
+
+
+<style>
+    .scroll-text-5m-p6{
+        height: 250px;
+        overflow-y: scroll;
+        margin-bottom: 45px;
+    }
+    .resp-vtabs .resp-tabs-container {
+        padding: 0px;
+        background-color: #fff;
+        border: 1px solid #c1c1c1;
+        float: left;
+        width: 68%;
+        min-height: 375px;
+        border-radius: 4px;
+        clear: none;
+    }
+</style>
+
+<div id="m2_preparationOfD_p08" class="page-content">
+
+    <slide id="2_3_slide08"></slide>
+
+
+    <h2 class="heading-text"><a href="#preamble" name="preamble"></a>Preparation of Giemsa stain Stock Solution (4 of 6)</h2>
+
+    <h3 class="medium-text">Procedure for Preparing Giemsa Stain Stock Solution</h3>
+
+    <p class="content-text">
+        The procedure for preparing Giemsa stain stock solution involves the following seven steps:
+    </p>
+
+    <br>
+
+
+    <br/>
+
+
+
+    <div id="container">
+        <div class="topSection">
+            <div class="inner">
+
+            </div>
+        </div>
+        <div class="inner">
+            <section id="main_content">
+
+
+
+
+                <br/>
+
+                <!--Horizontal Tab-->
+
+                <div class="resp-tabs-container hor_1">
+                    <div>
+                        <p>
+                            <!--vertical Tabs-->
+
+                        <div id="ChildVerticalTab_1">
+                            <ul class="resp-tabs-list ver_1">
+                                <li class="a">Step One</li>
+                                <li class="b">Step Two</li>
+                                <li class="c">Step Three</li>
+                                <li class="d">Step Four</li>
+                                <li class="e">Step Five</li>
+                                <li class="f">Step Six</li>
+                                <li class="g">Step Seven</li>
+
+                            </ul>
+
+                            <div class="resp-tabs-container ver_1">
+                                <div>
+                                    <p class="content-text">
+                                        Clean about 50 mL of glass beads in a small volume of absolute methanol in a beaker and place in a dark or amber bottle.                   </p>
+                                </div>
+
+                                <div>
+                                    <p  class="content-text">Weigh 3.8 g Giemsa stain powder on an analytical balance and pour into the bottle containing the glass beads using a funnel to avoid spillage.</p>
+                                </div>
+                                <div>
+                                    <p class="content-text">Gently pour in about 100 mL of the absolute methanol ensuring all dry stain powder is washed into the bottle.</p>
+                                </div>
+                                <div>
+                                    <p class="content-text">Tighten the screw cap on the bottle and shake in a circular motion for 2&ndash;3 minutes to start dissolving the stain crystals.</p>
+                                </div>
+                                <div>
+                                    <p class="content-text">Using the funnel, add 250 mL glycerol to the mixture and repeat the shaking for 3&ndash;5 minutes.
+
+                                    </p>
+                                </div>
+                                <div class="scroll-text-5m-p6">
+                                    <p class="content-text">
+                                        Using the funnel, add the remaining 150 mL of absolute methanol to the mixture ensuring that the last of the methanol washes the last of the glycerol from the funnel into the stain mixture.</p>
+                                    <p class="content-text"> <br>
+                                        Tighten the screw cap on the bottle to prevent absorption of water vapour from the air and store in a cool dry place away from direct sunlight. Label the bottle clearly with the batch number, name of the person who prepared the stock solution and date of preparation. Document the Giemsa stain stock preparation in the quality control logbook as illustrated below:</p>
+                                    <br>
+                                    <p  class="content-text">
+                                        <img src="images/864e4d41_315d_40d0_8282_68b32808f43e.png" height="120px" style="width:75%;display:inline-block;"/>
+                                    </p>
+                                    <p class="content-text">
+                                        Figure 15: Sample label for Giemsa stain stock solution
+                                    </p>
+                                </div>
+                                <div>
+                                    <p class="content-text">
+									Continue shaking for 2&ndash;3 minutes about six times on the first day. Repeat the shaking every day (shake for 2&ndash;3 minutes about six times) for at least seven days.  A shaker may be used, if available.
+                                    </p>
+                                </div>
+
+
+
+                            </div>
+                        </div>
+
+                        </p>
+                        <p style="visibility: hidden">Container</p>
+                    </div>
+
+                </div>
+        </div>
+
+
+        </p>
+
+
+
+    </div>
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+
+            $('#parentHorizontalTab').easyResponsiveTabs({
+                type: 'default', //Types: default, vertical, accordion
+                width: 'auto', //auto or any width like 600px
+                fit: true, // 100% fit in a container
+                closed: 'accordion', // Start closed if in accordion view
+                tabidentify: 'hor_1', // The tab groups identifier
+                activate: function (event) { // Callback function if tab is switched
+                    var $tab = $(this);
+                    var $info = $('#nested-tabInfo');
+                    var $name = $('span', $info);
+
+                    $name.text($tab.text());
+
+                    $info.show();
+                }
+            });
+
+            $('#ChildVerticalTab_1').easyResponsiveTabs({
+                type: 'vertical',
+                width: 'auto',
+                fit: true,
+                tabidentify: 'ver_1', // The tab groups identifier
+                activetab_bg: '#fff', // background color for active tabs in this group
+                inactive_bg: '#F5F5F5', // background color for inactive tabs in this group
+                active_border_color: '#c1c1c1', // border color for active tabs heads in this group
+                active_content_border_color: '#5AB1D0' // border color for active tabs contect in this group so that it matches the tab head border
+            });
+
+        });
+		
+		$(document).ready(function(){$(".a").trigger('click');});
+    </script>
+<br><br><br> </div> <!--actual page content here -->

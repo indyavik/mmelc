@@ -1,0 +1,39 @@
+<div id="pxl_left"><slide id="3_7_slide17_pxl_pe3.7.1q4"></slide><form name = "myform">
+<button type="button" name="gthk" onclick = "showthick()">Thick blood film</button>
+<button type="button" name="gthn" onclick = "showthin()">Thin blood film</button>
+<br><b>Sample 4 of 4</b>
+<p>Enter your report below.  Make sure to include all necessary information!</p><br>  
+<textarea rows="5" cols="30" style="width:95%"></textarea><br>
+<button type = "button" name = "button" onclick = "showResult()">Continue</button><br>
+
+<br>
+<div id = "answerFeedback"></div>
+
+</form>
+
+<br><br>
+<font size="-1"><br>
+</font>
+
+<script type = "text/javascript">
+function showResult() {
+document.getElementById("answerFeedback").innerHTML = "This sample is positive for <em>P. ovale</em> parasites.  We counted a total of 60 parasites and 538 white blood cells in the thick blood film, so we calculated a parasite density of 60/538*8,000 = 892 parasites/microlitre.  Quantitation was challenging on this sample, as there are many 'likely' parasites&mdash;objects that we suspect are parasites but don't have clear morphology&mdash;along with many stain artefacts that look like parasites.  Further, it is difficult to differentiate between asexual forms (trophozoites and schizonts) and gametocytes.  Species identification was also difficult.  There were only three mature parasites in the entire thin blood film provided.  While these may suggest <em>P. ovale</em> due to the host red blood cells being only slightly enlarged and containing coarse stippling (James' dots), distinguishing from <em>P. vivax</em> would require observing more parasites or better staining.  Our report would read:<br><br><strong><em>P. ovale</em> trophozoites and schizonts seen.  892 parasites/microlitre.</strong><br><br>How did your answer compare?<br><br>";
+}
+
+function showthick() {
+document.getElementById('pathXLviewer').src = '../../standalone.html?slide=images/module3/m3u7pe1q4thick.svs';
+
+}
+function showthin() {
+document.getElementById('pathXLviewer').src = '../../standalone.html?slide=images/module3/m3u7pe1q4thin.svs';
+}
+
+
+</script>
+</div></div>
+  
+	  <div class="pxl_right" id="pxl_right"><div id="content">
+      <iframe id='pathXLviewer' src='../../standalone.html?slide=images/module3/m3u7pe1q4thick.svs' frameborder='0'></iframe>
+	  </div>
+
+</div>

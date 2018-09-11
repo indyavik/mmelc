@@ -1,0 +1,315 @@
+﻿<html>
+
+<head>
+    <meta http-equiv="cache-control" content="no-cache" />
+    <link rel="stylesheet" type="text/css" href="css/main.css">
+    <link rel="stylesheet" type="text/css" href="css/slide.css">
+    <script src="js/jquery-3.0.0.min.js"></script>
+    <script src="js/login.js"></script>
+    <script src="js/main.js"></script>
+    <script src="js/main-2.js"></script>
+    <script src="js/pxl-fullslide.js"></script>
+    <script src="/content/js/preview.js"></script>
+    <script src="/content/js/lics.js"></script>
+
+
+</head>
+
+
+<body>
+
+    <div id="super-wrapper">
+
+        <div id="aside">
+            <!-- wrapper div for all menu stuff-->
+
+            <!-- wrap all the menus inside this div. once finalized this section remains same for each module.  -->
+
+            <div id="header1" style="background-color: none;">
+
+                <div id="heading_text" style="height:54px; width:100%; background-color: #afbd77;">
+
+                    <div id="amref" style="display: inline-block; width:24%; height:100%; float:left;">
+
+
+                        <img src="images/logo.png" style="max-width: 100% ;max-height:100%;">
+
+                    </div>
+
+                    <div id="middleTopTitle" style="width: calc(76% - 150px);float: left;overflow: hidden;">
+                    </div>
+                    <div id="right" style="display: inline-block; width:150px; height:100%;">
+
+
+                    </div>
+
+                </div>
+
+                <div style="height:8px;width:100%;background-color: #00AFEF">
+
+                </div>
+
+
+            </div>
+            <!-- div header 1 -->
+
+            <div id="content">
+                <!-- wrapper div for main content area -->
+
+                <div></div>
+
+                <div id="content-inner" style="max-height:calc(100% - 32px)">
+
+                    <div id="indextop" class="" style="padding: 0;width:100%;height:calc(100% - 30px);margin-top: 30px">
+                        <slide id="index"></slide>
+                        <div style="background-image: url('images/Picture18.png');width:100%;">
+                            <div style="padding-top:32px;color:white; height:100%">
+                                <div style="width:29%;display: inline-block;padding-top: 30px;">
+                                    <img src="images/Picture1.png" style="position: absolute;bottom: 10px;max-height: 45%;left:0;max-width:25%">
+                                    <img src="images/WELCOMMlogoFinal.png" style="position: absolute;top: 75px; max-height: 35%;left:5%;max-width:23%">
+                                </div>
+                                <div style="width:calc(71% - 5px);display: inline-block;vertical-align: top;overflow:auto;height:100%;">
+                                    <span id="admin-btn"><button class="adminbtn" style="vertical-align: top;position: absolute;right: 50px;" onclick="window.location.href='index.html';">Return</button></span>
+                                    <h1>Welcome to the Worldwide E-Learning Course on Malaria Microscopy!</h1>
+                                    <br>
+
+                                    <script type="text/javascript">
+                                        function adminoptions(divid) {
+
+                                            if (divid == 'sendreport') {
+                                                //alert(divid)
+                                                document.getElementById('getupdates-div').style.display = 'none';
+                                                document.getElementById('copyusb-div').style.display = 'none';
+                                                document.getElementById('sendreport-div').style.display = 'inline-block';
+                                            }
+
+                                            if (divid == 'getupdates') {
+                                                document.getElementById('getupdates-div').style.display = 'inline-block';
+                                                document.getElementById('copyusb-div').style.display = 'none';
+                                                document.getElementById('sendreport-div').style.display = 'none';
+
+                                                /*
+
+                                                document.getElementById('getupdates-btn').style.background = 'green';
+
+                                                document.getElementById('copyusb-btn').style.backgroundColor = 'grey';
+                                                document.getElementById('sendreport-btn').style.backgroundColor = 'grey';
+
+                                                $("sendreport-btn").css("background-color","red");
+
+                                                */
+
+                                            }
+
+
+
+                                            if (divid == 'copyusb') {
+
+                                                document.getElementById('getupdates-div').style.display = 'none';
+                                                document.getElementById('copyusb-div').style.display = 'inline-block';
+                                                document.getElementById('sendreport-div').style.display = 'none';
+
+                                            }
+
+
+                                        }
+                                    </script>
+
+                                    <div style="width:64%;display: inline-block;vertical-align: top;overflow:auto;max-height:calc(100% - 35px);">
+                                        <div id="admin-options" style="margin-top: 50px;">
+
+                                            <span id="sendreport-btn"><button id="sendreportbtn" class="getupdatesbtn" style="background-color: green;" onclick="adminoptions('sendreport');">Send Error Report</button></span>
+
+                                            <span id="getupdates-btn"><button id="getupdatesbtn" class="getupdatesbtn" onclick="adminoptions('getupdates');">Check for Updates</button></span>
+
+                                            <!-- <span id="copyusb-btn"><button class="getupdatesbtn" onclick="adminoptions('copyusb');">Copy updates to USB</button></span> -->
+
+                                            <p></p>
+                                            <p></p>
+
+                                            <div id="loading" style="display:none;">
+                                                <hr>
+                                                <h2>Please wait while we try to get updates</h2>
+                                                <p>Do not close the browser or click on back button ...</p>
+                                                <p>If updates are found, they would be installed automatically on next restart. </p>
+                                                <p></p>
+                                                <img id="loading-image" src="images/loading.gif" alt="Loading..." />
+                                            </div>
+
+
+                                        </div>
+                                        <!-- admin options -->
+
+                                        <p></p>
+                                        <hr>
+
+                                        <div id="sendreport-div">
+
+                                            <br>
+                                            <p>
+                                                Email:
+                                                <br>
+                                                <textarea id="email" name="email" cols="50" rows="1"></textarea>
+                                                <br> Enter brief problem description:
+                                                <br>
+                                                <textarea id="error_description" name="error_description" cols="80" rows="5"></textarea>
+                                                <br>This information, as well as a software-generated error report, will be submitted.<br><br>
+                                                <span id="sendreport-btn"><button id="sendreportbtn" class="sendreportbtn" style="vertical-align: top;position: absolute;" onclick="send_error_report_button();">Send Error Report</button></span>
+                                                <br><br><br><br>
+
+
+                                        </div>
+                                        <!-- error report -->
+
+                                        <div id="getupdates-div" style="display:none;">
+
+                                            <p></p>
+
+                                            <div id="getupdates-txt" style="margin-left: 20px;">
+                                                <p>
+                                                    Clicking button below will check the new course updates on the server. </p>
+                                                <p>
+                                                    Any new updates found will be installed on next restart. Please connect course USB when system restart in order to update the USB.
+
+                                                </p>
+
+
+
+                                            </div>
+
+                                            <p></p>
+                                            <p></p>
+
+                                            <span id="getupdates-btn"><button id="getupdatesbtnclick" class="getupdatesbtn" style="vertical-align: top;position: absolute; margin-left: 20px;" onclick="get_updates_btn();">Ok - Check for Updates</button></span>
+
+
+                                        </div>
+                                        <!-- get updates -->
+
+                                        <div id="copyusb-div" style="display:none;">
+
+                                            <p></p>
+
+                                            <div id="copyusb-txt" style="margin-left: 20px;">
+                                                <p>
+                                                    Clicking button below will check the new course updates on the server. </p>
+                                                <p>
+                                                    Any new updates found are copied to the USB drive attached to the computer.
+                                                </p>
+                                            </div>
+
+                                            <p></p>
+
+                                            <span id="copyusb-btn"><button class="getupdatesbtn" style="margin-left: 20px;" onclick="copy_updates_to_usb();">Ok -Copy Updates to MMELC USB Drive</button></span>
+
+                                        </div>
+                                        <!-- cppy2 usb -->
+
+                                    </div>
+
+
+                                </div>
+                            </div>
+
+                        </div>
+
+                        <br>
+                    </div>
+                    <!--actual page content here -->
+
+
+
+                    <style>
+                        #content-inner {
+                            padding: 0;
+                            margin: 0;
+                            width: 100%
+                        }
+                        
+                        body {
+                            margin: 0;
+                        }
+                    </style>
+
+
+                    <script>
+                    </script>
+
+
+                </div>
+                <!-- div conent inner-->
+
+            </div>
+            <!-- div content -->
+
+            <div id="footer " style="min-height: 50px; ">
+                <!--<div style="height:10px;width:100%;background-color: #00AFEF ">
+
+                                    </div> -->
+
+                <div style="width: 100%; display: table; ">
+                </div>
+            </div>
+
+
+        </div>
+
+
+    </div>
+
+</body>
+<script>
+    function send_error_report_button() {
+        //send error report to  the server. 
+        var user_id = localStorage.getItem('logged_in');
+        var email = document.getElementById('email').value;
+        var error_description = document.getElementById('error_description').value;
+
+        if (!user_id) user_id = "anonymous";
+
+        if (!email || !error_description) {
+            alert("Please provide and email and an error description");
+            return;
+        }
+
+        //hide the button from reclicks. 
+
+        document.getElementById("sendreportbtn").style.display = "none";
+        //call send error report func. 
+
+        send_error_reports(user_id, email, error_description);
+
+
+    } // send_error_report_button.
+
+    function get_updates_btn() {
+
+        //hide everything. 
+        document.getElementById("getupdatesbtn").style.display = "none";
+        document.getElementById("sendreportbtn").style.display = "none";
+        document.getElementById("getupdatesbtnclick").style.display = "none";
+        document.getElementById("getupdates-txt").style.display = "none";
+
+
+        //show the spinner. 
+        document.getElementById("loading").style.display = "block";
+
+        get_updates();
+    }
+</script>
+
+<div id="footer ">
+    <script src="/content/js/jquery-3.0.0.min.js " type="text/javascript "></script>
+    <script src="/content/js/main.js " type="text/javascript "></script>
+    <script src="/content/js/autoload.js " type="text/javascript "></script>
+    <script src="/content/js/lics.js " type="text/javascript "></script>
+    <script src="/content/js/preview.js "></script>
+
+
+
+</div>
+<!-- div.footer -->
+
+
+
+</html>

@@ -1,0 +1,40 @@
+<div id="m1_overview_p12" class="page-content">
+    <slide id="1_1_slide12"></slide>
+
+    <h2 class="heading-text"><a href="#preamble" name="preamble"></a>Malaria Control Strategies (1 of 5)</h2>
+
+
+    <p class="m-t-20">An understanding of the global malaria context will help you describe appropriate strategies for malaria control in your country or region. This is particularly important because malaria is a completely preventable disease.
+    </p>
+
+
+    <p> The following personal and environmental interventions can be implemented to prevent and control malaria:
+    </p>
+
+    <ul class="u-list">
+
+        <li id="01" class="list-timeout">
+           1. Vector control through the use of Indoor Residual Spraying (IRS) and in some specific settings, larval control.</li>
+        <li id="02" class="list-timeout">
+            2. Personal protection through use of Insecticide Treated Nets (ITN), which also have a wider benefit in reducing vector populations.</li>
+		<li id="03" class="list-timeout">
+            3. Personal protection through use of repellent and insecticidal sprays, coils, and wearing long clothing after dark.</li>
+    </ul>
+
+    <script>
+
+        var s = ['01', '02', '03'];
+        var i = 0;
+
+        (function loop() {
+            // x.innerHTML = s[i];
+            document.getElementById(s[i]).style.display = 'block';
+            if (++i < s.length) {
+                setTimeout(loop, 1000);  // call myself in 3 seconds time if required
+            }
+        })();      // above function expression is called immediately to start it off
+    </script>
+
+
+
+<br><br><br> </div> <!--actual page content here -->

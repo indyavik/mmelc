@@ -1,0 +1,45 @@
+<div id="pxl_left"><slide id="3_3_slide65_pxl_pe3.3.2q2"></slide><form name = "myform">
+<b>Question 2 of 33</b><p>What species of malaria parasites are present in the image?</p><br>
+
+<input type = "radio" name = "rad1" onclick = "getAnswer('1a', '1')"><i>Plasmodium falciparum</i><br>
+<input type = "radio" name = "rad1" onclick = "getAnswer('1b', '2')"><i>Plasmodium vivax</i><br>
+<input type = "radio" name = "rad1" onclick = "getAnswer('1c', '3')"><i>Plasmodium ovale</i><br>
+<input type = "radio" name = "rad1" onclick = "getAnswer('1d', '4')"><i>Plasmodium malariae</i><br>
+
+<br>
+<div id = "answerFeedback"></div>
+
+</form>
+
+<br><br>
+<font size="-1"><br>
+</font>
+
+<script type = "text/javascript">
+var reltext = [];
+reltext[1] = "Incorrect" 
+reltext[2] = "Incorrect"
+reltext[3] = "Correct!  This image contains <i>Plasmodium ovale</i> parasites.<br><br><b>Notes:</b><br>Note the distorted gametocyte and absence of a vacuole.  Also note the slight enlargement of the host cell.<br><br><b>Legend:</b><br>yellow = <i>P.o.</i> gametocyte<br><br>"
+reltext[4] = "Incorrect"
+
+var iscorrect = [];
+iscorrect[1] = 0
+iscorrect[2] = 0
+iscorrect[3] = 1
+iscorrect[4] = 0
+
+function getAnswer(ans, rel) {
+document.getElementById("answerFeedback").innerHTML = reltext[rel];
+if (iscorrect[rel]) {
+document.getElementById('pathXLviewer').src = '../../standalone.html?slide=images/module3/m3u3pe2a2.svs';
+}
+}
+
+</script>
+</div></div>
+  
+	  <div class="pxl_right" id="pxl_right"><div id="content">
+      <iframe id='pathXLviewer' src='../../standalone.html?slide=images/module3/m3u3pe2q2.svs' frameborder='0'></iframe>
+	  </div>
+
+</div>

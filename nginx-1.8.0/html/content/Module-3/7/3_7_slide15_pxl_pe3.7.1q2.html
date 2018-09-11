@@ -1,0 +1,42 @@
+<div id="pxl_left"><slide id="3_7_slide15_pxl_pe3.7.1q2"></slide><form name = "myform">
+<button type="button" name="gthk" onclick = "showthick()">Thick blood film</button>
+<button type="button" name="gthn" onclick = "showthin()">Thin blood film</button>
+<br><b>Sample 2 of 4</b>
+<p>Enter your report below.  Make sure to include all necessary information!</p><br>  
+<textarea rows="5" cols="30" style="width:95%"></textarea><br>
+<button type = "button" name = "button" onclick = "showResult()">Continue</button><br>
+
+<br>
+<div id = "answerFeedback"></div>
+
+</form>
+
+<br><br>
+<font size="-1"><br>
+</font>
+
+<script type = "text/javascript">
+function showResult() {
+
+document.getElementById("answerFeedback").innerHTML = "This sample is positive for <em>P. vivax</em> and <em>P. falciparum</em> parasites.  Making the diagnosis and estimating the parasite density (we counted about 25,000 parasites/ul) is straightforward, but correctly identifying both species is harder.  It would be easy to miss the <em>P.falciparum</em> gametocytes (one in the thin blood film, a few in the thick blood film).  On the other hand, once a <em>P.falciparum</em> gametocyte is seen, one might incorrectly assume that all parasites are <em>P.falciparum</em>  .  However, many of the trophozoites are suggestive of <em>P. vivax</em>, with irregular cytoplasm and faint Schϋffner's stippling.  Our report would read:<br><br><strong><em>P. vivax</em> trophozoites and <em>P. falciparum</em> gametocytes seen; total 25,000 parasites/microlitre.</strong><br><br>How did your answer compare?<br><br>";
+
+}
+
+function showthick() {
+document.getElementById('pathXLviewer').src = '../../standalone.html?slide=images/module3/m3u7pe1q2thick.svs';
+
+}
+
+function showthin() {
+document.getElementById('pathXLviewer').src = '../../standalone.html?slide=images/module3/m3u7pe1q2thin.svs';
+}
+
+
+</script>
+</div></div>
+  
+	  <div class="pxl_right" id="pxl_right"><div id="content">
+      <iframe id='pathXLviewer' src='../../standalone.html?slide=images/module3/m3u7pe1q2thick.svs' frameborder='0'></iframe>
+	  </div>
+
+</div>

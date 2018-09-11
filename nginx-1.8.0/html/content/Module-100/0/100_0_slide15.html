@@ -1,0 +1,74 @@
+<div id="m100_i_p15" class="page-content">
+
+    <slide id="100_0_slide15"></slide>
+
+    <h2>Thank you for completing the form! </h2>
+
+    <br>
+
+    <p class="content-text">Your feedback has not yet been submitted. If you are connected to internet, please click below to submit this form electronically. </p>
+
+    <div class="button_id eom-btn-style" style="display: block">
+        <input type="button" onclick="send_survey()" value=" Submit Feedback Electronically " class="eom-submit-btn" style="font-size:17pt;">
+
+    </div>
+
+    <br>
+    <br><br><br>
+    <p></p>
+
+    <p class="content-text">If not connected or submission above produces an error, please click below to save responses as a text file. When you are able to, please send the file by email to MalariaMicroscopyCourse@amref.org or submit to your regional course coordinator. </p>
+
+    <input type="button" class="eom-submit-btn" value=" Download Feedback to File " onclick="click_function()" style="font-size:17pt;">
+
+    <a id=dav onclick="download_file()"></a>
+
+    <h3>You are welcome to revisit any portion of the course, and if you have any feedback in the future please send it to us!</h3>
+
+    <script>
+        /*
+                function download_file() {
+
+                    var dl = document.getElementById('d1')
+                    content = 'this is some content' ; 
+                    dav.href = "data:text/plain,"+encodeURIComponent(content);
+                    dav.download = 'surveyfeedback.text'
+
+                }
+                */
+
+        var survey_results = JSON.parse(localStorage.getItem('survey_results')) //returns an object
+        var current_user = localStorage.getItem('logged_in')
+        var user_data = JSON.parse(localStorage.getItem(JSON.parse(current_user)))
+            //var data_to_send = JSON.parse(localStorage.getItem('survey_results'));
+        var data_to_send = {
+            'user_data': user_data,
+            'survey_results': survey_results
+        };
+        //alert(JSON.stringify(data_to_send));
+
+        function click_function() {
+            dav.click()
+        }
+
+        function download_file() {
+
+            //var survey_results = JSON.parse(localStorage.getItem('survey_results')) //returns an object
+            //var current_user = localStorage.getItem('logged_in')
+            //var load = {'user' : current_user, 'survey_results' : survey_results}
+            var content = JSON.stringify(data_to_send)
+            dav.href = "data:text/plain," + encodeURIComponent(content);
+            //alert(JSON.parse(current_user) + 'surveyfeedback.txt');
+            dav.download = JSON.parse(current_user) + '_surveyfeedback.txt';
+
+        }
+
+        function send_survey() {
+            //alert(JSON.stringify(data_to_send));
+            //combine with user_data
+            submit_data_to_server('survey_response', data_to_send);
+        }
+    </script>
+
+</div>
+<!--actual page content here -->

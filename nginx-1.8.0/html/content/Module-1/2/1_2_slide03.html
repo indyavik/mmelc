@@ -1,0 +1,54 @@
+<div id="m1_lc_p03" class="page-content">
+
+    <slide id="1_2_slide03"></slide>
+
+    <span><img src="images/objective.png" class="objectiveImgStyle"><h2 class="outcome-heading">Learning Outcomes</h2></span>
+                </span>
+
+    <h3 class="learningOutcomeText">By the end of the unit, you will be able to: </h3>
+    <p></p>
+
+     <div id="slide4-buttons button-alignment">
+        <button class="yellow-btn" onclick="javascript:slide4show(1)"> 1</button>
+        <button class="red-btn" onclick="javascript:slide4show(2)"> 2</button>
+        <button class="green-btn" onclick="javascript:slide4show(3)"> 3</button>
+        <button class="blue-btn" onclick="javascript:slide4show(4)"> 4</button>
+
+
+    <script>
+//        / any js that applies to a slide should be included within the slide html page itself /
+toggle5_init();
+        function slide4show(count) {
+            $(".outcome-text").css('display', 'block');
+            for (var i = 1; i <= 4; i++) {
+                if (i <= count)
+                    document.getElementById("outcome-" + i).style.display = 'block';
+                else
+                    document.getElementById("outcome-" + i).style.display = 'none';
+            }
+			if (count == 4) {toggle5_complete();}
+        }
+    </script>
+
+
+    </div>
+     <div id="outcome" class="outcome-text">
+        <div id="outcomex" class="outcomex-text">
+            <p id="outcome-1" class="outcome-num none-display">
+                1. Define common terms used in describing malaria parasites.</p>
+
+            <p id="outcome-2" class="outcome-num none-display">
+                2. Describe the life cycle of the different malaria parasite species.</p>
+
+            <p id="outcome-3" class="outcome-num none-display">
+                3. Link the life cycle of the different parasite species and microscopic findings to patients' clinical features and malaria transmission.
+            </p>
+            <p id="outcome-4" class="outcome-num none-display">
+                4. Explain the role of commonly used drugs in case management and interruption of malaria transmission.
+            </p>
+
+        </div>
+
+    </div> <!---outcome 1 -->
+
+<br><br><br> </div> <!--actual page content here -->

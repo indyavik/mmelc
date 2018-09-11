@@ -1,0 +1,170 @@
+
+[2018-09-10 21:23:01] Traceback (most recent call last):
+
+  File "v8function_handler_cef3.pyx", line 39, in cefpython_py27.V8FunctionHandler_Execute (cefpython.cpp:38833)
+
+  File "C:\WELCOMM\python\wxpython_viewer.py", line 881, in send_error_reports
+    to_write = "source:python - error backend server " + now +',' + e
+
+TypeError: cannot concatenate 'str' and 'exceptions.UnboundLocalError' objects
+
+
+[2018-09-10 21:27:50] Traceback (most recent call last):
+
+  File "v8function_handler_cef3.pyx", line 39, in cefpython_py27.V8FunctionHandler_Execute (cefpython.cpp:38833)
+
+  File "C:\WELCOMM\python\wxpython_viewer.py", line 881, in send_error_reports
+    to_write = "source:python - error backend server " + now +',' + e
+
+TypeError: cannot concatenate 'str' and 'exceptions.UnboundLocalError' objects
+
+
+[2018-09-10 21:28:14] Traceback (most recent call last):
+
+  File "v8function_handler_cef3.pyx", line 39, in cefpython_py27.V8FunctionHandler_Execute (cefpython.cpp:38833)
+
+  File "C:\WELCOMM\python\wxpython_viewer.py", line 881, in send_error_reports
+    to_write = "source:python - error backend server " + now +',' + e
+
+TypeError: cannot concatenate 'str' and 'exceptions.UnboundLocalError' objects
+
+
+[2018-09-10 21:28:30] Traceback (most recent call last):
+
+  File "v8function_handler_cef3.pyx", line 39, in cefpython_py27.V8FunctionHandler_Execute (cefpython.cpp:38833)
+
+  File "C:\WELCOMM\python\wxpython_viewer.py", line 881, in send_error_reports
+    to_write = "source:python - error backend server " + now +',' + e
+
+TypeError: cannot concatenate 'str' and 'exceptions.UnboundLocalError' objects
+
+
+[2018-09-10 21:29:38] Traceback (most recent call last):
+
+  File "v8function_handler_cef3.pyx", line 39, in cefpython_py27.V8FunctionHandler_Execute (cefpython.cpp:38833)
+
+  File "C:\WELCOMM\python\wxpython_viewer.py", line 881, in send_error_reports
+    to_write = "source:python - error backend server " + now +',' + e
+
+TypeError: cannot concatenate 'str' and 'exceptions.UnboundLocalError' objects
+
+
+[2018-09-10 21:30:59] Traceback (most recent call last):
+
+  File "v8function_handler_cef3.pyx", line 39, in cefpython_py27.V8FunctionHandler_Execute (cefpython.cpp:38833)
+
+  File "C:\WELCOMM\python\wxpython_viewer.py", line 881, in send_error_reports
+    to_write = "source:python - error backend server " + now +',' + e
+
+TypeError: cannot concatenate 'str' and 'exceptions.UnboundLocalError' objects
+
+
+[2018-09-10 21:32:55] Traceback (most recent call last):
+
+  File "v8function_handler_cef3.pyx", line 39, in cefpython_py27.V8FunctionHandler_Execute (cefpython.cpp:38833)
+
+  File "C:\WELCOMM\python\wxpython_viewer.py", line 881, in send_error_reports
+    to_write = "source:python - error backend server " + now +',' + e
+
+TypeError: cannot concatenate 'str' and 'exceptions.UnboundLocalError' objects
+
+
+[2018-09-10 21:34:35] Traceback (most recent call last):
+
+  File "v8function_handler_cef3.pyx", line 39, in cefpython_py27.V8FunctionHandler_Execute (cefpython.cpp:38833)
+
+  File "C:\WELCOMM\python\wxpython_viewer.py", line 881, in send_error_reports
+    to_write = "source:python - error backend server " + now +',' + e
+
+TypeError: cannot concatenate 'str' and 'exceptions.UnboundLocalError' objects
+
+
+[2018-09-10 21:37:23] Traceback (most recent call last):
+
+  File "v8function_handler_cef3.pyx", line 39, in cefpython_py27.V8FunctionHandler_Execute (cefpython.cpp:38833)
+
+  File "C:\WELCOMM\python\wxpython_viewer.py", line 881, in send_error_reports
+    to_write = "source:python - error backend server " + now +',' + e
+
+TypeError: cannot concatenate 'str' and 'exceptions.UnboundLocalError' objects
+
+
+[2018-09-10 22:41:44] Traceback (most recent call last):
+
+  File "v8function_handler_cef3.pyx", line 39, in cefpython_py27.V8FunctionHandler_Execute (cefpython.cpp:38833)
+
+  File "C:\WELCOMM\python\wxpython_viewer.py", line 785, in saveFile
+    with open(save_path + str(file_name), "w") as f:
+
+IOError: [Errno 2] No such file or directory: 'nginx-1.8.0/html/data_l/unreceiveddata/MattLicense1536644502881'
+
+
+[2018-09-11 08:58:14] Traceback (most recent call last):
+
+  File "v8function_handler_cef3.pyx", line 39, in cefpython_py27.V8FunctionHandler_Execute (cefpython.cpp:38833)
+
+  File "C:\WELCOMM\python\wxpython_viewer.py", line 881, in send_error_reports
+    to_write = "source:python - error backend server " + now +',' + e
+
+TypeError: cannot concatenate 'str' and 'exceptions.UnboundLocalError' objects
+
+
+[2018-09-11 16:23:13] Traceback (most recent call last):
+
+  File "v8function_handler_cef3.pyx", line 39, in cefpython_py27.V8FunctionHandler_Execute (cefpython.cpp:38833)
+
+  File "C:\WELCOMM\python\wxpython_viewer.py", line 881, in send_error_reports
+    to_write = "source:python - error backend server " + now +',' + e
+
+TypeError: cannot concatenate 'str' and 'exceptions.UnboundLocalError' objects
+
+
+[2018-09-11 16:23:50] Traceback (most recent call last):
+
+  File "v8function_handler_cef3.pyx", line 39, in cefpython_py27.V8FunctionHandler_Execute (cefpython.cpp:38833)
+
+  File "C:\WELCOMM\python\wxpython_viewer.py", line 881, in send_error_reports
+    to_write = "source:python - error backend server " + now +',' + e
+
+TypeError: cannot concatenate 'str' and 'exceptions.UnboundLocalError' objects
+
+
+[2018-09-11 16:30:26] Traceback (most recent call last):
+
+  File "v8function_handler_cef3.pyx", line 39, in cefpython_py27.V8FunctionHandler_Execute (cefpython.cpp:38833)
+
+  File "C:\WELCOMM\python\wxpython_viewer.py", line 881, in send_error_reports
+    to_write = "source:python - error backend server " + e
+
+TypeError: cannot concatenate 'str' and 'exceptions.UnboundLocalError' objects
+
+
+[2018-09-11 16:31:08] Traceback (most recent call last):
+
+  File "v8function_handler_cef3.pyx", line 39, in cefpython_py27.V8FunctionHandler_Execute (cefpython.cpp:38833)
+
+  File "C:\WELCOMM\python\wxpython_viewer.py", line 881, in send_error_reports
+    to_write = "source:python - error backend server " + e
+
+TypeError: cannot concatenate 'str' and 'exceptions.UnboundLocalError' objects
+
+
+[2018-09-11 16:31:58] Traceback (most recent call last):
+
+  File "v8function_handler_cef3.pyx", line 39, in cefpython_py27.V8FunctionHandler_Execute (cefpython.cpp:38833)
+
+  File "C:\WELCOMM\python\wxpython_viewer.py", line 881, in send_error_reports
+    to_write = "source:python - error backend server " + e
+
+TypeError: cannot concatenate 'str' and 'exceptions.UnboundLocalError' objects
+
+
+[2018-09-11 16:32:25] Traceback (most recent call last):
+
+  File "v8function_handler_cef3.pyx", line 39, in cefpython_py27.V8FunctionHandler_Execute (cefpython.cpp:38833)
+
+  File "C:\WELCOMM\python\wxpython_viewer.py", line 881, in send_error_reports
+    to_write = "source:python - error backend server " + e
+
+TypeError: cannot concatenate 'str' and 'exceptions.UnboundLocalError' objects
+

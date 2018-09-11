@@ -1,0 +1,79 @@
+<div id="0_1_slide06" class="page-content">
+
+    <slide id="0_1_slide06"></slide>
+
+    <h2 class="heading-text"><a href="#preamble" name="preamble"></a>Adjusting the Computer for Accurate Colour Reproduction (2 of 2)</h2>
+
+</p>
+
+<p class="content-text"><img src="images/color.png"></p><br>
+<p class="content-text" id="box1">
+    In this section we will lead you through making adjustments to the display settings on your computer, using the images above as a guide. 
+	This tutorial is also available in pdf format on the course USB drive, which may be more convenient.  If you didn't download it on the previous page, you can do so by  
+	<a href="pdf/Adjusting display settings.pdf" download>clicking here.</a>
+	<br>
+	Click the button below to continue.
+	</p>
+	
+	<input id="toggleButton" type="button" value="Click to begin the exercise" onclick="counter++; toggleQuantExercise(counter);">
+
+	
+
+</p>
+
+
+
+
+<br><br><br> </div> <!--actual page content here -->
+<script type="text/javascript">
+    var counter = 0;
+
+	toggle5_init();
+	
+    function toggleQuantExercise(showHideDiv) {
+
+		
+		if (counter == 1) {
+			document.getElementById("box1").innerHTML = "	The images above should be used for guidance as you adjust your display settings.  On the left are two small images with malaria parasites in a thick blood film; on the lower right is a thin blood film with red blood cells.  These samples have been properly stained with Giemsa stain.  If you are experienced in malaria microscopy, you may immediately notice whether the image colours looks correct or if, for example, the images look too blue and the parasite chromatin doesn't look red at all.  The image on the right shows a simple gradient between the 'chromatin-red' and the 'cytoplasm-blue'.  While the colour on the left should never look truly red, it should be closer to red or pink than to blue.  The colour on the right should be a more blue violet and closer to blue.  There should be a definite contrast between the two colours.";
+			document.getElementById("toggleButton").value = "Click to continue.";
+			}
+		if (counter == 2) {
+			document.getElementById("box1").innerHTML = "	The goal of adjusting your display settings is to accurately match what is seen in the images in this course to what one would see when looking at a real slide through a microscope.  	The most common problem we've come across, especially common on laptop computers, is that the images look 'too blue'.  	";
+		}
+		if (counter == 3) {
+			document.getElementById("box1").innerHTML = "	While observing the changes in the images above, we suggest adjusting your display settings in one of the following ways:	<ol>	<li><strong>Adjust the monitor settings directly.</strong>  Most desktop monitors have buttons that allow you to adjust the colour.  Unfortunately all monitors are different and we cannot provide specific instructions.  You will likely want to increase the amount of red, while decreasing blue and green.</li>	<li><strong>Adjust your settings through your graphics card.</strong>  Most computers have some way to adjust the colour through the control of their graphics card.  Unfortunately, all computers are different and we cannot provide instructions specific to any one machine.  These settings may be accessed by right-clicking on the desktop, or through the control panel.  Again, it is likely that the red channel brightness or gamma will need to be increased, while the blue and green are decreased.</li>	<li><strong>Use the third-party program Gamma Panel</strong> to adjust your computer's settings.  We have included this free program on the course USB drive, and provided instructions in the following steps.  This program works on Windows versions as old as Windows 98 and all newer Windows operating systems.</li>	</ol>";
+		}
+		if (counter == 4) {
+			document.getElementById("box1").innerHTML = '<h3>Gamma Panel Instructions</h3> <p class="content-text"><strong>Note:</strong> While we have not had problems using Gamma Panel, as with any third party software we highly recommend saving any open documents before using the program!</p>';
+		}
+		if (counter == 5) {
+			document.getElementById("box1").innerHTML = '<img src="images/gapa1.png"><br>Gamma Panel is located on the course USB drive, in the directory "Gamma Panel."  It does not need to be installed, and is run by simply double clicking the "gapa.exe" icon.  When first opened, it may immediately move down to the Windows tray, as seen in the images below.  If so, click on the icon and select "Settings" to open up the main panel.  <br><img src="images/gapa2.png">';
+		}
+
+		if (counter == 6) {
+			document.getElementById("box1").innerHTML = 'In the main panel, you will be adjusting the settings for each colour channel (Red, Green, Blue) independently.  We have provided an example profile that we found works on some laptops and is likely a good starting point.  Click the box under "Color Profiles" and select "MalariaLaptop"&mdash;your display should immediately adjust.  To switch back to default, push the "Esc" button on your keyboard.  <br><img src="images/gapa3.png">';
+
+		}
+		if (counter == 7) {
+			document.getElementById("box1").innerHTML = "Scroll up to the example images and switch back and forth; if you are satisfied with the new colours, you can press 'Hide' or 'Exit' in Gamma Panel and the current settings will remain selected.  If you want to further refine the colours, you can change each channel individually by clicking each colour's button and adjusting the values.  For us, slightly changing only the Gamma values was most successful&mdash;the provided profile has red gamma set to 1.1, green to 0.7, and blue to 0.6.  After you are satisfied with your settings, you can save your profile by pressing 'Save as...', which can then be applied again at a future time.";
+
+			
+		}
+		if (counter == 8) {
+			document.getElementById("box1").innerHTML = 'As you work through the course, you may occasionally realise you need to re-adjust your settings.  Keep in mind that there is some variation between images from different slides that were stained in different laboratories.  After taking the course, or when using your computer for other purposes, you will likely want to switch back to your original settings.  In that case, simply re-open Gamma Panel and press the "Esc" key.  <br><br>Special thanks to the author of this program, Tomasz Porosinski, for producing this useful free software tool.';
+			
+			document.getElementById("toggleButton").value = "Click to begin again. ";
+			
+			toggle5_complete();
+		}
+		
+		if (counter == 9) {
+			document.getElementById("box1").innerHTML = '    In this section we will lead you through making adjustments to the display settings on your computer, using the images above as a guide. 	This tutorial is also available in pdf format on the course USB drive, which may be more convenient.  You may download it by   	<a href="pdf/Adjusting display settings.pdf" download>clicking here.</a>	<br><br>	Click the "Next" button to continue.';
+					document.getElementById("toggleButton").value = "Next ";
+			counter = 0;
+			
+		}
+
+
+    }
+</script>

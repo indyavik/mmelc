@@ -1,0 +1,38 @@
+<div id="pxl_left"><slide id="3_2_slide70_pxl_pe3.2.2q3"></slide><form name = "myform">
+<b>Question 3 of 5 </b><p>Are malaria parasites present in the virtual slide?<br>
+(Thoroughly scan at x100 before answering.)
+</p>
+
+<input type = "radio" name = "rad1" onclick = "getAnswer('1a', '1')">No malaria parasites seen<br>
+<input type = "radio" name = "rad1" onclick = "getAnswer('1b', '2')">Malaria parasites are present<br>
+<br>
+<div id = "answerFeedback"></div>
+
+</form>
+
+<br><br>
+<font size="-1"><br>
+</font>
+
+<script type = "text/javascript">
+var reltext = [];
+reltext[1] = "Correct!  This blood film is from a patient without malaria.  There are several pink platelets and small granules of stain that are similar in size to an immature trophozoite nucleus.  Note that this virtual slide is approximately equivalent to only 25 x100 fields of view on a microscope.  Hence to declare this sample 'no malaria parasites seen' in a diagnostic setting, at least 4 times this area must be scanned.<br><br>" 
+reltext[2] = "Incorrect.  Although some artefacts may resemble malaria parasites, this thick blood film was taken from a malaria negative patient.  Please select NMPS to continue."
+
+var iscorrect = [];
+iscorrect[1] = 0
+iscorrect[2] = 1
+
+function getAnswer(ans, rel) {
+document.getElementById("answerFeedback").innerHTML = reltext[rel];
+
+}
+
+</script>
+</div></div>
+  
+	  <div class="pxl_right" id="pxl_right"><div id="content">
+      <iframe id='pathXLviewer' src='../../standalone.html?slide=images/module3/m3u2pe2q3.svs' frameborder='0'></iframe>
+	  </div>
+
+</div>

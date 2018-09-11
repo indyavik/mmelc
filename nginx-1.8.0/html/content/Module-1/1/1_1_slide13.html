@@ -1,0 +1,39 @@
+<div id="m1_overview_p13" class="page-content">
+        <slide id="1_1_slide13"></slide>
+
+     <h2 class="heading-text"><a href="#preamble" name="preamble"></a>Malaria Control Strategies (2 of 5)</h2>
+
+
+     <p class="m-t-20">
+         Other personal interventions that can be implemented to prevent and control malaria include the following:</p>
+
+     <ul class="u-list">
+
+         <li id="01" class="list-timeout">
+             1. Where conditions are appropriate: Chemoprevention for the most vulnerable populations including Intermittent Preventive Treatment in Pregnancy
+             (IPTp); Intermittent Preventive Treatment in Children less than 12 months of age (IPTc); and Seasonal Malaria
+             Chemoprevention (SMC) in children less than six years of age.
+         </li>
+         <li id="02" class="list-timeout">
+             2. In all cases: Confirmation of malaria diagnosis through microscopy or malaria Rapid Diagnostic Tests (RDT) for every
+             suspected case before treatment.
+         </li>
+         <li id="03" class="list-timeout">
+             3. In all cases: Timely treatment of confirmed cases with appropriate antimalarial medicines according to parasite species
+             and documented drug susceptibility.         </li>
+     </ul>
+
+     <script>
+
+         var s = ['01', '02','03'];
+         var i = 0;
+
+         (function loop() {
+             // x.innerHTML = s[i];
+             document.getElementById(s[i]).style.display = 'block';
+             if (++i < s.length) {
+                 setTimeout(loop, 1000);  // call myself in 3 seconds time if required
+             }
+         })();      // above function expression is called immediately to start it off
+     </script>
+<br><br><br> </div> <!--actual page content here -->

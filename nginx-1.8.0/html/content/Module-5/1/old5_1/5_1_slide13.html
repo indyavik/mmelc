@@ -1,0 +1,81 @@
+<script>
+   toggle5_init(); 
+</script>
+
+<div id="m5_elementQM_p13" class="page-content">
+
+        <slide id="5_1_slide13"></slide>
+
+    <h2 class="heading-text"><a href="#preamble" name="preamble"></a>Equipment Management (1 of 15)</h2>
+
+    <p class="content-text">
+        Equipment management is one of the essential elements of a Quality Management System. Proper management of laboratory equipment is necessary to ensure accurate, reliable and timely testing. The benefits of a good equipment management programme include the following:
+    </p>
+
+    <ul class="u-list">
+        <li class="list-timeout2">
+            <img src="images/rightImage.png" height="15px"/>
+            A high level of laboratory performance.
+        </li>
+    </ul>
+
+
+    <ul class="u-list">
+
+        <li id="box1" class="list-timeout">
+            <img src="images/rightImage.png" height="15px"/>
+            Reducing variation in test results.</li>
+        <li id="box2" class="list-timeout">
+            <img src="images/rightImage.png" height="15px"/>
+            Improving clinician and laboratory staff confidence in the accuracy of testing results.</li>
+        <li id="box3" class="list-timeout">
+            <img src="images/rightImage.png" height="15px"/>
+            Lowering repair costs—fewer repairs are needed for well-maintained instruments.</li>
+        <li id="box4" class="list-timeout">
+            <img src="images/rightImage.png" height="15px"/>
+            Lengthening instrument life.</li>
+        <li id="box5" class="list-timeout">
+            <img src="images/rightImage.png" height="15px"/>
+            Reducing interruption of services due to breakdowns and failures.</li>
+        <li id="box6" class="list-timeout">
+            <img src="images/rightImage.png" height="15px"/>
+            Increasing safety for workers.</li>
+        <li id="box7" class="list-timeout">
+            <img src="images/rightImage.png" height="15px"/>
+            Producing greater customer satisfaction</li>
+
+    </ul>
+    <input id="toggleButton" type="button" value="Next" class="nextbtn" onclick="counter++; toggle5(counter, 7);"><br><br><br>
+<br><br><br> </div> <!--actual page content here -->
+
+
+
+
+    <script type="text/javascript">
+        var counter = 0;
+
+        var numBoxes = 7;
+
+        function toggle4(showHideDiv) {
+
+            var ele = document.getElementById(showHideDiv + counter);
+
+            if(ele.style.display == "block") {
+
+                ele.style.display = "none";
+
+            }
+
+            else {
+                ele.style.display = "block";
+            }
+
+            if(counter == numBoxes) {
+
+                document.getElementById("toggleButton").style.display = "none";
+
+            }
+
+        }
+
+    </script>

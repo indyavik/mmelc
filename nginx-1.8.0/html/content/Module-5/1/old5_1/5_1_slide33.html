@@ -1,0 +1,80 @@
+<script>
+   toggle5_init(); 
+</script>
+
+<div id="m5_elementQM_p33" class="page-content">
+
+    <slide id="5_1_slide33"></slide>
+
+  	<h2 class="heading-text"><a href="#preamble" name="preamble"></a>Information Management (1 of 3)</h2>
+
+<p class="content-text">
+           Information management incorporates all the processes needed to effectively manage patient and test data, both incoming and outgoing. An effective information management system needs to be in place to achieve the following:
+        </p>
+
+<ul class="u-list">
+
+        <li class="list-timeout2">
+            <img src="images/rightImage.png" height="15px"/>
+            Accessibility
+        </li>
+</ul>
+
+<ul class="u-list">
+
+        <li id="box1" class="list-timeout">
+            <img src="images/rightImage.png" height="15px"/>
+            Accuracy</li>
+
+        <li id="box2" class="list-timeout">
+            <img src="images/rightImage.png" height="15px"/>
+            Timeliness</li>
+
+        <li id="box3" class="list-timeout">
+            <img src="images/rightImage.png" height="15px"/>
+            Security</li>
+
+        <li id="box4" class="list-timeout">
+            <img src="images/rightImage.png" height="15px"/>
+            Confidentiality and privacy of patient and test information</li>
+     
+</ul>
+
+    <input id="toggleButton" type="button" value="Next" class="nextbtn" onclick="counter++; toggle5(counter, 4);"><br><br><br>
+
+<p class="content-text p-t-15">
+
+The information management system may be paper-based, computer-based or a combination of both.</p>
+
+<br><br><br> </div> <!--actual page content here -->
+
+<script type="text/javascript">
+
+    var counter = 0;
+
+    var numBoxes = 4;
+
+    function toggle4(showHideDiv) {
+
+        var ele = document.getElementById(showHideDiv + counter);
+
+        if(ele.style.display == "block") {
+
+            ele.style.display = "none";
+
+        }
+
+        else {
+            ele.style.display = "block";
+        }
+
+        if(counter == numBoxes) {
+
+            document.getElementById("toggleButton").style.display = "none";
+
+        }
+
+    }
+
+</script>
+
