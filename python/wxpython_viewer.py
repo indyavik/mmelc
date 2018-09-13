@@ -277,7 +277,7 @@ class MainFrame(wx.Frame):
 
     def sendDataZip(self):
 
-        dir_to_zip ='nginx-1.8.0/html/data/unreceiveddata'
+        dir_to_zip ='nginx-1.8.0/html/data_l/unreceiveddata'
 
         if (len(os.listdir(dir_to_zip + '/')) == 0) :
             return; 
@@ -781,6 +781,8 @@ class JavascriptExternal:
     def saveFile(self, file_name, json_object):
         #save_path = 'nginx-1.8.0/html/data/'
         save_path = 'nginx-1.8.0/html'
+        #make sure the dir path exists (filename = 'sentData/xyz.txt' ==> nginx-1.8.0/html/sentData must exist)
+        
         string_input = json.dumps(json_object)
         with open(save_path + str(file_name), "w") as f: 
             f.write(string_input)

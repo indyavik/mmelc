@@ -63,14 +63,25 @@ function verifyLicense() {
             return;
         }
     }
-alert('got to line 66 lics.js');
+//alert('got to line 66 lics.js');
     if (license_key_to_verify) {
         var submit_object = { "license_id": license_key_to_verify }
     }
 
     submit_data_to_server(submit_object, '/license/check', function(returnValue) {
-alert(returnValue);
-        if (returnValue.response == 'error') {
+//alert(returnValue);
+
+        if (returnValue) {
+            var res = JSON.parse(returnValue);
+            var evaluate_response = res.response
+        }
+
+        else{
+            var evaluate_response = 'error'
+        }
+         
+
+        if (evaluate_response == 'error') {
 
             alert('Licence key could not verified at this time. Please try again later or contact an administrator.')
 

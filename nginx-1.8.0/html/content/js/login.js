@@ -826,6 +826,7 @@ function createUser_new(user_type) {
 
         } //if not 'success' 
         else {
+            alert('Creating User')
             final_process()
         }
 
