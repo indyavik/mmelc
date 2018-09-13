@@ -286,8 +286,8 @@ class MainFrame(wx.Frame):
             #check if connection is actually available. 
             socket.create_connection(("www.google.com", 80), 1)
             now = datetime.now().strftime('%Y-%m-%d_%H-%M-%S')
-            log_file = 'nginx-1.8.0/html/data/unreceiveddata.log'
-            file_name = 'nginx-1.8.0/html/unreceiveddataZipFile'
+            log_file = 'nginx-1.8.0/html/unreceiveddata.log'
+            file_name = 'nginx-1.8.0/unreceiveddataZipFile'
 
             shutil.make_archive(file_name, 'zip', dir_to_zip)
 
@@ -296,6 +296,7 @@ class MainFrame(wx.Frame):
             params = {'zipOrganization' : 'intvenWeare7' , 'filename' : file_name, 'zipTimeStamp' : now}
 
             #url =  'http://mmelc.vestigesystems.com/unsentData'
+
             url = get_endpoint() + '/unsentData'
 
             
