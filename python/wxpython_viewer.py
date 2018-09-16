@@ -1525,8 +1525,7 @@ def install_updates():
                 destinations = [current_nginxdir +'/html/data/', current_nginxdir + '/html/data_l/' , current_nginxdir + '/html/content/certification/conf/']
                 
                 #while restoring do not over-write conf files. They may have changed. 
-
-                skip_files =['certification.conf' , 'module_conf.json' , '_pending.txt' , '.mmelc']
+                skip_files =['certification.conf' , 'module_conf.json']
 
                 for i,d in enumerate(restore_dirs):
                     file_list =os.listdir(d)
