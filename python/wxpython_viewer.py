@@ -1526,7 +1526,7 @@ def install_updates():
                 
                 #while restoring do not over-write conf files. They may have changed. 
 
-                skip_files =['certification.conf' , 'module_conf.json']
+                skip_files =['certification.conf' , 'module_conf.json' , '_pending.txt' , '.mmelc']
 
                 for i,d in enumerate(restore_dirs):
                     file_list =os.listdir(d)
@@ -1536,6 +1536,8 @@ def install_updates():
 
                 print 'completed new version install'
                 update_status = "ok"
+
+
  
             except Exception as e:
                 print(e)
