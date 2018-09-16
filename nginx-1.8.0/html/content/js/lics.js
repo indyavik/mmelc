@@ -69,7 +69,7 @@ function verifyLicense() {
     }
 
     submit_data_to_server(submit_object, '/license/check', function(returnValue) {
-//alert(returnValue);
+
 
         if (returnValue) {
             var res = JSON.parse(returnValue);
@@ -84,6 +84,7 @@ function verifyLicense() {
         if (evaluate_response == 'error') {
 
             alert('Licence key could not verified at this time. Please try again later or contact an administrator.')
+            return;
 
         } else {
 
@@ -91,8 +92,8 @@ function verifyLicense() {
 
             var update_obj = {}
             update_obj['id'] = license_key_to_verify
-            update_obj['seats'] = returnValue.response['seats']
-            update_obj['used'] = returnValue.response['used']
+            update_obj['seats'] = evaluate_response['seats']
+            update_obj['used'] = evaluate_response['used']
 
             mmelc['license'].push(update_obj)
 
@@ -100,6 +101,7 @@ function verifyLicense() {
 
             //alert('updating .mmelc')
             document.getElementById('verify_license_response').innerHTML = 'Licence Key is verified'
+     
 
 
         }

@@ -1,0 +1,27 @@
+{
+    "last_visited_url": "",
+    "units_completed": {
+        "0": [],
+        "1": [],
+        "2": [],
+        "3": [],
+        "4": [],
+        "5": [],
+        "6": [],
+        "7": []
+    },
+    "tests_completed": [],
+    "modules_completed": ["Module-7", "Module-5", "Module-4", "Module-3", "Module-2", "Module-1", "Module-0"],
+    "pretestMCQscores": [],
+    "pretestVSscores": [],
+    "posttestMCQscores": [],
+    "posttestVSscores": [],
+    "pretestcompletiondatetime": [],
+    "posttestcompletiondatetime": [],
+    "page_visited": [],
+    "lowest_unit_completed": "",
+    "username": "1030",
+    "password": "arar",
+    "recovery_email": "arar",
+    "license_id": "TEST-101-202-303"
+}

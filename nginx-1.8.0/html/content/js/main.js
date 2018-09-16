@@ -44,6 +44,7 @@ function submit_data_to_server(data_object, backend_method, cb_func, ajaxtype) {
         data: data_object,
         // data:"username=guest_user_2016 ", 
         type: 'POST',
+        async:false,
         success: cb_func,
         error: function(error) {
             cb_func({ "response": "error" });

@@ -1,1 +1,1 @@
-{"regSurvey_preview": ["mp", "mp3", "mp4"], "regSurvey_license": [], "convert": []}
+{"regSurvey_preview": ["mp", "mp3", "mp4", "stst", "preview0010"], "regSurvey_license": [], "convert": ["previewtest007", "np7"]}
