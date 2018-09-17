@@ -1392,3 +1392,322 @@
 [0911/163338:INFO:CONSOLE(119)] "null", source: http://localhost:85/content/js/main.js (119)
 [0911/163338:INFO:CONSOLE(119)] "null", source: http://localhost:85/content/js/main.js (119)
 [0911/163740:ERROR_REPORT:browser_main.cc(126)] Check failed: browser_contexts_.empty(). 
+[0916/202619:ERROR:gpu_info_collector_win.cc(102)] Can't retrieve a valid WinSAT assessment.
+[0916/202622:ERROR:backend_impl.cc(987)] Critical error found -8
+[0916/202622:WARNING:backend_impl.cc(1493)] Messed up entry found.
+[0916/202622:ERROR:backend_impl.cc(987)] Critical error found -8
+[0916/202622:INFO:dhcp_proxy_script_adapter_fetcher_win.cc(263)] Error fetching PAC URL from DHCP: 2
+[0916/202622:INFO:dhcp_proxy_script_adapter_fetcher_win.cc(263)] Error fetching PAC URL from DHCP: 2
+[0916/202622:INFO:dhcp_proxy_script_adapter_fetcher_win.cc(263)] Error fetching PAC URL from DHCP: 2
+[0916/202622:INFO:dhcp_proxy_script_adapter_fetcher_win.cc(263)] Error fetching PAC URL from DHCP: 2
+[0916/202625:WARNING:storage_block-inl.h(128)] Failed data load.
+[0916/202625:WARNING:storage_block-inl.h(128)] Failed data load.
+[0916/202625:WARNING:storage_block-inl.h(128)] Failed data load.
+[0916/202625:WARNING:storage_block-inl.h(128)] Failed data load.
+[0916/202625:WARNING:storage_block-inl.h(128)] Failed data load.
+[0916/202625:WARNING:storage_block-inl.h(128)] Failed data load.
+[0916/202625:ERROR:entry_impl.cc(943)] Failed to save user data
+[0916/202626:ERROR:cache_util_win.cc(20)] Unable to move the cache: 5
+[0916/202626:ERROR:cache_util.cc(104)] Unable to move cache folder C:\WELCOMM\python\CEFStorage to C:\WELCOMM\python\old_CEFStorage_000
+[0916/202626:ERROR:backend_impl.cc(2014)] Corrupt Index file
+[0916/202626:INFO:CONSOLE(1141)] "Uncaught TypeError: Object #<Object> has no method 'TestJSCallback'", source: http://localhost:85/content/js/login.js (1141)
+[0916/202633:INFO:dhcp_proxy_script_adapter_fetcher_win.cc(263)] Error fetching PAC URL from DHCP: 2
+[0916/202633:INFO:dhcp_proxy_script_adapter_fetcher_win.cc(263)] Error fetching PAC URL from DHCP: 2
+[0916/202633:INFO:dhcp_proxy_script_adapter_fetcher_win.cc(263)] Error fetching PAC URL from DHCP: 2
+[0916/202633:INFO:dhcp_proxy_script_adapter_fetcher_win.cc(263)] Error fetching PAC URL from DHCP: 2
+[0916/202634:INFO:CONSOLE(1141)] "Uncaught TypeError: Object #<Object> has no method 'TestJSCallback'", source: http://localhost:85/content/js/login.js (1141)
+[0916/202639:INFO:CONSOLE(1141)] "Uncaught TypeError: Object #<Object> has no method 'TestJSCallback'", source: http://localhost:85/content/js/login.js (1141)
+[0916/202641:INFO:CONSOLE(1141)] "Uncaught TypeError: Object #<Object> has no method 'TestJSCallback'", source: http://localhost:85/content/js/login.js (1141)
+[0916/202703:INFO:CONSOLE(1141)] "Uncaught TypeError: Object #<Object> has no method 'TestJSCallback'", source: http://localhost:85/content/js/login.js (1141)
+[0916/202705:INFO:CONSOLE(1141)] "Uncaught TypeError: Object #<Object> has no method 'TestJSCallback'", source: http://localhost:85/content/js/login.js (1141)
+[0916/202708:INFO:dhcp_proxy_script_adapter_fetcher_win.cc(263)] Error fetching PAC URL from DHCP: 2
+[0916/202708:INFO:dhcp_proxy_script_adapter_fetcher_win.cc(263)] Error fetching PAC URL from DHCP: 2
+[0916/202708:INFO:dhcp_proxy_script_adapter_fetcher_win.cc(263)] Error fetching PAC URL from DHCP: 2
+[0916/202708:INFO:dhcp_proxy_script_adapter_fetcher_win.cc(263)] Error fetching PAC URL from DHCP: 2
+[0916/202708:INFO:CONSOLE(1141)] "Uncaught TypeError: Object #<Object> has no method 'TestJSCallback'", source: http://localhost:85/content/js/login.js (1141)
+[0916/202718:INFO:CONSOLE(1141)] "Uncaught TypeError: Object #<Object> has no method 'TestJSCallback'", source: http://localhost:85/content/js/login.js (1141)
+[0916/202720:INFO:CONSOLE(1141)] "Uncaught TypeError: Object #<Object> has no method 'TestJSCallback'", source: http://localhost:85/content/js/login.js (1141)
+[0916/202725:INFO:CONSOLE(1141)] "Uncaught TypeError: Object #<Object> has no method 'TestJSCallback'", source: http://localhost:85/content/js/login.js (1141)
+[0916/202729:INFO:CONSOLE(1141)] "Uncaught TypeError: Object #<Object> has no method 'TestJSCallback'", source: http://localhost:85/content/js/login.js (1141)
+[0916/202733:INFO:CONSOLE(1141)] "Uncaught TypeError: Object #<Object> has no method 'TestJSCallback'", source: http://localhost:85/content/js/login.js (1141)
+[0916/202739:INFO:CONSOLE(1141)] "Uncaught TypeError: Object #<Object> has no method 'TestJSCallback'", source: http://localhost:85/content/js/login.js (1141)
+[0916/202744:INFO:CONSOLE(1141)] "Uncaught TypeError: Object #<Object> has no method 'TestJSCallback'", source: http://localhost:85/content/js/login.js (1141)
+[0916/202746:INFO:CONSOLE(1141)] "Uncaught TypeError: Object #<Object> has no method 'TestJSCallback'", source: http://localhost:85/content/js/login.js (1141)
+[0916/202753:INFO:CONSOLE(1141)] "Uncaught TypeError: Object #<Object> has no method 'TestJSCallback'", source: http://localhost:85/content/js/login.js (1141)
+[0916/202758:INFO:CONSOLE(1141)] "Uncaught TypeError: Object #<Object> has no method 'TestJSCallback'", source: http://localhost:85/content/js/login.js (1141)
+[0916/202803:INFO:CONSOLE(1)] "Uncaught SyntaxError: Unexpected token u", source: http://localhost:85/content/index_resubmit.html (1)
+[0916/202805:INFO:CONSOLE(1141)] "Uncaught TypeError: Object #<Object> has no method 'TestJSCallback'", source: http://localhost:85/content/js/login.js (1141)
+[0916/202806:INFO:CONSOLE(1141)] "Uncaught TypeError: Object #<Object> has no method 'TestJSCallback'", source: http://localhost:85/content/js/login.js (1141)
+[0916/202851:INFO:CONSOLE(1141)] "Uncaught TypeError: Object #<Object> has no method 'TestJSCallback'", source: http://localhost:85/content/js/login.js (1141)
+[0916/202920:INFO:dhcp_proxy_script_adapter_fetcher_win.cc(263)] Error fetching PAC URL from DHCP: 2
+[0916/202920:INFO:dhcp_proxy_script_adapter_fetcher_win.cc(263)] Error fetching PAC URL from DHCP: 2
+[0916/202920:INFO:dhcp_proxy_script_adapter_fetcher_win.cc(263)] Error fetching PAC URL from DHCP: 2
+[0916/202920:INFO:dhcp_proxy_script_adapter_fetcher_win.cc(263)] Error fetching PAC URL from DHCP: 2
+[0916/202920:INFO:CONSOLE(1099)] "[object Object]", source: http://localhost:85/content/js/login.js (1099)
+[0916/202920:INFO:CONSOLE(1141)] "Uncaught TypeError: Object #<Object> has no method 'TestJSCallback'", source: http://localhost:85/content/js/login.js (1141)
+[0916/202921:INFO:CONSOLE(269)] "Uncaught TypeError: Cannot call method 'split' of null", source: http://localhost:85/content/js/main-2.js (269)
+[0916/202921:INFO:CONSOLE(249)] "user has logged in", source: http://localhost:85/content/home.html?user=np1&user_type=license (249)
+[0916/202930:INFO:dhcp_proxy_script_adapter_fetcher_win.cc(263)] Error fetching PAC URL from DHCP: 2
+[0916/202930:INFO:dhcp_proxy_script_adapter_fetcher_win.cc(263)] Error fetching PAC URL from DHCP: 2
+[0916/202930:INFO:dhcp_proxy_script_adapter_fetcher_win.cc(263)] Error fetching PAC URL from DHCP: 2
+[0916/202930:INFO:dhcp_proxy_script_adapter_fetcher_win.cc(263)] Error fetching PAC URL from DHCP: 2
+[0916/202940:INFO:CONSOLE(1141)] "Uncaught TypeError: Object #<Object> has no method 'TestJSCallback'", source: http://localhost:85/content/js/login.js (1141)
+[0916/202940:INFO:CONSOLE(120)] "null", source: http://localhost:85/content/js/main.js (120)
+[0916/202940:INFO:CONSOLE(120)] "null", source: http://localhost:85/content/js/main.js (120)
+[0916/202940:INFO:CONSOLE(120)] "null", source: http://localhost:85/content/js/main.js (120)
+[0916/202943:INFO:dhcp_proxy_script_adapter_fetcher_win.cc(263)] Error fetching PAC URL from DHCP: 2
+[0916/202943:INFO:dhcp_proxy_script_adapter_fetcher_win.cc(263)] Error fetching PAC URL from DHCP: 2
+[0916/202943:INFO:dhcp_proxy_script_adapter_fetcher_win.cc(263)] Error fetching PAC URL from DHCP: 2
+[0916/202943:INFO:dhcp_proxy_script_adapter_fetcher_win.cc(263)] Error fetching PAC URL from DHCP: 2
+[0916/203220:INFO:dhcp_proxy_script_adapter_fetcher_win.cc(263)] Error fetching PAC URL from DHCP: 2
+[0916/203220:INFO:dhcp_proxy_script_adapter_fetcher_win.cc(263)] Error fetching PAC URL from DHCP: 2
+[0916/203220:INFO:dhcp_proxy_script_adapter_fetcher_win.cc(263)] Error fetching PAC URL from DHCP: 2
+[0916/203220:INFO:dhcp_proxy_script_adapter_fetcher_win.cc(263)] Error fetching PAC URL from DHCP: 2
+[0916/203220:INFO:CONSOLE(1141)] "Uncaught TypeError: Object #<Object> has no method 'TestJSCallback'", source: http://localhost:85/content/js/login.js (1141)
+[0916/203220:INFO:CONSOLE(120)] "null", source: http://localhost:85/content/js/main.js (120)
+[0916/203220:INFO:CONSOLE(120)] "null", source: http://localhost:85/content/js/main.js (120)
+[0916/203220:INFO:CONSOLE(120)] "null", source: http://localhost:85/content/js/main.js (120)
+[0916/203222:INFO:CONSOLE(1141)] "Uncaught TypeError: Object #<Object> has no method 'TestJSCallback'", source: http://localhost:85/content/js/login.js (1141)
+[0916/203222:INFO:CONSOLE(120)] "null", source: http://localhost:85/content/js/main.js (120)
+[0916/203222:INFO:CONSOLE(120)] "null", source: http://localhost:85/content/js/main.js (120)
+[0916/203222:INFO:CONSOLE(120)] "null", source: http://localhost:85/content/js/main.js (120)
+[0916/203226:INFO:CONSOLE(1141)] "Uncaught TypeError: Object #<Object> has no method 'TestJSCallback'", source: http://localhost:85/content/js/login.js (1141)
+[0916/203226:INFO:CONSOLE(120)] "null", source: http://localhost:85/content/js/main.js (120)
+[0916/203226:INFO:CONSOLE(120)] "null", source: http://localhost:85/content/js/main.js (120)
+[0916/203226:INFO:CONSOLE(120)] "null", source: http://localhost:85/content/js/main.js (120)
+[0916/203230:INFO:CONSOLE(1141)] "Uncaught TypeError: Object #<Object> has no method 'TestJSCallback'", source: http://localhost:85/content/js/login.js (1141)
+[0916/203230:INFO:CONSOLE(120)] "null", source: http://localhost:85/content/js/main.js (120)
+[0916/203230:INFO:CONSOLE(120)] "null", source: http://localhost:85/content/js/main.js (120)
+[0916/203230:INFO:CONSOLE(120)] "null", source: http://localhost:85/content/js/main.js (120)
+[0916/203248:INFO:CONSOLE(1141)] "Uncaught TypeError: Object #<Object> has no method 'TestJSCallback'", source: http://localhost:85/content/js/login.js (1141)
+[0916/203248:INFO:CONSOLE(120)] "null", source: http://localhost:85/content/js/main.js (120)
+[0916/203248:INFO:CONSOLE(120)] "null", source: http://localhost:85/content/js/main.js (120)
+[0916/203248:INFO:CONSOLE(120)] "null", source: http://localhost:85/content/js/main.js (120)
+[0916/203256:INFO:CONSOLE(1141)] "Uncaught TypeError: Object #<Object> has no method 'TestJSCallback'", source: http://localhost:85/content/js/login.js (1141)
+[0916/203256:INFO:CONSOLE(120)] "null", source: http://localhost:85/content/js/main.js (120)
+[0916/203256:INFO:CONSOLE(120)] "null", source: http://localhost:85/content/js/main.js (120)
+[0916/203256:INFO:CONSOLE(120)] "null", source: http://localhost:85/content/js/main.js (120)
+[0916/203258:INFO:CONSOLE(1141)] "Uncaught TypeError: Object #<Object> has no method 'TestJSCallback'", source: http://localhost:85/content/js/login.js (1141)
+[0916/203258:INFO:CONSOLE(120)] "null", source: http://localhost:85/content/js/main.js (120)
+[0916/203258:INFO:CONSOLE(120)] "null", source: http://localhost:85/content/js/main.js (120)
+[0916/203258:INFO:CONSOLE(120)] "null", source: http://localhost:85/content/js/main.js (120)
+[0916/203312:WARNING:dns_config_service_win.cc(653)] Failed to read DnsConfig.
+[0916/203314:INFO:dhcp_proxy_script_adapter_fetcher_win.cc(263)] Error fetching PAC URL from DHCP: 2
+[0916/203314:INFO:dhcp_proxy_script_adapter_fetcher_win.cc(263)] Error fetching PAC URL from DHCP: 2
+[0916/203314:INFO:dhcp_proxy_script_adapter_fetcher_win.cc(263)] Error fetching PAC URL from DHCP: 2
+[0916/203314:INFO:dhcp_proxy_script_adapter_fetcher_win.cc(263)] Error fetching PAC URL from DHCP: 2
+[0916/203314:WARNING:dns_config_service_win.cc(653)] Failed to read DnsConfig.
+[0916/203317:WARNING:dns_config_service_win.cc(653)] Failed to read DnsConfig.
+[0916/203319:WARNING:dns_config_service_win.cc(653)] Failed to read DnsConfig.
+[0916/203320:INFO:CONSOLE(1141)] "Uncaught TypeError: Object #<Object> has no method 'TestJSCallback'", source: http://localhost:85/content/js/login.js (1141)
+[0916/203320:INFO:CONSOLE(120)] "null", source: http://localhost:85/content/js/main.js (120)
+[0916/203320:INFO:CONSOLE(120)] "null", source: http://localhost:85/content/js/main.js (120)
+[0916/203320:INFO:CONSOLE(120)] "null", source: http://localhost:85/content/js/main.js (120)
+[0916/203322:WARNING:dns_config_service_win.cc(653)] Failed to read DnsConfig.
+[0916/203322:INFO:dhcp_proxy_script_adapter_fetcher_win.cc(263)] Error fetching PAC URL from DHCP: 2
+[0916/203322:INFO:dhcp_proxy_script_adapter_fetcher_win.cc(263)] Error fetching PAC URL from DHCP: 2
+[0916/203322:INFO:dhcp_proxy_script_adapter_fetcher_win.cc(263)] Error fetching PAC URL from DHCP: 2
+[0916/203322:INFO:dhcp_proxy_script_adapter_fetcher_win.cc(263)] Error fetching PAC URL from DHCP: 2
+[0916/203322:INFO:CONSOLE(1141)] "Uncaught TypeError: Object #<Object> has no method 'TestJSCallback'", source: http://localhost:85/content/js/login.js (1141)
+[0916/203322:INFO:CONSOLE(120)] "null", source: http://localhost:85/content/js/main.js (120)
+[0916/203322:INFO:CONSOLE(120)] "null", source: http://localhost:85/content/js/main.js (120)
+[0916/203322:INFO:CONSOLE(120)] "null", source: http://localhost:85/content/js/main.js (120)
+[0916/203324:WARNING:dns_config_service_win.cc(653)] Failed to read DnsConfig.
+[0916/203327:WARNING:dns_config_service_win.cc(653)] Failed to read DnsConfig.
+[0916/203329:WARNING:dns_config_service_win.cc(653)] Failed to read DnsConfig.
+[0916/203332:WARNING:dns_config_service_win.cc(653)] Failed to read DnsConfig.
+[0916/203334:WARNING:dns_config_service_win.cc(653)] Failed to read DnsConfig.
+[0916/203337:WARNING:dns_config_service_win.cc(653)] Failed to read DnsConfig.
+[0916/203338:INFO:CONSOLE(1141)] "Uncaught TypeError: Object #<Object> has no method 'TestJSCallback'", source: http://localhost:85/content/js/login.js (1141)
+[0916/203338:INFO:CONSOLE(120)] "null", source: http://localhost:85/content/js/main.js (120)
+[0916/203338:INFO:CONSOLE(120)] "null", source: http://localhost:85/content/js/main.js (120)
+[0916/203338:INFO:CONSOLE(120)] "null", source: http://localhost:85/content/js/main.js (120)
+[0916/203339:WARNING:dns_config_service_win.cc(653)] Failed to read DnsConfig.
+[0916/203342:WARNING:dns_config_service_win.cc(653)] Failed to read DnsConfig.
+[0916/203344:WARNING:dns_config_service_win.cc(653)] Failed to read DnsConfig.
+[0916/203347:WARNING:dns_config_service_win.cc(653)] Failed to read DnsConfig.
+[0916/203349:WARNING:dns_config_service_win.cc(653)] Failed to read DnsConfig.
+[0916/203351:INFO:CONSOLE(1141)] "Uncaught TypeError: Object #<Object> has no method 'TestJSCallback'", source: http://localhost:85/content/js/login.js (1141)
+[0916/203351:INFO:CONSOLE(120)] "null", source: http://localhost:85/content/js/main.js (120)
+[0916/203351:INFO:CONSOLE(120)] "null", source: http://localhost:85/content/js/main.js (120)
+[0916/203351:INFO:CONSOLE(120)] "null", source: http://localhost:85/content/js/main.js (120)
+[0916/203352:WARNING:dns_config_service_win.cc(653)] Failed to read DnsConfig.
+[0916/203354:WARNING:dns_config_service_win.cc(653)] Failed to read DnsConfig.
+[0916/203357:WARNING:dns_config_service_win.cc(653)] Failed to read DnsConfig.
+[0916/203359:WARNING:dns_config_service_win.cc(653)] Failed to read DnsConfig.
+[0916/203402:WARNING:dns_config_service_win.cc(653)] Failed to read DnsConfig.
+[0916/203404:WARNING:dns_config_service_win.cc(653)] Failed to read DnsConfig.
+[0916/203407:WARNING:dns_config_service_win.cc(653)] Failed to read DnsConfig.
+[0916/203409:WARNING:dns_config_service_win.cc(653)] Failed to read DnsConfig.
+[0916/203412:WARNING:dns_config_service_win.cc(653)] Failed to read DnsConfig.
+[0916/203414:WARNING:dns_config_service_win.cc(653)] Failed to read DnsConfig.
+[0916/203417:WARNING:dns_config_service_win.cc(653)] Failed to read DnsConfig.
+[0916/203419:WARNING:dns_config_service_win.cc(653)] Failed to read DnsConfig.
+[0916/203422:WARNING:dns_config_service_win.cc(653)] Failed to read DnsConfig.
+[0916/203424:WARNING:dns_config_service_win.cc(653)] Failed to read DnsConfig.
+[0916/203427:WARNING:dns_config_service_win.cc(653)] Failed to read DnsConfig.
+[0916/203429:WARNING:dns_config_service_win.cc(653)] Failed to read DnsConfig.
+[0916/203432:WARNING:dns_config_service_win.cc(653)] Failed to read DnsConfig.
+[0916/203434:WARNING:dns_config_service_win.cc(653)] Failed to read DnsConfig.
+[0916/203437:WARNING:dns_config_service_win.cc(653)] Failed to read DnsConfig.
+[0916/203439:WARNING:dns_config_service_win.cc(653)] Failed to read DnsConfig.
+[0916/203442:WARNING:dns_config_service_win.cc(653)] Failed to read DnsConfig.
+[0916/203444:WARNING:dns_config_service_win.cc(653)] Failed to read DnsConfig.
+[0916/203447:WARNING:dns_config_service_win.cc(653)] Failed to read DnsConfig.
+[0916/203449:WARNING:dns_config_service_win.cc(653)] Failed to read DnsConfig.
+[0916/203452:WARNING:dns_config_service_win.cc(653)] Failed to read DnsConfig.
+[0916/203454:WARNING:dns_config_service_win.cc(653)] Failed to read DnsConfig.
+[0916/203457:WARNING:dns_config_service_win.cc(653)] Failed to read DnsConfig.
+[0916/203459:WARNING:dns_config_service_win.cc(653)] Failed to read DnsConfig.
+[0916/203502:WARNING:dns_config_service_win.cc(653)] Failed to read DnsConfig.
+[0916/203504:WARNING:dns_config_service_win.cc(653)] Failed to read DnsConfig.
+[0916/203507:WARNING:dns_config_service_win.cc(653)] Failed to read DnsConfig.
+[0916/203509:WARNING:dns_config_service_win.cc(653)] Failed to read DnsConfig.
+[0916/203512:WARNING:dns_config_service_win.cc(653)] Failed to read DnsConfig.
+[0916/203514:WARNING:dns_config_service_win.cc(653)] Failed to read DnsConfig.
+[0916/203517:WARNING:dns_config_service_win.cc(653)] Failed to read DnsConfig.
+[0916/203519:WARNING:dns_config_service_win.cc(653)] Failed to read DnsConfig.
+[0916/203522:WARNING:dns_config_service_win.cc(653)] Failed to read DnsConfig.
+[0916/203524:WARNING:dns_config_service_win.cc(653)] Failed to read DnsConfig.
+[0916/203527:WARNING:dns_config_service_win.cc(653)] Failed to read DnsConfig.
+[0916/203529:WARNING:dns_config_service_win.cc(653)] Failed to read DnsConfig.
+[0916/203532:WARNING:dns_config_service_win.cc(653)] Failed to read DnsConfig.
+[0916/203534:WARNING:dns_config_service_win.cc(653)] Failed to read DnsConfig.
+[0916/203537:WARNING:dns_config_service_win.cc(653)] Failed to read DnsConfig.
+[0916/203539:WARNING:dns_config_service_win.cc(653)] Failed to read DnsConfig.
+[0916/203542:WARNING:dns_config_service_win.cc(653)] Failed to read DnsConfig.
+[0916/203544:WARNING:dns_config_service_win.cc(653)] Failed to read DnsConfig.
+[0916/203545:INFO:dhcp_proxy_script_adapter_fetcher_win.cc(263)] Error fetching PAC URL from DHCP: 2
+[0916/203545:INFO:dhcp_proxy_script_adapter_fetcher_win.cc(263)] Error fetching PAC URL from DHCP: 2
+[0916/203545:INFO:dhcp_proxy_script_adapter_fetcher_win.cc(263)] Error fetching PAC URL from DHCP: 2
+[0916/203545:INFO:dhcp_proxy_script_adapter_fetcher_win.cc(263)] Error fetching PAC URL from DHCP: 2
+[0916/203545:INFO:CONSOLE(1141)] "Uncaught TypeError: Object #<Object> has no method 'TestJSCallback'", source: http://localhost:85/content/js/login.js (1141)
+[0916/203545:INFO:CONSOLE(120)] "null", source: http://localhost:85/content/js/main.js (120)
+[0916/203545:INFO:CONSOLE(120)] "null", source: http://localhost:85/content/js/main.js (120)
+[0916/203545:INFO:CONSOLE(120)] "null", source: http://localhost:85/content/js/main.js (120)
+[0916/203547:WARNING:dns_config_service_win.cc(653)] Failed to read DnsConfig.
+[0916/203549:WARNING:dns_config_service_win.cc(653)] Failed to read DnsConfig.
+[0916/203552:WARNING:dns_config_service_win.cc(653)] Failed to read DnsConfig.
+[0916/203554:WARNING:dns_config_service_win.cc(653)] Failed to read DnsConfig.
+[0916/203556:INFO:CONSOLE(1141)] "Uncaught TypeError: Object #<Object> has no method 'TestJSCallback'", source: http://localhost:85/content/js/login.js (1141)
+[0916/203556:INFO:CONSOLE(120)] "null", source: http://localhost:85/content/js/main.js (120)
+[0916/203556:INFO:CONSOLE(120)] "null", source: http://localhost:85/content/js/main.js (120)
+[0916/203556:INFO:CONSOLE(120)] "null", source: http://localhost:85/content/js/main.js (120)
+[0916/203557:WARNING:dns_config_service_win.cc(653)] Failed to read DnsConfig.
+[0916/203559:WARNING:dns_config_service_win.cc(653)] Failed to read DnsConfig.
+[0916/203602:WARNING:dns_config_service_win.cc(653)] Failed to read DnsConfig.
+[0916/203604:WARNING:dns_config_service_win.cc(653)] Failed to read DnsConfig.
+[0916/203607:WARNING:dns_config_service_win.cc(653)] Failed to read DnsConfig.
+[0916/203609:WARNING:dns_config_service_win.cc(653)] Failed to read DnsConfig.
+[0916/203612:WARNING:dns_config_service_win.cc(653)] Failed to read DnsConfig.
+[0916/203614:WARNING:dns_config_service_win.cc(653)] Failed to read DnsConfig.
+[0916/203617:WARNING:dns_config_service_win.cc(653)] Failed to read DnsConfig.
+[0916/203619:WARNING:dns_config_service_win.cc(653)] Failed to read DnsConfig.
+[0916/203622:WARNING:dns_config_service_win.cc(653)] Failed to read DnsConfig.
+[0916/203624:WARNING:dns_config_service_win.cc(653)] Failed to read DnsConfig.
+[0916/203627:WARNING:dns_config_service_win.cc(653)] Failed to read DnsConfig.
+[0916/203629:WARNING:dns_config_service_win.cc(653)] Failed to read DnsConfig.
+[0916/203632:INFO:CONSOLE(1141)] "Uncaught TypeError: Object #<Object> has no method 'TestJSCallback'", source: http://localhost:85/content/js/login.js (1141)
+[0916/203632:INFO:CONSOLE(120)] "null", source: http://localhost:85/content/js/main.js (120)
+[0916/203632:INFO:CONSOLE(120)] "null", source: http://localhost:85/content/js/main.js (120)
+[0916/203632:INFO:CONSOLE(120)] "null", source: http://localhost:85/content/js/main.js (120)
+[0916/203632:WARNING:dns_config_service_win.cc(653)] Failed to read DnsConfig.
+[0916/203633:INFO:CONSOLE(1141)] "Uncaught TypeError: Object #<Object> has no method 'TestJSCallback'", source: http://localhost:85/content/js/login.js (1141)
+[0916/203633:INFO:CONSOLE(120)] "null", source: http://localhost:85/content/js/main.js (120)
+[0916/203633:INFO:CONSOLE(120)] "null", source: http://localhost:85/content/js/main.js (120)
+[0916/203633:INFO:CONSOLE(120)] "null", source: http://localhost:85/content/js/main.js (120)
+[0916/203634:WARNING:dns_config_service_win.cc(653)] Failed to read DnsConfig.
+[0916/203637:WARNING:dns_config_service_win.cc(653)] Failed to read DnsConfig.
+[0916/203639:WARNING:dns_config_service_win.cc(653)] Failed to read DnsConfig.
+[0916/203642:WARNING:dns_config_service_win.cc(653)] Failed to read DnsConfig.
+[0916/203644:WARNING:dns_config_service_win.cc(653)] Failed to read DnsConfig.
+[0916/203647:WARNING:dns_config_service_win.cc(653)] Failed to read DnsConfig.
+[0916/203649:WARNING:dns_config_service_win.cc(653)] Failed to read DnsConfig.
+[0916/203652:WARNING:dns_config_service_win.cc(653)] Failed to read DnsConfig.
+[0916/203656:INFO:dhcp_proxy_script_adapter_fetcher_win.cc(263)] Error fetching PAC URL from DHCP: 2
+[0916/203656:INFO:dhcp_proxy_script_adapter_fetcher_win.cc(263)] Error fetching PAC URL from DHCP: 2
+[0916/203656:INFO:dhcp_proxy_script_adapter_fetcher_win.cc(263)] Error fetching PAC URL from DHCP: 2
+[0916/203656:INFO:dhcp_proxy_script_adapter_fetcher_win.cc(263)] Error fetching PAC URL from DHCP: 2
+[0916/203659:INFO:dhcp_proxy_script_adapter_fetcher_win.cc(263)] Error fetching PAC URL from DHCP: 2
+[0916/203659:INFO:dhcp_proxy_script_adapter_fetcher_win.cc(263)] Error fetching PAC URL from DHCP: 2
+[0916/203659:INFO:dhcp_proxy_script_adapter_fetcher_win.cc(263)] Error fetching PAC URL from DHCP: 2
+[0916/203659:INFO:dhcp_proxy_script_adapter_fetcher_win.cc(263)] Error fetching PAC URL from DHCP: 2
+[0916/203710:INFO:dhcp_proxy_script_adapter_fetcher_win.cc(263)] Error fetching PAC URL from DHCP: 2
+[0916/203710:INFO:dhcp_proxy_script_adapter_fetcher_win.cc(263)] Error fetching PAC URL from DHCP: 2
+[0916/203710:INFO:dhcp_proxy_script_adapter_fetcher_win.cc(263)] Error fetching PAC URL from DHCP: 2
+[0916/203710:INFO:dhcp_proxy_script_adapter_fetcher_win.cc(263)] Error fetching PAC URL from DHCP: 2
+[0916/204918:INFO:dhcp_proxy_script_adapter_fetcher_win.cc(263)] Error fetching PAC URL from DHCP: 2
+[0916/204918:INFO:dhcp_proxy_script_adapter_fetcher_win.cc(263)] Error fetching PAC URL from DHCP: 2
+[0916/204918:INFO:dhcp_proxy_script_adapter_fetcher_win.cc(263)] Error fetching PAC URL from DHCP: 2
+[0916/204918:INFO:dhcp_proxy_script_adapter_fetcher_win.cc(263)] Error fetching PAC URL from DHCP: 2
+[0916/204918:INFO:CONSOLE(1141)] "Uncaught TypeError: Object #<Object> has no method 'TestJSCallback'", source: http://localhost:85/content/js/login.js (1141)
+[0916/204918:INFO:CONSOLE(120)] "null", source: http://localhost:85/content/js/main.js (120)
+[0916/204918:INFO:CONSOLE(120)] "null", source: http://localhost:85/content/js/main.js (120)
+[0916/204918:INFO:CONSOLE(120)] "null", source: http://localhost:85/content/js/main.js (120)
+[0916/205024:INFO:CONSOLE(1141)] "Uncaught TypeError: Object #<Object> has no method 'TestJSCallback'", source: http://localhost:85/content/js/login.js (1141)
+[0916/205024:INFO:CONSOLE(120)] "null", source: http://localhost:85/content/js/main.js (120)
+[0916/205024:INFO:CONSOLE(120)] "null", source: http://localhost:85/content/js/main.js (120)
+[0916/205024:INFO:CONSOLE(120)] "null", source: http://localhost:85/content/js/main.js (120)
+[0916/205708:INFO:dhcp_proxy_script_adapter_fetcher_win.cc(263)] Error fetching PAC URL from DHCP: 2
+[0916/205708:INFO:dhcp_proxy_script_adapter_fetcher_win.cc(263)] Error fetching PAC URL from DHCP: 2
+[0916/205708:INFO:dhcp_proxy_script_adapter_fetcher_win.cc(263)] Error fetching PAC URL from DHCP: 2
+[0916/205708:INFO:dhcp_proxy_script_adapter_fetcher_win.cc(263)] Error fetching PAC URL from DHCP: 2
+[0916/205708:INFO:CONSOLE(1141)] "Uncaught TypeError: Object #<Object> has no method 'TestJSCallback'", source: http://localhost:85/content/js/login.js (1141)
+[0916/205708:INFO:CONSOLE(120)] "null", source: http://localhost:85/content/js/main.js (120)
+[0916/205708:INFO:CONSOLE(120)] "null", source: http://localhost:85/content/js/main.js (120)
+[0916/205708:INFO:CONSOLE(120)] "null", source: http://localhost:85/content/js/main.js (120)
+[0916/205711:INFO:CONSOLE(1141)] "Uncaught TypeError: Object #<Object> has no method 'TestJSCallback'", source: http://localhost:85/content/js/login.js (1141)
+[0916/205711:INFO:CONSOLE(120)] "null", source: http://localhost:85/content/js/main.js (120)
+[0916/205711:INFO:CONSOLE(120)] "null", source: http://localhost:85/content/js/main.js (120)
+[0916/205711:INFO:CONSOLE(120)] "null", source: http://localhost:85/content/js/main.js (120)
+[0916/210026:INFO:CONSOLE(1141)] "Uncaught TypeError: Object #<Object> has no method 'TestJSCallback'", source: http://localhost:85/content/js/login.js (1141)
+[0916/210026:INFO:CONSOLE(120)] "null", source: http://localhost:85/content/js/main.js (120)
+[0916/210026:INFO:CONSOLE(120)] "null", source: http://localhost:85/content/js/main.js (120)
+[0916/210026:INFO:CONSOLE(120)] "null", source: http://localhost:85/content/js/main.js (120)
+[0916/210041:INFO:CONSOLE(1099)] "[object Object]", source: http://localhost:85/content/js/login.js (1099)
+[0916/210043:INFO:CONSOLE(1141)] "Uncaught TypeError: Object #<Object> has no method 'TestJSCallback'", source: http://localhost:85/content/js/login.js (1141)
+[0916/210043:INFO:CONSOLE(269)] "Uncaught TypeError: Cannot call method 'split' of null", source: http://localhost:85/content/js/main-2.js (269)
+[0916/210043:INFO:CONSOLE(249)] "user has logged in", source: http://localhost:85/content/home.html?user=MattLicense&user_type=license (249)
+[0916/210045:INFO:CONSOLE(165)] "completed module: Module-0", source: http://localhost:85/content/js/main-2.js (165)
+[0916/210045:INFO:CONSOLE(182)] "completed units:0_2", source: http://localhost:85/content/js/main-2.js (182)
+[0916/210045:INFO:CONSOLE(182)] "completed units:0_0", source: http://localhost:85/content/js/main-2.js (182)
+[0916/210045:INFO:CONSOLE(182)] "completed units:0_1", source: http://localhost:85/content/js/main-2.js (182)
+[0916/210045:INFO:CONSOLE(165)] "completed module: Module-1", source: http://localhost:85/content/js/main-2.js (165)
+[0916/210045:INFO:CONSOLE(182)] "completed units:1_0", source: http://localhost:85/content/js/main-2.js (182)
+[0916/210045:INFO:CONSOLE(182)] "completed units:1_1", source: http://localhost:85/content/js/main-2.js (182)
+[0916/210045:INFO:CONSOLE(182)] "completed units:1_2", source: http://localhost:85/content/js/main-2.js (182)
+[0916/210045:INFO:CONSOLE(182)] "completed units:1_3", source: http://localhost:85/content/js/main-2.js (182)
+[0916/210045:INFO:CONSOLE(165)] "completed module: Module-2", source: http://localhost:85/content/js/main-2.js (165)
+[0916/210045:INFO:CONSOLE(182)] "completed units:2_0", source: http://localhost:85/content/js/main-2.js (182)
+[0916/210045:INFO:CONSOLE(182)] "completed units:2_1", source: http://localhost:85/content/js/main-2.js (182)
+[0916/210045:INFO:CONSOLE(182)] "completed units:2_2", source: http://localhost:85/content/js/main-2.js (182)
+[0916/210045:INFO:CONSOLE(182)] "completed units:2_3", source: http://localhost:85/content/js/main-2.js (182)
+[0916/210045:INFO:CONSOLE(182)] "completed units:2_4", source: http://localhost:85/content/js/main-2.js (182)
+[0916/210045:INFO:CONSOLE(182)] "completed units:2_5", source: http://localhost:85/content/js/main-2.js (182)
+[0916/210045:INFO:CONSOLE(165)] "completed module: Module-3", source: http://localhost:85/content/js/main-2.js (165)
+[0916/210045:INFO:CONSOLE(182)] "completed units:3_0", source: http://localhost:85/content/js/main-2.js (182)
+[0916/210045:INFO:CONSOLE(182)] "completed units:3_1", source: http://localhost:85/content/js/main-2.js (182)
+[0916/210045:INFO:CONSOLE(182)] "completed units:3_2", source: http://localhost:85/content/js/main-2.js (182)
+[0916/210045:INFO:CONSOLE(182)] "completed units:3_3", source: http://localhost:85/content/js/main-2.js (182)
+[0916/210045:INFO:CONSOLE(182)] "completed units:3_4", source: http://localhost:85/content/js/main-2.js (182)
+[0916/210045:INFO:CONSOLE(182)] "completed units:3_5", source: http://localhost:85/content/js/main-2.js (182)
+[0916/210045:INFO:CONSOLE(182)] "completed units:3_6", source: http://localhost:85/content/js/main-2.js (182)
+[0916/210045:INFO:CONSOLE(182)] "completed units:3_7", source: http://localhost:85/content/js/main-2.js (182)
+[0916/210045:INFO:CONSOLE(182)] "completed units:3_8", source: http://localhost:85/content/js/main-2.js (182)
+[0916/210045:INFO:CONSOLE(165)] "completed module: Module-4", source: http://localhost:85/content/js/main-2.js (165)
+[0916/210045:INFO:CONSOLE(182)] "completed units:4_0", source: http://localhost:85/content/js/main-2.js (182)
+[0916/210045:INFO:CONSOLE(182)] "completed units:4_1", source: http://localhost:85/content/js/main-2.js (182)
+[0916/210045:INFO:CONSOLE(182)] "completed units:4_2", source: http://localhost:85/content/js/main-2.js (182)
+[0916/210045:INFO:CONSOLE(182)] "completed units:4_3", source: http://localhost:85/content/js/main-2.js (182)
+[0916/210045:INFO:CONSOLE(165)] "completed module: Module-5", source: http://localhost:85/content/js/main-2.js (165)
+[0916/210045:INFO:CONSOLE(182)] "completed units:5_0", source: http://localhost:85/content/js/main-2.js (182)
+[0916/210045:INFO:CONSOLE(182)] "completed units:5_1", source: http://localhost:85/content/js/main-2.js (182)
+[0916/210045:INFO:CONSOLE(182)] "completed units:5_2", source: http://localhost:85/content/js/main-2.js (182)
+[0916/210045:INFO:CONSOLE(182)] "completed units:5_3", source: http://localhost:85/content/js/main-2.js (182)
+[0916/210045:INFO:CONSOLE(182)] "completed units:5_4", source: http://localhost:85/content/js/main-2.js (182)
+[0916/210045:INFO:CONSOLE(165)] "completed module: Module-7", source: http://localhost:85/content/js/main-2.js (165)
+[0916/210045:INFO:CONSOLE(182)] "completed units:7_0", source: http://localhost:85/content/js/main-2.js (182)
+[0916/210051:INFO:CONSOLE(1141)] "Uncaught TypeError: Object #<Object> has no method 'TestJSCallback'", source: http://localhost:85/content/js/login.js (1141)
+[0916/210051:INFO:CONSOLE(1)] "Uncaught SyntaxError: Unexpected token M", source: http://localhost:85/content/certification/index_certification.html?message=noLogin (1)
+[0916/210051:INFO:CONSOLE(166)] "Uncaught TypeError: Cannot read property 'left' of undefined", source: http://localhost:85/content/certification/index_certification.html?message=noLogin (166)
+[0916/210749:ERROR_REPORT:browser_main.cc(126)] Check failed: browser_contexts_.empty(). 

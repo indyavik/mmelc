@@ -726,7 +726,7 @@ class JavascriptExternal:
 
     def get_updates(self, jsCallBack):
 
-        response = {"response" : "Ok. Successfully downloaded new version"}
+        response = {"response" : "Successfully downloaded new version.  This version will be installed the next time the course software is restarted."}
         
         now = datetime.now().strftime('%Y-%m-%d-%H-%M-%S')
         loc = os.path.dirname(os.path.abspath(__file__))

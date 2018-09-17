@@ -129,9 +129,9 @@
 
                                             <div id="loading" style="display:none;">
                                                 <hr>
-                                                <h2>Please wait while we try to get updates</h2>
-                                                <p>Do not close the browser or click on back button ...</p>
-                                                <p>If updates are found, they would be installed automatically on next restart. </p>
+                                                <h2>Please wait while we try to get updates.</h2>
+                                                <p>Do not close the software or navigate away from this page.</p>
+                                                <p>If updates are found, they will be installed automatically on next restart. </p>
                                                 <p></p>
                                                 <img id="loading-image" src="images/loading.gif" alt="Loading..." />
                                             </div>
@@ -167,9 +167,9 @@
 
                                             <div id="getupdates-txt" style="margin-left: 20px;">
                                                 <p>
-                                                    Clicking button below will check the new course updates on the server. </p>
+                                                    Clicking the button below will check for new course updates on the server. </p>
                                                 <p>
-                                                    Any new updates found will be installed on next restart. Please connect course USB when system restart in order to update the USB.
+                                                    Any new updates found will be downloaded and installed on next restart. This may involve downloading a large file.  Please connect course USB when system restart in order to update the USB.
 
                                                 </p>
 
@@ -180,7 +180,7 @@
                                             <p></p>
                                             <p></p>
 
-                                            <span id="getupdates-btn"><button id="getupdatesbtnclick" class="getupdatesbtn" style="vertical-align: top;position: absolute; margin-left: 20px;" onclick="get_updates_btn();">Ok - Check for Updates</button></span>
+                                            <span id="getupdates-btn"><button id="getupdatesbtnclick" class="getupdatesbtn" style="vertical-align: top;position: absolute; margin-left: 20px;" onclick="get_updates_btn();">Check for and Download Updates</button></span>
 
 
                                         </div>
@@ -268,7 +268,7 @@
         if (!user_id) user_id = "anonymous";
 
         if (!email || !error_description) {
-            alert("Please provide and email and an error description");
+            alert("Please provide an email address and an error description.");
             return;
         }
 

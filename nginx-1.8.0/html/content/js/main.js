@@ -202,11 +202,11 @@ function send_error_reports(userid, email, description) {
 
 function send_error_reports_callback(arg) {
 
-    var show = "Success. Error reports successfully submitted to the server";
+    var show = "Success. Error reports successfully submitted to the server,  Thank you!";
 //	alert('got to line 205');
     if (arg && arg.indexOf("ok") !== -1) {
 
-        show = "Error. your request did not complete at this time, please try again or email MalariaMicroscopyCourse@amref.org";
+        show = "Error. Your request did not complete at this time, please try again or email MalariaMicroscopyCourse@amref.org";
 
     }
     alert(show);
