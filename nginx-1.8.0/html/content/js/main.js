@@ -204,7 +204,7 @@ function send_error_reports_callback(arg) {
 
     var show = "Success. Error reports successfully submitted to the server,  Thank you!";
 //	alert('got to line 205');
-    if (arg && arg.indexOf("ok") !== -1) {
+    if (arg !== 'ok') {
 
         show = "Error. Your request did not complete at this time, please try again or email MalariaMicroscopyCourse@amref.org";
 
