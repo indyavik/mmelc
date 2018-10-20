@@ -88,7 +88,7 @@ function get_final_ans_key_updated() {
 
     var MCQanswers = ""; //string
     var MCQquestions = ""; //
-    var PXLanswers = []; //array 
+	var PXLanswers = []; //array 
 
     //var ans_object = JSON.parse(localStorage.getItem(USERCONFKEY))
     var ans_object = JSON.parse(localStorage.getItem('cert_user_conf'))
@@ -98,9 +98,12 @@ function get_final_ans_key_updated() {
     var user_type = ans_object.usb_user_type
 
     var question_keys = Object.keys(ans_object.cert_scores) // ["101", "110", "201", "311", "408", "C_pxl_assessmentq1"]
+	//alert(question_keys);
     for (var i in question_keys) {
         if (question_keys[i].length < 4) {
-            MCQquestions += question_keys[i]
+            //MCQquestions += question_keys[i]
+			MCQquestions += parseInt(question_keys[i].substring(1,3)).toString(32) //Each question is now one character in this string, in base 32.  Ignore the first character, assuming same number of questions in each module.
+			// e.g. 101 -> 1, 104 -> 4, 110 -> a, 204 -> 4, 211 -> b
             MCQanswers += ans_object.cert_scores[question_keys[i]]
         } else {
             PXLanswers.push(ans_object.cert_scores[question_keys[i]])
@@ -120,7 +123,7 @@ function get_final_ans_key_updated() {
     //get_final_ans_key([10,34500,2700,25050,400,10000,125], 'abc' , '1234432123' )
     var final_ans_key = get_final_ans_key(PXLanswers, username, MCQanswers)
 
-    var final_questions_key = parseInt(MCQquestions).toString(32)
+    var final_questions_key = MCQquestions
 
     console.log(final_ans_key)
     console.log(final_questions_key)
