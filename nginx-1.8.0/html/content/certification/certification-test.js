@@ -8,7 +8,7 @@
 
 //global.
 
-LICENSEDIR='/data_l/'
+LICENSEDIR = '/data_l/'
 
 function saveCertAnswer(slideId, chkVal) {
 
@@ -88,7 +88,7 @@ function get_final_ans_key_updated() {
 
     var MCQanswers = ""; //string
     var MCQquestions = ""; //
-	var PXLanswers = []; //array 
+    var PXLanswers = []; //array 
 
     //var ans_object = JSON.parse(localStorage.getItem(USERCONFKEY))
     var ans_object = JSON.parse(localStorage.getItem('cert_user_conf'))
@@ -98,12 +98,12 @@ function get_final_ans_key_updated() {
     var user_type = ans_object.usb_user_type
 
     var question_keys = Object.keys(ans_object.cert_scores) // ["101", "110", "201", "311", "408", "C_pxl_assessmentq1"]
-	//alert(question_keys);
+        //alert(question_keys);
     for (var i in question_keys) {
         if (question_keys[i].length < 4) {
             //MCQquestions += question_keys[i]
-			MCQquestions += parseInt(question_keys[i].substring(1,3)).toString(32) //Each question is now one character in this string, in base 32.  Ignore the first character, assuming same number of questions in each module.
-			// e.g. 101 -> 1, 104 -> 4, 110 -> a, 204 -> 4, 211 -> b
+            MCQquestions += parseInt(question_keys[i].substring(1, 3)).toString(32) //Each question is now one character in this string, in base 32.  Ignore the first character, assuming same number of questions in each module.
+                // e.g. 101 -> 1, 104 -> 4, 110 -> a, 204 -> 4, 211 -> b
             MCQanswers += ans_object.cert_scores[question_keys[i]]
         } else {
             PXLanswers.push(ans_object.cert_scores[question_keys[i]])
@@ -269,12 +269,12 @@ function create_final_cert_ans_key() {
 
 } // create_cert_ans
 
-function TEST_submit_cert_ans_to_server(payload, endpoint, method_type) {
+function TEST_submit_cert_ans_to_server(payload, endpoint, urlendpoint, method_type) {
 
     //TEST_submit_cert_ans_to_server(payload, 'submitcert', 'POST')
 
     if (!method_type) method_type = 'POST';
-    urlendpoint = 'http://localhost:8081/'
+    if (!urlendpoint) urlendpoint = 'http://localhost:8081/'
 
     $.ajax({
         type: method_type,
@@ -285,13 +285,16 @@ function TEST_submit_cert_ans_to_server(payload, endpoint, method_type) {
             // var result = json.user.login 
             //alert("live results from server:" + json.status + ':' + json.result);
             var res = JSON.parse(json)
-            var to_show = 'Successfully submitted'
-            if (res.response !== 'success') to_show = res.details
-            alert(to_show)
+            console.log(res.response)
+
+            //var to_show = 'Successfully submitted'
+            //if (res.response !== 'success') to_show = res.details
+            //alert(to_show)
             return;
 
         },
-        error: function() {
+        error: function(res) {
+            alert(res)
             alert('Error: Could not submit results to server. Please record the keys displayed and submit via email.')
             return;
         }
@@ -328,7 +331,7 @@ function submit_cert_ans_to_server(cert_results) {
             //alert("live results from server:" + json.status + ':' + json.result);
 
             var res = JSON.parse(json)
-            var to_show = 'Your results have been successfully submitted. You will now be logged out. '
+            var to_show = 'Your results have been successfully submitted. Please record your keys or save to a separate file in case they need to be resubmitted for any reason. '
             if (res.response !== 'success') to_show = res.details
 
             alert(to_show)
@@ -341,7 +344,7 @@ function submit_cert_ans_to_server(cert_results) {
 
             var usb_id = JSON.parse(get_from_disk(LICENSEDIR + 'usb_id.json')).usb_id
 
-            if (!usb_id || usb_id ==undefined){
+            if (!usb_id || usb_id == undefined) {
                 usb_id = 'NO-USB-ID'
             }
 
@@ -350,10 +353,10 @@ function submit_cert_ans_to_server(cert_results) {
                 user_obj['cert_user_name'] = to_submit['cert_user_name']
                 user_obj['usb_id'] = usb_id
 
-               // external.saveFile('/data_l/' + ans_object.usb_user + '.txt', user_obj)
-               external.saveFile(LICENSEDIR + ans_object.usb_user + '.txt', user_obj)
+                // external.saveFile('/data_l/' + ans_object.usb_user + '.txt', user_obj)
+                external.saveFile(LICENSEDIR + ans_object.usb_user + '.txt', user_obj)
 
-                log_out_cert_user()
+                //log_out_cert_user()
 
 
 
@@ -364,7 +367,6 @@ function submit_cert_ans_to_server(cert_results) {
         error: function() {
 
             //window.location.href = "/content/posttest_protected/results.html"; 
-
             alert('Error: Could not submit results to server. Please record the keys displayed in this page and submit via email.')
 
 
@@ -470,9 +472,9 @@ function showthick2() {
 }
 
 function showthin() {
-    document.getElementById('pathXLviewer').src = '../../standalone.html?slide=images/' + virtualslideDirectory + '/' + virtualslidePrefix + questionnum + 'thin.svs';
+    document.getElementById('pathXLviewer').src = '../../../standalone.html?slide=images/' + virtualslideDirectory + '/' + virtualslidePrefix + questionnum + 'thin.svs';
 }
 
 function showthin2() {
-    document.getElementById('pathXLviewer').src = '../../standalone.html?slide=images/' + virtualslideDirectory + '/' + virtualslidePrefix + questionnum + 'thin2.svs';
+    document.getElementById('pathXLviewer').src = '../../../standalone.html?slide=images/' + virtualslideDirectory + '/' + virtualslidePrefix + questionnum + 'thin2.svs';
 }

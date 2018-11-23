@@ -1,6 +1,6 @@
-//var BACKEND = 'http://localhost:8081'
+var BACKEND = 'http://localhost:8081'
 //var BACKEND = 'http://mmelc.vestigesystems.com:8081'
-var BACKEND = 'http://malariamicroscopy.amref.org'
+//var BACKEND = 'http://malariamicroscopy.amref.org'
 
 function submit_data_to_server_registration(data_object, backend_method, success_func, error_func, ajaxtype) {
 
@@ -44,6 +44,7 @@ function submit_data_to_server(data_object, backend_method, cb_func, ajaxtype) {
         data: data_object,
         // data:"username=guest_user_2016 ", 
         type: 'POST',
+        async:false,
         success: cb_func,
         error: function(error) {
             cb_func({ "response": "error" });
@@ -195,21 +196,22 @@ function GetObject(obj_identifier, file_on_disk) {
 
 function send_error_reports(userid, email, description) {
     if (!userid) userid = "anonymous";
-
+//alert('got to line 198');
     external.send_error_reports(userid, email, description, send_error_reports_callback);
 }
 
 function send_error_reports_callback(arg) {
 
-    var show = "Success. Error reports successfully submitted to the server";
+    var show = "Success. Error reports successfully submitted to the server,  Thank you!";
+//	alert('got to line 205');
+//alert(arg)
+    if (arg !== 'ok') {
 
-    if (arg && arg.indexOf("ok") !== -1) {
-
-        show = "Error. your request did not complete at this time, please try again or contact an admin";
+        show = "Error. Submission of error report failed. Please ensure you are online and try again or email MalariaMicroscopyCourse@amref.org";
 
     }
     alert(show);
-    window.location.replace("index.html");
+    //window.location.replace("index.html");
 
 }
 

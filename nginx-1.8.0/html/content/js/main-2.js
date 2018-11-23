@@ -1026,11 +1026,15 @@ function generateTestFeedback(MCQtestname, numMCQs, PXLtestname, numPXLs) {
 
     all_user_answers["username"] = current_user;
     all_user_answers["timestamp"] = now.valueOf();
+	
     //update_on_disk(JSON.parse(current_user) + '_' + now.valueOf(), all_user_answers); //now handling saving data in submit_data_to_server
     //try to send all_user_answers to server:
-    submit_data_to_server('user_test_data_object', all_user_answers);
-    //alert('submitted');
-
+    
+	
+	//TODO: get submitting pre- and post-test results to server.  The below commented out doesn't work, causes error on page (page stops).
+	//submit_data_to_server('user_test_data_object', all_user_answers);
+	//submit_data_to_server(all_user_answers,'/test/testanswers');
+    
     //alert(JSON.stringify(all_user_answers));
     //alert('mcCorrect=' + mcCorrect.toString());
     //alert('reportScore = ' + reportScore.toString());
@@ -1637,7 +1641,8 @@ function submit_data_to_server_2(data_type, data_object) {
     //alert(current_user);
     //alert(JSON.parse(current_user));
 
-    var url_endpoint = 'http://mmelc.vestigesystems.com/deviceData';
+    //var url_endpoint = 'http://mmelc.vestigesystems.com/deviceData';
+    var url_endpoint = BACKEND + '/deviceData'
 
     var load = { 'user': current_user, 'data_load': data_object, 'data_type': data_type }
 
@@ -1663,6 +1668,7 @@ function submit_data_to_server_2(data_type, data_object) {
 
         error: function(data) {
 
+           
             update_on_disk('unreceiveddata/' + current_user + now.valueOf(), load);
             console.log("submit_data_error: " + JSON.stringify(load))
             if (data_type == "survey_response") { alert('An error occurred - please save the result file to your computer and send via email later.'); };
@@ -1674,7 +1680,7 @@ function submit_data_to_server_2(data_type, data_object) {
 
     });
 
-} //submit_data_to_server
+} //submit_data_to_server_2
 
 
 

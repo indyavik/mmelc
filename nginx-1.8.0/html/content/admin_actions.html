@@ -118,7 +118,7 @@
                                     <div style="width:64%;display: inline-block;vertical-align: top;overflow:auto;max-height:calc(100% - 35px);">
                                         <div id="admin-options" style="margin-top: 50px;">
 
-                                            <span id="sendreport-btn"><button id="sendreportbtn" class="getupdatesbtn" style="background-color: green;" onclick="adminoptions('sendreport');">Send Error Report</button></span>
+                                            <span id="sendreport-btn1"><button id="sendreportbtn1" class="getupdatesbtn" style="background-color: green;" onclick="adminoptions('sendreport');">Send Error Report</button></span>
 
                                             <span id="getupdates-btn"><button id="getupdatesbtn" class="getupdatesbtn" onclick="adminoptions('getupdates');">Check for Updates</button></span>
 
@@ -129,9 +129,9 @@
 
                                             <div id="loading" style="display:none;">
                                                 <hr>
-                                                <h2>Please wait while we try to get updates</h2>
-                                                <p>Do not close the browser or click on back button ...</p>
-                                                <p>If updates are found, they would be installed automatically on next restart. </p>
+                                                <h2>Please wait while we try to get updates.</h2>
+                                                <p>Do not close the software or navigate away from this page.</p>
+                                                <p>If updates are found, they will be installed automatically on next restart. </p>
                                                 <p></p>
                                                 <img id="loading-image" src="images/loading.gif" alt="Loading..." />
                                             </div>
@@ -146,6 +146,7 @@
                                         <div id="sendreport-div">
 
                                             <br>
+											<p> Please fill out the form below to submit an error report if you are having any issues with the course software. </p>
                                             <p>
                                                 Email:
                                                 <br>
@@ -153,8 +154,8 @@
                                                 <br> Enter brief problem description:
                                                 <br>
                                                 <textarea id="error_description" name="error_description" cols="80" rows="5"></textarea>
-                                                <br><br><br>
-                                                <span id="sendreport-btn"><button id="sendreportbtn" class="sendreportbtn" style="vertical-align: top;position: absolute;" onclick="send_error_report_button();">Send Error Report</button></span>
+                                                <br>This information, as well as a software-generated error report, will be submitted.<br><br>
+                                                <span id="sendreport-btn"><button id="sendreportbtn" class="sendreportbtn" onclick="send_error_report_button();">Send Error Report</button></span>
                                                 <br><br><br><br>
 
 
@@ -167,9 +168,9 @@
 
                                             <div id="getupdates-txt" style="margin-left: 20px;">
                                                 <p>
-                                                    Clicking button below will check the new course updates on the server. </p>
+                                                    Clicking the button below will check for new course updates on the server. </p>
                                                 <p>
-                                                    Any new updates found will be installed on next restart.Please connect course USB when system restart in order to update the USB.
+                                                    Any new updates found will be downloaded and installed on next restart. This may involve downloading a large file.  Please connect course USB when system restart in order to update the USB.
 
                                                 </p>
 
@@ -180,7 +181,7 @@
                                             <p></p>
                                             <p></p>
 
-                                            <span id="getupdates-btn"><button id="getupdatesbtnclick" class="getupdatesbtn" style="vertical-align: top;position: absolute; margin-left: 20px;" onclick="get_updates_btn();">Ok - Check for Updates</button></span>
+                                            <span id="getupdates-btn"><button id="getupdatesbtnclick" class="getupdatesbtn" style="vertical-align: top;position: absolute; margin-left: 20px;" onclick="get_updates_btn();">Check for and Download Updates</button></span>
 
 
                                         </div>
@@ -268,17 +269,17 @@
         if (!user_id) user_id = "anonymous";
 
         if (!email || !error_description) {
-            alert("Please provide and email and an error description");
+            alert("Please provide an email address and an error description.");
             return;
         }
 
-        //hide the button from reclicks. 
+        //hide the button from reclicks. Commented out, as message should delay this, plus if there is an error (e.g. offline) user should have another chance.  It is usually pretty quick, so hopefully not many reclicks.
 
-        document.getElementById("sendreportbtn").style.display = "none";
+        document.getElementById("sendreport-btn").style.display = "none";
         //call send error report func. 
 
         send_error_reports(user_id, email, error_description);
-
+		document.getElementById("sendreport-btn").style.display = "block";
 
     } // send_error_report_button.
 
@@ -286,7 +287,7 @@
 
         //hide everything. 
         document.getElementById("getupdatesbtn").style.display = "none";
-        document.getElementById("sendreportbtn").style.display = "none";
+        document.getElementById("sendreportbtn1").style.display = "none";
         document.getElementById("getupdatesbtnclick").style.display = "none";
         document.getElementById("getupdates-txt").style.display = "none";
 

@@ -155,6 +155,18 @@ document.getElementById("totalScore").innerHTML = 'incomplete';
 document.getElementById("changeHeading").innerHTML = 'You have not completed the exam!  You must answer all questions and analyze all slides!';
 }
 else {
+        //first, mark pre-test as complete.  This will be done again if user continues through, but just in case they don't:
+
+        var current_page = localStorage.getItem('current_location') //1_1_slide10.html
+
+        var els = current_page.split('_')
+
+        var current_module = Number(els[0])
+
+        var current_unit = Number(els[1])
+
+        update_units(current_module, current_unit, 'Module-' + current_module)
+
 var mcCorrect = results.mcCorrect;
 var vsCorrect = results.reportScore;
 var isCorrect = results.isCorrect;

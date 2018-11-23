@@ -8,7 +8,7 @@ function convert_preview_user(username, license_id) {
     /*converts a user from preview to license */
     var user_data = JSON.parse(get_from_disk(DATADIR + username + '.txt'))
     if (!user_data || user_data == undefined) {
-        alert('Sorry - could not find the user')
+        alert('Sorry - this username does not exist as a Preview User.')
         return;
 
     }
@@ -17,7 +17,7 @@ function convert_preview_user(username, license_id) {
 
     var mmelc = JSON.parse(get_from_disk(LICENSEDIR + '.mmelc'))
     if (!mmelc || mmelc == undefined) {
-        alert('Error: Please contact an administrator')
+        alert('Error: Please contact MalariaMicroscopyCourse@amref.org')
         return;
 
     }
@@ -43,9 +43,11 @@ function convert_preview_user(username, license_id) {
 
                 if (update_allUSERS == 'error' || remove_allUSERS == 'error') {
                     //alert. 
-                    alert("Error: Some error occurred. Please contact and admininstrator")
+                    alert("Error: Some error occurred. Please contact MalariaMicroscopyCourse@amref.org")
                     alert("update_allUSERS" + update_allUSERS + " remove_allUSERS " + remove_allUSERS)
-                        //TODO: need to return here, or not update whichever of these returned error (OR IT OVERWRITES Users.txt with 'error'!!!)
+                    
+                    return;
+					//TODO: need to return here, or not update whichever of these returned error (OR IT OVERWRITES Users.txt with 'error'!!!)
                 }
 
                 user_data.user_type = 'license'
@@ -62,7 +64,7 @@ function convert_preview_user(username, license_id) {
                 external.removeFile(DATADIR + username + '.txt')
 
                 /* get the pending file */
-
+alert('User is successfully converted to a licensed user. Return to home page to login again.')
                 var pending = get_from_disk(LICENSEDIR + '_pending.txt')
 
                 if (pending && pending != undefined) {
@@ -87,20 +89,96 @@ function convert_preview_user(username, license_id) {
                     }
 
                     var user_survey_file = get_from_disk(DATADIR + username + '_survey_registration.txt')
-                    external.saveFile(LICENSEDIR + username + '_survey_registration.txt', JSON.parse(user_survey_file))
-                        //remove
-                    external.removeFile(DATADIR + username + '_survey_registration.txt')
 
+                    //lets try to submit  this data to the server ..and create new user. 
+
+                    var user_object_to_submit = JSON.parse(user_survey_file)
+                    if (user_object_to_submit){
+
+                        user_object_to_submit['license_id'] = license_id
+                        user_object_to_submit['usb_user_user_type'] = 'license'
+                    }
+
+                    else {
+                        alert("Could not submit user data to server at this time. Please contact MalariaMicroscopyCourse@amref.org.")
+                    }
+
+                    submit_data_to_server(user_object_to_submit, '/usbuser/register', function(returnValue){
+
+                        var returnCheck = JSON.parse(returnValue).response; 
+
+                      
+                        if (returnCheck == 'success'){
+                            //succesfully updated the sever. Nothing pending for this user. 
+                            var idx = pendingobj['regSurvey_license'].indexOf(username)
+
+                             if (idx > -1) pendingobj['regSurvey_license'].splice(idx, 1)
+
+                             external.removeFile(DATADIR + username + '_survey_registration.txt')
+                             user_data['converted_backend'] = 'yes'
+                             user_data['submit_status'] = 'submitted'
+                             external.saveFile(LICENSEDIR + username + '.txt', user_data)
+
+                        }
+
+                        else {
+                        //still no submission to the backend. 
+
+                        external.saveFile(LICENSEDIR + username + '_survey_registration.txt', JSON.parse(user_survey_file))
+                        //remove from preview's data dir. 
+                        external.removeFile(DATADIR + username + '_survey_registration.txt')
+
+
+
+                        }
+
+                
+                     }); //submit_data_to_server 
+
+                    
 
                 } else {
 
                     //UPDATE USER STATUS IN BACKEND.
-                    //*********TO DO TO DO TO DO  */
-                    external.saveFile(LICENSEDIR + '_pending.txt', pendingobj)
-                    console.log('to-do-convert-user-backend')
+
+                    var user_obj_to_submit = {'usb_user_name' : username, 'license_id' : license_id , 'usb_id' : user_data.usb_id, 'reg_email' : user_data.reg_email}
+                    submit_data_to_server(user_obj_to_submit, '/usbuser/convert', function(returnValue){
+                        var returnCheck = JSON.parse(returnValue).response; 
+
+                       
+
+                        if (returnCheck == 'success'){
+                            //succesfully updated the sever. Nothing pending for this user.
+                            user_data['converted_backend'] = 'yes'
+                            external.saveFile(LICENSEDIR + username + '.txt', user_data) 
+
+                            console.log("great ..nothing to do. user updated in the backened.")
+ 
+                        }
+
+                        else {
+                        //still no submission to the backend. 
+                        
+                        /*
+                        user_data['converted_from_preview'] = 'pending_server_update';
+                        external.saveFile(LICENSEDIR + username + '.txt', user_data)
+                        */
+
+                        external.saveFile(LICENSEDIR + username + '_survey_registration.txt', JSON.parse(user_survey_file))
+                        //remove from preview's data dir. 
+                        external.removeFile(DATADIR + username + '_survey_registration.txt')
+
+                        }
+
+                
+                     }); //submit_data_to_server 
+  
                 }
 
                 /*RETURN THE CODE */
+
+                //save file afterwards. 
+                external.saveFile(LICENSEDIR + '_pending.txt', pendingobj)
 
                 return 'success';
 
@@ -113,12 +191,13 @@ function convert_preview_user(username, license_id) {
 
     /* if licenses_left is zero let user know */
     if (licenses_left == 0) {
-        alert("Sorry licence not valid or not enough seats available for licence id = " + license_id)
+        alert("Sorry license not valid or not enough seats available for license id = " + license_id)
         return;
     }
 
 
 } //convert  a preview user to licensed user. 
+
 
 function resubmit_registration(username, data_dir) {
     /* tries to resubmit a user to the back-end again */
@@ -539,6 +618,8 @@ function regSurvey() {
         }
 
         var user_ob = JSON.parse(localStorage.getItem('new_user_obj'))
+    
+
         survey_object['license_id'] = user_ob.license_id
 
         /* GET USB ID */
@@ -555,7 +636,11 @@ function regSurvey() {
 
         localStorage.setItem('new_user_survey', JSON.stringify(survey_object))
 
-        //create user
+        //update user object with usb_id and email 
+        user_ob['usb_id'] = usb_id
+        user_ob['reg_email'] = survey_object['reg_email']
+
+        localStorage.setItem('new_user_obj', JSON.stringify(user_ob))
 
         if (user_ob.license_id != "preview") {
 
@@ -743,7 +828,7 @@ function update_users_file(datadir, user_to_add, action) {
     if (action == 'remove') {
         if (user_exists == -1 && user_to_add !== "") {
             //user doesn't exists nothing to remove.  
-            alert('Error: user may not have been removed from list')
+            console.log('Error: user may not have been removed from list')
             return users;
 
         } else {
@@ -810,6 +895,9 @@ function createUser_new(user_type) {
 
     new_user_obj_survey['usb_id'] = usb_id
 
+    new_user['usb_id'] = usb_id
+    new_user['reg_email'] = new_user_obj_survey['reg_email']
+
     localStorage.setItem('new_user_survey_obj', JSON.stringify(new_user_obj_survey))
     localStorage.setItem('new_user_obj', JSON.stringify(new_user))
 
@@ -826,6 +914,7 @@ function createUser_new(user_type) {
 
         } //if not 'success' 
         else {
+            alert('User has been created.')
             final_process()
         }
 
@@ -838,7 +927,7 @@ function createUser_new(user_type) {
 
         //alert("Creating user, however no data was submitted to server")
 
-        alert("User has been created, however data was not submitted to server as no connection was made")
+        alert("User has been created, however data was not submitted to server as no connection was made.")
 
         var new_user2 = JSON.parse(localStorage.getItem('new_user_obj'))
 

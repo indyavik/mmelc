@@ -139,7 +139,9 @@
 <!--actual page content here -->
 
 <script type="text/javascript">
-    var results = generateTestFeedback('postMCQ', 10, 'postq', 5);
+    
+	var results = generateTestFeedback('postMCQ', 10, 'postq', 5);
+	
     if (results.incomplete == 1) {
         document.getElementById("MCQbuttons").innerHTML = '<br>To review answers, you must complete the test.';
 

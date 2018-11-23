@@ -95,7 +95,8 @@
                                             <button id="convert_go" class="button_create_user_go" onclick="convert_user()">GO</button>
 
                                             <br></br>
-											<p><button onclick="window.location.href='index.html';">Cancel</button></span></p>
+                                            
+											<p><button onclick="window.location.href='index.html';">Return</button></span></p>
                                         </div>
 
                                     </div>
@@ -177,9 +178,10 @@
             }
 
             var convert = convert_preview_user(username, license_id)
-
+//alert(convert)
             if (convert == 'success') {
-                alert('User is successfully converted to a licensed user. Redirect to home page to login again')
+                //alert('User is successfully converted to a licensed user. Redirect to home page to login again.')
+				//put this alert within function, as soon as user files are written.  convert only equals 'success' if user is converted AND data is submitted to server.
                 setTimeout(function() {
 				var date = new Date;
                     window.location.href = "index.html";
@@ -188,6 +190,9 @@
                 }, 500);
 
             }
+			else {
+			//alert('fail');
+			}
 
         }
     </script>

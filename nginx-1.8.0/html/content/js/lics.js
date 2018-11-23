@@ -63,16 +63,34 @@ function verifyLicense() {
             return;
         }
     }
-
+//alert('got to line 66 lics.js');
     if (license_key_to_verify) {
         var submit_object = { "license_id": license_key_to_verify }
     }
 
     submit_data_to_server(submit_object, '/license/check', function(returnValue) {
 
-        if (returnValue.response == 'error') {
 
-            alert('Licence key could not verified at this time. Please try again later or contact an administrator.')
+        if (returnValue) {
+			if (returnValue.response == 'error') { //this happens if offline.  JSON.parse(returnValue) fails when offline.
+				var evaluate_response = 'error';
+				
+			}
+			else{
+				var res = JSON.parse(returnValue);
+				var evaluate_response = res.response
+			}
+        }
+
+        else{
+            var evaluate_response = 'error'; //this shouldn't happen, but is a catch-all.
+        }
+         
+
+        if (evaluate_response == 'error') {
+
+            alert('Licence key could not be verified at this time. Please ensure you have entered the correct key and are online. If the problem persists, please contact MalariaMicroscopyCourse@amref.org.')
+            return;
 
         } else {
 
@@ -80,8 +98,8 @@ function verifyLicense() {
 
             var update_obj = {}
             update_obj['id'] = license_key_to_verify
-            update_obj['seats'] = returnValue.response['seats']
-            update_obj['used'] = returnValue.response['used']
+            update_obj['seats'] = evaluate_response['seats']
+            update_obj['used'] = evaluate_response['used']
 
             mmelc['license'].push(update_obj)
 
@@ -89,6 +107,7 @@ function verifyLicense() {
 
             //alert('updating .mmelc')
             document.getElementById('verify_license_response').innerHTML = 'Licence Key is verified'
+     
 
 
         }
